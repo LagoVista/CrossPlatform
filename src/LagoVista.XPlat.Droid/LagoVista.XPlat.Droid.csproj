@@ -1,0 +1,137 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{981E1800-122A-4204-8826-3B981B8DFEA4}</ProjectGuid>
+    <ProjectTypeGuids>{EFBA0AD7-5A72-4C68-AF49-83D382785DCF};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>LagoVista.XPlat.Droid</RootNamespace>
+    <AssemblyName>LagoVista.XPlat.Droid</AssemblyName>
+    <FileAlignment>512</FileAlignment>
+    <AndroidResgenFile>Resources\Resource.Designer.cs</AndroidResgenFile>
+    <GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
+    <AndroidUseLatestPlatformSdk>True</AndroidUseLatestPlatformSdk>
+    <TargetFrameworkVersion>v7.1</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Mono.Android" />
+    <Reference Include="mscorlib" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="IconFonts\EntypoPlusModule.cs" />
+    <Compile Include="IconFonts\FontAwesomeModule.cs" />
+    <Compile Include="IconFonts\IconFontSupport.cs" />
+    <Compile Include="IconFonts\IoniconsModule.cs" />
+    <Compile Include="IconFonts\MaterialModule.cs" />
+    <Compile Include="IconFonts\MeteoconsModule.cs" />
+    <Compile Include="IconFonts\SimpleLineIconsModule.cs" />
+    <Compile Include="IconFonts\TypiconsModule.cs" />
+    <Compile Include="IconFonts\WeatherIconsModule.cs" />
+    <Compile Include="Loggers\MobileCenterLogger.cs" />
+    <Compile Include="Resources\Resource.Designer.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\DeviceInfo.cs" />
+    <Compile Include="Services\DispatcherServices.cs" />
+    <Compile Include="Services\NetworkService.cs" />
+    <Compile Include="Services\StorageService.cs" />
+    <Compile Include="Startup.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\AboutResources.txt" />
+    <AndroidResource Include="Resources\Font\iconize-entypoplus.ttf" />
+    <AndroidResource Include="Resources\Font\iconize-fontawesome.ttf" />
+    <AndroidResource Include="Resources\Font\iconize-ionicons.ttf" />
+    <AndroidResource Include="Resources\Font\iconize-material.ttf" />
+    <AndroidResource Include="Resources\Font\iconize-meteocons.ttf" />
+    <AndroidResource Include="Resources\Font\iconize-simplelineicons.ttf" />
+    <AndroidResource Include="Resources\Font\iconize-typicons.ttf" />
+    <AndroidResource Include="Resources\Font\iconize-weathericons.ttf" />
+    <AndroidResource Include="Resources\Font\Roboto-Black.ttf" />
+    <AndroidResource Include="Resources\Font\Roboto-BlackItalic.ttf" />
+    <AndroidResource Include="Resources\Font\Roboto-Bold.ttf" />
+    <AndroidResource Include="Resources\Font\Roboto-BoldItalic.ttf" />
+    <AndroidResource Include="Resources\Font\Roboto-Italic.ttf" />
+    <AndroidResource Include="Resources\Font\Roboto-Light.ttf" />
+    <AndroidResource Include="Resources\Font\Roboto-LightItalic.ttf" />
+    <AndroidResource Include="Resources\Font\Roboto-Medium.ttf" />
+    <AndroidResource Include="Resources\Font\Roboto-MediumItalic.ttf" />
+    <AndroidResource Include="Resources\Font\Roboto-Regular.ttf" />
+    <AndroidResource Include="Resources\Font\Roboto-Thin.ttf" />
+    <AndroidResource Include="Resources\Font\Roboto-ThinItalic.ttf" />
+    <AndroidResource Include="Resources\Font\RobotoCondensed-Bold.ttf" />
+    <AndroidResource Include="Resources\Font\RobotoCondensed-BoldItalic.ttf" />
+    <AndroidResource Include="Resources\Font\RobotoCondensed-Italic.ttf" />
+    <AndroidResource Include="Resources\Font\RobotoCondensed-Light.ttf" />
+    <AndroidResource Include="Resources\Font\RobotoCondensed-LightItalic.ttf" />
+    <AndroidResource Include="Resources\Font\RobotoCondensed-Regular.ttf" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="LagoVista.Client.Core">
+      <Version>1.2.185-alpha0705</Version>
+    </PackageReference>
+    <PackageReference Include="LagoVista.MQTT.Core">
+      <Version>1.2.185-alpha0705</Version>
+    </PackageReference>
+    <PackageReference Include="Microsoft.Azure.Mobile">
+      <Version>0.17.1</Version>
+    </PackageReference>
+    <PackageReference Include="Microsoft.Azure.Mobile.Analytics">
+      <Version>0.17.1</Version>
+    </PackageReference>
+    <PackageReference Include="Microsoft.Azure.Mobile.Crashes">
+      <Version>0.17.1</Version>
+    </PackageReference>
+    <PackageReference Include="Microsoft.Azure.Mobile.Distribute">
+      <Version>0.17.1</Version>
+    </PackageReference>
+    <PackageReference Include="Microsoft.Azure.Mobile.Push">
+      <Version>0.16.0</Version>
+    </PackageReference>
+    <PackageReference Include="Xamarin.Forms">
+      <Version>2.5.0.91635</Version>
+    </PackageReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\LagoVista.XPlat.Core\LagoVista.XPlat.Core.csproj">
+      <Project>{8fa51876-7923-4046-a5ce-77057c82675e}</Project>
+      <Name>LagoVista.XPlat.Core</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\Values\Strings.xml" />
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

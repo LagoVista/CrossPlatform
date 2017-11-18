@@ -1,0 +1,33 @@
+﻿<UserControl
+    x:Class="LagoVista.UWP.UI.VolumeControl"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:cmn="using:LagoVista.UWP.UI"
+    mc:Ignorable="d"
+    d:DesignHeight="150"
+    d:DesignWidth="100">
+
+    <Grid>
+        <Grid.Resources>
+            <Style TargetType="cmn:TapableImage">
+                <Setter Property="Margin" Value="4" />
+            </Style>
+        </Grid.Resources>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="33*" />
+            <ColumnDefinition Width="33*" />
+            <ColumnDefinition Width="33*" />
+        </Grid.ColumnDefinitions>
+        <cmn:TapableImage Source="ms-appx:///LagoVista.Common.UI/Images/VolumeMute.png" Grid.Row="0" Grid.Column="0" TapDownCommand="{Binding MuteCommand}" />        
+        <cmn:TapableImage Source="ms-appx:///LagoVista.Common.UI/Images/VolumeDown.png" Grid.Row="0" Grid.Column="1" TapDownCommand="{Binding VolumeDownCommand}"/>
+        <cmn:TapableImage Source="ms-appx:///LagoVista.Common.UI/Images/VolumeUp.png" Grid.Row="0" Grid.Column="2" TapDownCommand="{Binding VolumeUpCommand}"/>
+        <TextBlock Text="volume" Grid.ColumnSpan="2" Grid.Row="1" Foreground="White" />
+        <TextBlock Text="{Binding CurrentVolume, FallbackValue=0db}" Grid.Row="1" Grid.Column="2" Foreground="White"/>
+    </Grid>
+</UserControl>

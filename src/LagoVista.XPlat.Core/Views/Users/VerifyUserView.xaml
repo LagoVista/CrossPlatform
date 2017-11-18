@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<pge:LagoVistaContentPage     
+    xmlns:pge="clr-namespace:LagoVista.XPlat.Core;assembly=LagoVista.XPlat.Core"
+    xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:ext="clr-namespace:LagoVista.XPlat.Core.Extensions"
+    HasToolBar="False"
+    x:Class="LagoVista.XPlat.Core.Views.Users.VerifyUserView"
+    Title="{ext:ClientTranslate Common_Login}">
+    <pge:LagoVistaContentPage.MainContent>
+        <ScrollView>
+            <Grid BackgroundColor="#2196F3">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <Image Source="nuviot.png" HorizontalOptions="Center" />
+                <StackLayout Grid.Row="1" Margin="20" WidthRequest="300" HorizontalOptions="Center" >
+                    <pge:Label IsVisible="{Binding ShowPhoneConfirm}" Text="{ext:ClientTranslate Verify_PhoneNumber}"  TextColor="White" />
+                    <pge:Entry IsVisible="{Binding ShowPhoneConfirm}" Text="{Binding PhoneNumber, Mode=TwoWay}" Placeholder="{ext:ClientTranslate Verify_PhoneNumber_Watermark}"  />
+
+                    <pge:Label IsVisible="{Binding ShowPhoneConfirm}" Text="{ext:ClientTranslate Verify_ReceivedCode}"  TextColor="White" />
+                    <pge:Entry IsVisible="{Binding ShowPhoneConfirm}" Text="{Binding SMSCode, Mode=TwoWay}" Placeholder="{ext:ClientTranslate Verify_ReceivedCode_Watermark}"  />
+
+                    <pge:Button IsVisible="{Binding ShowEmailConfirm}" Command="{Binding SendEmailConfirmationCommand}" Text="{ext:ClientTranslate Verify_SendEmail}" HeightRequest="48" />
+
+                    <pge:Button IsVisible="{Binding ShowPhoneConfirm}" Command="{Binding SendSMSConfirmationCommand}" Text="{ext:ClientTranslate Verify_SendSMS}" HeightRequest="48" />
+
+                    <pge:Button IsVisible="{Binding ShowPhoneConfirm}" Command="{Binding ConfirmEnteredSMSCommand}" Text="{ext:ClientTranslate Verify_ConfirmCode}" HeightRequest="48" />
+
+                    <pge:Button  Command="{Binding LogoutCommand}" Text="{ext:ClientTranslate Common_Logout}" HeightRequest="48" />
+                </StackLayout>
+            </Grid>
+        </ScrollView>
+    </pge:LagoVistaContentPage.MainContent>
+</pge:LagoVistaContentPage>

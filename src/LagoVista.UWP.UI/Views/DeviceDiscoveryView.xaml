@@ -1,0 +1,44 @@
+﻿<lgv:LagoVistaPage
+    xmlns:lgv="using:LagoVista.UWP.UI"
+    x:Class="LagoVista.UWP.UI.DeviceDiscoveryView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:LagoVista.UWP.UI"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:mdls="using:LagoVista.Core.Networking.Models"
+    
+    mc:Ignorable="d">
+
+    <lgv:LagoVistaPage.Resources>
+        <mdls:uPnPDevice x:Key="PnPDeviceSampleData" FriendlyName="My Device" ModelName="MODELXYZ" />
+
+        <DataTemplate x:Key="DeviceDescriptor">
+            <Grid Width="180" Height="180" d:DataContext="{StaticResource PnPDeviceSampleData}" >
+                <Grid.Resources>
+                    <Style TargetType="TextBlock" >
+                        <Setter Property="Foreground" Value="WHite" />
+                        <Setter Property="Margin" Value="4" />
+                    </Style>
+                </Grid.Resources>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <TextBlock Text="{Binding FriendlyName}" TextWrapping="Wrap" FontSize="18"/>
+                <TextBlock Text="{Binding ModelName}" Grid.Row="1" />
+                <TextBlock Text="{Binding ModelNumber}" Grid.Row="2" />
+                <TextBlock Text="{Binding IPAddress}" Grid.Row="3" />
+                <TextBlock Text="{Binding ModelDescription}" Grid.Row="4" />
+                <Border Grid.RowSpan="5"  BorderBrush="White" BorderThickness="1" />
+            </Grid>
+        </DataTemplate>
+    </lgv:LagoVistaPage.Resources>
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"  d:DataContext="{StaticResource PnPDeviceSampleData}" >
+        <GridView ItemsSource="{Binding Path=Devices}" ItemTemplate="{StaticResource DeviceDescriptor}" />
+    </Grid>
+</lgv:LagoVistaPage>

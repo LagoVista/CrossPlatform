@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<pge:LagoVistaContentPage
+    xmlns:pge="clr-namespace:LagoVista.XPlat.Core;assembly=LagoVista.XPlat.Core"
+    xmlns="http://xamarin.com/schemas/2014/forms" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:ext="clr-namespace:LagoVista.XPlat.Core.Extensions"    
+    x:Class="LagoVista.XPlat.Core.Views.Orgs.AcceptInviteView"
+    Title="{ext:ClientTranslate AcceptInvite_Title}">
+    <pge:LagoVistaContentPage.MainContent>
+        <ScrollView>
+            <Grid BackgroundColor="#2196F3">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="auto" />
+                </Grid.RowDefinitions>
+                <Image Source="nuviot.png" HorizontalOptions="Center" />
+                <StackLayout Grid.Row="1" Margin="20" WidthRequest="300" HorizontalOptions="Center" >
+                    <Label TextColor="White" Text="{ext:ClientTranslate AcceptInvite_Accept_Help}" IsVisible="{Binding IsLoggedIn}" />
+                    <pge:Button Command="{Binding AcceptInviteCommnad}" Text="{ext:ClientTranslate AcceptInvite_Accept}" HeightRequest="48" IsVisible="{Binding IsLoggedIn}"/>
+
+                    <Label TextColor="White" Text="{ext:ClientTranslate AcceptInvite_AcceptAndLogin_Help}" IsVisible="{Binding IsNotLoggedIn}" />
+                    <pge:Button Command="{Binding AcceptAndLoginCommand}" Text="{ext:ClientTranslate AcceptInvite_AcceptAndLogin}" HeightRequest="48" IsVisible="{Binding IsNotLoggedIn}"/>
+
+                    <Label TextColor="White" Text="{ext:ClientTranslate AcceptInvite_AcceptAndRegister_Help}"  />
+                    <pge:Button Command="{Binding AcceptAndRegisterCommand}" Text="{ext:ClientTranslate AcceptInvite_AcceptAndRegister}" HeightRequest="48" />
+                </StackLayout>
+            </Grid>
+        </ScrollView>
+    </pge:LagoVistaContentPage.MainContent>
+</pge:LagoVistaContentPage>

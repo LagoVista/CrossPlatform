@@ -1,0 +1,11 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>netstandard1.3</TargetFramework>
+    <DebugType>Full</DebugType>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Xamarin.Forms" Version="2.5.0.91635" />
+    <PackageReference Include="LagoVista.Core" Version="1.2.181-alpha1716" />
+    <PackageReference Include="LagoVista.Client.Core" Version="1.2.185-alpha0705" />
+  </ItemGroup>
+</Project>

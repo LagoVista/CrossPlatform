@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<package>
+  <metadata>
+    <id>LagoVista.UWP.UI</id>
+    <version>1.2.185-alpha0705</version>
+    <authors>Software Logistics, LLC</authors>
+    <owners>Software Logistics, LLC</owners>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <projectUrl>http://www.lagovista-iot.com/opensource</projectUrl>
+    <iconUrl>http://bytemaster.blob.core.windows.net/icons/LagoVistaIcon.png</iconUrl>
+    <description>User Interface components used for building Windows 10 Apps with the LagoVista IoT and Devices Frameworks</description>
+    <releaseNotes>Initial Unstable Release</releaseNotes>
+    <copyright>Copyright 2016</copyright>
+    <tags>HomeAutomation IoT UWP</tags>
+    <dependencies>
+      <dependency id="Newtonsoft.Json" version="10.0.1" />
+    </dependencies>
+  </metadata>
+  <files>
+    <file src="readme.txt" target="" />
+    <file src="bin\ARM\Release\LagoVista.UWP.UI.dll" target="runtimes\win10-arm\lib\uap10.0" />
+    <file src="bin\ARM\Release\LagoVista.UWP.UI.pri" target="runtimes\win10-arm\lib\uap10.0" />
+    <file src="bin\ARM\Release\LagoVista.UWP.UI.xr.xml" target="runtimes\win10-arm\lib\uap10.0\LagoVista.UWP.UI" />
+    <file src="bin\x64\Release\LagoVista.UWP.UI.dll" target="runtimes\win10-x64\lib\uap10.0" />
+    <file src="bin\x64\Release\LagoVista.UWP.UI.pri" target="runtimes\win10-x64\lib\uap10.0" />
+    <file src="bin\x64\Release\LagoVista.UWP.UI.xr.xml" target="runtimes\win10-x64\lib\uap10.0\LagoVista.UWP.UI" />
+    <file src="bin\x86\Release\LagoVista.UWP.UI.dll" target="runtimes\win10-x86\lib\uap10.0" />
+    <file src="bin\x86\Release\LagoVista.UWP.UI.pri" target="runtimes\win10-x86\lib\uap10.0" />
+    <file src="bin\x86\Release\LagoVista.UWP.UI.xr.xml" target="runtimes\win10-x86\lib\uap10.0\LagoVista.UWP.UI" />
+    <file src="bin\Release\LagoVista.UWP.UI.dll" target="ref\uap10.0" />
+    <file src="bin\Release\LagoVista.UWP.UI.pri" target="ref\uap10.0" />
+    <file src="bin\Release\LagoVista.UWP.UI.xr.xml" target="ref\uap10.0\LagoVista.UWP.UI" />
+  </files>
+</package>
