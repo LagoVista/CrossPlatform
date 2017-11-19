@@ -64,32 +64,31 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />
-    <AndroidResource Include="Resources\Font\iconize-entypoplus.ttf" />
-    <AndroidResource Include="Resources\Font\iconize-fontawesome.ttf" />
-    <AndroidResource Include="Resources\Font\iconize-ionicons.ttf" />
-    <AndroidResource Include="Resources\Font\iconize-material.ttf" />
-    <AndroidResource Include="Resources\Font\iconize-meteocons.ttf" />
-    <AndroidResource Include="Resources\Font\iconize-simplelineicons.ttf" />
-    <AndroidResource Include="Resources\Font\iconize-typicons.ttf" />
-    <AndroidResource Include="Resources\Font\iconize-weathericons.ttf" />
-    <AndroidResource Include="Resources\Font\Roboto-Black.ttf" />
-    <AndroidResource Include="Resources\Font\Roboto-BlackItalic.ttf" />
-    <AndroidResource Include="Resources\Font\Roboto-Bold.ttf" />
-    <AndroidResource Include="Resources\Font\Roboto-BoldItalic.ttf" />
-    <AndroidResource Include="Resources\Font\Roboto-Italic.ttf" />
-    <AndroidResource Include="Resources\Font\Roboto-Light.ttf" />
-    <AndroidResource Include="Resources\Font\Roboto-LightItalic.ttf" />
-    <AndroidResource Include="Resources\Font\Roboto-Medium.ttf" />
-    <AndroidResource Include="Resources\Font\Roboto-MediumItalic.ttf" />
-    <AndroidResource Include="Resources\Font\Roboto-Regular.ttf" />
-    <AndroidResource Include="Resources\Font\Roboto-Thin.ttf" />
-    <AndroidResource Include="Resources\Font\Roboto-ThinItalic.ttf" />
-    <AndroidResource Include="Resources\Font\RobotoCondensed-Bold.ttf" />
-    <AndroidResource Include="Resources\Font\RobotoCondensed-BoldItalic.ttf" />
-    <AndroidResource Include="Resources\Font\RobotoCondensed-Italic.ttf" />
-    <AndroidResource Include="Resources\Font\RobotoCondensed-Light.ttf" />
-    <AndroidResource Include="Resources\Font\RobotoCondensed-LightItalic.ttf" />
-    <AndroidResource Include="Resources\Font\RobotoCondensed-Regular.ttf" />
+    <AndroidResource Include="Resources\Font\iconizefontawesome.ttf" />
+    <AndroidResource Include="Resources\Font\iconizeionicons.ttf" />
+    <AndroidResource Include="Resources\Font\iconizematerial.ttf" />
+    <AndroidResource Include="Resources\Font\iconizemeteocons.ttf" />
+    <AndroidResource Include="Resources\Font\iconizesimplelineicons.ttf" />
+    <AndroidResource Include="Resources\Font\iconizetypicons.ttf" />
+    <AndroidResource Include="Resources\Font\iconizeweathericons.ttf" />
+    <AndroidResource Include="Resources\Font\RobotoBlack.ttf" />
+    <AndroidResource Include="Resources\Font\RobotoBlackItalic.ttf" />
+    <AndroidResource Include="Resources\Font\RobotoBold.ttf" />
+    <AndroidResource Include="Resources\Font\RobotoBoldItalic.ttf" />
+    <AndroidResource Include="Resources\Font\RobotoCondensedBold.ttf" />
+    <AndroidResource Include="Resources\Font\RobotoCondensedBoldItalic.ttf" />
+    <AndroidResource Include="Resources\Font\RobotoCondensedItalic.ttf" />
+    <AndroidResource Include="Resources\Font\RobotoCondensedLight.ttf" />
+    <AndroidResource Include="Resources\Font\RobotoCondensedLightItalic.ttf" />
+    <AndroidResource Include="Resources\Font\RobotoCondensedRegular.ttf" />
+    <AndroidResource Include="Resources\Font\RobotoItalic.ttf" />
+    <AndroidResource Include="Resources\Font\RobotoLight.ttf" />
+    <AndroidResource Include="Resources\Font\RobotoLightItalic.ttf" />
+    <AndroidResource Include="Resources\Font\RobotoMedium.ttf" />
+    <AndroidResource Include="Resources\Font\RobotoMediumItalic.ttf" />
+    <AndroidResource Include="Resources\Font\RobotoRegular.ttf" />
+    <AndroidResource Include="Resources\Font\RobotoThin.ttf" />
+    <AndroidResource Include="Resources\Font\RobotoThinItalic.ttf" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="LagoVista.Client.Core">
@@ -124,6 +123,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <AndroidResource Include="Resources\Font\iconizeentypoplus.ttf" />
     <AndroidResource Include="Resources\Values\Strings.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
