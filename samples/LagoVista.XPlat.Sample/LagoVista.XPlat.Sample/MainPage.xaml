@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<pge:LagoVistaContentPage
+      xmlns:pge="clr-namespace:LagoVista.XPlat.Core;assembly=LagoVista.XPlat.Core"
+         xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:LagoVista.XPlat.Sample"
+             x:Class="LagoVista.XPlat.Sample.MainPage">
+
+    <pge:LagoVistaContentPage.MainContent >
+        <pge:FormViewer Form="{Binding FormAdapter}"  />
+    </pge:LagoVistaContentPage.MainContent >
+</pge:LagoVistaContentPage>

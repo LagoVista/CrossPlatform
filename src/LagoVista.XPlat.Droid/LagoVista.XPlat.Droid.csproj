@@ -92,10 +92,10 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="LagoVista.Client.Core">
-      <Version>1.2.185-alpha0705</Version>
+      <Version>1.2.186-alpha0806</Version>
     </PackageReference>
     <PackageReference Include="LagoVista.MQTT.Core">
-      <Version>1.2.185-alpha0705</Version>
+      <Version>1.2.186-alpha0806</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.Azure.Mobile">
       <Version>0.17.1</Version>
