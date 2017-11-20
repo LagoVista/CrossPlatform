@@ -2,6 +2,7 @@
 using LagoVista.Client.Core.Models;
 using LagoVista.Core.Interfaces;
 using LagoVista.Core.IOC;
+using LagoVista.Core.ViewModels;
 using LagoVista.XPlat.Core.Services;
 using System;
 using System.Collections.Generic;
@@ -44,6 +45,9 @@ namespace LagoVista.XPlat.Sample
 
             var navigation = new ViewModelNavigation(this);
             navigation.Add<MainViewModel, MainPage>();
+            navigation.Add<ViewModel2, Model2View>();
+
+            SLWIOC.RegisterSingleton<IViewModelNavigation>(navigation);
 
             LagoVista.XPlat.Core.Startup.Init(this, navigation);
             LagoVista.Client.Core.Startup.Init(serverInfo);
