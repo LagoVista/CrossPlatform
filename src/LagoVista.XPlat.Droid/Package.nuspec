@@ -1,22 +1,22 @@
 <?xml version="1.0"?>
 <package>
   <metadata>
-    <id>LagoVista.XPlat.Core</id>
+    <id>LagoVista.XPlat.Droid</id>
     <version>1.2.205-alpha1737</version>
     <authors>Software Logistics, LLC</authors>
     <owners>Software Logistics, LLC</owners>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <projectUrl>http://github.com/LagoVista</projectUrl>
     <iconUrl>http://bytemaster.blob.core.windows.net/icons/LagoVistaIcon.png</iconUrl>
-    <description>Cross Platform Core with Xamarin Forms for the LagoVista Devices, IoT and Home Automation Frameworks</description>
+    <description>Android Cross Platform common functionality for the LagoVista Devices, IoT and Home Automation Frameworks</description>
     <releaseNotes>Pre-release Software</releaseNotes>
     <copyright>Copyright 2017</copyright>
-    <tags>HomeAutomation IoT LagoVista</tags>
+    <tags>HomeAutomation IoT LagoVista Mobile Android Droid</tags>
     <dependencies>
       <dependency id="Newtonsoft.Json" version="10.0.1" />
     </dependencies>
   </metadata>
   <files>
-    <file src="bin\release\netstandard1.3\LagoVista.XPlat.Core.dll" target="lib\netstandard1.3" />
+    <file src="bin\Release\LagoVista.XPlat.Droid.dll" target="lib\MonoAndroid10\LagoVista.XPlat.Droid.dll" />
   </files>
 </package>

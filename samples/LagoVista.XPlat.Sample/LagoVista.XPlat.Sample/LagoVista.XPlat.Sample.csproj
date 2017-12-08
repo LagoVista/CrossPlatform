@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <TargetFramework>netstandard1.3</TargetFramework>
     <NetStandardImplicitPackageVersion>2.0.1</NetStandardImplicitPackageVersion>
@@ -8,7 +8,7 @@
     <None Remove="Package.nuspec" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Xamarin.Forms" Version="2.5.0.91635" />
+    <PackageReference Include="Xamarin.Forms" Version="2.5.0.121934" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Properties\" />
@@ -34,7 +34,8 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Update="Resources\SampleResources.resx">
-      <Generator></Generator>
+      <Generator>
+      </Generator>
     </EmbeddedResource>
   </ItemGroup>
 </Project>

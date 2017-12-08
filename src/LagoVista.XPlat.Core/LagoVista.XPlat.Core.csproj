@@ -8,8 +8,8 @@
     <None Remove="Package.nuspec" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Xamarin.Forms" Version="2.5.0.91635" />
+    <PackageReference Include="Xamarin.Forms" Version="2.5.0.121934" />
     <PackageReference Include="LagoVista.Core" Version="1.2.181-alpha1716" />
-    <PackageReference Include="LagoVista.Client.Core" Version="1.2.186-alpha0806" />
+    <PackageReference Include="LagoVista.Client.Core" Version="1.2.195-alpha1354" />
   </ItemGroup>
 </Project>

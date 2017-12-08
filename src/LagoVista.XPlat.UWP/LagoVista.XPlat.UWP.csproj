@@ -117,22 +117,22 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="LagoVista.Client.Core">
-      <Version>1.2.186-alpha0806</Version>
+      <Version>1.2.195-alpha1354</Version>
     </PackageReference>
     <PackageReference Include="LagoVista.Core">
       <Version>1.2.181-alpha1716</Version>
     </PackageReference>
     <PackageReference Include="LagoVista.MQTT.Core">
-      <Version>1.2.186-alpha0806</Version>
+      <Version>1.2.195-alpha1354</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform">
-      <Version>6.0.1</Version>
+      <Version>6.0.4</Version>
     </PackageReference>
     <PackageReference Include="Newtonsoft.Json">
       <Version>10.0.3</Version>
     </PackageReference>
     <PackageReference Include="Xamarin.Forms">
-      <Version>2.5.0.91635</Version>
+      <Version>2.5.0.121934</Version>
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
@@ -140,6 +140,11 @@
       <Project>{d5dd4ca3-3b5c-4a0e-aa82-4cebb9a7160d}</Project>
       <Name>LagoVista.XPlat.Core</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Package.nuspec">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>

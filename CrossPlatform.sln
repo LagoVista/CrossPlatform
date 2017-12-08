@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26730.16
+VisualStudioVersion = 15.0.27004.2010
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LagoVista.XPlat.Core", "src\LagoVista.XPlat.Core\LagoVista.XPlat.Core.csproj", "{8FA51876-7923-4046-A5CE-77057C82675E}"
 EndProject
@@ -483,7 +483,6 @@ Global
 		{22E077F4-28B1-46E3-B624-361B6D2A9D4F}.iOS Build|x86.ActiveCfg = Release|Any CPU
 		{22E077F4-28B1-46E3-B624-361B6D2A9D4F}.iOS Build|x86.Build.0 = Release|Any CPU
 		{22E077F4-28B1-46E3-B624-361B6D2A9D4F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{22E077F4-28B1-46E3-B624-361B6D2A9D4F}.Release|Any CPU.Build.0 = Release|Any CPU
 		{22E077F4-28B1-46E3-B624-361B6D2A9D4F}.Release|ARM.ActiveCfg = Release|Any CPU
 		{22E077F4-28B1-46E3-B624-361B6D2A9D4F}.Release|ARM.Build.0 = Release|Any CPU
 		{22E077F4-28B1-46E3-B624-361B6D2A9D4F}.Release|iPhone.ActiveCfg = Release|Any CPU
@@ -491,9 +490,7 @@ Global
 		{22E077F4-28B1-46E3-B624-361B6D2A9D4F}.Release|iPhoneSimulator.ActiveCfg = Release|Any CPU
 		{22E077F4-28B1-46E3-B624-361B6D2A9D4F}.Release|iPhoneSimulator.Build.0 = Release|Any CPU
 		{22E077F4-28B1-46E3-B624-361B6D2A9D4F}.Release|x64.ActiveCfg = Release|Any CPU
-		{22E077F4-28B1-46E3-B624-361B6D2A9D4F}.Release|x64.Build.0 = Release|Any CPU
 		{22E077F4-28B1-46E3-B624-361B6D2A9D4F}.Release|x86.ActiveCfg = Release|Any CPU
-		{22E077F4-28B1-46E3-B624-361B6D2A9D4F}.Release|x86.Build.0 = Release|Any CPU
 		{4AE3907D-91A9-42BA-A1F3-D3B7D782281E}.Ad-Hoc|Any CPU.ActiveCfg = Release|x86
 		{4AE3907D-91A9-42BA-A1F3-D3B7D782281E}.Ad-Hoc|Any CPU.Build.0 = Release|x86
 		{4AE3907D-91A9-42BA-A1F3-D3B7D782281E}.Ad-Hoc|Any CPU.Deploy.0 = Release|x86
@@ -567,11 +564,7 @@ Global
 		{4AE3907D-91A9-42BA-A1F3-D3B7D782281E}.Release|iPhone.ActiveCfg = Release|x86
 		{4AE3907D-91A9-42BA-A1F3-D3B7D782281E}.Release|iPhoneSimulator.ActiveCfg = Release|x86
 		{4AE3907D-91A9-42BA-A1F3-D3B7D782281E}.Release|x64.ActiveCfg = Release|x64
-		{4AE3907D-91A9-42BA-A1F3-D3B7D782281E}.Release|x64.Build.0 = Release|x64
-		{4AE3907D-91A9-42BA-A1F3-D3B7D782281E}.Release|x64.Deploy.0 = Release|x64
 		{4AE3907D-91A9-42BA-A1F3-D3B7D782281E}.Release|x86.ActiveCfg = Release|x86
-		{4AE3907D-91A9-42BA-A1F3-D3B7D782281E}.Release|x86.Build.0 = Release|x86
-		{4AE3907D-91A9-42BA-A1F3-D3B7D782281E}.Release|x86.Deploy.0 = Release|x86
 		{F63D5E5D-8024-4A49-8748-F55902421C46}.Ad-Hoc|Any CPU.ActiveCfg = Ad-Hoc|iPhone
 		{F63D5E5D-8024-4A49-8748-F55902421C46}.Ad-Hoc|ARM.ActiveCfg = Ad-Hoc|iPhone
 		{F63D5E5D-8024-4A49-8748-F55902421C46}.Ad-Hoc|iPhone.ActiveCfg = Ad-Hoc|iPhone
@@ -689,7 +682,6 @@ Global
 		{428163A6-A13B-432A-8B20-408B6BFC64D4}.iOS Build|x86.Build.0 = Release|Any CPU
 		{428163A6-A13B-432A-8B20-408B6BFC64D4}.iOS Build|x86.Deploy.0 = Release|Any CPU
 		{428163A6-A13B-432A-8B20-408B6BFC64D4}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{428163A6-A13B-432A-8B20-408B6BFC64D4}.Release|Any CPU.Build.0 = Release|Any CPU
 		{428163A6-A13B-432A-8B20-408B6BFC64D4}.Release|Any CPU.Deploy.0 = Release|Any CPU
 		{428163A6-A13B-432A-8B20-408B6BFC64D4}.Release|ARM.ActiveCfg = Release|Any CPU
 		{428163A6-A13B-432A-8B20-408B6BFC64D4}.Release|ARM.Build.0 = Release|Any CPU
@@ -701,11 +693,7 @@ Global
 		{428163A6-A13B-432A-8B20-408B6BFC64D4}.Release|iPhoneSimulator.Build.0 = Release|Any CPU
 		{428163A6-A13B-432A-8B20-408B6BFC64D4}.Release|iPhoneSimulator.Deploy.0 = Release|Any CPU
 		{428163A6-A13B-432A-8B20-408B6BFC64D4}.Release|x64.ActiveCfg = Release|Any CPU
-		{428163A6-A13B-432A-8B20-408B6BFC64D4}.Release|x64.Build.0 = Release|Any CPU
-		{428163A6-A13B-432A-8B20-408B6BFC64D4}.Release|x64.Deploy.0 = Release|Any CPU
 		{428163A6-A13B-432A-8B20-408B6BFC64D4}.Release|x86.ActiveCfg = Release|Any CPU
-		{428163A6-A13B-432A-8B20-408B6BFC64D4}.Release|x86.Build.0 = Release|Any CPU
-		{428163A6-A13B-432A-8B20-408B6BFC64D4}.Release|x86.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
