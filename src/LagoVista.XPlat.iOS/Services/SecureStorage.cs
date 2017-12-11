@@ -132,7 +132,7 @@ namespace LagoVista.XPlat.iOS.Services
             var buffer = RetrieveBuffer(key);
             if (buffer != null && buffer.Length > 0)
             {
-                System.Text.UTF8Encoding.UTF8.GetString(buffer);
+                return System.Text.UTF8Encoding.UTF8.GetString(buffer);
             }
 
             return null;

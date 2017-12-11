@@ -18,7 +18,7 @@ namespace LagoVista.XPlat.Core.Controls.FormControls
             _field = field;
             _viewer = viewer;
             IsVisible = field.IsVisible;
-            OriginalValue = _field.Value;
+            OriginalValue = _field.Value;            
         }
 
         public FormField Field { get { return _field; } }
@@ -65,7 +65,16 @@ namespace LagoVista.XPlat.Core.Controls.FormControls
 
         protected Thickness RowMargin
         {
-            get { return new Thickness(10, 5, 10, 8); }
+            get
+            {
+                switch (Device.RuntimePlatform)
+                {
+
+                    case Device.Android: return new Thickness(10, 0, 10, 0);
+                }
+
+                return new Thickness(10, 5, 10, 8);
+            }
         }
     }
 }

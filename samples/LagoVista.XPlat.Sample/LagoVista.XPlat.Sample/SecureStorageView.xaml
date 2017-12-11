@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<pge:LagoVistaContentPage
+          xmlns:pge="clr-namespace:LagoVista.XPlat.Core;assembly=LagoVista.XPlat.Core"
+             xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="LagoVista.XPlat.Sample.SecureStorageView">
+    <pge:LagoVistaContentPage.MainContent >
+        <StackLayout>
+            <pge:Label Text="Unlock Password" />
+            <pge:Entry Text="{Binding PasswordToUnlock}" />
+
+            <pge:Label Text="Value To Save" />
+            <pge:Entry Text="{Binding ValueToSave}" />
+            <pge:Label Text="Restored Value" />
+            <pge:Label Text="{Binding RestoredValue}"  />
+            <pge:Button Text="Get" Command="{Binding GetSecureValueCommand}" />
+            <pge:Button Text="Set" Command="{Binding SetSecureValueCommand}" />
+            <pge:Button Text="Set" Command="{Binding ResetStorageCommand}" />
+        </StackLayout>
+    </pge:LagoVistaContentPage.MainContent >
+</pge:LagoVistaContentPage>

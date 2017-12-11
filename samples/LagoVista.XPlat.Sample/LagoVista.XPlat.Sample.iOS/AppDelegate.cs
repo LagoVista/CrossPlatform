@@ -4,6 +4,7 @@ using System.Linq;
 
 using Foundation;
 using UIKit;
+using LagoVista.XPlat.iOS;
 
 namespace LagoVista.XPlat.Sample.iOS
 {
@@ -23,8 +24,11 @@ namespace LagoVista.XPlat.Sample.iOS
         public override bool FinishedLaunching(UIApplication app, NSDictionary options)
         {
             global::Xamarin.Forms.Forms.Init();
-            LoadApplication(new App());
 
+            Startup.Init(app, "dontcare");
+
+            LoadApplication(new App());
+            
             return base.FinishedLaunching(app, options);
         }
     }

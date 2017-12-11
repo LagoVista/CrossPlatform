@@ -59,6 +59,7 @@
     <Compile Include="Services\DeviceInfo.cs" />
     <Compile Include="Services\DispatcherServices.cs" />
     <Compile Include="Services\NetworkService.cs" />
+    <Compile Include="Services\SecureStorage.cs" />
     <Compile Include="Services\StorageService.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -95,10 +96,10 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="LagoVista.Client.Core">
-      <Version>1.2.205-alpha1737</Version>
+      <Version>1.2.208-alpha1733</Version>
     </PackageReference>
     <PackageReference Include="LagoVista.MQTT.Core">
-      <Version>1.2.205-alpha1737</Version>
+      <Version>1.2.208-alpha1733</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.Azure.Mobile">
       <Version>0.17.1</Version>

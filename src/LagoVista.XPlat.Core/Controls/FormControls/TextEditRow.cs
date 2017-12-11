@@ -19,8 +19,13 @@ namespace LagoVista.XPlat.Core.Controls.FormControls
             _editor = new Entry()
             {
                 Text = field.Value,
-                IsEnabled = field.IsUserEditable
+                IsEnabled = field.IsUserEditable,
             };
+
+            if(Device.RuntimePlatform == Device.Android)
+            {
+                _editor.HeightRequest = 40;
+            }
          
             _editor.TextChanged += _editor_TextChanged;
 

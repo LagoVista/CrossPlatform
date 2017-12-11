@@ -20,6 +20,12 @@ namespace LagoVista.XPlat.Sample
                     Name = "Services",
                     FontIconKey = "fa-gear"
                 },
+                new MenuItem()
+                {
+                    Command = new RelayCommand(() => ViewModelNavigation.NavigateAsync<SecureStorageViewModel>(this)),
+                    Name = "Secure Storage",
+                    FontIconKey = "fa-gear"
+                },
             };
         }
 

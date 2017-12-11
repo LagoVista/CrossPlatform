@@ -5,5 +5,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="LagoVista.XPlat.Sample.ServicesView">
     <pge:LagoVistaContentPage.MainContent >
+        <StackLayout>
+            <pge:Button Text="Promp for String" Command="{Binding PromptforStringCommand}" />
+        </StackLayout>
     </pge:LagoVistaContentPage.MainContent >
 </pge:LagoVistaContentPage>

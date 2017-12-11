@@ -46,12 +46,21 @@ namespace LagoVista.XPlat.Sample
             var navigation = new ViewModelNavigation(this);
             navigation.Add<MainViewModel, MainPage>();
             navigation.Add<ServicesViewModel, ServicesView>();
+            navigation.Add<SecureStorageViewModel, SecureStorageView>();
             navigation.Add<ViewModel2, Model2View>();
+
 
             SLWIOC.RegisterSingleton<IViewModelNavigation>(navigation);
 
-            LagoVista.XPlat.Core.Startup.Init(this, navigation);
-            LagoVista.Client.Core.Startup.Init(serverInfo);
+            try
+            {
+                LagoVista.XPlat.Core.Startup.Init(this, navigation);
+                LagoVista.Client.Core.Startup.Init(serverInfo);
+            }
+            catch(Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine(ex.Message);
+            }
 
             navigation.Start<MainViewModel>();
         }

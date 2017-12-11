@@ -147,7 +147,7 @@
       <Version>0.4.7</Version>
     </PackageReference>
     <PackageReference Include="LagoVista.Client.Core">
-      <Version>1.2.205-alpha1737</Version>
+      <Version>1.2.208-alpha1733</Version>
     </PackageReference>
     <PackageReference Include="LagoVista.Core.Authentication">
       <Version>1.2.181-alpha1716</Version>
@@ -159,7 +159,7 @@
       <Version>1.2.181-alpha1716</Version>
     </PackageReference>
     <PackageReference Include="LagoVista.MQTT.Core">
-      <Version>1.2.205-alpha1737</Version>
+      <Version>1.2.208-alpha1733</Version>
     </PackageReference>
     <PackageReference Include="LagoVista.UserAdmin">
       <Version>1.2.181-alpha1716</Version>
@@ -226,6 +226,10 @@
     <ProjectReference Include="..\..\..\src\LagoVista.XPlat.Core\LagoVista.XPlat.Core.csproj">
       <Project>{8fa51876-7923-4046-a5ce-77057c82675e}</Project>
       <Name>LagoVista.XPlat.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\src\LagoVista.XPlat.Droid\LagoVista.XPlat.Droid.csproj">
+      <Project>{981e1800-122a-4204-8826-3b981b8dfea4}</Project>
+      <Name>LagoVista.XPlat.Droid</Name>
     </ProjectReference>
     <ProjectReference Include="..\LagoVista.XPlat.Sample\LagoVista.XPlat.Sample.csproj">
       <Project>{22e077f4-28b1-46e3-b624-361b6d2a9d4f}</Project>

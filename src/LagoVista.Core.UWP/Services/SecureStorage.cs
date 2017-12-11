@@ -15,6 +15,7 @@ namespace LagoVista.Core.UWP.Services
         public void Delete(string key)
         {
             var vault = new Windows.Security.Credentials.PasswordVault();
+            
             var resources = vault.FindAllByResource(key);
             if(resources.Any())
             {
@@ -28,7 +29,9 @@ namespace LagoVista.Core.UWP.Services
             var resources = vault.FindAllByResource(key);
             if (resources.Any())
             {
-                return resources.First().Password;
+                var resource = resources.First();
+                resource.RetrievePassword();
+                return resource.Password;
             }
 
             return null;
@@ -38,12 +41,15 @@ namespace LagoVista.Core.UWP.Services
         {
             var vault = new Windows.Security.Credentials.PasswordVault();
 
-            vault.Add(new Windows.Security.Credentials.PasswordCredential()
+            var pwdCred = new Windows.Security.Credentials.PasswordCredential()
             {
                 Password = value,
                 UserName = key,
                 Resource = key,
-            });
+            };
+
+
+            vault.Add(pwdCred);
         }
     }
 }

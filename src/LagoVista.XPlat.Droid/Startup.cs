@@ -3,6 +3,7 @@ using LagoVista.Core.IOC;
 using LagoVista.Core.PlatformSupport;
 using LagoVista.XPlat.Droid.Services;
 using LagoVista.Core;
+using LagoVista.Client.Core.Auth;
 
 namespace LagoVista.XPlat.Droid
 {
@@ -15,6 +16,7 @@ namespace LagoVista.XPlat.Droid
             SLWIOC.Register<IPopupServices>(new LagoVista.XPlat.Core.Services.PopupServices());
             SLWIOC.Register<INetworkService>(new NetworkService());
             SLWIOC.Register<IDeviceInfo>(new DeviceInfo());
+            SLWIOC.Register<ISecureStorage>(new SecureStorage());
             SLWIOC.Register<IDispatcherServices>(new DispatcherServices(context));
 
             IconFonts.IconFontSupport.RegisterFonts();

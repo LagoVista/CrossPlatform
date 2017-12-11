@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Xamarin.Forms;
 
 namespace LagoVista.XPlat.Core
 {
@@ -15,7 +16,11 @@ namespace LagoVista.XPlat.Core
             this.Focused += Entry_Focused;
             this.BackgroundColor = AppStyle.EditControlBackground.ToXamFormsColor();
             this.TextColor = AppStyle.EditControlText.ToXamFormsColor();
-            this.HeightRequest = 36;
+
+            if (Device.RuntimePlatform == Device.Android)
+            {
+                HeightRequest = 40;
+            }
         }
 
         private void Entry_Focused(object sender, Xamarin.Forms.FocusEventArgs e)
