@@ -3,11 +3,25 @@ using LagoVista.Client.Core.ViewModels;
 using LagoVista.Core.Models.UIMetaData;
 using System.Collections.Generic;
 using LagoVista.Core.Models;
+using LagoVista.Core.Commanding;
 
 namespace LagoVista.XPlat.Sample
 {
     public class MainViewModel : XPlatViewModel
     {
+
+        public MainViewModel()
+        {
+            MenuItems = new List<MenuItem>()
+            {
+                new MenuItem()
+                {
+                    Command = new RelayCommand(() => ViewModelNavigation.NavigateAsync<ServicesViewModel>(this)),
+                    Name = "Services",
+                    FontIconKey = "fa-gear"
+                },
+            };
+        }
 
         public override Task InitAsync()
         {

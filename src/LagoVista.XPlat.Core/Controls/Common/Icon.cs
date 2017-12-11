@@ -23,21 +23,28 @@ namespace LagoVista.XPlat.Core
             get { return (string)GetValue(Icon.IconKeyProperty); }
             set
             {
-                SetValue(Icon.IconKeyProperty, value);
-                var icon = Iconize.FindIconForKey(value);
-                if(icon == null)
+                if (String.IsNullOrEmpty(value))
                 {
-                    throw new Exception("Could not find icon for: " + value);
-                }
 
-                switch (Device.RuntimePlatform)
+                }
+                else
                 {
-                    case Device.UWP: FontFamily = $"{Iconize.FindModuleOf(icon).FontPath}#{Iconize.FindModuleOf(icon).FontFamily}"; break;
-                    case Device.iOS: FontFamily = Iconize.FindModuleOf(icon).FontName; break;
-                    case Device.Android: FontFamily = $"{Iconize.FindModuleOf(icon).FontPath}#{Iconize.FindModuleOf(icon).FontFamily}"; break;
-                }
+                    SetValue(Icon.IconKeyProperty, value);
+                    var icon = Iconize.FindIconForKey(value);
+                    if (icon == null)
+                    {
+                        throw new Exception("Could not find icon for: " + value);
+                    }
 
-                Text = $"{icon.Character}";
+                    switch (Device.RuntimePlatform)
+                    {
+                        case Device.UWP: FontFamily = $"{Iconize.FindModuleOf(icon).FontPath}#{Iconize.FindModuleOf(icon).FontFamily}"; break;
+                        case Device.iOS: FontFamily = Iconize.FindModuleOf(icon).FontName; break;
+                        case Device.Android: FontFamily = $"{Iconize.FindModuleOf(icon).FontPath}#{Iconize.FindModuleOf(icon).FontFamily}"; break;
+                    }
+
+                    Text = $"{icon.Character}";
+                }
             }
         }
     }
