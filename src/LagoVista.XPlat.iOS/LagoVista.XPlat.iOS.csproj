@@ -56,12 +56,6 @@
     <Reference Include="LagoVista.Core.Networking, Version=0.8.0.0, Culture=neutral, PublicKeyToken=650a46bd96014ff6, processorArchitecture=MSIL">
       <HintPath>..\..\packages\LagoVista.Core.Networking.1.2.181-alpha1716\lib\netstandard1.2\LagoVista.Core.Networking.dll</HintPath>
     </Reference>
-    <Reference Include="LagoVista.MQTT.Core, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\LagoVista.MQTT.Core.1.2.211-alpha1243\lib\netstandard1.3\LagoVista.MQTT.Core.dll</HintPath>
-    </Reference>
-    <Reference Include="LagoVista.UserAdmin, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\LagoVista.UserAdmin.1.2.181-alpha1716\lib\netstandard1.2\LagoVista.UserAdmin.dll</HintPath>
-    </Reference>
     <Reference Include="Microsoft.Azure.Mobile, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Microsoft.Azure.Mobile.0.17.1\lib\Xamarin.iOS10\Microsoft.Azure.Mobile.dll</HintPath>
     </Reference>

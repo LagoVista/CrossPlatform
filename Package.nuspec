@@ -2,7 +2,7 @@
 <package>
   <metadata>
     <id>LagoVista.XPlat</id>
-    <version>1.2.208-alpha0816</version>
+    <version>1.2.211-alpha1527</version>
     <authors>Software Logistics, LLC</authors>
     <owners>Software Logistics, LLC</owners>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
@@ -19,44 +19,36 @@
   </metadata>
   <files>
     <file src="src\LagoVista.XPlat.Core\bin\release\netstandard1.3\LagoVista.XPlat.Core.dll" target="lib\netstandard1.3" />
-   
     <file src="src\LagoVista.XPlat.Droid\bin\release\LagoVista.XPlat.Droid.dll" target="lib\MonoAndroid10" />
     <file src="src\LagoVista.XPlat.iOS\bin\release\LagoVista.XPlat.iOS.dll" target="lib\Xamarin.iOS10" />
-
     <file src="src\LagoVista.XPlat.UWP\bin\Release\LagoVista.XPlat.UWP.dll" target="ref\uap10.0" />
     <file src="src\LagoVista.UWP.UI\bin\Release\LagoVista.UWP.UI.dll" target="ref\uap10.0" />
     <file src="src\LagoVista.Core.UWP\bin\Release\LagoVista.Core.UWP.dll" target="ref\uap10.0" />
-
     <file src="src\LagoVista.XPlat.Core\bin\release\netstandard1.3\LagoVista.XPlat.Core.dll" target="ref\uap10.0" />
     <file src="src\LagoVista.XPlat.Core\bin\release\netstandard1.3\LagoVista.XPlat.Core.dll" target="runtimes\win10-arm\lib\uap10.0" />
     <file src="src\LagoVista.XPlat.Core\bin\release\netstandard1.3\LagoVista.XPlat.Core.dll" target="runtimes\win10-x64\lib\uap10.0" />
     <file src="src\LagoVista.XPlat.Core\bin\release\netstandard1.3\LagoVista.XPlat.Core.dll" target="runtimes\win10-x86\lib\uap10.0" />
-   
     <file src="src\LagoVista.XPlat.UWP\bin\ARM\Release\LagoVista.XPlat.UWP.dll" target="runtimes\win10-arm\lib\uap10.0" />
     <file src="src\LagoVista.XPlat.UWP\bin\ARM\Release\LagoVista.XPlat.UWP.pri" target="runtimes\win10-arm\lib\uap10.0" />
     <file src="src\LagoVista.XPlat.UWP\bin\x64\Release\LagoVista.XPlat.UWP.dll" target="runtimes\win10-x64\lib\uap10.0" />
     <file src="src\LagoVista.XPlat.UWP\bin\x64\Release\LagoVista.XPlat.UWP.pri" target="runtimes\win10-x64\lib\uap10.0" />
     <file src="src\LagoVista.XPlat.UWP\bin\x86\Release\LagoVista.XPlat.UWP.dll" target="runtimes\win10-x86\lib\uap10.0" />
     <file src="src\LagoVista.XPlat.UWP\bin\x86\Release\LagoVista.XPlat.UWP.pri" target="runtimes\win10-x86\lib\uap10.0" />
-
     <file src="src\LagoVista.Core.UWP\bin\ARM\Release\LagoVista.Core.UWP.dll" target="runtimes\win10-arm\lib\uap10.0" />
     <file src="src\LagoVista.core.UWP\bin\ARM\Release\LagoVista.Core.UWP.pri" target="runtimes\win10-arm\lib\uap10.0" />
     <file src="src\LagoVista.Core.UWP\bin\x64\Release\LagoVista.Core.UWP.dll" target="runtimes\win10-x64\lib\uap10.0" />
     <file src="src\LagoVista.Core.UWP\bin\x64\Release\LagoVista.Core.UWP.pri" target="runtimes\win10-x64\lib\uap10.0" />
     <file src="src\LagoVista.Core.UWP\bin\x86\Release\LagoVista.Core.UWP.dll" target="runtimes\win10-x86\lib\uap10.0" />
     <file src="src\LagoVista.Core.UWP\bin\x86\Release\LagoVista.Core.UWP.pri" target="runtimes\win10-x86\lib\uap10.0" />
-
     <file src="src\LagoVista.UWP.UI\bin\ARM\Release\LagoVista.UWP.UI.dll" target="runtimes\win10-arm\lib\uap10.0" />
     <file src="src\LagoVista.UWP.UI\bin\ARM\Release\LagoVista.UWP.UI.pri" target="runtimes\win10-arm\lib\uap10.0" />
     <file src="src\LagoVista.UWP.UI\bin\x64\Release\LagoVista.UWP.UI.dll" target="runtimes\win10-x64\lib\uap10.0" />
     <file src="src\LagoVista.UWP.UI\bin\x64\Release\LagoVista.UWP.UI.pri" target="runtimes\win10-x64\lib\uap10.0" />
     <file src="src\LagoVista.UWP.UI\bin\x86\Release\LagoVista.UWP.UI.dll" target="runtimes\win10-x86\lib\uap10.0" />
     <file src="src\LagoVista.UWP.UI\bin\x86\Release\LagoVista.UWP.UI.pri" target="runtimes\win10-x86\lib\uap10.0" />
-
-
-    <file src="src\LagoVista.Core.UWP\Assets\Fonts\*.ttf"  target="runtimes\win10-x86\lib\uap10.0\Assets\Fonts"  />
-    <file src="src\LagoVista.Core.UWP\Assets\Fonts\*.ttf"  target="runtimes\win10-x64\lib\uap10.0\Assets\Fonts"  />
-    <file src="src\LagoVista.Core.UWP\Assets\Fonts\*.ttf"  target="runtimes\win10-arm\lib\uap10.0\Assets\Fonts"  />
-    <file src="src\LagoVista.Core.UWP\Assets\Fonts\*.ttf"  target="ref\uap10.0\Assets\Fonts"  />
+    <file src="src\LagoVista.Core.UWP\Assets\Fonts\*.ttf" target="runtimes\win10-x86\lib\uap10.0\Assets\Fonts" />
+    <file src="src\LagoVista.Core.UWP\Assets\Fonts\*.ttf" target="runtimes\win10-x64\lib\uap10.0\Assets\Fonts" />
+    <file src="src\LagoVista.Core.UWP\Assets\Fonts\*.ttf" target="runtimes\win10-arm\lib\uap10.0\Assets\Fonts" />
+    <file src="src\LagoVista.Core.UWP\Assets\Fonts\*.ttf" target="ref\uap10.0\Assets\Fonts" />
   </files>
 </package>

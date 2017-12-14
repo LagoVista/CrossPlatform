@@ -1,6 +1,6 @@
 ﻿{
   "dependencies": {
-    "LagoVista.Client.Core": "1.2.211-alpha1243",
+    "LagoVista.Client.Core": "1.2.211-alpha1527",
     "LagoVista.Core": "1.2.211-alpha1209",
     "LagoVista.Core.Authentication": "1.2.211-alpha1209",
     "LagoVista.Core.Networking": "1.2.211-alpha1209",

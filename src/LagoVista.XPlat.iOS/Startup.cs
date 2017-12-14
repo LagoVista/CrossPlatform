@@ -5,7 +5,6 @@ using LagoVista.Core;
 using LagoVista.Core.IOC;
 using LagoVista.XPlat.Core.Services;
 using LagoVista.Client.Core.Net;
-using LagoVista.MQTT.Core;
 using LagoVista.Client.Core.Auth;
 
 namespace LagoVista.XPlat.iOS

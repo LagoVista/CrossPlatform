@@ -72,8 +72,7 @@ namespace LagoVista.XPlat.Droid.Services
                 var alias = aliases.NextElement().ToString();
                 if (alias == key)
                 {
-                    var e = _keyStore.GetEntry(alias, _passwordProtection) as KeyStore.SecretKeyEntry;
-                    if (e != null)
+                    if (_keyStore.GetEntry(alias, _passwordProtection) is KeyStore.SecretKeyEntry e)
                     {
                         var bytes = e.SecretKey.GetEncoded();
                         return System.Text.Encoding.UTF8.GetString(bytes);
