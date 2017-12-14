@@ -203,7 +203,7 @@ namespace LagoVista.XPlat.Droid.Services
                 IsUnlocked = true;
                 Save();
             }
-            catch (Java.IO.IOException ex)
+            catch (Java.IO.IOException)
             {
                 IsUnlocked = false;
 

@@ -5,6 +5,8 @@ namespace LagoVista.Core.UWP.Services
 {
     public class SecureStorage : ISecureStorage
     {
+        public bool IsUnlocked =>  true;
+
         public bool Contains(string key)
         {
             var vault = new Windows.Security.Credentials.PasswordVault();
@@ -22,7 +24,12 @@ namespace LagoVista.Core.UWP.Services
                 vault.Remove(resources.First());
             }
         }
-       
+
+        public void Reset(string newPassword)
+        {
+            
+        }
+
         public string Retrieve(string key)
         {
             var vault = new Windows.Security.Credentials.PasswordVault();
@@ -50,6 +57,11 @@ namespace LagoVista.Core.UWP.Services
 
 
             vault.Add(pwdCred);
+        }
+
+        public bool UnlockSecureStorage(string password)
+        {
+            return true;
         }
     }
 }

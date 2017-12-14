@@ -19,10 +19,9 @@ namespace LagoVista.XPlat.iOS
             SLWIOC.Register<INetworkService>(new NetworkService());
             SLWIOC.Register<IDeviceInfo>(new DeviceInfo());
             SLWIOC.Register<ISecureStorage, SecureStorage>();
-            SLWIOC.Register<IPopupServices>(new PopupServices());
+            SLWIOC.Register<IPopupServices>(new LagoVista.XPlat.Core.Services.PopupServices());
             SLWIOC.Register<IWebSocket,Services.WebSocket>();
             SLWIOC.Register<IDispatcherServices>(new DispatcherService(app));
-            SLWIOC.Register<IMqttNetworkChannel, MqttNetworkChannel>();
 
             IconFonts.IconFontSupport.RegisterFonts();
         }

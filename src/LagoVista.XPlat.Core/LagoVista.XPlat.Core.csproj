@@ -8,8 +8,9 @@
     <None Remove="Package.nuspec" />
   </ItemGroup>
   <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="11.0.1-beta1" />
     <PackageReference Include="Xamarin.Forms" Version="2.5.0.121934" />
-    <PackageReference Include="LagoVista.Core" Version="1.2.181-alpha1716" />
-    <PackageReference Include="LagoVista.Client.Core" Version="1.2.208-alpha1733" />
+    <PackageReference Include="LagoVista.Core" Version="1.2.211-alpha1209" />
+    <PackageReference Include="LagoVista.Client.Core" Version="1.2.211-alpha1243" />
   </ItemGroup>
 </Project>

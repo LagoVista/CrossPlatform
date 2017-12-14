@@ -108,7 +108,6 @@
   <ItemGroup>
     <Compile Include="CustomRenderers\TitleBarButton.cs" />
     <Compile Include="Effects\UnderlineEffect.cs" />
-    <Compile Include="Network\MqttNetworkChannel.cs" />
     <Compile Include="Network\TCPClient.cs" />
     <Compile Include="Network\UDPClient.cs" />
     <Compile Include="Network\WebSocket.cs" />
@@ -117,16 +116,16 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="LagoVista.Client.Core">
-      <Version>1.2.205-alpha1737</Version>
+      <Version>1.2.211-alpha1243</Version>
     </PackageReference>
     <PackageReference Include="LagoVista.Core">
-      <Version>1.2.181-alpha1716</Version>
+      <Version>1.2.211-alpha1209</Version>
     </PackageReference>
     <PackageReference Include="LagoVista.MQTT.Core">
-      <Version>1.2.205-alpha1737</Version>
+      <Version>1.2.211-alpha1243</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform">
-      <Version>6.0.4</Version>
+      <Version>6.0.5</Version>
     </PackageReference>
     <PackageReference Include="Newtonsoft.Json">
       <Version>11.0.1-beta1</Version>
@@ -140,11 +139,6 @@
       <Project>{d5dd4ca3-3b5c-4a0e-aa82-4cebb9a7160d}</Project>
       <Name>LagoVista.XPlat.Core</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Package.nuspec">
-      <SubType>Designer</SubType>
-    </None>
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>

@@ -1,10 +1,10 @@
 ﻿{
   "dependencies": {
-    "LagoVista.Client.Core": "1.2.205-alpha1737",
-    "LagoVista.Core": "1.2.181-alpha1716",
-    "LagoVista.Core.Authentication": "1.2.181-alpha1716",
-    "LagoVista.Core.Networking": "1.2.181-alpha1716",
-    "Microsoft.NETCore.UniversalWindowsPlatform": "6.0.4",
+    "LagoVista.Client.Core": "1.2.211-alpha1243",
+    "LagoVista.Core": "1.2.211-alpha1209",
+    "LagoVista.Core.Authentication": "1.2.211-alpha1209",
+    "LagoVista.Core.Networking": "1.2.211-alpha1209",
+    "Microsoft.NETCore.UniversalWindowsPlatform": "6.0.5",
     "Newtonsoft.Json": "11.0.1-beta1"
   },
   "frameworks": {
