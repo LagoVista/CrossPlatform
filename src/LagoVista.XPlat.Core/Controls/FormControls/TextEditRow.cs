@@ -10,13 +10,13 @@ namespace LagoVista.XPlat.Core.Controls.FormControls
     {
         FormFieldHeader _header;
         FormFieldValidationMessage _validationMessage;
-        Entry _editor;
+        FormEntry _editor;
 
         public TextEditRow(FormViewer formViewer, FormField field) : base(formViewer, field)
         {
             _header = new FormFieldHeader(field.Label);
 
-            _editor = new Entry()
+            _editor = new FormEntry()
             {
                 Text = field.Value,
                 IsEnabled = field.IsUserEditable,

@@ -4,6 +4,7 @@ using LagoVista.Core.Models.UIMetaData;
 using System.Collections.Generic;
 using LagoVista.Core.Models;
 using LagoVista.Core.Commanding;
+using LagoVista.Client.Core.ViewModels.Auth;
 
 namespace LagoVista.XPlat.Sample
 {
@@ -24,6 +25,12 @@ namespace LagoVista.XPlat.Sample
                 {
                     Command = new RelayCommand(() => ViewModelNavigation.NavigateAsync<SecureStorageViewModel>(this)),
                     Name = "Secure Storage",
+                    FontIconKey = "fa-gear"
+                },
+                                new MenuItem()
+                {
+                    Command = new RelayCommand(() => ViewModelNavigation.NavigateAsync<LoginViewModel>(this)),
+                    Name = "Login Page",
                     FontIconKey = "fa-gear"
                 },
             };

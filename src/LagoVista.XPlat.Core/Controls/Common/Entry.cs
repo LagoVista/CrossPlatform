@@ -29,4 +29,25 @@ namespace LagoVista.XPlat.Core
 
         private IAppStyle AppStyle { get { return SLWIOC.Get<IAppStyle>(); } }
     }
+
+    public class FormEntry : Xamarin.Forms.Entry
+    {
+        public FormEntry()
+        {
+            this.Focused += Entry_Focused;
+            this.BackgroundColor = AppStyle.EditControlBackground.ToXamFormsColor();
+            this.TextColor = AppStyle.EditControlText.ToXamFormsColor();
+
+            if (Device.RuntimePlatform == Device.Android)
+            {
+                HeightRequest = 40;
+            }
+        }
+
+        private void Entry_Focused(object sender, Xamarin.Forms.FocusEventArgs e)
+        {
+        }
+
+        private IAppStyle AppStyle { get { return SLWIOC.Get<IAppStyle>(); } }
+    }
 }

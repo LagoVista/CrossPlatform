@@ -148,26 +148,32 @@
     </PackageReference>
     <PackageReference Include="LagoVista.Client.Core">
       <Version>
+        1.2.211-alpha1527
       </Version>
     </PackageReference>
     <PackageReference Include="LagoVista.Core.Authentication">
       <Version>
+        1.2.211-alpha1209
       </Version>
     </PackageReference>
     <PackageReference Include="LagoVista.Core.Networking">
       <Version>
-      </Version>
+        1.2.211-alpha1209
+      </Version>      
     </PackageReference>
     <PackageReference Include="LagoVista.IoT.Logging">
       <Version>
+        1.2.211-alpha1209
       </Version>
     </PackageReference>
     <PackageReference Include="LagoVista.MQTT.Core">
       <Version>
+        1.2.212-alpha1203
       </Version>
     </PackageReference>
-    <PackageReference Include="LagoVista.UserAdmin">
+    <PackageReference Include="LagoVista.UserAdmin.Models">
       <Version>
+        1.2.211-alpha1209
       </Version>
     </PackageReference>
     <PackageReference Include="Microsoft.Azure.Devices.Client">
