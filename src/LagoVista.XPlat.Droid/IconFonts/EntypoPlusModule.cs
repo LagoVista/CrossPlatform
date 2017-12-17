@@ -13,7 +13,7 @@ namespace LagoVista.XPlat.Droid.IconFonts
         /// Initializes a new instance of the <see cref="EntypoPlusModule" /> class.
         /// </summary>
         public EntypoPlusModule()
-            : base("entypo-plus", "entypo-plus", "Resources/Font/iconizeentypoplus.ttf", EntypoPlusCollection.Icons)
+            : base("entypo-plus", "entypo-plus", "font/iconizeentypoplus.ttf", EntypoPlusCollection.Icons)
         {
             // Intentionally left blank
         }

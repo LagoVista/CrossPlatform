@@ -12,7 +12,7 @@ namespace LagoVista.XPlat.Droid.IconFonts
         /// Initializes a new instance of the <see cref="SimpleLineIconsModule" /> class.
         /// </summary>
         public SimpleLineIconsModule()
-            : base("Simple Line Icons", "simple-line-icons", "Resources/Font/iconizesimplelineicons.ttf", SimpleLineIconsCollection.Icons)
+            : base("Simple Line Icons", "simple-line-icons", "font/iconizesimplelineicons.ttf", SimpleLineIconsCollection.Icons)
         {
             // Intentionally left blank
         }

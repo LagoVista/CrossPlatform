@@ -12,7 +12,7 @@ namespace LagoVista.XPlat.Droid.IconFonts
         /// Initializes a new instance of the <see cref="WeatherIconsModule" /> class.
         /// </summary>
         public WeatherIconsModule()
-            : base("Weather Icons", "Weather Icons", "Resources/Font/iconizeweathericons.ttf", WeatherIconsCollection.Icons)
+            : base("Weather Icons", "Weather Icons", "font/iconizeweathericons.ttf", WeatherIconsCollection.Icons)
         {
             // Intentionally left blank
         }

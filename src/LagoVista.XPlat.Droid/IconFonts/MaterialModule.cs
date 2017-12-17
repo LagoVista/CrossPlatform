@@ -12,7 +12,7 @@ namespace LagoVista.XPlat.Droid.IconFonts
         /// Initializes a new instance of the <see cref="MaterialModule" /> class.
         /// </summary>
         public MaterialModule()
-            : base("Material Icons", "MaterialIcons-Regular", "Resources/Font/iconizematerial.ttf", MaterialCollection.Icons)
+            : base("Material Icons", "MaterialIcons-Regular", "font/iconizematerial.ttf", MaterialCollection.Icons)
         {
             // Intentionally left blank
         }

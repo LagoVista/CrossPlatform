@@ -12,7 +12,7 @@ namespace LagoVista.XPlat.Droid.IconFonts
         /// Initializes a new instance of the <see cref="IoniconsModule" /> class.
         /// </summary>
         public IoniconsModule()
-            : base("Ionicons", "Ionicons", "Resources/Font/iconizeionicons.ttf", IoniconsCollection.Icons)
+            : base("Ionicons", "Ionicons", "font/iconizeionicons.ttf", IoniconsCollection.Icons)
         {
             // Intentionally left blank
         }

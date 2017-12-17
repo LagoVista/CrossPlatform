@@ -12,7 +12,7 @@ namespace LagoVista.XPlat.Droid.IconFonts
         /// Initializes a new instance of the <see cref="MeteoconsModule" /> class.
         /// </summary>
         public MeteoconsModule()
-            : base("Meteocons", "Meteocons", "Resources/Font/iconizemeteocons.ttf", MeteoconsCollection.Icons)
+            : base("Meteocons", "Meteocons", "font/iconizemeteocons.ttf", MeteoconsCollection.Icons)
         {
             // Intentionally left blank
         }
