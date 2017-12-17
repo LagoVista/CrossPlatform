@@ -13,6 +13,7 @@ using LagoVista.Core.PlatformSupport;
 using Microsoft.Azure.Mobile;
 using Microsoft.Azure.Mobile.Analytics;
 using Microsoft.Azure.Mobile.Crashes;
+using Microsoft.Azure.Mobile.Push;
 
 namespace LagoVista.XPlat.Droid.Loggers
 {
@@ -37,7 +38,7 @@ namespace LagoVista.XPlat.Droid.Loggers
 
         public MobileCenterLogger(string key)
         {
-            MobileCenter.Start($"android={key}", typeof(Analytics), typeof(Crashes));
+            MobileCenter.Start($"android={key}", typeof(Analytics), typeof(Crashes), typeof(Push));
         }
 
         public void AddCustomEvent(LagoVista.Core.PlatformSupport.LogLevel level, string area, string message, params KeyValuePair<string, string>[] args)

@@ -2,7 +2,7 @@
 <package>
   <metadata>
     <id>LagoVista.UWP.UI</id>
-    <version>1.2.211-alpha1527</version>
+    <version>1.2.214-alpha1630</version>
     <authors>Software Logistics, LLC</authors>
     <owners>Software Logistics, LLC</owners>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
@@ -12,9 +12,6 @@
     <releaseNotes>Initial Unstable Release</releaseNotes>
     <copyright>Copyright 2016</copyright>
     <tags>HomeAutomation IoT UWP</tags>
-    <dependencies>
-      <dependency id="Newtonsoft.Json" version="10.0.1" />
-    </dependencies>
   </metadata>
   <files>
     <file src="bin\ARM\Release\LagoVista.UWP.UI.dll" target="runtimes\win10-arm\lib\uap10.0" />

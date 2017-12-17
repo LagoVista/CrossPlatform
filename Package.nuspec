@@ -2,7 +2,7 @@
 <package>
   <metadata>
     <id>LagoVista.XPlat</id>
-    <version>1.2.212-alpha1425</version>
+    <version>1.2.214-alpha1630</version>
     <authors>Software Logistics, LLC</authors>
     <owners>Software Logistics, LLC</owners>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
@@ -16,14 +16,11 @@
       <dependency id="Newtonsoft.Json" version="10.0.1" />
       <dependency id="Xamarin.Forms" version="2.5.0.121934" />
     </dependencies>
-    <contentFiles>
-          <files include="samples\LagoVista.XPlat.Sample\LagoVista.XPlat.Sample.iOS\Resources\Fonts\*.ttf" buildAction="Content" copyToOutput="true" />
-    </contentFiles>
   </metadata>
   <files>
     <file src="src\LagoVista.XPlat.Core\bin\release\netstandard1.3\LagoVista.XPlat.Core.dll" target="lib\netstandard1.3" />
-    <file src="src\LagoVista.XPlat.Core\bin\release\netstandard1.3\LagoVista.XPlat.Core.dll" target="lib\MonoAndroid10" />    
-    <file src="src\LagoVista.XPlat.Core\bin\release\netstandard1.3\LagoVista.XPlat.Core.dll" target="lib\Xamarin.iOS10" />    
+    <file src="src\LagoVista.XPlat.Core\bin\release\netstandard1.3\LagoVista.XPlat.Core.dll" target="lib\MonoAndroid10" />
+    <file src="src\LagoVista.XPlat.Core\bin\release\netstandard1.3\LagoVista.XPlat.Core.dll" target="lib\Xamarin.iOS10" />
     <file src="src\LagoVista.XPlat.Droid\bin\release\LagoVista.XPlat.Droid.dll" target="lib\MonoAndroid10" />
     <file src="src\LagoVista.XPlat.iOS\bin\release\LagoVista.XPlat.iOS.dll" target="lib\Xamarin.iOS10" />
     <file src="src\LagoVista.XPlat.UWP\bin\Release\LagoVista.XPlat.UWP.dll" target="ref\uap10.0" />
@@ -51,9 +48,9 @@
     <file src="src\LagoVista.UWP.UI\bin\x64\Release\LagoVista.UWP.UI.pri" target="runtimes\win10-x64\lib\uap10.0" />
     <file src="src\LagoVista.UWP.UI\bin\x86\Release\LagoVista.UWP.UI.dll" target="runtimes\win10-x86\lib\uap10.0" />
     <file src="src\LagoVista.UWP.UI\bin\x86\Release\LagoVista.UWP.UI.pri" target="runtimes\win10-x86\lib\uap10.0" />
-    <file src="src\LagoVista.Core.UWP\Assets\Fonts\*.ttf" target="runtimes\win10-x86\lib\uap10.0\Assets\Fonts" />
+    <!--<file src="src\LagoVista.Core.UWP\Assets\Fonts\*.ttf" target="runtimes\win10-x86\lib\uap10.0\Assets\Fonts" />
     <file src="src\LagoVista.Core.UWP\Assets\Fonts\*.ttf" target="runtimes\win10-x64\lib\uap10.0\Assets\Fonts" />
     <file src="src\LagoVista.Core.UWP\Assets\Fonts\*.ttf" target="runtimes\win10-arm\lib\uap10.0\Assets\Fonts" />
-    <file src="src\LagoVista.Core.UWP\Assets\Fonts\*.ttf" target="ref\uap10.0\Assets\Fonts" />
+    <file src="src\LagoVista.Core.UWP\Assets\Fonts\*.ttf" target="ref\uap10.0\Assets\Fonts" />-->
   </files>
 </package>

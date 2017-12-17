@@ -1,0 +1,43 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <VersionPrefix>1.2</VersionPrefix>
+    <TargetFramework>netstandard1.3</TargetFramework>
+    <NetStandardImplicitPackageVersion>2.0.1</NetStandardImplicitPackageVersion>
+    <SignAssembly>true</SignAssembly>
+    <DelaySign>False</DelaySign>
+    <DebugType>Full</DebugType>
+    <AssemblyOriginatorKeyFile>clientcore.key.snk</AssemblyOriginatorKeyFile>
+    <AssemblyVersion>1.2.1.1</AssemblyVersion>
+    <FileVersion>1.2.1.1</FileVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='iOS Build|AnyCPU'" />
+  <ItemGroup>
+    <Compile Remove="Orgs\**" />
+    <EmbeddedResource Remove="Orgs\**" />
+    <None Remove="Orgs\**" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Icons\ReadMe.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="LagoVista.Core" Version="1.2.214-alpha1112" />
+    <PackageReference Include="LagoVista.Core.Authentication" Version="1.2.214-alpha1112" />
+    <PackageReference Include="LagoVista.Core.Networking" Version="1.2.214-alpha1112" />
+    <PackageReference Include="LagoVista.IoT.Logging" Version="1.2.214-alpha1112" />
+    <PackageReference Include="LagoVista.UserAdmin.Models" Version="1.2.214-alpha1112" />
+    <PackageReference Include="Newtonsoft.Json" Version="11.0.1-beta1" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Update="Resources\ClientResources.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>ClientResources.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Update="Resources\ClientResources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ClientResources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+</Project>

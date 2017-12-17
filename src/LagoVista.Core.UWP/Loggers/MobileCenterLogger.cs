@@ -1,6 +1,8 @@
 ﻿using LagoVista.Core.PlatformSupport;
 using Microsoft.Azure.Mobile;
 using Microsoft.Azure.Mobile.Analytics;
+using Microsoft.Azure.Mobile.Crashes;
+using Microsoft.Azure.Mobile.Push;
 using System;
 using System.Collections.Generic;
 
@@ -15,7 +17,7 @@ namespace LagoVista.Core.UWP.Loggers
 
         public MobileCenterLogger(string key)
         {
-            MobileCenter.Start($"uwp={key}", typeof(Analytics));
+            MobileCenter.Start($"uwp={key}", typeof(Analytics), typeof(Crashes), typeof(Push));
         }
 
 

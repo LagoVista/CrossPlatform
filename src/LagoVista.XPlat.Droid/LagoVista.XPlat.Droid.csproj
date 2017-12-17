@@ -66,38 +66,22 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />
-    <AndroidResource Include="Resources\Font\iconizefontawesome.ttf" />
-    <AndroidResource Include="Resources\Font\iconizeionicons.ttf" />
-    <AndroidResource Include="Resources\Font\iconizematerial.ttf" />
-    <AndroidResource Include="Resources\Font\iconizemeteocons.ttf" />
-    <AndroidResource Include="Resources\Font\iconizesimplelineicons.ttf" />
-    <AndroidResource Include="Resources\Font\iconizetypicons.ttf" />
-    <AndroidResource Include="Resources\Font\iconizeweathericons.ttf" />
-    <AndroidResource Include="Resources\Font\RobotoBlack.ttf" />
-    <AndroidResource Include="Resources\Font\RobotoBlackItalic.ttf" />
-    <AndroidResource Include="Resources\Font\RobotoBold.ttf" />
-    <AndroidResource Include="Resources\Font\RobotoBoldItalic.ttf" />
-    <AndroidResource Include="Resources\Font\RobotoCondensedBold.ttf" />
-    <AndroidResource Include="Resources\Font\RobotoCondensedBoldItalic.ttf" />
-    <AndroidResource Include="Resources\Font\RobotoCondensedItalic.ttf" />
-    <AndroidResource Include="Resources\Font\RobotoCondensedLight.ttf" />
-    <AndroidResource Include="Resources\Font\RobotoCondensedLightItalic.ttf" />
-    <AndroidResource Include="Resources\Font\RobotoCondensedRegular.ttf" />
-    <AndroidResource Include="Resources\Font\RobotoItalic.ttf" />
-    <AndroidResource Include="Resources\Font\RobotoLight.ttf" />
-    <AndroidResource Include="Resources\Font\RobotoLightItalic.ttf" />
-    <AndroidResource Include="Resources\Font\RobotoMedium.ttf" />
-    <AndroidResource Include="Resources\Font\RobotoMediumItalic.ttf" />
-    <AndroidResource Include="Resources\Font\RobotoRegular.ttf" />
-    <AndroidResource Include="Resources\Font\RobotoThin.ttf" />
-    <AndroidResource Include="Resources\Font\RobotoThinItalic.ttf" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="LagoVista.Client.Core">
-      <Version>1.2.211-alpha1527</Version>
-    </PackageReference>
     <PackageReference Include="LagoVista.Core">
-      <Version>1.2.211-alpha1209</Version>
+      <Version>1.2.214-alpha1112</Version>
+    </PackageReference>
+    <PackageReference Include="LagoVista.Core.Authentication">
+      <Version>1.2.214-alpha1112</Version>
+    </PackageReference>
+    <PackageReference Include="LagoVista.Core.Networking">
+      <Version>1.2.214-alpha1112</Version>
+    </PackageReference>
+    <PackageReference Include="LagoVista.IoT.Logging">
+      <Version>1.2.214-alpha1112</Version>
+    </PackageReference>
+    <PackageReference Include="LagoVista.UserAdmin.Models">
+      <Version>1.2.214-alpha1112</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.Azure.Mobile">
       <Version>0.17.1</Version>
@@ -122,13 +106,16 @@
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\LagoVista.Client.Core\LagoVista.Client.Core.csproj">
+      <Project>{d37db80b-93ea-42e3-a05c-a15d35c271d7}</Project>
+      <Name>LagoVista.Client.Core</Name>
+    </ProjectReference>
     <ProjectReference Include="..\LagoVista.XPlat.Core\LagoVista.XPlat.Core.csproj">
       <Project>{8fa51876-7923-4046-a5ce-77057c82675e}</Project>
       <Name>LagoVista.XPlat.Core</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\Font\iconizeentypoplus.ttf" />
     <AndroidResource Include="Resources\Values\Strings.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />

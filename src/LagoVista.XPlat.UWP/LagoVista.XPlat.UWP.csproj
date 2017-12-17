@@ -115,11 +115,20 @@
     <EmbeddedResource Include="Properties\LagoVista.XPlat.UWP.rd.xml" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="LagoVista.Client.Core">
-      <Version>1.2.211-alpha1527</Version>
-    </PackageReference>
     <PackageReference Include="LagoVista.Core">
-      <Version>1.2.211-alpha1209</Version>
+      <Version>1.2.214-alpha1112</Version>
+    </PackageReference>
+    <PackageReference Include="LagoVista.Core.Authentication">
+      <Version>1.2.214-alpha1112</Version>
+    </PackageReference>
+    <PackageReference Include="LagoVista.Core.Networking">
+      <Version>1.2.214-alpha1112</Version>
+    </PackageReference>
+    <PackageReference Include="LagoVista.IoT.Logging">
+      <Version>1.2.214-alpha1112</Version>
+    </PackageReference>
+    <PackageReference Include="LagoVista.UserAdmin.Models">
+      <Version>1.2.214-alpha1112</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform">
       <Version>6.0.5</Version>
@@ -132,6 +141,10 @@
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\LagoVista.Client.Core\LagoVista.Client.Core.csproj">
+      <Project>{d37db80b-93ea-42e3-a05c-a15d35c271d7}</Project>
+      <Name>LagoVista.Client.Core</Name>
+    </ProjectReference>
     <ProjectReference Include="..\LagoVista.XPlat.Core\LagoVista.XPlat.Core.csproj">
       <Project>{d5dd4ca3-3b5c-4a0e-aa82-4cebb9a7160d}</Project>
       <Name>LagoVista.XPlat.Core</Name>
