@@ -1,9 +1,9 @@
 ﻿{
   "dependencies": {
-    "LagoVista.Core": "1.2.181-alpha1716",
-    "LagoVista.Core.Networking": "1.2.181-alpha1716",
-    "LagoVista.UserAdmin": "1.2.181-alpha1716",
-    "Microsoft.NETCore.UniversalWindowsPlatform": "6.0.4",
+    "LagoVista.Core": "1.2.214-alpha1112",
+    "LagoVista.Core.Networking": "1.2.214-alpha1112",
+    "LagoVista.UserAdmin": "1.2.214-alpha1112",
+    "Microsoft.NETCore.UniversalWindowsPlatform": "6.0.5",
     "Xamarin.Forms": "2.5.0.121934"
   },
   "frameworks": {

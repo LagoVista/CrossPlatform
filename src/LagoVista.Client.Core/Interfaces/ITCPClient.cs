@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
 
-namespace LagoVista.Client
+namespace LagoVista.Client.Core
 {
     public interface ITCPClient : IDisposable
     {

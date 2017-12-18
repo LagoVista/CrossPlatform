@@ -1,14 +1,16 @@
 ﻿using System;
-using System.Threading.Tasks;
 using System.Linq;
-using LagoVista.Client.Core.Net;
+using System.Threading.Tasks;
 using LagoVista.Client.Core;
 using System.Threading;
 using System.Net;
 using Newtonsoft.Json;
 
-namespace LagoVista.XPlat.iOS.Services
+namespace LagoVista.XPlat.Droid.Services
 {
+    /// <summary>
+    /// Very quick and dirty UDP implementation...need to make more solid after release
+    /// </summary>
     public class UDPClient : IUDPClient
     {
         CancellationTokenSource _cancelListenerSource;
@@ -82,10 +84,7 @@ namespace LagoVista.XPlat.iOS.Services
 
         public void Dispose()
         {
-            if (_udpClient != null)
-            {
-                DisconnectAsync();
-            }
+            DisconnectAsync();
         }
     }
 }

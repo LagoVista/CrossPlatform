@@ -5,6 +5,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:LagoVista.XPlat.Sample"
              LeftMenu="Menu"
+             
+            RightMenuCustomText="Hello World"
              x:Class="LagoVista.XPlat.Sample.MainPage">
 
     <pge:LagoVistaContentPage.MainContent >

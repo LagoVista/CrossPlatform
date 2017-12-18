@@ -62,6 +62,9 @@
     <Compile Include="Services\NetworkService.cs" />
     <Compile Include="Services\SecureStorage.cs" />
     <Compile Include="Services\StorageService.cs" />
+    <Compile Include="Services\TCPClient.cs" />
+    <Compile Include="Services\UDPClient.cs" />
+    <Compile Include="Services\WebSocket.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -611,6 +611,7 @@ namespace LagoVista.XPlat.Core
             get { return (string)GetValue(LeftMenuCustomTextProperty); }
             set
             {
+                SetValue(LeftMenuProperty, RightMenuIcon.CustomText);
                 SetValue(LeftMenuCustomTextProperty, value);
                 SetLeftMenuIcon();
             }
@@ -625,6 +626,7 @@ namespace LagoVista.XPlat.Core
             get { return (string)GetValue(RightMenuCustomTextProperty); }
             set
             {
+                SetValue(RightMenuProperty, RightMenuIcon.CustomText);
                 SetValue(RightMenuCustomTextProperty, value);
                 SetRightMenuIcon();
             }
@@ -644,7 +646,7 @@ namespace LagoVista.XPlat.Core
         }
 
         public static readonly BindableProperty LeftMenuProperty = BindableProperty.Create(nameof(LeftMenu), typeof(LeftMenuIcon), typeof(LagoVistaContentPage), LeftMenuIcon.None, BindingMode.TwoWay, null,
-            (view, oldValue, newValue) => (view as LagoVistaContentPage).LeftMenu = (LeftMenuIcon)newValue);
+            (view, oldValue, newValue) => (view as LagoVistaContentPage).LeftMenu = (LeftMenuIcon)newValue, null, null, (view) => { return LeftMenuIcon.None; });
 
         void SetLeftMenuIcon()
         {
@@ -709,7 +711,7 @@ namespace LagoVista.XPlat.Core
         }
 
         public static readonly BindableProperty RightMenuProperty = BindableProperty.Create(nameof(RightMenu), typeof(RightMenuIcon), typeof(LagoVistaContentPage), RightMenuIcon.None, BindingMode.TwoWay, null,
-            (view, oldValue, newValue) => (view as LagoVistaContentPage).RightMenu = (RightMenuIcon)newValue, null, null, (view) => { return false; });
+            (view, oldValue, newValue) => (view as LagoVistaContentPage).RightMenu = (RightMenuIcon)newValue, null, null, (view) => { return RightMenuIcon.None; });
 
         public RightMenuIcon RightMenu
         {

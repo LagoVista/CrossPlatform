@@ -24,9 +24,9 @@ namespace LagoVista.XPlat.UWP.Network
             return Task.FromResult(InvokeResult.Success);
         }
 
-        public void Dispose()
+        public async void Dispose()
         {
-            throw new NotImplementedException();
+            await CloseAsync();            
         }
 
         public async Task<InvokeResult> OpenAsync(Uri uri)

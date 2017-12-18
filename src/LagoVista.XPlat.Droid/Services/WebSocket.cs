@@ -1,18 +1,14 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Text;
 
-using Foundation;
-using UIKit;
+using System.Net.WebSockets;
 using LagoVista.Core.Validation;
 using System.Threading.Tasks;
-using System.Net.WebSockets;
-using System.Diagnostics;
 using System.Threading;
 
-namespace LagoVista.XPlat.iOS.Services
+namespace LagoVista.XPlat.Droid.Services
 {
+
     public class WebSocket : LagoVista.Client.Core.Net.IWebSocket
     {
         public event EventHandler<string> MessageReceived;
@@ -41,7 +37,7 @@ namespace LagoVista.XPlat.iOS.Services
                 if (_webSocket.State == WebSocketState.Open)
                 {
                     await _webSocket.CloseAsync(WebSocketCloseStatus.NormalClosure, "Completed", CancellationToken.None);
-                    
+
                 }
 
                 _webSocket.Dispose();
@@ -58,7 +54,6 @@ namespace LagoVista.XPlat.iOS.Services
                 _cancelTokenSource = new System.Threading.CancellationTokenSource();
 
                 await _webSocket.ConnectAsync(uri, System.Threading.CancellationToken.None);
-                Debug.WriteLine("WE ARE OPEN!");
                 _running = true;
                 StartReceiveThread();
 
@@ -107,6 +102,7 @@ namespace LagoVista.XPlat.iOS.Services
 
             }, _cancelTokenSource.Token);
         }
+
 
     }
 }

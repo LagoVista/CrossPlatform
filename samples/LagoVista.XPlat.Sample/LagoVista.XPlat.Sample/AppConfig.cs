@@ -1,4 +1,5 @@
 ﻿using LagoVista.Core.Interfaces;
+using LagoVista.Core.Models;
 
 namespace LagoVista.XPlat.Sample
 {
@@ -6,6 +7,11 @@ namespace LagoVista.XPlat.Sample
     {
         public class AppConfig : IAppConfig
         {
+            public AppConfig()
+            {
+                Version = new VersionInfo();
+            }
+
             public PlatformTypes PlatformType => PlatformTypes.WindowsUWP;
 
             public Environments Environment => Environments.Local;
@@ -22,6 +28,8 @@ namespace LagoVista.XPlat.Sample
 
             public string AppId => "C2781A0A72DB4634975F868F0C0405C3";
             public string ClientType => "mobileapp";
+
+            public VersionInfo Version { get; private set; }
         }
 
     }

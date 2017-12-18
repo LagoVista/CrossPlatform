@@ -208,7 +208,6 @@
     <Compile Include="IconFonts\TypiconsModule.cs" />
     <Compile Include="IconFonts\WeatherIconsModule.cs" />
     <Compile Include="Loggers\MobileCenterLogger.cs" />
-    <Compile Include="Networking\TCPClient.cs" />
     <Compile Include="Networking\WiFiNetwork.cs" />
     <Compile Include="Networking\NetworkBase.cs" />
     <Compile Include="Networking\WiFiNetworks.cs" />

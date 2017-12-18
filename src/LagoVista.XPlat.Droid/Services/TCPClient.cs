@@ -1,11 +1,12 @@
-﻿using LagoVista.Client;
-using Newtonsoft.Json;
-using System.Linq;
-using System.Net.Sockets;
-using System.Threading;
+﻿using System.Linq;
+using LagoVista.Client;
 using System.Threading.Tasks;
+using Newtonsoft.Json;
+using System.Threading;
+using System.Net.Sockets;
+using LagoVista.Client.Core;
 
-namespace LagoVista.XPlat.iOS.Services
+namespace LagoVista.XPlat.Droid.Services
 {
     /// <summary>
     /// Very quick and dirty TPC client, need to really make this solid, but not for V1
@@ -15,7 +16,6 @@ namespace LagoVista.XPlat.iOS.Services
         const int MAX_BUFFER_SIZE = 1024;
 
         TcpClient _tcpClient;
-        NetworkStream _stream;
 
         CancellationTokenSource _cancelListenerSource;
 
@@ -40,7 +40,6 @@ namespace LagoVista.XPlat.iOS.Services
         public async Task ConnectAsync(string ipAddress, int port)
         {
             _cancelListenerSource = new CancellationTokenSource();
-
             await _tcpClient.ConnectAsync(ipAddress, port);
         }
 
@@ -52,9 +51,9 @@ namespace LagoVista.XPlat.iOS.Services
             return charBuffer.Take(bytesRead).ToArray();
         }
 
-        public async Task<int> WriteAsync(byte[] buffer, int start, int length)
+        public  async Task<int> WriteAsync(byte[] buffer, int start, int length)
         {
-            await _tcpClient.GetStream().WriteAsync(buffer, start, length);
+            await  _tcpClient.GetStream().WriteAsync(buffer, start, length);
             return length;
         }
 

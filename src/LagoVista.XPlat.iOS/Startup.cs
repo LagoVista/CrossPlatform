@@ -6,6 +6,8 @@ using LagoVista.Core.IOC;
 using LagoVista.XPlat.Core.Services;
 using LagoVista.Client.Core.Net;
 using LagoVista.Client.Core.Auth;
+using LagoVista.Client;
+using LagoVista.Client.Core;
 
 namespace LagoVista.XPlat.iOS
 {
@@ -19,7 +21,9 @@ namespace LagoVista.XPlat.iOS
             SLWIOC.Register<IDeviceInfo>(new DeviceInfo());
             SLWIOC.Register<ISecureStorage, SecureStorage>();
             SLWIOC.Register<IPopupServices>(new LagoVista.XPlat.Core.Services.PopupServices());
-            SLWIOC.Register<IWebSocket,Services.WebSocket>();
+            SLWIOC.Register<ITCPClient, Services.TCPClient>();
+            SLWIOC.Register<IUDPClient, Services.UDPClient>();
+            SLWIOC.Register<IWebSocket, Services.WebSocket>();
             SLWIOC.Register<IDispatcherServices>(new DispatcherService(app));
 
             IconFonts.IconFontSupport.RegisterFonts();
