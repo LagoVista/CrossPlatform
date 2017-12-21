@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Globalization;
 using Xamarin.Forms;
+using LagoVista.Core;
 
 namespace LagoVista.XPlat.Core.ValueConverter
 {
@@ -10,9 +11,17 @@ namespace LagoVista.XPlat.Core.ValueConverter
         {
             if (value is string strValue)
             {
-                if (String.IsNullOrEmpty(strValue) && DateTime.TryParse(strValue, out DateTime dateValue))
+                if (!String.IsNullOrEmpty(strValue))
                 {
-                    return dateValue.ToString();
+
+                    try
+                    {
+                        return strValue.ToDateTime().ToString();
+                    }
+                    catch(Exception)
+                    {
+                        return $"invalid date format: {strValue}";
+                    }
                 }
             }
 
