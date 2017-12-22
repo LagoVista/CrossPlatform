@@ -26,6 +26,2146 @@ namespace LagoVista.Droid.Simulator
 		
 		public static void UpdateIdValues()
 		{
+			global::LagoVista.XPlat.Droid.Resource.Animation.abc_fade_in = global::LagoVista.Droid.Simulator.Resource.Animation.abc_fade_in;
+			global::LagoVista.XPlat.Droid.Resource.Animation.abc_fade_out = global::LagoVista.Droid.Simulator.Resource.Animation.abc_fade_out;
+			global::LagoVista.XPlat.Droid.Resource.Animation.abc_grow_fade_in_from_bottom = global::LagoVista.Droid.Simulator.Resource.Animation.abc_grow_fade_in_from_bottom;
+			global::LagoVista.XPlat.Droid.Resource.Animation.abc_popup_enter = global::LagoVista.Droid.Simulator.Resource.Animation.abc_popup_enter;
+			global::LagoVista.XPlat.Droid.Resource.Animation.abc_popup_exit = global::LagoVista.Droid.Simulator.Resource.Animation.abc_popup_exit;
+			global::LagoVista.XPlat.Droid.Resource.Animation.abc_shrink_fade_out_from_bottom = global::LagoVista.Droid.Simulator.Resource.Animation.abc_shrink_fade_out_from_bottom;
+			global::LagoVista.XPlat.Droid.Resource.Animation.abc_slide_in_bottom = global::LagoVista.Droid.Simulator.Resource.Animation.abc_slide_in_bottom;
+			global::LagoVista.XPlat.Droid.Resource.Animation.abc_slide_in_top = global::LagoVista.Droid.Simulator.Resource.Animation.abc_slide_in_top;
+			global::LagoVista.XPlat.Droid.Resource.Animation.abc_slide_out_bottom = global::LagoVista.Droid.Simulator.Resource.Animation.abc_slide_out_bottom;
+			global::LagoVista.XPlat.Droid.Resource.Animation.abc_slide_out_top = global::LagoVista.Droid.Simulator.Resource.Animation.abc_slide_out_top;
+			global::LagoVista.XPlat.Droid.Resource.Animation.design_bottom_sheet_slide_in = global::LagoVista.Droid.Simulator.Resource.Animation.design_bottom_sheet_slide_in;
+			global::LagoVista.XPlat.Droid.Resource.Animation.design_bottom_sheet_slide_out = global::LagoVista.Droid.Simulator.Resource.Animation.design_bottom_sheet_slide_out;
+			global::LagoVista.XPlat.Droid.Resource.Animation.design_fab_in = global::LagoVista.Droid.Simulator.Resource.Animation.design_fab_in;
+			global::LagoVista.XPlat.Droid.Resource.Animation.design_fab_out = global::LagoVista.Droid.Simulator.Resource.Animation.design_fab_out;
+			global::LagoVista.XPlat.Droid.Resource.Animation.design_snackbar_in = global::LagoVista.Droid.Simulator.Resource.Animation.design_snackbar_in;
+			global::LagoVista.XPlat.Droid.Resource.Animation.design_snackbar_out = global::LagoVista.Droid.Simulator.Resource.Animation.design_snackbar_out;
+			global::LagoVista.XPlat.Droid.Resource.Animator.design_appbar_state_list_animator = global::LagoVista.Droid.Simulator.Resource.Animator.design_appbar_state_list_animator;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.actionBarDivider = global::LagoVista.Droid.Simulator.Resource.Attribute.actionBarDivider;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.actionBarItemBackground = global::LagoVista.Droid.Simulator.Resource.Attribute.actionBarItemBackground;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.actionBarPopupTheme = global::LagoVista.Droid.Simulator.Resource.Attribute.actionBarPopupTheme;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.actionBarSize = global::LagoVista.Droid.Simulator.Resource.Attribute.actionBarSize;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.actionBarSplitStyle = global::LagoVista.Droid.Simulator.Resource.Attribute.actionBarSplitStyle;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.actionBarStyle = global::LagoVista.Droid.Simulator.Resource.Attribute.actionBarStyle;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.actionBarTabBarStyle = global::LagoVista.Droid.Simulator.Resource.Attribute.actionBarTabBarStyle;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.actionBarTabStyle = global::LagoVista.Droid.Simulator.Resource.Attribute.actionBarTabStyle;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.actionBarTabTextStyle = global::LagoVista.Droid.Simulator.Resource.Attribute.actionBarTabTextStyle;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.actionBarTheme = global::LagoVista.Droid.Simulator.Resource.Attribute.actionBarTheme;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.actionBarWidgetTheme = global::LagoVista.Droid.Simulator.Resource.Attribute.actionBarWidgetTheme;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.actionButtonStyle = global::LagoVista.Droid.Simulator.Resource.Attribute.actionButtonStyle;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.actionDropDownStyle = global::LagoVista.Droid.Simulator.Resource.Attribute.actionDropDownStyle;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.actionLayout = global::LagoVista.Droid.Simulator.Resource.Attribute.actionLayout;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.actionMenuTextAppearance = global::LagoVista.Droid.Simulator.Resource.Attribute.actionMenuTextAppearance;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.actionMenuTextColor = global::LagoVista.Droid.Simulator.Resource.Attribute.actionMenuTextColor;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.actionModeBackground = global::LagoVista.Droid.Simulator.Resource.Attribute.actionModeBackground;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.actionModeCloseButtonStyle = global::LagoVista.Droid.Simulator.Resource.Attribute.actionModeCloseButtonStyle;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.actionModeCloseDrawable = global::LagoVista.Droid.Simulator.Resource.Attribute.actionModeCloseDrawable;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.actionModeCopyDrawable = global::LagoVista.Droid.Simulator.Resource.Attribute.actionModeCopyDrawable;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.actionModeCutDrawable = global::LagoVista.Droid.Simulator.Resource.Attribute.actionModeCutDrawable;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.actionModeFindDrawable = global::LagoVista.Droid.Simulator.Resource.Attribute.actionModeFindDrawable;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.actionModePasteDrawable = global::LagoVista.Droid.Simulator.Resource.Attribute.actionModePasteDrawable;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.actionModePopupWindowStyle = global::LagoVista.Droid.Simulator.Resource.Attribute.actionModePopupWindowStyle;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.actionModeSelectAllDrawable = global::LagoVista.Droid.Simulator.Resource.Attribute.actionModeSelectAllDrawable;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.actionModeShareDrawable = global::LagoVista.Droid.Simulator.Resource.Attribute.actionModeShareDrawable;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.actionModeSplitBackground = global::LagoVista.Droid.Simulator.Resource.Attribute.actionModeSplitBackground;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.actionModeStyle = global::LagoVista.Droid.Simulator.Resource.Attribute.actionModeStyle;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.actionModeWebSearchDrawable = global::LagoVista.Droid.Simulator.Resource.Attribute.actionModeWebSearchDrawable;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.actionOverflowButtonStyle = global::LagoVista.Droid.Simulator.Resource.Attribute.actionOverflowButtonStyle;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.actionOverflowMenuStyle = global::LagoVista.Droid.Simulator.Resource.Attribute.actionOverflowMenuStyle;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.actionProviderClass = global::LagoVista.Droid.Simulator.Resource.Attribute.actionProviderClass;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.actionViewClass = global::LagoVista.Droid.Simulator.Resource.Attribute.actionViewClass;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.activityChooserViewStyle = global::LagoVista.Droid.Simulator.Resource.Attribute.activityChooserViewStyle;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.alertDialogButtonGroupStyle = global::LagoVista.Droid.Simulator.Resource.Attribute.alertDialogButtonGroupStyle;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.alertDialogCenterButtons = global::LagoVista.Droid.Simulator.Resource.Attribute.alertDialogCenterButtons;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.alertDialogStyle = global::LagoVista.Droid.Simulator.Resource.Attribute.alertDialogStyle;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.alertDialogTheme = global::LagoVista.Droid.Simulator.Resource.Attribute.alertDialogTheme;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.allowStacking = global::LagoVista.Droid.Simulator.Resource.Attribute.allowStacking;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.alpha = global::LagoVista.Droid.Simulator.Resource.Attribute.alpha;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.arrowHeadLength = global::LagoVista.Droid.Simulator.Resource.Attribute.arrowHeadLength;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.arrowShaftLength = global::LagoVista.Droid.Simulator.Resource.Attribute.arrowShaftLength;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.autoCompleteTextViewStyle = global::LagoVista.Droid.Simulator.Resource.Attribute.autoCompleteTextViewStyle;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.background = global::LagoVista.Droid.Simulator.Resource.Attribute.background;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.backgroundSplit = global::LagoVista.Droid.Simulator.Resource.Attribute.backgroundSplit;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.backgroundStacked = global::LagoVista.Droid.Simulator.Resource.Attribute.backgroundStacked;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.backgroundTint = global::LagoVista.Droid.Simulator.Resource.Attribute.backgroundTint;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.backgroundTintMode = global::LagoVista.Droid.Simulator.Resource.Attribute.backgroundTintMode;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.barLength = global::LagoVista.Droid.Simulator.Resource.Attribute.barLength;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.behavior_autoHide = global::LagoVista.Droid.Simulator.Resource.Attribute.behavior_autoHide;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.behavior_hideable = global::LagoVista.Droid.Simulator.Resource.Attribute.behavior_hideable;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.behavior_overlapTop = global::LagoVista.Droid.Simulator.Resource.Attribute.behavior_overlapTop;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.behavior_peekHeight = global::LagoVista.Droid.Simulator.Resource.Attribute.behavior_peekHeight;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.behavior_skipCollapsed = global::LagoVista.Droid.Simulator.Resource.Attribute.behavior_skipCollapsed;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.borderWidth = global::LagoVista.Droid.Simulator.Resource.Attribute.borderWidth;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.borderlessButtonStyle = global::LagoVista.Droid.Simulator.Resource.Attribute.borderlessButtonStyle;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.bottomSheetDialogTheme = global::LagoVista.Droid.Simulator.Resource.Attribute.bottomSheetDialogTheme;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.bottomSheetStyle = global::LagoVista.Droid.Simulator.Resource.Attribute.bottomSheetStyle;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.buttonBarButtonStyle = global::LagoVista.Droid.Simulator.Resource.Attribute.buttonBarButtonStyle;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.buttonBarNegativeButtonStyle = global::LagoVista.Droid.Simulator.Resource.Attribute.buttonBarNegativeButtonStyle;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.buttonBarNeutralButtonStyle = global::LagoVista.Droid.Simulator.Resource.Attribute.buttonBarNeutralButtonStyle;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.buttonBarPositiveButtonStyle = global::LagoVista.Droid.Simulator.Resource.Attribute.buttonBarPositiveButtonStyle;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.buttonBarStyle = global::LagoVista.Droid.Simulator.Resource.Attribute.buttonBarStyle;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.buttonGravity = global::LagoVista.Droid.Simulator.Resource.Attribute.buttonGravity;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.buttonPanelSideLayout = global::LagoVista.Droid.Simulator.Resource.Attribute.buttonPanelSideLayout;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.buttonStyle = global::LagoVista.Droid.Simulator.Resource.Attribute.buttonStyle;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.buttonStyleSmall = global::LagoVista.Droid.Simulator.Resource.Attribute.buttonStyleSmall;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.buttonTint = global::LagoVista.Droid.Simulator.Resource.Attribute.buttonTint;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.buttonTintMode = global::LagoVista.Droid.Simulator.Resource.Attribute.buttonTintMode;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.cardBackgroundColor = global::LagoVista.Droid.Simulator.Resource.Attribute.cardBackgroundColor;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.cardCornerRadius = global::LagoVista.Droid.Simulator.Resource.Attribute.cardCornerRadius;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.cardElevation = global::LagoVista.Droid.Simulator.Resource.Attribute.cardElevation;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.cardMaxElevation = global::LagoVista.Droid.Simulator.Resource.Attribute.cardMaxElevation;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.cardPreventCornerOverlap = global::LagoVista.Droid.Simulator.Resource.Attribute.cardPreventCornerOverlap;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.cardUseCompatPadding = global::LagoVista.Droid.Simulator.Resource.Attribute.cardUseCompatPadding;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.checkboxStyle = global::LagoVista.Droid.Simulator.Resource.Attribute.checkboxStyle;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.checkedTextViewStyle = global::LagoVista.Droid.Simulator.Resource.Attribute.checkedTextViewStyle;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.closeIcon = global::LagoVista.Droid.Simulator.Resource.Attribute.closeIcon;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.closeItemLayout = global::LagoVista.Droid.Simulator.Resource.Attribute.closeItemLayout;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.collapseContentDescription = global::LagoVista.Droid.Simulator.Resource.Attribute.collapseContentDescription;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.collapseIcon = global::LagoVista.Droid.Simulator.Resource.Attribute.collapseIcon;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.collapsedTitleGravity = global::LagoVista.Droid.Simulator.Resource.Attribute.collapsedTitleGravity;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.collapsedTitleTextAppearance = global::LagoVista.Droid.Simulator.Resource.Attribute.collapsedTitleTextAppearance;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.color = global::LagoVista.Droid.Simulator.Resource.Attribute.color;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.colorAccent = global::LagoVista.Droid.Simulator.Resource.Attribute.colorAccent;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.colorBackgroundFloating = global::LagoVista.Droid.Simulator.Resource.Attribute.colorBackgroundFloating;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.colorButtonNormal = global::LagoVista.Droid.Simulator.Resource.Attribute.colorButtonNormal;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.colorControlActivated = global::LagoVista.Droid.Simulator.Resource.Attribute.colorControlActivated;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.colorControlHighlight = global::LagoVista.Droid.Simulator.Resource.Attribute.colorControlHighlight;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.colorControlNormal = global::LagoVista.Droid.Simulator.Resource.Attribute.colorControlNormal;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.colorPrimary = global::LagoVista.Droid.Simulator.Resource.Attribute.colorPrimary;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.colorPrimaryDark = global::LagoVista.Droid.Simulator.Resource.Attribute.colorPrimaryDark;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.colorSwitchThumbNormal = global::LagoVista.Droid.Simulator.Resource.Attribute.colorSwitchThumbNormal;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.commitIcon = global::LagoVista.Droid.Simulator.Resource.Attribute.commitIcon;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.contentInsetEnd = global::LagoVista.Droid.Simulator.Resource.Attribute.contentInsetEnd;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.contentInsetEndWithActions = global::LagoVista.Droid.Simulator.Resource.Attribute.contentInsetEndWithActions;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.contentInsetLeft = global::LagoVista.Droid.Simulator.Resource.Attribute.contentInsetLeft;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.contentInsetRight = global::LagoVista.Droid.Simulator.Resource.Attribute.contentInsetRight;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.contentInsetStart = global::LagoVista.Droid.Simulator.Resource.Attribute.contentInsetStart;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.contentInsetStartWithNavigation = global::LagoVista.Droid.Simulator.Resource.Attribute.contentInsetStartWithNavigation;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.contentPadding = global::LagoVista.Droid.Simulator.Resource.Attribute.contentPadding;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.contentPaddingBottom = global::LagoVista.Droid.Simulator.Resource.Attribute.contentPaddingBottom;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.contentPaddingLeft = global::LagoVista.Droid.Simulator.Resource.Attribute.contentPaddingLeft;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.contentPaddingRight = global::LagoVista.Droid.Simulator.Resource.Attribute.contentPaddingRight;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.contentPaddingTop = global::LagoVista.Droid.Simulator.Resource.Attribute.contentPaddingTop;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.contentScrim = global::LagoVista.Droid.Simulator.Resource.Attribute.contentScrim;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.controlBackground = global::LagoVista.Droid.Simulator.Resource.Attribute.controlBackground;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.counterEnabled = global::LagoVista.Droid.Simulator.Resource.Attribute.counterEnabled;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.counterMaxLength = global::LagoVista.Droid.Simulator.Resource.Attribute.counterMaxLength;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.counterOverflowTextAppearance = global::LagoVista.Droid.Simulator.Resource.Attribute.counterOverflowTextAppearance;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.counterTextAppearance = global::LagoVista.Droid.Simulator.Resource.Attribute.counterTextAppearance;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.customNavigationLayout = global::LagoVista.Droid.Simulator.Resource.Attribute.customNavigationLayout;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.defaultQueryHint = global::LagoVista.Droid.Simulator.Resource.Attribute.defaultQueryHint;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.dialogPreferredPadding = global::LagoVista.Droid.Simulator.Resource.Attribute.dialogPreferredPadding;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.dialogTheme = global::LagoVista.Droid.Simulator.Resource.Attribute.dialogTheme;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.displayOptions = global::LagoVista.Droid.Simulator.Resource.Attribute.displayOptions;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.divider = global::LagoVista.Droid.Simulator.Resource.Attribute.divider;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.dividerHorizontal = global::LagoVista.Droid.Simulator.Resource.Attribute.dividerHorizontal;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.dividerPadding = global::LagoVista.Droid.Simulator.Resource.Attribute.dividerPadding;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.dividerVertical = global::LagoVista.Droid.Simulator.Resource.Attribute.dividerVertical;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.drawableSize = global::LagoVista.Droid.Simulator.Resource.Attribute.drawableSize;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.drawerArrowStyle = global::LagoVista.Droid.Simulator.Resource.Attribute.drawerArrowStyle;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.dropDownListViewStyle = global::LagoVista.Droid.Simulator.Resource.Attribute.dropDownListViewStyle;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.dropdownListPreferredItemHeight = global::LagoVista.Droid.Simulator.Resource.Attribute.dropdownListPreferredItemHeight;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.editTextBackground = global::LagoVista.Droid.Simulator.Resource.Attribute.editTextBackground;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.editTextColor = global::LagoVista.Droid.Simulator.Resource.Attribute.editTextColor;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.editTextStyle = global::LagoVista.Droid.Simulator.Resource.Attribute.editTextStyle;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.elevation = global::LagoVista.Droid.Simulator.Resource.Attribute.elevation;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.errorEnabled = global::LagoVista.Droid.Simulator.Resource.Attribute.errorEnabled;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.errorTextAppearance = global::LagoVista.Droid.Simulator.Resource.Attribute.errorTextAppearance;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.expandActivityOverflowButtonDrawable = global::LagoVista.Droid.Simulator.Resource.Attribute.expandActivityOverflowButtonDrawable;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.expanded = global::LagoVista.Droid.Simulator.Resource.Attribute.expanded;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.expandedTitleGravity = global::LagoVista.Droid.Simulator.Resource.Attribute.expandedTitleGravity;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.expandedTitleMargin = global::LagoVista.Droid.Simulator.Resource.Attribute.expandedTitleMargin;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.expandedTitleMarginBottom = global::LagoVista.Droid.Simulator.Resource.Attribute.expandedTitleMarginBottom;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.expandedTitleMarginEnd = global::LagoVista.Droid.Simulator.Resource.Attribute.expandedTitleMarginEnd;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.expandedTitleMarginStart = global::LagoVista.Droid.Simulator.Resource.Attribute.expandedTitleMarginStart;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.expandedTitleMarginTop = global::LagoVista.Droid.Simulator.Resource.Attribute.expandedTitleMarginTop;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.expandedTitleTextAppearance = global::LagoVista.Droid.Simulator.Resource.Attribute.expandedTitleTextAppearance;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.externalRouteEnabledDrawable = global::LagoVista.Droid.Simulator.Resource.Attribute.externalRouteEnabledDrawable;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.fabSize = global::LagoVista.Droid.Simulator.Resource.Attribute.fabSize;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.foregroundInsidePadding = global::LagoVista.Droid.Simulator.Resource.Attribute.foregroundInsidePadding;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.gapBetweenBars = global::LagoVista.Droid.Simulator.Resource.Attribute.gapBetweenBars;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.goIcon = global::LagoVista.Droid.Simulator.Resource.Attribute.goIcon;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.headerLayout = global::LagoVista.Droid.Simulator.Resource.Attribute.headerLayout;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.height = global::LagoVista.Droid.Simulator.Resource.Attribute.height;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.hideOnContentScroll = global::LagoVista.Droid.Simulator.Resource.Attribute.hideOnContentScroll;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.hintAnimationEnabled = global::LagoVista.Droid.Simulator.Resource.Attribute.hintAnimationEnabled;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.hintEnabled = global::LagoVista.Droid.Simulator.Resource.Attribute.hintEnabled;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.hintTextAppearance = global::LagoVista.Droid.Simulator.Resource.Attribute.hintTextAppearance;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.homeAsUpIndicator = global::LagoVista.Droid.Simulator.Resource.Attribute.homeAsUpIndicator;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.homeLayout = global::LagoVista.Droid.Simulator.Resource.Attribute.homeLayout;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.icon = global::LagoVista.Droid.Simulator.Resource.Attribute.icon;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.iconifiedByDefault = global::LagoVista.Droid.Simulator.Resource.Attribute.iconifiedByDefault;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.imageButtonStyle = global::LagoVista.Droid.Simulator.Resource.Attribute.imageButtonStyle;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.indeterminateProgressStyle = global::LagoVista.Droid.Simulator.Resource.Attribute.indeterminateProgressStyle;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.initialActivityCount = global::LagoVista.Droid.Simulator.Resource.Attribute.initialActivityCount;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.insetForeground = global::LagoVista.Droid.Simulator.Resource.Attribute.insetForeground;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.isLightTheme = global::LagoVista.Droid.Simulator.Resource.Attribute.isLightTheme;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.itemBackground = global::LagoVista.Droid.Simulator.Resource.Attribute.itemBackground;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.itemIconTint = global::LagoVista.Droid.Simulator.Resource.Attribute.itemIconTint;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.itemPadding = global::LagoVista.Droid.Simulator.Resource.Attribute.itemPadding;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.itemTextAppearance = global::LagoVista.Droid.Simulator.Resource.Attribute.itemTextAppearance;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.itemTextColor = global::LagoVista.Droid.Simulator.Resource.Attribute.itemTextColor;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.keylines = global::LagoVista.Droid.Simulator.Resource.Attribute.keylines;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.layout = global::LagoVista.Droid.Simulator.Resource.Attribute.layout;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.layoutManager = global::LagoVista.Droid.Simulator.Resource.Attribute.layoutManager;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.layout_anchor = global::LagoVista.Droid.Simulator.Resource.Attribute.layout_anchor;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.layout_anchorGravity = global::LagoVista.Droid.Simulator.Resource.Attribute.layout_anchorGravity;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.layout_behavior = global::LagoVista.Droid.Simulator.Resource.Attribute.layout_behavior;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.layout_collapseMode = global::LagoVista.Droid.Simulator.Resource.Attribute.layout_collapseMode;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.layout_collapseParallaxMultiplier = global::LagoVista.Droid.Simulator.Resource.Attribute.layout_collapseParallaxMultiplier;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.layout_dodgeInsetEdges = global::LagoVista.Droid.Simulator.Resource.Attribute.layout_dodgeInsetEdges;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.layout_insetEdge = global::LagoVista.Droid.Simulator.Resource.Attribute.layout_insetEdge;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.layout_keyline = global::LagoVista.Droid.Simulator.Resource.Attribute.layout_keyline;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.layout_scrollFlags = global::LagoVista.Droid.Simulator.Resource.Attribute.layout_scrollFlags;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.layout_scrollInterpolator = global::LagoVista.Droid.Simulator.Resource.Attribute.layout_scrollInterpolator;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.listChoiceBackgroundIndicator = global::LagoVista.Droid.Simulator.Resource.Attribute.listChoiceBackgroundIndicator;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.listDividerAlertDialog = global::LagoVista.Droid.Simulator.Resource.Attribute.listDividerAlertDialog;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.listItemLayout = global::LagoVista.Droid.Simulator.Resource.Attribute.listItemLayout;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.listLayout = global::LagoVista.Droid.Simulator.Resource.Attribute.listLayout;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.listMenuViewStyle = global::LagoVista.Droid.Simulator.Resource.Attribute.listMenuViewStyle;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.listPopupWindowStyle = global::LagoVista.Droid.Simulator.Resource.Attribute.listPopupWindowStyle;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.listPreferredItemHeight = global::LagoVista.Droid.Simulator.Resource.Attribute.listPreferredItemHeight;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.listPreferredItemHeightLarge = global::LagoVista.Droid.Simulator.Resource.Attribute.listPreferredItemHeightLarge;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.listPreferredItemHeightSmall = global::LagoVista.Droid.Simulator.Resource.Attribute.listPreferredItemHeightSmall;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.listPreferredItemPaddingLeft = global::LagoVista.Droid.Simulator.Resource.Attribute.listPreferredItemPaddingLeft;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.listPreferredItemPaddingRight = global::LagoVista.Droid.Simulator.Resource.Attribute.listPreferredItemPaddingRight;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.logo = global::LagoVista.Droid.Simulator.Resource.Attribute.logo;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.logoDescription = global::LagoVista.Droid.Simulator.Resource.Attribute.logoDescription;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.maxActionInlineWidth = global::LagoVista.Droid.Simulator.Resource.Attribute.maxActionInlineWidth;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.maxButtonHeight = global::LagoVista.Droid.Simulator.Resource.Attribute.maxButtonHeight;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.measureWithLargestChild = global::LagoVista.Droid.Simulator.Resource.Attribute.measureWithLargestChild;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.mediaRouteAudioTrackDrawable = global::LagoVista.Droid.Simulator.Resource.Attribute.mediaRouteAudioTrackDrawable;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.mediaRouteButtonStyle = global::LagoVista.Droid.Simulator.Resource.Attribute.mediaRouteButtonStyle;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.mediaRouteCloseDrawable = global::LagoVista.Droid.Simulator.Resource.Attribute.mediaRouteCloseDrawable;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.mediaRouteControlPanelThemeOverlay = global::LagoVista.Droid.Simulator.Resource.Attribute.mediaRouteControlPanelThemeOverlay;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.mediaRouteDefaultIconDrawable = global::LagoVista.Droid.Simulator.Resource.Attribute.mediaRouteDefaultIconDrawable;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.mediaRoutePauseDrawable = global::LagoVista.Droid.Simulator.Resource.Attribute.mediaRoutePauseDrawable;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.mediaRoutePlayDrawable = global::LagoVista.Droid.Simulator.Resource.Attribute.mediaRoutePlayDrawable;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.mediaRouteSpeakerGroupIconDrawable = global::LagoVista.Droid.Simulator.Resource.Attribute.mediaRouteSpeakerGroupIconDrawable;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.mediaRouteSpeakerIconDrawable = global::LagoVista.Droid.Simulator.Resource.Attribute.mediaRouteSpeakerIconDrawable;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.mediaRouteStopDrawable = global::LagoVista.Droid.Simulator.Resource.Attribute.mediaRouteStopDrawable;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.mediaRouteTheme = global::LagoVista.Droid.Simulator.Resource.Attribute.mediaRouteTheme;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.mediaRouteTvIconDrawable = global::LagoVista.Droid.Simulator.Resource.Attribute.mediaRouteTvIconDrawable;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.menu = global::LagoVista.Droid.Simulator.Resource.Attribute.menu;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.multiChoiceItemLayout = global::LagoVista.Droid.Simulator.Resource.Attribute.multiChoiceItemLayout;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.navigationContentDescription = global::LagoVista.Droid.Simulator.Resource.Attribute.navigationContentDescription;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.navigationIcon = global::LagoVista.Droid.Simulator.Resource.Attribute.navigationIcon;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.navigationMode = global::LagoVista.Droid.Simulator.Resource.Attribute.navigationMode;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.overlapAnchor = global::LagoVista.Droid.Simulator.Resource.Attribute.overlapAnchor;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.paddingBottomNoButtons = global::LagoVista.Droid.Simulator.Resource.Attribute.paddingBottomNoButtons;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.paddingEnd = global::LagoVista.Droid.Simulator.Resource.Attribute.paddingEnd;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.paddingStart = global::LagoVista.Droid.Simulator.Resource.Attribute.paddingStart;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.paddingTopNoTitle = global::LagoVista.Droid.Simulator.Resource.Attribute.paddingTopNoTitle;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.panelBackground = global::LagoVista.Droid.Simulator.Resource.Attribute.panelBackground;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.panelMenuListTheme = global::LagoVista.Droid.Simulator.Resource.Attribute.panelMenuListTheme;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.panelMenuListWidth = global::LagoVista.Droid.Simulator.Resource.Attribute.panelMenuListWidth;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.passwordToggleContentDescription = global::LagoVista.Droid.Simulator.Resource.Attribute.passwordToggleContentDescription;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.passwordToggleDrawable = global::LagoVista.Droid.Simulator.Resource.Attribute.passwordToggleDrawable;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.passwordToggleEnabled = global::LagoVista.Droid.Simulator.Resource.Attribute.passwordToggleEnabled;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.passwordToggleTint = global::LagoVista.Droid.Simulator.Resource.Attribute.passwordToggleTint;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.passwordToggleTintMode = global::LagoVista.Droid.Simulator.Resource.Attribute.passwordToggleTintMode;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.popupMenuStyle = global::LagoVista.Droid.Simulator.Resource.Attribute.popupMenuStyle;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.popupTheme = global::LagoVista.Droid.Simulator.Resource.Attribute.popupTheme;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.popupWindowStyle = global::LagoVista.Droid.Simulator.Resource.Attribute.popupWindowStyle;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.preserveIconSpacing = global::LagoVista.Droid.Simulator.Resource.Attribute.preserveIconSpacing;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.pressedTranslationZ = global::LagoVista.Droid.Simulator.Resource.Attribute.pressedTranslationZ;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.progressBarPadding = global::LagoVista.Droid.Simulator.Resource.Attribute.progressBarPadding;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.progressBarStyle = global::LagoVista.Droid.Simulator.Resource.Attribute.progressBarStyle;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.queryBackground = global::LagoVista.Droid.Simulator.Resource.Attribute.queryBackground;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.queryHint = global::LagoVista.Droid.Simulator.Resource.Attribute.queryHint;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.radioButtonStyle = global::LagoVista.Droid.Simulator.Resource.Attribute.radioButtonStyle;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.ratingBarStyle = global::LagoVista.Droid.Simulator.Resource.Attribute.ratingBarStyle;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.ratingBarStyleIndicator = global::LagoVista.Droid.Simulator.Resource.Attribute.ratingBarStyleIndicator;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.ratingBarStyleSmall = global::LagoVista.Droid.Simulator.Resource.Attribute.ratingBarStyleSmall;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.reverseLayout = global::LagoVista.Droid.Simulator.Resource.Attribute.reverseLayout;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.rippleColor = global::LagoVista.Droid.Simulator.Resource.Attribute.rippleColor;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.scrimAnimationDuration = global::LagoVista.Droid.Simulator.Resource.Attribute.scrimAnimationDuration;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.scrimVisibleHeightTrigger = global::LagoVista.Droid.Simulator.Resource.Attribute.scrimVisibleHeightTrigger;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.searchHintIcon = global::LagoVista.Droid.Simulator.Resource.Attribute.searchHintIcon;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.searchIcon = global::LagoVista.Droid.Simulator.Resource.Attribute.searchIcon;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.searchViewStyle = global::LagoVista.Droid.Simulator.Resource.Attribute.searchViewStyle;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.seekBarStyle = global::LagoVista.Droid.Simulator.Resource.Attribute.seekBarStyle;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.selectableItemBackground = global::LagoVista.Droid.Simulator.Resource.Attribute.selectableItemBackground;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.selectableItemBackgroundBorderless = global::LagoVista.Droid.Simulator.Resource.Attribute.selectableItemBackgroundBorderless;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.showAsAction = global::LagoVista.Droid.Simulator.Resource.Attribute.showAsAction;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.showDividers = global::LagoVista.Droid.Simulator.Resource.Attribute.showDividers;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.showText = global::LagoVista.Droid.Simulator.Resource.Attribute.showText;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.showTitle = global::LagoVista.Droid.Simulator.Resource.Attribute.showTitle;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.singleChoiceItemLayout = global::LagoVista.Droid.Simulator.Resource.Attribute.singleChoiceItemLayout;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.spanCount = global::LagoVista.Droid.Simulator.Resource.Attribute.spanCount;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.spinBars = global::LagoVista.Droid.Simulator.Resource.Attribute.spinBars;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.spinnerDropDownItemStyle = global::LagoVista.Droid.Simulator.Resource.Attribute.spinnerDropDownItemStyle;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.spinnerStyle = global::LagoVista.Droid.Simulator.Resource.Attribute.spinnerStyle;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.splitTrack = global::LagoVista.Droid.Simulator.Resource.Attribute.splitTrack;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.srcCompat = global::LagoVista.Droid.Simulator.Resource.Attribute.srcCompat;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.stackFromEnd = global::LagoVista.Droid.Simulator.Resource.Attribute.stackFromEnd;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.state_above_anchor = global::LagoVista.Droid.Simulator.Resource.Attribute.state_above_anchor;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.state_collapsed = global::LagoVista.Droid.Simulator.Resource.Attribute.state_collapsed;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.state_collapsible = global::LagoVista.Droid.Simulator.Resource.Attribute.state_collapsible;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.statusBarBackground = global::LagoVista.Droid.Simulator.Resource.Attribute.statusBarBackground;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.statusBarScrim = global::LagoVista.Droid.Simulator.Resource.Attribute.statusBarScrim;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.subMenuArrow = global::LagoVista.Droid.Simulator.Resource.Attribute.subMenuArrow;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.submitBackground = global::LagoVista.Droid.Simulator.Resource.Attribute.submitBackground;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.subtitle = global::LagoVista.Droid.Simulator.Resource.Attribute.subtitle;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.subtitleTextAppearance = global::LagoVista.Droid.Simulator.Resource.Attribute.subtitleTextAppearance;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.subtitleTextColor = global::LagoVista.Droid.Simulator.Resource.Attribute.subtitleTextColor;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.subtitleTextStyle = global::LagoVista.Droid.Simulator.Resource.Attribute.subtitleTextStyle;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.suggestionRowLayout = global::LagoVista.Droid.Simulator.Resource.Attribute.suggestionRowLayout;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.switchMinWidth = global::LagoVista.Droid.Simulator.Resource.Attribute.switchMinWidth;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.switchPadding = global::LagoVista.Droid.Simulator.Resource.Attribute.switchPadding;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.switchStyle = global::LagoVista.Droid.Simulator.Resource.Attribute.switchStyle;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.switchTextAppearance = global::LagoVista.Droid.Simulator.Resource.Attribute.switchTextAppearance;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.tabBackground = global::LagoVista.Droid.Simulator.Resource.Attribute.tabBackground;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.tabContentStart = global::LagoVista.Droid.Simulator.Resource.Attribute.tabContentStart;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.tabGravity = global::LagoVista.Droid.Simulator.Resource.Attribute.tabGravity;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.tabIndicatorColor = global::LagoVista.Droid.Simulator.Resource.Attribute.tabIndicatorColor;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.tabIndicatorHeight = global::LagoVista.Droid.Simulator.Resource.Attribute.tabIndicatorHeight;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.tabMaxWidth = global::LagoVista.Droid.Simulator.Resource.Attribute.tabMaxWidth;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.tabMinWidth = global::LagoVista.Droid.Simulator.Resource.Attribute.tabMinWidth;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.tabMode = global::LagoVista.Droid.Simulator.Resource.Attribute.tabMode;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.tabPadding = global::LagoVista.Droid.Simulator.Resource.Attribute.tabPadding;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.tabPaddingBottom = global::LagoVista.Droid.Simulator.Resource.Attribute.tabPaddingBottom;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.tabPaddingEnd = global::LagoVista.Droid.Simulator.Resource.Attribute.tabPaddingEnd;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.tabPaddingStart = global::LagoVista.Droid.Simulator.Resource.Attribute.tabPaddingStart;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.tabPaddingTop = global::LagoVista.Droid.Simulator.Resource.Attribute.tabPaddingTop;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.tabSelectedTextColor = global::LagoVista.Droid.Simulator.Resource.Attribute.tabSelectedTextColor;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.tabTextAppearance = global::LagoVista.Droid.Simulator.Resource.Attribute.tabTextAppearance;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.tabTextColor = global::LagoVista.Droid.Simulator.Resource.Attribute.tabTextColor;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.textAllCaps = global::LagoVista.Droid.Simulator.Resource.Attribute.textAllCaps;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.textAppearanceLargePopupMenu = global::LagoVista.Droid.Simulator.Resource.Attribute.textAppearanceLargePopupMenu;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.textAppearanceListItem = global::LagoVista.Droid.Simulator.Resource.Attribute.textAppearanceListItem;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.textAppearanceListItemSecondary = global::LagoVista.Droid.Simulator.Resource.Attribute.textAppearanceListItemSecondary;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.textAppearanceListItemSmall = global::LagoVista.Droid.Simulator.Resource.Attribute.textAppearanceListItemSmall;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.textAppearancePopupMenuHeader = global::LagoVista.Droid.Simulator.Resource.Attribute.textAppearancePopupMenuHeader;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.textAppearanceSearchResultSubtitle = global::LagoVista.Droid.Simulator.Resource.Attribute.textAppearanceSearchResultSubtitle;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.textAppearanceSearchResultTitle = global::LagoVista.Droid.Simulator.Resource.Attribute.textAppearanceSearchResultTitle;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.textAppearanceSmallPopupMenu = global::LagoVista.Droid.Simulator.Resource.Attribute.textAppearanceSmallPopupMenu;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.textColorAlertDialogListItem = global::LagoVista.Droid.Simulator.Resource.Attribute.textColorAlertDialogListItem;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.textColorError = global::LagoVista.Droid.Simulator.Resource.Attribute.textColorError;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.textColorSearchUrl = global::LagoVista.Droid.Simulator.Resource.Attribute.textColorSearchUrl;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.theme = global::LagoVista.Droid.Simulator.Resource.Attribute.theme;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.thickness = global::LagoVista.Droid.Simulator.Resource.Attribute.thickness;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.thumbTextPadding = global::LagoVista.Droid.Simulator.Resource.Attribute.thumbTextPadding;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.thumbTint = global::LagoVista.Droid.Simulator.Resource.Attribute.thumbTint;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.thumbTintMode = global::LagoVista.Droid.Simulator.Resource.Attribute.thumbTintMode;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.tickMark = global::LagoVista.Droid.Simulator.Resource.Attribute.tickMark;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.tickMarkTint = global::LagoVista.Droid.Simulator.Resource.Attribute.tickMarkTint;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.tickMarkTintMode = global::LagoVista.Droid.Simulator.Resource.Attribute.tickMarkTintMode;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.tint = global::LagoVista.Droid.Simulator.Resource.Attribute.tint;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.tintMode = global::LagoVista.Droid.Simulator.Resource.Attribute.tintMode;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.title = global::LagoVista.Droid.Simulator.Resource.Attribute.title;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.titleEnabled = global::LagoVista.Droid.Simulator.Resource.Attribute.titleEnabled;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.titleMargin = global::LagoVista.Droid.Simulator.Resource.Attribute.titleMargin;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.titleMarginBottom = global::LagoVista.Droid.Simulator.Resource.Attribute.titleMarginBottom;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.titleMarginEnd = global::LagoVista.Droid.Simulator.Resource.Attribute.titleMarginEnd;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.titleMarginStart = global::LagoVista.Droid.Simulator.Resource.Attribute.titleMarginStart;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.titleMarginTop = global::LagoVista.Droid.Simulator.Resource.Attribute.titleMarginTop;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.titleMargins = global::LagoVista.Droid.Simulator.Resource.Attribute.titleMargins;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.titleTextAppearance = global::LagoVista.Droid.Simulator.Resource.Attribute.titleTextAppearance;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.titleTextColor = global::LagoVista.Droid.Simulator.Resource.Attribute.titleTextColor;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.titleTextStyle = global::LagoVista.Droid.Simulator.Resource.Attribute.titleTextStyle;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.toolbarId = global::LagoVista.Droid.Simulator.Resource.Attribute.toolbarId;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.toolbarNavigationButtonStyle = global::LagoVista.Droid.Simulator.Resource.Attribute.toolbarNavigationButtonStyle;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.toolbarStyle = global::LagoVista.Droid.Simulator.Resource.Attribute.toolbarStyle;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.track = global::LagoVista.Droid.Simulator.Resource.Attribute.track;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.trackTint = global::LagoVista.Droid.Simulator.Resource.Attribute.trackTint;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.trackTintMode = global::LagoVista.Droid.Simulator.Resource.Attribute.trackTintMode;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.useCompatPadding = global::LagoVista.Droid.Simulator.Resource.Attribute.useCompatPadding;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.voiceIcon = global::LagoVista.Droid.Simulator.Resource.Attribute.voiceIcon;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.windowActionBar = global::LagoVista.Droid.Simulator.Resource.Attribute.windowActionBar;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.windowActionBarOverlay = global::LagoVista.Droid.Simulator.Resource.Attribute.windowActionBarOverlay;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.windowActionModeOverlay = global::LagoVista.Droid.Simulator.Resource.Attribute.windowActionModeOverlay;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.windowFixedHeightMajor = global::LagoVista.Droid.Simulator.Resource.Attribute.windowFixedHeightMajor;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.windowFixedHeightMinor = global::LagoVista.Droid.Simulator.Resource.Attribute.windowFixedHeightMinor;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.windowFixedWidthMajor = global::LagoVista.Droid.Simulator.Resource.Attribute.windowFixedWidthMajor;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.windowFixedWidthMinor = global::LagoVista.Droid.Simulator.Resource.Attribute.windowFixedWidthMinor;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.windowMinWidthMajor = global::LagoVista.Droid.Simulator.Resource.Attribute.windowMinWidthMajor;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.windowMinWidthMinor = global::LagoVista.Droid.Simulator.Resource.Attribute.windowMinWidthMinor;
+			global::LagoVista.XPlat.Droid.Resource.Attribute.windowNoTitle = global::LagoVista.Droid.Simulator.Resource.Attribute.windowNoTitle;
+			global::LagoVista.XPlat.Droid.Resource.Boolean.abc_action_bar_embed_tabs = global::LagoVista.Droid.Simulator.Resource.Boolean.abc_action_bar_embed_tabs;
+			global::LagoVista.XPlat.Droid.Resource.Boolean.abc_allow_stacked_button_bar = global::LagoVista.Droid.Simulator.Resource.Boolean.abc_allow_stacked_button_bar;
+			global::LagoVista.XPlat.Droid.Resource.Boolean.abc_config_actionMenuItemAllCaps = global::LagoVista.Droid.Simulator.Resource.Boolean.abc_config_actionMenuItemAllCaps;
+			global::LagoVista.XPlat.Droid.Resource.Boolean.abc_config_closeDialogWhenTouchOutside = global::LagoVista.Droid.Simulator.Resource.Boolean.abc_config_closeDialogWhenTouchOutside;
+			global::LagoVista.XPlat.Droid.Resource.Boolean.abc_config_showMenuShortcutsWhenKeyboardPresent = global::LagoVista.Droid.Simulator.Resource.Boolean.abc_config_showMenuShortcutsWhenKeyboardPresent;
+			global::LagoVista.XPlat.Droid.Resource.Color.abc_background_cache_hint_selector_material_dark = global::LagoVista.Droid.Simulator.Resource.Color.abc_background_cache_hint_selector_material_dark;
+			global::LagoVista.XPlat.Droid.Resource.Color.abc_background_cache_hint_selector_material_light = global::LagoVista.Droid.Simulator.Resource.Color.abc_background_cache_hint_selector_material_light;
+			global::LagoVista.XPlat.Droid.Resource.Color.abc_btn_colored_borderless_text_material = global::LagoVista.Droid.Simulator.Resource.Color.abc_btn_colored_borderless_text_material;
+			global::LagoVista.XPlat.Droid.Resource.Color.abc_btn_colored_text_material = global::LagoVista.Droid.Simulator.Resource.Color.abc_btn_colored_text_material;
+			global::LagoVista.XPlat.Droid.Resource.Color.abc_color_highlight_material = global::LagoVista.Droid.Simulator.Resource.Color.abc_color_highlight_material;
+			global::LagoVista.XPlat.Droid.Resource.Color.abc_hint_foreground_material_dark = global::LagoVista.Droid.Simulator.Resource.Color.abc_hint_foreground_material_dark;
+			global::LagoVista.XPlat.Droid.Resource.Color.abc_hint_foreground_material_light = global::LagoVista.Droid.Simulator.Resource.Color.abc_hint_foreground_material_light;
+			global::LagoVista.XPlat.Droid.Resource.Color.abc_input_method_navigation_guard = global::LagoVista.Droid.Simulator.Resource.Color.abc_input_method_navigation_guard;
+			global::LagoVista.XPlat.Droid.Resource.Color.abc_primary_text_disable_only_material_dark = global::LagoVista.Droid.Simulator.Resource.Color.abc_primary_text_disable_only_material_dark;
+			global::LagoVista.XPlat.Droid.Resource.Color.abc_primary_text_disable_only_material_light = global::LagoVista.Droid.Simulator.Resource.Color.abc_primary_text_disable_only_material_light;
+			global::LagoVista.XPlat.Droid.Resource.Color.abc_primary_text_material_dark = global::LagoVista.Droid.Simulator.Resource.Color.abc_primary_text_material_dark;
+			global::LagoVista.XPlat.Droid.Resource.Color.abc_primary_text_material_light = global::LagoVista.Droid.Simulator.Resource.Color.abc_primary_text_material_light;
+			global::LagoVista.XPlat.Droid.Resource.Color.abc_search_url_text = global::LagoVista.Droid.Simulator.Resource.Color.abc_search_url_text;
+			global::LagoVista.XPlat.Droid.Resource.Color.abc_search_url_text_normal = global::LagoVista.Droid.Simulator.Resource.Color.abc_search_url_text_normal;
+			global::LagoVista.XPlat.Droid.Resource.Color.abc_search_url_text_pressed = global::LagoVista.Droid.Simulator.Resource.Color.abc_search_url_text_pressed;
+			global::LagoVista.XPlat.Droid.Resource.Color.abc_search_url_text_selected = global::LagoVista.Droid.Simulator.Resource.Color.abc_search_url_text_selected;
+			global::LagoVista.XPlat.Droid.Resource.Color.abc_secondary_text_material_dark = global::LagoVista.Droid.Simulator.Resource.Color.abc_secondary_text_material_dark;
+			global::LagoVista.XPlat.Droid.Resource.Color.abc_secondary_text_material_light = global::LagoVista.Droid.Simulator.Resource.Color.abc_secondary_text_material_light;
+			global::LagoVista.XPlat.Droid.Resource.Color.abc_tint_btn_checkable = global::LagoVista.Droid.Simulator.Resource.Color.abc_tint_btn_checkable;
+			global::LagoVista.XPlat.Droid.Resource.Color.abc_tint_default = global::LagoVista.Droid.Simulator.Resource.Color.abc_tint_default;
+			global::LagoVista.XPlat.Droid.Resource.Color.abc_tint_edittext = global::LagoVista.Droid.Simulator.Resource.Color.abc_tint_edittext;
+			global::LagoVista.XPlat.Droid.Resource.Color.abc_tint_seek_thumb = global::LagoVista.Droid.Simulator.Resource.Color.abc_tint_seek_thumb;
+			global::LagoVista.XPlat.Droid.Resource.Color.abc_tint_spinner = global::LagoVista.Droid.Simulator.Resource.Color.abc_tint_spinner;
+			global::LagoVista.XPlat.Droid.Resource.Color.abc_tint_switch_thumb = global::LagoVista.Droid.Simulator.Resource.Color.abc_tint_switch_thumb;
+			global::LagoVista.XPlat.Droid.Resource.Color.abc_tint_switch_track = global::LagoVista.Droid.Simulator.Resource.Color.abc_tint_switch_track;
+			global::LagoVista.XPlat.Droid.Resource.Color.accent_material_dark = global::LagoVista.Droid.Simulator.Resource.Color.accent_material_dark;
+			global::LagoVista.XPlat.Droid.Resource.Color.accent_material_light = global::LagoVista.Droid.Simulator.Resource.Color.accent_material_light;
+			global::LagoVista.XPlat.Droid.Resource.Color.background_floating_material_dark = global::LagoVista.Droid.Simulator.Resource.Color.background_floating_material_dark;
+			global::LagoVista.XPlat.Droid.Resource.Color.background_floating_material_light = global::LagoVista.Droid.Simulator.Resource.Color.background_floating_material_light;
+			global::LagoVista.XPlat.Droid.Resource.Color.background_material_dark = global::LagoVista.Droid.Simulator.Resource.Color.background_material_dark;
+			global::LagoVista.XPlat.Droid.Resource.Color.background_material_light = global::LagoVista.Droid.Simulator.Resource.Color.background_material_light;
+			global::LagoVista.XPlat.Droid.Resource.Color.bright_foreground_disabled_material_dark = global::LagoVista.Droid.Simulator.Resource.Color.bright_foreground_disabled_material_dark;
+			global::LagoVista.XPlat.Droid.Resource.Color.bright_foreground_disabled_material_light = global::LagoVista.Droid.Simulator.Resource.Color.bright_foreground_disabled_material_light;
+			global::LagoVista.XPlat.Droid.Resource.Color.bright_foreground_inverse_material_dark = global::LagoVista.Droid.Simulator.Resource.Color.bright_foreground_inverse_material_dark;
+			global::LagoVista.XPlat.Droid.Resource.Color.bright_foreground_inverse_material_light = global::LagoVista.Droid.Simulator.Resource.Color.bright_foreground_inverse_material_light;
+			global::LagoVista.XPlat.Droid.Resource.Color.bright_foreground_material_dark = global::LagoVista.Droid.Simulator.Resource.Color.bright_foreground_material_dark;
+			global::LagoVista.XPlat.Droid.Resource.Color.bright_foreground_material_light = global::LagoVista.Droid.Simulator.Resource.Color.bright_foreground_material_light;
+			global::LagoVista.XPlat.Droid.Resource.Color.button_material_dark = global::LagoVista.Droid.Simulator.Resource.Color.button_material_dark;
+			global::LagoVista.XPlat.Droid.Resource.Color.button_material_light = global::LagoVista.Droid.Simulator.Resource.Color.button_material_light;
+			global::LagoVista.XPlat.Droid.Resource.Color.cardview_dark_background = global::LagoVista.Droid.Simulator.Resource.Color.cardview_dark_background;
+			global::LagoVista.XPlat.Droid.Resource.Color.cardview_light_background = global::LagoVista.Droid.Simulator.Resource.Color.cardview_light_background;
+			global::LagoVista.XPlat.Droid.Resource.Color.cardview_shadow_end_color = global::LagoVista.Droid.Simulator.Resource.Color.cardview_shadow_end_color;
+			global::LagoVista.XPlat.Droid.Resource.Color.cardview_shadow_start_color = global::LagoVista.Droid.Simulator.Resource.Color.cardview_shadow_start_color;
+			global::LagoVista.XPlat.Droid.Resource.Color.design_bottom_navigation_shadow_color = global::LagoVista.Droid.Simulator.Resource.Color.design_bottom_navigation_shadow_color;
+			global::LagoVista.XPlat.Droid.Resource.Color.design_error = global::LagoVista.Droid.Simulator.Resource.Color.design_error;
+			global::LagoVista.XPlat.Droid.Resource.Color.design_fab_shadow_end_color = global::LagoVista.Droid.Simulator.Resource.Color.design_fab_shadow_end_color;
+			global::LagoVista.XPlat.Droid.Resource.Color.design_fab_shadow_mid_color = global::LagoVista.Droid.Simulator.Resource.Color.design_fab_shadow_mid_color;
+			global::LagoVista.XPlat.Droid.Resource.Color.design_fab_shadow_start_color = global::LagoVista.Droid.Simulator.Resource.Color.design_fab_shadow_start_color;
+			global::LagoVista.XPlat.Droid.Resource.Color.design_fab_stroke_end_inner_color = global::LagoVista.Droid.Simulator.Resource.Color.design_fab_stroke_end_inner_color;
+			global::LagoVista.XPlat.Droid.Resource.Color.design_fab_stroke_end_outer_color = global::LagoVista.Droid.Simulator.Resource.Color.design_fab_stroke_end_outer_color;
+			global::LagoVista.XPlat.Droid.Resource.Color.design_fab_stroke_top_inner_color = global::LagoVista.Droid.Simulator.Resource.Color.design_fab_stroke_top_inner_color;
+			global::LagoVista.XPlat.Droid.Resource.Color.design_fab_stroke_top_outer_color = global::LagoVista.Droid.Simulator.Resource.Color.design_fab_stroke_top_outer_color;
+			global::LagoVista.XPlat.Droid.Resource.Color.design_snackbar_background_color = global::LagoVista.Droid.Simulator.Resource.Color.design_snackbar_background_color;
+			global::LagoVista.XPlat.Droid.Resource.Color.design_textinput_error_color_dark = global::LagoVista.Droid.Simulator.Resource.Color.design_textinput_error_color_dark;
+			global::LagoVista.XPlat.Droid.Resource.Color.design_textinput_error_color_light = global::LagoVista.Droid.Simulator.Resource.Color.design_textinput_error_color_light;
+			global::LagoVista.XPlat.Droid.Resource.Color.design_tint_password_toggle = global::LagoVista.Droid.Simulator.Resource.Color.design_tint_password_toggle;
+			global::LagoVista.XPlat.Droid.Resource.Color.dim_foreground_disabled_material_dark = global::LagoVista.Droid.Simulator.Resource.Color.dim_foreground_disabled_material_dark;
+			global::LagoVista.XPlat.Droid.Resource.Color.dim_foreground_disabled_material_light = global::LagoVista.Droid.Simulator.Resource.Color.dim_foreground_disabled_material_light;
+			global::LagoVista.XPlat.Droid.Resource.Color.dim_foreground_material_dark = global::LagoVista.Droid.Simulator.Resource.Color.dim_foreground_material_dark;
+			global::LagoVista.XPlat.Droid.Resource.Color.dim_foreground_material_light = global::LagoVista.Droid.Simulator.Resource.Color.dim_foreground_material_light;
+			global::LagoVista.XPlat.Droid.Resource.Color.foreground_material_dark = global::LagoVista.Droid.Simulator.Resource.Color.foreground_material_dark;
+			global::LagoVista.XPlat.Droid.Resource.Color.foreground_material_light = global::LagoVista.Droid.Simulator.Resource.Color.foreground_material_light;
+			global::LagoVista.XPlat.Droid.Resource.Color.highlighted_text_material_dark = global::LagoVista.Droid.Simulator.Resource.Color.highlighted_text_material_dark;
+			global::LagoVista.XPlat.Droid.Resource.Color.highlighted_text_material_light = global::LagoVista.Droid.Simulator.Resource.Color.highlighted_text_material_light;
+			global::LagoVista.XPlat.Droid.Resource.Color.material_blue_grey_800 = global::LagoVista.Droid.Simulator.Resource.Color.material_blue_grey_800;
+			global::LagoVista.XPlat.Droid.Resource.Color.material_blue_grey_900 = global::LagoVista.Droid.Simulator.Resource.Color.material_blue_grey_900;
+			global::LagoVista.XPlat.Droid.Resource.Color.material_blue_grey_950 = global::LagoVista.Droid.Simulator.Resource.Color.material_blue_grey_950;
+			global::LagoVista.XPlat.Droid.Resource.Color.material_deep_teal_200 = global::LagoVista.Droid.Simulator.Resource.Color.material_deep_teal_200;
+			global::LagoVista.XPlat.Droid.Resource.Color.material_deep_teal_500 = global::LagoVista.Droid.Simulator.Resource.Color.material_deep_teal_500;
+			global::LagoVista.XPlat.Droid.Resource.Color.material_grey_100 = global::LagoVista.Droid.Simulator.Resource.Color.material_grey_100;
+			global::LagoVista.XPlat.Droid.Resource.Color.material_grey_300 = global::LagoVista.Droid.Simulator.Resource.Color.material_grey_300;
+			global::LagoVista.XPlat.Droid.Resource.Color.material_grey_50 = global::LagoVista.Droid.Simulator.Resource.Color.material_grey_50;
+			global::LagoVista.XPlat.Droid.Resource.Color.material_grey_600 = global::LagoVista.Droid.Simulator.Resource.Color.material_grey_600;
+			global::LagoVista.XPlat.Droid.Resource.Color.material_grey_800 = global::LagoVista.Droid.Simulator.Resource.Color.material_grey_800;
+			global::LagoVista.XPlat.Droid.Resource.Color.material_grey_850 = global::LagoVista.Droid.Simulator.Resource.Color.material_grey_850;
+			global::LagoVista.XPlat.Droid.Resource.Color.material_grey_900 = global::LagoVista.Droid.Simulator.Resource.Color.material_grey_900;
+			global::LagoVista.XPlat.Droid.Resource.Color.notification_action_color_filter = global::LagoVista.Droid.Simulator.Resource.Color.notification_action_color_filter;
+			global::LagoVista.XPlat.Droid.Resource.Color.notification_icon_bg_color = global::LagoVista.Droid.Simulator.Resource.Color.notification_icon_bg_color;
+			global::LagoVista.XPlat.Droid.Resource.Color.notification_material_background_media_default_color = global::LagoVista.Droid.Simulator.Resource.Color.notification_material_background_media_default_color;
+			global::LagoVista.XPlat.Droid.Resource.Color.primary_dark_material_dark = global::LagoVista.Droid.Simulator.Resource.Color.primary_dark_material_dark;
+			global::LagoVista.XPlat.Droid.Resource.Color.primary_dark_material_light = global::LagoVista.Droid.Simulator.Resource.Color.primary_dark_material_light;
+			global::LagoVista.XPlat.Droid.Resource.Color.primary_material_dark = global::LagoVista.Droid.Simulator.Resource.Color.primary_material_dark;
+			global::LagoVista.XPlat.Droid.Resource.Color.primary_material_light = global::LagoVista.Droid.Simulator.Resource.Color.primary_material_light;
+			global::LagoVista.XPlat.Droid.Resource.Color.primary_text_default_material_dark = global::LagoVista.Droid.Simulator.Resource.Color.primary_text_default_material_dark;
+			global::LagoVista.XPlat.Droid.Resource.Color.primary_text_default_material_light = global::LagoVista.Droid.Simulator.Resource.Color.primary_text_default_material_light;
+			global::LagoVista.XPlat.Droid.Resource.Color.primary_text_disabled_material_dark = global::LagoVista.Droid.Simulator.Resource.Color.primary_text_disabled_material_dark;
+			global::LagoVista.XPlat.Droid.Resource.Color.primary_text_disabled_material_light = global::LagoVista.Droid.Simulator.Resource.Color.primary_text_disabled_material_light;
+			global::LagoVista.XPlat.Droid.Resource.Color.ripple_material_dark = global::LagoVista.Droid.Simulator.Resource.Color.ripple_material_dark;
+			global::LagoVista.XPlat.Droid.Resource.Color.ripple_material_light = global::LagoVista.Droid.Simulator.Resource.Color.ripple_material_light;
+			global::LagoVista.XPlat.Droid.Resource.Color.secondary_text_default_material_dark = global::LagoVista.Droid.Simulator.Resource.Color.secondary_text_default_material_dark;
+			global::LagoVista.XPlat.Droid.Resource.Color.secondary_text_default_material_light = global::LagoVista.Droid.Simulator.Resource.Color.secondary_text_default_material_light;
+			global::LagoVista.XPlat.Droid.Resource.Color.secondary_text_disabled_material_dark = global::LagoVista.Droid.Simulator.Resource.Color.secondary_text_disabled_material_dark;
+			global::LagoVista.XPlat.Droid.Resource.Color.secondary_text_disabled_material_light = global::LagoVista.Droid.Simulator.Resource.Color.secondary_text_disabled_material_light;
+			global::LagoVista.XPlat.Droid.Resource.Color.switch_thumb_disabled_material_dark = global::LagoVista.Droid.Simulator.Resource.Color.switch_thumb_disabled_material_dark;
+			global::LagoVista.XPlat.Droid.Resource.Color.switch_thumb_disabled_material_light = global::LagoVista.Droid.Simulator.Resource.Color.switch_thumb_disabled_material_light;
+			global::LagoVista.XPlat.Droid.Resource.Color.switch_thumb_material_dark = global::LagoVista.Droid.Simulator.Resource.Color.switch_thumb_material_dark;
+			global::LagoVista.XPlat.Droid.Resource.Color.switch_thumb_material_light = global::LagoVista.Droid.Simulator.Resource.Color.switch_thumb_material_light;
+			global::LagoVista.XPlat.Droid.Resource.Color.switch_thumb_normal_material_dark = global::LagoVista.Droid.Simulator.Resource.Color.switch_thumb_normal_material_dark;
+			global::LagoVista.XPlat.Droid.Resource.Color.switch_thumb_normal_material_light = global::LagoVista.Droid.Simulator.Resource.Color.switch_thumb_normal_material_light;
+			global::LagoVista.XPlat.Droid.Resource.Dimension.abc_action_bar_content_inset_material = global::LagoVista.Droid.Simulator.Resource.Dimension.abc_action_bar_content_inset_material;
+			global::LagoVista.XPlat.Droid.Resource.Dimension.abc_action_bar_content_inset_with_nav = global::LagoVista.Droid.Simulator.Resource.Dimension.abc_action_bar_content_inset_with_nav;
+			global::LagoVista.XPlat.Droid.Resource.Dimension.abc_action_bar_default_height_material = global::LagoVista.Droid.Simulator.Resource.Dimension.abc_action_bar_default_height_material;
+			global::LagoVista.XPlat.Droid.Resource.Dimension.abc_action_bar_default_padding_end_material = global::LagoVista.Droid.Simulator.Resource.Dimension.abc_action_bar_default_padding_end_material;
+			global::LagoVista.XPlat.Droid.Resource.Dimension.abc_action_bar_default_padding_start_material = global::LagoVista.Droid.Simulator.Resource.Dimension.abc_action_bar_default_padding_start_material;
+			global::LagoVista.XPlat.Droid.Resource.Dimension.abc_action_bar_elevation_material = global::LagoVista.Droid.Simulator.Resource.Dimension.abc_action_bar_elevation_material;
+			global::LagoVista.XPlat.Droid.Resource.Dimension.abc_action_bar_icon_vertical_padding_material = global::LagoVista.Droid.Simulator.Resource.Dimension.abc_action_bar_icon_vertical_padding_material;
+			global::LagoVista.XPlat.Droid.Resource.Dimension.abc_action_bar_overflow_padding_end_material = global::LagoVista.Droid.Simulator.Resource.Dimension.abc_action_bar_overflow_padding_end_material;
+			global::LagoVista.XPlat.Droid.Resource.Dimension.abc_action_bar_overflow_padding_start_material = global::LagoVista.Droid.Simulator.Resource.Dimension.abc_action_bar_overflow_padding_start_material;
+			global::LagoVista.XPlat.Droid.Resource.Dimension.abc_action_bar_progress_bar_size = global::LagoVista.Droid.Simulator.Resource.Dimension.abc_action_bar_progress_bar_size;
+			global::LagoVista.XPlat.Droid.Resource.Dimension.abc_action_bar_stacked_max_height = global::LagoVista.Droid.Simulator.Resource.Dimension.abc_action_bar_stacked_max_height;
+			global::LagoVista.XPlat.Droid.Resource.Dimension.abc_action_bar_stacked_tab_max_width = global::LagoVista.Droid.Simulator.Resource.Dimension.abc_action_bar_stacked_tab_max_width;
+			global::LagoVista.XPlat.Droid.Resource.Dimension.abc_action_bar_subtitle_bottom_margin_material = global::LagoVista.Droid.Simulator.Resource.Dimension.abc_action_bar_subtitle_bottom_margin_material;
+			global::LagoVista.XPlat.Droid.Resource.Dimension.abc_action_bar_subtitle_top_margin_material = global::LagoVista.Droid.Simulator.Resource.Dimension.abc_action_bar_subtitle_top_margin_material;
+			global::LagoVista.XPlat.Droid.Resource.Dimension.abc_action_button_min_height_material = global::LagoVista.Droid.Simulator.Resource.Dimension.abc_action_button_min_height_material;
+			global::LagoVista.XPlat.Droid.Resource.Dimension.abc_action_button_min_width_material = global::LagoVista.Droid.Simulator.Resource.Dimension.abc_action_button_min_width_material;
+			global::LagoVista.XPlat.Droid.Resource.Dimension.abc_action_button_min_width_overflow_material = global::LagoVista.Droid.Simulator.Resource.Dimension.abc_action_button_min_width_overflow_material;
+			global::LagoVista.XPlat.Droid.Resource.Dimension.abc_alert_dialog_button_bar_height = global::LagoVista.Droid.Simulator.Resource.Dimension.abc_alert_dialog_button_bar_height;
+			global::LagoVista.XPlat.Droid.Resource.Dimension.abc_button_inset_horizontal_material = global::LagoVista.Droid.Simulator.Resource.Dimension.abc_button_inset_horizontal_material;
+			global::LagoVista.XPlat.Droid.Resource.Dimension.abc_button_inset_vertical_material = global::LagoVista.Droid.Simulator.Resource.Dimension.abc_button_inset_vertical_material;
+			global::LagoVista.XPlat.Droid.Resource.Dimension.abc_button_padding_horizontal_material = global::LagoVista.Droid.Simulator.Resource.Dimension.abc_button_padding_horizontal_material;
+			global::LagoVista.XPlat.Droid.Resource.Dimension.abc_button_padding_vertical_material = global::LagoVista.Droid.Simulator.Resource.Dimension.abc_button_padding_vertical_material;
+			global::LagoVista.XPlat.Droid.Resource.Dimension.abc_cascading_menus_min_smallest_width = global::LagoVista.Droid.Simulator.Resource.Dimension.abc_cascading_menus_min_smallest_width;
+			global::LagoVista.XPlat.Droid.Resource.Dimension.abc_config_prefDialogWidth = global::LagoVista.Droid.Simulator.Resource.Dimension.abc_config_prefDialogWidth;
+			global::LagoVista.XPlat.Droid.Resource.Dimension.abc_control_corner_material = global::LagoVista.Droid.Simulator.Resource.Dimension.abc_control_corner_material;
+			global::LagoVista.XPlat.Droid.Resource.Dimension.abc_control_inset_material = global::LagoVista.Droid.Simulator.Resource.Dimension.abc_control_inset_material;
+			global::LagoVista.XPlat.Droid.Resource.Dimension.abc_control_padding_material = global::LagoVista.Droid.Simulator.Resource.Dimension.abc_control_padding_material;
+			global::LagoVista.XPlat.Droid.Resource.Dimension.abc_dialog_fixed_height_major = global::LagoVista.Droid.Simulator.Resource.Dimension.abc_dialog_fixed_height_major;
+			global::LagoVista.XPlat.Droid.Resource.Dimension.abc_dialog_fixed_height_minor = global::LagoVista.Droid.Simulator.Resource.Dimension.abc_dialog_fixed_height_minor;
+			global::LagoVista.XPlat.Droid.Resource.Dimension.abc_dialog_fixed_width_major = global::LagoVista.Droid.Simulator.Resource.Dimension.abc_dialog_fixed_width_major;
+			global::LagoVista.XPlat.Droid.Resource.Dimension.abc_dialog_fixed_width_minor = global::LagoVista.Droid.Simulator.Resource.Dimension.abc_dialog_fixed_width_minor;
+			global::LagoVista.XPlat.Droid.Resource.Dimension.abc_dialog_list_padding_bottom_no_buttons = global::LagoVista.Droid.Simulator.Resource.Dimension.abc_dialog_list_padding_bottom_no_buttons;
+			global::LagoVista.XPlat.Droid.Resource.Dimension.abc_dialog_list_padding_top_no_title = global::LagoVista.Droid.Simulator.Resource.Dimension.abc_dialog_list_padding_top_no_title;
+			global::LagoVista.XPlat.Droid.Resource.Dimension.abc_dialog_min_width_major = global::LagoVista.Droid.Simulator.Resource.Dimension.abc_dialog_min_width_major;
+			global::LagoVista.XPlat.Droid.Resource.Dimension.abc_dialog_min_width_minor = global::LagoVista.Droid.Simulator.Resource.Dimension.abc_dialog_min_width_minor;
+			global::LagoVista.XPlat.Droid.Resource.Dimension.abc_dialog_padding_material = global::LagoVista.Droid.Simulator.Resource.Dimension.abc_dialog_padding_material;
+			global::LagoVista.XPlat.Droid.Resource.Dimension.abc_dialog_padding_top_material = global::LagoVista.Droid.Simulator.Resource.Dimension.abc_dialog_padding_top_material;
+			global::LagoVista.XPlat.Droid.Resource.Dimension.abc_dialog_title_divider_material = global::LagoVista.Droid.Simulator.Resource.Dimension.abc_dialog_title_divider_material;
+			global::LagoVista.XPlat.Droid.Resource.Dimension.abc_disabled_alpha_material_dark = global::LagoVista.Droid.Simulator.Resource.Dimension.abc_disabled_alpha_material_dark;
+			global::LagoVista.XPlat.Droid.Resource.Dimension.abc_disabled_alpha_material_light = global::LagoVista.Droid.Simulator.Resource.Dimension.abc_disabled_alpha_material_light;
+			global::LagoVista.XPlat.Droid.Resource.Dimension.abc_dropdownitem_icon_width = global::LagoVista.Droid.Simulator.Resource.Dimension.abc_dropdownitem_icon_width;
+			global::LagoVista.XPlat.Droid.Resource.Dimension.abc_dropdownitem_text_padding_left = global::LagoVista.Droid.Simulator.Resource.Dimension.abc_dropdownitem_text_padding_left;
+			global::LagoVista.XPlat.Droid.Resource.Dimension.abc_dropdownitem_text_padding_right = global::LagoVista.Droid.Simulator.Resource.Dimension.abc_dropdownitem_text_padding_right;
+			global::LagoVista.XPlat.Droid.Resource.Dimension.abc_edit_text_inset_bottom_material = global::LagoVista.Droid.Simulator.Resource.Dimension.abc_edit_text_inset_bottom_material;
+			global::LagoVista.XPlat.Droid.Resource.Dimension.abc_edit_text_inset_horizontal_material = global::LagoVista.Droid.Simulator.Resource.Dimension.abc_edit_text_inset_horizontal_material;
+			global::LagoVista.XPlat.Droid.Resource.Dimension.abc_edit_text_inset_top_material = global::LagoVista.Droid.Simulator.Resource.Dimension.abc_edit_text_inset_top_material;
+			global::LagoVista.XPlat.Droid.Resource.Dimension.abc_floating_window_z = global::LagoVista.Droid.Simulator.Resource.Dimension.abc_floating_window_z;
+			global::LagoVista.XPlat.Droid.Resource.Dimension.abc_list_item_padding_horizontal_material = global::LagoVista.Droid.Simulator.Resource.Dimension.abc_list_item_padding_horizontal_material;
+			global::LagoVista.XPlat.Droid.Resource.Dimension.abc_panel_menu_list_width = global::LagoVista.Droid.Simulator.Resource.Dimension.abc_panel_menu_list_width;
+			global::LagoVista.XPlat.Droid.Resource.Dimension.abc_progress_bar_height_material = global::LagoVista.Droid.Simulator.Resource.Dimension.abc_progress_bar_height_material;
+			global::LagoVista.XPlat.Droid.Resource.Dimension.abc_search_view_preferred_height = global::LagoVista.Droid.Simulator.Resource.Dimension.abc_search_view_preferred_height;
+			global::LagoVista.XPlat.Droid.Resource.Dimension.abc_search_view_preferred_width = global::LagoVista.Droid.Simulator.Resource.Dimension.abc_search_view_preferred_width;
+			global::LagoVista.XPlat.Droid.Resource.Dimension.abc_seekbar_track_background_height_material = global::LagoVista.Droid.Simulator.Resource.Dimension.abc_seekbar_track_background_height_material;
+			global::LagoVista.XPlat.Droid.Resource.Dimension.abc_seekbar_track_progress_height_material = global::LagoVista.Droid.Simulator.Resource.Dimension.abc_seekbar_track_progress_height_material;
+			global::LagoVista.XPlat.Droid.Resource.Dimension.abc_select_dialog_padding_start_material = global::LagoVista.Droid.Simulator.Resource.Dimension.abc_select_dialog_padding_start_material;
+			global::LagoVista.XPlat.Droid.Resource.Dimension.abc_switch_padding = global::LagoVista.Droid.Simulator.Resource.Dimension.abc_switch_padding;
+			global::LagoVista.XPlat.Droid.Resource.Dimension.abc_text_size_body_1_material = global::LagoVista.Droid.Simulator.Resource.Dimension.abc_text_size_body_1_material;
+			global::LagoVista.XPlat.Droid.Resource.Dimension.abc_text_size_body_2_material = global::LagoVista.Droid.Simulator.Resource.Dimension.abc_text_size_body_2_material;
+			global::LagoVista.XPlat.Droid.Resource.Dimension.abc_text_size_button_material = global::LagoVista.Droid.Simulator.Resource.Dimension.abc_text_size_button_material;
+			global::LagoVista.XPlat.Droid.Resource.Dimension.abc_text_size_caption_material = global::LagoVista.Droid.Simulator.Resource.Dimension.abc_text_size_caption_material;
+			global::LagoVista.XPlat.Droid.Resource.Dimension.abc_text_size_display_1_material = global::LagoVista.Droid.Simulator.Resource.Dimension.abc_text_size_display_1_material;
+			global::LagoVista.XPlat.Droid.Resource.Dimension.abc_text_size_display_2_material = global::LagoVista.Droid.Simulator.Resource.Dimension.abc_text_size_display_2_material;
+			global::LagoVista.XPlat.Droid.Resource.Dimension.abc_text_size_display_3_material = global::LagoVista.Droid.Simulator.Resource.Dimension.abc_text_size_display_3_material;
+			global::LagoVista.XPlat.Droid.Resource.Dimension.abc_text_size_display_4_material = global::LagoVista.Droid.Simulator.Resource.Dimension.abc_text_size_display_4_material;
+			global::LagoVista.XPlat.Droid.Resource.Dimension.abc_text_size_headline_material = global::LagoVista.Droid.Simulator.Resource.Dimension.abc_text_size_headline_material;
+			global::LagoVista.XPlat.Droid.Resource.Dimension.abc_text_size_large_material = global::LagoVista.Droid.Simulator.Resource.Dimension.abc_text_size_large_material;
+			global::LagoVista.XPlat.Droid.Resource.Dimension.abc_text_size_medium_material = global::LagoVista.Droid.Simulator.Resource.Dimension.abc_text_size_medium_material;
+			global::LagoVista.XPlat.Droid.Resource.Dimension.abc_text_size_menu_header_material = global::LagoVista.Droid.Simulator.Resource.Dimension.abc_text_size_menu_header_material;
+			global::LagoVista.XPlat.Droid.Resource.Dimension.abc_text_size_menu_material = global::LagoVista.Droid.Simulator.Resource.Dimension.abc_text_size_menu_material;
+			global::LagoVista.XPlat.Droid.Resource.Dimension.abc_text_size_small_material = global::LagoVista.Droid.Simulator.Resource.Dimension.abc_text_size_small_material;
+			global::LagoVista.XPlat.Droid.Resource.Dimension.abc_text_size_subhead_material = global::LagoVista.Droid.Simulator.Resource.Dimension.abc_text_size_subhead_material;
+			global::LagoVista.XPlat.Droid.Resource.Dimension.abc_text_size_subtitle_material_toolbar = global::LagoVista.Droid.Simulator.Resource.Dimension.abc_text_size_subtitle_material_toolbar;
+			global::LagoVista.XPlat.Droid.Resource.Dimension.abc_text_size_title_material = global::LagoVista.Droid.Simulator.Resource.Dimension.abc_text_size_title_material;
+			global::LagoVista.XPlat.Droid.Resource.Dimension.abc_text_size_title_material_toolbar = global::LagoVista.Droid.Simulator.Resource.Dimension.abc_text_size_title_material_toolbar;
+			global::LagoVista.XPlat.Droid.Resource.Dimension.cardview_compat_inset_shadow = global::LagoVista.Droid.Simulator.Resource.Dimension.cardview_compat_inset_shadow;
+			global::LagoVista.XPlat.Droid.Resource.Dimension.cardview_default_elevation = global::LagoVista.Droid.Simulator.Resource.Dimension.cardview_default_elevation;
+			global::LagoVista.XPlat.Droid.Resource.Dimension.cardview_default_radius = global::LagoVista.Droid.Simulator.Resource.Dimension.cardview_default_radius;
+			global::LagoVista.XPlat.Droid.Resource.Dimension.design_appbar_elevation = global::LagoVista.Droid.Simulator.Resource.Dimension.design_appbar_elevation;
+			global::LagoVista.XPlat.Droid.Resource.Dimension.design_bottom_navigation_active_item_max_width = global::LagoVista.Droid.Simulator.Resource.Dimension.design_bottom_navigation_active_item_max_width;
+			global::LagoVista.XPlat.Droid.Resource.Dimension.design_bottom_navigation_active_text_size = global::LagoVista.Droid.Simulator.Resource.Dimension.design_bottom_navigation_active_text_size;
+			global::LagoVista.XPlat.Droid.Resource.Dimension.design_bottom_navigation_elevation = global::LagoVista.Droid.Simulator.Resource.Dimension.design_bottom_navigation_elevation;
+			global::LagoVista.XPlat.Droid.Resource.Dimension.design_bottom_navigation_height = global::LagoVista.Droid.Simulator.Resource.Dimension.design_bottom_navigation_height;
+			global::LagoVista.XPlat.Droid.Resource.Dimension.design_bottom_navigation_item_max_width = global::LagoVista.Droid.Simulator.Resource.Dimension.design_bottom_navigation_item_max_width;
+			global::LagoVista.XPlat.Droid.Resource.Dimension.design_bottom_navigation_item_min_width = global::LagoVista.Droid.Simulator.Resource.Dimension.design_bottom_navigation_item_min_width;
+			global::LagoVista.XPlat.Droid.Resource.Dimension.design_bottom_navigation_margin = global::LagoVista.Droid.Simulator.Resource.Dimension.design_bottom_navigation_margin;
+			global::LagoVista.XPlat.Droid.Resource.Dimension.design_bottom_navigation_shadow_height = global::LagoVista.Droid.Simulator.Resource.Dimension.design_bottom_navigation_shadow_height;
+			global::LagoVista.XPlat.Droid.Resource.Dimension.design_bottom_navigation_text_size = global::LagoVista.Droid.Simulator.Resource.Dimension.design_bottom_navigation_text_size;
+			global::LagoVista.XPlat.Droid.Resource.Dimension.design_bottom_sheet_modal_elevation = global::LagoVista.Droid.Simulator.Resource.Dimension.design_bottom_sheet_modal_elevation;
+			global::LagoVista.XPlat.Droid.Resource.Dimension.design_bottom_sheet_peek_height_min = global::LagoVista.Droid.Simulator.Resource.Dimension.design_bottom_sheet_peek_height_min;
+			global::LagoVista.XPlat.Droid.Resource.Dimension.design_fab_border_width = global::LagoVista.Droid.Simulator.Resource.Dimension.design_fab_border_width;
+			global::LagoVista.XPlat.Droid.Resource.Dimension.design_fab_elevation = global::LagoVista.Droid.Simulator.Resource.Dimension.design_fab_elevation;
+			global::LagoVista.XPlat.Droid.Resource.Dimension.design_fab_image_size = global::LagoVista.Droid.Simulator.Resource.Dimension.design_fab_image_size;
+			global::LagoVista.XPlat.Droid.Resource.Dimension.design_fab_size_mini = global::LagoVista.Droid.Simulator.Resource.Dimension.design_fab_size_mini;
+			global::LagoVista.XPlat.Droid.Resource.Dimension.design_fab_size_normal = global::LagoVista.Droid.Simulator.Resource.Dimension.design_fab_size_normal;
+			global::LagoVista.XPlat.Droid.Resource.Dimension.design_fab_translation_z_pressed = global::LagoVista.Droid.Simulator.Resource.Dimension.design_fab_translation_z_pressed;
+			global::LagoVista.XPlat.Droid.Resource.Dimension.design_navigation_elevation = global::LagoVista.Droid.Simulator.Resource.Dimension.design_navigation_elevation;
+			global::LagoVista.XPlat.Droid.Resource.Dimension.design_navigation_icon_padding = global::LagoVista.Droid.Simulator.Resource.Dimension.design_navigation_icon_padding;
+			global::LagoVista.XPlat.Droid.Resource.Dimension.design_navigation_icon_size = global::LagoVista.Droid.Simulator.Resource.Dimension.design_navigation_icon_size;
+			global::LagoVista.XPlat.Droid.Resource.Dimension.design_navigation_max_width = global::LagoVista.Droid.Simulator.Resource.Dimension.design_navigation_max_width;
+			global::LagoVista.XPlat.Droid.Resource.Dimension.design_navigation_padding_bottom = global::LagoVista.Droid.Simulator.Resource.Dimension.design_navigation_padding_bottom;
+			global::LagoVista.XPlat.Droid.Resource.Dimension.design_navigation_separator_vertical_padding = global::LagoVista.Droid.Simulator.Resource.Dimension.design_navigation_separator_vertical_padding;
+			global::LagoVista.XPlat.Droid.Resource.Dimension.design_snackbar_action_inline_max_width = global::LagoVista.Droid.Simulator.Resource.Dimension.design_snackbar_action_inline_max_width;
+			global::LagoVista.XPlat.Droid.Resource.Dimension.design_snackbar_background_corner_radius = global::LagoVista.Droid.Simulator.Resource.Dimension.design_snackbar_background_corner_radius;
+			global::LagoVista.XPlat.Droid.Resource.Dimension.design_snackbar_elevation = global::LagoVista.Droid.Simulator.Resource.Dimension.design_snackbar_elevation;
+			global::LagoVista.XPlat.Droid.Resource.Dimension.design_snackbar_extra_spacing_horizontal = global::LagoVista.Droid.Simulator.Resource.Dimension.design_snackbar_extra_spacing_horizontal;
+			global::LagoVista.XPlat.Droid.Resource.Dimension.design_snackbar_max_width = global::LagoVista.Droid.Simulator.Resource.Dimension.design_snackbar_max_width;
+			global::LagoVista.XPlat.Droid.Resource.Dimension.design_snackbar_min_width = global::LagoVista.Droid.Simulator.Resource.Dimension.design_snackbar_min_width;
+			global::LagoVista.XPlat.Droid.Resource.Dimension.design_snackbar_padding_horizontal = global::LagoVista.Droid.Simulator.Resource.Dimension.design_snackbar_padding_horizontal;
+			global::LagoVista.XPlat.Droid.Resource.Dimension.design_snackbar_padding_vertical = global::LagoVista.Droid.Simulator.Resource.Dimension.design_snackbar_padding_vertical;
+			global::LagoVista.XPlat.Droid.Resource.Dimension.design_snackbar_padding_vertical_2lines = global::LagoVista.Droid.Simulator.Resource.Dimension.design_snackbar_padding_vertical_2lines;
+			global::LagoVista.XPlat.Droid.Resource.Dimension.design_snackbar_text_size = global::LagoVista.Droid.Simulator.Resource.Dimension.design_snackbar_text_size;
+			global::LagoVista.XPlat.Droid.Resource.Dimension.design_tab_max_width = global::LagoVista.Droid.Simulator.Resource.Dimension.design_tab_max_width;
+			global::LagoVista.XPlat.Droid.Resource.Dimension.design_tab_scrollable_min_width = global::LagoVista.Droid.Simulator.Resource.Dimension.design_tab_scrollable_min_width;
+			global::LagoVista.XPlat.Droid.Resource.Dimension.design_tab_text_size = global::LagoVista.Droid.Simulator.Resource.Dimension.design_tab_text_size;
+			global::LagoVista.XPlat.Droid.Resource.Dimension.design_tab_text_size_2line = global::LagoVista.Droid.Simulator.Resource.Dimension.design_tab_text_size_2line;
+			global::LagoVista.XPlat.Droid.Resource.Dimension.disabled_alpha_material_dark = global::LagoVista.Droid.Simulator.Resource.Dimension.disabled_alpha_material_dark;
+			global::LagoVista.XPlat.Droid.Resource.Dimension.disabled_alpha_material_light = global::LagoVista.Droid.Simulator.Resource.Dimension.disabled_alpha_material_light;
+			global::LagoVista.XPlat.Droid.Resource.Dimension.highlight_alpha_material_colored = global::LagoVista.Droid.Simulator.Resource.Dimension.highlight_alpha_material_colored;
+			global::LagoVista.XPlat.Droid.Resource.Dimension.highlight_alpha_material_dark = global::LagoVista.Droid.Simulator.Resource.Dimension.highlight_alpha_material_dark;
+			global::LagoVista.XPlat.Droid.Resource.Dimension.highlight_alpha_material_light = global::LagoVista.Droid.Simulator.Resource.Dimension.highlight_alpha_material_light;
+			global::LagoVista.XPlat.Droid.Resource.Dimension.hint_alpha_material_dark = global::LagoVista.Droid.Simulator.Resource.Dimension.hint_alpha_material_dark;
+			global::LagoVista.XPlat.Droid.Resource.Dimension.hint_alpha_material_light = global::LagoVista.Droid.Simulator.Resource.Dimension.hint_alpha_material_light;
+			global::LagoVista.XPlat.Droid.Resource.Dimension.hint_pressed_alpha_material_dark = global::LagoVista.Droid.Simulator.Resource.Dimension.hint_pressed_alpha_material_dark;
+			global::LagoVista.XPlat.Droid.Resource.Dimension.hint_pressed_alpha_material_light = global::LagoVista.Droid.Simulator.Resource.Dimension.hint_pressed_alpha_material_light;
+			global::LagoVista.XPlat.Droid.Resource.Dimension.item_touch_helper_max_drag_scroll_per_frame = global::LagoVista.Droid.Simulator.Resource.Dimension.item_touch_helper_max_drag_scroll_per_frame;
+			global::LagoVista.XPlat.Droid.Resource.Dimension.item_touch_helper_swipe_escape_max_velocity = global::LagoVista.Droid.Simulator.Resource.Dimension.item_touch_helper_swipe_escape_max_velocity;
+			global::LagoVista.XPlat.Droid.Resource.Dimension.item_touch_helper_swipe_escape_velocity = global::LagoVista.Droid.Simulator.Resource.Dimension.item_touch_helper_swipe_escape_velocity;
+			global::LagoVista.XPlat.Droid.Resource.Dimension.mr_controller_volume_group_list_item_height = global::LagoVista.Droid.Simulator.Resource.Dimension.mr_controller_volume_group_list_item_height;
+			global::LagoVista.XPlat.Droid.Resource.Dimension.mr_controller_volume_group_list_item_icon_size = global::LagoVista.Droid.Simulator.Resource.Dimension.mr_controller_volume_group_list_item_icon_size;
+			global::LagoVista.XPlat.Droid.Resource.Dimension.mr_controller_volume_group_list_max_height = global::LagoVista.Droid.Simulator.Resource.Dimension.mr_controller_volume_group_list_max_height;
+			global::LagoVista.XPlat.Droid.Resource.Dimension.mr_controller_volume_group_list_padding_top = global::LagoVista.Droid.Simulator.Resource.Dimension.mr_controller_volume_group_list_padding_top;
+			global::LagoVista.XPlat.Droid.Resource.Dimension.mr_dialog_fixed_width_major = global::LagoVista.Droid.Simulator.Resource.Dimension.mr_dialog_fixed_width_major;
+			global::LagoVista.XPlat.Droid.Resource.Dimension.mr_dialog_fixed_width_minor = global::LagoVista.Droid.Simulator.Resource.Dimension.mr_dialog_fixed_width_minor;
+			global::LagoVista.XPlat.Droid.Resource.Dimension.notification_action_icon_size = global::LagoVista.Droid.Simulator.Resource.Dimension.notification_action_icon_size;
+			global::LagoVista.XPlat.Droid.Resource.Dimension.notification_action_text_size = global::LagoVista.Droid.Simulator.Resource.Dimension.notification_action_text_size;
+			global::LagoVista.XPlat.Droid.Resource.Dimension.notification_big_circle_margin = global::LagoVista.Droid.Simulator.Resource.Dimension.notification_big_circle_margin;
+			global::LagoVista.XPlat.Droid.Resource.Dimension.notification_content_margin_start = global::LagoVista.Droid.Simulator.Resource.Dimension.notification_content_margin_start;
+			global::LagoVista.XPlat.Droid.Resource.Dimension.notification_large_icon_height = global::LagoVista.Droid.Simulator.Resource.Dimension.notification_large_icon_height;
+			global::LagoVista.XPlat.Droid.Resource.Dimension.notification_large_icon_width = global::LagoVista.Droid.Simulator.Resource.Dimension.notification_large_icon_width;
+			global::LagoVista.XPlat.Droid.Resource.Dimension.notification_main_column_padding_top = global::LagoVista.Droid.Simulator.Resource.Dimension.notification_main_column_padding_top;
+			global::LagoVista.XPlat.Droid.Resource.Dimension.notification_media_narrow_margin = global::LagoVista.Droid.Simulator.Resource.Dimension.notification_media_narrow_margin;
+			global::LagoVista.XPlat.Droid.Resource.Dimension.notification_right_icon_size = global::LagoVista.Droid.Simulator.Resource.Dimension.notification_right_icon_size;
+			global::LagoVista.XPlat.Droid.Resource.Dimension.notification_right_side_padding_top = global::LagoVista.Droid.Simulator.Resource.Dimension.notification_right_side_padding_top;
+			global::LagoVista.XPlat.Droid.Resource.Dimension.notification_small_icon_background_padding = global::LagoVista.Droid.Simulator.Resource.Dimension.notification_small_icon_background_padding;
+			global::LagoVista.XPlat.Droid.Resource.Dimension.notification_small_icon_size_as_large = global::LagoVista.Droid.Simulator.Resource.Dimension.notification_small_icon_size_as_large;
+			global::LagoVista.XPlat.Droid.Resource.Dimension.notification_subtext_size = global::LagoVista.Droid.Simulator.Resource.Dimension.notification_subtext_size;
+			global::LagoVista.XPlat.Droid.Resource.Dimension.notification_top_pad = global::LagoVista.Droid.Simulator.Resource.Dimension.notification_top_pad;
+			global::LagoVista.XPlat.Droid.Resource.Dimension.notification_top_pad_large_text = global::LagoVista.Droid.Simulator.Resource.Dimension.notification_top_pad_large_text;
+			global::LagoVista.XPlat.Droid.Resource.Drawable.abc_ab_share_pack_mtrl_alpha = global::LagoVista.Droid.Simulator.Resource.Drawable.abc_ab_share_pack_mtrl_alpha;
+			global::LagoVista.XPlat.Droid.Resource.Drawable.abc_action_bar_item_background_material = global::LagoVista.Droid.Simulator.Resource.Drawable.abc_action_bar_item_background_material;
+			global::LagoVista.XPlat.Droid.Resource.Drawable.abc_btn_borderless_material = global::LagoVista.Droid.Simulator.Resource.Drawable.abc_btn_borderless_material;
+			global::LagoVista.XPlat.Droid.Resource.Drawable.abc_btn_check_material = global::LagoVista.Droid.Simulator.Resource.Drawable.abc_btn_check_material;
+			global::LagoVista.XPlat.Droid.Resource.Drawable.abc_btn_check_to_on_mtrl_000 = global::LagoVista.Droid.Simulator.Resource.Drawable.abc_btn_check_to_on_mtrl_000;
+			global::LagoVista.XPlat.Droid.Resource.Drawable.abc_btn_check_to_on_mtrl_015 = global::LagoVista.Droid.Simulator.Resource.Drawable.abc_btn_check_to_on_mtrl_015;
+			global::LagoVista.XPlat.Droid.Resource.Drawable.abc_btn_colored_material = global::LagoVista.Droid.Simulator.Resource.Drawable.abc_btn_colored_material;
+			global::LagoVista.XPlat.Droid.Resource.Drawable.abc_btn_default_mtrl_shape = global::LagoVista.Droid.Simulator.Resource.Drawable.abc_btn_default_mtrl_shape;
+			global::LagoVista.XPlat.Droid.Resource.Drawable.abc_btn_radio_material = global::LagoVista.Droid.Simulator.Resource.Drawable.abc_btn_radio_material;
+			global::LagoVista.XPlat.Droid.Resource.Drawable.abc_btn_radio_to_on_mtrl_000 = global::LagoVista.Droid.Simulator.Resource.Drawable.abc_btn_radio_to_on_mtrl_000;
+			global::LagoVista.XPlat.Droid.Resource.Drawable.abc_btn_radio_to_on_mtrl_015 = global::LagoVista.Droid.Simulator.Resource.Drawable.abc_btn_radio_to_on_mtrl_015;
+			global::LagoVista.XPlat.Droid.Resource.Drawable.abc_btn_switch_to_on_mtrl_00001 = global::LagoVista.Droid.Simulator.Resource.Drawable.abc_btn_switch_to_on_mtrl_00001;
+			global::LagoVista.XPlat.Droid.Resource.Drawable.abc_btn_switch_to_on_mtrl_00012 = global::LagoVista.Droid.Simulator.Resource.Drawable.abc_btn_switch_to_on_mtrl_00012;
+			global::LagoVista.XPlat.Droid.Resource.Drawable.abc_cab_background_internal_bg = global::LagoVista.Droid.Simulator.Resource.Drawable.abc_cab_background_internal_bg;
+			global::LagoVista.XPlat.Droid.Resource.Drawable.abc_cab_background_top_material = global::LagoVista.Droid.Simulator.Resource.Drawable.abc_cab_background_top_material;
+			global::LagoVista.XPlat.Droid.Resource.Drawable.abc_cab_background_top_mtrl_alpha = global::LagoVista.Droid.Simulator.Resource.Drawable.abc_cab_background_top_mtrl_alpha;
+			global::LagoVista.XPlat.Droid.Resource.Drawable.abc_control_background_material = global::LagoVista.Droid.Simulator.Resource.Drawable.abc_control_background_material;
+			global::LagoVista.XPlat.Droid.Resource.Drawable.abc_dialog_material_background = global::LagoVista.Droid.Simulator.Resource.Drawable.abc_dialog_material_background;
+			global::LagoVista.XPlat.Droid.Resource.Drawable.abc_edit_text_material = global::LagoVista.Droid.Simulator.Resource.Drawable.abc_edit_text_material;
+			global::LagoVista.XPlat.Droid.Resource.Drawable.abc_ic_ab_back_material = global::LagoVista.Droid.Simulator.Resource.Drawable.abc_ic_ab_back_material;
+			global::LagoVista.XPlat.Droid.Resource.Drawable.abc_ic_arrow_drop_right_black_24dp = global::LagoVista.Droid.Simulator.Resource.Drawable.abc_ic_arrow_drop_right_black_24dp;
+			global::LagoVista.XPlat.Droid.Resource.Drawable.abc_ic_clear_material = global::LagoVista.Droid.Simulator.Resource.Drawable.abc_ic_clear_material;
+			global::LagoVista.XPlat.Droid.Resource.Drawable.abc_ic_commit_search_api_mtrl_alpha = global::LagoVista.Droid.Simulator.Resource.Drawable.abc_ic_commit_search_api_mtrl_alpha;
+			global::LagoVista.XPlat.Droid.Resource.Drawable.abc_ic_go_search_api_material = global::LagoVista.Droid.Simulator.Resource.Drawable.abc_ic_go_search_api_material;
+			global::LagoVista.XPlat.Droid.Resource.Drawable.abc_ic_menu_copy_mtrl_am_alpha = global::LagoVista.Droid.Simulator.Resource.Drawable.abc_ic_menu_copy_mtrl_am_alpha;
+			global::LagoVista.XPlat.Droid.Resource.Drawable.abc_ic_menu_cut_mtrl_alpha = global::LagoVista.Droid.Simulator.Resource.Drawable.abc_ic_menu_cut_mtrl_alpha;
+			global::LagoVista.XPlat.Droid.Resource.Drawable.abc_ic_menu_overflow_material = global::LagoVista.Droid.Simulator.Resource.Drawable.abc_ic_menu_overflow_material;
+			global::LagoVista.XPlat.Droid.Resource.Drawable.abc_ic_menu_paste_mtrl_am_alpha = global::LagoVista.Droid.Simulator.Resource.Drawable.abc_ic_menu_paste_mtrl_am_alpha;
+			global::LagoVista.XPlat.Droid.Resource.Drawable.abc_ic_menu_selectall_mtrl_alpha = global::LagoVista.Droid.Simulator.Resource.Drawable.abc_ic_menu_selectall_mtrl_alpha;
+			global::LagoVista.XPlat.Droid.Resource.Drawable.abc_ic_menu_share_mtrl_alpha = global::LagoVista.Droid.Simulator.Resource.Drawable.abc_ic_menu_share_mtrl_alpha;
+			global::LagoVista.XPlat.Droid.Resource.Drawable.abc_ic_search_api_material = global::LagoVista.Droid.Simulator.Resource.Drawable.abc_ic_search_api_material;
+			global::LagoVista.XPlat.Droid.Resource.Drawable.abc_ic_star_black_16dp = global::LagoVista.Droid.Simulator.Resource.Drawable.abc_ic_star_black_16dp;
+			global::LagoVista.XPlat.Droid.Resource.Drawable.abc_ic_star_black_36dp = global::LagoVista.Droid.Simulator.Resource.Drawable.abc_ic_star_black_36dp;
+			global::LagoVista.XPlat.Droid.Resource.Drawable.abc_ic_star_black_48dp = global::LagoVista.Droid.Simulator.Resource.Drawable.abc_ic_star_black_48dp;
+			global::LagoVista.XPlat.Droid.Resource.Drawable.abc_ic_star_half_black_16dp = global::LagoVista.Droid.Simulator.Resource.Drawable.abc_ic_star_half_black_16dp;
+			global::LagoVista.XPlat.Droid.Resource.Drawable.abc_ic_star_half_black_36dp = global::LagoVista.Droid.Simulator.Resource.Drawable.abc_ic_star_half_black_36dp;
+			global::LagoVista.XPlat.Droid.Resource.Drawable.abc_ic_star_half_black_48dp = global::LagoVista.Droid.Simulator.Resource.Drawable.abc_ic_star_half_black_48dp;
+			global::LagoVista.XPlat.Droid.Resource.Drawable.abc_ic_voice_search_api_material = global::LagoVista.Droid.Simulator.Resource.Drawable.abc_ic_voice_search_api_material;
+			global::LagoVista.XPlat.Droid.Resource.Drawable.abc_item_background_holo_dark = global::LagoVista.Droid.Simulator.Resource.Drawable.abc_item_background_holo_dark;
+			global::LagoVista.XPlat.Droid.Resource.Drawable.abc_item_background_holo_light = global::LagoVista.Droid.Simulator.Resource.Drawable.abc_item_background_holo_light;
+			global::LagoVista.XPlat.Droid.Resource.Drawable.abc_list_divider_mtrl_alpha = global::LagoVista.Droid.Simulator.Resource.Drawable.abc_list_divider_mtrl_alpha;
+			global::LagoVista.XPlat.Droid.Resource.Drawable.abc_list_focused_holo = global::LagoVista.Droid.Simulator.Resource.Drawable.abc_list_focused_holo;
+			global::LagoVista.XPlat.Droid.Resource.Drawable.abc_list_longpressed_holo = global::LagoVista.Droid.Simulator.Resource.Drawable.abc_list_longpressed_holo;
+			global::LagoVista.XPlat.Droid.Resource.Drawable.abc_list_pressed_holo_dark = global::LagoVista.Droid.Simulator.Resource.Drawable.abc_list_pressed_holo_dark;
+			global::LagoVista.XPlat.Droid.Resource.Drawable.abc_list_pressed_holo_light = global::LagoVista.Droid.Simulator.Resource.Drawable.abc_list_pressed_holo_light;
+			global::LagoVista.XPlat.Droid.Resource.Drawable.abc_list_selector_background_transition_holo_dark = global::LagoVista.Droid.Simulator.Resource.Drawable.abc_list_selector_background_transition_holo_dark;
+			global::LagoVista.XPlat.Droid.Resource.Drawable.abc_list_selector_background_transition_holo_light = global::LagoVista.Droid.Simulator.Resource.Drawable.abc_list_selector_background_transition_holo_light;
+			global::LagoVista.XPlat.Droid.Resource.Drawable.abc_list_selector_disabled_holo_dark = global::LagoVista.Droid.Simulator.Resource.Drawable.abc_list_selector_disabled_holo_dark;
+			global::LagoVista.XPlat.Droid.Resource.Drawable.abc_list_selector_disabled_holo_light = global::LagoVista.Droid.Simulator.Resource.Drawable.abc_list_selector_disabled_holo_light;
+			global::LagoVista.XPlat.Droid.Resource.Drawable.abc_list_selector_holo_dark = global::LagoVista.Droid.Simulator.Resource.Drawable.abc_list_selector_holo_dark;
+			global::LagoVista.XPlat.Droid.Resource.Drawable.abc_list_selector_holo_light = global::LagoVista.Droid.Simulator.Resource.Drawable.abc_list_selector_holo_light;
+			global::LagoVista.XPlat.Droid.Resource.Drawable.abc_menu_hardkey_panel_mtrl_mult = global::LagoVista.Droid.Simulator.Resource.Drawable.abc_menu_hardkey_panel_mtrl_mult;
+			global::LagoVista.XPlat.Droid.Resource.Drawable.abc_popup_background_mtrl_mult = global::LagoVista.Droid.Simulator.Resource.Drawable.abc_popup_background_mtrl_mult;
+			global::LagoVista.XPlat.Droid.Resource.Drawable.abc_ratingbar_indicator_material = global::LagoVista.Droid.Simulator.Resource.Drawable.abc_ratingbar_indicator_material;
+			global::LagoVista.XPlat.Droid.Resource.Drawable.abc_ratingbar_material = global::LagoVista.Droid.Simulator.Resource.Drawable.abc_ratingbar_material;
+			global::LagoVista.XPlat.Droid.Resource.Drawable.abc_ratingbar_small_material = global::LagoVista.Droid.Simulator.Resource.Drawable.abc_ratingbar_small_material;
+			global::LagoVista.XPlat.Droid.Resource.Drawable.abc_scrubber_control_off_mtrl_alpha = global::LagoVista.Droid.Simulator.Resource.Drawable.abc_scrubber_control_off_mtrl_alpha;
+			global::LagoVista.XPlat.Droid.Resource.Drawable.abc_scrubber_control_to_pressed_mtrl_000 = global::LagoVista.Droid.Simulator.Resource.Drawable.abc_scrubber_control_to_pressed_mtrl_000;
+			global::LagoVista.XPlat.Droid.Resource.Drawable.abc_scrubber_control_to_pressed_mtrl_005 = global::LagoVista.Droid.Simulator.Resource.Drawable.abc_scrubber_control_to_pressed_mtrl_005;
+			global::LagoVista.XPlat.Droid.Resource.Drawable.abc_scrubber_primary_mtrl_alpha = global::LagoVista.Droid.Simulator.Resource.Drawable.abc_scrubber_primary_mtrl_alpha;
+			global::LagoVista.XPlat.Droid.Resource.Drawable.abc_scrubber_track_mtrl_alpha = global::LagoVista.Droid.Simulator.Resource.Drawable.abc_scrubber_track_mtrl_alpha;
+			global::LagoVista.XPlat.Droid.Resource.Drawable.abc_seekbar_thumb_material = global::LagoVista.Droid.Simulator.Resource.Drawable.abc_seekbar_thumb_material;
+			global::LagoVista.XPlat.Droid.Resource.Drawable.abc_seekbar_tick_mark_material = global::LagoVista.Droid.Simulator.Resource.Drawable.abc_seekbar_tick_mark_material;
+			global::LagoVista.XPlat.Droid.Resource.Drawable.abc_seekbar_track_material = global::LagoVista.Droid.Simulator.Resource.Drawable.abc_seekbar_track_material;
+			global::LagoVista.XPlat.Droid.Resource.Drawable.abc_spinner_mtrl_am_alpha = global::LagoVista.Droid.Simulator.Resource.Drawable.abc_spinner_mtrl_am_alpha;
+			global::LagoVista.XPlat.Droid.Resource.Drawable.abc_spinner_textfield_background_material = global::LagoVista.Droid.Simulator.Resource.Drawable.abc_spinner_textfield_background_material;
+			global::LagoVista.XPlat.Droid.Resource.Drawable.abc_switch_thumb_material = global::LagoVista.Droid.Simulator.Resource.Drawable.abc_switch_thumb_material;
+			global::LagoVista.XPlat.Droid.Resource.Drawable.abc_switch_track_mtrl_alpha = global::LagoVista.Droid.Simulator.Resource.Drawable.abc_switch_track_mtrl_alpha;
+			global::LagoVista.XPlat.Droid.Resource.Drawable.abc_tab_indicator_material = global::LagoVista.Droid.Simulator.Resource.Drawable.abc_tab_indicator_material;
+			global::LagoVista.XPlat.Droid.Resource.Drawable.abc_tab_indicator_mtrl_alpha = global::LagoVista.Droid.Simulator.Resource.Drawable.abc_tab_indicator_mtrl_alpha;
+			global::LagoVista.XPlat.Droid.Resource.Drawable.abc_text_cursor_material = global::LagoVista.Droid.Simulator.Resource.Drawable.abc_text_cursor_material;
+			global::LagoVista.XPlat.Droid.Resource.Drawable.abc_text_select_handle_left_mtrl_dark = global::LagoVista.Droid.Simulator.Resource.Drawable.abc_text_select_handle_left_mtrl_dark;
+			global::LagoVista.XPlat.Droid.Resource.Drawable.abc_text_select_handle_left_mtrl_light = global::LagoVista.Droid.Simulator.Resource.Drawable.abc_text_select_handle_left_mtrl_light;
+			global::LagoVista.XPlat.Droid.Resource.Drawable.abc_text_select_handle_middle_mtrl_dark = global::LagoVista.Droid.Simulator.Resource.Drawable.abc_text_select_handle_middle_mtrl_dark;
+			global::LagoVista.XPlat.Droid.Resource.Drawable.abc_text_select_handle_middle_mtrl_light = global::LagoVista.Droid.Simulator.Resource.Drawable.abc_text_select_handle_middle_mtrl_light;
+			global::LagoVista.XPlat.Droid.Resource.Drawable.abc_text_select_handle_right_mtrl_dark = global::LagoVista.Droid.Simulator.Resource.Drawable.abc_text_select_handle_right_mtrl_dark;
+			global::LagoVista.XPlat.Droid.Resource.Drawable.abc_text_select_handle_right_mtrl_light = global::LagoVista.Droid.Simulator.Resource.Drawable.abc_text_select_handle_right_mtrl_light;
+			global::LagoVista.XPlat.Droid.Resource.Drawable.abc_textfield_activated_mtrl_alpha = global::LagoVista.Droid.Simulator.Resource.Drawable.abc_textfield_activated_mtrl_alpha;
+			global::LagoVista.XPlat.Droid.Resource.Drawable.abc_textfield_default_mtrl_alpha = global::LagoVista.Droid.Simulator.Resource.Drawable.abc_textfield_default_mtrl_alpha;
+			global::LagoVista.XPlat.Droid.Resource.Drawable.abc_textfield_search_activated_mtrl_alpha = global::LagoVista.Droid.Simulator.Resource.Drawable.abc_textfield_search_activated_mtrl_alpha;
+			global::LagoVista.XPlat.Droid.Resource.Drawable.abc_textfield_search_default_mtrl_alpha = global::LagoVista.Droid.Simulator.Resource.Drawable.abc_textfield_search_default_mtrl_alpha;
+			global::LagoVista.XPlat.Droid.Resource.Drawable.abc_textfield_search_material = global::LagoVista.Droid.Simulator.Resource.Drawable.abc_textfield_search_material;
+			global::LagoVista.XPlat.Droid.Resource.Drawable.abc_vector_test = global::LagoVista.Droid.Simulator.Resource.Drawable.abc_vector_test;
+			global::LagoVista.XPlat.Droid.Resource.Drawable.avd_hide_password = global::LagoVista.Droid.Simulator.Resource.Drawable.avd_hide_password;
+			global::LagoVista.XPlat.Droid.Resource.Drawable.avd_hide_password_1 = global::LagoVista.Droid.Simulator.Resource.Drawable.avd_hide_password_1;
+			global::LagoVista.XPlat.Droid.Resource.Drawable.avd_hide_password_2 = global::LagoVista.Droid.Simulator.Resource.Drawable.avd_hide_password_2;
+			global::LagoVista.XPlat.Droid.Resource.Drawable.avd_hide_password_3 = global::LagoVista.Droid.Simulator.Resource.Drawable.avd_hide_password_3;
+			global::LagoVista.XPlat.Droid.Resource.Drawable.avd_show_password = global::LagoVista.Droid.Simulator.Resource.Drawable.avd_show_password;
+			global::LagoVista.XPlat.Droid.Resource.Drawable.avd_show_password_1 = global::LagoVista.Droid.Simulator.Resource.Drawable.avd_show_password_1;
+			global::LagoVista.XPlat.Droid.Resource.Drawable.avd_show_password_2 = global::LagoVista.Droid.Simulator.Resource.Drawable.avd_show_password_2;
+			global::LagoVista.XPlat.Droid.Resource.Drawable.avd_show_password_3 = global::LagoVista.Droid.Simulator.Resource.Drawable.avd_show_password_3;
+			global::LagoVista.XPlat.Droid.Resource.Drawable.design_bottom_navigation_item_background = global::LagoVista.Droid.Simulator.Resource.Drawable.design_bottom_navigation_item_background;
+			global::LagoVista.XPlat.Droid.Resource.Drawable.design_fab_background = global::LagoVista.Droid.Simulator.Resource.Drawable.design_fab_background;
+			global::LagoVista.XPlat.Droid.Resource.Drawable.design_ic_visibility = global::LagoVista.Droid.Simulator.Resource.Drawable.design_ic_visibility;
+			global::LagoVista.XPlat.Droid.Resource.Drawable.design_ic_visibility_off = global::LagoVista.Droid.Simulator.Resource.Drawable.design_ic_visibility_off;
+			global::LagoVista.XPlat.Droid.Resource.Drawable.design_password_eye = global::LagoVista.Droid.Simulator.Resource.Drawable.design_password_eye;
+			global::LagoVista.XPlat.Droid.Resource.Drawable.design_snackbar_background = global::LagoVista.Droid.Simulator.Resource.Drawable.design_snackbar_background;
+			global::LagoVista.XPlat.Droid.Resource.Drawable.ic_audiotrack_dark = global::LagoVista.Droid.Simulator.Resource.Drawable.ic_audiotrack_dark;
+			global::LagoVista.XPlat.Droid.Resource.Drawable.ic_audiotrack_light = global::LagoVista.Droid.Simulator.Resource.Drawable.ic_audiotrack_light;
+			global::LagoVista.XPlat.Droid.Resource.Drawable.ic_dialog_close_dark = global::LagoVista.Droid.Simulator.Resource.Drawable.ic_dialog_close_dark;
+			global::LagoVista.XPlat.Droid.Resource.Drawable.ic_dialog_close_light = global::LagoVista.Droid.Simulator.Resource.Drawable.ic_dialog_close_light;
+			global::LagoVista.XPlat.Droid.Resource.Drawable.ic_group_collapse_00 = global::LagoVista.Droid.Simulator.Resource.Drawable.ic_group_collapse_00;
+			global::LagoVista.XPlat.Droid.Resource.Drawable.ic_group_collapse_01 = global::LagoVista.Droid.Simulator.Resource.Drawable.ic_group_collapse_01;
+			global::LagoVista.XPlat.Droid.Resource.Drawable.ic_group_collapse_02 = global::LagoVista.Droid.Simulator.Resource.Drawable.ic_group_collapse_02;
+			global::LagoVista.XPlat.Droid.Resource.Drawable.ic_group_collapse_03 = global::LagoVista.Droid.Simulator.Resource.Drawable.ic_group_collapse_03;
+			global::LagoVista.XPlat.Droid.Resource.Drawable.ic_group_collapse_04 = global::LagoVista.Droid.Simulator.Resource.Drawable.ic_group_collapse_04;
+			global::LagoVista.XPlat.Droid.Resource.Drawable.ic_group_collapse_05 = global::LagoVista.Droid.Simulator.Resource.Drawable.ic_group_collapse_05;
+			global::LagoVista.XPlat.Droid.Resource.Drawable.ic_group_collapse_06 = global::LagoVista.Droid.Simulator.Resource.Drawable.ic_group_collapse_06;
+			global::LagoVista.XPlat.Droid.Resource.Drawable.ic_group_collapse_07 = global::LagoVista.Droid.Simulator.Resource.Drawable.ic_group_collapse_07;
+			global::LagoVista.XPlat.Droid.Resource.Drawable.ic_group_collapse_08 = global::LagoVista.Droid.Simulator.Resource.Drawable.ic_group_collapse_08;
+			global::LagoVista.XPlat.Droid.Resource.Drawable.ic_group_collapse_09 = global::LagoVista.Droid.Simulator.Resource.Drawable.ic_group_collapse_09;
+			global::LagoVista.XPlat.Droid.Resource.Drawable.ic_group_collapse_10 = global::LagoVista.Droid.Simulator.Resource.Drawable.ic_group_collapse_10;
+			global::LagoVista.XPlat.Droid.Resource.Drawable.ic_group_collapse_11 = global::LagoVista.Droid.Simulator.Resource.Drawable.ic_group_collapse_11;
+			global::LagoVista.XPlat.Droid.Resource.Drawable.ic_group_collapse_12 = global::LagoVista.Droid.Simulator.Resource.Drawable.ic_group_collapse_12;
+			global::LagoVista.XPlat.Droid.Resource.Drawable.ic_group_collapse_13 = global::LagoVista.Droid.Simulator.Resource.Drawable.ic_group_collapse_13;
+			global::LagoVista.XPlat.Droid.Resource.Drawable.ic_group_collapse_14 = global::LagoVista.Droid.Simulator.Resource.Drawable.ic_group_collapse_14;
+			global::LagoVista.XPlat.Droid.Resource.Drawable.ic_group_collapse_15 = global::LagoVista.Droid.Simulator.Resource.Drawable.ic_group_collapse_15;
+			global::LagoVista.XPlat.Droid.Resource.Drawable.ic_group_expand_00 = global::LagoVista.Droid.Simulator.Resource.Drawable.ic_group_expand_00;
+			global::LagoVista.XPlat.Droid.Resource.Drawable.ic_group_expand_01 = global::LagoVista.Droid.Simulator.Resource.Drawable.ic_group_expand_01;
+			global::LagoVista.XPlat.Droid.Resource.Drawable.ic_group_expand_02 = global::LagoVista.Droid.Simulator.Resource.Drawable.ic_group_expand_02;
+			global::LagoVista.XPlat.Droid.Resource.Drawable.ic_group_expand_03 = global::LagoVista.Droid.Simulator.Resource.Drawable.ic_group_expand_03;
+			global::LagoVista.XPlat.Droid.Resource.Drawable.ic_group_expand_04 = global::LagoVista.Droid.Simulator.Resource.Drawable.ic_group_expand_04;
+			global::LagoVista.XPlat.Droid.Resource.Drawable.ic_group_expand_05 = global::LagoVista.Droid.Simulator.Resource.Drawable.ic_group_expand_05;
+			global::LagoVista.XPlat.Droid.Resource.Drawable.ic_group_expand_06 = global::LagoVista.Droid.Simulator.Resource.Drawable.ic_group_expand_06;
+			global::LagoVista.XPlat.Droid.Resource.Drawable.ic_group_expand_07 = global::LagoVista.Droid.Simulator.Resource.Drawable.ic_group_expand_07;
+			global::LagoVista.XPlat.Droid.Resource.Drawable.ic_group_expand_08 = global::LagoVista.Droid.Simulator.Resource.Drawable.ic_group_expand_08;
+			global::LagoVista.XPlat.Droid.Resource.Drawable.ic_group_expand_09 = global::LagoVista.Droid.Simulator.Resource.Drawable.ic_group_expand_09;
+			global::LagoVista.XPlat.Droid.Resource.Drawable.ic_group_expand_10 = global::LagoVista.Droid.Simulator.Resource.Drawable.ic_group_expand_10;
+			global::LagoVista.XPlat.Droid.Resource.Drawable.ic_group_expand_11 = global::LagoVista.Droid.Simulator.Resource.Drawable.ic_group_expand_11;
+			global::LagoVista.XPlat.Droid.Resource.Drawable.ic_group_expand_12 = global::LagoVista.Droid.Simulator.Resource.Drawable.ic_group_expand_12;
+			global::LagoVista.XPlat.Droid.Resource.Drawable.ic_group_expand_13 = global::LagoVista.Droid.Simulator.Resource.Drawable.ic_group_expand_13;
+			global::LagoVista.XPlat.Droid.Resource.Drawable.ic_group_expand_14 = global::LagoVista.Droid.Simulator.Resource.Drawable.ic_group_expand_14;
+			global::LagoVista.XPlat.Droid.Resource.Drawable.ic_group_expand_15 = global::LagoVista.Droid.Simulator.Resource.Drawable.ic_group_expand_15;
+			global::LagoVista.XPlat.Droid.Resource.Drawable.ic_media_pause_dark = global::LagoVista.Droid.Simulator.Resource.Drawable.ic_media_pause_dark;
+			global::LagoVista.XPlat.Droid.Resource.Drawable.ic_media_pause_light = global::LagoVista.Droid.Simulator.Resource.Drawable.ic_media_pause_light;
+			global::LagoVista.XPlat.Droid.Resource.Drawable.ic_media_play_dark = global::LagoVista.Droid.Simulator.Resource.Drawable.ic_media_play_dark;
+			global::LagoVista.XPlat.Droid.Resource.Drawable.ic_media_play_light = global::LagoVista.Droid.Simulator.Resource.Drawable.ic_media_play_light;
+			global::LagoVista.XPlat.Droid.Resource.Drawable.ic_media_stop_dark = global::LagoVista.Droid.Simulator.Resource.Drawable.ic_media_stop_dark;
+			global::LagoVista.XPlat.Droid.Resource.Drawable.ic_media_stop_light = global::LagoVista.Droid.Simulator.Resource.Drawable.ic_media_stop_light;
+			global::LagoVista.XPlat.Droid.Resource.Drawable.ic_mr_button_connected_00_dark = global::LagoVista.Droid.Simulator.Resource.Drawable.ic_mr_button_connected_00_dark;
+			global::LagoVista.XPlat.Droid.Resource.Drawable.ic_mr_button_connected_00_light = global::LagoVista.Droid.Simulator.Resource.Drawable.ic_mr_button_connected_00_light;
+			global::LagoVista.XPlat.Droid.Resource.Drawable.ic_mr_button_connected_01_dark = global::LagoVista.Droid.Simulator.Resource.Drawable.ic_mr_button_connected_01_dark;
+			global::LagoVista.XPlat.Droid.Resource.Drawable.ic_mr_button_connected_01_light = global::LagoVista.Droid.Simulator.Resource.Drawable.ic_mr_button_connected_01_light;
+			global::LagoVista.XPlat.Droid.Resource.Drawable.ic_mr_button_connected_02_dark = global::LagoVista.Droid.Simulator.Resource.Drawable.ic_mr_button_connected_02_dark;
+			global::LagoVista.XPlat.Droid.Resource.Drawable.ic_mr_button_connected_02_light = global::LagoVista.Droid.Simulator.Resource.Drawable.ic_mr_button_connected_02_light;
+			global::LagoVista.XPlat.Droid.Resource.Drawable.ic_mr_button_connected_03_dark = global::LagoVista.Droid.Simulator.Resource.Drawable.ic_mr_button_connected_03_dark;
+			global::LagoVista.XPlat.Droid.Resource.Drawable.ic_mr_button_connected_03_light = global::LagoVista.Droid.Simulator.Resource.Drawable.ic_mr_button_connected_03_light;
+			global::LagoVista.XPlat.Droid.Resource.Drawable.ic_mr_button_connected_04_dark = global::LagoVista.Droid.Simulator.Resource.Drawable.ic_mr_button_connected_04_dark;
+			global::LagoVista.XPlat.Droid.Resource.Drawable.ic_mr_button_connected_04_light = global::LagoVista.Droid.Simulator.Resource.Drawable.ic_mr_button_connected_04_light;
+			global::LagoVista.XPlat.Droid.Resource.Drawable.ic_mr_button_connected_05_dark = global::LagoVista.Droid.Simulator.Resource.Drawable.ic_mr_button_connected_05_dark;
+			global::LagoVista.XPlat.Droid.Resource.Drawable.ic_mr_button_connected_05_light = global::LagoVista.Droid.Simulator.Resource.Drawable.ic_mr_button_connected_05_light;
+			global::LagoVista.XPlat.Droid.Resource.Drawable.ic_mr_button_connected_06_dark = global::LagoVista.Droid.Simulator.Resource.Drawable.ic_mr_button_connected_06_dark;
+			global::LagoVista.XPlat.Droid.Resource.Drawable.ic_mr_button_connected_06_light = global::LagoVista.Droid.Simulator.Resource.Drawable.ic_mr_button_connected_06_light;
+			global::LagoVista.XPlat.Droid.Resource.Drawable.ic_mr_button_connected_07_dark = global::LagoVista.Droid.Simulator.Resource.Drawable.ic_mr_button_connected_07_dark;
+			global::LagoVista.XPlat.Droid.Resource.Drawable.ic_mr_button_connected_07_light = global::LagoVista.Droid.Simulator.Resource.Drawable.ic_mr_button_connected_07_light;
+			global::LagoVista.XPlat.Droid.Resource.Drawable.ic_mr_button_connected_08_dark = global::LagoVista.Droid.Simulator.Resource.Drawable.ic_mr_button_connected_08_dark;
+			global::LagoVista.XPlat.Droid.Resource.Drawable.ic_mr_button_connected_08_light = global::LagoVista.Droid.Simulator.Resource.Drawable.ic_mr_button_connected_08_light;
+			global::LagoVista.XPlat.Droid.Resource.Drawable.ic_mr_button_connected_09_dark = global::LagoVista.Droid.Simulator.Resource.Drawable.ic_mr_button_connected_09_dark;
+			global::LagoVista.XPlat.Droid.Resource.Drawable.ic_mr_button_connected_09_light = global::LagoVista.Droid.Simulator.Resource.Drawable.ic_mr_button_connected_09_light;
+			global::LagoVista.XPlat.Droid.Resource.Drawable.ic_mr_button_connected_10_dark = global::LagoVista.Droid.Simulator.Resource.Drawable.ic_mr_button_connected_10_dark;
+			global::LagoVista.XPlat.Droid.Resource.Drawable.ic_mr_button_connected_10_light = global::LagoVista.Droid.Simulator.Resource.Drawable.ic_mr_button_connected_10_light;
+			global::LagoVista.XPlat.Droid.Resource.Drawable.ic_mr_button_connected_11_dark = global::LagoVista.Droid.Simulator.Resource.Drawable.ic_mr_button_connected_11_dark;
+			global::LagoVista.XPlat.Droid.Resource.Drawable.ic_mr_button_connected_11_light = global::LagoVista.Droid.Simulator.Resource.Drawable.ic_mr_button_connected_11_light;
+			global::LagoVista.XPlat.Droid.Resource.Drawable.ic_mr_button_connected_12_dark = global::LagoVista.Droid.Simulator.Resource.Drawable.ic_mr_button_connected_12_dark;
+			global::LagoVista.XPlat.Droid.Resource.Drawable.ic_mr_button_connected_12_light = global::LagoVista.Droid.Simulator.Resource.Drawable.ic_mr_button_connected_12_light;
+			global::LagoVista.XPlat.Droid.Resource.Drawable.ic_mr_button_connected_13_dark = global::LagoVista.Droid.Simulator.Resource.Drawable.ic_mr_button_connected_13_dark;
+			global::LagoVista.XPlat.Droid.Resource.Drawable.ic_mr_button_connected_13_light = global::LagoVista.Droid.Simulator.Resource.Drawable.ic_mr_button_connected_13_light;
+			global::LagoVista.XPlat.Droid.Resource.Drawable.ic_mr_button_connected_14_dark = global::LagoVista.Droid.Simulator.Resource.Drawable.ic_mr_button_connected_14_dark;
+			global::LagoVista.XPlat.Droid.Resource.Drawable.ic_mr_button_connected_14_light = global::LagoVista.Droid.Simulator.Resource.Drawable.ic_mr_button_connected_14_light;
+			global::LagoVista.XPlat.Droid.Resource.Drawable.ic_mr_button_connected_15_dark = global::LagoVista.Droid.Simulator.Resource.Drawable.ic_mr_button_connected_15_dark;
+			global::LagoVista.XPlat.Droid.Resource.Drawable.ic_mr_button_connected_15_light = global::LagoVista.Droid.Simulator.Resource.Drawable.ic_mr_button_connected_15_light;
+			global::LagoVista.XPlat.Droid.Resource.Drawable.ic_mr_button_connected_16_dark = global::LagoVista.Droid.Simulator.Resource.Drawable.ic_mr_button_connected_16_dark;
+			global::LagoVista.XPlat.Droid.Resource.Drawable.ic_mr_button_connected_16_light = global::LagoVista.Droid.Simulator.Resource.Drawable.ic_mr_button_connected_16_light;
+			global::LagoVista.XPlat.Droid.Resource.Drawable.ic_mr_button_connected_17_dark = global::LagoVista.Droid.Simulator.Resource.Drawable.ic_mr_button_connected_17_dark;
+			global::LagoVista.XPlat.Droid.Resource.Drawable.ic_mr_button_connected_17_light = global::LagoVista.Droid.Simulator.Resource.Drawable.ic_mr_button_connected_17_light;
+			global::LagoVista.XPlat.Droid.Resource.Drawable.ic_mr_button_connected_18_dark = global::LagoVista.Droid.Simulator.Resource.Drawable.ic_mr_button_connected_18_dark;
+			global::LagoVista.XPlat.Droid.Resource.Drawable.ic_mr_button_connected_18_light = global::LagoVista.Droid.Simulator.Resource.Drawable.ic_mr_button_connected_18_light;
+			global::LagoVista.XPlat.Droid.Resource.Drawable.ic_mr_button_connected_19_dark = global::LagoVista.Droid.Simulator.Resource.Drawable.ic_mr_button_connected_19_dark;
+			global::LagoVista.XPlat.Droid.Resource.Drawable.ic_mr_button_connected_19_light = global::LagoVista.Droid.Simulator.Resource.Drawable.ic_mr_button_connected_19_light;
+			global::LagoVista.XPlat.Droid.Resource.Drawable.ic_mr_button_connected_20_dark = global::LagoVista.Droid.Simulator.Resource.Drawable.ic_mr_button_connected_20_dark;
+			global::LagoVista.XPlat.Droid.Resource.Drawable.ic_mr_button_connected_20_light = global::LagoVista.Droid.Simulator.Resource.Drawable.ic_mr_button_connected_20_light;
+			global::LagoVista.XPlat.Droid.Resource.Drawable.ic_mr_button_connected_21_dark = global::LagoVista.Droid.Simulator.Resource.Drawable.ic_mr_button_connected_21_dark;
+			global::LagoVista.XPlat.Droid.Resource.Drawable.ic_mr_button_connected_21_light = global::LagoVista.Droid.Simulator.Resource.Drawable.ic_mr_button_connected_21_light;
+			global::LagoVista.XPlat.Droid.Resource.Drawable.ic_mr_button_connected_22_dark = global::LagoVista.Droid.Simulator.Resource.Drawable.ic_mr_button_connected_22_dark;
+			global::LagoVista.XPlat.Droid.Resource.Drawable.ic_mr_button_connected_22_light = global::LagoVista.Droid.Simulator.Resource.Drawable.ic_mr_button_connected_22_light;
+			global::LagoVista.XPlat.Droid.Resource.Drawable.ic_mr_button_connecting_00_dark = global::LagoVista.Droid.Simulator.Resource.Drawable.ic_mr_button_connecting_00_dark;
+			global::LagoVista.XPlat.Droid.Resource.Drawable.ic_mr_button_connecting_00_light = global::LagoVista.Droid.Simulator.Resource.Drawable.ic_mr_button_connecting_00_light;
+			global::LagoVista.XPlat.Droid.Resource.Drawable.ic_mr_button_connecting_01_dark = global::LagoVista.Droid.Simulator.Resource.Drawable.ic_mr_button_connecting_01_dark;
+			global::LagoVista.XPlat.Droid.Resource.Drawable.ic_mr_button_connecting_01_light = global::LagoVista.Droid.Simulator.Resource.Drawable.ic_mr_button_connecting_01_light;
+			global::LagoVista.XPlat.Droid.Resource.Drawable.ic_mr_button_connecting_02_dark = global::LagoVista.Droid.Simulator.Resource.Drawable.ic_mr_button_connecting_02_dark;
+			global::LagoVista.XPlat.Droid.Resource.Drawable.ic_mr_button_connecting_02_light = global::LagoVista.Droid.Simulator.Resource.Drawable.ic_mr_button_connecting_02_light;
+			global::LagoVista.XPlat.Droid.Resource.Drawable.ic_mr_button_connecting_03_dark = global::LagoVista.Droid.Simulator.Resource.Drawable.ic_mr_button_connecting_03_dark;
+			global::LagoVista.XPlat.Droid.Resource.Drawable.ic_mr_button_connecting_03_light = global::LagoVista.Droid.Simulator.Resource.Drawable.ic_mr_button_connecting_03_light;
+			global::LagoVista.XPlat.Droid.Resource.Drawable.ic_mr_button_connecting_04_dark = global::LagoVista.Droid.Simulator.Resource.Drawable.ic_mr_button_connecting_04_dark;
+			global::LagoVista.XPlat.Droid.Resource.Drawable.ic_mr_button_connecting_04_light = global::LagoVista.Droid.Simulator.Resource.Drawable.ic_mr_button_connecting_04_light;
+			global::LagoVista.XPlat.Droid.Resource.Drawable.ic_mr_button_connecting_05_dark = global::LagoVista.Droid.Simulator.Resource.Drawable.ic_mr_button_connecting_05_dark;
+			global::LagoVista.XPlat.Droid.Resource.Drawable.ic_mr_button_connecting_05_light = global::LagoVista.Droid.Simulator.Resource.Drawable.ic_mr_button_connecting_05_light;
+			global::LagoVista.XPlat.Droid.Resource.Drawable.ic_mr_button_connecting_06_dark = global::LagoVista.Droid.Simulator.Resource.Drawable.ic_mr_button_connecting_06_dark;
+			global::LagoVista.XPlat.Droid.Resource.Drawable.ic_mr_button_connecting_06_light = global::LagoVista.Droid.Simulator.Resource.Drawable.ic_mr_button_connecting_06_light;
+			global::LagoVista.XPlat.Droid.Resource.Drawable.ic_mr_button_connecting_07_dark = global::LagoVista.Droid.Simulator.Resource.Drawable.ic_mr_button_connecting_07_dark;
+			global::LagoVista.XPlat.Droid.Resource.Drawable.ic_mr_button_connecting_07_light = global::LagoVista.Droid.Simulator.Resource.Drawable.ic_mr_button_connecting_07_light;
+			global::LagoVista.XPlat.Droid.Resource.Drawable.ic_mr_button_connecting_08_dark = global::LagoVista.Droid.Simulator.Resource.Drawable.ic_mr_button_connecting_08_dark;
+			global::LagoVista.XPlat.Droid.Resource.Drawable.ic_mr_button_connecting_08_light = global::LagoVista.Droid.Simulator.Resource.Drawable.ic_mr_button_connecting_08_light;
+			global::LagoVista.XPlat.Droid.Resource.Drawable.ic_mr_button_connecting_09_dark = global::LagoVista.Droid.Simulator.Resource.Drawable.ic_mr_button_connecting_09_dark;
+			global::LagoVista.XPlat.Droid.Resource.Drawable.ic_mr_button_connecting_09_light = global::LagoVista.Droid.Simulator.Resource.Drawable.ic_mr_button_connecting_09_light;
+			global::LagoVista.XPlat.Droid.Resource.Drawable.ic_mr_button_connecting_10_dark = global::LagoVista.Droid.Simulator.Resource.Drawable.ic_mr_button_connecting_10_dark;
+			global::LagoVista.XPlat.Droid.Resource.Drawable.ic_mr_button_connecting_10_light = global::LagoVista.Droid.Simulator.Resource.Drawable.ic_mr_button_connecting_10_light;
+			global::LagoVista.XPlat.Droid.Resource.Drawable.ic_mr_button_connecting_11_dark = global::LagoVista.Droid.Simulator.Resource.Drawable.ic_mr_button_connecting_11_dark;
+			global::LagoVista.XPlat.Droid.Resource.Drawable.ic_mr_button_connecting_11_light = global::LagoVista.Droid.Simulator.Resource.Drawable.ic_mr_button_connecting_11_light;
+			global::LagoVista.XPlat.Droid.Resource.Drawable.ic_mr_button_connecting_12_dark = global::LagoVista.Droid.Simulator.Resource.Drawable.ic_mr_button_connecting_12_dark;
+			global::LagoVista.XPlat.Droid.Resource.Drawable.ic_mr_button_connecting_12_light = global::LagoVista.Droid.Simulator.Resource.Drawable.ic_mr_button_connecting_12_light;
+			global::LagoVista.XPlat.Droid.Resource.Drawable.ic_mr_button_connecting_13_dark = global::LagoVista.Droid.Simulator.Resource.Drawable.ic_mr_button_connecting_13_dark;
+			global::LagoVista.XPlat.Droid.Resource.Drawable.ic_mr_button_connecting_13_light = global::LagoVista.Droid.Simulator.Resource.Drawable.ic_mr_button_connecting_13_light;
+			global::LagoVista.XPlat.Droid.Resource.Drawable.ic_mr_button_connecting_14_dark = global::LagoVista.Droid.Simulator.Resource.Drawable.ic_mr_button_connecting_14_dark;
+			global::LagoVista.XPlat.Droid.Resource.Drawable.ic_mr_button_connecting_14_light = global::LagoVista.Droid.Simulator.Resource.Drawable.ic_mr_button_connecting_14_light;
+			global::LagoVista.XPlat.Droid.Resource.Drawable.ic_mr_button_connecting_15_dark = global::LagoVista.Droid.Simulator.Resource.Drawable.ic_mr_button_connecting_15_dark;
+			global::LagoVista.XPlat.Droid.Resource.Drawable.ic_mr_button_connecting_15_light = global::LagoVista.Droid.Simulator.Resource.Drawable.ic_mr_button_connecting_15_light;
+			global::LagoVista.XPlat.Droid.Resource.Drawable.ic_mr_button_connecting_16_dark = global::LagoVista.Droid.Simulator.Resource.Drawable.ic_mr_button_connecting_16_dark;
+			global::LagoVista.XPlat.Droid.Resource.Drawable.ic_mr_button_connecting_16_light = global::LagoVista.Droid.Simulator.Resource.Drawable.ic_mr_button_connecting_16_light;
+			global::LagoVista.XPlat.Droid.Resource.Drawable.ic_mr_button_connecting_17_dark = global::LagoVista.Droid.Simulator.Resource.Drawable.ic_mr_button_connecting_17_dark;
+			global::LagoVista.XPlat.Droid.Resource.Drawable.ic_mr_button_connecting_17_light = global::LagoVista.Droid.Simulator.Resource.Drawable.ic_mr_button_connecting_17_light;
+			global::LagoVista.XPlat.Droid.Resource.Drawable.ic_mr_button_connecting_18_dark = global::LagoVista.Droid.Simulator.Resource.Drawable.ic_mr_button_connecting_18_dark;
+			global::LagoVista.XPlat.Droid.Resource.Drawable.ic_mr_button_connecting_18_light = global::LagoVista.Droid.Simulator.Resource.Drawable.ic_mr_button_connecting_18_light;
+			global::LagoVista.XPlat.Droid.Resource.Drawable.ic_mr_button_connecting_19_dark = global::LagoVista.Droid.Simulator.Resource.Drawable.ic_mr_button_connecting_19_dark;
+			global::LagoVista.XPlat.Droid.Resource.Drawable.ic_mr_button_connecting_19_light = global::LagoVista.Droid.Simulator.Resource.Drawable.ic_mr_button_connecting_19_light;
+			global::LagoVista.XPlat.Droid.Resource.Drawable.ic_mr_button_connecting_20_dark = global::LagoVista.Droid.Simulator.Resource.Drawable.ic_mr_button_connecting_20_dark;
+			global::LagoVista.XPlat.Droid.Resource.Drawable.ic_mr_button_connecting_20_light = global::LagoVista.Droid.Simulator.Resource.Drawable.ic_mr_button_connecting_20_light;
+			global::LagoVista.XPlat.Droid.Resource.Drawable.ic_mr_button_connecting_21_dark = global::LagoVista.Droid.Simulator.Resource.Drawable.ic_mr_button_connecting_21_dark;
+			global::LagoVista.XPlat.Droid.Resource.Drawable.ic_mr_button_connecting_21_light = global::LagoVista.Droid.Simulator.Resource.Drawable.ic_mr_button_connecting_21_light;
+			global::LagoVista.XPlat.Droid.Resource.Drawable.ic_mr_button_connecting_22_dark = global::LagoVista.Droid.Simulator.Resource.Drawable.ic_mr_button_connecting_22_dark;
+			global::LagoVista.XPlat.Droid.Resource.Drawable.ic_mr_button_connecting_22_light = global::LagoVista.Droid.Simulator.Resource.Drawable.ic_mr_button_connecting_22_light;
+			global::LagoVista.XPlat.Droid.Resource.Drawable.ic_mr_button_disabled_dark = global::LagoVista.Droid.Simulator.Resource.Drawable.ic_mr_button_disabled_dark;
+			global::LagoVista.XPlat.Droid.Resource.Drawable.ic_mr_button_disabled_light = global::LagoVista.Droid.Simulator.Resource.Drawable.ic_mr_button_disabled_light;
+			global::LagoVista.XPlat.Droid.Resource.Drawable.ic_mr_button_disconnected_dark = global::LagoVista.Droid.Simulator.Resource.Drawable.ic_mr_button_disconnected_dark;
+			global::LagoVista.XPlat.Droid.Resource.Drawable.ic_mr_button_disconnected_light = global::LagoVista.Droid.Simulator.Resource.Drawable.ic_mr_button_disconnected_light;
+			global::LagoVista.XPlat.Droid.Resource.Drawable.ic_mr_button_grey = global::LagoVista.Droid.Simulator.Resource.Drawable.ic_mr_button_grey;
+			global::LagoVista.XPlat.Droid.Resource.Drawable.ic_vol_type_speaker_dark = global::LagoVista.Droid.Simulator.Resource.Drawable.ic_vol_type_speaker_dark;
+			global::LagoVista.XPlat.Droid.Resource.Drawable.ic_vol_type_speaker_group_dark = global::LagoVista.Droid.Simulator.Resource.Drawable.ic_vol_type_speaker_group_dark;
+			global::LagoVista.XPlat.Droid.Resource.Drawable.ic_vol_type_speaker_group_light = global::LagoVista.Droid.Simulator.Resource.Drawable.ic_vol_type_speaker_group_light;
+			global::LagoVista.XPlat.Droid.Resource.Drawable.ic_vol_type_speaker_light = global::LagoVista.Droid.Simulator.Resource.Drawable.ic_vol_type_speaker_light;
+			global::LagoVista.XPlat.Droid.Resource.Drawable.ic_vol_type_tv_dark = global::LagoVista.Droid.Simulator.Resource.Drawable.ic_vol_type_tv_dark;
+			global::LagoVista.XPlat.Droid.Resource.Drawable.ic_vol_type_tv_light = global::LagoVista.Droid.Simulator.Resource.Drawable.ic_vol_type_tv_light;
+			global::LagoVista.XPlat.Droid.Resource.Drawable.mr_button_connected_dark = global::LagoVista.Droid.Simulator.Resource.Drawable.mr_button_connected_dark;
+			global::LagoVista.XPlat.Droid.Resource.Drawable.mr_button_connected_light = global::LagoVista.Droid.Simulator.Resource.Drawable.mr_button_connected_light;
+			global::LagoVista.XPlat.Droid.Resource.Drawable.mr_button_connecting_dark = global::LagoVista.Droid.Simulator.Resource.Drawable.mr_button_connecting_dark;
+			global::LagoVista.XPlat.Droid.Resource.Drawable.mr_button_connecting_light = global::LagoVista.Droid.Simulator.Resource.Drawable.mr_button_connecting_light;
+			global::LagoVista.XPlat.Droid.Resource.Drawable.mr_button_dark = global::LagoVista.Droid.Simulator.Resource.Drawable.mr_button_dark;
+			global::LagoVista.XPlat.Droid.Resource.Drawable.mr_button_light = global::LagoVista.Droid.Simulator.Resource.Drawable.mr_button_light;
+			global::LagoVista.XPlat.Droid.Resource.Drawable.mr_dialog_close_dark = global::LagoVista.Droid.Simulator.Resource.Drawable.mr_dialog_close_dark;
+			global::LagoVista.XPlat.Droid.Resource.Drawable.mr_dialog_close_light = global::LagoVista.Droid.Simulator.Resource.Drawable.mr_dialog_close_light;
+			global::LagoVista.XPlat.Droid.Resource.Drawable.mr_dialog_material_background_dark = global::LagoVista.Droid.Simulator.Resource.Drawable.mr_dialog_material_background_dark;
+			global::LagoVista.XPlat.Droid.Resource.Drawable.mr_dialog_material_background_light = global::LagoVista.Droid.Simulator.Resource.Drawable.mr_dialog_material_background_light;
+			global::LagoVista.XPlat.Droid.Resource.Drawable.mr_group_collapse = global::LagoVista.Droid.Simulator.Resource.Drawable.mr_group_collapse;
+			global::LagoVista.XPlat.Droid.Resource.Drawable.mr_group_expand = global::LagoVista.Droid.Simulator.Resource.Drawable.mr_group_expand;
+			global::LagoVista.XPlat.Droid.Resource.Drawable.mr_media_pause_dark = global::LagoVista.Droid.Simulator.Resource.Drawable.mr_media_pause_dark;
+			global::LagoVista.XPlat.Droid.Resource.Drawable.mr_media_pause_light = global::LagoVista.Droid.Simulator.Resource.Drawable.mr_media_pause_light;
+			global::LagoVista.XPlat.Droid.Resource.Drawable.mr_media_play_dark = global::LagoVista.Droid.Simulator.Resource.Drawable.mr_media_play_dark;
+			global::LagoVista.XPlat.Droid.Resource.Drawable.mr_media_play_light = global::LagoVista.Droid.Simulator.Resource.Drawable.mr_media_play_light;
+			global::LagoVista.XPlat.Droid.Resource.Drawable.mr_media_stop_dark = global::LagoVista.Droid.Simulator.Resource.Drawable.mr_media_stop_dark;
+			global::LagoVista.XPlat.Droid.Resource.Drawable.mr_media_stop_light = global::LagoVista.Droid.Simulator.Resource.Drawable.mr_media_stop_light;
+			global::LagoVista.XPlat.Droid.Resource.Drawable.mr_vol_type_audiotrack_dark = global::LagoVista.Droid.Simulator.Resource.Drawable.mr_vol_type_audiotrack_dark;
+			global::LagoVista.XPlat.Droid.Resource.Drawable.mr_vol_type_audiotrack_light = global::LagoVista.Droid.Simulator.Resource.Drawable.mr_vol_type_audiotrack_light;
+			global::LagoVista.XPlat.Droid.Resource.Drawable.navigation_empty_icon = global::LagoVista.Droid.Simulator.Resource.Drawable.navigation_empty_icon;
+			global::LagoVista.XPlat.Droid.Resource.Drawable.notification_action_background = global::LagoVista.Droid.Simulator.Resource.Drawable.notification_action_background;
+			global::LagoVista.XPlat.Droid.Resource.Drawable.notification_bg = global::LagoVista.Droid.Simulator.Resource.Drawable.notification_bg;
+			global::LagoVista.XPlat.Droid.Resource.Drawable.notification_bg_low = global::LagoVista.Droid.Simulator.Resource.Drawable.notification_bg_low;
+			global::LagoVista.XPlat.Droid.Resource.Drawable.notification_bg_low_normal = global::LagoVista.Droid.Simulator.Resource.Drawable.notification_bg_low_normal;
+			global::LagoVista.XPlat.Droid.Resource.Drawable.notification_bg_low_pressed = global::LagoVista.Droid.Simulator.Resource.Drawable.notification_bg_low_pressed;
+			global::LagoVista.XPlat.Droid.Resource.Drawable.notification_bg_normal = global::LagoVista.Droid.Simulator.Resource.Drawable.notification_bg_normal;
+			global::LagoVista.XPlat.Droid.Resource.Drawable.notification_bg_normal_pressed = global::LagoVista.Droid.Simulator.Resource.Drawable.notification_bg_normal_pressed;
+			global::LagoVista.XPlat.Droid.Resource.Drawable.notification_icon_background = global::LagoVista.Droid.Simulator.Resource.Drawable.notification_icon_background;
+			global::LagoVista.XPlat.Droid.Resource.Drawable.notification_template_icon_bg = global::LagoVista.Droid.Simulator.Resource.Drawable.notification_template_icon_bg;
+			global::LagoVista.XPlat.Droid.Resource.Drawable.notification_template_icon_low_bg = global::LagoVista.Droid.Simulator.Resource.Drawable.notification_template_icon_low_bg;
+			global::LagoVista.XPlat.Droid.Resource.Drawable.notification_tile_bg = global::LagoVista.Droid.Simulator.Resource.Drawable.notification_tile_bg;
+			global::LagoVista.XPlat.Droid.Resource.Drawable.notify_panel_notification_icon_bg = global::LagoVista.Droid.Simulator.Resource.Drawable.notify_panel_notification_icon_bg;
+			global::LagoVista.XPlat.Droid.Resource.Id.action0 = global::LagoVista.Droid.Simulator.Resource.Id.action0;
+			global::LagoVista.XPlat.Droid.Resource.Id.action_bar = global::LagoVista.Droid.Simulator.Resource.Id.action_bar;
+			global::LagoVista.XPlat.Droid.Resource.Id.action_bar_activity_content = global::LagoVista.Droid.Simulator.Resource.Id.action_bar_activity_content;
+			global::LagoVista.XPlat.Droid.Resource.Id.action_bar_container = global::LagoVista.Droid.Simulator.Resource.Id.action_bar_container;
+			global::LagoVista.XPlat.Droid.Resource.Id.action_bar_root = global::LagoVista.Droid.Simulator.Resource.Id.action_bar_root;
+			global::LagoVista.XPlat.Droid.Resource.Id.action_bar_spinner = global::LagoVista.Droid.Simulator.Resource.Id.action_bar_spinner;
+			global::LagoVista.XPlat.Droid.Resource.Id.action_bar_subtitle = global::LagoVista.Droid.Simulator.Resource.Id.action_bar_subtitle;
+			global::LagoVista.XPlat.Droid.Resource.Id.action_bar_title = global::LagoVista.Droid.Simulator.Resource.Id.action_bar_title;
+			global::LagoVista.XPlat.Droid.Resource.Id.action_container = global::LagoVista.Droid.Simulator.Resource.Id.action_container;
+			global::LagoVista.XPlat.Droid.Resource.Id.action_context_bar = global::LagoVista.Droid.Simulator.Resource.Id.action_context_bar;
+			global::LagoVista.XPlat.Droid.Resource.Id.action_divider = global::LagoVista.Droid.Simulator.Resource.Id.action_divider;
+			global::LagoVista.XPlat.Droid.Resource.Id.action_image = global::LagoVista.Droid.Simulator.Resource.Id.action_image;
+			global::LagoVista.XPlat.Droid.Resource.Id.action_menu_divider = global::LagoVista.Droid.Simulator.Resource.Id.action_menu_divider;
+			global::LagoVista.XPlat.Droid.Resource.Id.action_menu_presenter = global::LagoVista.Droid.Simulator.Resource.Id.action_menu_presenter;
+			global::LagoVista.XPlat.Droid.Resource.Id.action_mode_bar = global::LagoVista.Droid.Simulator.Resource.Id.action_mode_bar;
+			global::LagoVista.XPlat.Droid.Resource.Id.action_mode_bar_stub = global::LagoVista.Droid.Simulator.Resource.Id.action_mode_bar_stub;
+			global::LagoVista.XPlat.Droid.Resource.Id.action_mode_close_button = global::LagoVista.Droid.Simulator.Resource.Id.action_mode_close_button;
+			global::LagoVista.XPlat.Droid.Resource.Id.action_text = global::LagoVista.Droid.Simulator.Resource.Id.action_text;
+			global::LagoVista.XPlat.Droid.Resource.Id.actions = global::LagoVista.Droid.Simulator.Resource.Id.actions;
+			global::LagoVista.XPlat.Droid.Resource.Id.activity_chooser_view_content = global::LagoVista.Droid.Simulator.Resource.Id.activity_chooser_view_content;
+			global::LagoVista.XPlat.Droid.Resource.Id.add = global::LagoVista.Droid.Simulator.Resource.Id.add;
+			global::LagoVista.XPlat.Droid.Resource.Id.alertTitle = global::LagoVista.Droid.Simulator.Resource.Id.alertTitle;
+			global::LagoVista.XPlat.Droid.Resource.Id.all = global::LagoVista.Droid.Simulator.Resource.Id.all;
+			global::LagoVista.XPlat.Droid.Resource.Id.always = global::LagoVista.Droid.Simulator.Resource.Id.always;
+			global::LagoVista.XPlat.Droid.Resource.Id.auto = global::LagoVista.Droid.Simulator.Resource.Id.auto;
+			global::LagoVista.XPlat.Droid.Resource.Id.beginning = global::LagoVista.Droid.Simulator.Resource.Id.beginning;
+			global::LagoVista.XPlat.Droid.Resource.Id.bottom = global::LagoVista.Droid.Simulator.Resource.Id.bottom;
+			global::LagoVista.XPlat.Droid.Resource.Id.buttonPanel = global::LagoVista.Droid.Simulator.Resource.Id.buttonPanel;
+			global::LagoVista.XPlat.Droid.Resource.Id.cancel_action = global::LagoVista.Droid.Simulator.Resource.Id.cancel_action;
+			global::LagoVista.XPlat.Droid.Resource.Id.center = global::LagoVista.Droid.Simulator.Resource.Id.center;
+			global::LagoVista.XPlat.Droid.Resource.Id.center_horizontal = global::LagoVista.Droid.Simulator.Resource.Id.center_horizontal;
+			global::LagoVista.XPlat.Droid.Resource.Id.center_vertical = global::LagoVista.Droid.Simulator.Resource.Id.center_vertical;
+			global::LagoVista.XPlat.Droid.Resource.Id.checkbox = global::LagoVista.Droid.Simulator.Resource.Id.checkbox;
+			global::LagoVista.XPlat.Droid.Resource.Id.chronometer = global::LagoVista.Droid.Simulator.Resource.Id.chronometer;
+			global::LagoVista.XPlat.Droid.Resource.Id.clip_horizontal = global::LagoVista.Droid.Simulator.Resource.Id.clip_horizontal;
+			global::LagoVista.XPlat.Droid.Resource.Id.clip_vertical = global::LagoVista.Droid.Simulator.Resource.Id.clip_vertical;
+			global::LagoVista.XPlat.Droid.Resource.Id.collapseActionView = global::LagoVista.Droid.Simulator.Resource.Id.collapseActionView;
+			global::LagoVista.XPlat.Droid.Resource.Id.container = global::LagoVista.Droid.Simulator.Resource.Id.container;
+			global::LagoVista.XPlat.Droid.Resource.Id.contentPanel = global::LagoVista.Droid.Simulator.Resource.Id.contentPanel;
+			global::LagoVista.XPlat.Droid.Resource.Id.coordinator = global::LagoVista.Droid.Simulator.Resource.Id.coordinator;
+			global::LagoVista.XPlat.Droid.Resource.Id.custom = global::LagoVista.Droid.Simulator.Resource.Id.custom;
+			global::LagoVista.XPlat.Droid.Resource.Id.customPanel = global::LagoVista.Droid.Simulator.Resource.Id.customPanel;
+			global::LagoVista.XPlat.Droid.Resource.Id.decor_content_parent = global::LagoVista.Droid.Simulator.Resource.Id.decor_content_parent;
+			global::LagoVista.XPlat.Droid.Resource.Id.default_activity_button = global::LagoVista.Droid.Simulator.Resource.Id.default_activity_button;
+			global::LagoVista.XPlat.Droid.Resource.Id.design_bottom_sheet = global::LagoVista.Droid.Simulator.Resource.Id.design_bottom_sheet;
+			global::LagoVista.XPlat.Droid.Resource.Id.design_menu_item_action_area = global::LagoVista.Droid.Simulator.Resource.Id.design_menu_item_action_area;
+			global::LagoVista.XPlat.Droid.Resource.Id.design_menu_item_action_area_stub = global::LagoVista.Droid.Simulator.Resource.Id.design_menu_item_action_area_stub;
+			global::LagoVista.XPlat.Droid.Resource.Id.design_menu_item_text = global::LagoVista.Droid.Simulator.Resource.Id.design_menu_item_text;
+			global::LagoVista.XPlat.Droid.Resource.Id.design_navigation_view = global::LagoVista.Droid.Simulator.Resource.Id.design_navigation_view;
+			global::LagoVista.XPlat.Droid.Resource.Id.disableHome = global::LagoVista.Droid.Simulator.Resource.Id.disableHome;
+			global::LagoVista.XPlat.Droid.Resource.Id.edit_query = global::LagoVista.Droid.Simulator.Resource.Id.edit_query;
+			global::LagoVista.XPlat.Droid.Resource.Id.end = global::LagoVista.Droid.Simulator.Resource.Id.end;
+			global::LagoVista.XPlat.Droid.Resource.Id.end_padder = global::LagoVista.Droid.Simulator.Resource.Id.end_padder;
+			global::LagoVista.XPlat.Droid.Resource.Id.enterAlways = global::LagoVista.Droid.Simulator.Resource.Id.enterAlways;
+			global::LagoVista.XPlat.Droid.Resource.Id.enterAlwaysCollapsed = global::LagoVista.Droid.Simulator.Resource.Id.enterAlwaysCollapsed;
+			global::LagoVista.XPlat.Droid.Resource.Id.exitUntilCollapsed = global::LagoVista.Droid.Simulator.Resource.Id.exitUntilCollapsed;
+			global::LagoVista.XPlat.Droid.Resource.Id.expand_activities_button = global::LagoVista.Droid.Simulator.Resource.Id.expand_activities_button;
+			global::LagoVista.XPlat.Droid.Resource.Id.expanded_menu = global::LagoVista.Droid.Simulator.Resource.Id.expanded_menu;
+			global::LagoVista.XPlat.Droid.Resource.Id.fill = global::LagoVista.Droid.Simulator.Resource.Id.fill;
+			global::LagoVista.XPlat.Droid.Resource.Id.fill_horizontal = global::LagoVista.Droid.Simulator.Resource.Id.fill_horizontal;
+			global::LagoVista.XPlat.Droid.Resource.Id.fill_vertical = global::LagoVista.Droid.Simulator.Resource.Id.fill_vertical;
+			global::LagoVista.XPlat.Droid.Resource.Id.@fixed = global::LagoVista.Droid.Simulator.Resource.Id.@fixed;
+			global::LagoVista.XPlat.Droid.Resource.Id.home = global::LagoVista.Droid.Simulator.Resource.Id.home;
+			global::LagoVista.XPlat.Droid.Resource.Id.homeAsUp = global::LagoVista.Droid.Simulator.Resource.Id.homeAsUp;
+			global::LagoVista.XPlat.Droid.Resource.Id.icon = global::LagoVista.Droid.Simulator.Resource.Id.icon;
+			global::LagoVista.XPlat.Droid.Resource.Id.icon_group = global::LagoVista.Droid.Simulator.Resource.Id.icon_group;
+			global::LagoVista.XPlat.Droid.Resource.Id.ifRoom = global::LagoVista.Droid.Simulator.Resource.Id.ifRoom;
+			global::LagoVista.XPlat.Droid.Resource.Id.image = global::LagoVista.Droid.Simulator.Resource.Id.image;
+			global::LagoVista.XPlat.Droid.Resource.Id.info = global::LagoVista.Droid.Simulator.Resource.Id.info;
+			global::LagoVista.XPlat.Droid.Resource.Id.item_touch_helper_previous_elevation = global::LagoVista.Droid.Simulator.Resource.Id.item_touch_helper_previous_elevation;
+			global::LagoVista.XPlat.Droid.Resource.Id.largeLabel = global::LagoVista.Droid.Simulator.Resource.Id.largeLabel;
+			global::LagoVista.XPlat.Droid.Resource.Id.left = global::LagoVista.Droid.Simulator.Resource.Id.left;
+			global::LagoVista.XPlat.Droid.Resource.Id.line1 = global::LagoVista.Droid.Simulator.Resource.Id.line1;
+			global::LagoVista.XPlat.Droid.Resource.Id.line3 = global::LagoVista.Droid.Simulator.Resource.Id.line3;
+			global::LagoVista.XPlat.Droid.Resource.Id.listMode = global::LagoVista.Droid.Simulator.Resource.Id.listMode;
+			global::LagoVista.XPlat.Droid.Resource.Id.list_item = global::LagoVista.Droid.Simulator.Resource.Id.list_item;
+			global::LagoVista.XPlat.Droid.Resource.Id.masked = global::LagoVista.Droid.Simulator.Resource.Id.masked;
+			global::LagoVista.XPlat.Droid.Resource.Id.media_actions = global::LagoVista.Droid.Simulator.Resource.Id.media_actions;
+			global::LagoVista.XPlat.Droid.Resource.Id.middle = global::LagoVista.Droid.Simulator.Resource.Id.middle;
+			global::LagoVista.XPlat.Droid.Resource.Id.mini = global::LagoVista.Droid.Simulator.Resource.Id.mini;
+			global::LagoVista.XPlat.Droid.Resource.Id.mr_art = global::LagoVista.Droid.Simulator.Resource.Id.mr_art;
+			global::LagoVista.XPlat.Droid.Resource.Id.mr_chooser_list = global::LagoVista.Droid.Simulator.Resource.Id.mr_chooser_list;
+			global::LagoVista.XPlat.Droid.Resource.Id.mr_chooser_route_desc = global::LagoVista.Droid.Simulator.Resource.Id.mr_chooser_route_desc;
+			global::LagoVista.XPlat.Droid.Resource.Id.mr_chooser_route_icon = global::LagoVista.Droid.Simulator.Resource.Id.mr_chooser_route_icon;
+			global::LagoVista.XPlat.Droid.Resource.Id.mr_chooser_route_name = global::LagoVista.Droid.Simulator.Resource.Id.mr_chooser_route_name;
+			global::LagoVista.XPlat.Droid.Resource.Id.mr_chooser_title = global::LagoVista.Droid.Simulator.Resource.Id.mr_chooser_title;
+			global::LagoVista.XPlat.Droid.Resource.Id.mr_close = global::LagoVista.Droid.Simulator.Resource.Id.mr_close;
+			global::LagoVista.XPlat.Droid.Resource.Id.mr_control_divider = global::LagoVista.Droid.Simulator.Resource.Id.mr_control_divider;
+			global::LagoVista.XPlat.Droid.Resource.Id.mr_control_playback_ctrl = global::LagoVista.Droid.Simulator.Resource.Id.mr_control_playback_ctrl;
+			global::LagoVista.XPlat.Droid.Resource.Id.mr_control_subtitle = global::LagoVista.Droid.Simulator.Resource.Id.mr_control_subtitle;
+			global::LagoVista.XPlat.Droid.Resource.Id.mr_control_title = global::LagoVista.Droid.Simulator.Resource.Id.mr_control_title;
+			global::LagoVista.XPlat.Droid.Resource.Id.mr_control_title_container = global::LagoVista.Droid.Simulator.Resource.Id.mr_control_title_container;
+			global::LagoVista.XPlat.Droid.Resource.Id.mr_custom_control = global::LagoVista.Droid.Simulator.Resource.Id.mr_custom_control;
+			global::LagoVista.XPlat.Droid.Resource.Id.mr_default_control = global::LagoVista.Droid.Simulator.Resource.Id.mr_default_control;
+			global::LagoVista.XPlat.Droid.Resource.Id.mr_dialog_area = global::LagoVista.Droid.Simulator.Resource.Id.mr_dialog_area;
+			global::LagoVista.XPlat.Droid.Resource.Id.mr_expandable_area = global::LagoVista.Droid.Simulator.Resource.Id.mr_expandable_area;
+			global::LagoVista.XPlat.Droid.Resource.Id.mr_group_expand_collapse = global::LagoVista.Droid.Simulator.Resource.Id.mr_group_expand_collapse;
+			global::LagoVista.XPlat.Droid.Resource.Id.mr_media_main_control = global::LagoVista.Droid.Simulator.Resource.Id.mr_media_main_control;
+			global::LagoVista.XPlat.Droid.Resource.Id.mr_name = global::LagoVista.Droid.Simulator.Resource.Id.mr_name;
+			global::LagoVista.XPlat.Droid.Resource.Id.mr_playback_control = global::LagoVista.Droid.Simulator.Resource.Id.mr_playback_control;
+			global::LagoVista.XPlat.Droid.Resource.Id.mr_title_bar = global::LagoVista.Droid.Simulator.Resource.Id.mr_title_bar;
+			global::LagoVista.XPlat.Droid.Resource.Id.mr_volume_control = global::LagoVista.Droid.Simulator.Resource.Id.mr_volume_control;
+			global::LagoVista.XPlat.Droid.Resource.Id.mr_volume_group_list = global::LagoVista.Droid.Simulator.Resource.Id.mr_volume_group_list;
+			global::LagoVista.XPlat.Droid.Resource.Id.mr_volume_item_icon = global::LagoVista.Droid.Simulator.Resource.Id.mr_volume_item_icon;
+			global::LagoVista.XPlat.Droid.Resource.Id.mr_volume_slider = global::LagoVista.Droid.Simulator.Resource.Id.mr_volume_slider;
+			global::LagoVista.XPlat.Droid.Resource.Id.multiply = global::LagoVista.Droid.Simulator.Resource.Id.multiply;
+			global::LagoVista.XPlat.Droid.Resource.Id.navigation_header_container = global::LagoVista.Droid.Simulator.Resource.Id.navigation_header_container;
+			global::LagoVista.XPlat.Droid.Resource.Id.never = global::LagoVista.Droid.Simulator.Resource.Id.never;
+			global::LagoVista.XPlat.Droid.Resource.Id.none = global::LagoVista.Droid.Simulator.Resource.Id.none;
+			global::LagoVista.XPlat.Droid.Resource.Id.normal = global::LagoVista.Droid.Simulator.Resource.Id.normal;
+			global::LagoVista.XPlat.Droid.Resource.Id.notification_background = global::LagoVista.Droid.Simulator.Resource.Id.notification_background;
+			global::LagoVista.XPlat.Droid.Resource.Id.notification_main_column = global::LagoVista.Droid.Simulator.Resource.Id.notification_main_column;
+			global::LagoVista.XPlat.Droid.Resource.Id.notification_main_column_container = global::LagoVista.Droid.Simulator.Resource.Id.notification_main_column_container;
+			global::LagoVista.XPlat.Droid.Resource.Id.parallax = global::LagoVista.Droid.Simulator.Resource.Id.parallax;
+			global::LagoVista.XPlat.Droid.Resource.Id.parentPanel = global::LagoVista.Droid.Simulator.Resource.Id.parentPanel;
+			global::LagoVista.XPlat.Droid.Resource.Id.pin = global::LagoVista.Droid.Simulator.Resource.Id.pin;
+			global::LagoVista.XPlat.Droid.Resource.Id.progress_circular = global::LagoVista.Droid.Simulator.Resource.Id.progress_circular;
+			global::LagoVista.XPlat.Droid.Resource.Id.progress_horizontal = global::LagoVista.Droid.Simulator.Resource.Id.progress_horizontal;
+			global::LagoVista.XPlat.Droid.Resource.Id.radio = global::LagoVista.Droid.Simulator.Resource.Id.radio;
+			global::LagoVista.XPlat.Droid.Resource.Id.right = global::LagoVista.Droid.Simulator.Resource.Id.right;
+			global::LagoVista.XPlat.Droid.Resource.Id.right_icon = global::LagoVista.Droid.Simulator.Resource.Id.right_icon;
+			global::LagoVista.XPlat.Droid.Resource.Id.right_side = global::LagoVista.Droid.Simulator.Resource.Id.right_side;
+			global::LagoVista.XPlat.Droid.Resource.Id.screen = global::LagoVista.Droid.Simulator.Resource.Id.screen;
+			global::LagoVista.XPlat.Droid.Resource.Id.scroll = global::LagoVista.Droid.Simulator.Resource.Id.scroll;
+			global::LagoVista.XPlat.Droid.Resource.Id.scrollIndicatorDown = global::LagoVista.Droid.Simulator.Resource.Id.scrollIndicatorDown;
+			global::LagoVista.XPlat.Droid.Resource.Id.scrollIndicatorUp = global::LagoVista.Droid.Simulator.Resource.Id.scrollIndicatorUp;
+			global::LagoVista.XPlat.Droid.Resource.Id.scrollView = global::LagoVista.Droid.Simulator.Resource.Id.scrollView;
+			global::LagoVista.XPlat.Droid.Resource.Id.scrollable = global::LagoVista.Droid.Simulator.Resource.Id.scrollable;
+			global::LagoVista.XPlat.Droid.Resource.Id.search_badge = global::LagoVista.Droid.Simulator.Resource.Id.search_badge;
+			global::LagoVista.XPlat.Droid.Resource.Id.search_bar = global::LagoVista.Droid.Simulator.Resource.Id.search_bar;
+			global::LagoVista.XPlat.Droid.Resource.Id.search_button = global::LagoVista.Droid.Simulator.Resource.Id.search_button;
+			global::LagoVista.XPlat.Droid.Resource.Id.search_close_btn = global::LagoVista.Droid.Simulator.Resource.Id.search_close_btn;
+			global::LagoVista.XPlat.Droid.Resource.Id.search_edit_frame = global::LagoVista.Droid.Simulator.Resource.Id.search_edit_frame;
+			global::LagoVista.XPlat.Droid.Resource.Id.search_go_btn = global::LagoVista.Droid.Simulator.Resource.Id.search_go_btn;
+			global::LagoVista.XPlat.Droid.Resource.Id.search_mag_icon = global::LagoVista.Droid.Simulator.Resource.Id.search_mag_icon;
+			global::LagoVista.XPlat.Droid.Resource.Id.search_plate = global::LagoVista.Droid.Simulator.Resource.Id.search_plate;
+			global::LagoVista.XPlat.Droid.Resource.Id.search_src_text = global::LagoVista.Droid.Simulator.Resource.Id.search_src_text;
+			global::LagoVista.XPlat.Droid.Resource.Id.search_voice_btn = global::LagoVista.Droid.Simulator.Resource.Id.search_voice_btn;
+			global::LagoVista.XPlat.Droid.Resource.Id.select_dialog_listview = global::LagoVista.Droid.Simulator.Resource.Id.select_dialog_listview;
+			global::LagoVista.XPlat.Droid.Resource.Id.shortcut = global::LagoVista.Droid.Simulator.Resource.Id.shortcut;
+			global::LagoVista.XPlat.Droid.Resource.Id.showCustom = global::LagoVista.Droid.Simulator.Resource.Id.showCustom;
+			global::LagoVista.XPlat.Droid.Resource.Id.showHome = global::LagoVista.Droid.Simulator.Resource.Id.showHome;
+			global::LagoVista.XPlat.Droid.Resource.Id.showTitle = global::LagoVista.Droid.Simulator.Resource.Id.showTitle;
+			global::LagoVista.XPlat.Droid.Resource.Id.smallLabel = global::LagoVista.Droid.Simulator.Resource.Id.smallLabel;
+			global::LagoVista.XPlat.Droid.Resource.Id.snackbar_action = global::LagoVista.Droid.Simulator.Resource.Id.snackbar_action;
+			global::LagoVista.XPlat.Droid.Resource.Id.snackbar_text = global::LagoVista.Droid.Simulator.Resource.Id.snackbar_text;
+			global::LagoVista.XPlat.Droid.Resource.Id.snap = global::LagoVista.Droid.Simulator.Resource.Id.snap;
+			global::LagoVista.XPlat.Droid.Resource.Id.spacer = global::LagoVista.Droid.Simulator.Resource.Id.spacer;
+			global::LagoVista.XPlat.Droid.Resource.Id.split_action_bar = global::LagoVista.Droid.Simulator.Resource.Id.split_action_bar;
+			global::LagoVista.XPlat.Droid.Resource.Id.src_atop = global::LagoVista.Droid.Simulator.Resource.Id.src_atop;
+			global::LagoVista.XPlat.Droid.Resource.Id.src_in = global::LagoVista.Droid.Simulator.Resource.Id.src_in;
+			global::LagoVista.XPlat.Droid.Resource.Id.src_over = global::LagoVista.Droid.Simulator.Resource.Id.src_over;
+			global::LagoVista.XPlat.Droid.Resource.Id.start = global::LagoVista.Droid.Simulator.Resource.Id.start;
+			global::LagoVista.XPlat.Droid.Resource.Id.status_bar_latest_event_content = global::LagoVista.Droid.Simulator.Resource.Id.status_bar_latest_event_content;
+			global::LagoVista.XPlat.Droid.Resource.Id.submenuarrow = global::LagoVista.Droid.Simulator.Resource.Id.submenuarrow;
+			global::LagoVista.XPlat.Droid.Resource.Id.submit_area = global::LagoVista.Droid.Simulator.Resource.Id.submit_area;
+			global::LagoVista.XPlat.Droid.Resource.Id.tabMode = global::LagoVista.Droid.Simulator.Resource.Id.tabMode;
+			global::LagoVista.XPlat.Droid.Resource.Id.text = global::LagoVista.Droid.Simulator.Resource.Id.text;
+			global::LagoVista.XPlat.Droid.Resource.Id.text2 = global::LagoVista.Droid.Simulator.Resource.Id.text2;
+			global::LagoVista.XPlat.Droid.Resource.Id.textSpacerNoButtons = global::LagoVista.Droid.Simulator.Resource.Id.textSpacerNoButtons;
+			global::LagoVista.XPlat.Droid.Resource.Id.textSpacerNoTitle = global::LagoVista.Droid.Simulator.Resource.Id.textSpacerNoTitle;
+			global::LagoVista.XPlat.Droid.Resource.Id.text_input_password_toggle = global::LagoVista.Droid.Simulator.Resource.Id.text_input_password_toggle;
+			global::LagoVista.XPlat.Droid.Resource.Id.textinput_counter = global::LagoVista.Droid.Simulator.Resource.Id.textinput_counter;
+			global::LagoVista.XPlat.Droid.Resource.Id.textinput_error = global::LagoVista.Droid.Simulator.Resource.Id.textinput_error;
+			global::LagoVista.XPlat.Droid.Resource.Id.time = global::LagoVista.Droid.Simulator.Resource.Id.time;
+			global::LagoVista.XPlat.Droid.Resource.Id.title = global::LagoVista.Droid.Simulator.Resource.Id.title;
+			global::LagoVista.XPlat.Droid.Resource.Id.titleDividerNoCustom = global::LagoVista.Droid.Simulator.Resource.Id.titleDividerNoCustom;
+			global::LagoVista.XPlat.Droid.Resource.Id.title_template = global::LagoVista.Droid.Simulator.Resource.Id.title_template;
+			global::LagoVista.XPlat.Droid.Resource.Id.top = global::LagoVista.Droid.Simulator.Resource.Id.top;
+			global::LagoVista.XPlat.Droid.Resource.Id.topPanel = global::LagoVista.Droid.Simulator.Resource.Id.topPanel;
+			global::LagoVista.XPlat.Droid.Resource.Id.touch_outside = global::LagoVista.Droid.Simulator.Resource.Id.touch_outside;
+			global::LagoVista.XPlat.Droid.Resource.Id.transition_current_scene = global::LagoVista.Droid.Simulator.Resource.Id.transition_current_scene;
+			global::LagoVista.XPlat.Droid.Resource.Id.transition_scene_layoutid_cache = global::LagoVista.Droid.Simulator.Resource.Id.transition_scene_layoutid_cache;
+			global::LagoVista.XPlat.Droid.Resource.Id.up = global::LagoVista.Droid.Simulator.Resource.Id.up;
+			global::LagoVista.XPlat.Droid.Resource.Id.useLogo = global::LagoVista.Droid.Simulator.Resource.Id.useLogo;
+			global::LagoVista.XPlat.Droid.Resource.Id.view_offset_helper = global::LagoVista.Droid.Simulator.Resource.Id.view_offset_helper;
+			global::LagoVista.XPlat.Droid.Resource.Id.visible = global::LagoVista.Droid.Simulator.Resource.Id.visible;
+			global::LagoVista.XPlat.Droid.Resource.Id.volume_item_container = global::LagoVista.Droid.Simulator.Resource.Id.volume_item_container;
+			global::LagoVista.XPlat.Droid.Resource.Id.withText = global::LagoVista.Droid.Simulator.Resource.Id.withText;
+			global::LagoVista.XPlat.Droid.Resource.Id.wrap_content = global::LagoVista.Droid.Simulator.Resource.Id.wrap_content;
+			global::LagoVista.XPlat.Droid.Resource.Integer.abc_config_activityDefaultDur = global::LagoVista.Droid.Simulator.Resource.Integer.abc_config_activityDefaultDur;
+			global::LagoVista.XPlat.Droid.Resource.Integer.abc_config_activityShortDur = global::LagoVista.Droid.Simulator.Resource.Integer.abc_config_activityShortDur;
+			global::LagoVista.XPlat.Droid.Resource.Integer.app_bar_elevation_anim_duration = global::LagoVista.Droid.Simulator.Resource.Integer.app_bar_elevation_anim_duration;
+			global::LagoVista.XPlat.Droid.Resource.Integer.bottom_sheet_slide_duration = global::LagoVista.Droid.Simulator.Resource.Integer.bottom_sheet_slide_duration;
+			global::LagoVista.XPlat.Droid.Resource.Integer.cancel_button_image_alpha = global::LagoVista.Droid.Simulator.Resource.Integer.cancel_button_image_alpha;
+			global::LagoVista.XPlat.Droid.Resource.Integer.design_snackbar_text_max_lines = global::LagoVista.Droid.Simulator.Resource.Integer.design_snackbar_text_max_lines;
+			global::LagoVista.XPlat.Droid.Resource.Integer.hide_password_duration = global::LagoVista.Droid.Simulator.Resource.Integer.hide_password_duration;
+			global::LagoVista.XPlat.Droid.Resource.Integer.mr_controller_volume_group_list_animation_duration_ms = global::LagoVista.Droid.Simulator.Resource.Integer.mr_controller_volume_group_list_animation_duration_ms;
+			global::LagoVista.XPlat.Droid.Resource.Integer.mr_controller_volume_group_list_fade_in_duration_ms = global::LagoVista.Droid.Simulator.Resource.Integer.mr_controller_volume_group_list_fade_in_duration_ms;
+			global::LagoVista.XPlat.Droid.Resource.Integer.mr_controller_volume_group_list_fade_out_duration_ms = global::LagoVista.Droid.Simulator.Resource.Integer.mr_controller_volume_group_list_fade_out_duration_ms;
+			global::LagoVista.XPlat.Droid.Resource.Integer.show_password_duration = global::LagoVista.Droid.Simulator.Resource.Integer.show_password_duration;
+			global::LagoVista.XPlat.Droid.Resource.Integer.status_bar_notification_info_maxnum = global::LagoVista.Droid.Simulator.Resource.Integer.status_bar_notification_info_maxnum;
+			global::LagoVista.XPlat.Droid.Resource.Interpolator.mr_fast_out_slow_in = global::LagoVista.Droid.Simulator.Resource.Interpolator.mr_fast_out_slow_in;
+			global::LagoVista.XPlat.Droid.Resource.Interpolator.mr_linear_out_slow_in = global::LagoVista.Droid.Simulator.Resource.Interpolator.mr_linear_out_slow_in;
+			global::LagoVista.XPlat.Droid.Resource.Layout.abc_action_bar_title_item = global::LagoVista.Droid.Simulator.Resource.Layout.abc_action_bar_title_item;
+			global::LagoVista.XPlat.Droid.Resource.Layout.abc_action_bar_up_container = global::LagoVista.Droid.Simulator.Resource.Layout.abc_action_bar_up_container;
+			global::LagoVista.XPlat.Droid.Resource.Layout.abc_action_bar_view_list_nav_layout = global::LagoVista.Droid.Simulator.Resource.Layout.abc_action_bar_view_list_nav_layout;
+			global::LagoVista.XPlat.Droid.Resource.Layout.abc_action_menu_item_layout = global::LagoVista.Droid.Simulator.Resource.Layout.abc_action_menu_item_layout;
+			global::LagoVista.XPlat.Droid.Resource.Layout.abc_action_menu_layout = global::LagoVista.Droid.Simulator.Resource.Layout.abc_action_menu_layout;
+			global::LagoVista.XPlat.Droid.Resource.Layout.abc_action_mode_bar = global::LagoVista.Droid.Simulator.Resource.Layout.abc_action_mode_bar;
+			global::LagoVista.XPlat.Droid.Resource.Layout.abc_action_mode_close_item_material = global::LagoVista.Droid.Simulator.Resource.Layout.abc_action_mode_close_item_material;
+			global::LagoVista.XPlat.Droid.Resource.Layout.abc_activity_chooser_view = global::LagoVista.Droid.Simulator.Resource.Layout.abc_activity_chooser_view;
+			global::LagoVista.XPlat.Droid.Resource.Layout.abc_activity_chooser_view_list_item = global::LagoVista.Droid.Simulator.Resource.Layout.abc_activity_chooser_view_list_item;
+			global::LagoVista.XPlat.Droid.Resource.Layout.abc_alert_dialog_button_bar_material = global::LagoVista.Droid.Simulator.Resource.Layout.abc_alert_dialog_button_bar_material;
+			global::LagoVista.XPlat.Droid.Resource.Layout.abc_alert_dialog_material = global::LagoVista.Droid.Simulator.Resource.Layout.abc_alert_dialog_material;
+			global::LagoVista.XPlat.Droid.Resource.Layout.abc_alert_dialog_title_material = global::LagoVista.Droid.Simulator.Resource.Layout.abc_alert_dialog_title_material;
+			global::LagoVista.XPlat.Droid.Resource.Layout.abc_dialog_title_material = global::LagoVista.Droid.Simulator.Resource.Layout.abc_dialog_title_material;
+			global::LagoVista.XPlat.Droid.Resource.Layout.abc_expanded_menu_layout = global::LagoVista.Droid.Simulator.Resource.Layout.abc_expanded_menu_layout;
+			global::LagoVista.XPlat.Droid.Resource.Layout.abc_list_menu_item_checkbox = global::LagoVista.Droid.Simulator.Resource.Layout.abc_list_menu_item_checkbox;
+			global::LagoVista.XPlat.Droid.Resource.Layout.abc_list_menu_item_icon = global::LagoVista.Droid.Simulator.Resource.Layout.abc_list_menu_item_icon;
+			global::LagoVista.XPlat.Droid.Resource.Layout.abc_list_menu_item_layout = global::LagoVista.Droid.Simulator.Resource.Layout.abc_list_menu_item_layout;
+			global::LagoVista.XPlat.Droid.Resource.Layout.abc_list_menu_item_radio = global::LagoVista.Droid.Simulator.Resource.Layout.abc_list_menu_item_radio;
+			global::LagoVista.XPlat.Droid.Resource.Layout.abc_popup_menu_header_item_layout = global::LagoVista.Droid.Simulator.Resource.Layout.abc_popup_menu_header_item_layout;
+			global::LagoVista.XPlat.Droid.Resource.Layout.abc_popup_menu_item_layout = global::LagoVista.Droid.Simulator.Resource.Layout.abc_popup_menu_item_layout;
+			global::LagoVista.XPlat.Droid.Resource.Layout.abc_screen_content_include = global::LagoVista.Droid.Simulator.Resource.Layout.abc_screen_content_include;
+			global::LagoVista.XPlat.Droid.Resource.Layout.abc_screen_simple = global::LagoVista.Droid.Simulator.Resource.Layout.abc_screen_simple;
+			global::LagoVista.XPlat.Droid.Resource.Layout.abc_screen_simple_overlay_action_mode = global::LagoVista.Droid.Simulator.Resource.Layout.abc_screen_simple_overlay_action_mode;
+			global::LagoVista.XPlat.Droid.Resource.Layout.abc_screen_toolbar = global::LagoVista.Droid.Simulator.Resource.Layout.abc_screen_toolbar;
+			global::LagoVista.XPlat.Droid.Resource.Layout.abc_search_dropdown_item_icons_2line = global::LagoVista.Droid.Simulator.Resource.Layout.abc_search_dropdown_item_icons_2line;
+			global::LagoVista.XPlat.Droid.Resource.Layout.abc_search_view = global::LagoVista.Droid.Simulator.Resource.Layout.abc_search_view;
+			global::LagoVista.XPlat.Droid.Resource.Layout.abc_select_dialog_material = global::LagoVista.Droid.Simulator.Resource.Layout.abc_select_dialog_material;
+			global::LagoVista.XPlat.Droid.Resource.Layout.design_bottom_navigation_item = global::LagoVista.Droid.Simulator.Resource.Layout.design_bottom_navigation_item;
+			global::LagoVista.XPlat.Droid.Resource.Layout.design_bottom_sheet_dialog = global::LagoVista.Droid.Simulator.Resource.Layout.design_bottom_sheet_dialog;
+			global::LagoVista.XPlat.Droid.Resource.Layout.design_layout_snackbar = global::LagoVista.Droid.Simulator.Resource.Layout.design_layout_snackbar;
+			global::LagoVista.XPlat.Droid.Resource.Layout.design_layout_snackbar_include = global::LagoVista.Droid.Simulator.Resource.Layout.design_layout_snackbar_include;
+			global::LagoVista.XPlat.Droid.Resource.Layout.design_layout_tab_icon = global::LagoVista.Droid.Simulator.Resource.Layout.design_layout_tab_icon;
+			global::LagoVista.XPlat.Droid.Resource.Layout.design_layout_tab_text = global::LagoVista.Droid.Simulator.Resource.Layout.design_layout_tab_text;
+			global::LagoVista.XPlat.Droid.Resource.Layout.design_menu_item_action_area = global::LagoVista.Droid.Simulator.Resource.Layout.design_menu_item_action_area;
+			global::LagoVista.XPlat.Droid.Resource.Layout.design_navigation_item = global::LagoVista.Droid.Simulator.Resource.Layout.design_navigation_item;
+			global::LagoVista.XPlat.Droid.Resource.Layout.design_navigation_item_header = global::LagoVista.Droid.Simulator.Resource.Layout.design_navigation_item_header;
+			global::LagoVista.XPlat.Droid.Resource.Layout.design_navigation_item_separator = global::LagoVista.Droid.Simulator.Resource.Layout.design_navigation_item_separator;
+			global::LagoVista.XPlat.Droid.Resource.Layout.design_navigation_item_subheader = global::LagoVista.Droid.Simulator.Resource.Layout.design_navigation_item_subheader;
+			global::LagoVista.XPlat.Droid.Resource.Layout.design_navigation_menu = global::LagoVista.Droid.Simulator.Resource.Layout.design_navigation_menu;
+			global::LagoVista.XPlat.Droid.Resource.Layout.design_navigation_menu_item = global::LagoVista.Droid.Simulator.Resource.Layout.design_navigation_menu_item;
+			global::LagoVista.XPlat.Droid.Resource.Layout.design_text_input_password_icon = global::LagoVista.Droid.Simulator.Resource.Layout.design_text_input_password_icon;
+			global::LagoVista.XPlat.Droid.Resource.Layout.mr_chooser_dialog = global::LagoVista.Droid.Simulator.Resource.Layout.mr_chooser_dialog;
+			global::LagoVista.XPlat.Droid.Resource.Layout.mr_chooser_list_item = global::LagoVista.Droid.Simulator.Resource.Layout.mr_chooser_list_item;
+			global::LagoVista.XPlat.Droid.Resource.Layout.mr_controller_material_dialog_b = global::LagoVista.Droid.Simulator.Resource.Layout.mr_controller_material_dialog_b;
+			global::LagoVista.XPlat.Droid.Resource.Layout.mr_controller_volume_item = global::LagoVista.Droid.Simulator.Resource.Layout.mr_controller_volume_item;
+			global::LagoVista.XPlat.Droid.Resource.Layout.mr_playback_control = global::LagoVista.Droid.Simulator.Resource.Layout.mr_playback_control;
+			global::LagoVista.XPlat.Droid.Resource.Layout.mr_volume_control = global::LagoVista.Droid.Simulator.Resource.Layout.mr_volume_control;
+			global::LagoVista.XPlat.Droid.Resource.Layout.notification_action = global::LagoVista.Droid.Simulator.Resource.Layout.notification_action;
+			global::LagoVista.XPlat.Droid.Resource.Layout.notification_action_tombstone = global::LagoVista.Droid.Simulator.Resource.Layout.notification_action_tombstone;
+			global::LagoVista.XPlat.Droid.Resource.Layout.notification_media_action = global::LagoVista.Droid.Simulator.Resource.Layout.notification_media_action;
+			global::LagoVista.XPlat.Droid.Resource.Layout.notification_media_cancel_action = global::LagoVista.Droid.Simulator.Resource.Layout.notification_media_cancel_action;
+			global::LagoVista.XPlat.Droid.Resource.Layout.notification_template_big_media = global::LagoVista.Droid.Simulator.Resource.Layout.notification_template_big_media;
+			global::LagoVista.XPlat.Droid.Resource.Layout.notification_template_big_media_custom = global::LagoVista.Droid.Simulator.Resource.Layout.notification_template_big_media_custom;
+			global::LagoVista.XPlat.Droid.Resource.Layout.notification_template_big_media_narrow = global::LagoVista.Droid.Simulator.Resource.Layout.notification_template_big_media_narrow;
+			global::LagoVista.XPlat.Droid.Resource.Layout.notification_template_big_media_narrow_custom = global::LagoVista.Droid.Simulator.Resource.Layout.notification_template_big_media_narrow_custom;
+			global::LagoVista.XPlat.Droid.Resource.Layout.notification_template_custom_big = global::LagoVista.Droid.Simulator.Resource.Layout.notification_template_custom_big;
+			global::LagoVista.XPlat.Droid.Resource.Layout.notification_template_icon_group = global::LagoVista.Droid.Simulator.Resource.Layout.notification_template_icon_group;
+			global::LagoVista.XPlat.Droid.Resource.Layout.notification_template_lines_media = global::LagoVista.Droid.Simulator.Resource.Layout.notification_template_lines_media;
+			global::LagoVista.XPlat.Droid.Resource.Layout.notification_template_media = global::LagoVista.Droid.Simulator.Resource.Layout.notification_template_media;
+			global::LagoVista.XPlat.Droid.Resource.Layout.notification_template_media_custom = global::LagoVista.Droid.Simulator.Resource.Layout.notification_template_media_custom;
+			global::LagoVista.XPlat.Droid.Resource.Layout.notification_template_part_chronometer = global::LagoVista.Droid.Simulator.Resource.Layout.notification_template_part_chronometer;
+			global::LagoVista.XPlat.Droid.Resource.Layout.notification_template_part_time = global::LagoVista.Droid.Simulator.Resource.Layout.notification_template_part_time;
+			global::LagoVista.XPlat.Droid.Resource.Layout.select_dialog_item_material = global::LagoVista.Droid.Simulator.Resource.Layout.select_dialog_item_material;
+			global::LagoVista.XPlat.Droid.Resource.Layout.select_dialog_multichoice_material = global::LagoVista.Droid.Simulator.Resource.Layout.select_dialog_multichoice_material;
+			global::LagoVista.XPlat.Droid.Resource.Layout.select_dialog_singlechoice_material = global::LagoVista.Droid.Simulator.Resource.Layout.select_dialog_singlechoice_material;
+			global::LagoVista.XPlat.Droid.Resource.Layout.support_simple_spinner_dropdown_item = global::LagoVista.Droid.Simulator.Resource.Layout.support_simple_spinner_dropdown_item;
+			global::LagoVista.XPlat.Droid.Resource.String.ApplicationName = global::LagoVista.Droid.Simulator.Resource.String.ApplicationName;
+			global::LagoVista.XPlat.Droid.Resource.String.Hello = global::LagoVista.Droid.Simulator.Resource.String.Hello;
+			global::LagoVista.XPlat.Droid.Resource.String.abc_action_bar_home_description = global::LagoVista.Droid.Simulator.Resource.String.abc_action_bar_home_description;
+			global::LagoVista.XPlat.Droid.Resource.String.abc_action_bar_home_description_format = global::LagoVista.Droid.Simulator.Resource.String.abc_action_bar_home_description_format;
+			global::LagoVista.XPlat.Droid.Resource.String.abc_action_bar_home_subtitle_description_format = global::LagoVista.Droid.Simulator.Resource.String.abc_action_bar_home_subtitle_description_format;
+			global::LagoVista.XPlat.Droid.Resource.String.abc_action_bar_up_description = global::LagoVista.Droid.Simulator.Resource.String.abc_action_bar_up_description;
+			global::LagoVista.XPlat.Droid.Resource.String.abc_action_menu_overflow_description = global::LagoVista.Droid.Simulator.Resource.String.abc_action_menu_overflow_description;
+			global::LagoVista.XPlat.Droid.Resource.String.abc_action_mode_done = global::LagoVista.Droid.Simulator.Resource.String.abc_action_mode_done;
+			global::LagoVista.XPlat.Droid.Resource.String.abc_activity_chooser_view_see_all = global::LagoVista.Droid.Simulator.Resource.String.abc_activity_chooser_view_see_all;
+			global::LagoVista.XPlat.Droid.Resource.String.abc_activitychooserview_choose_application = global::LagoVista.Droid.Simulator.Resource.String.abc_activitychooserview_choose_application;
+			global::LagoVista.XPlat.Droid.Resource.String.abc_capital_off = global::LagoVista.Droid.Simulator.Resource.String.abc_capital_off;
+			global::LagoVista.XPlat.Droid.Resource.String.abc_capital_on = global::LagoVista.Droid.Simulator.Resource.String.abc_capital_on;
+			global::LagoVista.XPlat.Droid.Resource.String.abc_font_family_body_1_material = global::LagoVista.Droid.Simulator.Resource.String.abc_font_family_body_1_material;
+			global::LagoVista.XPlat.Droid.Resource.String.abc_font_family_body_2_material = global::LagoVista.Droid.Simulator.Resource.String.abc_font_family_body_2_material;
+			global::LagoVista.XPlat.Droid.Resource.String.abc_font_family_button_material = global::LagoVista.Droid.Simulator.Resource.String.abc_font_family_button_material;
+			global::LagoVista.XPlat.Droid.Resource.String.abc_font_family_caption_material = global::LagoVista.Droid.Simulator.Resource.String.abc_font_family_caption_material;
+			global::LagoVista.XPlat.Droid.Resource.String.abc_font_family_display_1_material = global::LagoVista.Droid.Simulator.Resource.String.abc_font_family_display_1_material;
+			global::LagoVista.XPlat.Droid.Resource.String.abc_font_family_display_2_material = global::LagoVista.Droid.Simulator.Resource.String.abc_font_family_display_2_material;
+			global::LagoVista.XPlat.Droid.Resource.String.abc_font_family_display_3_material = global::LagoVista.Droid.Simulator.Resource.String.abc_font_family_display_3_material;
+			global::LagoVista.XPlat.Droid.Resource.String.abc_font_family_display_4_material = global::LagoVista.Droid.Simulator.Resource.String.abc_font_family_display_4_material;
+			global::LagoVista.XPlat.Droid.Resource.String.abc_font_family_headline_material = global::LagoVista.Droid.Simulator.Resource.String.abc_font_family_headline_material;
+			global::LagoVista.XPlat.Droid.Resource.String.abc_font_family_menu_material = global::LagoVista.Droid.Simulator.Resource.String.abc_font_family_menu_material;
+			global::LagoVista.XPlat.Droid.Resource.String.abc_font_family_subhead_material = global::LagoVista.Droid.Simulator.Resource.String.abc_font_family_subhead_material;
+			global::LagoVista.XPlat.Droid.Resource.String.abc_font_family_title_material = global::LagoVista.Droid.Simulator.Resource.String.abc_font_family_title_material;
+			global::LagoVista.XPlat.Droid.Resource.String.abc_search_hint = global::LagoVista.Droid.Simulator.Resource.String.abc_search_hint;
+			global::LagoVista.XPlat.Droid.Resource.String.abc_searchview_description_clear = global::LagoVista.Droid.Simulator.Resource.String.abc_searchview_description_clear;
+			global::LagoVista.XPlat.Droid.Resource.String.abc_searchview_description_query = global::LagoVista.Droid.Simulator.Resource.String.abc_searchview_description_query;
+			global::LagoVista.XPlat.Droid.Resource.String.abc_searchview_description_search = global::LagoVista.Droid.Simulator.Resource.String.abc_searchview_description_search;
+			global::LagoVista.XPlat.Droid.Resource.String.abc_searchview_description_submit = global::LagoVista.Droid.Simulator.Resource.String.abc_searchview_description_submit;
+			global::LagoVista.XPlat.Droid.Resource.String.abc_searchview_description_voice = global::LagoVista.Droid.Simulator.Resource.String.abc_searchview_description_voice;
+			global::LagoVista.XPlat.Droid.Resource.String.abc_shareactionprovider_share_with = global::LagoVista.Droid.Simulator.Resource.String.abc_shareactionprovider_share_with;
+			global::LagoVista.XPlat.Droid.Resource.String.abc_shareactionprovider_share_with_application = global::LagoVista.Droid.Simulator.Resource.String.abc_shareactionprovider_share_with_application;
+			global::LagoVista.XPlat.Droid.Resource.String.abc_toolbar_collapse_description = global::LagoVista.Droid.Simulator.Resource.String.abc_toolbar_collapse_description;
+			global::LagoVista.XPlat.Droid.Resource.String.appbar_scrolling_view_behavior = global::LagoVista.Droid.Simulator.Resource.String.appbar_scrolling_view_behavior;
+			global::LagoVista.XPlat.Droid.Resource.String.bottom_sheet_behavior = global::LagoVista.Droid.Simulator.Resource.String.bottom_sheet_behavior;
+			global::LagoVista.XPlat.Droid.Resource.String.character_counter_pattern = global::LagoVista.Droid.Simulator.Resource.String.character_counter_pattern;
+			global::LagoVista.XPlat.Droid.Resource.String.library_name = global::LagoVista.Droid.Simulator.Resource.String.library_name;
+			global::LagoVista.XPlat.Droid.Resource.String.mobile_center_distribute_dialog_actioned_on_disabled_toast = global::LagoVista.Droid.Simulator.Resource.String.mobile_center_distribute_dialog_actioned_on_disabled_toast;
+			global::LagoVista.XPlat.Droid.Resource.String.mobile_center_distribute_download_progress_number_format = global::LagoVista.Droid.Simulator.Resource.String.mobile_center_distribute_download_progress_number_format;
+			global::LagoVista.XPlat.Droid.Resource.String.mobile_center_distribute_downloading_mandatory_update = global::LagoVista.Droid.Simulator.Resource.String.mobile_center_distribute_downloading_mandatory_update;
+			global::LagoVista.XPlat.Droid.Resource.String.mobile_center_distribute_install = global::LagoVista.Droid.Simulator.Resource.String.mobile_center_distribute_install;
+			global::LagoVista.XPlat.Droid.Resource.String.mobile_center_distribute_install_ready_message = global::LagoVista.Droid.Simulator.Resource.String.mobile_center_distribute_install_ready_message;
+			global::LagoVista.XPlat.Droid.Resource.String.mobile_center_distribute_install_ready_title = global::LagoVista.Droid.Simulator.Resource.String.mobile_center_distribute_install_ready_title;
+			global::LagoVista.XPlat.Droid.Resource.String.mobile_center_distribute_notification_category = global::LagoVista.Droid.Simulator.Resource.String.mobile_center_distribute_notification_category;
+			global::LagoVista.XPlat.Droid.Resource.String.mobile_center_distribute_unknown_sources_dialog_message = global::LagoVista.Droid.Simulator.Resource.String.mobile_center_distribute_unknown_sources_dialog_message;
+			global::LagoVista.XPlat.Droid.Resource.String.mobile_center_distribute_unknown_sources_dialog_settings = global::LagoVista.Droid.Simulator.Resource.String.mobile_center_distribute_unknown_sources_dialog_settings;
+			global::LagoVista.XPlat.Droid.Resource.String.mobile_center_distribute_update_dialog_download = global::LagoVista.Droid.Simulator.Resource.String.mobile_center_distribute_update_dialog_download;
+			global::LagoVista.XPlat.Droid.Resource.String.mobile_center_distribute_update_dialog_message_mandatory = global::LagoVista.Droid.Simulator.Resource.String.mobile_center_distribute_update_dialog_message_mandatory;
+			global::LagoVista.XPlat.Droid.Resource.String.mobile_center_distribute_update_dialog_message_optional = global::LagoVista.Droid.Simulator.Resource.String.mobile_center_distribute_update_dialog_message_optional;
+			global::LagoVista.XPlat.Droid.Resource.String.mobile_center_distribute_update_dialog_postpone = global::LagoVista.Droid.Simulator.Resource.String.mobile_center_distribute_update_dialog_postpone;
+			global::LagoVista.XPlat.Droid.Resource.String.mobile_center_distribute_update_dialog_title = global::LagoVista.Droid.Simulator.Resource.String.mobile_center_distribute_update_dialog_title;
+			global::LagoVista.XPlat.Droid.Resource.String.mobile_center_distribute_update_dialog_view_release_notes = global::LagoVista.Droid.Simulator.Resource.String.mobile_center_distribute_update_dialog_view_release_notes;
+			global::LagoVista.XPlat.Droid.Resource.String.mobile_center_distribute_update_failed_dialog_ignore = global::LagoVista.Droid.Simulator.Resource.String.mobile_center_distribute_update_failed_dialog_ignore;
+			global::LagoVista.XPlat.Droid.Resource.String.mobile_center_distribute_update_failed_dialog_reinstall = global::LagoVista.Droid.Simulator.Resource.String.mobile_center_distribute_update_failed_dialog_reinstall;
+			global::LagoVista.XPlat.Droid.Resource.String.mobile_center_distribute_update_failed_dialog_title = global::LagoVista.Droid.Simulator.Resource.String.mobile_center_distribute_update_failed_dialog_title;
+			global::LagoVista.XPlat.Droid.Resource.String.mr_button_content_description = global::LagoVista.Droid.Simulator.Resource.String.mr_button_content_description;
+			global::LagoVista.XPlat.Droid.Resource.String.mr_cast_button_connected = global::LagoVista.Droid.Simulator.Resource.String.mr_cast_button_connected;
+			global::LagoVista.XPlat.Droid.Resource.String.mr_cast_button_connecting = global::LagoVista.Droid.Simulator.Resource.String.mr_cast_button_connecting;
+			global::LagoVista.XPlat.Droid.Resource.String.mr_cast_button_disconnected = global::LagoVista.Droid.Simulator.Resource.String.mr_cast_button_disconnected;
+			global::LagoVista.XPlat.Droid.Resource.String.mr_chooser_searching = global::LagoVista.Droid.Simulator.Resource.String.mr_chooser_searching;
+			global::LagoVista.XPlat.Droid.Resource.String.mr_chooser_title = global::LagoVista.Droid.Simulator.Resource.String.mr_chooser_title;
+			global::LagoVista.XPlat.Droid.Resource.String.mr_controller_album_art = global::LagoVista.Droid.Simulator.Resource.String.mr_controller_album_art;
+			global::LagoVista.XPlat.Droid.Resource.String.mr_controller_casting_screen = global::LagoVista.Droid.Simulator.Resource.String.mr_controller_casting_screen;
+			global::LagoVista.XPlat.Droid.Resource.String.mr_controller_close_description = global::LagoVista.Droid.Simulator.Resource.String.mr_controller_close_description;
+			global::LagoVista.XPlat.Droid.Resource.String.mr_controller_collapse_group = global::LagoVista.Droid.Simulator.Resource.String.mr_controller_collapse_group;
+			global::LagoVista.XPlat.Droid.Resource.String.mr_controller_disconnect = global::LagoVista.Droid.Simulator.Resource.String.mr_controller_disconnect;
+			global::LagoVista.XPlat.Droid.Resource.String.mr_controller_expand_group = global::LagoVista.Droid.Simulator.Resource.String.mr_controller_expand_group;
+			global::LagoVista.XPlat.Droid.Resource.String.mr_controller_no_info_available = global::LagoVista.Droid.Simulator.Resource.String.mr_controller_no_info_available;
+			global::LagoVista.XPlat.Droid.Resource.String.mr_controller_no_media_selected = global::LagoVista.Droid.Simulator.Resource.String.mr_controller_no_media_selected;
+			global::LagoVista.XPlat.Droid.Resource.String.mr_controller_pause = global::LagoVista.Droid.Simulator.Resource.String.mr_controller_pause;
+			global::LagoVista.XPlat.Droid.Resource.String.mr_controller_play = global::LagoVista.Droid.Simulator.Resource.String.mr_controller_play;
+			global::LagoVista.XPlat.Droid.Resource.String.mr_controller_stop = global::LagoVista.Droid.Simulator.Resource.String.mr_controller_stop;
+			global::LagoVista.XPlat.Droid.Resource.String.mr_controller_stop_casting = global::LagoVista.Droid.Simulator.Resource.String.mr_controller_stop_casting;
+			global::LagoVista.XPlat.Droid.Resource.String.mr_controller_volume_slider = global::LagoVista.Droid.Simulator.Resource.String.mr_controller_volume_slider;
+			global::LagoVista.XPlat.Droid.Resource.String.mr_system_route_name = global::LagoVista.Droid.Simulator.Resource.String.mr_system_route_name;
+			global::LagoVista.XPlat.Droid.Resource.String.mr_user_route_category_name = global::LagoVista.Droid.Simulator.Resource.String.mr_user_route_category_name;
+			global::LagoVista.XPlat.Droid.Resource.String.password_toggle_content_description = global::LagoVista.Droid.Simulator.Resource.String.password_toggle_content_description;
+			global::LagoVista.XPlat.Droid.Resource.String.path_password_eye = global::LagoVista.Droid.Simulator.Resource.String.path_password_eye;
+			global::LagoVista.XPlat.Droid.Resource.String.path_password_eye_mask_strike_through = global::LagoVista.Droid.Simulator.Resource.String.path_password_eye_mask_strike_through;
+			global::LagoVista.XPlat.Droid.Resource.String.path_password_eye_mask_visible = global::LagoVista.Droid.Simulator.Resource.String.path_password_eye_mask_visible;
+			global::LagoVista.XPlat.Droid.Resource.String.path_password_strike_through = global::LagoVista.Droid.Simulator.Resource.String.path_password_strike_through;
+			global::LagoVista.XPlat.Droid.Resource.String.search_menu_title = global::LagoVista.Droid.Simulator.Resource.String.search_menu_title;
+			global::LagoVista.XPlat.Droid.Resource.String.status_bar_notification_info_overflow = global::LagoVista.Droid.Simulator.Resource.String.status_bar_notification_info_overflow;
+			global::LagoVista.XPlat.Droid.Resource.Style.AlertDialog_AppCompat = global::LagoVista.Droid.Simulator.Resource.Style.AlertDialog_AppCompat;
+			global::LagoVista.XPlat.Droid.Resource.Style.AlertDialog_AppCompat_Light = global::LagoVista.Droid.Simulator.Resource.Style.AlertDialog_AppCompat_Light;
+			global::LagoVista.XPlat.Droid.Resource.Style.Animation_AppCompat_Dialog = global::LagoVista.Droid.Simulator.Resource.Style.Animation_AppCompat_Dialog;
+			global::LagoVista.XPlat.Droid.Resource.Style.Animation_AppCompat_DropDownUp = global::LagoVista.Droid.Simulator.Resource.Style.Animation_AppCompat_DropDownUp;
+			global::LagoVista.XPlat.Droid.Resource.Style.Animation_Design_BottomSheetDialog = global::LagoVista.Droid.Simulator.Resource.Style.Animation_Design_BottomSheetDialog;
+			global::LagoVista.XPlat.Droid.Resource.Style.Base_AlertDialog_AppCompat = global::LagoVista.Droid.Simulator.Resource.Style.Base_AlertDialog_AppCompat;
+			global::LagoVista.XPlat.Droid.Resource.Style.Base_AlertDialog_AppCompat_Light = global::LagoVista.Droid.Simulator.Resource.Style.Base_AlertDialog_AppCompat_Light;
+			global::LagoVista.XPlat.Droid.Resource.Style.Base_Animation_AppCompat_Dialog = global::LagoVista.Droid.Simulator.Resource.Style.Base_Animation_AppCompat_Dialog;
+			global::LagoVista.XPlat.Droid.Resource.Style.Base_Animation_AppCompat_DropDownUp = global::LagoVista.Droid.Simulator.Resource.Style.Base_Animation_AppCompat_DropDownUp;
+			global::LagoVista.XPlat.Droid.Resource.Style.Base_CardView = global::LagoVista.Droid.Simulator.Resource.Style.Base_CardView;
+			global::LagoVista.XPlat.Droid.Resource.Style.Base_DialogWindowTitle_AppCompat = global::LagoVista.Droid.Simulator.Resource.Style.Base_DialogWindowTitle_AppCompat;
+			global::LagoVista.XPlat.Droid.Resource.Style.Base_DialogWindowTitleBackground_AppCompat = global::LagoVista.Droid.Simulator.Resource.Style.Base_DialogWindowTitleBackground_AppCompat;
+			global::LagoVista.XPlat.Droid.Resource.Style.Base_TextAppearance_AppCompat = global::LagoVista.Droid.Simulator.Resource.Style.Base_TextAppearance_AppCompat;
+			global::LagoVista.XPlat.Droid.Resource.Style.Base_TextAppearance_AppCompat_Body1 = global::LagoVista.Droid.Simulator.Resource.Style.Base_TextAppearance_AppCompat_Body1;
+			global::LagoVista.XPlat.Droid.Resource.Style.Base_TextAppearance_AppCompat_Body2 = global::LagoVista.Droid.Simulator.Resource.Style.Base_TextAppearance_AppCompat_Body2;
+			global::LagoVista.XPlat.Droid.Resource.Style.Base_TextAppearance_AppCompat_Button = global::LagoVista.Droid.Simulator.Resource.Style.Base_TextAppearance_AppCompat_Button;
+			global::LagoVista.XPlat.Droid.Resource.Style.Base_TextAppearance_AppCompat_Caption = global::LagoVista.Droid.Simulator.Resource.Style.Base_TextAppearance_AppCompat_Caption;
+			global::LagoVista.XPlat.Droid.Resource.Style.Base_TextAppearance_AppCompat_Display1 = global::LagoVista.Droid.Simulator.Resource.Style.Base_TextAppearance_AppCompat_Display1;
+			global::LagoVista.XPlat.Droid.Resource.Style.Base_TextAppearance_AppCompat_Display2 = global::LagoVista.Droid.Simulator.Resource.Style.Base_TextAppearance_AppCompat_Display2;
+			global::LagoVista.XPlat.Droid.Resource.Style.Base_TextAppearance_AppCompat_Display3 = global::LagoVista.Droid.Simulator.Resource.Style.Base_TextAppearance_AppCompat_Display3;
+			global::LagoVista.XPlat.Droid.Resource.Style.Base_TextAppearance_AppCompat_Display4 = global::LagoVista.Droid.Simulator.Resource.Style.Base_TextAppearance_AppCompat_Display4;
+			global::LagoVista.XPlat.Droid.Resource.Style.Base_TextAppearance_AppCompat_Headline = global::LagoVista.Droid.Simulator.Resource.Style.Base_TextAppearance_AppCompat_Headline;
+			global::LagoVista.XPlat.Droid.Resource.Style.Base_TextAppearance_AppCompat_Inverse = global::LagoVista.Droid.Simulator.Resource.Style.Base_TextAppearance_AppCompat_Inverse;
+			global::LagoVista.XPlat.Droid.Resource.Style.Base_TextAppearance_AppCompat_Large = global::LagoVista.Droid.Simulator.Resource.Style.Base_TextAppearance_AppCompat_Large;
+			global::LagoVista.XPlat.Droid.Resource.Style.Base_TextAppearance_AppCompat_Large_Inverse = global::LagoVista.Droid.Simulator.Resource.Style.Base_TextAppearance_AppCompat_Large_Inverse;
+			global::LagoVista.XPlat.Droid.Resource.Style.Base_TextAppearance_AppCompat_Light_Widget_PopupMenu_Large = global::LagoVista.Droid.Simulator.Resource.Style.Base_TextAppearance_AppCompat_Light_Widget_PopupMenu_Large;
+			global::LagoVista.XPlat.Droid.Resource.Style.Base_TextAppearance_AppCompat_Light_Widget_PopupMenu_Small = global::LagoVista.Droid.Simulator.Resource.Style.Base_TextAppearance_AppCompat_Light_Widget_PopupMenu_Small;
+			global::LagoVista.XPlat.Droid.Resource.Style.Base_TextAppearance_AppCompat_Medium = global::LagoVista.Droid.Simulator.Resource.Style.Base_TextAppearance_AppCompat_Medium;
+			global::LagoVista.XPlat.Droid.Resource.Style.Base_TextAppearance_AppCompat_Medium_Inverse = global::LagoVista.Droid.Simulator.Resource.Style.Base_TextAppearance_AppCompat_Medium_Inverse;
+			global::LagoVista.XPlat.Droid.Resource.Style.Base_TextAppearance_AppCompat_Menu = global::LagoVista.Droid.Simulator.Resource.Style.Base_TextAppearance_AppCompat_Menu;
+			global::LagoVista.XPlat.Droid.Resource.Style.Base_TextAppearance_AppCompat_SearchResult = global::LagoVista.Droid.Simulator.Resource.Style.Base_TextAppearance_AppCompat_SearchResult;
+			global::LagoVista.XPlat.Droid.Resource.Style.Base_TextAppearance_AppCompat_SearchResult_Subtitle = global::LagoVista.Droid.Simulator.Resource.Style.Base_TextAppearance_AppCompat_SearchResult_Subtitle;
+			global::LagoVista.XPlat.Droid.Resource.Style.Base_TextAppearance_AppCompat_SearchResult_Title = global::LagoVista.Droid.Simulator.Resource.Style.Base_TextAppearance_AppCompat_SearchResult_Title;
+			global::LagoVista.XPlat.Droid.Resource.Style.Base_TextAppearance_AppCompat_Small = global::LagoVista.Droid.Simulator.Resource.Style.Base_TextAppearance_AppCompat_Small;
+			global::LagoVista.XPlat.Droid.Resource.Style.Base_TextAppearance_AppCompat_Small_Inverse = global::LagoVista.Droid.Simulator.Resource.Style.Base_TextAppearance_AppCompat_Small_Inverse;
+			global::LagoVista.XPlat.Droid.Resource.Style.Base_TextAppearance_AppCompat_Subhead = global::LagoVista.Droid.Simulator.Resource.Style.Base_TextAppearance_AppCompat_Subhead;
+			global::LagoVista.XPlat.Droid.Resource.Style.Base_TextAppearance_AppCompat_Subhead_Inverse = global::LagoVista.Droid.Simulator.Resource.Style.Base_TextAppearance_AppCompat_Subhead_Inverse;
+			global::LagoVista.XPlat.Droid.Resource.Style.Base_TextAppearance_AppCompat_Title = global::LagoVista.Droid.Simulator.Resource.Style.Base_TextAppearance_AppCompat_Title;
+			global::LagoVista.XPlat.Droid.Resource.Style.Base_TextAppearance_AppCompat_Title_Inverse = global::LagoVista.Droid.Simulator.Resource.Style.Base_TextAppearance_AppCompat_Title_Inverse;
+			global::LagoVista.XPlat.Droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_ActionBar_Menu = global::LagoVista.Droid.Simulator.Resource.Style.Base_TextAppearance_AppCompat_Widget_ActionBar_Menu;
+			global::LagoVista.XPlat.Droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_ActionBar_Subtitle = global::LagoVista.Droid.Simulator.Resource.Style.Base_TextAppearance_AppCompat_Widget_ActionBar_Subtitle;
+			global::LagoVista.XPlat.Droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_ActionBar_Subtitle_Inverse = global::LagoVista.Droid.Simulator.Resource.Style.Base_TextAppearance_AppCompat_Widget_ActionBar_Subtitle_Inverse;
+			global::LagoVista.XPlat.Droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_ActionBar_Title = global::LagoVista.Droid.Simulator.Resource.Style.Base_TextAppearance_AppCompat_Widget_ActionBar_Title;
+			global::LagoVista.XPlat.Droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_ActionBar_Title_Inverse = global::LagoVista.Droid.Simulator.Resource.Style.Base_TextAppearance_AppCompat_Widget_ActionBar_Title_Inverse;
+			global::LagoVista.XPlat.Droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_ActionMode_Subtitle = global::LagoVista.Droid.Simulator.Resource.Style.Base_TextAppearance_AppCompat_Widget_ActionMode_Subtitle;
+			global::LagoVista.XPlat.Droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_ActionMode_Title = global::LagoVista.Droid.Simulator.Resource.Style.Base_TextAppearance_AppCompat_Widget_ActionMode_Title;
+			global::LagoVista.XPlat.Droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_Button = global::LagoVista.Droid.Simulator.Resource.Style.Base_TextAppearance_AppCompat_Widget_Button;
+			global::LagoVista.XPlat.Droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_Button_Borderless_Colored = global::LagoVista.Droid.Simulator.Resource.Style.Base_TextAppearance_AppCompat_Widget_Button_Borderless_Colored;
+			global::LagoVista.XPlat.Droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_Button_Colored = global::LagoVista.Droid.Simulator.Resource.Style.Base_TextAppearance_AppCompat_Widget_Button_Colored;
+			global::LagoVista.XPlat.Droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_Button_Inverse = global::LagoVista.Droid.Simulator.Resource.Style.Base_TextAppearance_AppCompat_Widget_Button_Inverse;
+			global::LagoVista.XPlat.Droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_DropDownItem = global::LagoVista.Droid.Simulator.Resource.Style.Base_TextAppearance_AppCompat_Widget_DropDownItem;
+			global::LagoVista.XPlat.Droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_PopupMenu_Header = global::LagoVista.Droid.Simulator.Resource.Style.Base_TextAppearance_AppCompat_Widget_PopupMenu_Header;
+			global::LagoVista.XPlat.Droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_PopupMenu_Large = global::LagoVista.Droid.Simulator.Resource.Style.Base_TextAppearance_AppCompat_Widget_PopupMenu_Large;
+			global::LagoVista.XPlat.Droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_PopupMenu_Small = global::LagoVista.Droid.Simulator.Resource.Style.Base_TextAppearance_AppCompat_Widget_PopupMenu_Small;
+			global::LagoVista.XPlat.Droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_Switch = global::LagoVista.Droid.Simulator.Resource.Style.Base_TextAppearance_AppCompat_Widget_Switch;
+			global::LagoVista.XPlat.Droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_TextView_SpinnerItem = global::LagoVista.Droid.Simulator.Resource.Style.Base_TextAppearance_AppCompat_Widget_TextView_SpinnerItem;
+			global::LagoVista.XPlat.Droid.Resource.Style.Base_TextAppearance_Widget_AppCompat_ExpandedMenu_Item = global::LagoVista.Droid.Simulator.Resource.Style.Base_TextAppearance_Widget_AppCompat_ExpandedMenu_Item;
+			global::LagoVista.XPlat.Droid.Resource.Style.Base_TextAppearance_Widget_AppCompat_Toolbar_Subtitle = global::LagoVista.Droid.Simulator.Resource.Style.Base_TextAppearance_Widget_AppCompat_Toolbar_Subtitle;
+			global::LagoVista.XPlat.Droid.Resource.Style.Base_TextAppearance_Widget_AppCompat_Toolbar_Title = global::LagoVista.Droid.Simulator.Resource.Style.Base_TextAppearance_Widget_AppCompat_Toolbar_Title;
+			global::LagoVista.XPlat.Droid.Resource.Style.Base_Theme_AppCompat = global::LagoVista.Droid.Simulator.Resource.Style.Base_Theme_AppCompat;
+			global::LagoVista.XPlat.Droid.Resource.Style.Base_Theme_AppCompat_CompactMenu = global::LagoVista.Droid.Simulator.Resource.Style.Base_Theme_AppCompat_CompactMenu;
+			global::LagoVista.XPlat.Droid.Resource.Style.Base_Theme_AppCompat_Dialog = global::LagoVista.Droid.Simulator.Resource.Style.Base_Theme_AppCompat_Dialog;
+			global::LagoVista.XPlat.Droid.Resource.Style.Base_Theme_AppCompat_Dialog_Alert = global::LagoVista.Droid.Simulator.Resource.Style.Base_Theme_AppCompat_Dialog_Alert;
+			global::LagoVista.XPlat.Droid.Resource.Style.Base_Theme_AppCompat_Dialog_FixedSize = global::LagoVista.Droid.Simulator.Resource.Style.Base_Theme_AppCompat_Dialog_FixedSize;
+			global::LagoVista.XPlat.Droid.Resource.Style.Base_Theme_AppCompat_Dialog_MinWidth = global::LagoVista.Droid.Simulator.Resource.Style.Base_Theme_AppCompat_Dialog_MinWidth;
+			global::LagoVista.XPlat.Droid.Resource.Style.Base_Theme_AppCompat_DialogWhenLarge = global::LagoVista.Droid.Simulator.Resource.Style.Base_Theme_AppCompat_DialogWhenLarge;
+			global::LagoVista.XPlat.Droid.Resource.Style.Base_Theme_AppCompat_Light = global::LagoVista.Droid.Simulator.Resource.Style.Base_Theme_AppCompat_Light;
+			global::LagoVista.XPlat.Droid.Resource.Style.Base_Theme_AppCompat_Light_DarkActionBar = global::LagoVista.Droid.Simulator.Resource.Style.Base_Theme_AppCompat_Light_DarkActionBar;
+			global::LagoVista.XPlat.Droid.Resource.Style.Base_Theme_AppCompat_Light_Dialog = global::LagoVista.Droid.Simulator.Resource.Style.Base_Theme_AppCompat_Light_Dialog;
+			global::LagoVista.XPlat.Droid.Resource.Style.Base_Theme_AppCompat_Light_Dialog_Alert = global::LagoVista.Droid.Simulator.Resource.Style.Base_Theme_AppCompat_Light_Dialog_Alert;
+			global::LagoVista.XPlat.Droid.Resource.Style.Base_Theme_AppCompat_Light_Dialog_FixedSize = global::LagoVista.Droid.Simulator.Resource.Style.Base_Theme_AppCompat_Light_Dialog_FixedSize;
+			global::LagoVista.XPlat.Droid.Resource.Style.Base_Theme_AppCompat_Light_Dialog_MinWidth = global::LagoVista.Droid.Simulator.Resource.Style.Base_Theme_AppCompat_Light_Dialog_MinWidth;
+			global::LagoVista.XPlat.Droid.Resource.Style.Base_Theme_AppCompat_Light_DialogWhenLarge = global::LagoVista.Droid.Simulator.Resource.Style.Base_Theme_AppCompat_Light_DialogWhenLarge;
+			global::LagoVista.XPlat.Droid.Resource.Style.Base_ThemeOverlay_AppCompat = global::LagoVista.Droid.Simulator.Resource.Style.Base_ThemeOverlay_AppCompat;
+			global::LagoVista.XPlat.Droid.Resource.Style.Base_ThemeOverlay_AppCompat_ActionBar = global::LagoVista.Droid.Simulator.Resource.Style.Base_ThemeOverlay_AppCompat_ActionBar;
+			global::LagoVista.XPlat.Droid.Resource.Style.Base_ThemeOverlay_AppCompat_Dark = global::LagoVista.Droid.Simulator.Resource.Style.Base_ThemeOverlay_AppCompat_Dark;
+			global::LagoVista.XPlat.Droid.Resource.Style.Base_ThemeOverlay_AppCompat_Dark_ActionBar = global::LagoVista.Droid.Simulator.Resource.Style.Base_ThemeOverlay_AppCompat_Dark_ActionBar;
+			global::LagoVista.XPlat.Droid.Resource.Style.Base_ThemeOverlay_AppCompat_Dialog = global::LagoVista.Droid.Simulator.Resource.Style.Base_ThemeOverlay_AppCompat_Dialog;
+			global::LagoVista.XPlat.Droid.Resource.Style.Base_ThemeOverlay_AppCompat_Dialog_Alert = global::LagoVista.Droid.Simulator.Resource.Style.Base_ThemeOverlay_AppCompat_Dialog_Alert;
+			global::LagoVista.XPlat.Droid.Resource.Style.Base_ThemeOverlay_AppCompat_Light = global::LagoVista.Droid.Simulator.Resource.Style.Base_ThemeOverlay_AppCompat_Light;
+			global::LagoVista.XPlat.Droid.Resource.Style.Base_V11_Theme_AppCompat_Dialog = global::LagoVista.Droid.Simulator.Resource.Style.Base_V11_Theme_AppCompat_Dialog;
+			global::LagoVista.XPlat.Droid.Resource.Style.Base_V11_Theme_AppCompat_Light_Dialog = global::LagoVista.Droid.Simulator.Resource.Style.Base_V11_Theme_AppCompat_Light_Dialog;
+			global::LagoVista.XPlat.Droid.Resource.Style.Base_V11_ThemeOverlay_AppCompat_Dialog = global::LagoVista.Droid.Simulator.Resource.Style.Base_V11_ThemeOverlay_AppCompat_Dialog;
+			global::LagoVista.XPlat.Droid.Resource.Style.Base_V12_Widget_AppCompat_AutoCompleteTextView = global::LagoVista.Droid.Simulator.Resource.Style.Base_V12_Widget_AppCompat_AutoCompleteTextView;
+			global::LagoVista.XPlat.Droid.Resource.Style.Base_V12_Widget_AppCompat_EditText = global::LagoVista.Droid.Simulator.Resource.Style.Base_V12_Widget_AppCompat_EditText;
+			global::LagoVista.XPlat.Droid.Resource.Style.Base_V21_Theme_AppCompat = global::LagoVista.Droid.Simulator.Resource.Style.Base_V21_Theme_AppCompat;
+			global::LagoVista.XPlat.Droid.Resource.Style.Base_V21_Theme_AppCompat_Dialog = global::LagoVista.Droid.Simulator.Resource.Style.Base_V21_Theme_AppCompat_Dialog;
+			global::LagoVista.XPlat.Droid.Resource.Style.Base_V21_Theme_AppCompat_Light = global::LagoVista.Droid.Simulator.Resource.Style.Base_V21_Theme_AppCompat_Light;
+			global::LagoVista.XPlat.Droid.Resource.Style.Base_V21_Theme_AppCompat_Light_Dialog = global::LagoVista.Droid.Simulator.Resource.Style.Base_V21_Theme_AppCompat_Light_Dialog;
+			global::LagoVista.XPlat.Droid.Resource.Style.Base_V21_ThemeOverlay_AppCompat_Dialog = global::LagoVista.Droid.Simulator.Resource.Style.Base_V21_ThemeOverlay_AppCompat_Dialog;
+			global::LagoVista.XPlat.Droid.Resource.Style.Base_V22_Theme_AppCompat = global::LagoVista.Droid.Simulator.Resource.Style.Base_V22_Theme_AppCompat;
+			global::LagoVista.XPlat.Droid.Resource.Style.Base_V22_Theme_AppCompat_Light = global::LagoVista.Droid.Simulator.Resource.Style.Base_V22_Theme_AppCompat_Light;
+			global::LagoVista.XPlat.Droid.Resource.Style.Base_V23_Theme_AppCompat = global::LagoVista.Droid.Simulator.Resource.Style.Base_V23_Theme_AppCompat;
+			global::LagoVista.XPlat.Droid.Resource.Style.Base_V23_Theme_AppCompat_Light = global::LagoVista.Droid.Simulator.Resource.Style.Base_V23_Theme_AppCompat_Light;
+			global::LagoVista.XPlat.Droid.Resource.Style.Base_V7_Theme_AppCompat = global::LagoVista.Droid.Simulator.Resource.Style.Base_V7_Theme_AppCompat;
+			global::LagoVista.XPlat.Droid.Resource.Style.Base_V7_Theme_AppCompat_Dialog = global::LagoVista.Droid.Simulator.Resource.Style.Base_V7_Theme_AppCompat_Dialog;
+			global::LagoVista.XPlat.Droid.Resource.Style.Base_V7_Theme_AppCompat_Light = global::LagoVista.Droid.Simulator.Resource.Style.Base_V7_Theme_AppCompat_Light;
+			global::LagoVista.XPlat.Droid.Resource.Style.Base_V7_Theme_AppCompat_Light_Dialog = global::LagoVista.Droid.Simulator.Resource.Style.Base_V7_Theme_AppCompat_Light_Dialog;
+			global::LagoVista.XPlat.Droid.Resource.Style.Base_V7_ThemeOverlay_AppCompat_Dialog = global::LagoVista.Droid.Simulator.Resource.Style.Base_V7_ThemeOverlay_AppCompat_Dialog;
+			global::LagoVista.XPlat.Droid.Resource.Style.Base_V7_Widget_AppCompat_AutoCompleteTextView = global::LagoVista.Droid.Simulator.Resource.Style.Base_V7_Widget_AppCompat_AutoCompleteTextView;
+			global::LagoVista.XPlat.Droid.Resource.Style.Base_V7_Widget_AppCompat_EditText = global::LagoVista.Droid.Simulator.Resource.Style.Base_V7_Widget_AppCompat_EditText;
+			global::LagoVista.XPlat.Droid.Resource.Style.Base_Widget_AppCompat_ActionBar = global::LagoVista.Droid.Simulator.Resource.Style.Base_Widget_AppCompat_ActionBar;
+			global::LagoVista.XPlat.Droid.Resource.Style.Base_Widget_AppCompat_ActionBar_Solid = global::LagoVista.Droid.Simulator.Resource.Style.Base_Widget_AppCompat_ActionBar_Solid;
+			global::LagoVista.XPlat.Droid.Resource.Style.Base_Widget_AppCompat_ActionBar_TabBar = global::LagoVista.Droid.Simulator.Resource.Style.Base_Widget_AppCompat_ActionBar_TabBar;
+			global::LagoVista.XPlat.Droid.Resource.Style.Base_Widget_AppCompat_ActionBar_TabText = global::LagoVista.Droid.Simulator.Resource.Style.Base_Widget_AppCompat_ActionBar_TabText;
+			global::LagoVista.XPlat.Droid.Resource.Style.Base_Widget_AppCompat_ActionBar_TabView = global::LagoVista.Droid.Simulator.Resource.Style.Base_Widget_AppCompat_ActionBar_TabView;
+			global::LagoVista.XPlat.Droid.Resource.Style.Base_Widget_AppCompat_ActionButton = global::LagoVista.Droid.Simulator.Resource.Style.Base_Widget_AppCompat_ActionButton;
+			global::LagoVista.XPlat.Droid.Resource.Style.Base_Widget_AppCompat_ActionButton_CloseMode = global::LagoVista.Droid.Simulator.Resource.Style.Base_Widget_AppCompat_ActionButton_CloseMode;
+			global::LagoVista.XPlat.Droid.Resource.Style.Base_Widget_AppCompat_ActionButton_Overflow = global::LagoVista.Droid.Simulator.Resource.Style.Base_Widget_AppCompat_ActionButton_Overflow;
+			global::LagoVista.XPlat.Droid.Resource.Style.Base_Widget_AppCompat_ActionMode = global::LagoVista.Droid.Simulator.Resource.Style.Base_Widget_AppCompat_ActionMode;
+			global::LagoVista.XPlat.Droid.Resource.Style.Base_Widget_AppCompat_ActivityChooserView = global::LagoVista.Droid.Simulator.Resource.Style.Base_Widget_AppCompat_ActivityChooserView;
+			global::LagoVista.XPlat.Droid.Resource.Style.Base_Widget_AppCompat_AutoCompleteTextView = global::LagoVista.Droid.Simulator.Resource.Style.Base_Widget_AppCompat_AutoCompleteTextView;
+			global::LagoVista.XPlat.Droid.Resource.Style.Base_Widget_AppCompat_Button = global::LagoVista.Droid.Simulator.Resource.Style.Base_Widget_AppCompat_Button;
+			global::LagoVista.XPlat.Droid.Resource.Style.Base_Widget_AppCompat_Button_Borderless = global::LagoVista.Droid.Simulator.Resource.Style.Base_Widget_AppCompat_Button_Borderless;
+			global::LagoVista.XPlat.Droid.Resource.Style.Base_Widget_AppCompat_Button_Borderless_Colored = global::LagoVista.Droid.Simulator.Resource.Style.Base_Widget_AppCompat_Button_Borderless_Colored;
+			global::LagoVista.XPlat.Droid.Resource.Style.Base_Widget_AppCompat_Button_ButtonBar_AlertDialog = global::LagoVista.Droid.Simulator.Resource.Style.Base_Widget_AppCompat_Button_ButtonBar_AlertDialog;
+			global::LagoVista.XPlat.Droid.Resource.Style.Base_Widget_AppCompat_Button_Colored = global::LagoVista.Droid.Simulator.Resource.Style.Base_Widget_AppCompat_Button_Colored;
+			global::LagoVista.XPlat.Droid.Resource.Style.Base_Widget_AppCompat_Button_Small = global::LagoVista.Droid.Simulator.Resource.Style.Base_Widget_AppCompat_Button_Small;
+			global::LagoVista.XPlat.Droid.Resource.Style.Base_Widget_AppCompat_ButtonBar = global::LagoVista.Droid.Simulator.Resource.Style.Base_Widget_AppCompat_ButtonBar;
+			global::LagoVista.XPlat.Droid.Resource.Style.Base_Widget_AppCompat_ButtonBar_AlertDialog = global::LagoVista.Droid.Simulator.Resource.Style.Base_Widget_AppCompat_ButtonBar_AlertDialog;
+			global::LagoVista.XPlat.Droid.Resource.Style.Base_Widget_AppCompat_CompoundButton_CheckBox = global::LagoVista.Droid.Simulator.Resource.Style.Base_Widget_AppCompat_CompoundButton_CheckBox;
+			global::LagoVista.XPlat.Droid.Resource.Style.Base_Widget_AppCompat_CompoundButton_RadioButton = global::LagoVista.Droid.Simulator.Resource.Style.Base_Widget_AppCompat_CompoundButton_RadioButton;
+			global::LagoVista.XPlat.Droid.Resource.Style.Base_Widget_AppCompat_CompoundButton_Switch = global::LagoVista.Droid.Simulator.Resource.Style.Base_Widget_AppCompat_CompoundButton_Switch;
+			global::LagoVista.XPlat.Droid.Resource.Style.Base_Widget_AppCompat_DrawerArrowToggle = global::LagoVista.Droid.Simulator.Resource.Style.Base_Widget_AppCompat_DrawerArrowToggle;
+			global::LagoVista.XPlat.Droid.Resource.Style.Base_Widget_AppCompat_DrawerArrowToggle_Common = global::LagoVista.Droid.Simulator.Resource.Style.Base_Widget_AppCompat_DrawerArrowToggle_Common;
+			global::LagoVista.XPlat.Droid.Resource.Style.Base_Widget_AppCompat_DropDownItem_Spinner = global::LagoVista.Droid.Simulator.Resource.Style.Base_Widget_AppCompat_DropDownItem_Spinner;
+			global::LagoVista.XPlat.Droid.Resource.Style.Base_Widget_AppCompat_EditText = global::LagoVista.Droid.Simulator.Resource.Style.Base_Widget_AppCompat_EditText;
+			global::LagoVista.XPlat.Droid.Resource.Style.Base_Widget_AppCompat_ImageButton = global::LagoVista.Droid.Simulator.Resource.Style.Base_Widget_AppCompat_ImageButton;
+			global::LagoVista.XPlat.Droid.Resource.Style.Base_Widget_AppCompat_Light_ActionBar = global::LagoVista.Droid.Simulator.Resource.Style.Base_Widget_AppCompat_Light_ActionBar;
+			global::LagoVista.XPlat.Droid.Resource.Style.Base_Widget_AppCompat_Light_ActionBar_Solid = global::LagoVista.Droid.Simulator.Resource.Style.Base_Widget_AppCompat_Light_ActionBar_Solid;
+			global::LagoVista.XPlat.Droid.Resource.Style.Base_Widget_AppCompat_Light_ActionBar_TabBar = global::LagoVista.Droid.Simulator.Resource.Style.Base_Widget_AppCompat_Light_ActionBar_TabBar;
+			global::LagoVista.XPlat.Droid.Resource.Style.Base_Widget_AppCompat_Light_ActionBar_TabText = global::LagoVista.Droid.Simulator.Resource.Style.Base_Widget_AppCompat_Light_ActionBar_TabText;
+			global::LagoVista.XPlat.Droid.Resource.Style.Base_Widget_AppCompat_Light_ActionBar_TabText_Inverse = global::LagoVista.Droid.Simulator.Resource.Style.Base_Widget_AppCompat_Light_ActionBar_TabText_Inverse;
+			global::LagoVista.XPlat.Droid.Resource.Style.Base_Widget_AppCompat_Light_ActionBar_TabView = global::LagoVista.Droid.Simulator.Resource.Style.Base_Widget_AppCompat_Light_ActionBar_TabView;
+			global::LagoVista.XPlat.Droid.Resource.Style.Base_Widget_AppCompat_Light_PopupMenu = global::LagoVista.Droid.Simulator.Resource.Style.Base_Widget_AppCompat_Light_PopupMenu;
+			global::LagoVista.XPlat.Droid.Resource.Style.Base_Widget_AppCompat_Light_PopupMenu_Overflow = global::LagoVista.Droid.Simulator.Resource.Style.Base_Widget_AppCompat_Light_PopupMenu_Overflow;
+			global::LagoVista.XPlat.Droid.Resource.Style.Base_Widget_AppCompat_ListMenuView = global::LagoVista.Droid.Simulator.Resource.Style.Base_Widget_AppCompat_ListMenuView;
+			global::LagoVista.XPlat.Droid.Resource.Style.Base_Widget_AppCompat_ListPopupWindow = global::LagoVista.Droid.Simulator.Resource.Style.Base_Widget_AppCompat_ListPopupWindow;
+			global::LagoVista.XPlat.Droid.Resource.Style.Base_Widget_AppCompat_ListView = global::LagoVista.Droid.Simulator.Resource.Style.Base_Widget_AppCompat_ListView;
+			global::LagoVista.XPlat.Droid.Resource.Style.Base_Widget_AppCompat_ListView_DropDown = global::LagoVista.Droid.Simulator.Resource.Style.Base_Widget_AppCompat_ListView_DropDown;
+			global::LagoVista.XPlat.Droid.Resource.Style.Base_Widget_AppCompat_ListView_Menu = global::LagoVista.Droid.Simulator.Resource.Style.Base_Widget_AppCompat_ListView_Menu;
+			global::LagoVista.XPlat.Droid.Resource.Style.Base_Widget_AppCompat_PopupMenu = global::LagoVista.Droid.Simulator.Resource.Style.Base_Widget_AppCompat_PopupMenu;
+			global::LagoVista.XPlat.Droid.Resource.Style.Base_Widget_AppCompat_PopupMenu_Overflow = global::LagoVista.Droid.Simulator.Resource.Style.Base_Widget_AppCompat_PopupMenu_Overflow;
+			global::LagoVista.XPlat.Droid.Resource.Style.Base_Widget_AppCompat_PopupWindow = global::LagoVista.Droid.Simulator.Resource.Style.Base_Widget_AppCompat_PopupWindow;
+			global::LagoVista.XPlat.Droid.Resource.Style.Base_Widget_AppCompat_ProgressBar = global::LagoVista.Droid.Simulator.Resource.Style.Base_Widget_AppCompat_ProgressBar;
+			global::LagoVista.XPlat.Droid.Resource.Style.Base_Widget_AppCompat_ProgressBar_Horizontal = global::LagoVista.Droid.Simulator.Resource.Style.Base_Widget_AppCompat_ProgressBar_Horizontal;
+			global::LagoVista.XPlat.Droid.Resource.Style.Base_Widget_AppCompat_RatingBar = global::LagoVista.Droid.Simulator.Resource.Style.Base_Widget_AppCompat_RatingBar;
+			global::LagoVista.XPlat.Droid.Resource.Style.Base_Widget_AppCompat_RatingBar_Indicator = global::LagoVista.Droid.Simulator.Resource.Style.Base_Widget_AppCompat_RatingBar_Indicator;
+			global::LagoVista.XPlat.Droid.Resource.Style.Base_Widget_AppCompat_RatingBar_Small = global::LagoVista.Droid.Simulator.Resource.Style.Base_Widget_AppCompat_RatingBar_Small;
+			global::LagoVista.XPlat.Droid.Resource.Style.Base_Widget_AppCompat_SearchView = global::LagoVista.Droid.Simulator.Resource.Style.Base_Widget_AppCompat_SearchView;
+			global::LagoVista.XPlat.Droid.Resource.Style.Base_Widget_AppCompat_SearchView_ActionBar = global::LagoVista.Droid.Simulator.Resource.Style.Base_Widget_AppCompat_SearchView_ActionBar;
+			global::LagoVista.XPlat.Droid.Resource.Style.Base_Widget_AppCompat_SeekBar = global::LagoVista.Droid.Simulator.Resource.Style.Base_Widget_AppCompat_SeekBar;
+			global::LagoVista.XPlat.Droid.Resource.Style.Base_Widget_AppCompat_SeekBar_Discrete = global::LagoVista.Droid.Simulator.Resource.Style.Base_Widget_AppCompat_SeekBar_Discrete;
+			global::LagoVista.XPlat.Droid.Resource.Style.Base_Widget_AppCompat_Spinner = global::LagoVista.Droid.Simulator.Resource.Style.Base_Widget_AppCompat_Spinner;
+			global::LagoVista.XPlat.Droid.Resource.Style.Base_Widget_AppCompat_Spinner_Underlined = global::LagoVista.Droid.Simulator.Resource.Style.Base_Widget_AppCompat_Spinner_Underlined;
+			global::LagoVista.XPlat.Droid.Resource.Style.Base_Widget_AppCompat_TextView_SpinnerItem = global::LagoVista.Droid.Simulator.Resource.Style.Base_Widget_AppCompat_TextView_SpinnerItem;
+			global::LagoVista.XPlat.Droid.Resource.Style.Base_Widget_AppCompat_Toolbar = global::LagoVista.Droid.Simulator.Resource.Style.Base_Widget_AppCompat_Toolbar;
+			global::LagoVista.XPlat.Droid.Resource.Style.Base_Widget_AppCompat_Toolbar_Button_Navigation = global::LagoVista.Droid.Simulator.Resource.Style.Base_Widget_AppCompat_Toolbar_Button_Navigation;
+			global::LagoVista.XPlat.Droid.Resource.Style.Base_Widget_Design_AppBarLayout = global::LagoVista.Droid.Simulator.Resource.Style.Base_Widget_Design_AppBarLayout;
+			global::LagoVista.XPlat.Droid.Resource.Style.Base_Widget_Design_TabLayout = global::LagoVista.Droid.Simulator.Resource.Style.Base_Widget_Design_TabLayout;
+			global::LagoVista.XPlat.Droid.Resource.Style.CardView = global::LagoVista.Droid.Simulator.Resource.Style.CardView;
+			global::LagoVista.XPlat.Droid.Resource.Style.CardView_Dark = global::LagoVista.Droid.Simulator.Resource.Style.CardView_Dark;
+			global::LagoVista.XPlat.Droid.Resource.Style.CardView_Light = global::LagoVista.Droid.Simulator.Resource.Style.CardView_Light;
+			global::LagoVista.XPlat.Droid.Resource.Style.Platform_AppCompat = global::LagoVista.Droid.Simulator.Resource.Style.Platform_AppCompat;
+			global::LagoVista.XPlat.Droid.Resource.Style.Platform_AppCompat_Light = global::LagoVista.Droid.Simulator.Resource.Style.Platform_AppCompat_Light;
+			global::LagoVista.XPlat.Droid.Resource.Style.Platform_ThemeOverlay_AppCompat = global::LagoVista.Droid.Simulator.Resource.Style.Platform_ThemeOverlay_AppCompat;
+			global::LagoVista.XPlat.Droid.Resource.Style.Platform_ThemeOverlay_AppCompat_Dark = global::LagoVista.Droid.Simulator.Resource.Style.Platform_ThemeOverlay_AppCompat_Dark;
+			global::LagoVista.XPlat.Droid.Resource.Style.Platform_ThemeOverlay_AppCompat_Light = global::LagoVista.Droid.Simulator.Resource.Style.Platform_ThemeOverlay_AppCompat_Light;
+			global::LagoVista.XPlat.Droid.Resource.Style.Platform_V11_AppCompat = global::LagoVista.Droid.Simulator.Resource.Style.Platform_V11_AppCompat;
+			global::LagoVista.XPlat.Droid.Resource.Style.Platform_V11_AppCompat_Light = global::LagoVista.Droid.Simulator.Resource.Style.Platform_V11_AppCompat_Light;
+			global::LagoVista.XPlat.Droid.Resource.Style.Platform_V14_AppCompat = global::LagoVista.Droid.Simulator.Resource.Style.Platform_V14_AppCompat;
+			global::LagoVista.XPlat.Droid.Resource.Style.Platform_V14_AppCompat_Light = global::LagoVista.Droid.Simulator.Resource.Style.Platform_V14_AppCompat_Light;
+			global::LagoVista.XPlat.Droid.Resource.Style.Platform_V21_AppCompat = global::LagoVista.Droid.Simulator.Resource.Style.Platform_V21_AppCompat;
+			global::LagoVista.XPlat.Droid.Resource.Style.Platform_V21_AppCompat_Light = global::LagoVista.Droid.Simulator.Resource.Style.Platform_V21_AppCompat_Light;
+			global::LagoVista.XPlat.Droid.Resource.Style.Platform_V25_AppCompat = global::LagoVista.Droid.Simulator.Resource.Style.Platform_V25_AppCompat;
+			global::LagoVista.XPlat.Droid.Resource.Style.Platform_V25_AppCompat_Light = global::LagoVista.Droid.Simulator.Resource.Style.Platform_V25_AppCompat_Light;
+			global::LagoVista.XPlat.Droid.Resource.Style.Platform_Widget_AppCompat_Spinner = global::LagoVista.Droid.Simulator.Resource.Style.Platform_Widget_AppCompat_Spinner;
+			global::LagoVista.XPlat.Droid.Resource.Style.RtlOverlay_DialogWindowTitle_AppCompat = global::LagoVista.Droid.Simulator.Resource.Style.RtlOverlay_DialogWindowTitle_AppCompat;
+			global::LagoVista.XPlat.Droid.Resource.Style.RtlOverlay_Widget_AppCompat_ActionBar_TitleItem = global::LagoVista.Droid.Simulator.Resource.Style.RtlOverlay_Widget_AppCompat_ActionBar_TitleItem;
+			global::LagoVista.XPlat.Droid.Resource.Style.RtlOverlay_Widget_AppCompat_DialogTitle_Icon = global::LagoVista.Droid.Simulator.Resource.Style.RtlOverlay_Widget_AppCompat_DialogTitle_Icon;
+			global::LagoVista.XPlat.Droid.Resource.Style.RtlOverlay_Widget_AppCompat_PopupMenuItem = global::LagoVista.Droid.Simulator.Resource.Style.RtlOverlay_Widget_AppCompat_PopupMenuItem;
+			global::LagoVista.XPlat.Droid.Resource.Style.RtlOverlay_Widget_AppCompat_PopupMenuItem_InternalGroup = global::LagoVista.Droid.Simulator.Resource.Style.RtlOverlay_Widget_AppCompat_PopupMenuItem_InternalGroup;
+			global::LagoVista.XPlat.Droid.Resource.Style.RtlOverlay_Widget_AppCompat_PopupMenuItem_Text = global::LagoVista.Droid.Simulator.Resource.Style.RtlOverlay_Widget_AppCompat_PopupMenuItem_Text;
+			global::LagoVista.XPlat.Droid.Resource.Style.RtlOverlay_Widget_AppCompat_Search_DropDown = global::LagoVista.Droid.Simulator.Resource.Style.RtlOverlay_Widget_AppCompat_Search_DropDown;
+			global::LagoVista.XPlat.Droid.Resource.Style.RtlOverlay_Widget_AppCompat_Search_DropDown_Icon1 = global::LagoVista.Droid.Simulator.Resource.Style.RtlOverlay_Widget_AppCompat_Search_DropDown_Icon1;
+			global::LagoVista.XPlat.Droid.Resource.Style.RtlOverlay_Widget_AppCompat_Search_DropDown_Icon2 = global::LagoVista.Droid.Simulator.Resource.Style.RtlOverlay_Widget_AppCompat_Search_DropDown_Icon2;
+			global::LagoVista.XPlat.Droid.Resource.Style.RtlOverlay_Widget_AppCompat_Search_DropDown_Query = global::LagoVista.Droid.Simulator.Resource.Style.RtlOverlay_Widget_AppCompat_Search_DropDown_Query;
+			global::LagoVista.XPlat.Droid.Resource.Style.RtlOverlay_Widget_AppCompat_Search_DropDown_Text = global::LagoVista.Droid.Simulator.Resource.Style.RtlOverlay_Widget_AppCompat_Search_DropDown_Text;
+			global::LagoVista.XPlat.Droid.Resource.Style.RtlOverlay_Widget_AppCompat_SearchView_MagIcon = global::LagoVista.Droid.Simulator.Resource.Style.RtlOverlay_Widget_AppCompat_SearchView_MagIcon;
+			global::LagoVista.XPlat.Droid.Resource.Style.RtlUnderlay_Widget_AppCompat_ActionButton = global::LagoVista.Droid.Simulator.Resource.Style.RtlUnderlay_Widget_AppCompat_ActionButton;
+			global::LagoVista.XPlat.Droid.Resource.Style.RtlUnderlay_Widget_AppCompat_ActionButton_Overflow = global::LagoVista.Droid.Simulator.Resource.Style.RtlUnderlay_Widget_AppCompat_ActionButton_Overflow;
+			global::LagoVista.XPlat.Droid.Resource.Style.TextAppearance_AppCompat = global::LagoVista.Droid.Simulator.Resource.Style.TextAppearance_AppCompat;
+			global::LagoVista.XPlat.Droid.Resource.Style.TextAppearance_AppCompat_Body1 = global::LagoVista.Droid.Simulator.Resource.Style.TextAppearance_AppCompat_Body1;
+			global::LagoVista.XPlat.Droid.Resource.Style.TextAppearance_AppCompat_Body2 = global::LagoVista.Droid.Simulator.Resource.Style.TextAppearance_AppCompat_Body2;
+			global::LagoVista.XPlat.Droid.Resource.Style.TextAppearance_AppCompat_Button = global::LagoVista.Droid.Simulator.Resource.Style.TextAppearance_AppCompat_Button;
+			global::LagoVista.XPlat.Droid.Resource.Style.TextAppearance_AppCompat_Caption = global::LagoVista.Droid.Simulator.Resource.Style.TextAppearance_AppCompat_Caption;
+			global::LagoVista.XPlat.Droid.Resource.Style.TextAppearance_AppCompat_Display1 = global::LagoVista.Droid.Simulator.Resource.Style.TextAppearance_AppCompat_Display1;
+			global::LagoVista.XPlat.Droid.Resource.Style.TextAppearance_AppCompat_Display2 = global::LagoVista.Droid.Simulator.Resource.Style.TextAppearance_AppCompat_Display2;
+			global::LagoVista.XPlat.Droid.Resource.Style.TextAppearance_AppCompat_Display3 = global::LagoVista.Droid.Simulator.Resource.Style.TextAppearance_AppCompat_Display3;
+			global::LagoVista.XPlat.Droid.Resource.Style.TextAppearance_AppCompat_Display4 = global::LagoVista.Droid.Simulator.Resource.Style.TextAppearance_AppCompat_Display4;
+			global::LagoVista.XPlat.Droid.Resource.Style.TextAppearance_AppCompat_Headline = global::LagoVista.Droid.Simulator.Resource.Style.TextAppearance_AppCompat_Headline;
+			global::LagoVista.XPlat.Droid.Resource.Style.TextAppearance_AppCompat_Inverse = global::LagoVista.Droid.Simulator.Resource.Style.TextAppearance_AppCompat_Inverse;
+			global::LagoVista.XPlat.Droid.Resource.Style.TextAppearance_AppCompat_Large = global::LagoVista.Droid.Simulator.Resource.Style.TextAppearance_AppCompat_Large;
+			global::LagoVista.XPlat.Droid.Resource.Style.TextAppearance_AppCompat_Large_Inverse = global::LagoVista.Droid.Simulator.Resource.Style.TextAppearance_AppCompat_Large_Inverse;
+			global::LagoVista.XPlat.Droid.Resource.Style.TextAppearance_AppCompat_Light_SearchResult_Subtitle = global::LagoVista.Droid.Simulator.Resource.Style.TextAppearance_AppCompat_Light_SearchResult_Subtitle;
+			global::LagoVista.XPlat.Droid.Resource.Style.TextAppearance_AppCompat_Light_SearchResult_Title = global::LagoVista.Droid.Simulator.Resource.Style.TextAppearance_AppCompat_Light_SearchResult_Title;
+			global::LagoVista.XPlat.Droid.Resource.Style.TextAppearance_AppCompat_Light_Widget_PopupMenu_Large = global::LagoVista.Droid.Simulator.Resource.Style.TextAppearance_AppCompat_Light_Widget_PopupMenu_Large;
+			global::LagoVista.XPlat.Droid.Resource.Style.TextAppearance_AppCompat_Light_Widget_PopupMenu_Small = global::LagoVista.Droid.Simulator.Resource.Style.TextAppearance_AppCompat_Light_Widget_PopupMenu_Small;
+			global::LagoVista.XPlat.Droid.Resource.Style.TextAppearance_AppCompat_Medium = global::LagoVista.Droid.Simulator.Resource.Style.TextAppearance_AppCompat_Medium;
+			global::LagoVista.XPlat.Droid.Resource.Style.TextAppearance_AppCompat_Medium_Inverse = global::LagoVista.Droid.Simulator.Resource.Style.TextAppearance_AppCompat_Medium_Inverse;
+			global::LagoVista.XPlat.Droid.Resource.Style.TextAppearance_AppCompat_Menu = global::LagoVista.Droid.Simulator.Resource.Style.TextAppearance_AppCompat_Menu;
+			global::LagoVista.XPlat.Droid.Resource.Style.TextAppearance_AppCompat_Notification = global::LagoVista.Droid.Simulator.Resource.Style.TextAppearance_AppCompat_Notification;
+			global::LagoVista.XPlat.Droid.Resource.Style.TextAppearance_AppCompat_Notification_Info = global::LagoVista.Droid.Simulator.Resource.Style.TextAppearance_AppCompat_Notification_Info;
+			global::LagoVista.XPlat.Droid.Resource.Style.TextAppearance_AppCompat_Notification_Info_Media = global::LagoVista.Droid.Simulator.Resource.Style.TextAppearance_AppCompat_Notification_Info_Media;
+			global::LagoVista.XPlat.Droid.Resource.Style.TextAppearance_AppCompat_Notification_Line2 = global::LagoVista.Droid.Simulator.Resource.Style.TextAppearance_AppCompat_Notification_Line2;
+			global::LagoVista.XPlat.Droid.Resource.Style.TextAppearance_AppCompat_Notification_Line2_Media = global::LagoVista.Droid.Simulator.Resource.Style.TextAppearance_AppCompat_Notification_Line2_Media;
+			global::LagoVista.XPlat.Droid.Resource.Style.TextAppearance_AppCompat_Notification_Media = global::LagoVista.Droid.Simulator.Resource.Style.TextAppearance_AppCompat_Notification_Media;
+			global::LagoVista.XPlat.Droid.Resource.Style.TextAppearance_AppCompat_Notification_Time = global::LagoVista.Droid.Simulator.Resource.Style.TextAppearance_AppCompat_Notification_Time;
+			global::LagoVista.XPlat.Droid.Resource.Style.TextAppearance_AppCompat_Notification_Time_Media = global::LagoVista.Droid.Simulator.Resource.Style.TextAppearance_AppCompat_Notification_Time_Media;
+			global::LagoVista.XPlat.Droid.Resource.Style.TextAppearance_AppCompat_Notification_Title = global::LagoVista.Droid.Simulator.Resource.Style.TextAppearance_AppCompat_Notification_Title;
+			global::LagoVista.XPlat.Droid.Resource.Style.TextAppearance_AppCompat_Notification_Title_Media = global::LagoVista.Droid.Simulator.Resource.Style.TextAppearance_AppCompat_Notification_Title_Media;
+			global::LagoVista.XPlat.Droid.Resource.Style.TextAppearance_AppCompat_SearchResult_Subtitle = global::LagoVista.Droid.Simulator.Resource.Style.TextAppearance_AppCompat_SearchResult_Subtitle;
+			global::LagoVista.XPlat.Droid.Resource.Style.TextAppearance_AppCompat_SearchResult_Title = global::LagoVista.Droid.Simulator.Resource.Style.TextAppearance_AppCompat_SearchResult_Title;
+			global::LagoVista.XPlat.Droid.Resource.Style.TextAppearance_AppCompat_Small = global::LagoVista.Droid.Simulator.Resource.Style.TextAppearance_AppCompat_Small;
+			global::LagoVista.XPlat.Droid.Resource.Style.TextAppearance_AppCompat_Small_Inverse = global::LagoVista.Droid.Simulator.Resource.Style.TextAppearance_AppCompat_Small_Inverse;
+			global::LagoVista.XPlat.Droid.Resource.Style.TextAppearance_AppCompat_Subhead = global::LagoVista.Droid.Simulator.Resource.Style.TextAppearance_AppCompat_Subhead;
+			global::LagoVista.XPlat.Droid.Resource.Style.TextAppearance_AppCompat_Subhead_Inverse = global::LagoVista.Droid.Simulator.Resource.Style.TextAppearance_AppCompat_Subhead_Inverse;
+			global::LagoVista.XPlat.Droid.Resource.Style.TextAppearance_AppCompat_Title = global::LagoVista.Droid.Simulator.Resource.Style.TextAppearance_AppCompat_Title;
+			global::LagoVista.XPlat.Droid.Resource.Style.TextAppearance_AppCompat_Title_Inverse = global::LagoVista.Droid.Simulator.Resource.Style.TextAppearance_AppCompat_Title_Inverse;
+			global::LagoVista.XPlat.Droid.Resource.Style.TextAppearance_AppCompat_Widget_ActionBar_Menu = global::LagoVista.Droid.Simulator.Resource.Style.TextAppearance_AppCompat_Widget_ActionBar_Menu;
+			global::LagoVista.XPlat.Droid.Resource.Style.TextAppearance_AppCompat_Widget_ActionBar_Subtitle = global::LagoVista.Droid.Simulator.Resource.Style.TextAppearance_AppCompat_Widget_ActionBar_Subtitle;
+			global::LagoVista.XPlat.Droid.Resource.Style.TextAppearance_AppCompat_Widget_ActionBar_Subtitle_Inverse = global::LagoVista.Droid.Simulator.Resource.Style.TextAppearance_AppCompat_Widget_ActionBar_Subtitle_Inverse;
+			global::LagoVista.XPlat.Droid.Resource.Style.TextAppearance_AppCompat_Widget_ActionBar_Title = global::LagoVista.Droid.Simulator.Resource.Style.TextAppearance_AppCompat_Widget_ActionBar_Title;
+			global::LagoVista.XPlat.Droid.Resource.Style.TextAppearance_AppCompat_Widget_ActionBar_Title_Inverse = global::LagoVista.Droid.Simulator.Resource.Style.TextAppearance_AppCompat_Widget_ActionBar_Title_Inverse;
+			global::LagoVista.XPlat.Droid.Resource.Style.TextAppearance_AppCompat_Widget_ActionMode_Subtitle = global::LagoVista.Droid.Simulator.Resource.Style.TextAppearance_AppCompat_Widget_ActionMode_Subtitle;
+			global::LagoVista.XPlat.Droid.Resource.Style.TextAppearance_AppCompat_Widget_ActionMode_Subtitle_Inverse = global::LagoVista.Droid.Simulator.Resource.Style.TextAppearance_AppCompat_Widget_ActionMode_Subtitle_Inverse;
+			global::LagoVista.XPlat.Droid.Resource.Style.TextAppearance_AppCompat_Widget_ActionMode_Title = global::LagoVista.Droid.Simulator.Resource.Style.TextAppearance_AppCompat_Widget_ActionMode_Title;
+			global::LagoVista.XPlat.Droid.Resource.Style.TextAppearance_AppCompat_Widget_ActionMode_Title_Inverse = global::LagoVista.Droid.Simulator.Resource.Style.TextAppearance_AppCompat_Widget_ActionMode_Title_Inverse;
+			global::LagoVista.XPlat.Droid.Resource.Style.TextAppearance_AppCompat_Widget_Button = global::LagoVista.Droid.Simulator.Resource.Style.TextAppearance_AppCompat_Widget_Button;
+			global::LagoVista.XPlat.Droid.Resource.Style.TextAppearance_AppCompat_Widget_Button_Borderless_Colored = global::LagoVista.Droid.Simulator.Resource.Style.TextAppearance_AppCompat_Widget_Button_Borderless_Colored;
+			global::LagoVista.XPlat.Droid.Resource.Style.TextAppearance_AppCompat_Widget_Button_Colored = global::LagoVista.Droid.Simulator.Resource.Style.TextAppearance_AppCompat_Widget_Button_Colored;
+			global::LagoVista.XPlat.Droid.Resource.Style.TextAppearance_AppCompat_Widget_Button_Inverse = global::LagoVista.Droid.Simulator.Resource.Style.TextAppearance_AppCompat_Widget_Button_Inverse;
+			global::LagoVista.XPlat.Droid.Resource.Style.TextAppearance_AppCompat_Widget_DropDownItem = global::LagoVista.Droid.Simulator.Resource.Style.TextAppearance_AppCompat_Widget_DropDownItem;
+			global::LagoVista.XPlat.Droid.Resource.Style.TextAppearance_AppCompat_Widget_PopupMenu_Header = global::LagoVista.Droid.Simulator.Resource.Style.TextAppearance_AppCompat_Widget_PopupMenu_Header;
+			global::LagoVista.XPlat.Droid.Resource.Style.TextAppearance_AppCompat_Widget_PopupMenu_Large = global::LagoVista.Droid.Simulator.Resource.Style.TextAppearance_AppCompat_Widget_PopupMenu_Large;
+			global::LagoVista.XPlat.Droid.Resource.Style.TextAppearance_AppCompat_Widget_PopupMenu_Small = global::LagoVista.Droid.Simulator.Resource.Style.TextAppearance_AppCompat_Widget_PopupMenu_Small;
+			global::LagoVista.XPlat.Droid.Resource.Style.TextAppearance_AppCompat_Widget_Switch = global::LagoVista.Droid.Simulator.Resource.Style.TextAppearance_AppCompat_Widget_Switch;
+			global::LagoVista.XPlat.Droid.Resource.Style.TextAppearance_AppCompat_Widget_TextView_SpinnerItem = global::LagoVista.Droid.Simulator.Resource.Style.TextAppearance_AppCompat_Widget_TextView_SpinnerItem;
+			global::LagoVista.XPlat.Droid.Resource.Style.TextAppearance_Design_CollapsingToolbar_Expanded = global::LagoVista.Droid.Simulator.Resource.Style.TextAppearance_Design_CollapsingToolbar_Expanded;
+			global::LagoVista.XPlat.Droid.Resource.Style.TextAppearance_Design_Counter = global::LagoVista.Droid.Simulator.Resource.Style.TextAppearance_Design_Counter;
+			global::LagoVista.XPlat.Droid.Resource.Style.TextAppearance_Design_Counter_Overflow = global::LagoVista.Droid.Simulator.Resource.Style.TextAppearance_Design_Counter_Overflow;
+			global::LagoVista.XPlat.Droid.Resource.Style.TextAppearance_Design_Error = global::LagoVista.Droid.Simulator.Resource.Style.TextAppearance_Design_Error;
+			global::LagoVista.XPlat.Droid.Resource.Style.TextAppearance_Design_Hint = global::LagoVista.Droid.Simulator.Resource.Style.TextAppearance_Design_Hint;
+			global::LagoVista.XPlat.Droid.Resource.Style.TextAppearance_Design_Snackbar_Message = global::LagoVista.Droid.Simulator.Resource.Style.TextAppearance_Design_Snackbar_Message;
+			global::LagoVista.XPlat.Droid.Resource.Style.TextAppearance_Design_Tab = global::LagoVista.Droid.Simulator.Resource.Style.TextAppearance_Design_Tab;
+			global::LagoVista.XPlat.Droid.Resource.Style.TextAppearance_MediaRouter_PrimaryText = global::LagoVista.Droid.Simulator.Resource.Style.TextAppearance_MediaRouter_PrimaryText;
+			global::LagoVista.XPlat.Droid.Resource.Style.TextAppearance_MediaRouter_SecondaryText = global::LagoVista.Droid.Simulator.Resource.Style.TextAppearance_MediaRouter_SecondaryText;
+			global::LagoVista.XPlat.Droid.Resource.Style.TextAppearance_MediaRouter_Title = global::LagoVista.Droid.Simulator.Resource.Style.TextAppearance_MediaRouter_Title;
+			global::LagoVista.XPlat.Droid.Resource.Style.TextAppearance_StatusBar_EventContent = global::LagoVista.Droid.Simulator.Resource.Style.TextAppearance_StatusBar_EventContent;
+			global::LagoVista.XPlat.Droid.Resource.Style.TextAppearance_StatusBar_EventContent_Info = global::LagoVista.Droid.Simulator.Resource.Style.TextAppearance_StatusBar_EventContent_Info;
+			global::LagoVista.XPlat.Droid.Resource.Style.TextAppearance_StatusBar_EventContent_Line2 = global::LagoVista.Droid.Simulator.Resource.Style.TextAppearance_StatusBar_EventContent_Line2;
+			global::LagoVista.XPlat.Droid.Resource.Style.TextAppearance_StatusBar_EventContent_Time = global::LagoVista.Droid.Simulator.Resource.Style.TextAppearance_StatusBar_EventContent_Time;
+			global::LagoVista.XPlat.Droid.Resource.Style.TextAppearance_StatusBar_EventContent_Title = global::LagoVista.Droid.Simulator.Resource.Style.TextAppearance_StatusBar_EventContent_Title;
+			global::LagoVista.XPlat.Droid.Resource.Style.TextAppearance_Widget_AppCompat_ExpandedMenu_Item = global::LagoVista.Droid.Simulator.Resource.Style.TextAppearance_Widget_AppCompat_ExpandedMenu_Item;
+			global::LagoVista.XPlat.Droid.Resource.Style.TextAppearance_Widget_AppCompat_Toolbar_Subtitle = global::LagoVista.Droid.Simulator.Resource.Style.TextAppearance_Widget_AppCompat_Toolbar_Subtitle;
+			global::LagoVista.XPlat.Droid.Resource.Style.TextAppearance_Widget_AppCompat_Toolbar_Title = global::LagoVista.Droid.Simulator.Resource.Style.TextAppearance_Widget_AppCompat_Toolbar_Title;
+			global::LagoVista.XPlat.Droid.Resource.Style.Theme_AppCompat = global::LagoVista.Droid.Simulator.Resource.Style.Theme_AppCompat;
+			global::LagoVista.XPlat.Droid.Resource.Style.Theme_AppCompat_CompactMenu = global::LagoVista.Droid.Simulator.Resource.Style.Theme_AppCompat_CompactMenu;
+			global::LagoVista.XPlat.Droid.Resource.Style.Theme_AppCompat_DayNight = global::LagoVista.Droid.Simulator.Resource.Style.Theme_AppCompat_DayNight;
+			global::LagoVista.XPlat.Droid.Resource.Style.Theme_AppCompat_DayNight_DarkActionBar = global::LagoVista.Droid.Simulator.Resource.Style.Theme_AppCompat_DayNight_DarkActionBar;
+			global::LagoVista.XPlat.Droid.Resource.Style.Theme_AppCompat_DayNight_Dialog = global::LagoVista.Droid.Simulator.Resource.Style.Theme_AppCompat_DayNight_Dialog;
+			global::LagoVista.XPlat.Droid.Resource.Style.Theme_AppCompat_DayNight_Dialog_Alert = global::LagoVista.Droid.Simulator.Resource.Style.Theme_AppCompat_DayNight_Dialog_Alert;
+			global::LagoVista.XPlat.Droid.Resource.Style.Theme_AppCompat_DayNight_Dialog_MinWidth = global::LagoVista.Droid.Simulator.Resource.Style.Theme_AppCompat_DayNight_Dialog_MinWidth;
+			global::LagoVista.XPlat.Droid.Resource.Style.Theme_AppCompat_DayNight_DialogWhenLarge = global::LagoVista.Droid.Simulator.Resource.Style.Theme_AppCompat_DayNight_DialogWhenLarge;
+			global::LagoVista.XPlat.Droid.Resource.Style.Theme_AppCompat_DayNight_NoActionBar = global::LagoVista.Droid.Simulator.Resource.Style.Theme_AppCompat_DayNight_NoActionBar;
+			global::LagoVista.XPlat.Droid.Resource.Style.Theme_AppCompat_Dialog = global::LagoVista.Droid.Simulator.Resource.Style.Theme_AppCompat_Dialog;
+			global::LagoVista.XPlat.Droid.Resource.Style.Theme_AppCompat_Dialog_Alert = global::LagoVista.Droid.Simulator.Resource.Style.Theme_AppCompat_Dialog_Alert;
+			global::LagoVista.XPlat.Droid.Resource.Style.Theme_AppCompat_Dialog_MinWidth = global::LagoVista.Droid.Simulator.Resource.Style.Theme_AppCompat_Dialog_MinWidth;
+			global::LagoVista.XPlat.Droid.Resource.Style.Theme_AppCompat_DialogWhenLarge = global::LagoVista.Droid.Simulator.Resource.Style.Theme_AppCompat_DialogWhenLarge;
+			global::LagoVista.XPlat.Droid.Resource.Style.Theme_AppCompat_Light = global::LagoVista.Droid.Simulator.Resource.Style.Theme_AppCompat_Light;
+			global::LagoVista.XPlat.Droid.Resource.Style.Theme_AppCompat_Light_DarkActionBar = global::LagoVista.Droid.Simulator.Resource.Style.Theme_AppCompat_Light_DarkActionBar;
+			global::LagoVista.XPlat.Droid.Resource.Style.Theme_AppCompat_Light_Dialog = global::LagoVista.Droid.Simulator.Resource.Style.Theme_AppCompat_Light_Dialog;
+			global::LagoVista.XPlat.Droid.Resource.Style.Theme_AppCompat_Light_Dialog_Alert = global::LagoVista.Droid.Simulator.Resource.Style.Theme_AppCompat_Light_Dialog_Alert;
+			global::LagoVista.XPlat.Droid.Resource.Style.Theme_AppCompat_Light_Dialog_MinWidth = global::LagoVista.Droid.Simulator.Resource.Style.Theme_AppCompat_Light_Dialog_MinWidth;
+			global::LagoVista.XPlat.Droid.Resource.Style.Theme_AppCompat_Light_DialogWhenLarge = global::LagoVista.Droid.Simulator.Resource.Style.Theme_AppCompat_Light_DialogWhenLarge;
+			global::LagoVista.XPlat.Droid.Resource.Style.Theme_AppCompat_Light_NoActionBar = global::LagoVista.Droid.Simulator.Resource.Style.Theme_AppCompat_Light_NoActionBar;
+			global::LagoVista.XPlat.Droid.Resource.Style.Theme_AppCompat_NoActionBar = global::LagoVista.Droid.Simulator.Resource.Style.Theme_AppCompat_NoActionBar;
+			global::LagoVista.XPlat.Droid.Resource.Style.Theme_Design = global::LagoVista.Droid.Simulator.Resource.Style.Theme_Design;
+			global::LagoVista.XPlat.Droid.Resource.Style.Theme_Design_BottomSheetDialog = global::LagoVista.Droid.Simulator.Resource.Style.Theme_Design_BottomSheetDialog;
+			global::LagoVista.XPlat.Droid.Resource.Style.Theme_Design_Light = global::LagoVista.Droid.Simulator.Resource.Style.Theme_Design_Light;
+			global::LagoVista.XPlat.Droid.Resource.Style.Theme_Design_Light_BottomSheetDialog = global::LagoVista.Droid.Simulator.Resource.Style.Theme_Design_Light_BottomSheetDialog;
+			global::LagoVista.XPlat.Droid.Resource.Style.Theme_Design_Light_NoActionBar = global::LagoVista.Droid.Simulator.Resource.Style.Theme_Design_Light_NoActionBar;
+			global::LagoVista.XPlat.Droid.Resource.Style.Theme_Design_NoActionBar = global::LagoVista.Droid.Simulator.Resource.Style.Theme_Design_NoActionBar;
+			global::LagoVista.XPlat.Droid.Resource.Style.Theme_MediaRouter = global::LagoVista.Droid.Simulator.Resource.Style.Theme_MediaRouter;
+			global::LagoVista.XPlat.Droid.Resource.Style.Theme_MediaRouter_Light = global::LagoVista.Droid.Simulator.Resource.Style.Theme_MediaRouter_Light;
+			global::LagoVista.XPlat.Droid.Resource.Style.Theme_MediaRouter_Light_DarkControlPanel = global::LagoVista.Droid.Simulator.Resource.Style.Theme_MediaRouter_Light_DarkControlPanel;
+			global::LagoVista.XPlat.Droid.Resource.Style.Theme_MediaRouter_LightControlPanel = global::LagoVista.Droid.Simulator.Resource.Style.Theme_MediaRouter_LightControlPanel;
+			global::LagoVista.XPlat.Droid.Resource.Style.ThemeOverlay_AppCompat = global::LagoVista.Droid.Simulator.Resource.Style.ThemeOverlay_AppCompat;
+			global::LagoVista.XPlat.Droid.Resource.Style.ThemeOverlay_AppCompat_ActionBar = global::LagoVista.Droid.Simulator.Resource.Style.ThemeOverlay_AppCompat_ActionBar;
+			global::LagoVista.XPlat.Droid.Resource.Style.ThemeOverlay_AppCompat_Dark = global::LagoVista.Droid.Simulator.Resource.Style.ThemeOverlay_AppCompat_Dark;
+			global::LagoVista.XPlat.Droid.Resource.Style.ThemeOverlay_AppCompat_Dark_ActionBar = global::LagoVista.Droid.Simulator.Resource.Style.ThemeOverlay_AppCompat_Dark_ActionBar;
+			global::LagoVista.XPlat.Droid.Resource.Style.ThemeOverlay_AppCompat_Dialog = global::LagoVista.Droid.Simulator.Resource.Style.ThemeOverlay_AppCompat_Dialog;
+			global::LagoVista.XPlat.Droid.Resource.Style.ThemeOverlay_AppCompat_Dialog_Alert = global::LagoVista.Droid.Simulator.Resource.Style.ThemeOverlay_AppCompat_Dialog_Alert;
+			global::LagoVista.XPlat.Droid.Resource.Style.ThemeOverlay_AppCompat_Light = global::LagoVista.Droid.Simulator.Resource.Style.ThemeOverlay_AppCompat_Light;
+			global::LagoVista.XPlat.Droid.Resource.Style.ThemeOverlay_MediaRouter_Dark = global::LagoVista.Droid.Simulator.Resource.Style.ThemeOverlay_MediaRouter_Dark;
+			global::LagoVista.XPlat.Droid.Resource.Style.ThemeOverlay_MediaRouter_Light = global::LagoVista.Droid.Simulator.Resource.Style.ThemeOverlay_MediaRouter_Light;
+			global::LagoVista.XPlat.Droid.Resource.Style.Widget_AppCompat_ActionBar = global::LagoVista.Droid.Simulator.Resource.Style.Widget_AppCompat_ActionBar;
+			global::LagoVista.XPlat.Droid.Resource.Style.Widget_AppCompat_ActionBar_Solid = global::LagoVista.Droid.Simulator.Resource.Style.Widget_AppCompat_ActionBar_Solid;
+			global::LagoVista.XPlat.Droid.Resource.Style.Widget_AppCompat_ActionBar_TabBar = global::LagoVista.Droid.Simulator.Resource.Style.Widget_AppCompat_ActionBar_TabBar;
+			global::LagoVista.XPlat.Droid.Resource.Style.Widget_AppCompat_ActionBar_TabText = global::LagoVista.Droid.Simulator.Resource.Style.Widget_AppCompat_ActionBar_TabText;
+			global::LagoVista.XPlat.Droid.Resource.Style.Widget_AppCompat_ActionBar_TabView = global::LagoVista.Droid.Simulator.Resource.Style.Widget_AppCompat_ActionBar_TabView;
+			global::LagoVista.XPlat.Droid.Resource.Style.Widget_AppCompat_ActionButton = global::LagoVista.Droid.Simulator.Resource.Style.Widget_AppCompat_ActionButton;
+			global::LagoVista.XPlat.Droid.Resource.Style.Widget_AppCompat_ActionButton_CloseMode = global::LagoVista.Droid.Simulator.Resource.Style.Widget_AppCompat_ActionButton_CloseMode;
+			global::LagoVista.XPlat.Droid.Resource.Style.Widget_AppCompat_ActionButton_Overflow = global::LagoVista.Droid.Simulator.Resource.Style.Widget_AppCompat_ActionButton_Overflow;
+			global::LagoVista.XPlat.Droid.Resource.Style.Widget_AppCompat_ActionMode = global::LagoVista.Droid.Simulator.Resource.Style.Widget_AppCompat_ActionMode;
+			global::LagoVista.XPlat.Droid.Resource.Style.Widget_AppCompat_ActivityChooserView = global::LagoVista.Droid.Simulator.Resource.Style.Widget_AppCompat_ActivityChooserView;
+			global::LagoVista.XPlat.Droid.Resource.Style.Widget_AppCompat_AutoCompleteTextView = global::LagoVista.Droid.Simulator.Resource.Style.Widget_AppCompat_AutoCompleteTextView;
+			global::LagoVista.XPlat.Droid.Resource.Style.Widget_AppCompat_Button = global::LagoVista.Droid.Simulator.Resource.Style.Widget_AppCompat_Button;
+			global::LagoVista.XPlat.Droid.Resource.Style.Widget_AppCompat_Button_Borderless = global::LagoVista.Droid.Simulator.Resource.Style.Widget_AppCompat_Button_Borderless;
+			global::LagoVista.XPlat.Droid.Resource.Style.Widget_AppCompat_Button_Borderless_Colored = global::LagoVista.Droid.Simulator.Resource.Style.Widget_AppCompat_Button_Borderless_Colored;
+			global::LagoVista.XPlat.Droid.Resource.Style.Widget_AppCompat_Button_ButtonBar_AlertDialog = global::LagoVista.Droid.Simulator.Resource.Style.Widget_AppCompat_Button_ButtonBar_AlertDialog;
+			global::LagoVista.XPlat.Droid.Resource.Style.Widget_AppCompat_Button_Colored = global::LagoVista.Droid.Simulator.Resource.Style.Widget_AppCompat_Button_Colored;
+			global::LagoVista.XPlat.Droid.Resource.Style.Widget_AppCompat_Button_Small = global::LagoVista.Droid.Simulator.Resource.Style.Widget_AppCompat_Button_Small;
+			global::LagoVista.XPlat.Droid.Resource.Style.Widget_AppCompat_ButtonBar = global::LagoVista.Droid.Simulator.Resource.Style.Widget_AppCompat_ButtonBar;
+			global::LagoVista.XPlat.Droid.Resource.Style.Widget_AppCompat_ButtonBar_AlertDialog = global::LagoVista.Droid.Simulator.Resource.Style.Widget_AppCompat_ButtonBar_AlertDialog;
+			global::LagoVista.XPlat.Droid.Resource.Style.Widget_AppCompat_CompoundButton_CheckBox = global::LagoVista.Droid.Simulator.Resource.Style.Widget_AppCompat_CompoundButton_CheckBox;
+			global::LagoVista.XPlat.Droid.Resource.Style.Widget_AppCompat_CompoundButton_RadioButton = global::LagoVista.Droid.Simulator.Resource.Style.Widget_AppCompat_CompoundButton_RadioButton;
+			global::LagoVista.XPlat.Droid.Resource.Style.Widget_AppCompat_CompoundButton_Switch = global::LagoVista.Droid.Simulator.Resource.Style.Widget_AppCompat_CompoundButton_Switch;
+			global::LagoVista.XPlat.Droid.Resource.Style.Widget_AppCompat_DrawerArrowToggle = global::LagoVista.Droid.Simulator.Resource.Style.Widget_AppCompat_DrawerArrowToggle;
+			global::LagoVista.XPlat.Droid.Resource.Style.Widget_AppCompat_DropDownItem_Spinner = global::LagoVista.Droid.Simulator.Resource.Style.Widget_AppCompat_DropDownItem_Spinner;
+			global::LagoVista.XPlat.Droid.Resource.Style.Widget_AppCompat_EditText = global::LagoVista.Droid.Simulator.Resource.Style.Widget_AppCompat_EditText;
+			global::LagoVista.XPlat.Droid.Resource.Style.Widget_AppCompat_ImageButton = global::LagoVista.Droid.Simulator.Resource.Style.Widget_AppCompat_ImageButton;
+			global::LagoVista.XPlat.Droid.Resource.Style.Widget_AppCompat_Light_ActionBar = global::LagoVista.Droid.Simulator.Resource.Style.Widget_AppCompat_Light_ActionBar;
+			global::LagoVista.XPlat.Droid.Resource.Style.Widget_AppCompat_Light_ActionBar_Solid = global::LagoVista.Droid.Simulator.Resource.Style.Widget_AppCompat_Light_ActionBar_Solid;
+			global::LagoVista.XPlat.Droid.Resource.Style.Widget_AppCompat_Light_ActionBar_Solid_Inverse = global::LagoVista.Droid.Simulator.Resource.Style.Widget_AppCompat_Light_ActionBar_Solid_Inverse;
+			global::LagoVista.XPlat.Droid.Resource.Style.Widget_AppCompat_Light_ActionBar_TabBar = global::LagoVista.Droid.Simulator.Resource.Style.Widget_AppCompat_Light_ActionBar_TabBar;
+			global::LagoVista.XPlat.Droid.Resource.Style.Widget_AppCompat_Light_ActionBar_TabBar_Inverse = global::LagoVista.Droid.Simulator.Resource.Style.Widget_AppCompat_Light_ActionBar_TabBar_Inverse;
+			global::LagoVista.XPlat.Droid.Resource.Style.Widget_AppCompat_Light_ActionBar_TabText = global::LagoVista.Droid.Simulator.Resource.Style.Widget_AppCompat_Light_ActionBar_TabText;
+			global::LagoVista.XPlat.Droid.Resource.Style.Widget_AppCompat_Light_ActionBar_TabText_Inverse = global::LagoVista.Droid.Simulator.Resource.Style.Widget_AppCompat_Light_ActionBar_TabText_Inverse;
+			global::LagoVista.XPlat.Droid.Resource.Style.Widget_AppCompat_Light_ActionBar_TabView = global::LagoVista.Droid.Simulator.Resource.Style.Widget_AppCompat_Light_ActionBar_TabView;
+			global::LagoVista.XPlat.Droid.Resource.Style.Widget_AppCompat_Light_ActionBar_TabView_Inverse = global::LagoVista.Droid.Simulator.Resource.Style.Widget_AppCompat_Light_ActionBar_TabView_Inverse;
+			global::LagoVista.XPlat.Droid.Resource.Style.Widget_AppCompat_Light_ActionButton = global::LagoVista.Droid.Simulator.Resource.Style.Widget_AppCompat_Light_ActionButton;
+			global::LagoVista.XPlat.Droid.Resource.Style.Widget_AppCompat_Light_ActionButton_CloseMode = global::LagoVista.Droid.Simulator.Resource.Style.Widget_AppCompat_Light_ActionButton_CloseMode;
+			global::LagoVista.XPlat.Droid.Resource.Style.Widget_AppCompat_Light_ActionButton_Overflow = global::LagoVista.Droid.Simulator.Resource.Style.Widget_AppCompat_Light_ActionButton_Overflow;
+			global::LagoVista.XPlat.Droid.Resource.Style.Widget_AppCompat_Light_ActionMode_Inverse = global::LagoVista.Droid.Simulator.Resource.Style.Widget_AppCompat_Light_ActionMode_Inverse;
+			global::LagoVista.XPlat.Droid.Resource.Style.Widget_AppCompat_Light_ActivityChooserView = global::LagoVista.Droid.Simulator.Resource.Style.Widget_AppCompat_Light_ActivityChooserView;
+			global::LagoVista.XPlat.Droid.Resource.Style.Widget_AppCompat_Light_AutoCompleteTextView = global::LagoVista.Droid.Simulator.Resource.Style.Widget_AppCompat_Light_AutoCompleteTextView;
+			global::LagoVista.XPlat.Droid.Resource.Style.Widget_AppCompat_Light_DropDownItem_Spinner = global::LagoVista.Droid.Simulator.Resource.Style.Widget_AppCompat_Light_DropDownItem_Spinner;
+			global::LagoVista.XPlat.Droid.Resource.Style.Widget_AppCompat_Light_ListPopupWindow = global::LagoVista.Droid.Simulator.Resource.Style.Widget_AppCompat_Light_ListPopupWindow;
+			global::LagoVista.XPlat.Droid.Resource.Style.Widget_AppCompat_Light_ListView_DropDown = global::LagoVista.Droid.Simulator.Resource.Style.Widget_AppCompat_Light_ListView_DropDown;
+			global::LagoVista.XPlat.Droid.Resource.Style.Widget_AppCompat_Light_PopupMenu = global::LagoVista.Droid.Simulator.Resource.Style.Widget_AppCompat_Light_PopupMenu;
+			global::LagoVista.XPlat.Droid.Resource.Style.Widget_AppCompat_Light_PopupMenu_Overflow = global::LagoVista.Droid.Simulator.Resource.Style.Widget_AppCompat_Light_PopupMenu_Overflow;
+			global::LagoVista.XPlat.Droid.Resource.Style.Widget_AppCompat_Light_SearchView = global::LagoVista.Droid.Simulator.Resource.Style.Widget_AppCompat_Light_SearchView;
+			global::LagoVista.XPlat.Droid.Resource.Style.Widget_AppCompat_Light_Spinner_DropDown_ActionBar = global::LagoVista.Droid.Simulator.Resource.Style.Widget_AppCompat_Light_Spinner_DropDown_ActionBar;
+			global::LagoVista.XPlat.Droid.Resource.Style.Widget_AppCompat_ListMenuView = global::LagoVista.Droid.Simulator.Resource.Style.Widget_AppCompat_ListMenuView;
+			global::LagoVista.XPlat.Droid.Resource.Style.Widget_AppCompat_ListPopupWindow = global::LagoVista.Droid.Simulator.Resource.Style.Widget_AppCompat_ListPopupWindow;
+			global::LagoVista.XPlat.Droid.Resource.Style.Widget_AppCompat_ListView = global::LagoVista.Droid.Simulator.Resource.Style.Widget_AppCompat_ListView;
+			global::LagoVista.XPlat.Droid.Resource.Style.Widget_AppCompat_ListView_DropDown = global::LagoVista.Droid.Simulator.Resource.Style.Widget_AppCompat_ListView_DropDown;
+			global::LagoVista.XPlat.Droid.Resource.Style.Widget_AppCompat_ListView_Menu = global::LagoVista.Droid.Simulator.Resource.Style.Widget_AppCompat_ListView_Menu;
+			global::LagoVista.XPlat.Droid.Resource.Style.Widget_AppCompat_NotificationActionContainer = global::LagoVista.Droid.Simulator.Resource.Style.Widget_AppCompat_NotificationActionContainer;
+			global::LagoVista.XPlat.Droid.Resource.Style.Widget_AppCompat_NotificationActionText = global::LagoVista.Droid.Simulator.Resource.Style.Widget_AppCompat_NotificationActionText;
+			global::LagoVista.XPlat.Droid.Resource.Style.Widget_AppCompat_PopupMenu = global::LagoVista.Droid.Simulator.Resource.Style.Widget_AppCompat_PopupMenu;
+			global::LagoVista.XPlat.Droid.Resource.Style.Widget_AppCompat_PopupMenu_Overflow = global::LagoVista.Droid.Simulator.Resource.Style.Widget_AppCompat_PopupMenu_Overflow;
+			global::LagoVista.XPlat.Droid.Resource.Style.Widget_AppCompat_PopupWindow = global::LagoVista.Droid.Simulator.Resource.Style.Widget_AppCompat_PopupWindow;
+			global::LagoVista.XPlat.Droid.Resource.Style.Widget_AppCompat_ProgressBar = global::LagoVista.Droid.Simulator.Resource.Style.Widget_AppCompat_ProgressBar;
+			global::LagoVista.XPlat.Droid.Resource.Style.Widget_AppCompat_ProgressBar_Horizontal = global::LagoVista.Droid.Simulator.Resource.Style.Widget_AppCompat_ProgressBar_Horizontal;
+			global::LagoVista.XPlat.Droid.Resource.Style.Widget_AppCompat_RatingBar = global::LagoVista.Droid.Simulator.Resource.Style.Widget_AppCompat_RatingBar;
+			global::LagoVista.XPlat.Droid.Resource.Style.Widget_AppCompat_RatingBar_Indicator = global::LagoVista.Droid.Simulator.Resource.Style.Widget_AppCompat_RatingBar_Indicator;
+			global::LagoVista.XPlat.Droid.Resource.Style.Widget_AppCompat_RatingBar_Small = global::LagoVista.Droid.Simulator.Resource.Style.Widget_AppCompat_RatingBar_Small;
+			global::LagoVista.XPlat.Droid.Resource.Style.Widget_AppCompat_SearchView = global::LagoVista.Droid.Simulator.Resource.Style.Widget_AppCompat_SearchView;
+			global::LagoVista.XPlat.Droid.Resource.Style.Widget_AppCompat_SearchView_ActionBar = global::LagoVista.Droid.Simulator.Resource.Style.Widget_AppCompat_SearchView_ActionBar;
+			global::LagoVista.XPlat.Droid.Resource.Style.Widget_AppCompat_SeekBar = global::LagoVista.Droid.Simulator.Resource.Style.Widget_AppCompat_SeekBar;
+			global::LagoVista.XPlat.Droid.Resource.Style.Widget_AppCompat_SeekBar_Discrete = global::LagoVista.Droid.Simulator.Resource.Style.Widget_AppCompat_SeekBar_Discrete;
+			global::LagoVista.XPlat.Droid.Resource.Style.Widget_AppCompat_Spinner = global::LagoVista.Droid.Simulator.Resource.Style.Widget_AppCompat_Spinner;
+			global::LagoVista.XPlat.Droid.Resource.Style.Widget_AppCompat_Spinner_DropDown = global::LagoVista.Droid.Simulator.Resource.Style.Widget_AppCompat_Spinner_DropDown;
+			global::LagoVista.XPlat.Droid.Resource.Style.Widget_AppCompat_Spinner_DropDown_ActionBar = global::LagoVista.Droid.Simulator.Resource.Style.Widget_AppCompat_Spinner_DropDown_ActionBar;
+			global::LagoVista.XPlat.Droid.Resource.Style.Widget_AppCompat_Spinner_Underlined = global::LagoVista.Droid.Simulator.Resource.Style.Widget_AppCompat_Spinner_Underlined;
+			global::LagoVista.XPlat.Droid.Resource.Style.Widget_AppCompat_TextView_SpinnerItem = global::LagoVista.Droid.Simulator.Resource.Style.Widget_AppCompat_TextView_SpinnerItem;
+			global::LagoVista.XPlat.Droid.Resource.Style.Widget_AppCompat_Toolbar = global::LagoVista.Droid.Simulator.Resource.Style.Widget_AppCompat_Toolbar;
+			global::LagoVista.XPlat.Droid.Resource.Style.Widget_AppCompat_Toolbar_Button_Navigation = global::LagoVista.Droid.Simulator.Resource.Style.Widget_AppCompat_Toolbar_Button_Navigation;
+			global::LagoVista.XPlat.Droid.Resource.Style.Widget_Design_AppBarLayout = global::LagoVista.Droid.Simulator.Resource.Style.Widget_Design_AppBarLayout;
+			global::LagoVista.XPlat.Droid.Resource.Style.Widget_Design_BottomNavigationView = global::LagoVista.Droid.Simulator.Resource.Style.Widget_Design_BottomNavigationView;
+			global::LagoVista.XPlat.Droid.Resource.Style.Widget_Design_BottomSheet_Modal = global::LagoVista.Droid.Simulator.Resource.Style.Widget_Design_BottomSheet_Modal;
+			global::LagoVista.XPlat.Droid.Resource.Style.Widget_Design_CollapsingToolbar = global::LagoVista.Droid.Simulator.Resource.Style.Widget_Design_CollapsingToolbar;
+			global::LagoVista.XPlat.Droid.Resource.Style.Widget_Design_CoordinatorLayout = global::LagoVista.Droid.Simulator.Resource.Style.Widget_Design_CoordinatorLayout;
+			global::LagoVista.XPlat.Droid.Resource.Style.Widget_Design_FloatingActionButton = global::LagoVista.Droid.Simulator.Resource.Style.Widget_Design_FloatingActionButton;
+			global::LagoVista.XPlat.Droid.Resource.Style.Widget_Design_NavigationView = global::LagoVista.Droid.Simulator.Resource.Style.Widget_Design_NavigationView;
+			global::LagoVista.XPlat.Droid.Resource.Style.Widget_Design_ScrimInsetsFrameLayout = global::LagoVista.Droid.Simulator.Resource.Style.Widget_Design_ScrimInsetsFrameLayout;
+			global::LagoVista.XPlat.Droid.Resource.Style.Widget_Design_Snackbar = global::LagoVista.Droid.Simulator.Resource.Style.Widget_Design_Snackbar;
+			global::LagoVista.XPlat.Droid.Resource.Style.Widget_Design_TabLayout = global::LagoVista.Droid.Simulator.Resource.Style.Widget_Design_TabLayout;
+			global::LagoVista.XPlat.Droid.Resource.Style.Widget_Design_TextInputLayout = global::LagoVista.Droid.Simulator.Resource.Style.Widget_Design_TextInputLayout;
+			global::LagoVista.XPlat.Droid.Resource.Style.Widget_MediaRouter_Light_MediaRouteButton = global::LagoVista.Droid.Simulator.Resource.Style.Widget_MediaRouter_Light_MediaRouteButton;
+			global::LagoVista.XPlat.Droid.Resource.Style.Widget_MediaRouter_MediaRouteButton = global::LagoVista.Droid.Simulator.Resource.Style.Widget_MediaRouter_MediaRouteButton;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.ActionBar = global::LagoVista.Droid.Simulator.Resource.Styleable.ActionBar;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.ActionBar_background = global::LagoVista.Droid.Simulator.Resource.Styleable.ActionBar_background;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.ActionBar_backgroundSplit = global::LagoVista.Droid.Simulator.Resource.Styleable.ActionBar_backgroundSplit;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.ActionBar_backgroundStacked = global::LagoVista.Droid.Simulator.Resource.Styleable.ActionBar_backgroundStacked;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.ActionBar_contentInsetEnd = global::LagoVista.Droid.Simulator.Resource.Styleable.ActionBar_contentInsetEnd;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.ActionBar_contentInsetEndWithActions = global::LagoVista.Droid.Simulator.Resource.Styleable.ActionBar_contentInsetEndWithActions;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.ActionBar_contentInsetLeft = global::LagoVista.Droid.Simulator.Resource.Styleable.ActionBar_contentInsetLeft;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.ActionBar_contentInsetRight = global::LagoVista.Droid.Simulator.Resource.Styleable.ActionBar_contentInsetRight;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.ActionBar_contentInsetStart = global::LagoVista.Droid.Simulator.Resource.Styleable.ActionBar_contentInsetStart;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.ActionBar_contentInsetStartWithNavigation = global::LagoVista.Droid.Simulator.Resource.Styleable.ActionBar_contentInsetStartWithNavigation;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.ActionBar_customNavigationLayout = global::LagoVista.Droid.Simulator.Resource.Styleable.ActionBar_customNavigationLayout;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.ActionBar_displayOptions = global::LagoVista.Droid.Simulator.Resource.Styleable.ActionBar_displayOptions;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.ActionBar_divider = global::LagoVista.Droid.Simulator.Resource.Styleable.ActionBar_divider;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.ActionBar_elevation = global::LagoVista.Droid.Simulator.Resource.Styleable.ActionBar_elevation;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.ActionBar_height = global::LagoVista.Droid.Simulator.Resource.Styleable.ActionBar_height;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.ActionBar_hideOnContentScroll = global::LagoVista.Droid.Simulator.Resource.Styleable.ActionBar_hideOnContentScroll;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.ActionBar_homeAsUpIndicator = global::LagoVista.Droid.Simulator.Resource.Styleable.ActionBar_homeAsUpIndicator;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.ActionBar_homeLayout = global::LagoVista.Droid.Simulator.Resource.Styleable.ActionBar_homeLayout;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.ActionBar_icon = global::LagoVista.Droid.Simulator.Resource.Styleable.ActionBar_icon;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.ActionBar_indeterminateProgressStyle = global::LagoVista.Droid.Simulator.Resource.Styleable.ActionBar_indeterminateProgressStyle;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.ActionBar_itemPadding = global::LagoVista.Droid.Simulator.Resource.Styleable.ActionBar_itemPadding;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.ActionBar_logo = global::LagoVista.Droid.Simulator.Resource.Styleable.ActionBar_logo;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.ActionBar_navigationMode = global::LagoVista.Droid.Simulator.Resource.Styleable.ActionBar_navigationMode;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.ActionBar_popupTheme = global::LagoVista.Droid.Simulator.Resource.Styleable.ActionBar_popupTheme;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.ActionBar_progressBarPadding = global::LagoVista.Droid.Simulator.Resource.Styleable.ActionBar_progressBarPadding;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.ActionBar_progressBarStyle = global::LagoVista.Droid.Simulator.Resource.Styleable.ActionBar_progressBarStyle;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.ActionBar_subtitle = global::LagoVista.Droid.Simulator.Resource.Styleable.ActionBar_subtitle;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.ActionBar_subtitleTextStyle = global::LagoVista.Droid.Simulator.Resource.Styleable.ActionBar_subtitleTextStyle;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.ActionBar_title = global::LagoVista.Droid.Simulator.Resource.Styleable.ActionBar_title;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.ActionBar_titleTextStyle = global::LagoVista.Droid.Simulator.Resource.Styleable.ActionBar_titleTextStyle;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.ActionBarLayout = global::LagoVista.Droid.Simulator.Resource.Styleable.ActionBarLayout;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.ActionBarLayout_android_layout_gravity = global::LagoVista.Droid.Simulator.Resource.Styleable.ActionBarLayout_android_layout_gravity;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.ActionMenuItemView = global::LagoVista.Droid.Simulator.Resource.Styleable.ActionMenuItemView;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.ActionMenuItemView_android_minWidth = global::LagoVista.Droid.Simulator.Resource.Styleable.ActionMenuItemView_android_minWidth;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.ActionMenuView = global::LagoVista.Droid.Simulator.Resource.Styleable.ActionMenuView;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.ActionMode = global::LagoVista.Droid.Simulator.Resource.Styleable.ActionMode;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.ActionMode_background = global::LagoVista.Droid.Simulator.Resource.Styleable.ActionMode_background;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.ActionMode_backgroundSplit = global::LagoVista.Droid.Simulator.Resource.Styleable.ActionMode_backgroundSplit;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.ActionMode_closeItemLayout = global::LagoVista.Droid.Simulator.Resource.Styleable.ActionMode_closeItemLayout;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.ActionMode_height = global::LagoVista.Droid.Simulator.Resource.Styleable.ActionMode_height;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.ActionMode_subtitleTextStyle = global::LagoVista.Droid.Simulator.Resource.Styleable.ActionMode_subtitleTextStyle;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.ActionMode_titleTextStyle = global::LagoVista.Droid.Simulator.Resource.Styleable.ActionMode_titleTextStyle;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.ActivityChooserView = global::LagoVista.Droid.Simulator.Resource.Styleable.ActivityChooserView;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.ActivityChooserView_expandActivityOverflowButtonDrawable = global::LagoVista.Droid.Simulator.Resource.Styleable.ActivityChooserView_expandActivityOverflowButtonDrawable;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.ActivityChooserView_initialActivityCount = global::LagoVista.Droid.Simulator.Resource.Styleable.ActivityChooserView_initialActivityCount;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.AlertDialog = global::LagoVista.Droid.Simulator.Resource.Styleable.AlertDialog;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.AlertDialog_android_layout = global::LagoVista.Droid.Simulator.Resource.Styleable.AlertDialog_android_layout;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.AlertDialog_buttonPanelSideLayout = global::LagoVista.Droid.Simulator.Resource.Styleable.AlertDialog_buttonPanelSideLayout;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.AlertDialog_listItemLayout = global::LagoVista.Droid.Simulator.Resource.Styleable.AlertDialog_listItemLayout;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.AlertDialog_listLayout = global::LagoVista.Droid.Simulator.Resource.Styleable.AlertDialog_listLayout;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.AlertDialog_multiChoiceItemLayout = global::LagoVista.Droid.Simulator.Resource.Styleable.AlertDialog_multiChoiceItemLayout;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.AlertDialog_showTitle = global::LagoVista.Droid.Simulator.Resource.Styleable.AlertDialog_showTitle;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.AlertDialog_singleChoiceItemLayout = global::LagoVista.Droid.Simulator.Resource.Styleable.AlertDialog_singleChoiceItemLayout;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.AppBarLayout = global::LagoVista.Droid.Simulator.Resource.Styleable.AppBarLayout;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.AppBarLayout_android_background = global::LagoVista.Droid.Simulator.Resource.Styleable.AppBarLayout_android_background;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.AppBarLayout_elevation = global::LagoVista.Droid.Simulator.Resource.Styleable.AppBarLayout_elevation;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.AppBarLayout_expanded = global::LagoVista.Droid.Simulator.Resource.Styleable.AppBarLayout_expanded;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.AppBarLayoutStates = global::LagoVista.Droid.Simulator.Resource.Styleable.AppBarLayoutStates;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.AppBarLayoutStates_state_collapsed = global::LagoVista.Droid.Simulator.Resource.Styleable.AppBarLayoutStates_state_collapsed;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.AppBarLayoutStates_state_collapsible = global::LagoVista.Droid.Simulator.Resource.Styleable.AppBarLayoutStates_state_collapsible;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.AppBarLayout_Layout = global::LagoVista.Droid.Simulator.Resource.Styleable.AppBarLayout_Layout;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.AppBarLayout_Layout_layout_scrollFlags = global::LagoVista.Droid.Simulator.Resource.Styleable.AppBarLayout_Layout_layout_scrollFlags;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.AppBarLayout_Layout_layout_scrollInterpolator = global::LagoVista.Droid.Simulator.Resource.Styleable.AppBarLayout_Layout_layout_scrollInterpolator;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.AppCompatImageView = global::LagoVista.Droid.Simulator.Resource.Styleable.AppCompatImageView;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.AppCompatImageView_android_src = global::LagoVista.Droid.Simulator.Resource.Styleable.AppCompatImageView_android_src;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.AppCompatImageView_srcCompat = global::LagoVista.Droid.Simulator.Resource.Styleable.AppCompatImageView_srcCompat;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.AppCompatImageView_tint = global::LagoVista.Droid.Simulator.Resource.Styleable.AppCompatImageView_tint;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.AppCompatImageView_tintMode = global::LagoVista.Droid.Simulator.Resource.Styleable.AppCompatImageView_tintMode;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.AppCompatSeekBar = global::LagoVista.Droid.Simulator.Resource.Styleable.AppCompatSeekBar;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.AppCompatSeekBar_android_thumb = global::LagoVista.Droid.Simulator.Resource.Styleable.AppCompatSeekBar_android_thumb;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.AppCompatSeekBar_tickMark = global::LagoVista.Droid.Simulator.Resource.Styleable.AppCompatSeekBar_tickMark;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.AppCompatSeekBar_tickMarkTint = global::LagoVista.Droid.Simulator.Resource.Styleable.AppCompatSeekBar_tickMarkTint;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.AppCompatSeekBar_tickMarkTintMode = global::LagoVista.Droid.Simulator.Resource.Styleable.AppCompatSeekBar_tickMarkTintMode;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.AppCompatTextHelper = global::LagoVista.Droid.Simulator.Resource.Styleable.AppCompatTextHelper;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.AppCompatTextHelper_android_drawableBottom = global::LagoVista.Droid.Simulator.Resource.Styleable.AppCompatTextHelper_android_drawableBottom;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.AppCompatTextHelper_android_drawableEnd = global::LagoVista.Droid.Simulator.Resource.Styleable.AppCompatTextHelper_android_drawableEnd;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.AppCompatTextHelper_android_drawableLeft = global::LagoVista.Droid.Simulator.Resource.Styleable.AppCompatTextHelper_android_drawableLeft;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.AppCompatTextHelper_android_drawableRight = global::LagoVista.Droid.Simulator.Resource.Styleable.AppCompatTextHelper_android_drawableRight;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.AppCompatTextHelper_android_drawableStart = global::LagoVista.Droid.Simulator.Resource.Styleable.AppCompatTextHelper_android_drawableStart;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.AppCompatTextHelper_android_drawableTop = global::LagoVista.Droid.Simulator.Resource.Styleable.AppCompatTextHelper_android_drawableTop;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.AppCompatTextHelper_android_textAppearance = global::LagoVista.Droid.Simulator.Resource.Styleable.AppCompatTextHelper_android_textAppearance;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.AppCompatTextView = global::LagoVista.Droid.Simulator.Resource.Styleable.AppCompatTextView;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.AppCompatTextView_android_textAppearance = global::LagoVista.Droid.Simulator.Resource.Styleable.AppCompatTextView_android_textAppearance;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.AppCompatTextView_textAllCaps = global::LagoVista.Droid.Simulator.Resource.Styleable.AppCompatTextView_textAllCaps;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.AppCompatTheme = global::LagoVista.Droid.Simulator.Resource.Styleable.AppCompatTheme;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.AppCompatTheme_actionBarDivider = global::LagoVista.Droid.Simulator.Resource.Styleable.AppCompatTheme_actionBarDivider;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.AppCompatTheme_actionBarItemBackground = global::LagoVista.Droid.Simulator.Resource.Styleable.AppCompatTheme_actionBarItemBackground;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.AppCompatTheme_actionBarPopupTheme = global::LagoVista.Droid.Simulator.Resource.Styleable.AppCompatTheme_actionBarPopupTheme;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.AppCompatTheme_actionBarSize = global::LagoVista.Droid.Simulator.Resource.Styleable.AppCompatTheme_actionBarSize;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.AppCompatTheme_actionBarSplitStyle = global::LagoVista.Droid.Simulator.Resource.Styleable.AppCompatTheme_actionBarSplitStyle;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.AppCompatTheme_actionBarStyle = global::LagoVista.Droid.Simulator.Resource.Styleable.AppCompatTheme_actionBarStyle;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.AppCompatTheme_actionBarTabBarStyle = global::LagoVista.Droid.Simulator.Resource.Styleable.AppCompatTheme_actionBarTabBarStyle;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.AppCompatTheme_actionBarTabStyle = global::LagoVista.Droid.Simulator.Resource.Styleable.AppCompatTheme_actionBarTabStyle;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.AppCompatTheme_actionBarTabTextStyle = global::LagoVista.Droid.Simulator.Resource.Styleable.AppCompatTheme_actionBarTabTextStyle;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.AppCompatTheme_actionBarTheme = global::LagoVista.Droid.Simulator.Resource.Styleable.AppCompatTheme_actionBarTheme;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.AppCompatTheme_actionBarWidgetTheme = global::LagoVista.Droid.Simulator.Resource.Styleable.AppCompatTheme_actionBarWidgetTheme;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.AppCompatTheme_actionButtonStyle = global::LagoVista.Droid.Simulator.Resource.Styleable.AppCompatTheme_actionButtonStyle;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.AppCompatTheme_actionDropDownStyle = global::LagoVista.Droid.Simulator.Resource.Styleable.AppCompatTheme_actionDropDownStyle;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.AppCompatTheme_actionMenuTextAppearance = global::LagoVista.Droid.Simulator.Resource.Styleable.AppCompatTheme_actionMenuTextAppearance;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.AppCompatTheme_actionMenuTextColor = global::LagoVista.Droid.Simulator.Resource.Styleable.AppCompatTheme_actionMenuTextColor;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.AppCompatTheme_actionModeBackground = global::LagoVista.Droid.Simulator.Resource.Styleable.AppCompatTheme_actionModeBackground;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.AppCompatTheme_actionModeCloseButtonStyle = global::LagoVista.Droid.Simulator.Resource.Styleable.AppCompatTheme_actionModeCloseButtonStyle;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.AppCompatTheme_actionModeCloseDrawable = global::LagoVista.Droid.Simulator.Resource.Styleable.AppCompatTheme_actionModeCloseDrawable;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.AppCompatTheme_actionModeCopyDrawable = global::LagoVista.Droid.Simulator.Resource.Styleable.AppCompatTheme_actionModeCopyDrawable;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.AppCompatTheme_actionModeCutDrawable = global::LagoVista.Droid.Simulator.Resource.Styleable.AppCompatTheme_actionModeCutDrawable;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.AppCompatTheme_actionModeFindDrawable = global::LagoVista.Droid.Simulator.Resource.Styleable.AppCompatTheme_actionModeFindDrawable;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.AppCompatTheme_actionModePasteDrawable = global::LagoVista.Droid.Simulator.Resource.Styleable.AppCompatTheme_actionModePasteDrawable;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.AppCompatTheme_actionModePopupWindowStyle = global::LagoVista.Droid.Simulator.Resource.Styleable.AppCompatTheme_actionModePopupWindowStyle;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.AppCompatTheme_actionModeSelectAllDrawable = global::LagoVista.Droid.Simulator.Resource.Styleable.AppCompatTheme_actionModeSelectAllDrawable;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.AppCompatTheme_actionModeShareDrawable = global::LagoVista.Droid.Simulator.Resource.Styleable.AppCompatTheme_actionModeShareDrawable;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.AppCompatTheme_actionModeSplitBackground = global::LagoVista.Droid.Simulator.Resource.Styleable.AppCompatTheme_actionModeSplitBackground;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.AppCompatTheme_actionModeStyle = global::LagoVista.Droid.Simulator.Resource.Styleable.AppCompatTheme_actionModeStyle;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.AppCompatTheme_actionModeWebSearchDrawable = global::LagoVista.Droid.Simulator.Resource.Styleable.AppCompatTheme_actionModeWebSearchDrawable;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.AppCompatTheme_actionOverflowButtonStyle = global::LagoVista.Droid.Simulator.Resource.Styleable.AppCompatTheme_actionOverflowButtonStyle;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.AppCompatTheme_actionOverflowMenuStyle = global::LagoVista.Droid.Simulator.Resource.Styleable.AppCompatTheme_actionOverflowMenuStyle;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.AppCompatTheme_activityChooserViewStyle = global::LagoVista.Droid.Simulator.Resource.Styleable.AppCompatTheme_activityChooserViewStyle;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.AppCompatTheme_alertDialogButtonGroupStyle = global::LagoVista.Droid.Simulator.Resource.Styleable.AppCompatTheme_alertDialogButtonGroupStyle;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.AppCompatTheme_alertDialogCenterButtons = global::LagoVista.Droid.Simulator.Resource.Styleable.AppCompatTheme_alertDialogCenterButtons;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.AppCompatTheme_alertDialogStyle = global::LagoVista.Droid.Simulator.Resource.Styleable.AppCompatTheme_alertDialogStyle;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.AppCompatTheme_alertDialogTheme = global::LagoVista.Droid.Simulator.Resource.Styleable.AppCompatTheme_alertDialogTheme;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.AppCompatTheme_android_windowAnimationStyle = global::LagoVista.Droid.Simulator.Resource.Styleable.AppCompatTheme_android_windowAnimationStyle;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.AppCompatTheme_android_windowIsFloating = global::LagoVista.Droid.Simulator.Resource.Styleable.AppCompatTheme_android_windowIsFloating;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.AppCompatTheme_autoCompleteTextViewStyle = global::LagoVista.Droid.Simulator.Resource.Styleable.AppCompatTheme_autoCompleteTextViewStyle;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.AppCompatTheme_borderlessButtonStyle = global::LagoVista.Droid.Simulator.Resource.Styleable.AppCompatTheme_borderlessButtonStyle;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.AppCompatTheme_buttonBarButtonStyle = global::LagoVista.Droid.Simulator.Resource.Styleable.AppCompatTheme_buttonBarButtonStyle;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.AppCompatTheme_buttonBarNegativeButtonStyle = global::LagoVista.Droid.Simulator.Resource.Styleable.AppCompatTheme_buttonBarNegativeButtonStyle;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.AppCompatTheme_buttonBarNeutralButtonStyle = global::LagoVista.Droid.Simulator.Resource.Styleable.AppCompatTheme_buttonBarNeutralButtonStyle;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.AppCompatTheme_buttonBarPositiveButtonStyle = global::LagoVista.Droid.Simulator.Resource.Styleable.AppCompatTheme_buttonBarPositiveButtonStyle;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.AppCompatTheme_buttonBarStyle = global::LagoVista.Droid.Simulator.Resource.Styleable.AppCompatTheme_buttonBarStyle;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.AppCompatTheme_buttonStyle = global::LagoVista.Droid.Simulator.Resource.Styleable.AppCompatTheme_buttonStyle;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.AppCompatTheme_buttonStyleSmall = global::LagoVista.Droid.Simulator.Resource.Styleable.AppCompatTheme_buttonStyleSmall;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.AppCompatTheme_checkboxStyle = global::LagoVista.Droid.Simulator.Resource.Styleable.AppCompatTheme_checkboxStyle;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.AppCompatTheme_checkedTextViewStyle = global::LagoVista.Droid.Simulator.Resource.Styleable.AppCompatTheme_checkedTextViewStyle;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.AppCompatTheme_colorAccent = global::LagoVista.Droid.Simulator.Resource.Styleable.AppCompatTheme_colorAccent;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.AppCompatTheme_colorBackgroundFloating = global::LagoVista.Droid.Simulator.Resource.Styleable.AppCompatTheme_colorBackgroundFloating;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.AppCompatTheme_colorButtonNormal = global::LagoVista.Droid.Simulator.Resource.Styleable.AppCompatTheme_colorButtonNormal;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.AppCompatTheme_colorControlActivated = global::LagoVista.Droid.Simulator.Resource.Styleable.AppCompatTheme_colorControlActivated;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.AppCompatTheme_colorControlHighlight = global::LagoVista.Droid.Simulator.Resource.Styleable.AppCompatTheme_colorControlHighlight;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.AppCompatTheme_colorControlNormal = global::LagoVista.Droid.Simulator.Resource.Styleable.AppCompatTheme_colorControlNormal;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.AppCompatTheme_colorPrimary = global::LagoVista.Droid.Simulator.Resource.Styleable.AppCompatTheme_colorPrimary;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.AppCompatTheme_colorPrimaryDark = global::LagoVista.Droid.Simulator.Resource.Styleable.AppCompatTheme_colorPrimaryDark;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.AppCompatTheme_colorSwitchThumbNormal = global::LagoVista.Droid.Simulator.Resource.Styleable.AppCompatTheme_colorSwitchThumbNormal;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.AppCompatTheme_controlBackground = global::LagoVista.Droid.Simulator.Resource.Styleable.AppCompatTheme_controlBackground;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.AppCompatTheme_dialogPreferredPadding = global::LagoVista.Droid.Simulator.Resource.Styleable.AppCompatTheme_dialogPreferredPadding;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.AppCompatTheme_dialogTheme = global::LagoVista.Droid.Simulator.Resource.Styleable.AppCompatTheme_dialogTheme;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.AppCompatTheme_dividerHorizontal = global::LagoVista.Droid.Simulator.Resource.Styleable.AppCompatTheme_dividerHorizontal;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.AppCompatTheme_dividerVertical = global::LagoVista.Droid.Simulator.Resource.Styleable.AppCompatTheme_dividerVertical;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.AppCompatTheme_dropDownListViewStyle = global::LagoVista.Droid.Simulator.Resource.Styleable.AppCompatTheme_dropDownListViewStyle;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.AppCompatTheme_dropdownListPreferredItemHeight = global::LagoVista.Droid.Simulator.Resource.Styleable.AppCompatTheme_dropdownListPreferredItemHeight;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.AppCompatTheme_editTextBackground = global::LagoVista.Droid.Simulator.Resource.Styleable.AppCompatTheme_editTextBackground;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.AppCompatTheme_editTextColor = global::LagoVista.Droid.Simulator.Resource.Styleable.AppCompatTheme_editTextColor;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.AppCompatTheme_editTextStyle = global::LagoVista.Droid.Simulator.Resource.Styleable.AppCompatTheme_editTextStyle;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.AppCompatTheme_homeAsUpIndicator = global::LagoVista.Droid.Simulator.Resource.Styleable.AppCompatTheme_homeAsUpIndicator;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.AppCompatTheme_imageButtonStyle = global::LagoVista.Droid.Simulator.Resource.Styleable.AppCompatTheme_imageButtonStyle;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.AppCompatTheme_listChoiceBackgroundIndicator = global::LagoVista.Droid.Simulator.Resource.Styleable.AppCompatTheme_listChoiceBackgroundIndicator;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.AppCompatTheme_listDividerAlertDialog = global::LagoVista.Droid.Simulator.Resource.Styleable.AppCompatTheme_listDividerAlertDialog;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.AppCompatTheme_listMenuViewStyle = global::LagoVista.Droid.Simulator.Resource.Styleable.AppCompatTheme_listMenuViewStyle;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.AppCompatTheme_listPopupWindowStyle = global::LagoVista.Droid.Simulator.Resource.Styleable.AppCompatTheme_listPopupWindowStyle;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.AppCompatTheme_listPreferredItemHeight = global::LagoVista.Droid.Simulator.Resource.Styleable.AppCompatTheme_listPreferredItemHeight;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.AppCompatTheme_listPreferredItemHeightLarge = global::LagoVista.Droid.Simulator.Resource.Styleable.AppCompatTheme_listPreferredItemHeightLarge;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.AppCompatTheme_listPreferredItemHeightSmall = global::LagoVista.Droid.Simulator.Resource.Styleable.AppCompatTheme_listPreferredItemHeightSmall;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.AppCompatTheme_listPreferredItemPaddingLeft = global::LagoVista.Droid.Simulator.Resource.Styleable.AppCompatTheme_listPreferredItemPaddingLeft;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.AppCompatTheme_listPreferredItemPaddingRight = global::LagoVista.Droid.Simulator.Resource.Styleable.AppCompatTheme_listPreferredItemPaddingRight;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.AppCompatTheme_panelBackground = global::LagoVista.Droid.Simulator.Resource.Styleable.AppCompatTheme_panelBackground;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.AppCompatTheme_panelMenuListTheme = global::LagoVista.Droid.Simulator.Resource.Styleable.AppCompatTheme_panelMenuListTheme;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.AppCompatTheme_panelMenuListWidth = global::LagoVista.Droid.Simulator.Resource.Styleable.AppCompatTheme_panelMenuListWidth;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.AppCompatTheme_popupMenuStyle = global::LagoVista.Droid.Simulator.Resource.Styleable.AppCompatTheme_popupMenuStyle;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.AppCompatTheme_popupWindowStyle = global::LagoVista.Droid.Simulator.Resource.Styleable.AppCompatTheme_popupWindowStyle;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.AppCompatTheme_radioButtonStyle = global::LagoVista.Droid.Simulator.Resource.Styleable.AppCompatTheme_radioButtonStyle;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.AppCompatTheme_ratingBarStyle = global::LagoVista.Droid.Simulator.Resource.Styleable.AppCompatTheme_ratingBarStyle;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.AppCompatTheme_ratingBarStyleIndicator = global::LagoVista.Droid.Simulator.Resource.Styleable.AppCompatTheme_ratingBarStyleIndicator;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.AppCompatTheme_ratingBarStyleSmall = global::LagoVista.Droid.Simulator.Resource.Styleable.AppCompatTheme_ratingBarStyleSmall;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.AppCompatTheme_searchViewStyle = global::LagoVista.Droid.Simulator.Resource.Styleable.AppCompatTheme_searchViewStyle;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.AppCompatTheme_seekBarStyle = global::LagoVista.Droid.Simulator.Resource.Styleable.AppCompatTheme_seekBarStyle;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.AppCompatTheme_selectableItemBackground = global::LagoVista.Droid.Simulator.Resource.Styleable.AppCompatTheme_selectableItemBackground;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.AppCompatTheme_selectableItemBackgroundBorderless = global::LagoVista.Droid.Simulator.Resource.Styleable.AppCompatTheme_selectableItemBackgroundBorderless;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.AppCompatTheme_spinnerDropDownItemStyle = global::LagoVista.Droid.Simulator.Resource.Styleable.AppCompatTheme_spinnerDropDownItemStyle;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.AppCompatTheme_spinnerStyle = global::LagoVista.Droid.Simulator.Resource.Styleable.AppCompatTheme_spinnerStyle;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.AppCompatTheme_switchStyle = global::LagoVista.Droid.Simulator.Resource.Styleable.AppCompatTheme_switchStyle;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.AppCompatTheme_textAppearanceLargePopupMenu = global::LagoVista.Droid.Simulator.Resource.Styleable.AppCompatTheme_textAppearanceLargePopupMenu;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.AppCompatTheme_textAppearanceListItem = global::LagoVista.Droid.Simulator.Resource.Styleable.AppCompatTheme_textAppearanceListItem;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.AppCompatTheme_textAppearanceListItemSecondary = global::LagoVista.Droid.Simulator.Resource.Styleable.AppCompatTheme_textAppearanceListItemSecondary;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.AppCompatTheme_textAppearanceListItemSmall = global::LagoVista.Droid.Simulator.Resource.Styleable.AppCompatTheme_textAppearanceListItemSmall;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.AppCompatTheme_textAppearancePopupMenuHeader = global::LagoVista.Droid.Simulator.Resource.Styleable.AppCompatTheme_textAppearancePopupMenuHeader;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.AppCompatTheme_textAppearanceSearchResultSubtitle = global::LagoVista.Droid.Simulator.Resource.Styleable.AppCompatTheme_textAppearanceSearchResultSubtitle;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.AppCompatTheme_textAppearanceSearchResultTitle = global::LagoVista.Droid.Simulator.Resource.Styleable.AppCompatTheme_textAppearanceSearchResultTitle;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.AppCompatTheme_textAppearanceSmallPopupMenu = global::LagoVista.Droid.Simulator.Resource.Styleable.AppCompatTheme_textAppearanceSmallPopupMenu;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.AppCompatTheme_textColorAlertDialogListItem = global::LagoVista.Droid.Simulator.Resource.Styleable.AppCompatTheme_textColorAlertDialogListItem;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.AppCompatTheme_textColorSearchUrl = global::LagoVista.Droid.Simulator.Resource.Styleable.AppCompatTheme_textColorSearchUrl;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.AppCompatTheme_toolbarNavigationButtonStyle = global::LagoVista.Droid.Simulator.Resource.Styleable.AppCompatTheme_toolbarNavigationButtonStyle;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.AppCompatTheme_toolbarStyle = global::LagoVista.Droid.Simulator.Resource.Styleable.AppCompatTheme_toolbarStyle;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.AppCompatTheme_windowActionBar = global::LagoVista.Droid.Simulator.Resource.Styleable.AppCompatTheme_windowActionBar;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.AppCompatTheme_windowActionBarOverlay = global::LagoVista.Droid.Simulator.Resource.Styleable.AppCompatTheme_windowActionBarOverlay;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.AppCompatTheme_windowActionModeOverlay = global::LagoVista.Droid.Simulator.Resource.Styleable.AppCompatTheme_windowActionModeOverlay;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.AppCompatTheme_windowFixedHeightMajor = global::LagoVista.Droid.Simulator.Resource.Styleable.AppCompatTheme_windowFixedHeightMajor;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.AppCompatTheme_windowFixedHeightMinor = global::LagoVista.Droid.Simulator.Resource.Styleable.AppCompatTheme_windowFixedHeightMinor;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.AppCompatTheme_windowFixedWidthMajor = global::LagoVista.Droid.Simulator.Resource.Styleable.AppCompatTheme_windowFixedWidthMajor;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.AppCompatTheme_windowFixedWidthMinor = global::LagoVista.Droid.Simulator.Resource.Styleable.AppCompatTheme_windowFixedWidthMinor;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.AppCompatTheme_windowMinWidthMajor = global::LagoVista.Droid.Simulator.Resource.Styleable.AppCompatTheme_windowMinWidthMajor;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.AppCompatTheme_windowMinWidthMinor = global::LagoVista.Droid.Simulator.Resource.Styleable.AppCompatTheme_windowMinWidthMinor;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.AppCompatTheme_windowNoTitle = global::LagoVista.Droid.Simulator.Resource.Styleable.AppCompatTheme_windowNoTitle;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.BottomNavigationView = global::LagoVista.Droid.Simulator.Resource.Styleable.BottomNavigationView;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.BottomNavigationView_elevation = global::LagoVista.Droid.Simulator.Resource.Styleable.BottomNavigationView_elevation;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.BottomNavigationView_itemBackground = global::LagoVista.Droid.Simulator.Resource.Styleable.BottomNavigationView_itemBackground;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.BottomNavigationView_itemIconTint = global::LagoVista.Droid.Simulator.Resource.Styleable.BottomNavigationView_itemIconTint;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.BottomNavigationView_itemTextColor = global::LagoVista.Droid.Simulator.Resource.Styleable.BottomNavigationView_itemTextColor;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.BottomNavigationView_menu = global::LagoVista.Droid.Simulator.Resource.Styleable.BottomNavigationView_menu;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.BottomSheetBehavior_Layout = global::LagoVista.Droid.Simulator.Resource.Styleable.BottomSheetBehavior_Layout;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.BottomSheetBehavior_Layout_behavior_hideable = global::LagoVista.Droid.Simulator.Resource.Styleable.BottomSheetBehavior_Layout_behavior_hideable;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.BottomSheetBehavior_Layout_behavior_peekHeight = global::LagoVista.Droid.Simulator.Resource.Styleable.BottomSheetBehavior_Layout_behavior_peekHeight;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.BottomSheetBehavior_Layout_behavior_skipCollapsed = global::LagoVista.Droid.Simulator.Resource.Styleable.BottomSheetBehavior_Layout_behavior_skipCollapsed;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.ButtonBarLayout = global::LagoVista.Droid.Simulator.Resource.Styleable.ButtonBarLayout;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.ButtonBarLayout_allowStacking = global::LagoVista.Droid.Simulator.Resource.Styleable.ButtonBarLayout_allowStacking;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.CardView = global::LagoVista.Droid.Simulator.Resource.Styleable.CardView;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.CardView_android_minHeight = global::LagoVista.Droid.Simulator.Resource.Styleable.CardView_android_minHeight;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.CardView_android_minWidth = global::LagoVista.Droid.Simulator.Resource.Styleable.CardView_android_minWidth;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.CardView_cardBackgroundColor = global::LagoVista.Droid.Simulator.Resource.Styleable.CardView_cardBackgroundColor;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.CardView_cardCornerRadius = global::LagoVista.Droid.Simulator.Resource.Styleable.CardView_cardCornerRadius;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.CardView_cardElevation = global::LagoVista.Droid.Simulator.Resource.Styleable.CardView_cardElevation;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.CardView_cardMaxElevation = global::LagoVista.Droid.Simulator.Resource.Styleable.CardView_cardMaxElevation;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.CardView_cardPreventCornerOverlap = global::LagoVista.Droid.Simulator.Resource.Styleable.CardView_cardPreventCornerOverlap;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.CardView_cardUseCompatPadding = global::LagoVista.Droid.Simulator.Resource.Styleable.CardView_cardUseCompatPadding;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.CardView_contentPadding = global::LagoVista.Droid.Simulator.Resource.Styleable.CardView_contentPadding;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.CardView_contentPaddingBottom = global::LagoVista.Droid.Simulator.Resource.Styleable.CardView_contentPaddingBottom;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.CardView_contentPaddingLeft = global::LagoVista.Droid.Simulator.Resource.Styleable.CardView_contentPaddingLeft;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.CardView_contentPaddingRight = global::LagoVista.Droid.Simulator.Resource.Styleable.CardView_contentPaddingRight;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.CardView_contentPaddingTop = global::LagoVista.Droid.Simulator.Resource.Styleable.CardView_contentPaddingTop;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.CollapsingToolbarLayout = global::LagoVista.Droid.Simulator.Resource.Styleable.CollapsingToolbarLayout;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.CollapsingToolbarLayout_collapsedTitleGravity = global::LagoVista.Droid.Simulator.Resource.Styleable.CollapsingToolbarLayout_collapsedTitleGravity;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.CollapsingToolbarLayout_collapsedTitleTextAppearance = global::LagoVista.Droid.Simulator.Resource.Styleable.CollapsingToolbarLayout_collapsedTitleTextAppearance;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.CollapsingToolbarLayout_contentScrim = global::LagoVista.Droid.Simulator.Resource.Styleable.CollapsingToolbarLayout_contentScrim;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.CollapsingToolbarLayout_expandedTitleGravity = global::LagoVista.Droid.Simulator.Resource.Styleable.CollapsingToolbarLayout_expandedTitleGravity;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.CollapsingToolbarLayout_expandedTitleMargin = global::LagoVista.Droid.Simulator.Resource.Styleable.CollapsingToolbarLayout_expandedTitleMargin;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.CollapsingToolbarLayout_expandedTitleMarginBottom = global::LagoVista.Droid.Simulator.Resource.Styleable.CollapsingToolbarLayout_expandedTitleMarginBottom;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.CollapsingToolbarLayout_expandedTitleMarginEnd = global::LagoVista.Droid.Simulator.Resource.Styleable.CollapsingToolbarLayout_expandedTitleMarginEnd;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.CollapsingToolbarLayout_expandedTitleMarginStart = global::LagoVista.Droid.Simulator.Resource.Styleable.CollapsingToolbarLayout_expandedTitleMarginStart;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.CollapsingToolbarLayout_expandedTitleMarginTop = global::LagoVista.Droid.Simulator.Resource.Styleable.CollapsingToolbarLayout_expandedTitleMarginTop;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.CollapsingToolbarLayout_expandedTitleTextAppearance = global::LagoVista.Droid.Simulator.Resource.Styleable.CollapsingToolbarLayout_expandedTitleTextAppearance;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.CollapsingToolbarLayout_scrimAnimationDuration = global::LagoVista.Droid.Simulator.Resource.Styleable.CollapsingToolbarLayout_scrimAnimationDuration;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.CollapsingToolbarLayout_scrimVisibleHeightTrigger = global::LagoVista.Droid.Simulator.Resource.Styleable.CollapsingToolbarLayout_scrimVisibleHeightTrigger;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.CollapsingToolbarLayout_statusBarScrim = global::LagoVista.Droid.Simulator.Resource.Styleable.CollapsingToolbarLayout_statusBarScrim;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.CollapsingToolbarLayout_title = global::LagoVista.Droid.Simulator.Resource.Styleable.CollapsingToolbarLayout_title;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.CollapsingToolbarLayout_titleEnabled = global::LagoVista.Droid.Simulator.Resource.Styleable.CollapsingToolbarLayout_titleEnabled;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.CollapsingToolbarLayout_toolbarId = global::LagoVista.Droid.Simulator.Resource.Styleable.CollapsingToolbarLayout_toolbarId;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.CollapsingToolbarLayout_Layout = global::LagoVista.Droid.Simulator.Resource.Styleable.CollapsingToolbarLayout_Layout;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.CollapsingToolbarLayout_Layout_layout_collapseMode = global::LagoVista.Droid.Simulator.Resource.Styleable.CollapsingToolbarLayout_Layout_layout_collapseMode;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.CollapsingToolbarLayout_Layout_layout_collapseParallaxMultiplier = global::LagoVista.Droid.Simulator.Resource.Styleable.CollapsingToolbarLayout_Layout_layout_collapseParallaxMultiplier;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.ColorStateListItem = global::LagoVista.Droid.Simulator.Resource.Styleable.ColorStateListItem;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.ColorStateListItem_alpha = global::LagoVista.Droid.Simulator.Resource.Styleable.ColorStateListItem_alpha;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.ColorStateListItem_android_alpha = global::LagoVista.Droid.Simulator.Resource.Styleable.ColorStateListItem_android_alpha;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.ColorStateListItem_android_color = global::LagoVista.Droid.Simulator.Resource.Styleable.ColorStateListItem_android_color;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.CompoundButton = global::LagoVista.Droid.Simulator.Resource.Styleable.CompoundButton;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.CompoundButton_android_button = global::LagoVista.Droid.Simulator.Resource.Styleable.CompoundButton_android_button;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.CompoundButton_buttonTint = global::LagoVista.Droid.Simulator.Resource.Styleable.CompoundButton_buttonTint;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.CompoundButton_buttonTintMode = global::LagoVista.Droid.Simulator.Resource.Styleable.CompoundButton_buttonTintMode;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.CoordinatorLayout = global::LagoVista.Droid.Simulator.Resource.Styleable.CoordinatorLayout;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.CoordinatorLayout_keylines = global::LagoVista.Droid.Simulator.Resource.Styleable.CoordinatorLayout_keylines;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.CoordinatorLayout_statusBarBackground = global::LagoVista.Droid.Simulator.Resource.Styleable.CoordinatorLayout_statusBarBackground;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.CoordinatorLayout_Layout = global::LagoVista.Droid.Simulator.Resource.Styleable.CoordinatorLayout_Layout;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.CoordinatorLayout_Layout_android_layout_gravity = global::LagoVista.Droid.Simulator.Resource.Styleable.CoordinatorLayout_Layout_android_layout_gravity;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.CoordinatorLayout_Layout_layout_anchor = global::LagoVista.Droid.Simulator.Resource.Styleable.CoordinatorLayout_Layout_layout_anchor;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.CoordinatorLayout_Layout_layout_anchorGravity = global::LagoVista.Droid.Simulator.Resource.Styleable.CoordinatorLayout_Layout_layout_anchorGravity;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.CoordinatorLayout_Layout_layout_behavior = global::LagoVista.Droid.Simulator.Resource.Styleable.CoordinatorLayout_Layout_layout_behavior;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.CoordinatorLayout_Layout_layout_dodgeInsetEdges = global::LagoVista.Droid.Simulator.Resource.Styleable.CoordinatorLayout_Layout_layout_dodgeInsetEdges;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.CoordinatorLayout_Layout_layout_insetEdge = global::LagoVista.Droid.Simulator.Resource.Styleable.CoordinatorLayout_Layout_layout_insetEdge;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.CoordinatorLayout_Layout_layout_keyline = global::LagoVista.Droid.Simulator.Resource.Styleable.CoordinatorLayout_Layout_layout_keyline;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.DesignTheme = global::LagoVista.Droid.Simulator.Resource.Styleable.DesignTheme;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.DesignTheme_bottomSheetDialogTheme = global::LagoVista.Droid.Simulator.Resource.Styleable.DesignTheme_bottomSheetDialogTheme;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.DesignTheme_bottomSheetStyle = global::LagoVista.Droid.Simulator.Resource.Styleable.DesignTheme_bottomSheetStyle;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.DesignTheme_textColorError = global::LagoVista.Droid.Simulator.Resource.Styleable.DesignTheme_textColorError;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.DrawerArrowToggle = global::LagoVista.Droid.Simulator.Resource.Styleable.DrawerArrowToggle;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.DrawerArrowToggle_arrowHeadLength = global::LagoVista.Droid.Simulator.Resource.Styleable.DrawerArrowToggle_arrowHeadLength;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.DrawerArrowToggle_arrowShaftLength = global::LagoVista.Droid.Simulator.Resource.Styleable.DrawerArrowToggle_arrowShaftLength;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.DrawerArrowToggle_barLength = global::LagoVista.Droid.Simulator.Resource.Styleable.DrawerArrowToggle_barLength;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.DrawerArrowToggle_color = global::LagoVista.Droid.Simulator.Resource.Styleable.DrawerArrowToggle_color;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.DrawerArrowToggle_drawableSize = global::LagoVista.Droid.Simulator.Resource.Styleable.DrawerArrowToggle_drawableSize;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.DrawerArrowToggle_gapBetweenBars = global::LagoVista.Droid.Simulator.Resource.Styleable.DrawerArrowToggle_gapBetweenBars;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.DrawerArrowToggle_spinBars = global::LagoVista.Droid.Simulator.Resource.Styleable.DrawerArrowToggle_spinBars;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.DrawerArrowToggle_thickness = global::LagoVista.Droid.Simulator.Resource.Styleable.DrawerArrowToggle_thickness;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.FloatingActionButton = global::LagoVista.Droid.Simulator.Resource.Styleable.FloatingActionButton;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.FloatingActionButton_backgroundTint = global::LagoVista.Droid.Simulator.Resource.Styleable.FloatingActionButton_backgroundTint;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.FloatingActionButton_backgroundTintMode = global::LagoVista.Droid.Simulator.Resource.Styleable.FloatingActionButton_backgroundTintMode;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.FloatingActionButton_borderWidth = global::LagoVista.Droid.Simulator.Resource.Styleable.FloatingActionButton_borderWidth;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.FloatingActionButton_elevation = global::LagoVista.Droid.Simulator.Resource.Styleable.FloatingActionButton_elevation;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.FloatingActionButton_fabSize = global::LagoVista.Droid.Simulator.Resource.Styleable.FloatingActionButton_fabSize;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.FloatingActionButton_pressedTranslationZ = global::LagoVista.Droid.Simulator.Resource.Styleable.FloatingActionButton_pressedTranslationZ;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.FloatingActionButton_rippleColor = global::LagoVista.Droid.Simulator.Resource.Styleable.FloatingActionButton_rippleColor;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.FloatingActionButton_useCompatPadding = global::LagoVista.Droid.Simulator.Resource.Styleable.FloatingActionButton_useCompatPadding;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.FloatingActionButton_Behavior_Layout = global::LagoVista.Droid.Simulator.Resource.Styleable.FloatingActionButton_Behavior_Layout;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.FloatingActionButton_Behavior_Layout_behavior_autoHide = global::LagoVista.Droid.Simulator.Resource.Styleable.FloatingActionButton_Behavior_Layout_behavior_autoHide;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.ForegroundLinearLayout = global::LagoVista.Droid.Simulator.Resource.Styleable.ForegroundLinearLayout;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.ForegroundLinearLayout_android_foreground = global::LagoVista.Droid.Simulator.Resource.Styleable.ForegroundLinearLayout_android_foreground;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.ForegroundLinearLayout_android_foregroundGravity = global::LagoVista.Droid.Simulator.Resource.Styleable.ForegroundLinearLayout_android_foregroundGravity;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.ForegroundLinearLayout_foregroundInsidePadding = global::LagoVista.Droid.Simulator.Resource.Styleable.ForegroundLinearLayout_foregroundInsidePadding;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.LinearLayoutCompat = global::LagoVista.Droid.Simulator.Resource.Styleable.LinearLayoutCompat;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.LinearLayoutCompat_android_baselineAligned = global::LagoVista.Droid.Simulator.Resource.Styleable.LinearLayoutCompat_android_baselineAligned;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.LinearLayoutCompat_android_baselineAlignedChildIndex = global::LagoVista.Droid.Simulator.Resource.Styleable.LinearLayoutCompat_android_baselineAlignedChildIndex;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.LinearLayoutCompat_android_gravity = global::LagoVista.Droid.Simulator.Resource.Styleable.LinearLayoutCompat_android_gravity;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.LinearLayoutCompat_android_orientation = global::LagoVista.Droid.Simulator.Resource.Styleable.LinearLayoutCompat_android_orientation;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.LinearLayoutCompat_android_weightSum = global::LagoVista.Droid.Simulator.Resource.Styleable.LinearLayoutCompat_android_weightSum;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.LinearLayoutCompat_divider = global::LagoVista.Droid.Simulator.Resource.Styleable.LinearLayoutCompat_divider;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.LinearLayoutCompat_dividerPadding = global::LagoVista.Droid.Simulator.Resource.Styleable.LinearLayoutCompat_dividerPadding;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.LinearLayoutCompat_measureWithLargestChild = global::LagoVista.Droid.Simulator.Resource.Styleable.LinearLayoutCompat_measureWithLargestChild;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.LinearLayoutCompat_showDividers = global::LagoVista.Droid.Simulator.Resource.Styleable.LinearLayoutCompat_showDividers;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.LinearLayoutCompat_Layout = global::LagoVista.Droid.Simulator.Resource.Styleable.LinearLayoutCompat_Layout;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.LinearLayoutCompat_Layout_android_layout_gravity = global::LagoVista.Droid.Simulator.Resource.Styleable.LinearLayoutCompat_Layout_android_layout_gravity;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.LinearLayoutCompat_Layout_android_layout_height = global::LagoVista.Droid.Simulator.Resource.Styleable.LinearLayoutCompat_Layout_android_layout_height;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.LinearLayoutCompat_Layout_android_layout_weight = global::LagoVista.Droid.Simulator.Resource.Styleable.LinearLayoutCompat_Layout_android_layout_weight;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.LinearLayoutCompat_Layout_android_layout_width = global::LagoVista.Droid.Simulator.Resource.Styleable.LinearLayoutCompat_Layout_android_layout_width;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.ListPopupWindow = global::LagoVista.Droid.Simulator.Resource.Styleable.ListPopupWindow;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.ListPopupWindow_android_dropDownHorizontalOffset = global::LagoVista.Droid.Simulator.Resource.Styleable.ListPopupWindow_android_dropDownHorizontalOffset;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.ListPopupWindow_android_dropDownVerticalOffset = global::LagoVista.Droid.Simulator.Resource.Styleable.ListPopupWindow_android_dropDownVerticalOffset;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.MediaRouteButton = global::LagoVista.Droid.Simulator.Resource.Styleable.MediaRouteButton;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.MediaRouteButton_android_minHeight = global::LagoVista.Droid.Simulator.Resource.Styleable.MediaRouteButton_android_minHeight;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.MediaRouteButton_android_minWidth = global::LagoVista.Droid.Simulator.Resource.Styleable.MediaRouteButton_android_minWidth;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.MediaRouteButton_buttonTint = global::LagoVista.Droid.Simulator.Resource.Styleable.MediaRouteButton_buttonTint;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.MediaRouteButton_externalRouteEnabledDrawable = global::LagoVista.Droid.Simulator.Resource.Styleable.MediaRouteButton_externalRouteEnabledDrawable;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.MenuGroup = global::LagoVista.Droid.Simulator.Resource.Styleable.MenuGroup;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.MenuGroup_android_checkableBehavior = global::LagoVista.Droid.Simulator.Resource.Styleable.MenuGroup_android_checkableBehavior;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.MenuGroup_android_enabled = global::LagoVista.Droid.Simulator.Resource.Styleable.MenuGroup_android_enabled;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.MenuGroup_android_id = global::LagoVista.Droid.Simulator.Resource.Styleable.MenuGroup_android_id;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.MenuGroup_android_menuCategory = global::LagoVista.Droid.Simulator.Resource.Styleable.MenuGroup_android_menuCategory;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.MenuGroup_android_orderInCategory = global::LagoVista.Droid.Simulator.Resource.Styleable.MenuGroup_android_orderInCategory;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.MenuGroup_android_visible = global::LagoVista.Droid.Simulator.Resource.Styleable.MenuGroup_android_visible;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.MenuItem = global::LagoVista.Droid.Simulator.Resource.Styleable.MenuItem;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.MenuItem_actionLayout = global::LagoVista.Droid.Simulator.Resource.Styleable.MenuItem_actionLayout;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.MenuItem_actionProviderClass = global::LagoVista.Droid.Simulator.Resource.Styleable.MenuItem_actionProviderClass;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.MenuItem_actionViewClass = global::LagoVista.Droid.Simulator.Resource.Styleable.MenuItem_actionViewClass;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.MenuItem_android_alphabeticShortcut = global::LagoVista.Droid.Simulator.Resource.Styleable.MenuItem_android_alphabeticShortcut;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.MenuItem_android_checkable = global::LagoVista.Droid.Simulator.Resource.Styleable.MenuItem_android_checkable;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.MenuItem_android_checked = global::LagoVista.Droid.Simulator.Resource.Styleable.MenuItem_android_checked;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.MenuItem_android_enabled = global::LagoVista.Droid.Simulator.Resource.Styleable.MenuItem_android_enabled;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.MenuItem_android_icon = global::LagoVista.Droid.Simulator.Resource.Styleable.MenuItem_android_icon;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.MenuItem_android_id = global::LagoVista.Droid.Simulator.Resource.Styleable.MenuItem_android_id;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.MenuItem_android_menuCategory = global::LagoVista.Droid.Simulator.Resource.Styleable.MenuItem_android_menuCategory;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.MenuItem_android_numericShortcut = global::LagoVista.Droid.Simulator.Resource.Styleable.MenuItem_android_numericShortcut;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.MenuItem_android_onClick = global::LagoVista.Droid.Simulator.Resource.Styleable.MenuItem_android_onClick;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.MenuItem_android_orderInCategory = global::LagoVista.Droid.Simulator.Resource.Styleable.MenuItem_android_orderInCategory;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.MenuItem_android_title = global::LagoVista.Droid.Simulator.Resource.Styleable.MenuItem_android_title;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.MenuItem_android_titleCondensed = global::LagoVista.Droid.Simulator.Resource.Styleable.MenuItem_android_titleCondensed;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.MenuItem_android_visible = global::LagoVista.Droid.Simulator.Resource.Styleable.MenuItem_android_visible;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.MenuItem_showAsAction = global::LagoVista.Droid.Simulator.Resource.Styleable.MenuItem_showAsAction;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.MenuView = global::LagoVista.Droid.Simulator.Resource.Styleable.MenuView;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.MenuView_android_headerBackground = global::LagoVista.Droid.Simulator.Resource.Styleable.MenuView_android_headerBackground;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.MenuView_android_horizontalDivider = global::LagoVista.Droid.Simulator.Resource.Styleable.MenuView_android_horizontalDivider;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.MenuView_android_itemBackground = global::LagoVista.Droid.Simulator.Resource.Styleable.MenuView_android_itemBackground;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.MenuView_android_itemIconDisabledAlpha = global::LagoVista.Droid.Simulator.Resource.Styleable.MenuView_android_itemIconDisabledAlpha;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.MenuView_android_itemTextAppearance = global::LagoVista.Droid.Simulator.Resource.Styleable.MenuView_android_itemTextAppearance;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.MenuView_android_verticalDivider = global::LagoVista.Droid.Simulator.Resource.Styleable.MenuView_android_verticalDivider;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.MenuView_android_windowAnimationStyle = global::LagoVista.Droid.Simulator.Resource.Styleable.MenuView_android_windowAnimationStyle;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.MenuView_preserveIconSpacing = global::LagoVista.Droid.Simulator.Resource.Styleable.MenuView_preserveIconSpacing;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.MenuView_subMenuArrow = global::LagoVista.Droid.Simulator.Resource.Styleable.MenuView_subMenuArrow;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.NavigationView = global::LagoVista.Droid.Simulator.Resource.Styleable.NavigationView;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.NavigationView_android_background = global::LagoVista.Droid.Simulator.Resource.Styleable.NavigationView_android_background;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.NavigationView_android_fitsSystemWindows = global::LagoVista.Droid.Simulator.Resource.Styleable.NavigationView_android_fitsSystemWindows;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.NavigationView_android_maxWidth = global::LagoVista.Droid.Simulator.Resource.Styleable.NavigationView_android_maxWidth;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.NavigationView_elevation = global::LagoVista.Droid.Simulator.Resource.Styleable.NavigationView_elevation;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.NavigationView_headerLayout = global::LagoVista.Droid.Simulator.Resource.Styleable.NavigationView_headerLayout;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.NavigationView_itemBackground = global::LagoVista.Droid.Simulator.Resource.Styleable.NavigationView_itemBackground;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.NavigationView_itemIconTint = global::LagoVista.Droid.Simulator.Resource.Styleable.NavigationView_itemIconTint;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.NavigationView_itemTextAppearance = global::LagoVista.Droid.Simulator.Resource.Styleable.NavigationView_itemTextAppearance;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.NavigationView_itemTextColor = global::LagoVista.Droid.Simulator.Resource.Styleable.NavigationView_itemTextColor;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.NavigationView_menu = global::LagoVista.Droid.Simulator.Resource.Styleable.NavigationView_menu;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.PopupWindow = global::LagoVista.Droid.Simulator.Resource.Styleable.PopupWindow;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.PopupWindow_android_popupAnimationStyle = global::LagoVista.Droid.Simulator.Resource.Styleable.PopupWindow_android_popupAnimationStyle;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.PopupWindow_android_popupBackground = global::LagoVista.Droid.Simulator.Resource.Styleable.PopupWindow_android_popupBackground;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.PopupWindow_overlapAnchor = global::LagoVista.Droid.Simulator.Resource.Styleable.PopupWindow_overlapAnchor;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.PopupWindowBackgroundState = global::LagoVista.Droid.Simulator.Resource.Styleable.PopupWindowBackgroundState;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.PopupWindowBackgroundState_state_above_anchor = global::LagoVista.Droid.Simulator.Resource.Styleable.PopupWindowBackgroundState_state_above_anchor;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.RecycleListView = global::LagoVista.Droid.Simulator.Resource.Styleable.RecycleListView;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.RecycleListView_paddingBottomNoButtons = global::LagoVista.Droid.Simulator.Resource.Styleable.RecycleListView_paddingBottomNoButtons;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.RecycleListView_paddingTopNoTitle = global::LagoVista.Droid.Simulator.Resource.Styleable.RecycleListView_paddingTopNoTitle;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.RecyclerView = global::LagoVista.Droid.Simulator.Resource.Styleable.RecyclerView;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.RecyclerView_android_descendantFocusability = global::LagoVista.Droid.Simulator.Resource.Styleable.RecyclerView_android_descendantFocusability;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.RecyclerView_android_orientation = global::LagoVista.Droid.Simulator.Resource.Styleable.RecyclerView_android_orientation;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.RecyclerView_layoutManager = global::LagoVista.Droid.Simulator.Resource.Styleable.RecyclerView_layoutManager;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.RecyclerView_reverseLayout = global::LagoVista.Droid.Simulator.Resource.Styleable.RecyclerView_reverseLayout;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.RecyclerView_spanCount = global::LagoVista.Droid.Simulator.Resource.Styleable.RecyclerView_spanCount;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.RecyclerView_stackFromEnd = global::LagoVista.Droid.Simulator.Resource.Styleable.RecyclerView_stackFromEnd;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.ScrimInsetsFrameLayout = global::LagoVista.Droid.Simulator.Resource.Styleable.ScrimInsetsFrameLayout;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.ScrimInsetsFrameLayout_insetForeground = global::LagoVista.Droid.Simulator.Resource.Styleable.ScrimInsetsFrameLayout_insetForeground;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.ScrollingViewBehavior_Layout = global::LagoVista.Droid.Simulator.Resource.Styleable.ScrollingViewBehavior_Layout;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.ScrollingViewBehavior_Layout_behavior_overlapTop = global::LagoVista.Droid.Simulator.Resource.Styleable.ScrollingViewBehavior_Layout_behavior_overlapTop;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.SearchView = global::LagoVista.Droid.Simulator.Resource.Styleable.SearchView;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.SearchView_android_focusable = global::LagoVista.Droid.Simulator.Resource.Styleable.SearchView_android_focusable;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.SearchView_android_imeOptions = global::LagoVista.Droid.Simulator.Resource.Styleable.SearchView_android_imeOptions;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.SearchView_android_inputType = global::LagoVista.Droid.Simulator.Resource.Styleable.SearchView_android_inputType;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.SearchView_android_maxWidth = global::LagoVista.Droid.Simulator.Resource.Styleable.SearchView_android_maxWidth;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.SearchView_closeIcon = global::LagoVista.Droid.Simulator.Resource.Styleable.SearchView_closeIcon;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.SearchView_commitIcon = global::LagoVista.Droid.Simulator.Resource.Styleable.SearchView_commitIcon;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.SearchView_defaultQueryHint = global::LagoVista.Droid.Simulator.Resource.Styleable.SearchView_defaultQueryHint;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.SearchView_goIcon = global::LagoVista.Droid.Simulator.Resource.Styleable.SearchView_goIcon;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.SearchView_iconifiedByDefault = global::LagoVista.Droid.Simulator.Resource.Styleable.SearchView_iconifiedByDefault;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.SearchView_layout = global::LagoVista.Droid.Simulator.Resource.Styleable.SearchView_layout;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.SearchView_queryBackground = global::LagoVista.Droid.Simulator.Resource.Styleable.SearchView_queryBackground;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.SearchView_queryHint = global::LagoVista.Droid.Simulator.Resource.Styleable.SearchView_queryHint;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.SearchView_searchHintIcon = global::LagoVista.Droid.Simulator.Resource.Styleable.SearchView_searchHintIcon;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.SearchView_searchIcon = global::LagoVista.Droid.Simulator.Resource.Styleable.SearchView_searchIcon;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.SearchView_submitBackground = global::LagoVista.Droid.Simulator.Resource.Styleable.SearchView_submitBackground;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.SearchView_suggestionRowLayout = global::LagoVista.Droid.Simulator.Resource.Styleable.SearchView_suggestionRowLayout;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.SearchView_voiceIcon = global::LagoVista.Droid.Simulator.Resource.Styleable.SearchView_voiceIcon;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.SnackbarLayout = global::LagoVista.Droid.Simulator.Resource.Styleable.SnackbarLayout;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.SnackbarLayout_android_maxWidth = global::LagoVista.Droid.Simulator.Resource.Styleable.SnackbarLayout_android_maxWidth;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.SnackbarLayout_elevation = global::LagoVista.Droid.Simulator.Resource.Styleable.SnackbarLayout_elevation;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.SnackbarLayout_maxActionInlineWidth = global::LagoVista.Droid.Simulator.Resource.Styleable.SnackbarLayout_maxActionInlineWidth;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.Spinner = global::LagoVista.Droid.Simulator.Resource.Styleable.Spinner;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.Spinner_android_dropDownWidth = global::LagoVista.Droid.Simulator.Resource.Styleable.Spinner_android_dropDownWidth;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.Spinner_android_entries = global::LagoVista.Droid.Simulator.Resource.Styleable.Spinner_android_entries;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.Spinner_android_popupBackground = global::LagoVista.Droid.Simulator.Resource.Styleable.Spinner_android_popupBackground;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.Spinner_android_prompt = global::LagoVista.Droid.Simulator.Resource.Styleable.Spinner_android_prompt;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.Spinner_popupTheme = global::LagoVista.Droid.Simulator.Resource.Styleable.Spinner_popupTheme;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.SwitchCompat = global::LagoVista.Droid.Simulator.Resource.Styleable.SwitchCompat;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.SwitchCompat_android_textOff = global::LagoVista.Droid.Simulator.Resource.Styleable.SwitchCompat_android_textOff;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.SwitchCompat_android_textOn = global::LagoVista.Droid.Simulator.Resource.Styleable.SwitchCompat_android_textOn;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.SwitchCompat_android_thumb = global::LagoVista.Droid.Simulator.Resource.Styleable.SwitchCompat_android_thumb;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.SwitchCompat_showText = global::LagoVista.Droid.Simulator.Resource.Styleable.SwitchCompat_showText;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.SwitchCompat_splitTrack = global::LagoVista.Droid.Simulator.Resource.Styleable.SwitchCompat_splitTrack;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.SwitchCompat_switchMinWidth = global::LagoVista.Droid.Simulator.Resource.Styleable.SwitchCompat_switchMinWidth;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.SwitchCompat_switchPadding = global::LagoVista.Droid.Simulator.Resource.Styleable.SwitchCompat_switchPadding;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.SwitchCompat_switchTextAppearance = global::LagoVista.Droid.Simulator.Resource.Styleable.SwitchCompat_switchTextAppearance;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.SwitchCompat_thumbTextPadding = global::LagoVista.Droid.Simulator.Resource.Styleable.SwitchCompat_thumbTextPadding;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.SwitchCompat_thumbTint = global::LagoVista.Droid.Simulator.Resource.Styleable.SwitchCompat_thumbTint;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.SwitchCompat_thumbTintMode = global::LagoVista.Droid.Simulator.Resource.Styleable.SwitchCompat_thumbTintMode;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.SwitchCompat_track = global::LagoVista.Droid.Simulator.Resource.Styleable.SwitchCompat_track;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.SwitchCompat_trackTint = global::LagoVista.Droid.Simulator.Resource.Styleable.SwitchCompat_trackTint;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.SwitchCompat_trackTintMode = global::LagoVista.Droid.Simulator.Resource.Styleable.SwitchCompat_trackTintMode;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.TabItem = global::LagoVista.Droid.Simulator.Resource.Styleable.TabItem;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.TabItem_android_icon = global::LagoVista.Droid.Simulator.Resource.Styleable.TabItem_android_icon;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.TabItem_android_layout = global::LagoVista.Droid.Simulator.Resource.Styleable.TabItem_android_layout;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.TabItem_android_text = global::LagoVista.Droid.Simulator.Resource.Styleable.TabItem_android_text;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.TabLayout = global::LagoVista.Droid.Simulator.Resource.Styleable.TabLayout;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.TabLayout_tabBackground = global::LagoVista.Droid.Simulator.Resource.Styleable.TabLayout_tabBackground;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.TabLayout_tabContentStart = global::LagoVista.Droid.Simulator.Resource.Styleable.TabLayout_tabContentStart;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.TabLayout_tabGravity = global::LagoVista.Droid.Simulator.Resource.Styleable.TabLayout_tabGravity;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.TabLayout_tabIndicatorColor = global::LagoVista.Droid.Simulator.Resource.Styleable.TabLayout_tabIndicatorColor;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.TabLayout_tabIndicatorHeight = global::LagoVista.Droid.Simulator.Resource.Styleable.TabLayout_tabIndicatorHeight;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.TabLayout_tabMaxWidth = global::LagoVista.Droid.Simulator.Resource.Styleable.TabLayout_tabMaxWidth;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.TabLayout_tabMinWidth = global::LagoVista.Droid.Simulator.Resource.Styleable.TabLayout_tabMinWidth;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.TabLayout_tabMode = global::LagoVista.Droid.Simulator.Resource.Styleable.TabLayout_tabMode;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.TabLayout_tabPadding = global::LagoVista.Droid.Simulator.Resource.Styleable.TabLayout_tabPadding;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.TabLayout_tabPaddingBottom = global::LagoVista.Droid.Simulator.Resource.Styleable.TabLayout_tabPaddingBottom;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.TabLayout_tabPaddingEnd = global::LagoVista.Droid.Simulator.Resource.Styleable.TabLayout_tabPaddingEnd;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.TabLayout_tabPaddingStart = global::LagoVista.Droid.Simulator.Resource.Styleable.TabLayout_tabPaddingStart;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.TabLayout_tabPaddingTop = global::LagoVista.Droid.Simulator.Resource.Styleable.TabLayout_tabPaddingTop;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.TabLayout_tabSelectedTextColor = global::LagoVista.Droid.Simulator.Resource.Styleable.TabLayout_tabSelectedTextColor;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.TabLayout_tabTextAppearance = global::LagoVista.Droid.Simulator.Resource.Styleable.TabLayout_tabTextAppearance;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.TabLayout_tabTextColor = global::LagoVista.Droid.Simulator.Resource.Styleable.TabLayout_tabTextColor;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.TextAppearance = global::LagoVista.Droid.Simulator.Resource.Styleable.TextAppearance;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.TextAppearance_android_shadowColor = global::LagoVista.Droid.Simulator.Resource.Styleable.TextAppearance_android_shadowColor;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.TextAppearance_android_shadowDx = global::LagoVista.Droid.Simulator.Resource.Styleable.TextAppearance_android_shadowDx;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.TextAppearance_android_shadowDy = global::LagoVista.Droid.Simulator.Resource.Styleable.TextAppearance_android_shadowDy;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.TextAppearance_android_shadowRadius = global::LagoVista.Droid.Simulator.Resource.Styleable.TextAppearance_android_shadowRadius;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.TextAppearance_android_textColor = global::LagoVista.Droid.Simulator.Resource.Styleable.TextAppearance_android_textColor;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.TextAppearance_android_textColorHint = global::LagoVista.Droid.Simulator.Resource.Styleable.TextAppearance_android_textColorHint;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.TextAppearance_android_textSize = global::LagoVista.Droid.Simulator.Resource.Styleable.TextAppearance_android_textSize;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.TextAppearance_android_textStyle = global::LagoVista.Droid.Simulator.Resource.Styleable.TextAppearance_android_textStyle;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.TextAppearance_android_typeface = global::LagoVista.Droid.Simulator.Resource.Styleable.TextAppearance_android_typeface;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.TextAppearance_textAllCaps = global::LagoVista.Droid.Simulator.Resource.Styleable.TextAppearance_textAllCaps;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.TextInputLayout = global::LagoVista.Droid.Simulator.Resource.Styleable.TextInputLayout;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.TextInputLayout_android_hint = global::LagoVista.Droid.Simulator.Resource.Styleable.TextInputLayout_android_hint;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.TextInputLayout_android_textColorHint = global::LagoVista.Droid.Simulator.Resource.Styleable.TextInputLayout_android_textColorHint;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.TextInputLayout_counterEnabled = global::LagoVista.Droid.Simulator.Resource.Styleable.TextInputLayout_counterEnabled;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.TextInputLayout_counterMaxLength = global::LagoVista.Droid.Simulator.Resource.Styleable.TextInputLayout_counterMaxLength;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.TextInputLayout_counterOverflowTextAppearance = global::LagoVista.Droid.Simulator.Resource.Styleable.TextInputLayout_counterOverflowTextAppearance;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.TextInputLayout_counterTextAppearance = global::LagoVista.Droid.Simulator.Resource.Styleable.TextInputLayout_counterTextAppearance;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.TextInputLayout_errorEnabled = global::LagoVista.Droid.Simulator.Resource.Styleable.TextInputLayout_errorEnabled;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.TextInputLayout_errorTextAppearance = global::LagoVista.Droid.Simulator.Resource.Styleable.TextInputLayout_errorTextAppearance;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.TextInputLayout_hintAnimationEnabled = global::LagoVista.Droid.Simulator.Resource.Styleable.TextInputLayout_hintAnimationEnabled;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.TextInputLayout_hintEnabled = global::LagoVista.Droid.Simulator.Resource.Styleable.TextInputLayout_hintEnabled;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.TextInputLayout_hintTextAppearance = global::LagoVista.Droid.Simulator.Resource.Styleable.TextInputLayout_hintTextAppearance;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.TextInputLayout_passwordToggleContentDescription = global::LagoVista.Droid.Simulator.Resource.Styleable.TextInputLayout_passwordToggleContentDescription;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.TextInputLayout_passwordToggleDrawable = global::LagoVista.Droid.Simulator.Resource.Styleable.TextInputLayout_passwordToggleDrawable;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.TextInputLayout_passwordToggleEnabled = global::LagoVista.Droid.Simulator.Resource.Styleable.TextInputLayout_passwordToggleEnabled;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.TextInputLayout_passwordToggleTint = global::LagoVista.Droid.Simulator.Resource.Styleable.TextInputLayout_passwordToggleTint;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.TextInputLayout_passwordToggleTintMode = global::LagoVista.Droid.Simulator.Resource.Styleable.TextInputLayout_passwordToggleTintMode;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.Toolbar = global::LagoVista.Droid.Simulator.Resource.Styleable.Toolbar;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.Toolbar_android_gravity = global::LagoVista.Droid.Simulator.Resource.Styleable.Toolbar_android_gravity;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.Toolbar_android_minHeight = global::LagoVista.Droid.Simulator.Resource.Styleable.Toolbar_android_minHeight;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.Toolbar_buttonGravity = global::LagoVista.Droid.Simulator.Resource.Styleable.Toolbar_buttonGravity;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.Toolbar_collapseContentDescription = global::LagoVista.Droid.Simulator.Resource.Styleable.Toolbar_collapseContentDescription;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.Toolbar_collapseIcon = global::LagoVista.Droid.Simulator.Resource.Styleable.Toolbar_collapseIcon;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.Toolbar_contentInsetEnd = global::LagoVista.Droid.Simulator.Resource.Styleable.Toolbar_contentInsetEnd;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.Toolbar_contentInsetEndWithActions = global::LagoVista.Droid.Simulator.Resource.Styleable.Toolbar_contentInsetEndWithActions;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.Toolbar_contentInsetLeft = global::LagoVista.Droid.Simulator.Resource.Styleable.Toolbar_contentInsetLeft;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.Toolbar_contentInsetRight = global::LagoVista.Droid.Simulator.Resource.Styleable.Toolbar_contentInsetRight;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.Toolbar_contentInsetStart = global::LagoVista.Droid.Simulator.Resource.Styleable.Toolbar_contentInsetStart;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.Toolbar_contentInsetStartWithNavigation = global::LagoVista.Droid.Simulator.Resource.Styleable.Toolbar_contentInsetStartWithNavigation;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.Toolbar_logo = global::LagoVista.Droid.Simulator.Resource.Styleable.Toolbar_logo;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.Toolbar_logoDescription = global::LagoVista.Droid.Simulator.Resource.Styleable.Toolbar_logoDescription;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.Toolbar_maxButtonHeight = global::LagoVista.Droid.Simulator.Resource.Styleable.Toolbar_maxButtonHeight;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.Toolbar_navigationContentDescription = global::LagoVista.Droid.Simulator.Resource.Styleable.Toolbar_navigationContentDescription;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.Toolbar_navigationIcon = global::LagoVista.Droid.Simulator.Resource.Styleable.Toolbar_navigationIcon;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.Toolbar_popupTheme = global::LagoVista.Droid.Simulator.Resource.Styleable.Toolbar_popupTheme;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.Toolbar_subtitle = global::LagoVista.Droid.Simulator.Resource.Styleable.Toolbar_subtitle;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.Toolbar_subtitleTextAppearance = global::LagoVista.Droid.Simulator.Resource.Styleable.Toolbar_subtitleTextAppearance;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.Toolbar_subtitleTextColor = global::LagoVista.Droid.Simulator.Resource.Styleable.Toolbar_subtitleTextColor;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.Toolbar_title = global::LagoVista.Droid.Simulator.Resource.Styleable.Toolbar_title;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.Toolbar_titleMargin = global::LagoVista.Droid.Simulator.Resource.Styleable.Toolbar_titleMargin;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.Toolbar_titleMarginBottom = global::LagoVista.Droid.Simulator.Resource.Styleable.Toolbar_titleMarginBottom;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.Toolbar_titleMarginEnd = global::LagoVista.Droid.Simulator.Resource.Styleable.Toolbar_titleMarginEnd;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.Toolbar_titleMarginStart = global::LagoVista.Droid.Simulator.Resource.Styleable.Toolbar_titleMarginStart;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.Toolbar_titleMarginTop = global::LagoVista.Droid.Simulator.Resource.Styleable.Toolbar_titleMarginTop;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.Toolbar_titleMargins = global::LagoVista.Droid.Simulator.Resource.Styleable.Toolbar_titleMargins;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.Toolbar_titleTextAppearance = global::LagoVista.Droid.Simulator.Resource.Styleable.Toolbar_titleTextAppearance;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.Toolbar_titleTextColor = global::LagoVista.Droid.Simulator.Resource.Styleable.Toolbar_titleTextColor;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.View = global::LagoVista.Droid.Simulator.Resource.Styleable.View;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.View_android_focusable = global::LagoVista.Droid.Simulator.Resource.Styleable.View_android_focusable;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.View_android_theme = global::LagoVista.Droid.Simulator.Resource.Styleable.View_android_theme;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.View_paddingEnd = global::LagoVista.Droid.Simulator.Resource.Styleable.View_paddingEnd;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.View_paddingStart = global::LagoVista.Droid.Simulator.Resource.Styleable.View_paddingStart;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.View_theme = global::LagoVista.Droid.Simulator.Resource.Styleable.View_theme;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.ViewBackgroundHelper = global::LagoVista.Droid.Simulator.Resource.Styleable.ViewBackgroundHelper;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.ViewBackgroundHelper_android_background = global::LagoVista.Droid.Simulator.Resource.Styleable.ViewBackgroundHelper_android_background;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.ViewBackgroundHelper_backgroundTint = global::LagoVista.Droid.Simulator.Resource.Styleable.ViewBackgroundHelper_backgroundTint;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.ViewBackgroundHelper_backgroundTintMode = global::LagoVista.Droid.Simulator.Resource.Styleable.ViewBackgroundHelper_backgroundTintMode;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.ViewStubCompat = global::LagoVista.Droid.Simulator.Resource.Styleable.ViewStubCompat;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.ViewStubCompat_android_id = global::LagoVista.Droid.Simulator.Resource.Styleable.ViewStubCompat_android_id;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.ViewStubCompat_android_inflatedId = global::LagoVista.Droid.Simulator.Resource.Styleable.ViewStubCompat_android_inflatedId;
+			global::LagoVista.XPlat.Droid.Resource.Styleable.ViewStubCompat_android_layout = global::LagoVista.Droid.Simulator.Resource.Styleable.ViewStubCompat_android_layout;
 			global::Microsoft.Azure.Amqp.Amqp.Resource.String.ApplicationName = global::LagoVista.Droid.Simulator.Resource.String.ApplicationName;
 			global::Microsoft.Azure.Mobile.Distribute.Resource.String.mobile_center_distribute_dialog_actioned_on_disabled_toast = global::LagoVista.Droid.Simulator.Resource.String.mobile_center_distribute_dialog_actioned_on_disabled_toast;
 			global::Microsoft.Azure.Mobile.Distribute.Resource.String.mobile_center_distribute_download_progress_number_format = global::LagoVista.Droid.Simulator.Resource.String.mobile_center_distribute_download_progress_number_format;
@@ -45,8 +2185,6 @@ namespace LagoVista.Droid.Simulator
 			global::Microsoft.Azure.Mobile.Distribute.Resource.String.mobile_center_distribute_update_failed_dialog_ignore = global::LagoVista.Droid.Simulator.Resource.String.mobile_center_distribute_update_failed_dialog_ignore;
 			global::Microsoft.Azure.Mobile.Distribute.Resource.String.mobile_center_distribute_update_failed_dialog_reinstall = global::LagoVista.Droid.Simulator.Resource.String.mobile_center_distribute_update_failed_dialog_reinstall;
 			global::Microsoft.Azure.Mobile.Distribute.Resource.String.mobile_center_distribute_update_failed_dialog_title = global::LagoVista.Droid.Simulator.Resource.String.mobile_center_distribute_update_failed_dialog_title;
-			global::Microsoft.Azure.Mobile.Push.Android.Resource.Integer.google_play_services_version = global::LagoVista.Droid.Simulator.Resource.Integer.google_play_services_version;
-			global::Microsoft.Azure.Mobile.Push.Android.Resource.String.common_google_play_services_unknown_issue = global::LagoVista.Droid.Simulator.Resource.String.common_google_play_services_unknown_issue;
 			global::Microsoft.Azure.Mobile.Push.Android.Resource.String.library_name = global::LagoVista.Droid.Simulator.Resource.String.library_name;
 			global::PCLCrypto.Resource.String.ApplicationName = global::LagoVista.Droid.Simulator.Resource.String.ApplicationName;
 			global::PCLCrypto.Resource.String.Hello = global::LagoVista.Droid.Simulator.Resource.String.Hello;
@@ -1507,449 +3645,449 @@ namespace LagoVista.Droid.Simulator
 		public partial class Dimension
 		{
 			
-			// aapt resource value: 0x7f0a0018
-			public const int abc_action_bar_content_inset_material = 2131361816;
+			// aapt resource value: 0x7f080018
+			public const int abc_action_bar_content_inset_material = 2131230744;
 			
-			// aapt resource value: 0x7f0a0019
-			public const int abc_action_bar_content_inset_with_nav = 2131361817;
+			// aapt resource value: 0x7f080019
+			public const int abc_action_bar_content_inset_with_nav = 2131230745;
 			
-			// aapt resource value: 0x7f0a000d
-			public const int abc_action_bar_default_height_material = 2131361805;
+			// aapt resource value: 0x7f08000d
+			public const int abc_action_bar_default_height_material = 2131230733;
 			
-			// aapt resource value: 0x7f0a001a
-			public const int abc_action_bar_default_padding_end_material = 2131361818;
+			// aapt resource value: 0x7f08001a
+			public const int abc_action_bar_default_padding_end_material = 2131230746;
 			
-			// aapt resource value: 0x7f0a001b
-			public const int abc_action_bar_default_padding_start_material = 2131361819;
+			// aapt resource value: 0x7f08001b
+			public const int abc_action_bar_default_padding_start_material = 2131230747;
 			
-			// aapt resource value: 0x7f0a0021
-			public const int abc_action_bar_elevation_material = 2131361825;
+			// aapt resource value: 0x7f080021
+			public const int abc_action_bar_elevation_material = 2131230753;
 			
-			// aapt resource value: 0x7f0a0022
-			public const int abc_action_bar_icon_vertical_padding_material = 2131361826;
+			// aapt resource value: 0x7f080022
+			public const int abc_action_bar_icon_vertical_padding_material = 2131230754;
 			
-			// aapt resource value: 0x7f0a0023
-			public const int abc_action_bar_overflow_padding_end_material = 2131361827;
+			// aapt resource value: 0x7f080023
+			public const int abc_action_bar_overflow_padding_end_material = 2131230755;
 			
-			// aapt resource value: 0x7f0a0024
-			public const int abc_action_bar_overflow_padding_start_material = 2131361828;
+			// aapt resource value: 0x7f080024
+			public const int abc_action_bar_overflow_padding_start_material = 2131230756;
 			
-			// aapt resource value: 0x7f0a000e
-			public const int abc_action_bar_progress_bar_size = 2131361806;
+			// aapt resource value: 0x7f08000e
+			public const int abc_action_bar_progress_bar_size = 2131230734;
 			
-			// aapt resource value: 0x7f0a0025
-			public const int abc_action_bar_stacked_max_height = 2131361829;
+			// aapt resource value: 0x7f080025
+			public const int abc_action_bar_stacked_max_height = 2131230757;
 			
-			// aapt resource value: 0x7f0a0026
-			public const int abc_action_bar_stacked_tab_max_width = 2131361830;
+			// aapt resource value: 0x7f080026
+			public const int abc_action_bar_stacked_tab_max_width = 2131230758;
 			
-			// aapt resource value: 0x7f0a0027
-			public const int abc_action_bar_subtitle_bottom_margin_material = 2131361831;
+			// aapt resource value: 0x7f080027
+			public const int abc_action_bar_subtitle_bottom_margin_material = 2131230759;
 			
-			// aapt resource value: 0x7f0a0028
-			public const int abc_action_bar_subtitle_top_margin_material = 2131361832;
+			// aapt resource value: 0x7f080028
+			public const int abc_action_bar_subtitle_top_margin_material = 2131230760;
 			
-			// aapt resource value: 0x7f0a0029
-			public const int abc_action_button_min_height_material = 2131361833;
+			// aapt resource value: 0x7f080029
+			public const int abc_action_button_min_height_material = 2131230761;
 			
-			// aapt resource value: 0x7f0a002a
-			public const int abc_action_button_min_width_material = 2131361834;
+			// aapt resource value: 0x7f08002a
+			public const int abc_action_button_min_width_material = 2131230762;
 			
-			// aapt resource value: 0x7f0a002b
-			public const int abc_action_button_min_width_overflow_material = 2131361835;
+			// aapt resource value: 0x7f08002b
+			public const int abc_action_button_min_width_overflow_material = 2131230763;
 			
-			// aapt resource value: 0x7f0a000c
-			public const int abc_alert_dialog_button_bar_height = 2131361804;
+			// aapt resource value: 0x7f08000c
+			public const int abc_alert_dialog_button_bar_height = 2131230732;
 			
-			// aapt resource value: 0x7f0a002c
-			public const int abc_button_inset_horizontal_material = 2131361836;
+			// aapt resource value: 0x7f08002c
+			public const int abc_button_inset_horizontal_material = 2131230764;
 			
-			// aapt resource value: 0x7f0a002d
-			public const int abc_button_inset_vertical_material = 2131361837;
+			// aapt resource value: 0x7f08002d
+			public const int abc_button_inset_vertical_material = 2131230765;
 			
-			// aapt resource value: 0x7f0a002e
-			public const int abc_button_padding_horizontal_material = 2131361838;
+			// aapt resource value: 0x7f08002e
+			public const int abc_button_padding_horizontal_material = 2131230766;
 			
-			// aapt resource value: 0x7f0a002f
-			public const int abc_button_padding_vertical_material = 2131361839;
+			// aapt resource value: 0x7f08002f
+			public const int abc_button_padding_vertical_material = 2131230767;
 			
-			// aapt resource value: 0x7f0a0030
-			public const int abc_cascading_menus_min_smallest_width = 2131361840;
+			// aapt resource value: 0x7f080030
+			public const int abc_cascading_menus_min_smallest_width = 2131230768;
 			
-			// aapt resource value: 0x7f0a0011
-			public const int abc_config_prefDialogWidth = 2131361809;
+			// aapt resource value: 0x7f080011
+			public const int abc_config_prefDialogWidth = 2131230737;
 			
-			// aapt resource value: 0x7f0a0031
-			public const int abc_control_corner_material = 2131361841;
+			// aapt resource value: 0x7f080031
+			public const int abc_control_corner_material = 2131230769;
 			
-			// aapt resource value: 0x7f0a0032
-			public const int abc_control_inset_material = 2131361842;
+			// aapt resource value: 0x7f080032
+			public const int abc_control_inset_material = 2131230770;
 			
-			// aapt resource value: 0x7f0a0033
-			public const int abc_control_padding_material = 2131361843;
+			// aapt resource value: 0x7f080033
+			public const int abc_control_padding_material = 2131230771;
 			
-			// aapt resource value: 0x7f0a0012
-			public const int abc_dialog_fixed_height_major = 2131361810;
+			// aapt resource value: 0x7f080012
+			public const int abc_dialog_fixed_height_major = 2131230738;
 			
-			// aapt resource value: 0x7f0a0013
-			public const int abc_dialog_fixed_height_minor = 2131361811;
+			// aapt resource value: 0x7f080013
+			public const int abc_dialog_fixed_height_minor = 2131230739;
 			
-			// aapt resource value: 0x7f0a0014
-			public const int abc_dialog_fixed_width_major = 2131361812;
+			// aapt resource value: 0x7f080014
+			public const int abc_dialog_fixed_width_major = 2131230740;
 			
-			// aapt resource value: 0x7f0a0015
-			public const int abc_dialog_fixed_width_minor = 2131361813;
+			// aapt resource value: 0x7f080015
+			public const int abc_dialog_fixed_width_minor = 2131230741;
 			
-			// aapt resource value: 0x7f0a0034
-			public const int abc_dialog_list_padding_bottom_no_buttons = 2131361844;
+			// aapt resource value: 0x7f080034
+			public const int abc_dialog_list_padding_bottom_no_buttons = 2131230772;
 			
-			// aapt resource value: 0x7f0a0035
-			public const int abc_dialog_list_padding_top_no_title = 2131361845;
+			// aapt resource value: 0x7f080035
+			public const int abc_dialog_list_padding_top_no_title = 2131230773;
 			
-			// aapt resource value: 0x7f0a0016
-			public const int abc_dialog_min_width_major = 2131361814;
+			// aapt resource value: 0x7f080016
+			public const int abc_dialog_min_width_major = 2131230742;
 			
-			// aapt resource value: 0x7f0a0017
-			public const int abc_dialog_min_width_minor = 2131361815;
+			// aapt resource value: 0x7f080017
+			public const int abc_dialog_min_width_minor = 2131230743;
 			
-			// aapt resource value: 0x7f0a0036
-			public const int abc_dialog_padding_material = 2131361846;
+			// aapt resource value: 0x7f080036
+			public const int abc_dialog_padding_material = 2131230774;
 			
-			// aapt resource value: 0x7f0a0037
-			public const int abc_dialog_padding_top_material = 2131361847;
+			// aapt resource value: 0x7f080037
+			public const int abc_dialog_padding_top_material = 2131230775;
 			
-			// aapt resource value: 0x7f0a0038
-			public const int abc_dialog_title_divider_material = 2131361848;
+			// aapt resource value: 0x7f080038
+			public const int abc_dialog_title_divider_material = 2131230776;
 			
-			// aapt resource value: 0x7f0a0039
-			public const int abc_disabled_alpha_material_dark = 2131361849;
+			// aapt resource value: 0x7f080039
+			public const int abc_disabled_alpha_material_dark = 2131230777;
 			
-			// aapt resource value: 0x7f0a003a
-			public const int abc_disabled_alpha_material_light = 2131361850;
+			// aapt resource value: 0x7f08003a
+			public const int abc_disabled_alpha_material_light = 2131230778;
 			
-			// aapt resource value: 0x7f0a003b
-			public const int abc_dropdownitem_icon_width = 2131361851;
+			// aapt resource value: 0x7f08003b
+			public const int abc_dropdownitem_icon_width = 2131230779;
 			
-			// aapt resource value: 0x7f0a003c
-			public const int abc_dropdownitem_text_padding_left = 2131361852;
+			// aapt resource value: 0x7f08003c
+			public const int abc_dropdownitem_text_padding_left = 2131230780;
 			
-			// aapt resource value: 0x7f0a003d
-			public const int abc_dropdownitem_text_padding_right = 2131361853;
+			// aapt resource value: 0x7f08003d
+			public const int abc_dropdownitem_text_padding_right = 2131230781;
 			
-			// aapt resource value: 0x7f0a003e
-			public const int abc_edit_text_inset_bottom_material = 2131361854;
+			// aapt resource value: 0x7f08003e
+			public const int abc_edit_text_inset_bottom_material = 2131230782;
 			
-			// aapt resource value: 0x7f0a003f
-			public const int abc_edit_text_inset_horizontal_material = 2131361855;
+			// aapt resource value: 0x7f08003f
+			public const int abc_edit_text_inset_horizontal_material = 2131230783;
 			
-			// aapt resource value: 0x7f0a0040
-			public const int abc_edit_text_inset_top_material = 2131361856;
+			// aapt resource value: 0x7f080040
+			public const int abc_edit_text_inset_top_material = 2131230784;
 			
-			// aapt resource value: 0x7f0a0041
-			public const int abc_floating_window_z = 2131361857;
+			// aapt resource value: 0x7f080041
+			public const int abc_floating_window_z = 2131230785;
 			
-			// aapt resource value: 0x7f0a0042
-			public const int abc_list_item_padding_horizontal_material = 2131361858;
+			// aapt resource value: 0x7f080042
+			public const int abc_list_item_padding_horizontal_material = 2131230786;
 			
-			// aapt resource value: 0x7f0a0043
-			public const int abc_panel_menu_list_width = 2131361859;
+			// aapt resource value: 0x7f080043
+			public const int abc_panel_menu_list_width = 2131230787;
 			
-			// aapt resource value: 0x7f0a0044
-			public const int abc_progress_bar_height_material = 2131361860;
+			// aapt resource value: 0x7f080044
+			public const int abc_progress_bar_height_material = 2131230788;
 			
-			// aapt resource value: 0x7f0a0045
-			public const int abc_search_view_preferred_height = 2131361861;
+			// aapt resource value: 0x7f080045
+			public const int abc_search_view_preferred_height = 2131230789;
 			
-			// aapt resource value: 0x7f0a0046
-			public const int abc_search_view_preferred_width = 2131361862;
+			// aapt resource value: 0x7f080046
+			public const int abc_search_view_preferred_width = 2131230790;
 			
-			// aapt resource value: 0x7f0a0047
-			public const int abc_seekbar_track_background_height_material = 2131361863;
+			// aapt resource value: 0x7f080047
+			public const int abc_seekbar_track_background_height_material = 2131230791;
 			
-			// aapt resource value: 0x7f0a0048
-			public const int abc_seekbar_track_progress_height_material = 2131361864;
+			// aapt resource value: 0x7f080048
+			public const int abc_seekbar_track_progress_height_material = 2131230792;
 			
-			// aapt resource value: 0x7f0a0049
-			public const int abc_select_dialog_padding_start_material = 2131361865;
+			// aapt resource value: 0x7f080049
+			public const int abc_select_dialog_padding_start_material = 2131230793;
 			
-			// aapt resource value: 0x7f0a001d
-			public const int abc_switch_padding = 2131361821;
+			// aapt resource value: 0x7f08001d
+			public const int abc_switch_padding = 2131230749;
 			
-			// aapt resource value: 0x7f0a004a
-			public const int abc_text_size_body_1_material = 2131361866;
+			// aapt resource value: 0x7f08004a
+			public const int abc_text_size_body_1_material = 2131230794;
 			
-			// aapt resource value: 0x7f0a004b
-			public const int abc_text_size_body_2_material = 2131361867;
+			// aapt resource value: 0x7f08004b
+			public const int abc_text_size_body_2_material = 2131230795;
 			
-			// aapt resource value: 0x7f0a004c
-			public const int abc_text_size_button_material = 2131361868;
+			// aapt resource value: 0x7f08004c
+			public const int abc_text_size_button_material = 2131230796;
 			
-			// aapt resource value: 0x7f0a004d
-			public const int abc_text_size_caption_material = 2131361869;
+			// aapt resource value: 0x7f08004d
+			public const int abc_text_size_caption_material = 2131230797;
 			
-			// aapt resource value: 0x7f0a004e
-			public const int abc_text_size_display_1_material = 2131361870;
+			// aapt resource value: 0x7f08004e
+			public const int abc_text_size_display_1_material = 2131230798;
 			
-			// aapt resource value: 0x7f0a004f
-			public const int abc_text_size_display_2_material = 2131361871;
+			// aapt resource value: 0x7f08004f
+			public const int abc_text_size_display_2_material = 2131230799;
 			
-			// aapt resource value: 0x7f0a0050
-			public const int abc_text_size_display_3_material = 2131361872;
+			// aapt resource value: 0x7f080050
+			public const int abc_text_size_display_3_material = 2131230800;
 			
-			// aapt resource value: 0x7f0a0051
-			public const int abc_text_size_display_4_material = 2131361873;
+			// aapt resource value: 0x7f080051
+			public const int abc_text_size_display_4_material = 2131230801;
 			
-			// aapt resource value: 0x7f0a0052
-			public const int abc_text_size_headline_material = 2131361874;
+			// aapt resource value: 0x7f080052
+			public const int abc_text_size_headline_material = 2131230802;
 			
-			// aapt resource value: 0x7f0a0053
-			public const int abc_text_size_large_material = 2131361875;
+			// aapt resource value: 0x7f080053
+			public const int abc_text_size_large_material = 2131230803;
 			
-			// aapt resource value: 0x7f0a0054
-			public const int abc_text_size_medium_material = 2131361876;
+			// aapt resource value: 0x7f080054
+			public const int abc_text_size_medium_material = 2131230804;
 			
-			// aapt resource value: 0x7f0a0055
-			public const int abc_text_size_menu_header_material = 2131361877;
+			// aapt resource value: 0x7f080055
+			public const int abc_text_size_menu_header_material = 2131230805;
 			
-			// aapt resource value: 0x7f0a0056
-			public const int abc_text_size_menu_material = 2131361878;
+			// aapt resource value: 0x7f080056
+			public const int abc_text_size_menu_material = 2131230806;
 			
-			// aapt resource value: 0x7f0a0057
-			public const int abc_text_size_small_material = 2131361879;
+			// aapt resource value: 0x7f080057
+			public const int abc_text_size_small_material = 2131230807;
 			
-			// aapt resource value: 0x7f0a0058
-			public const int abc_text_size_subhead_material = 2131361880;
+			// aapt resource value: 0x7f080058
+			public const int abc_text_size_subhead_material = 2131230808;
 			
-			// aapt resource value: 0x7f0a000f
-			public const int abc_text_size_subtitle_material_toolbar = 2131361807;
+			// aapt resource value: 0x7f08000f
+			public const int abc_text_size_subtitle_material_toolbar = 2131230735;
 			
-			// aapt resource value: 0x7f0a0059
-			public const int abc_text_size_title_material = 2131361881;
+			// aapt resource value: 0x7f080059
+			public const int abc_text_size_title_material = 2131230809;
 			
-			// aapt resource value: 0x7f0a0010
-			public const int abc_text_size_title_material_toolbar = 2131361808;
+			// aapt resource value: 0x7f080010
+			public const int abc_text_size_title_material_toolbar = 2131230736;
 			
-			// aapt resource value: 0x7f0a0009
-			public const int cardview_compat_inset_shadow = 2131361801;
+			// aapt resource value: 0x7f080009
+			public const int cardview_compat_inset_shadow = 2131230729;
 			
-			// aapt resource value: 0x7f0a000a
-			public const int cardview_default_elevation = 2131361802;
+			// aapt resource value: 0x7f08000a
+			public const int cardview_default_elevation = 2131230730;
 			
-			// aapt resource value: 0x7f0a000b
-			public const int cardview_default_radius = 2131361803;
+			// aapt resource value: 0x7f08000b
+			public const int cardview_default_radius = 2131230731;
 			
-			// aapt resource value: 0x7f0a0076
-			public const int design_appbar_elevation = 2131361910;
+			// aapt resource value: 0x7f080076
+			public const int design_appbar_elevation = 2131230838;
 			
-			// aapt resource value: 0x7f0a0077
-			public const int design_bottom_navigation_active_item_max_width = 2131361911;
+			// aapt resource value: 0x7f080077
+			public const int design_bottom_navigation_active_item_max_width = 2131230839;
 			
-			// aapt resource value: 0x7f0a0078
-			public const int design_bottom_navigation_active_text_size = 2131361912;
+			// aapt resource value: 0x7f080078
+			public const int design_bottom_navigation_active_text_size = 2131230840;
 			
-			// aapt resource value: 0x7f0a0079
-			public const int design_bottom_navigation_elevation = 2131361913;
+			// aapt resource value: 0x7f080079
+			public const int design_bottom_navigation_elevation = 2131230841;
 			
-			// aapt resource value: 0x7f0a007a
-			public const int design_bottom_navigation_height = 2131361914;
+			// aapt resource value: 0x7f08007a
+			public const int design_bottom_navigation_height = 2131230842;
 			
-			// aapt resource value: 0x7f0a007b
-			public const int design_bottom_navigation_item_max_width = 2131361915;
+			// aapt resource value: 0x7f08007b
+			public const int design_bottom_navigation_item_max_width = 2131230843;
 			
-			// aapt resource value: 0x7f0a007c
-			public const int design_bottom_navigation_item_min_width = 2131361916;
+			// aapt resource value: 0x7f08007c
+			public const int design_bottom_navigation_item_min_width = 2131230844;
 			
-			// aapt resource value: 0x7f0a007d
-			public const int design_bottom_navigation_margin = 2131361917;
+			// aapt resource value: 0x7f08007d
+			public const int design_bottom_navigation_margin = 2131230845;
 			
-			// aapt resource value: 0x7f0a007e
-			public const int design_bottom_navigation_shadow_height = 2131361918;
+			// aapt resource value: 0x7f08007e
+			public const int design_bottom_navigation_shadow_height = 2131230846;
 			
-			// aapt resource value: 0x7f0a007f
-			public const int design_bottom_navigation_text_size = 2131361919;
+			// aapt resource value: 0x7f08007f
+			public const int design_bottom_navigation_text_size = 2131230847;
 			
-			// aapt resource value: 0x7f0a0080
-			public const int design_bottom_sheet_modal_elevation = 2131361920;
+			// aapt resource value: 0x7f080080
+			public const int design_bottom_sheet_modal_elevation = 2131230848;
 			
-			// aapt resource value: 0x7f0a0081
-			public const int design_bottom_sheet_peek_height_min = 2131361921;
+			// aapt resource value: 0x7f080081
+			public const int design_bottom_sheet_peek_height_min = 2131230849;
 			
-			// aapt resource value: 0x7f0a0082
-			public const int design_fab_border_width = 2131361922;
+			// aapt resource value: 0x7f080082
+			public const int design_fab_border_width = 2131230850;
 			
-			// aapt resource value: 0x7f0a0083
-			public const int design_fab_elevation = 2131361923;
+			// aapt resource value: 0x7f080083
+			public const int design_fab_elevation = 2131230851;
 			
-			// aapt resource value: 0x7f0a0084
-			public const int design_fab_image_size = 2131361924;
+			// aapt resource value: 0x7f080084
+			public const int design_fab_image_size = 2131230852;
 			
-			// aapt resource value: 0x7f0a0085
-			public const int design_fab_size_mini = 2131361925;
+			// aapt resource value: 0x7f080085
+			public const int design_fab_size_mini = 2131230853;
 			
-			// aapt resource value: 0x7f0a0086
-			public const int design_fab_size_normal = 2131361926;
+			// aapt resource value: 0x7f080086
+			public const int design_fab_size_normal = 2131230854;
 			
-			// aapt resource value: 0x7f0a0087
-			public const int design_fab_translation_z_pressed = 2131361927;
+			// aapt resource value: 0x7f080087
+			public const int design_fab_translation_z_pressed = 2131230855;
 			
-			// aapt resource value: 0x7f0a0088
-			public const int design_navigation_elevation = 2131361928;
+			// aapt resource value: 0x7f080088
+			public const int design_navigation_elevation = 2131230856;
 			
-			// aapt resource value: 0x7f0a0089
-			public const int design_navigation_icon_padding = 2131361929;
+			// aapt resource value: 0x7f080089
+			public const int design_navigation_icon_padding = 2131230857;
 			
-			// aapt resource value: 0x7f0a008a
-			public const int design_navigation_icon_size = 2131361930;
+			// aapt resource value: 0x7f08008a
+			public const int design_navigation_icon_size = 2131230858;
 			
-			// aapt resource value: 0x7f0a006e
-			public const int design_navigation_max_width = 2131361902;
+			// aapt resource value: 0x7f08006e
+			public const int design_navigation_max_width = 2131230830;
 			
-			// aapt resource value: 0x7f0a008b
-			public const int design_navigation_padding_bottom = 2131361931;
+			// aapt resource value: 0x7f08008b
+			public const int design_navigation_padding_bottom = 2131230859;
 			
-			// aapt resource value: 0x7f0a008c
-			public const int design_navigation_separator_vertical_padding = 2131361932;
+			// aapt resource value: 0x7f08008c
+			public const int design_navigation_separator_vertical_padding = 2131230860;
 			
-			// aapt resource value: 0x7f0a006f
-			public const int design_snackbar_action_inline_max_width = 2131361903;
+			// aapt resource value: 0x7f08006f
+			public const int design_snackbar_action_inline_max_width = 2131230831;
 			
-			// aapt resource value: 0x7f0a0070
-			public const int design_snackbar_background_corner_radius = 2131361904;
+			// aapt resource value: 0x7f080070
+			public const int design_snackbar_background_corner_radius = 2131230832;
 			
-			// aapt resource value: 0x7f0a008d
-			public const int design_snackbar_elevation = 2131361933;
+			// aapt resource value: 0x7f08008d
+			public const int design_snackbar_elevation = 2131230861;
 			
-			// aapt resource value: 0x7f0a0071
-			public const int design_snackbar_extra_spacing_horizontal = 2131361905;
+			// aapt resource value: 0x7f080071
+			public const int design_snackbar_extra_spacing_horizontal = 2131230833;
 			
-			// aapt resource value: 0x7f0a0072
-			public const int design_snackbar_max_width = 2131361906;
+			// aapt resource value: 0x7f080072
+			public const int design_snackbar_max_width = 2131230834;
 			
-			// aapt resource value: 0x7f0a0073
-			public const int design_snackbar_min_width = 2131361907;
+			// aapt resource value: 0x7f080073
+			public const int design_snackbar_min_width = 2131230835;
 			
-			// aapt resource value: 0x7f0a008e
-			public const int design_snackbar_padding_horizontal = 2131361934;
+			// aapt resource value: 0x7f08008e
+			public const int design_snackbar_padding_horizontal = 2131230862;
 			
-			// aapt resource value: 0x7f0a008f
-			public const int design_snackbar_padding_vertical = 2131361935;
+			// aapt resource value: 0x7f08008f
+			public const int design_snackbar_padding_vertical = 2131230863;
 			
-			// aapt resource value: 0x7f0a0074
-			public const int design_snackbar_padding_vertical_2lines = 2131361908;
+			// aapt resource value: 0x7f080074
+			public const int design_snackbar_padding_vertical_2lines = 2131230836;
 			
-			// aapt resource value: 0x7f0a0090
-			public const int design_snackbar_text_size = 2131361936;
+			// aapt resource value: 0x7f080090
+			public const int design_snackbar_text_size = 2131230864;
 			
-			// aapt resource value: 0x7f0a0091
-			public const int design_tab_max_width = 2131361937;
+			// aapt resource value: 0x7f080091
+			public const int design_tab_max_width = 2131230865;
 			
-			// aapt resource value: 0x7f0a0075
-			public const int design_tab_scrollable_min_width = 2131361909;
+			// aapt resource value: 0x7f080075
+			public const int design_tab_scrollable_min_width = 2131230837;
 			
-			// aapt resource value: 0x7f0a0092
-			public const int design_tab_text_size = 2131361938;
+			// aapt resource value: 0x7f080092
+			public const int design_tab_text_size = 2131230866;
 			
-			// aapt resource value: 0x7f0a0093
-			public const int design_tab_text_size_2line = 2131361939;
+			// aapt resource value: 0x7f080093
+			public const int design_tab_text_size_2line = 2131230867;
 			
-			// aapt resource value: 0x7f0a005a
-			public const int disabled_alpha_material_dark = 2131361882;
+			// aapt resource value: 0x7f08005a
+			public const int disabled_alpha_material_dark = 2131230810;
 			
-			// aapt resource value: 0x7f0a005b
-			public const int disabled_alpha_material_light = 2131361883;
+			// aapt resource value: 0x7f08005b
+			public const int disabled_alpha_material_light = 2131230811;
 			
-			// aapt resource value: 0x7f0a005c
-			public const int highlight_alpha_material_colored = 2131361884;
+			// aapt resource value: 0x7f08005c
+			public const int highlight_alpha_material_colored = 2131230812;
 			
-			// aapt resource value: 0x7f0a005d
-			public const int highlight_alpha_material_dark = 2131361885;
+			// aapt resource value: 0x7f08005d
+			public const int highlight_alpha_material_dark = 2131230813;
 			
-			// aapt resource value: 0x7f0a005e
-			public const int highlight_alpha_material_light = 2131361886;
+			// aapt resource value: 0x7f08005e
+			public const int highlight_alpha_material_light = 2131230814;
 			
-			// aapt resource value: 0x7f0a005f
-			public const int hint_alpha_material_dark = 2131361887;
+			// aapt resource value: 0x7f08005f
+			public const int hint_alpha_material_dark = 2131230815;
 			
-			// aapt resource value: 0x7f0a0060
-			public const int hint_alpha_material_light = 2131361888;
+			// aapt resource value: 0x7f080060
+			public const int hint_alpha_material_light = 2131230816;
 			
-			// aapt resource value: 0x7f0a0061
-			public const int hint_pressed_alpha_material_dark = 2131361889;
+			// aapt resource value: 0x7f080061
+			public const int hint_pressed_alpha_material_dark = 2131230817;
 			
-			// aapt resource value: 0x7f0a0062
-			public const int hint_pressed_alpha_material_light = 2131361890;
+			// aapt resource value: 0x7f080062
+			public const int hint_pressed_alpha_material_light = 2131230818;
 			
-			// aapt resource value: 0x7f0a0000
-			public const int item_touch_helper_max_drag_scroll_per_frame = 2131361792;
+			// aapt resource value: 0x7f080000
+			public const int item_touch_helper_max_drag_scroll_per_frame = 2131230720;
 			
-			// aapt resource value: 0x7f0a0001
-			public const int item_touch_helper_swipe_escape_max_velocity = 2131361793;
+			// aapt resource value: 0x7f080001
+			public const int item_touch_helper_swipe_escape_max_velocity = 2131230721;
 			
-			// aapt resource value: 0x7f0a0002
-			public const int item_touch_helper_swipe_escape_velocity = 2131361794;
+			// aapt resource value: 0x7f080002
+			public const int item_touch_helper_swipe_escape_velocity = 2131230722;
 			
-			// aapt resource value: 0x7f0a0003
-			public const int mr_controller_volume_group_list_item_height = 2131361795;
+			// aapt resource value: 0x7f080003
+			public const int mr_controller_volume_group_list_item_height = 2131230723;
 			
-			// aapt resource value: 0x7f0a0004
-			public const int mr_controller_volume_group_list_item_icon_size = 2131361796;
+			// aapt resource value: 0x7f080004
+			public const int mr_controller_volume_group_list_item_icon_size = 2131230724;
 			
-			// aapt resource value: 0x7f0a0005
-			public const int mr_controller_volume_group_list_max_height = 2131361797;
+			// aapt resource value: 0x7f080005
+			public const int mr_controller_volume_group_list_max_height = 2131230725;
 			
-			// aapt resource value: 0x7f0a0008
-			public const int mr_controller_volume_group_list_padding_top = 2131361800;
+			// aapt resource value: 0x7f080008
+			public const int mr_controller_volume_group_list_padding_top = 2131230728;
 			
-			// aapt resource value: 0x7f0a0006
-			public const int mr_dialog_fixed_width_major = 2131361798;
+			// aapt resource value: 0x7f080006
+			public const int mr_dialog_fixed_width_major = 2131230726;
 			
-			// aapt resource value: 0x7f0a0007
-			public const int mr_dialog_fixed_width_minor = 2131361799;
+			// aapt resource value: 0x7f080007
+			public const int mr_dialog_fixed_width_minor = 2131230727;
 			
-			// aapt resource value: 0x7f0a0063
-			public const int notification_action_icon_size = 2131361891;
+			// aapt resource value: 0x7f080063
+			public const int notification_action_icon_size = 2131230819;
 			
-			// aapt resource value: 0x7f0a0064
-			public const int notification_action_text_size = 2131361892;
+			// aapt resource value: 0x7f080064
+			public const int notification_action_text_size = 2131230820;
 			
-			// aapt resource value: 0x7f0a0065
-			public const int notification_big_circle_margin = 2131361893;
+			// aapt resource value: 0x7f080065
+			public const int notification_big_circle_margin = 2131230821;
 			
-			// aapt resource value: 0x7f0a001e
-			public const int notification_content_margin_start = 2131361822;
+			// aapt resource value: 0x7f08001e
+			public const int notification_content_margin_start = 2131230750;
 			
-			// aapt resource value: 0x7f0a0066
-			public const int notification_large_icon_height = 2131361894;
+			// aapt resource value: 0x7f080066
+			public const int notification_large_icon_height = 2131230822;
 			
-			// aapt resource value: 0x7f0a0067
-			public const int notification_large_icon_width = 2131361895;
+			// aapt resource value: 0x7f080067
+			public const int notification_large_icon_width = 2131230823;
 			
-			// aapt resource value: 0x7f0a001f
-			public const int notification_main_column_padding_top = 2131361823;
+			// aapt resource value: 0x7f08001f
+			public const int notification_main_column_padding_top = 2131230751;
 			
-			// aapt resource value: 0x7f0a0020
-			public const int notification_media_narrow_margin = 2131361824;
+			// aapt resource value: 0x7f080020
+			public const int notification_media_narrow_margin = 2131230752;
 			
-			// aapt resource value: 0x7f0a0068
-			public const int notification_right_icon_size = 2131361896;
+			// aapt resource value: 0x7f080068
+			public const int notification_right_icon_size = 2131230824;
 			
-			// aapt resource value: 0x7f0a001c
-			public const int notification_right_side_padding_top = 2131361820;
+			// aapt resource value: 0x7f08001c
+			public const int notification_right_side_padding_top = 2131230748;
 			
-			// aapt resource value: 0x7f0a0069
-			public const int notification_small_icon_background_padding = 2131361897;
+			// aapt resource value: 0x7f080069
+			public const int notification_small_icon_background_padding = 2131230825;
 			
-			// aapt resource value: 0x7f0a006a
-			public const int notification_small_icon_size_as_large = 2131361898;
+			// aapt resource value: 0x7f08006a
+			public const int notification_small_icon_size_as_large = 2131230826;
 			
-			// aapt resource value: 0x7f0a006b
-			public const int notification_subtext_size = 2131361899;
+			// aapt resource value: 0x7f08006b
+			public const int notification_subtext_size = 2131230827;
 			
-			// aapt resource value: 0x7f0a006c
-			public const int notification_top_pad = 2131361900;
+			// aapt resource value: 0x7f08006c
+			public const int notification_top_pad = 2131230828;
 			
-			// aapt resource value: 0x7f0a006d
-			public const int notification_top_pad_large_text = 2131361901;
+			// aapt resource value: 0x7f08006d
+			public const int notification_top_pad_large_text = 2131230829;
 			
 			static Dimension()
 			{
@@ -2905,551 +5043,551 @@ namespace LagoVista.Droid.Simulator
 		public partial class Id
 		{
 			
-			// aapt resource value: 0x7f0b009e
-			public const int action0 = 2131427486;
+			// aapt resource value: 0x7f09009e
+			public const int action0 = 2131296414;
 			
-			// aapt resource value: 0x7f0b0064
-			public const int action_bar = 2131427428;
+			// aapt resource value: 0x7f090064
+			public const int action_bar = 2131296356;
 			
-			// aapt resource value: 0x7f0b0001
-			public const int action_bar_activity_content = 2131427329;
+			// aapt resource value: 0x7f090001
+			public const int action_bar_activity_content = 2131296257;
 			
-			// aapt resource value: 0x7f0b0063
-			public const int action_bar_container = 2131427427;
+			// aapt resource value: 0x7f090063
+			public const int action_bar_container = 2131296355;
 			
-			// aapt resource value: 0x7f0b005f
-			public const int action_bar_root = 2131427423;
+			// aapt resource value: 0x7f09005f
+			public const int action_bar_root = 2131296351;
 			
-			// aapt resource value: 0x7f0b0002
-			public const int action_bar_spinner = 2131427330;
+			// aapt resource value: 0x7f090002
+			public const int action_bar_spinner = 2131296258;
 			
-			// aapt resource value: 0x7f0b0042
-			public const int action_bar_subtitle = 2131427394;
+			// aapt resource value: 0x7f090042
+			public const int action_bar_subtitle = 2131296322;
 			
-			// aapt resource value: 0x7f0b0041
-			public const int action_bar_title = 2131427393;
+			// aapt resource value: 0x7f090041
+			public const int action_bar_title = 2131296321;
 			
-			// aapt resource value: 0x7f0b009b
-			public const int action_container = 2131427483;
+			// aapt resource value: 0x7f09009b
+			public const int action_container = 2131296411;
 			
-			// aapt resource value: 0x7f0b0065
-			public const int action_context_bar = 2131427429;
+			// aapt resource value: 0x7f090065
+			public const int action_context_bar = 2131296357;
 			
-			// aapt resource value: 0x7f0b00a2
-			public const int action_divider = 2131427490;
+			// aapt resource value: 0x7f0900a2
+			public const int action_divider = 2131296418;
 			
-			// aapt resource value: 0x7f0b009c
-			public const int action_image = 2131427484;
+			// aapt resource value: 0x7f09009c
+			public const int action_image = 2131296412;
 			
-			// aapt resource value: 0x7f0b0003
-			public const int action_menu_divider = 2131427331;
+			// aapt resource value: 0x7f090003
+			public const int action_menu_divider = 2131296259;
 			
-			// aapt resource value: 0x7f0b0004
-			public const int action_menu_presenter = 2131427332;
+			// aapt resource value: 0x7f090004
+			public const int action_menu_presenter = 2131296260;
 			
-			// aapt resource value: 0x7f0b0061
-			public const int action_mode_bar = 2131427425;
+			// aapt resource value: 0x7f090061
+			public const int action_mode_bar = 2131296353;
 			
-			// aapt resource value: 0x7f0b0060
-			public const int action_mode_bar_stub = 2131427424;
+			// aapt resource value: 0x7f090060
+			public const int action_mode_bar_stub = 2131296352;
 			
-			// aapt resource value: 0x7f0b0043
-			public const int action_mode_close_button = 2131427395;
+			// aapt resource value: 0x7f090043
+			public const int action_mode_close_button = 2131296323;
 			
-			// aapt resource value: 0x7f0b009d
-			public const int action_text = 2131427485;
+			// aapt resource value: 0x7f09009d
+			public const int action_text = 2131296413;
 			
-			// aapt resource value: 0x7f0b00ab
-			public const int actions = 2131427499;
+			// aapt resource value: 0x7f0900ab
+			public const int actions = 2131296427;
 			
-			// aapt resource value: 0x7f0b0044
-			public const int activity_chooser_view_content = 2131427396;
+			// aapt resource value: 0x7f090044
+			public const int activity_chooser_view_content = 2131296324;
 			
-			// aapt resource value: 0x7f0b001e
-			public const int add = 2131427358;
+			// aapt resource value: 0x7f09001e
+			public const int add = 2131296286;
 			
-			// aapt resource value: 0x7f0b0058
-			public const int alertTitle = 2131427416;
+			// aapt resource value: 0x7f090058
+			public const int alertTitle = 2131296344;
 			
-			// aapt resource value: 0x7f0b003d
-			public const int all = 2131427389;
+			// aapt resource value: 0x7f09003d
+			public const int all = 2131296317;
 			
-			// aapt resource value: 0x7f0b0023
-			public const int always = 2131427363;
+			// aapt resource value: 0x7f090023
+			public const int always = 2131296291;
 			
-			// aapt resource value: 0x7f0b002f
-			public const int auto = 2131427375;
+			// aapt resource value: 0x7f09002f
+			public const int auto = 2131296303;
 			
-			// aapt resource value: 0x7f0b0020
-			public const int beginning = 2131427360;
+			// aapt resource value: 0x7f090020
+			public const int beginning = 2131296288;
 			
-			// aapt resource value: 0x7f0b0028
-			public const int bottom = 2131427368;
+			// aapt resource value: 0x7f090028
+			public const int bottom = 2131296296;
 			
-			// aapt resource value: 0x7f0b004b
-			public const int buttonPanel = 2131427403;
+			// aapt resource value: 0x7f09004b
+			public const int buttonPanel = 2131296331;
 			
-			// aapt resource value: 0x7f0b009f
-			public const int cancel_action = 2131427487;
+			// aapt resource value: 0x7f09009f
+			public const int cancel_action = 2131296415;
 			
-			// aapt resource value: 0x7f0b0030
-			public const int center = 2131427376;
+			// aapt resource value: 0x7f090030
+			public const int center = 2131296304;
 			
-			// aapt resource value: 0x7f0b0031
-			public const int center_horizontal = 2131427377;
+			// aapt resource value: 0x7f090031
+			public const int center_horizontal = 2131296305;
 			
-			// aapt resource value: 0x7f0b0032
-			public const int center_vertical = 2131427378;
+			// aapt resource value: 0x7f090032
+			public const int center_vertical = 2131296306;
 			
-			// aapt resource value: 0x7f0b005b
-			public const int checkbox = 2131427419;
+			// aapt resource value: 0x7f09005b
+			public const int checkbox = 2131296347;
 			
-			// aapt resource value: 0x7f0b00a7
-			public const int chronometer = 2131427495;
+			// aapt resource value: 0x7f0900a7
+			public const int chronometer = 2131296423;
 			
-			// aapt resource value: 0x7f0b0039
-			public const int clip_horizontal = 2131427385;
+			// aapt resource value: 0x7f090039
+			public const int clip_horizontal = 2131296313;
 			
-			// aapt resource value: 0x7f0b003a
-			public const int clip_vertical = 2131427386;
+			// aapt resource value: 0x7f09003a
+			public const int clip_vertical = 2131296314;
 			
-			// aapt resource value: 0x7f0b0024
-			public const int collapseActionView = 2131427364;
+			// aapt resource value: 0x7f090024
+			public const int collapseActionView = 2131296292;
 			
-			// aapt resource value: 0x7f0b0075
-			public const int container = 2131427445;
+			// aapt resource value: 0x7f090075
+			public const int container = 2131296373;
 			
-			// aapt resource value: 0x7f0b004e
-			public const int contentPanel = 2131427406;
+			// aapt resource value: 0x7f09004e
+			public const int contentPanel = 2131296334;
 			
-			// aapt resource value: 0x7f0b0076
-			public const int coordinator = 2131427446;
+			// aapt resource value: 0x7f090076
+			public const int coordinator = 2131296374;
 			
-			// aapt resource value: 0x7f0b0055
-			public const int custom = 2131427413;
+			// aapt resource value: 0x7f090055
+			public const int custom = 2131296341;
 			
-			// aapt resource value: 0x7f0b0054
-			public const int customPanel = 2131427412;
+			// aapt resource value: 0x7f090054
+			public const int customPanel = 2131296340;
 			
-			// aapt resource value: 0x7f0b0062
-			public const int decor_content_parent = 2131427426;
+			// aapt resource value: 0x7f090062
+			public const int decor_content_parent = 2131296354;
 			
-			// aapt resource value: 0x7f0b0047
-			public const int default_activity_button = 2131427399;
+			// aapt resource value: 0x7f090047
+			public const int default_activity_button = 2131296327;
 			
-			// aapt resource value: 0x7f0b0078
-			public const int design_bottom_sheet = 2131427448;
+			// aapt resource value: 0x7f090078
+			public const int design_bottom_sheet = 2131296376;
 			
-			// aapt resource value: 0x7f0b007f
-			public const int design_menu_item_action_area = 2131427455;
+			// aapt resource value: 0x7f09007f
+			public const int design_menu_item_action_area = 2131296383;
 			
-			// aapt resource value: 0x7f0b007e
-			public const int design_menu_item_action_area_stub = 2131427454;
+			// aapt resource value: 0x7f09007e
+			public const int design_menu_item_action_area_stub = 2131296382;
 			
-			// aapt resource value: 0x7f0b007d
-			public const int design_menu_item_text = 2131427453;
+			// aapt resource value: 0x7f09007d
+			public const int design_menu_item_text = 2131296381;
 			
-			// aapt resource value: 0x7f0b007c
-			public const int design_navigation_view = 2131427452;
+			// aapt resource value: 0x7f09007c
+			public const int design_navigation_view = 2131296380;
 			
-			// aapt resource value: 0x7f0b0012
-			public const int disableHome = 2131427346;
+			// aapt resource value: 0x7f090012
+			public const int disableHome = 2131296274;
 			
-			// aapt resource value: 0x7f0b0066
-			public const int edit_query = 2131427430;
+			// aapt resource value: 0x7f090066
+			public const int edit_query = 2131296358;
 			
-			// aapt resource value: 0x7f0b0021
-			public const int end = 2131427361;
+			// aapt resource value: 0x7f090021
+			public const int end = 2131296289;
 			
-			// aapt resource value: 0x7f0b00b1
-			public const int end_padder = 2131427505;
+			// aapt resource value: 0x7f0900b1
+			public const int end_padder = 2131296433;
 			
-			// aapt resource value: 0x7f0b002a
-			public const int enterAlways = 2131427370;
+			// aapt resource value: 0x7f09002a
+			public const int enterAlways = 2131296298;
 			
-			// aapt resource value: 0x7f0b002b
-			public const int enterAlwaysCollapsed = 2131427371;
+			// aapt resource value: 0x7f09002b
+			public const int enterAlwaysCollapsed = 2131296299;
 			
-			// aapt resource value: 0x7f0b002c
-			public const int exitUntilCollapsed = 2131427372;
+			// aapt resource value: 0x7f09002c
+			public const int exitUntilCollapsed = 2131296300;
 			
-			// aapt resource value: 0x7f0b0045
-			public const int expand_activities_button = 2131427397;
+			// aapt resource value: 0x7f090045
+			public const int expand_activities_button = 2131296325;
 			
-			// aapt resource value: 0x7f0b005a
-			public const int expanded_menu = 2131427418;
+			// aapt resource value: 0x7f09005a
+			public const int expanded_menu = 2131296346;
 			
-			// aapt resource value: 0x7f0b003b
-			public const int fill = 2131427387;
+			// aapt resource value: 0x7f09003b
+			public const int fill = 2131296315;
 			
-			// aapt resource value: 0x7f0b003c
-			public const int fill_horizontal = 2131427388;
+			// aapt resource value: 0x7f09003c
+			public const int fill_horizontal = 2131296316;
 			
-			// aapt resource value: 0x7f0b0033
-			public const int fill_vertical = 2131427379;
+			// aapt resource value: 0x7f090033
+			public const int fill_vertical = 2131296307;
 			
-			// aapt resource value: 0x7f0b003f
-			public const int @fixed = 2131427391;
+			// aapt resource value: 0x7f09003f
+			public const int @fixed = 2131296319;
 			
-			// aapt resource value: 0x7f0b0005
-			public const int home = 2131427333;
+			// aapt resource value: 0x7f090005
+			public const int home = 2131296261;
 			
-			// aapt resource value: 0x7f0b0013
-			public const int homeAsUp = 2131427347;
+			// aapt resource value: 0x7f090013
+			public const int homeAsUp = 2131296275;
 			
-			// aapt resource value: 0x7f0b0049
-			public const int icon = 2131427401;
+			// aapt resource value: 0x7f090049
+			public const int icon = 2131296329;
 			
-			// aapt resource value: 0x7f0b00ac
-			public const int icon_group = 2131427500;
+			// aapt resource value: 0x7f0900ac
+			public const int icon_group = 2131296428;
 			
-			// aapt resource value: 0x7f0b0025
-			public const int ifRoom = 2131427365;
+			// aapt resource value: 0x7f090025
+			public const int ifRoom = 2131296293;
 			
-			// aapt resource value: 0x7f0b0046
-			public const int image = 2131427398;
+			// aapt resource value: 0x7f090046
+			public const int image = 2131296326;
 			
-			// aapt resource value: 0x7f0b00a8
-			public const int info = 2131427496;
+			// aapt resource value: 0x7f0900a8
+			public const int info = 2131296424;
 			
-			// aapt resource value: 0x7f0b0000
-			public const int item_touch_helper_previous_elevation = 2131427328;
+			// aapt resource value: 0x7f090000
+			public const int item_touch_helper_previous_elevation = 2131296256;
 			
-			// aapt resource value: 0x7f0b0074
-			public const int largeLabel = 2131427444;
+			// aapt resource value: 0x7f090074
+			public const int largeLabel = 2131296372;
 			
-			// aapt resource value: 0x7f0b0034
-			public const int left = 2131427380;
+			// aapt resource value: 0x7f090034
+			public const int left = 2131296308;
 			
-			// aapt resource value: 0x7f0b00ad
-			public const int line1 = 2131427501;
+			// aapt resource value: 0x7f0900ad
+			public const int line1 = 2131296429;
 			
-			// aapt resource value: 0x7f0b00af
-			public const int line3 = 2131427503;
+			// aapt resource value: 0x7f0900af
+			public const int line3 = 2131296431;
 			
-			// aapt resource value: 0x7f0b000f
-			public const int listMode = 2131427343;
+			// aapt resource value: 0x7f09000f
+			public const int listMode = 2131296271;
 			
-			// aapt resource value: 0x7f0b0048
-			public const int list_item = 2131427400;
+			// aapt resource value: 0x7f090048
+			public const int list_item = 2131296328;
 			
-			// aapt resource value: 0x7f0b00b5
-			public const int masked = 2131427509;
+			// aapt resource value: 0x7f0900b5
+			public const int masked = 2131296437;
 			
-			// aapt resource value: 0x7f0b00a1
-			public const int media_actions = 2131427489;
+			// aapt resource value: 0x7f0900a1
+			public const int media_actions = 2131296417;
 			
-			// aapt resource value: 0x7f0b0022
-			public const int middle = 2131427362;
+			// aapt resource value: 0x7f090022
+			public const int middle = 2131296290;
 			
-			// aapt resource value: 0x7f0b003e
-			public const int mini = 2131427390;
+			// aapt resource value: 0x7f09003e
+			public const int mini = 2131296318;
 			
-			// aapt resource value: 0x7f0b008d
-			public const int mr_art = 2131427469;
+			// aapt resource value: 0x7f09008d
+			public const int mr_art = 2131296397;
 			
-			// aapt resource value: 0x7f0b0082
-			public const int mr_chooser_list = 2131427458;
+			// aapt resource value: 0x7f090082
+			public const int mr_chooser_list = 2131296386;
 			
-			// aapt resource value: 0x7f0b0085
-			public const int mr_chooser_route_desc = 2131427461;
+			// aapt resource value: 0x7f090085
+			public const int mr_chooser_route_desc = 2131296389;
 			
-			// aapt resource value: 0x7f0b0083
-			public const int mr_chooser_route_icon = 2131427459;
+			// aapt resource value: 0x7f090083
+			public const int mr_chooser_route_icon = 2131296387;
 			
-			// aapt resource value: 0x7f0b0084
-			public const int mr_chooser_route_name = 2131427460;
+			// aapt resource value: 0x7f090084
+			public const int mr_chooser_route_name = 2131296388;
 			
-			// aapt resource value: 0x7f0b0081
-			public const int mr_chooser_title = 2131427457;
+			// aapt resource value: 0x7f090081
+			public const int mr_chooser_title = 2131296385;
 			
-			// aapt resource value: 0x7f0b008a
-			public const int mr_close = 2131427466;
+			// aapt resource value: 0x7f09008a
+			public const int mr_close = 2131296394;
 			
-			// aapt resource value: 0x7f0b0090
-			public const int mr_control_divider = 2131427472;
+			// aapt resource value: 0x7f090090
+			public const int mr_control_divider = 2131296400;
 			
-			// aapt resource value: 0x7f0b0096
-			public const int mr_control_playback_ctrl = 2131427478;
+			// aapt resource value: 0x7f090096
+			public const int mr_control_playback_ctrl = 2131296406;
 			
-			// aapt resource value: 0x7f0b0099
-			public const int mr_control_subtitle = 2131427481;
+			// aapt resource value: 0x7f090099
+			public const int mr_control_subtitle = 2131296409;
 			
-			// aapt resource value: 0x7f0b0098
-			public const int mr_control_title = 2131427480;
+			// aapt resource value: 0x7f090098
+			public const int mr_control_title = 2131296408;
 			
-			// aapt resource value: 0x7f0b0097
-			public const int mr_control_title_container = 2131427479;
+			// aapt resource value: 0x7f090097
+			public const int mr_control_title_container = 2131296407;
 			
-			// aapt resource value: 0x7f0b008b
-			public const int mr_custom_control = 2131427467;
+			// aapt resource value: 0x7f09008b
+			public const int mr_custom_control = 2131296395;
 			
-			// aapt resource value: 0x7f0b008c
-			public const int mr_default_control = 2131427468;
+			// aapt resource value: 0x7f09008c
+			public const int mr_default_control = 2131296396;
 			
-			// aapt resource value: 0x7f0b0087
-			public const int mr_dialog_area = 2131427463;
+			// aapt resource value: 0x7f090087
+			public const int mr_dialog_area = 2131296391;
 			
-			// aapt resource value: 0x7f0b0086
-			public const int mr_expandable_area = 2131427462;
+			// aapt resource value: 0x7f090086
+			public const int mr_expandable_area = 2131296390;
 			
-			// aapt resource value: 0x7f0b009a
-			public const int mr_group_expand_collapse = 2131427482;
+			// aapt resource value: 0x7f09009a
+			public const int mr_group_expand_collapse = 2131296410;
 			
-			// aapt resource value: 0x7f0b008e
-			public const int mr_media_main_control = 2131427470;
+			// aapt resource value: 0x7f09008e
+			public const int mr_media_main_control = 2131296398;
 			
-			// aapt resource value: 0x7f0b0089
-			public const int mr_name = 2131427465;
+			// aapt resource value: 0x7f090089
+			public const int mr_name = 2131296393;
 			
-			// aapt resource value: 0x7f0b008f
-			public const int mr_playback_control = 2131427471;
+			// aapt resource value: 0x7f09008f
+			public const int mr_playback_control = 2131296399;
 			
-			// aapt resource value: 0x7f0b0088
-			public const int mr_title_bar = 2131427464;
+			// aapt resource value: 0x7f090088
+			public const int mr_title_bar = 2131296392;
 			
-			// aapt resource value: 0x7f0b0091
-			public const int mr_volume_control = 2131427473;
+			// aapt resource value: 0x7f090091
+			public const int mr_volume_control = 2131296401;
 			
-			// aapt resource value: 0x7f0b0092
-			public const int mr_volume_group_list = 2131427474;
+			// aapt resource value: 0x7f090092
+			public const int mr_volume_group_list = 2131296402;
 			
-			// aapt resource value: 0x7f0b0094
-			public const int mr_volume_item_icon = 2131427476;
+			// aapt resource value: 0x7f090094
+			public const int mr_volume_item_icon = 2131296404;
 			
-			// aapt resource value: 0x7f0b0095
-			public const int mr_volume_slider = 2131427477;
+			// aapt resource value: 0x7f090095
+			public const int mr_volume_slider = 2131296405;
 			
-			// aapt resource value: 0x7f0b0019
-			public const int multiply = 2131427353;
+			// aapt resource value: 0x7f090019
+			public const int multiply = 2131296281;
 			
-			// aapt resource value: 0x7f0b007b
-			public const int navigation_header_container = 2131427451;
+			// aapt resource value: 0x7f09007b
+			public const int navigation_header_container = 2131296379;
 			
-			// aapt resource value: 0x7f0b0026
-			public const int never = 2131427366;
+			// aapt resource value: 0x7f090026
+			public const int never = 2131296294;
 			
-			// aapt resource value: 0x7f0b0014
-			public const int none = 2131427348;
+			// aapt resource value: 0x7f090014
+			public const int none = 2131296276;
 			
-			// aapt resource value: 0x7f0b0010
-			public const int normal = 2131427344;
+			// aapt resource value: 0x7f090010
+			public const int normal = 2131296272;
 			
-			// aapt resource value: 0x7f0b00aa
-			public const int notification_background = 2131427498;
+			// aapt resource value: 0x7f0900aa
+			public const int notification_background = 2131296426;
 			
-			// aapt resource value: 0x7f0b00a4
-			public const int notification_main_column = 2131427492;
+			// aapt resource value: 0x7f0900a4
+			public const int notification_main_column = 2131296420;
 			
-			// aapt resource value: 0x7f0b00a3
-			public const int notification_main_column_container = 2131427491;
+			// aapt resource value: 0x7f0900a3
+			public const int notification_main_column_container = 2131296419;
 			
-			// aapt resource value: 0x7f0b0037
-			public const int parallax = 2131427383;
+			// aapt resource value: 0x7f090037
+			public const int parallax = 2131296311;
 			
-			// aapt resource value: 0x7f0b004d
-			public const int parentPanel = 2131427405;
+			// aapt resource value: 0x7f09004d
+			public const int parentPanel = 2131296333;
 			
-			// aapt resource value: 0x7f0b0038
-			public const int pin = 2131427384;
+			// aapt resource value: 0x7f090038
+			public const int pin = 2131296312;
 			
-			// aapt resource value: 0x7f0b0006
-			public const int progress_circular = 2131427334;
+			// aapt resource value: 0x7f090006
+			public const int progress_circular = 2131296262;
 			
-			// aapt resource value: 0x7f0b0007
-			public const int progress_horizontal = 2131427335;
+			// aapt resource value: 0x7f090007
+			public const int progress_horizontal = 2131296263;
 			
-			// aapt resource value: 0x7f0b005d
-			public const int radio = 2131427421;
+			// aapt resource value: 0x7f09005d
+			public const int radio = 2131296349;
 			
-			// aapt resource value: 0x7f0b0035
-			public const int right = 2131427381;
+			// aapt resource value: 0x7f090035
+			public const int right = 2131296309;
 			
-			// aapt resource value: 0x7f0b00a9
-			public const int right_icon = 2131427497;
+			// aapt resource value: 0x7f0900a9
+			public const int right_icon = 2131296425;
 			
-			// aapt resource value: 0x7f0b00a5
-			public const int right_side = 2131427493;
+			// aapt resource value: 0x7f0900a5
+			public const int right_side = 2131296421;
 			
-			// aapt resource value: 0x7f0b001a
-			public const int screen = 2131427354;
+			// aapt resource value: 0x7f09001a
+			public const int screen = 2131296282;
 			
-			// aapt resource value: 0x7f0b002d
-			public const int scroll = 2131427373;
+			// aapt resource value: 0x7f09002d
+			public const int scroll = 2131296301;
 			
-			// aapt resource value: 0x7f0b0053
-			public const int scrollIndicatorDown = 2131427411;
+			// aapt resource value: 0x7f090053
+			public const int scrollIndicatorDown = 2131296339;
 			
-			// aapt resource value: 0x7f0b004f
-			public const int scrollIndicatorUp = 2131427407;
+			// aapt resource value: 0x7f09004f
+			public const int scrollIndicatorUp = 2131296335;
 			
-			// aapt resource value: 0x7f0b0050
-			public const int scrollView = 2131427408;
+			// aapt resource value: 0x7f090050
+			public const int scrollView = 2131296336;
 			
-			// aapt resource value: 0x7f0b0040
-			public const int scrollable = 2131427392;
+			// aapt resource value: 0x7f090040
+			public const int scrollable = 2131296320;
 			
-			// aapt resource value: 0x7f0b0068
-			public const int search_badge = 2131427432;
+			// aapt resource value: 0x7f090068
+			public const int search_badge = 2131296360;
 			
-			// aapt resource value: 0x7f0b0067
-			public const int search_bar = 2131427431;
+			// aapt resource value: 0x7f090067
+			public const int search_bar = 2131296359;
 			
-			// aapt resource value: 0x7f0b0069
-			public const int search_button = 2131427433;
+			// aapt resource value: 0x7f090069
+			public const int search_button = 2131296361;
 			
-			// aapt resource value: 0x7f0b006e
-			public const int search_close_btn = 2131427438;
+			// aapt resource value: 0x7f09006e
+			public const int search_close_btn = 2131296366;
 			
-			// aapt resource value: 0x7f0b006a
-			public const int search_edit_frame = 2131427434;
+			// aapt resource value: 0x7f09006a
+			public const int search_edit_frame = 2131296362;
 			
-			// aapt resource value: 0x7f0b0070
-			public const int search_go_btn = 2131427440;
+			// aapt resource value: 0x7f090070
+			public const int search_go_btn = 2131296368;
 			
-			// aapt resource value: 0x7f0b006b
-			public const int search_mag_icon = 2131427435;
+			// aapt resource value: 0x7f09006b
+			public const int search_mag_icon = 2131296363;
 			
-			// aapt resource value: 0x7f0b006c
-			public const int search_plate = 2131427436;
+			// aapt resource value: 0x7f09006c
+			public const int search_plate = 2131296364;
 			
-			// aapt resource value: 0x7f0b006d
-			public const int search_src_text = 2131427437;
+			// aapt resource value: 0x7f09006d
+			public const int search_src_text = 2131296365;
 			
-			// aapt resource value: 0x7f0b0071
-			public const int search_voice_btn = 2131427441;
+			// aapt resource value: 0x7f090071
+			public const int search_voice_btn = 2131296369;
 			
-			// aapt resource value: 0x7f0b0072
-			public const int select_dialog_listview = 2131427442;
+			// aapt resource value: 0x7f090072
+			public const int select_dialog_listview = 2131296370;
 			
-			// aapt resource value: 0x7f0b005c
-			public const int shortcut = 2131427420;
+			// aapt resource value: 0x7f09005c
+			public const int shortcut = 2131296348;
 			
-			// aapt resource value: 0x7f0b0015
-			public const int showCustom = 2131427349;
+			// aapt resource value: 0x7f090015
+			public const int showCustom = 2131296277;
 			
-			// aapt resource value: 0x7f0b0016
-			public const int showHome = 2131427350;
+			// aapt resource value: 0x7f090016
+			public const int showHome = 2131296278;
 			
-			// aapt resource value: 0x7f0b0017
-			public const int showTitle = 2131427351;
+			// aapt resource value: 0x7f090017
+			public const int showTitle = 2131296279;
 			
-			// aapt resource value: 0x7f0b00b2
-			public const int sliding_tabs = 2131427506;
+			// aapt resource value: 0x7f0900b2
+			public const int sliding_tabs = 2131296434;
 			
-			// aapt resource value: 0x7f0b0073
-			public const int smallLabel = 2131427443;
+			// aapt resource value: 0x7f090073
+			public const int smallLabel = 2131296371;
 			
-			// aapt resource value: 0x7f0b007a
-			public const int snackbar_action = 2131427450;
+			// aapt resource value: 0x7f09007a
+			public const int snackbar_action = 2131296378;
 			
-			// aapt resource value: 0x7f0b0079
-			public const int snackbar_text = 2131427449;
+			// aapt resource value: 0x7f090079
+			public const int snackbar_text = 2131296377;
 			
-			// aapt resource value: 0x7f0b002e
-			public const int snap = 2131427374;
+			// aapt resource value: 0x7f09002e
+			public const int snap = 2131296302;
 			
-			// aapt resource value: 0x7f0b004c
-			public const int spacer = 2131427404;
+			// aapt resource value: 0x7f09004c
+			public const int spacer = 2131296332;
 			
-			// aapt resource value: 0x7f0b0008
-			public const int split_action_bar = 2131427336;
+			// aapt resource value: 0x7f090008
+			public const int split_action_bar = 2131296264;
 			
-			// aapt resource value: 0x7f0b001b
-			public const int src_atop = 2131427355;
+			// aapt resource value: 0x7f09001b
+			public const int src_atop = 2131296283;
 			
-			// aapt resource value: 0x7f0b001c
-			public const int src_in = 2131427356;
+			// aapt resource value: 0x7f09001c
+			public const int src_in = 2131296284;
 			
-			// aapt resource value: 0x7f0b001d
-			public const int src_over = 2131427357;
+			// aapt resource value: 0x7f09001d
+			public const int src_over = 2131296285;
 			
-			// aapt resource value: 0x7f0b0036
-			public const int start = 2131427382;
+			// aapt resource value: 0x7f090036
+			public const int start = 2131296310;
 			
-			// aapt resource value: 0x7f0b00a0
-			public const int status_bar_latest_event_content = 2131427488;
+			// aapt resource value: 0x7f0900a0
+			public const int status_bar_latest_event_content = 2131296416;
 			
-			// aapt resource value: 0x7f0b005e
-			public const int submenuarrow = 2131427422;
+			// aapt resource value: 0x7f09005e
+			public const int submenuarrow = 2131296350;
 			
-			// aapt resource value: 0x7f0b006f
-			public const int submit_area = 2131427439;
+			// aapt resource value: 0x7f09006f
+			public const int submit_area = 2131296367;
 			
-			// aapt resource value: 0x7f0b0011
-			public const int tabMode = 2131427345;
+			// aapt resource value: 0x7f090011
+			public const int tabMode = 2131296273;
 			
-			// aapt resource value: 0x7f0b00b0
-			public const int text = 2131427504;
+			// aapt resource value: 0x7f0900b0
+			public const int text = 2131296432;
 			
-			// aapt resource value: 0x7f0b00ae
-			public const int text2 = 2131427502;
+			// aapt resource value: 0x7f0900ae
+			public const int text2 = 2131296430;
 			
-			// aapt resource value: 0x7f0b0052
-			public const int textSpacerNoButtons = 2131427410;
+			// aapt resource value: 0x7f090052
+			public const int textSpacerNoButtons = 2131296338;
 			
-			// aapt resource value: 0x7f0b0051
-			public const int textSpacerNoTitle = 2131427409;
+			// aapt resource value: 0x7f090051
+			public const int textSpacerNoTitle = 2131296337;
 			
-			// aapt resource value: 0x7f0b0080
-			public const int text_input_password_toggle = 2131427456;
+			// aapt resource value: 0x7f090080
+			public const int text_input_password_toggle = 2131296384;
 			
-			// aapt resource value: 0x7f0b000c
-			public const int textinput_counter = 2131427340;
+			// aapt resource value: 0x7f09000c
+			public const int textinput_counter = 2131296268;
 			
-			// aapt resource value: 0x7f0b000d
-			public const int textinput_error = 2131427341;
+			// aapt resource value: 0x7f09000d
+			public const int textinput_error = 2131296269;
 			
-			// aapt resource value: 0x7f0b00a6
-			public const int time = 2131427494;
+			// aapt resource value: 0x7f0900a6
+			public const int time = 2131296422;
 			
-			// aapt resource value: 0x7f0b004a
-			public const int title = 2131427402;
+			// aapt resource value: 0x7f09004a
+			public const int title = 2131296330;
 			
-			// aapt resource value: 0x7f0b0059
-			public const int titleDividerNoCustom = 2131427417;
+			// aapt resource value: 0x7f090059
+			public const int titleDividerNoCustom = 2131296345;
 			
-			// aapt resource value: 0x7f0b0057
-			public const int title_template = 2131427415;
+			// aapt resource value: 0x7f090057
+			public const int title_template = 2131296343;
 			
-			// aapt resource value: 0x7f0b00b3
-			public const int toolbar = 2131427507;
+			// aapt resource value: 0x7f0900b3
+			public const int toolbar = 2131296435;
 			
-			// aapt resource value: 0x7f0b0029
-			public const int top = 2131427369;
+			// aapt resource value: 0x7f090029
+			public const int top = 2131296297;
 			
-			// aapt resource value: 0x7f0b0056
-			public const int topPanel = 2131427414;
+			// aapt resource value: 0x7f090056
+			public const int topPanel = 2131296342;
 			
-			// aapt resource value: 0x7f0b0077
-			public const int touch_outside = 2131427447;
+			// aapt resource value: 0x7f090077
+			public const int touch_outside = 2131296375;
 			
-			// aapt resource value: 0x7f0b000a
-			public const int transition_current_scene = 2131427338;
+			// aapt resource value: 0x7f09000a
+			public const int transition_current_scene = 2131296266;
 			
-			// aapt resource value: 0x7f0b000b
-			public const int transition_scene_layoutid_cache = 2131427339;
+			// aapt resource value: 0x7f09000b
+			public const int transition_scene_layoutid_cache = 2131296267;
 			
-			// aapt resource value: 0x7f0b0009
-			public const int up = 2131427337;
+			// aapt resource value: 0x7f090009
+			public const int up = 2131296265;
 			
-			// aapt resource value: 0x7f0b0018
-			public const int useLogo = 2131427352;
+			// aapt resource value: 0x7f090018
+			public const int useLogo = 2131296280;
 			
-			// aapt resource value: 0x7f0b000e
-			public const int view_offset_helper = 2131427342;
+			// aapt resource value: 0x7f09000e
+			public const int view_offset_helper = 2131296270;
 			
-			// aapt resource value: 0x7f0b00b4
-			public const int visible = 2131427508;
+			// aapt resource value: 0x7f0900b4
+			public const int visible = 2131296436;
 			
-			// aapt resource value: 0x7f0b0093
-			public const int volume_item_container = 2131427475;
+			// aapt resource value: 0x7f090093
+			public const int volume_item_container = 2131296403;
 			
-			// aapt resource value: 0x7f0b0027
-			public const int withText = 2131427367;
+			// aapt resource value: 0x7f090027
+			public const int withText = 2131296295;
 			
-			// aapt resource value: 0x7f0b001f
-			public const int wrap_content = 2131427359;
+			// aapt resource value: 0x7f09001f
+			public const int wrap_content = 2131296287;
 			
 			static Id()
 			{
@@ -3464,44 +5602,41 @@ namespace LagoVista.Droid.Simulator
 		public partial class Integer
 		{
 			
-			// aapt resource value: 0x7f080004
-			public const int abc_config_activityDefaultDur = 2131230724;
+			// aapt resource value: 0x7f0b0003
+			public const int abc_config_activityDefaultDur = 2131427331;
 			
-			// aapt resource value: 0x7f080005
-			public const int abc_config_activityShortDur = 2131230725;
+			// aapt resource value: 0x7f0b0004
+			public const int abc_config_activityShortDur = 2131427332;
 			
-			// aapt resource value: 0x7f080009
-			public const int app_bar_elevation_anim_duration = 2131230729;
+			// aapt resource value: 0x7f0b0008
+			public const int app_bar_elevation_anim_duration = 2131427336;
 			
-			// aapt resource value: 0x7f08000a
-			public const int bottom_sheet_slide_duration = 2131230730;
+			// aapt resource value: 0x7f0b0009
+			public const int bottom_sheet_slide_duration = 2131427337;
 			
-			// aapt resource value: 0x7f080006
-			public const int cancel_button_image_alpha = 2131230726;
+			// aapt resource value: 0x7f0b0005
+			public const int cancel_button_image_alpha = 2131427333;
 			
-			// aapt resource value: 0x7f080008
-			public const int design_snackbar_text_max_lines = 2131230728;
+			// aapt resource value: 0x7f0b0007
+			public const int design_snackbar_text_max_lines = 2131427335;
 			
-			// aapt resource value: 0x7f080000
-			public const int google_play_services_version = 2131230720;
+			// aapt resource value: 0x7f0b000a
+			public const int hide_password_duration = 2131427338;
 			
-			// aapt resource value: 0x7f08000b
-			public const int hide_password_duration = 2131230731;
+			// aapt resource value: 0x7f0b0000
+			public const int mr_controller_volume_group_list_animation_duration_ms = 2131427328;
 			
-			// aapt resource value: 0x7f080001
-			public const int mr_controller_volume_group_list_animation_duration_ms = 2131230721;
+			// aapt resource value: 0x7f0b0001
+			public const int mr_controller_volume_group_list_fade_in_duration_ms = 2131427329;
 			
-			// aapt resource value: 0x7f080002
-			public const int mr_controller_volume_group_list_fade_in_duration_ms = 2131230722;
+			// aapt resource value: 0x7f0b0002
+			public const int mr_controller_volume_group_list_fade_out_duration_ms = 2131427330;
 			
-			// aapt resource value: 0x7f080003
-			public const int mr_controller_volume_group_list_fade_out_duration_ms = 2131230723;
+			// aapt resource value: 0x7f0b000b
+			public const int show_password_duration = 2131427339;
 			
-			// aapt resource value: 0x7f08000c
-			public const int show_password_duration = 2131230732;
-			
-			// aapt resource value: 0x7f080007
-			public const int status_bar_notification_info_maxnum = 2131230727;
+			// aapt resource value: 0x7f0b0006
+			public const int status_bar_notification_info_maxnum = 2131427334;
 			
 			static Integer()
 			{
@@ -3755,260 +5890,257 @@ namespace LagoVista.Droid.Simulator
 		public partial class String
 		{
 			
-			// aapt resource value: 0x7f090040
-			public const int ApplicationName = 2131296320;
+			// aapt resource value: 0x7f0a003f
+			public const int ApplicationName = 2131361855;
 			
-			// aapt resource value: 0x7f09003f
-			public const int Hello = 2131296319;
+			// aapt resource value: 0x7f0a003e
+			public const int Hello = 2131361854;
 			
-			// aapt resource value: 0x7f090016
-			public const int abc_action_bar_home_description = 2131296278;
+			// aapt resource value: 0x7f0a0015
+			public const int abc_action_bar_home_description = 2131361813;
 			
-			// aapt resource value: 0x7f090017
-			public const int abc_action_bar_home_description_format = 2131296279;
+			// aapt resource value: 0x7f0a0016
+			public const int abc_action_bar_home_description_format = 2131361814;
 			
-			// aapt resource value: 0x7f090018
-			public const int abc_action_bar_home_subtitle_description_format = 2131296280;
+			// aapt resource value: 0x7f0a0017
+			public const int abc_action_bar_home_subtitle_description_format = 2131361815;
 			
-			// aapt resource value: 0x7f090019
-			public const int abc_action_bar_up_description = 2131296281;
+			// aapt resource value: 0x7f0a0018
+			public const int abc_action_bar_up_description = 2131361816;
 			
-			// aapt resource value: 0x7f09001a
-			public const int abc_action_menu_overflow_description = 2131296282;
+			// aapt resource value: 0x7f0a0019
+			public const int abc_action_menu_overflow_description = 2131361817;
 			
-			// aapt resource value: 0x7f09001b
-			public const int abc_action_mode_done = 2131296283;
+			// aapt resource value: 0x7f0a001a
+			public const int abc_action_mode_done = 2131361818;
 			
-			// aapt resource value: 0x7f09001c
-			public const int abc_activity_chooser_view_see_all = 2131296284;
+			// aapt resource value: 0x7f0a001b
+			public const int abc_activity_chooser_view_see_all = 2131361819;
 			
-			// aapt resource value: 0x7f09001d
-			public const int abc_activitychooserview_choose_application = 2131296285;
+			// aapt resource value: 0x7f0a001c
+			public const int abc_activitychooserview_choose_application = 2131361820;
 			
-			// aapt resource value: 0x7f09001e
-			public const int abc_capital_off = 2131296286;
+			// aapt resource value: 0x7f0a001d
+			public const int abc_capital_off = 2131361821;
 			
-			// aapt resource value: 0x7f09001f
-			public const int abc_capital_on = 2131296287;
+			// aapt resource value: 0x7f0a001e
+			public const int abc_capital_on = 2131361822;
 			
-			// aapt resource value: 0x7f09002b
-			public const int abc_font_family_body_1_material = 2131296299;
+			// aapt resource value: 0x7f0a002a
+			public const int abc_font_family_body_1_material = 2131361834;
 			
-			// aapt resource value: 0x7f09002c
-			public const int abc_font_family_body_2_material = 2131296300;
+			// aapt resource value: 0x7f0a002b
+			public const int abc_font_family_body_2_material = 2131361835;
 			
-			// aapt resource value: 0x7f09002d
-			public const int abc_font_family_button_material = 2131296301;
+			// aapt resource value: 0x7f0a002c
+			public const int abc_font_family_button_material = 2131361836;
 			
-			// aapt resource value: 0x7f09002e
-			public const int abc_font_family_caption_material = 2131296302;
+			// aapt resource value: 0x7f0a002d
+			public const int abc_font_family_caption_material = 2131361837;
 			
-			// aapt resource value: 0x7f09002f
-			public const int abc_font_family_display_1_material = 2131296303;
+			// aapt resource value: 0x7f0a002e
+			public const int abc_font_family_display_1_material = 2131361838;
 			
-			// aapt resource value: 0x7f090030
-			public const int abc_font_family_display_2_material = 2131296304;
+			// aapt resource value: 0x7f0a002f
+			public const int abc_font_family_display_2_material = 2131361839;
 			
-			// aapt resource value: 0x7f090031
-			public const int abc_font_family_display_3_material = 2131296305;
+			// aapt resource value: 0x7f0a0030
+			public const int abc_font_family_display_3_material = 2131361840;
 			
-			// aapt resource value: 0x7f090032
-			public const int abc_font_family_display_4_material = 2131296306;
+			// aapt resource value: 0x7f0a0031
+			public const int abc_font_family_display_4_material = 2131361841;
 			
-			// aapt resource value: 0x7f090033
-			public const int abc_font_family_headline_material = 2131296307;
+			// aapt resource value: 0x7f0a0032
+			public const int abc_font_family_headline_material = 2131361842;
 			
-			// aapt resource value: 0x7f090034
-			public const int abc_font_family_menu_material = 2131296308;
+			// aapt resource value: 0x7f0a0033
+			public const int abc_font_family_menu_material = 2131361843;
 			
-			// aapt resource value: 0x7f090035
-			public const int abc_font_family_subhead_material = 2131296309;
+			// aapt resource value: 0x7f0a0034
+			public const int abc_font_family_subhead_material = 2131361844;
 			
-			// aapt resource value: 0x7f090036
-			public const int abc_font_family_title_material = 2131296310;
+			// aapt resource value: 0x7f0a0035
+			public const int abc_font_family_title_material = 2131361845;
 			
-			// aapt resource value: 0x7f090020
-			public const int abc_search_hint = 2131296288;
+			// aapt resource value: 0x7f0a001f
+			public const int abc_search_hint = 2131361823;
 			
-			// aapt resource value: 0x7f090021
-			public const int abc_searchview_description_clear = 2131296289;
+			// aapt resource value: 0x7f0a0020
+			public const int abc_searchview_description_clear = 2131361824;
 			
-			// aapt resource value: 0x7f090022
-			public const int abc_searchview_description_query = 2131296290;
+			// aapt resource value: 0x7f0a0021
+			public const int abc_searchview_description_query = 2131361825;
 			
-			// aapt resource value: 0x7f090023
-			public const int abc_searchview_description_search = 2131296291;
+			// aapt resource value: 0x7f0a0022
+			public const int abc_searchview_description_search = 2131361826;
 			
-			// aapt resource value: 0x7f090024
-			public const int abc_searchview_description_submit = 2131296292;
+			// aapt resource value: 0x7f0a0023
+			public const int abc_searchview_description_submit = 2131361827;
 			
-			// aapt resource value: 0x7f090025
-			public const int abc_searchview_description_voice = 2131296293;
+			// aapt resource value: 0x7f0a0024
+			public const int abc_searchview_description_voice = 2131361828;
 			
-			// aapt resource value: 0x7f090026
-			public const int abc_shareactionprovider_share_with = 2131296294;
+			// aapt resource value: 0x7f0a0025
+			public const int abc_shareactionprovider_share_with = 2131361829;
 			
-			// aapt resource value: 0x7f090027
-			public const int abc_shareactionprovider_share_with_application = 2131296295;
+			// aapt resource value: 0x7f0a0026
+			public const int abc_shareactionprovider_share_with_application = 2131361830;
 			
-			// aapt resource value: 0x7f090028
-			public const int abc_toolbar_collapse_description = 2131296296;
+			// aapt resource value: 0x7f0a0027
+			public const int abc_toolbar_collapse_description = 2131361831;
 			
-			// aapt resource value: 0x7f090054
-			public const int app_name = 2131296340;
+			// aapt resource value: 0x7f0a0053
+			public const int app_name = 2131361875;
 			
-			// aapt resource value: 0x7f090037
-			public const int appbar_scrolling_view_behavior = 2131296311;
+			// aapt resource value: 0x7f0a0036
+			public const int appbar_scrolling_view_behavior = 2131361846;
 			
-			// aapt resource value: 0x7f090038
-			public const int bottom_sheet_behavior = 2131296312;
+			// aapt resource value: 0x7f0a0037
+			public const int bottom_sheet_behavior = 2131361847;
 			
-			// aapt resource value: 0x7f090039
-			public const int character_counter_pattern = 2131296313;
+			// aapt resource value: 0x7f0a0038
+			public const int character_counter_pattern = 2131361848;
 			
-			// aapt resource value: 0x7f090000
-			public const int common_google_play_services_unknown_issue = 2131296256;
+			// aapt resource value: 0x7f0a0040
+			public const int library_name = 2131361856;
 			
-			// aapt resource value: 0x7f090041
-			public const int library_name = 2131296321;
+			// aapt resource value: 0x7f0a0041
+			public const int mobile_center_distribute_dialog_actioned_on_disabled_toast = 2131361857;
 			
-			// aapt resource value: 0x7f090042
-			public const int mobile_center_distribute_dialog_actioned_on_disabled_toast = 2131296322;
+			// aapt resource value: 0x7f0a0042
+			public const int mobile_center_distribute_download_progress_number_format = 2131361858;
 			
-			// aapt resource value: 0x7f090043
-			public const int mobile_center_distribute_download_progress_number_format = 2131296323;
+			// aapt resource value: 0x7f0a0043
+			public const int mobile_center_distribute_downloading_mandatory_update = 2131361859;
 			
-			// aapt resource value: 0x7f090044
-			public const int mobile_center_distribute_downloading_mandatory_update = 2131296324;
+			// aapt resource value: 0x7f0a0044
+			public const int mobile_center_distribute_install = 2131361860;
 			
-			// aapt resource value: 0x7f090045
-			public const int mobile_center_distribute_install = 2131296325;
+			// aapt resource value: 0x7f0a0045
+			public const int mobile_center_distribute_install_ready_message = 2131361861;
 			
-			// aapt resource value: 0x7f090046
-			public const int mobile_center_distribute_install_ready_message = 2131296326;
+			// aapt resource value: 0x7f0a0046
+			public const int mobile_center_distribute_install_ready_title = 2131361862;
 			
-			// aapt resource value: 0x7f090047
-			public const int mobile_center_distribute_install_ready_title = 2131296327;
+			// aapt resource value: 0x7f0a0047
+			public const int mobile_center_distribute_notification_category = 2131361863;
 			
-			// aapt resource value: 0x7f090048
-			public const int mobile_center_distribute_notification_category = 2131296328;
+			// aapt resource value: 0x7f0a0048
+			public const int mobile_center_distribute_unknown_sources_dialog_message = 2131361864;
 			
-			// aapt resource value: 0x7f090049
-			public const int mobile_center_distribute_unknown_sources_dialog_message = 2131296329;
+			// aapt resource value: 0x7f0a0049
+			public const int mobile_center_distribute_unknown_sources_dialog_settings = 2131361865;
 			
-			// aapt resource value: 0x7f09004a
-			public const int mobile_center_distribute_unknown_sources_dialog_settings = 2131296330;
+			// aapt resource value: 0x7f0a004a
+			public const int mobile_center_distribute_update_dialog_download = 2131361866;
 			
-			// aapt resource value: 0x7f09004b
-			public const int mobile_center_distribute_update_dialog_download = 2131296331;
+			// aapt resource value: 0x7f0a004b
+			public const int mobile_center_distribute_update_dialog_message_mandatory = 2131361867;
 			
-			// aapt resource value: 0x7f09004c
-			public const int mobile_center_distribute_update_dialog_message_mandatory = 2131296332;
+			// aapt resource value: 0x7f0a004c
+			public const int mobile_center_distribute_update_dialog_message_optional = 2131361868;
 			
-			// aapt resource value: 0x7f09004d
-			public const int mobile_center_distribute_update_dialog_message_optional = 2131296333;
+			// aapt resource value: 0x7f0a004d
+			public const int mobile_center_distribute_update_dialog_postpone = 2131361869;
 			
-			// aapt resource value: 0x7f09004e
-			public const int mobile_center_distribute_update_dialog_postpone = 2131296334;
+			// aapt resource value: 0x7f0a004e
+			public const int mobile_center_distribute_update_dialog_title = 2131361870;
 			
-			// aapt resource value: 0x7f09004f
-			public const int mobile_center_distribute_update_dialog_title = 2131296335;
+			// aapt resource value: 0x7f0a004f
+			public const int mobile_center_distribute_update_dialog_view_release_notes = 2131361871;
 			
-			// aapt resource value: 0x7f090050
-			public const int mobile_center_distribute_update_dialog_view_release_notes = 2131296336;
+			// aapt resource value: 0x7f0a0050
+			public const int mobile_center_distribute_update_failed_dialog_ignore = 2131361872;
 			
-			// aapt resource value: 0x7f090051
-			public const int mobile_center_distribute_update_failed_dialog_ignore = 2131296337;
+			// aapt resource value: 0x7f0a0051
+			public const int mobile_center_distribute_update_failed_dialog_reinstall = 2131361873;
 			
-			// aapt resource value: 0x7f090052
-			public const int mobile_center_distribute_update_failed_dialog_reinstall = 2131296338;
+			// aapt resource value: 0x7f0a0052
+			public const int mobile_center_distribute_update_failed_dialog_title = 2131361874;
 			
-			// aapt resource value: 0x7f090053
-			public const int mobile_center_distribute_update_failed_dialog_title = 2131296339;
+			// aapt resource value: 0x7f0a0000
+			public const int mr_button_content_description = 2131361792;
 			
-			// aapt resource value: 0x7f090001
-			public const int mr_button_content_description = 2131296257;
+			// aapt resource value: 0x7f0a0001
+			public const int mr_cast_button_connected = 2131361793;
 			
-			// aapt resource value: 0x7f090002
-			public const int mr_cast_button_connected = 2131296258;
+			// aapt resource value: 0x7f0a0002
+			public const int mr_cast_button_connecting = 2131361794;
 			
-			// aapt resource value: 0x7f090003
-			public const int mr_cast_button_connecting = 2131296259;
+			// aapt resource value: 0x7f0a0003
+			public const int mr_cast_button_disconnected = 2131361795;
 			
-			// aapt resource value: 0x7f090004
-			public const int mr_cast_button_disconnected = 2131296260;
+			// aapt resource value: 0x7f0a0004
+			public const int mr_chooser_searching = 2131361796;
 			
-			// aapt resource value: 0x7f090005
-			public const int mr_chooser_searching = 2131296261;
+			// aapt resource value: 0x7f0a0005
+			public const int mr_chooser_title = 2131361797;
 			
-			// aapt resource value: 0x7f090006
-			public const int mr_chooser_title = 2131296262;
+			// aapt resource value: 0x7f0a0006
+			public const int mr_controller_album_art = 2131361798;
 			
-			// aapt resource value: 0x7f090007
-			public const int mr_controller_album_art = 2131296263;
+			// aapt resource value: 0x7f0a0007
+			public const int mr_controller_casting_screen = 2131361799;
 			
-			// aapt resource value: 0x7f090008
-			public const int mr_controller_casting_screen = 2131296264;
+			// aapt resource value: 0x7f0a0008
+			public const int mr_controller_close_description = 2131361800;
 			
-			// aapt resource value: 0x7f090009
-			public const int mr_controller_close_description = 2131296265;
+			// aapt resource value: 0x7f0a0009
+			public const int mr_controller_collapse_group = 2131361801;
 			
-			// aapt resource value: 0x7f09000a
-			public const int mr_controller_collapse_group = 2131296266;
+			// aapt resource value: 0x7f0a000a
+			public const int mr_controller_disconnect = 2131361802;
 			
-			// aapt resource value: 0x7f09000b
-			public const int mr_controller_disconnect = 2131296267;
+			// aapt resource value: 0x7f0a000b
+			public const int mr_controller_expand_group = 2131361803;
 			
-			// aapt resource value: 0x7f09000c
-			public const int mr_controller_expand_group = 2131296268;
+			// aapt resource value: 0x7f0a000c
+			public const int mr_controller_no_info_available = 2131361804;
 			
-			// aapt resource value: 0x7f09000d
-			public const int mr_controller_no_info_available = 2131296269;
+			// aapt resource value: 0x7f0a000d
+			public const int mr_controller_no_media_selected = 2131361805;
 			
-			// aapt resource value: 0x7f09000e
-			public const int mr_controller_no_media_selected = 2131296270;
+			// aapt resource value: 0x7f0a000e
+			public const int mr_controller_pause = 2131361806;
 			
-			// aapt resource value: 0x7f09000f
-			public const int mr_controller_pause = 2131296271;
+			// aapt resource value: 0x7f0a000f
+			public const int mr_controller_play = 2131361807;
 			
-			// aapt resource value: 0x7f090010
-			public const int mr_controller_play = 2131296272;
+			// aapt resource value: 0x7f0a0014
+			public const int mr_controller_stop = 2131361812;
 			
-			// aapt resource value: 0x7f090015
-			public const int mr_controller_stop = 2131296277;
+			// aapt resource value: 0x7f0a0010
+			public const int mr_controller_stop_casting = 2131361808;
 			
-			// aapt resource value: 0x7f090011
-			public const int mr_controller_stop_casting = 2131296273;
+			// aapt resource value: 0x7f0a0011
+			public const int mr_controller_volume_slider = 2131361809;
 			
-			// aapt resource value: 0x7f090012
-			public const int mr_controller_volume_slider = 2131296274;
+			// aapt resource value: 0x7f0a0012
+			public const int mr_system_route_name = 2131361810;
 			
-			// aapt resource value: 0x7f090013
-			public const int mr_system_route_name = 2131296275;
+			// aapt resource value: 0x7f0a0013
+			public const int mr_user_route_category_name = 2131361811;
 			
-			// aapt resource value: 0x7f090014
-			public const int mr_user_route_category_name = 2131296276;
+			// aapt resource value: 0x7f0a0039
+			public const int password_toggle_content_description = 2131361849;
 			
-			// aapt resource value: 0x7f09003a
-			public const int password_toggle_content_description = 2131296314;
+			// aapt resource value: 0x7f0a003a
+			public const int path_password_eye = 2131361850;
 			
-			// aapt resource value: 0x7f09003b
-			public const int path_password_eye = 2131296315;
+			// aapt resource value: 0x7f0a003b
+			public const int path_password_eye_mask_strike_through = 2131361851;
 			
-			// aapt resource value: 0x7f09003c
-			public const int path_password_eye_mask_strike_through = 2131296316;
+			// aapt resource value: 0x7f0a003c
+			public const int path_password_eye_mask_visible = 2131361852;
 			
-			// aapt resource value: 0x7f09003d
-			public const int path_password_eye_mask_visible = 2131296317;
+			// aapt resource value: 0x7f0a003d
+			public const int path_password_strike_through = 2131361853;
 			
-			// aapt resource value: 0x7f09003e
-			public const int path_password_strike_through = 2131296318;
+			// aapt resource value: 0x7f0a0028
+			public const int search_menu_title = 2131361832;
 			
-			// aapt resource value: 0x7f090029
-			public const int search_menu_title = 2131296297;
-			
-			// aapt resource value: 0x7f09002a
-			public const int status_bar_notification_info_overflow = 2131296298;
+			// aapt resource value: 0x7f0a0029
+			public const int status_bar_notification_info_overflow = 2131361833;
 			
 			static String()
 			{

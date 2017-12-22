@@ -52,7 +52,7 @@
     <MtouchDebug>true</MtouchDebug>
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
     <MtouchExtraArgs>-v -v -v -v -v</MtouchExtraArgs>
-    <MtouchLink>None</MtouchLink>
+    <MtouchLink>SdkOnly</MtouchLink>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhone' ">
     <DebugType>none</DebugType>
@@ -201,20 +201,17 @@
     <InterfaceDefinition Include="Resources\LaunchScreen.storyboard" />
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="LagoVista.Client.Core, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\LagoVista.Client.Core.1.2.205-alpha1737\lib\netstandard1.3\LagoVista.Client.Core.dll</HintPath>
-    </Reference>
     <Reference Include="LagoVista.Core, Version=0.8.0.0, Culture=neutral, PublicKeyToken=2698135e9954a85d, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\LagoVista.Core.Networking.1.2.181-alpha1716\lib\netstandard1.2\LagoVista.Core.dll</HintPath>
+      <HintPath>..\..\..\packages\LagoVista.Core.Networking.1.2.219-alpha1157\lib\netstandard1.2\LagoVista.Core.dll</HintPath>
     </Reference>
     <Reference Include="LagoVista.Core.Authentication, Version=0.8.0.0, Culture=neutral, PublicKeyToken=dcf35d1740df1edc, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\LagoVista.Core.Authentication.1.2.181-alpha1716\lib\netstandard1.2\LagoVista.Core.Authentication.dll</HintPath>
+      <HintPath>..\..\..\packages\LagoVista.Core.Authentication.1.2.219-alpha1157\lib\netstandard1.2\LagoVista.Core.Authentication.dll</HintPath>
     </Reference>
     <Reference Include="LagoVista.Core.Networking, Version=0.8.0.0, Culture=neutral, PublicKeyToken=650a46bd96014ff6, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\LagoVista.Core.Networking.1.2.181-alpha1716\lib\netstandard1.2\LagoVista.Core.Networking.dll</HintPath>
+      <HintPath>..\..\..\packages\LagoVista.Core.Networking.1.2.219-alpha1157\lib\netstandard1.2\LagoVista.Core.Networking.dll</HintPath>
     </Reference>
-    <Reference Include="LagoVista.UserAdmin, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\LagoVista.UserAdmin.1.2.181-alpha1716\lib\netstandard1.2\LagoVista.UserAdmin.dll</HintPath>
+    <Reference Include="LagoVista.UserAdmin.Models, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\LagoVista.UserAdmin.Models.1.2.219-alpha1157\lib\netstandard1.2\LagoVista.UserAdmin.Models.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
@@ -238,6 +235,14 @@
     <Reference Include="Xamarin.iOS" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\..\src\LagoVista.Client.Core\LagoVista.Client.Core.csproj">
+      <Project>{a2324ccf-5f77-4487-a61b-1a14805bdbc3}</Project>
+      <Name>LagoVista.Client.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\src\LagoVista.XPlat.Core\LagoVista.XPlat.Core.csproj">
+      <Project>{8fa51876-7923-4046-a5ce-77057c82675e}</Project>
+      <Name>LagoVista.XPlat.Core</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\..\src\LagoVista.XPlat.iOS\LagoVista.XPlat.iOS.csproj">
       <Project>{E5400B5B-9F73-4C70-B958-B44A37D8F6F6}</Project>
       <Name>LagoVista.XPlat.iOS</Name>
@@ -248,6 +253,12 @@
       <Project>{4c459577-ea4f-4149-a221-afb208bd0903}</Project>
       <Name>LagoVista.XPlat.Sample</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\slsys.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\nuviot.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

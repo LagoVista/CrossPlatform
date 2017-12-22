@@ -62,6 +62,42 @@ namespace LagoVista.Client.Core.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to About.
+        /// </summary>
+        public static string About_About {
+            get {
+                return ResourceManager.GetString("About_About", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Privacy Statement.
+        /// </summary>
+        public static string About_Privacy {
+            get {
+                return ResourceManager.GetString("About_Privacy", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Terms and Conditions.
+        /// </summary>
+        public static string About_TermsAndConditions {
+            get {
+                return ResourceManager.GetString("About_TermsAndConditions", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Version:.
+        /// </summary>
+        public static string About_Version {
+            get {
+                return ResourceManager.GetString("About_Version", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to You have successfully accepted the invitation, but will remain logged in with the organization you are currently assocaited with.  To switch to this new organization, click on the Organization Link on the new menu.
         /// </summary>
         public static string Accept_AcceptLoggedInSuccessful {

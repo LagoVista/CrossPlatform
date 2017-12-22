@@ -1,4 +1,5 @@
 ﻿using LagoVista.Client;
+using LagoVista.Client.Core;
 using Newtonsoft.Json;
 using System.Linq;
 using System.Net.Sockets;
@@ -15,8 +16,6 @@ namespace LagoVista.XPlat.iOS.Services
         const int MAX_BUFFER_SIZE = 1024;
 
         TcpClient _tcpClient;
-        NetworkStream _stream;
-
         CancellationTokenSource _cancelListenerSource;
 
         public Task DisconnectAsync()

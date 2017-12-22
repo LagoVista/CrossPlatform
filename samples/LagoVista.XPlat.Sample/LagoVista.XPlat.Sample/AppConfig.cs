@@ -9,7 +9,13 @@ namespace LagoVista.XPlat.Sample
         {
             public AppConfig()
             {
-                Version = new VersionInfo();
+                Version = new VersionInfo()
+                {
+                    Major = 1,
+                    Minor = 2,
+                    Build = 218,
+                    Revision = 1130
+                };
             }
 
             public PlatformTypes PlatformType => PlatformTypes.WindowsUWP;
@@ -18,11 +24,11 @@ namespace LagoVista.XPlat.Sample
 
             public string WebAddress => "http://localhost:5000";
 
-            public string AppName => "Remote Simulator";
+            public string AppName => "The Sample App";
 
-            public string AppLogo => "";
+            public string AppLogo { get { return "nuviot.png"; } }
 
-            public string CompanyLogo => "";
+            public string CompanyLogo { get { return "slsys.png"; } }
 
             public bool EmitTestingCode => true;
 
@@ -30,6 +36,16 @@ namespace LagoVista.XPlat.Sample
             public string ClientType => "mobileapp";
 
             public VersionInfo Version { get; private set; }
+
+            public string CompanyName { get { return "Software Logistics"; } }
+
+            public string CompanySiteLink { get { return "https://www.slsys.net"; } }
+
+            public string AppDescription { get { return "This app is pretty cool, you should really look to doing something with it a little bit of a longer content just to see what happens when it breaks.\r\nI'm writing a few lines here...this is what I think of this...hellow\r\nMore lines"; } }
+
+            public string TermsAndConditionsLink { get { return "https://www.nuviot.com"; } }
+
+            public string LicenseLink { get { return "https://www.nuviot.com"; } }
         }
 
     }
