@@ -211,7 +211,6 @@
     <Compile Include="Networking\WiredNetworks.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\BindingHelper.cs" />
-    <Compile Include="Services\DeviceInfo.cs" />
     <Compile Include="Services\DeviceManager.cs" />
     <Compile Include="Services\DirectoryServices.cs" />
     <Compile Include="Services\RestMessageHandler.cs" />

@@ -18,7 +18,6 @@ namespace LagoVista.XPlat.iOS
             SLWIOC.RegisterSingleton<ILogger>(new Loggers.MobileCenterLogger(key));
             SLWIOC.Register<IStorageService>(new StorageService());
             SLWIOC.Register<INetworkService>(new NetworkService());
-            SLWIOC.Register<IDeviceInfo>(new DeviceInfo());
             SLWIOC.RegisterSingleton<ISecureStorage>(new SecureStorage());
             SLWIOC.Register<IPopupServices>(new LagoVista.XPlat.Core.Services.PopupServices());
             SLWIOC.Register<ITCPClient, Services.TCPClient>();
