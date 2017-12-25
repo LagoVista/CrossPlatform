@@ -3,6 +3,7 @@ using Security;
 using Foundation;
 using LagoVista.Core.PlatformSupport;
 using System.Diagnostics;
+using Microsoft.Azure.Mobile;
 
 namespace LagoVista.XPlat.iOS.Services
 {
@@ -12,6 +13,8 @@ namespace LagoVista.XPlat.iOS.Services
         {
             get { return "iPhone"; }
         }
+
+        private string _deviceUniqueId = null;
 
         public string DeviceUniqueId
         {

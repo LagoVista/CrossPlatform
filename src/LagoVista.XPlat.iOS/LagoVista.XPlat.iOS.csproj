@@ -224,14 +224,15 @@
     <BundleResource Include="Resources\Fonts\RobotoCondensed-Regular.ttf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </BundleResource>
+    <None Include="Entitlements.plist" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\LagoVista.Client.Core\LagoVista.Client.Core.csproj">
-      <Project>{d37db80b-93ea-42e3-a05c-a15d35c271d7}</Project>
+      <Project>{A2324CCF-5F77-4487-A61B-1A14805BDBC3}</Project>
       <Name>LagoVista.Client.Core</Name>
     </ProjectReference>
     <ProjectReference Include="..\LagoVista.XPlat.Core\LagoVista.XPlat.Core.csproj">
-      <Project>{a2f0c263-a70e-4773-bca6-2ff179b0d04c}</Project>
+      <Project>{8FA51876-7923-4046-A5CE-77057C82675E}</Project>
       <Name>LagoVista.XPlat.Core</Name>
     </ProjectReference>
   </ItemGroup>
