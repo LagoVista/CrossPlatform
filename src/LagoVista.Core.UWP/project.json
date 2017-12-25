@@ -1,10 +1,10 @@
 ﻿{
   "dependencies": {
-    "LagoVista.Core": "1.2.219-alpha1648",
-    "LagoVista.Core.Authentication": "1.2.219-alpha1648",
-    "LagoVista.Core.Networking": "1.2.219-alpha1648",
-    "LagoVista.IoT.Logging": "1.2.219-alpha1648",
-    "LagoVista.UserAdmin.Models": "1.2.219-alpha1648",
+    "LagoVista.Core": "1.2.222-alpha0754",
+    "LagoVista.Core.Authentication": "1.2.222-alpha0754",
+    "LagoVista.Core.Networking": "1.2.222-alpha0754",
+    "LagoVista.IoT.Logging": "1.2.222-alpha0754",
+    "LagoVista.UserAdmin.Models": "1.2.222-alpha0754",
     "Microsoft.Azure.Mobile": "0.17.1",
     "Microsoft.Azure.Mobile.Analytics": "0.17.1",
     "Microsoft.Azure.Mobile.Crashes": "0.17.1",

@@ -11,6 +11,7 @@ using LagoVista.Core;
 using LagoVista.Core.Validation;
 using LagoVista.Client.Core.Resources;
 using LagoVista.Client.Core.ViewModels.Orgs;
+using LagoVista.Core.Attributes;
 
 namespace LagoVista.Client.Core.ViewModels
 {
@@ -107,6 +108,7 @@ namespace LagoVista.Client.Core.ViewModels
                     case FormField.FieldType_MultilineText:
                     case FormField.FieldType_Text:
                     case FormField.FieldType_Key:
+                    case FormField.FieldType_Password:
                         prop.SetValue(model, formItem.Value);
                         break;
                 }
@@ -117,9 +119,9 @@ namespace LagoVista.Client.Core.ViewModels
 
         public override Task<bool> CanCancelAsync()
         {
-            if ((FormAdapter != null && FormAdapter.IsDirty) || HasDirtyChildren )
-            {                
-                return  Popups.ConfirmAsync(ClientResources.Confirm_Unsaved_Title, ClientResources.Confirm_Unsaved_Message);
+            if ((FormAdapter != null && FormAdapter.IsDirty) || HasDirtyChildren)
+            {
+                return Popups.ConfirmAsync(ClientResources.Confirm_Unsaved_Title, ClientResources.Confirm_Unsaved_Message);
             }
             else
             {
@@ -134,46 +136,49 @@ namespace LagoVista.Client.Core.ViewModels
 
             foreach (var formItem in form.FormItems)
             {
-                var prop = modelProperties.Where(prp => prp.Name.ToLower() == formItem.Name.ToLower()).FirstOrDefault();
-                var value = prop.GetValue(model);
-
-                switch (formItem.FieldType)
+                if (formItem.FieldType != FieldTypes.LinkButton.ToString())
                 {
-                    case FormField.FieldType_Picker:
-                        if (value != null)
-                        {
-                            if (value.GetType() == typeof(String))
+                    var prop = modelProperties.Where(prp => prp.Name.ToLower() == formItem.Name.ToLower()).FirstOrDefault();
+                    var value = prop.GetValue(model);
+
+                    switch (formItem.FieldType)
+                    {
+                        case FormField.FieldType_Picker:
+                            if (value != null)
+                            {
+                                if (value.GetType() == typeof(String))
+                                {
+                                    formItem.Value = value.ToString();
+                                }
+                                else
+                                {
+                                    var entityHeader = value as EntityHeader;
+                                    formItem.Value = entityHeader.Id;
+                                }
+                            }
+                            break;
+                        case FormField.FeildType_EntityHeaderPicker:
+                            var ehValue = value as EntityHeader;
+                            if (ehValue != null)
+                            {
+                                formItem.Value = ehValue.Id;
+                                formItem.Display = ehValue.Text;
+                            }
+                            break;
+                        case FormField.FieldType_Bool:
+                        case FormField.FieldType_NameSpace:
+                        case FormField.FieldType_CheckBox:
+                        case FormField.FieldType_Integer:
+                        case FormField.FieldType_Decimal:
+                        case FormField.FieldType_MultilineText:
+                        case FormField.FieldType_Text:
+                        case FormField.FieldType_Key:
+                            if (value != null)
                             {
                                 formItem.Value = value.ToString();
                             }
-                            else
-                            {
-                                var entityHeader = value as EntityHeader;
-                                formItem.Value = entityHeader.Id;
-                            }
-                        }
-                        break;
-                    case FormField.FeildType_EntityHeaderPicker:
-                        var ehValue = value as EntityHeader;
-                        if(ehValue != null)
-                        {
-                            formItem.Value = ehValue.Id;
-                            formItem.Display = ehValue.Text;
-                        }
-                        break;
-                    case FormField.FieldType_Bool:
-                    case FormField.FieldType_NameSpace:
-                    case FormField.FieldType_CheckBox:
-                    case FormField.FieldType_Integer:
-                    case FormField.FieldType_Decimal:
-                    case FormField.FieldType_MultilineText:
-                    case FormField.FieldType_Text:
-                    case FormField.FieldType_Key:
-                        if (value != null)
-                        {
-                            formItem.Value = value.ToString();
-                        }
-                        break;
+                            break;
+                    }
                 }
             }
         }
@@ -218,7 +223,7 @@ namespace LagoVista.Client.Core.ViewModels
             {
                 result = await FormRestClient.GetAsync(GetRequestUri());
             }
-            else if(LaunchArgs.LaunchType == LaunchTypes.Create || this.GetType() == typeof(OrgEditorViewModel))
+            else if (LaunchArgs.LaunchType == LaunchTypes.Create || this.GetType() == typeof(OrgEditorViewModel))
             {
                 //HACK: On OrgEditViewModel, but is all contained in this assembly, no apps should care about it, we eventually need to launch an initial view in CreateMode, but need to make updates to the core, otherwise OrgEditorViewModel is launched as LaunchType = Other but it's really created
                 result = await FormRestClient.CreateNewAsync(GetRequestUri());
@@ -227,11 +232,11 @@ namespace LagoVista.Client.Core.ViewModels
             {
                 throw new Exception("ViewModels based on FormViewModelBase only support Edit and Create launch types.");
             }
-            
+
             if (result.Successful)
             {
                 var detailView = result.Result;
-                if(LaunchArgs.LaunchType == LaunchTypes.Edit && LaunchArgs.Child != null)
+                if (LaunchArgs.LaunchType == LaunchTypes.Edit && LaunchArgs.Child != null)
                 {
                     Model = (TModel)LaunchArgs.Child;
                 }
@@ -241,7 +246,7 @@ namespace LagoVista.Client.Core.ViewModels
                 }
 
                 View = detailView.View;
-                if(View.ContainsKey("key"))
+                if (View.ContainsKey("key"))
                 {
                     View["key"].IsUserEditable = LaunchArgs.LaunchType == LaunchTypes.Create;
                 }
@@ -270,17 +275,17 @@ namespace LagoVista.Client.Core.ViewModels
 
         public override async void Save()
         {
-            if(!FormAdapter.IsDirty && !HasDirtyChildren && LaunchArgs.LaunchType == LaunchTypes.Edit)
+            if (!FormAdapter.IsDirty && !HasDirtyChildren && LaunchArgs.LaunchType == LaunchTypes.Edit)
             {
                 await ViewModelNavigation.GoBackAsync();
             }
-            else if(FormAdapter.Validate())
+            else if (FormAdapter.Validate())
             {
                 ViewToModel(FormAdapter, Model);
-                if(Model is IValidateable)
+                if (Model is IValidateable)
                 {
                     var result = Validator.Validate(Model as IValidateable);
-                    if(!result.Successful)
+                    if (!result.Successful)
                     {
 
                         await ShowValidationErrorsAsync(result);
@@ -289,7 +294,7 @@ namespace LagoVista.Client.Core.ViewModels
                 }
 
                 var saveResult = await SaveRecordAsync();
-                if(saveResult.Successful)
+                if (saveResult.Successful)
                 {
                     //See notes on this method we allow the view model to override what happens when the record is saved.
                     HasDirtyChildren = false;
@@ -297,7 +302,7 @@ namespace LagoVista.Client.Core.ViewModels
 
                     await PostSaveAsync();
                 }
-            }            
+            }
         }
 
         /* By default when the view model is saved we simply close the page, the view model can overide this to provide different behavior*/
@@ -312,7 +317,7 @@ namespace LagoVista.Client.Core.ViewModels
             FormAdapter.Refresh();
         }
 
-        protected virtual void OptionSelected(string name, string value){ }
+        protected virtual void OptionSelected(string name, string value) { }
 
 
         protected abstract String GetRequestUri();
@@ -347,7 +352,7 @@ namespace LagoVista.Client.Core.ViewModels
             get { return _hasDirtyChildren; }
             set
             {
-                Set(ref _hasDirtyChildren, value);             
+                Set(ref _hasDirtyChildren, value);
             }
         }
 
@@ -359,7 +364,7 @@ namespace LagoVista.Client.Core.ViewModels
                 (LaunchArgs.ParentViewModel as IFormParentViewModel).NotifyParentChildDirty();
             }
 
-            if(LaunchArgs.ParentViewModel is IListViewModel)
+            if (LaunchArgs.ParentViewModel is IListViewModel)
             {
                 (LaunchArgs.ParentViewModel as IListViewModel).MarkAsShouldRefresh();
             }

@@ -130,6 +130,7 @@ namespace LagoVista.XPlat.Core
                             childListControl.ItemSelected += ChildListControl_ItemSelected;
                             AddChild(childListControl);
                             break;
+                        case FormField.FieldType_LinkButton: AddChild(new LinkButton(this, field)); break;
                         default: AddChild(new TextEditRow(this, field)); break;
                     }
                 }
