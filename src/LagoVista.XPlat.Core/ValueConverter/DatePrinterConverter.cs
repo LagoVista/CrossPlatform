@@ -16,7 +16,7 @@ namespace LagoVista.XPlat.Core.ValueConverter
 
                     try
                     {
-                        return strValue.ToDateTime().ToString();
+                        return strValue.ToDateTime().ToLocalTime().ToString();
                     }
                     catch(Exception)
                     {

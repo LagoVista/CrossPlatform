@@ -76,8 +76,10 @@ namespace LagoVista.Client.Core.Net
             }
         }
 
-        public async Task<RawResponse> PerformCall(Func<Task<HttpResponseMessage>> call, CancellationTokenSource cancellationTokenSource)
+        public async Task<RawResponse> PerformCall(Func<Task<HttpResponseMessage>> call, CancellationTokenSource cancellationTokenSource = null)
         {
+            if (cancellationTokenSource == null) cancellationTokenSource = new CancellationTokenSource(TimeSpan.FromSeconds(60));
+
             await _callSemaphore.WaitAsync();
             var retry = true;
 
@@ -99,16 +101,16 @@ namespace LagoVista.Client.Core.Net
                     var response = await call();
                     var delta = DateTime.Now - start;
 
-                    
+
                     if (response.IsSuccessStatusCode)
                     {
-                        rawResponse = RawResponse.FromSuccess(await response.Content.ReadAsStringAsync());                        
+                        rawResponse = RawResponse.FromSuccess(await response.Content.ReadAsStringAsync());
                     }
                     else if (response.StatusCode == System.Net.HttpStatusCode.Unauthorized)
                     {
                         _logger.AddCustomEvent(LogLevel.Error, "RawRestClient_PerformCall", "401 From Server");
                         retry = ((await RenewRefreshToken()).Successful);
-                        if(!retry)
+                        if (!retry)
                         {
                             rawResponse = RawResponse.FromNotAuthorized();
                         }
@@ -121,7 +123,7 @@ namespace LagoVista.Client.Core.Net
                     }
 
                 }
-                catch(Exceptions.CouldNotRenewTokenException)
+                catch (Exceptions.CouldNotRenewTokenException)
                 {
                     _callSemaphore.Release();
                     throw;
@@ -143,31 +145,37 @@ namespace LagoVista.Client.Core.Net
             return rawResponse;
         }
 
-        public Task<RawResponse> GetAsync(string path, CancellationTokenSource cancellationTokenSource)
+        public Task<RawResponse> GetAsync(string path, CancellationTokenSource cancellationTokenSource = null)
         {
-            return PerformCall(async() =>
+            if (cancellationTokenSource == null) cancellationTokenSource = new CancellationTokenSource(TimeSpan.FromSeconds(60));
+
+            return PerformCall(async () =>
             {
                 var timedEvent = _logger.StartTimedEvent("RawRestClient_Get", path);
-                var result = await  _httpClient.GetAsync(path, cancellationTokenSource.Token);
+                var result = await _httpClient.GetAsync(path, cancellationTokenSource.Token);
                 _logger.EndTimedEvent(timedEvent);
                 return result;
             }, cancellationTokenSource);
         }
 
-        public Task<RawResponse> PostAsync(string path, string payload, CancellationTokenSource cancellationTokenSource)
+        public Task<RawResponse> PostAsync(string path, string payload, CancellationTokenSource cancellationTokenSource = null)
         {
-            return PerformCall(async() =>
+            if (cancellationTokenSource == null) cancellationTokenSource = new CancellationTokenSource(TimeSpan.FromSeconds(60));
+
+            return PerformCall(async () =>
             {
                 var timedEvent = _logger.StartTimedEvent("RawRestClient_Post", path);
                 var content = new StringContent(payload, Encoding.UTF8, "application/json");
-                var result  = await _httpClient.PostAsync(path, content, cancellationTokenSource.Token);
+                var result = await _httpClient.PostAsync(path, content, cancellationTokenSource.Token);
                 _logger.EndTimedEvent(timedEvent);
                 return result;
             }, cancellationTokenSource);
         }
 
-        public Task<RawResponse> PutAsync(string path, string payload, CancellationTokenSource cancellationTokenSource)
+        public Task<RawResponse> PutAsync(string path, string payload, CancellationTokenSource cancellationTokenSource = null)
         {
+            if (cancellationTokenSource == null) cancellationTokenSource = new CancellationTokenSource(TimeSpan.FromSeconds(60));
+
             return PerformCall(async () =>
             {
                 var timedEvent = _logger.StartTimedEvent("RawRestClient_Put", path);
@@ -185,7 +193,7 @@ namespace LagoVista.Client.Core.Net
                 if (cancellationTokenSource == null) cancellationTokenSource = new CancellationTokenSource(TimeSpan.FromSeconds(60));
 
                 var timedEvent = _logger.StartTimedEvent("RawRestClient_Delete", path);
-                var result =  await _httpClient.DeleteAsync(path, cancellationTokenSource.Token);
+                var result = await _httpClient.DeleteAsync(path, cancellationTokenSource.Token);
                 _logger.EndTimedEvent(timedEvent);
                 return result;
             }, cancellationTokenSource);

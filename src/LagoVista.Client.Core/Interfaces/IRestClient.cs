@@ -15,9 +15,9 @@ namespace LagoVista.Client.Core
          */
     public interface IRestClient
     {
-        Task<RawResponse> GetAsync(String path, CancellationTokenSource tokenSource);
-        Task<RawResponse> PostAsync(String path, String payload, CancellationTokenSource tokenSource);
-        Task<RawResponse> PutAsync(String path, String payload, CancellationTokenSource tokenSource);
+        Task<RawResponse> GetAsync(String path, CancellationTokenSource tokenSource = null);
+        Task<RawResponse> PostAsync(String path, String payload, CancellationTokenSource tokenSource = null);
+        Task<RawResponse> PutAsync(String path, String payload, CancellationTokenSource tokenSource = null);
         Task<RawResponse> DeleteAsync(String path, CancellationTokenSource tokenSource = null);
 
         Task<InvokeResult> PostAsync<TModel>(String path, TModel model, CancellationTokenSource cancellationTokenSource = null) where TModel : class;
