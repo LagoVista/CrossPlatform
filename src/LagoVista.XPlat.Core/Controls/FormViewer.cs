@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using Xamarin.Forms;
 using LagoVista.XPlat.Core.Controls.FormControls;
 using LagoVista.Core.Models.UIMetaData;
+using System.Diagnostics;
 
 namespace LagoVista.XPlat.Core
 {
@@ -108,7 +109,11 @@ namespace LagoVista.XPlat.Core
                     {
                         case FormField.FieldType_MultilineText: AddChild(new TextAreaRow(this, field)); break;
                         case "Bool": AddChild(new CheckBoxRow(this, field)); break;
-                        case FormField.FieldType_CheckBox: AddChild(new CheckBoxRow(this, field)); break;
+                        case FormField.FieldType_CheckBox:
+                            var cbRow = new CheckBoxRow(this, field);
+                            cbRow.OptionSelected += Picker_OptionSelected;
+                            AddChild(cbRow);
+                            break;
                         case FormField.FeildType_EntityHeaderPicker:
                             var ehPicker = new EntityHeaderPicker(this, field);
                             ehPicker.PickerTapped += EhPicker_PickerTapped;

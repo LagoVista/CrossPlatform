@@ -45,6 +45,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controls\CustomEntryRenderer.cs" />
+    <Compile Include="Controls\IconButtonRenderer.cs" />
     <Compile Include="IconFonts\EntypoPlusModule.cs" />
     <Compile Include="IconFonts\FontAwesomeModule.cs" />
     <Compile Include="IconFonts\IconFontSupport.cs" />

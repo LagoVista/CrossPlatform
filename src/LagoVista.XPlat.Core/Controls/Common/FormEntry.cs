@@ -9,13 +9,16 @@ using Xamarin.Forms;
 
 namespace LagoVista.XPlat.Core
 {
+    /// <summary>
+    /// Entry has a customer renderer that will leave out the underbar, this is useful with borders around text boxes
+    /// </summary>
     public class Entry : Xamarin.Forms.Entry
     {
         public Entry()
         {
             this.Focused += Entry_Focused;
+
             this.BackgroundColor = AppStyle.EditControlBackground.ToXamFormsColor();
-            this.TextColor = AppStyle.EditControlText.ToXamFormsColor();
 
             if (Device.RuntimePlatform == Device.Android)
             {
@@ -30,6 +33,9 @@ namespace LagoVista.XPlat.Core
         private IAppStyle AppStyle { get { return SLWIOC.Get<IAppStyle>(); } }
     }
 
+    /// <summary>
+    /// Form Entry will draw an underline
+    /// </summary>
     public class FormEntry : Xamarin.Forms.Entry
     {
         public FormEntry()

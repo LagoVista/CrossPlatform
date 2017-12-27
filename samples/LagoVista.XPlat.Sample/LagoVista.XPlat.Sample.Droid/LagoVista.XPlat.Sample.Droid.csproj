@@ -63,32 +63,32 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidAsset Include="Assets\Resources\Font\iconizeentypoplus.ttf" />
-    <AndroidAsset Include="Assets\Resources\Font\iconizefontawesome.ttf" />
-    <AndroidAsset Include="Assets\Resources\Font\iconizeionicons.ttf" />
-    <AndroidAsset Include="Assets\Resources\Font\iconizematerial.ttf" />
-    <AndroidAsset Include="Assets\Resources\Font\iconizemeteocons.ttf" />
-    <AndroidAsset Include="Assets\Resources\Font\iconizesimplelineicons.ttf" />
-    <AndroidAsset Include="Assets\Resources\Font\iconizetypicons.ttf" />
-    <AndroidAsset Include="Assets\Resources\Font\iconizeweathericons.ttf" />
-    <AndroidAsset Include="Assets\Resources\Font\RobotoBlack.ttf" />
-    <AndroidAsset Include="Assets\Resources\Font\RobotoBlackItalic.ttf" />
-    <AndroidAsset Include="Assets\Resources\Font\RobotoBold.ttf" />
-    <AndroidAsset Include="Assets\Resources\Font\RobotoBoldItalic.ttf" />
-    <AndroidAsset Include="Assets\Resources\Font\RobotoCondensedBold.ttf" />
-    <AndroidAsset Include="Assets\Resources\Font\RobotoCondensedBoldItalic.ttf" />
-    <AndroidAsset Include="Assets\Resources\Font\RobotoCondensedItalic.ttf" />
-    <AndroidAsset Include="Assets\Resources\Font\RobotoCondensedLight.ttf" />
-    <AndroidAsset Include="Assets\Resources\Font\RobotoCondensedLightItalic.ttf" />
-    <AndroidAsset Include="Assets\Resources\Font\RobotoCondensedRegular.ttf" />
-    <AndroidAsset Include="Assets\Resources\Font\RobotoItalic.ttf" />
-    <AndroidAsset Include="Assets\Resources\Font\RobotoLight.ttf" />
-    <AndroidAsset Include="Assets\Resources\Font\RobotoLightItalic.ttf" />
-    <AndroidAsset Include="Assets\Resources\Font\RobotoMedium.ttf" />
-    <AndroidAsset Include="Assets\Resources\Font\RobotoMediumItalic.ttf" />
-    <AndroidAsset Include="Assets\Resources\Font\RobotoRegular.ttf" />
-    <AndroidAsset Include="Assets\Resources\Font\RobotoThin.ttf" />
-    <AndroidAsset Include="Assets\Resources\Font\RobotoThinItalic.ttf" />
+    <AndroidAsset Include="Assets\font\iconizeentypoplus.ttf" />
+    <AndroidAsset Include="Assets\font\iconizefontawesome.ttf" />
+    <AndroidAsset Include="Assets\font\iconizeionicons.ttf" />
+    <AndroidAsset Include="Assets\font\iconizematerial.ttf" />
+    <AndroidAsset Include="Assets\font\iconizemeteocons.ttf" />
+    <AndroidAsset Include="Assets\font\iconizesimplelineicons.ttf" />
+    <AndroidAsset Include="Assets\font\iconizetypicons.ttf" />
+    <AndroidAsset Include="Assets\font\iconizeweathericons.ttf" />
+    <AndroidAsset Include="Assets\font\RobotoBlack.ttf" />
+    <AndroidAsset Include="Assets\font\RobotoBlackItalic.ttf" />
+    <AndroidAsset Include="Assets\font\RobotoBold.ttf" />
+    <AndroidAsset Include="Assets\font\RobotoBoldItalic.ttf" />
+    <AndroidAsset Include="Assets\font\RobotoCondensedBold.ttf" />
+    <AndroidAsset Include="Assets\font\RobotoCondensedBoldItalic.ttf" />
+    <AndroidAsset Include="Assets\font\RobotoCondensedItalic.ttf" />
+    <AndroidAsset Include="Assets\font\RobotoCondensedLight.ttf" />
+    <AndroidAsset Include="Assets\font\RobotoCondensedLightItalic.ttf" />
+    <AndroidAsset Include="Assets\font\RobotoCondensedRegular.ttf" />
+    <AndroidAsset Include="Assets\font\RobotoItalic.ttf" />
+    <AndroidAsset Include="Assets\font\RobotoLight.ttf" />
+    <AndroidAsset Include="Assets\font\RobotoLightItalic.ttf" />
+    <AndroidAsset Include="Assets\font\RobotoMedium.ttf" />
+    <AndroidAsset Include="Assets\font\RobotoMediumItalic.ttf" />
+    <AndroidAsset Include="Assets\font\RobotoRegular.ttf" />
+    <AndroidAsset Include="Assets\font\RobotoThin.ttf" />
+    <AndroidAsset Include="Assets\font\RobotoThinItalic.ttf" />
     <None Include="Resources\AboutResources.txt" />
     <None Include="Properties\AndroidManifest.xml" />
     <None Include="Assets\AboutAssets.txt" />
@@ -147,19 +147,19 @@
       <Version>0.4.7</Version>
     </PackageReference>
     <PackageReference Include="LagoVista.Core.Authentication">
-      <Version>1.2.219-alpha1157</Version>
+      <Version>1.2.222-alpha0754</Version>
     </PackageReference>
     <PackageReference Include="LagoVista.Core.Networking">
-      <Version>1.2.219-alpha1157</Version>
+      <Version>1.2.222-alpha0754</Version>
     </PackageReference>
     <PackageReference Include="LagoVista.IoT.Logging">
-      <Version>1.2.219-alpha1157</Version>
+      <Version>1.2.222-alpha0754</Version>
     </PackageReference>
     <PackageReference Include="LagoVista.MQTT.Core">
       <Version>1.2.215-alpha1334</Version>
     </PackageReference>
     <PackageReference Include="LagoVista.UserAdmin.Models">
-      <Version>1.2.219-alpha1157</Version>
+      <Version>1.2.222-alpha0754</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.Azure.Devices.Client">
       <Version>1.6.0-preview-001</Version>

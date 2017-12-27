@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<pge:LagoVistaContentPage
+    xmlns:pge="clr-namespace:LagoVista.XPlat.Core;assembly=LagoVista.XPlat.Core"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:LagoVista.XPlat.Sample"
+    x:Class="LagoVista.XPlat.Sample.ControlSampleView">
+    <pge:LagoVistaContentPage.MainContent >
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="80" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="80" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <pge:IconButton IconKey="fa-trash" Grid.Row="1" Grid.Column="1" FontSize="Large" TextColor="Red" Command="{Binding IconButtonTapCommand}" CommandParameter="{Binding MyValue}" />
+        </Grid>
+    </pge:LagoVistaContentPage.MainContent >
+</pge:LagoVistaContentPage>

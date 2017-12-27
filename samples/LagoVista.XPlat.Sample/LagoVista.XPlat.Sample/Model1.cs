@@ -44,5 +44,10 @@ namespace LagoVista.XPlat.Sample
 
         [FormField(LabelResource: Resources.SampleResources.Names.Model1_ChildList, FieldType: FieldTypes.ChildList, ResourceType: typeof(Resources.SampleResources))]
         public List<Model2> Model2Litems { get; set; }
+
+
+        [FormField(LabelResource: Resources.SampleResources.Names.Model1_LinkButton_Label, WaterMark:Resources.SampleResources.Names.Model1_LinkButton_Link, FieldType: FieldTypes.LinkButton, ResourceType: typeof(Resources.SampleResources))]
+        public string LinkButton { get; set; }
+
     }
 }

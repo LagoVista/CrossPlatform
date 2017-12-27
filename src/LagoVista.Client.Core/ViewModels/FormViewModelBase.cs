@@ -108,8 +108,13 @@ namespace LagoVista.Client.Core.ViewModels
                     case FormField.FieldType_MultilineText:
                     case FormField.FieldType_Text:
                     case FormField.FieldType_Key:
-                    case FormField.FieldType_Password:
                         prop.SetValue(model, formItem.Value);
+                        break;
+                    case FormField.FieldType_Password:
+                        if (!String.IsNullOrEmpty(formItem.Value))
+                        {
+                            prop.SetValue(model, formItem.Value);
+                        }
                         break;
                 }
             }

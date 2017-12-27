@@ -6,6 +6,7 @@ namespace LagoVista.Core.UWP.Services
     public class SecureStorage : ISecureStorage
     {
         public bool IsUnlocked =>  true;
+        public bool IsSetup => true;
 
         public bool Contains(string key)
         {

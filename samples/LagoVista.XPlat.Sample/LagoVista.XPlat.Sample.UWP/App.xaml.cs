@@ -1,6 +1,7 @@
 ﻿using LagoVista.Core.IOC;
 using LagoVista.Core.PlatformSupport;
 using LagoVista.Core.UWP.Services;
+using LagoVista.XPlat.Core.Services;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -59,10 +60,11 @@ namespace LagoVista.XPlat.Sample.UWP
                 // Create a Frame to act as the navigation context and navigate to the first page
                 rootFrame = new Frame();
 
-                rootFrame.NavigationFailed += OnNavigationFailed;
+                rootFrame.NavigationFailed += OnNavigationFailed;                
 
                 Xamarin.Forms.Forms.Init(e);
-                SLWIOC.RegisterSingleton<IDeviceInfo>(new DeviceInfo());
+
+                DeviceInfo.Register();
 
                 LagoVista.Core.UWP.Startup.Init(this, rootFrame.Dispatcher, MOBILE_CENTER_KEY);
 

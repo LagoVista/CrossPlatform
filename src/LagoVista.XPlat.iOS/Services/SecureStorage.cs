@@ -13,6 +13,8 @@ namespace LagoVista.XPlat.iOS.Services
     {
         public bool IsUnlocked => true;
 
+        public bool IsSetup => true;
+
         /// <summary>
         /// Stores data.
         /// </summary>

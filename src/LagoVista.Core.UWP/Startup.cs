@@ -27,7 +27,7 @@ namespace LagoVista.Core.UWP
 
             SLWIOC.Register<ISSDPClient>(typeof(SSDPClient));
             SLWIOC.Register<IWebServer>(typeof(WebServer));
-            SLWIOC.Register<ISecureStorage>(typeof(SecureStorage));
+            SLWIOC.Register<ISecureStorage>(new SecureStorage());
             SLWIOC.Register<ISSDPServer>(new SSDPServer());
 
             SLWIOC.Register<ITimerFactory>(new TimerFactory());
