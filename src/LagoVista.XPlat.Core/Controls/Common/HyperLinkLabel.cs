@@ -19,7 +19,9 @@
 // ***********************************************************************
 // 
 
+using LagoVista.Core.Models.Drawing;
 using System;
+using System.Diagnostics;
 using System.Windows.Input;
 using Xamarin.Forms;
 
@@ -55,7 +57,7 @@ namespace LagoVista.XPlat.Core
         /// </summary>
         static HyperLinkLabel()
         {
-            
+
         }
 
         /// <summary>
@@ -63,13 +65,17 @@ namespace LagoVista.XPlat.Core
         /// </summary>
         public HyperLinkLabel()
         {
-            NavigateCommand = new Command(() =>{ });
+            NavigateCommand = new Command(() => { });
 
             _tapGestureRecognizer = new TapGestureRecognizer() { Command = NavigateCommand };
 
             GestureRecognizers.Add(_tapGestureRecognizer);
-            TextColor = Color.Blue;
-            Effects.Add(Effect.Resolve($"{UnderlineEffect.EffectNamespace}.{nameof(UnderlineEffect)}"));
+            TextColor = Xamarin.Forms.Color.FromRgb(NamedColors.NuvIoTDark.R, NamedColors.NuvIoTDark.G, NamedColors.NuvIoTDark.B);
+
+            var effectName = $"{UnderlineEffect.EffectNamespace}.{nameof(UnderlineEffect)}";
+
+            var effect = Effect.Resolve(effectName);
+            Effects.Add(effect);
         }
 
         /// <summary>

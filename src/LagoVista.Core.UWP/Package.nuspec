@@ -2,7 +2,7 @@
 <package>
   <metadata>
     <id>LagoVista.Core.UWP</id>
-    <version>1.2.224-alpha1803</version>
+    <version>1.2.225-alpha1811</version>
     <authors>Software Logistics, LLC</authors>
     <owners>Software Logistics, LLC</owners>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
@@ -24,6 +24,6 @@
     <file src="bin\x86\Release\LagoVista.Core.UWP.dll" target="runtimes\win10-x86\lib\uap10.0" />
     <file src="bin\x86\Release\LagoVista.Core.UWP.pri" target="runtimes\win10-x86\lib\uap10.0" />
     <file src="bin\Release\LagoVista.Core.UWP.dll" target="ref\uap10.0" />
-    <file src="bin\Release\Assets\Fonts\*.*" target="Assets\Fonts" />
+    <file src="bin\x86\Release\Assets\Fonts\*.*" target="Assets\Fonts" />
   </files>
 </package>

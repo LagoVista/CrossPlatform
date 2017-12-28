@@ -2,7 +2,7 @@
 <package>
   <metadata>
     <id>LagoVista.UWP.UI</id>
-    <version>1.2.224-alpha1803</version>
+    <version>1.2.225-alpha1811</version>
     <authors>Software Logistics, LLC</authors>
     <owners>Software Logistics, LLC</owners>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
@@ -28,7 +28,7 @@
     <file src="bin\x86\Release\LagoVista.UWP.UI.pri" target="runtimes\win10-x86\lib\uap10.0" />
     <file src="bin\x86\Release\LagoVista.UWP.UI.xr.xml" target="runtimes\win10-x86\lib\uap10.0\LagoVista.UWP.UI" />
     <file src="bin\Release\LagoVista.UWP.UI.dll" target="ref\uap10.0" />
-    <file src="bin\Release\LagoVista.UWP.UI.pri" target="ref\uap10.0" />
-    <file src="bin\Release\LagoVista.UWP.UI.xr.xml" target="ref\uap10.0\LagoVista.UWP.UI" />
+    <file src="bin\x86\Release\LagoVista.UWP.UI.pri" target="ref\uap10.0" />
+    <file src="bin\x86\Release\LagoVista.UWP.UI.xr.xml" target="ref\uap10.0\LagoVista.UWP.UI" />
   </files>
 </package>

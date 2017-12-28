@@ -47,8 +47,6 @@ namespace LagoVista.XPlat.Core.Services
                 Debug.WriteLine("Could not determine unique device id for Xamarin Forms app.");
             }
 
-
-
             SLWIOC.Register<IDeviceInfo>(deviceInfo);
         }
     }

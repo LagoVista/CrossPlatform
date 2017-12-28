@@ -1,7 +1,6 @@
 ﻿using LagoVista.Core.IOC;
 using LagoVista.Core.PlatformSupport;
 using LagoVista.Core.UWP.Services;
-using LagoVista.XPlat.Core.Services;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -63,8 +62,6 @@ namespace LagoVista.XPlat.Sample.UWP
                 rootFrame.NavigationFailed += OnNavigationFailed;                
 
                 Xamarin.Forms.Forms.Init(e);
-
-                DeviceInfo.Register();
 
                 LagoVista.Core.UWP.Startup.Init(this, rootFrame.Dispatcher, MOBILE_CENTER_KEY);
 

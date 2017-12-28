@@ -638,6 +638,15 @@ namespace LagoVista.Client.Core.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to About.
+        /// </summary>
+        public static string MainMenu_About {
+            get {
+                return ResourceManager.GetString("MainMenu_About", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Change Password.
         /// </summary>
         public static string MainMenu_ChangePassword {

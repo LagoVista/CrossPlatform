@@ -116,19 +116,19 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="LagoVista.Core">
-      <Version>1.2.222-alpha0754</Version>
+      <Version>1.2.224-alpha1826</Version>
     </PackageReference>
     <PackageReference Include="LagoVista.Core.Authentication">
-      <Version>1.2.222-alpha0754</Version>
+      <Version>1.2.224-alpha1826</Version>
     </PackageReference>
     <PackageReference Include="LagoVista.Core.Networking">
-      <Version>1.2.222-alpha0754</Version>
+      <Version>1.2.224-alpha1826</Version>
     </PackageReference>
     <PackageReference Include="LagoVista.IoT.Logging">
-      <Version>1.2.222-alpha0754</Version>
+      <Version>1.2.224-alpha1826</Version>
     </PackageReference>
     <PackageReference Include="LagoVista.UserAdmin.Models">
-      <Version>1.2.222-alpha0754</Version>
+      <Version>1.2.224-alpha1826</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform">
       <Version>6.0.5</Version>
