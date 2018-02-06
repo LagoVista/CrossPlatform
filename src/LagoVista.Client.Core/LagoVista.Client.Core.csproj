@@ -20,12 +20,17 @@
     <Content Include="Icons\ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="LagoVista.Core" Version="1.2.224-alpha1826" />
-    <PackageReference Include="LagoVista.Core.Authentication" Version="1.2.224-alpha1826" />
-    <PackageReference Include="LagoVista.Core.Networking" Version="1.2.224-alpha1826" />
-    <PackageReference Include="LagoVista.IoT.Logging" Version="1.2.224-alpha1826" />
-    <PackageReference Include="LagoVista.UserAdmin.Models" Version="1.2.224-alpha1826" />
-    <PackageReference Include="Newtonsoft.Json" Version="11.0.1-beta1" />
+    <PackageReference Include="LagoVista.Core" Version="1.2.214-alpha1112" />
+    <PackageReference Include="LagoVista.Core.Authentication" Version="1.2.214-alpha1112" />
+    <PackageReference Include="LagoVista.Core.Networking" Version="1.2.214-alpha1112" />
+    <PackageReference Include="LagoVista.IoT.Logging" Version="1.2.214-alpha1112" />
+    <PackageReference Include="LagoVista.UserAdmin.Models" Version="1.2.214-alpha1112" />
+    <PackageReference Include="Microsoft.AppCenter" Version="1.3.0" />
+    <PackageReference Include="Microsoft.AppCenter.Analytics" Version="1.3.0" />
+    <PackageReference Include="Microsoft.AppCenter.Crashes" Version="1.3.0" />
+    <PackageReference Include="Microsoft.AppCenter.Distribute" Version="1.3.0" />
+    <PackageReference Include="Microsoft.AppCenter.Push" Version="1.3.0" />
+    <PackageReference Include="Newtonsoft.Json" Version="11.0.1-beta3" />
   </ItemGroup>
   <ItemGroup>
     <Compile Update="Resources\ClientResources.Designer.cs">

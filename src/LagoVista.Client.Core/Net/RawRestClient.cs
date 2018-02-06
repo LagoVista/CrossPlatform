@@ -82,7 +82,7 @@ namespace LagoVista.Client.Core.Net
 
             await _callSemaphore.WaitAsync();
             var retry = true;
-
+            var attempts = 0;
             var rawResponse = RawResponse.FromNotCompleted();
 
             while (retry)
@@ -114,6 +114,11 @@ namespace LagoVista.Client.Core.Net
                         {
                             rawResponse = RawResponse.FromNotAuthorized();
                         }
+                    }
+                    else if(response.StatusCode == System.Net.HttpStatusCode.BadGateway)
+                    {
+                        await Task.Delay(attempts * 100);
+                        retry = attempts++ < 5;                        
                     }
                     else
                     {

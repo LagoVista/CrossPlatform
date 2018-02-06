@@ -35,7 +35,7 @@ namespace LagoVista.XPlat.Core.Services
                 deviceInfo.DeviceType = "Unknown";
             }
 
-            var getidResult = Microsoft.Azure.Mobile.MobileCenter.GetInstallIdAsync().Result;
+            var getidResult = Microsoft.AppCenter.AppCenter.GetInstallIdAsync().Result;
             if(getidResult.HasValue)
             {
                 deviceInfo.DeviceUniqueId = getidResult.Value.ToString();

@@ -1,25 +1,47 @@
-﻿using System;
+﻿using LagoVista.Core.PlatformSupport;
+using Microsoft.AppCenter.Analytics;
+using Microsoft.AppCenter.Push;
+using Microsoft.AppCenter;
+using Microsoft.AppCenter.Crashes;
+using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
-using Foundation;
-using UIKit;
-using LagoVista.Core.PlatformSupport;
-using Microsoft.Azure.Mobile;
-using Microsoft.Azure.Mobile.Analytics;
-using Microsoft.Azure.Mobile.Crashes;
-using Microsoft.Azure.Mobile.Push;
-
-namespace LagoVista.XPlat.iOS.Loggers
+namespace LagoVista.Core.UWP.Loggers
 {
-    public class MobileCenterLogger : ILogger
+    public class AppCenterLogger : ILogger
     {
-        private String _userId;
+        public enum AppCenterModes
+        {
+            Crashes,
+            Analytics,
+            Push,
+        }
+
+        KeyValuePair<String, String>[] _args;
 
         public bool DebugMode { get; set; }
 
-        KeyValuePair<String, String>[] _args;
+        public AppCenterLogger(string key, params AppCenterModes[] args)
+        {
+            var types = new List<Type>();
+            foreach(var arg in args)
+            {
+                switch(arg)
+                {
+                    case AppCenterModes.Analytics:
+                        types.Add(typeof(Analytics));
+                        break;
+                    case AppCenterModes.Crashes:
+                        types.Add(typeof(Crashes));
+                        break;
+                    case AppCenterModes.Push:
+                        types.Add(typeof(Push));
+                        break;
+                }
+            }
+
+            AppCenter.Start($"uwp={key}", types.ToArray());
+        }
 
 
         public TimedEvent StartTimedEvent(string area, string description)
@@ -34,17 +56,10 @@ namespace LagoVista.XPlat.iOS.Loggers
             AddCustomEvent(LagoVista.Core.PlatformSupport.LogLevel.Message, evt.Area, evt.Description, new KeyValuePair<string, string>("duration", Math.Round(duration.TotalSeconds, 4).ToString()));
         }
 
-
-        public MobileCenterLogger(string key)
-        {
-            MobileCenter.Start($"ios={key}", typeof(Analytics), typeof(Crashes), typeof(Push));
-        }
-
         public void AddCustomEvent(LagoVista.Core.PlatformSupport.LogLevel level, string area, string message, params KeyValuePair<string, string>[] args)
         {
             var dictionary = new Dictionary<string, string>();
-            dictionary.Add("Area", "area");
-            dictionary.Add("UseId", String.IsNullOrEmpty(_userId) ? "UNKNOWN" : _userId);
+            dictionary.Add("Area", area);
             dictionary.Add("Level", level.ToString());
 
             if (_args != null)
@@ -61,16 +76,14 @@ namespace LagoVista.XPlat.iOS.Loggers
             }
 
             Analytics.TrackEvent(message, dictionary);
-
         }
 
         public void AddException(string area, Exception ex, params KeyValuePair<string, string>[] args)
         {
             var dictionary = new Dictionary<string, string>();
-            dictionary.Add("Area", "area");
-            dictionary.Add("UseId", String.IsNullOrEmpty(_userId) ? "UNKNOWN" : _userId);
+            dictionary.Add("Area", area);
             dictionary.Add("Type", "exception");
-            dictionary.Add("StackTrace", ex.StackTrace);
+            dictionary.Add("StackTrace", ex.StackTrace.Substring(0));
 
             if (_args != null)
             {
@@ -85,6 +98,7 @@ namespace LagoVista.XPlat.iOS.Loggers
                 dictionary.Add(arg.Key, arg.Value);
             }
 
+
             Analytics.TrackEvent(ex.Message, dictionary);
         }
 
@@ -93,15 +107,9 @@ namespace LagoVista.XPlat.iOS.Loggers
             _args = args;
         }
 
-        public void SetUserId(string userId)
-        {
-            _userId = userId;
-        }
-
         public void TrackEvent(string message, Dictionary<string, string> args)
         {
             var dictionary = new Dictionary<string, string>();
-            dictionary.Add("UseId", String.IsNullOrEmpty(_userId) ? "UNKNOWN" : _userId);
 
             foreach (var arg in args)
             {

@@ -1,24 +1,23 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-using Android.App;
-using Android.Content;
-using Android.OS;
-using Android.Runtime;
-using Android.Views;
-using Android.Widget;
+using Microsoft.AppCenter.Analytics;
+using Microsoft.AppCenter.Push;
+using Microsoft.AppCenter;
+using Microsoft.AppCenter.Crashes;
 using LagoVista.Core.PlatformSupport;
-using Microsoft.Azure.Mobile;
-using Microsoft.Azure.Mobile.Analytics;
-using Microsoft.Azure.Mobile.Crashes;
-using Microsoft.Azure.Mobile.Push;
 
 namespace LagoVista.XPlat.Droid.Loggers
 {
-    public class MobileCenterLogger : ILogger
+    public class AppCenterLogger : ILogger
     {
+        public enum AppCenterModes
+        {
+            Crashes,
+            Analytics,
+            Push,
+        }
+
+
         KeyValuePair<String, String>[] _args;
 
         public bool DebugMode { get; set; }
@@ -36,9 +35,26 @@ namespace LagoVista.XPlat.Droid.Loggers
         }
 
 
-        public MobileCenterLogger(string key)
+        public AppCenterLogger(string key, params AppCenterModes[] args)
         {
-            MobileCenter.Start($"android={key}", typeof(Analytics), typeof(Crashes), typeof(Push));
+            var types = new List<Type>();
+            foreach (var arg in args)
+            {
+                switch (arg)
+                {
+                    case AppCenterModes.Analytics:
+                        types.Add(typeof(Analytics));
+                        break;
+                    case AppCenterModes.Crashes:
+                        types.Add(typeof(Crashes));
+                        break;
+                    case AppCenterModes.Push:
+                        types.Add(typeof(Push));
+                        break;
+                }
+            }
+
+            AppCenter.Start($"android={key}", types.ToArray());
         }
 
         public void AddCustomEvent(LagoVista.Core.PlatformSupport.LogLevel level, string area, string message, params KeyValuePair<string, string>[] args)
