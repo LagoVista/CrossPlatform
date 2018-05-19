@@ -8,6 +8,7 @@
     <None Remove="Package.nuspec" />
   </ItemGroup>
   <ItemGroup>
+<<<<<<< HEAD
     <PackageReference Include="LagoVista.Core.Authentication" Version="2.1.346-beta1435" />
     <PackageReference Include="LagoVista.Core.Networking" Version="2.1.346-beta1435" />
     <PackageReference Include="LagoVista.IoT.Logging" Version="2.1.346-beta1435" />
@@ -15,6 +16,20 @@
     <PackageReference Include="Newtonsoft.Json" Version="11.0.2" />
     <PackageReference Include="Xamarin.Forms" Version="2.5.1.527436" />
     <PackageReference Include="LagoVista.Core" Version="1.2.181-alpha1716" />
+=======
+    <PackageReference Include="LagoVista.Core.Authentication" Version="1.2.214-alpha1112" />
+    <PackageReference Include="LagoVista.Core.Networking" Version="1.2.214-alpha1112" />
+    <PackageReference Include="LagoVista.IoT.Logging" Version="1.2.214-alpha1112" />
+    <PackageReference Include="LagoVista.UserAdmin.Models" Version="1.2.214-alpha1112" />
+    <PackageReference Include="Microsoft.AppCenter" Version="1.5.0" />
+    <PackageReference Include="Microsoft.AppCenter.Analytics" Version="1.5.0" />
+    <PackageReference Include="Microsoft.AppCenter.Crashes" Version="1.5.0" />
+    <PackageReference Include="Microsoft.AppCenter.Distribute" Version="1.5.0" />
+    <PackageReference Include="Microsoft.AppCenter.Push" Version="1.5.0" />
+    <PackageReference Include="Newtonsoft.Json" Version="11.0.1" />
+    <PackageReference Include="Xamarin.Forms" Version="2.5.0.280555" />
+    <PackageReference Include="LagoVista.Core" Version="1.2.214-alpha1112" />
+>>>>>>> e3cd94e7cb8f086f2f36676ab9f24e768b7c34c9
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\LagoVista.Client.Core\LagoVista.Client.Core.csproj" />

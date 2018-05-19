@@ -166,19 +166,26 @@ namespace LagoVista.XPlat.Droid.Services
             UnlockSecureStorage(newPassword);
         }
 
+        public bool IsSetup
+        {
+            get
+            {
+                var ctx = Android.App.Application.Context;
+                return this.FileExists(ctx, FileName);
+            }
+        }
+
         public bool UnlockSecureStorage(string password)
         {
             _password = password.ToCharArray();
             _passwordProtection = new KeyStore.PasswordProtection(_password);
-
-            var ctx = Android.App.Application.Context;
-
             _keyStore = KeyStore.GetInstance(KeyStore.DefaultType);
 
             try
             {
                 lock (_fileLocker)
                 {
+                    var ctx = Android.App.Application.Context;
                     if (!this.FileExists(ctx, FileName))
                     {
                         LoadEmptyKeyStore(password.ToCharArray());

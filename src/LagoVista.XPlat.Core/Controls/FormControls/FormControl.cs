@@ -4,6 +4,7 @@ using LagoVista.Core.IOC;
 using LagoVista.Core.Models.UIMetaData;
 using System;
 using System.ComponentModel;
+using System.Diagnostics;
 using Xamarin.Forms;
 
 namespace LagoVista.XPlat.Core.Controls.FormControls
@@ -30,6 +31,8 @@ namespace LagoVista.XPlat.Core.Controls.FormControls
         {
             IsVisible = _field.IsVisible;
             IsEnabled = _field.IsUserEditable;
+
+            Debug.WriteLine($"{Field.Name} - {Field.IsVisible} - {IsVisible}");
         }
 
         public IAppStyle AppStyle { get { return SLWIOC.Get<IAppStyle>(); } }

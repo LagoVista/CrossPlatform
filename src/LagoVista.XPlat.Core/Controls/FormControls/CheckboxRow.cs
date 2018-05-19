@@ -1,4 +1,5 @@
 ﻿using LagoVista.Core.Models.UIMetaData;
+using System;
 using Xamarin.Forms;
 
 namespace LagoVista.XPlat.Core.Controls.FormControls
@@ -7,6 +8,8 @@ namespace LagoVista.XPlat.Core.Controls.FormControls
     {
         FormFieldHeader _header;
         Switch _switch;
+
+        public event EventHandler<OptionSelectedEventArgs> OptionSelected;
 
         public CheckBoxRow(FormViewer formViewer, FormField field) : base(formViewer, field)
         {
@@ -30,6 +33,8 @@ namespace LagoVista.XPlat.Core.Controls.FormControls
         {
             Field.Value = e.Value ? "true" : "false";
             IsDirty = OriginalValue != Field.Value;
+
+            OptionSelected?.Invoke(this, new OptionSelectedEventArgs() { Key = Field.Name.ToPropertyName(), Value = Field.Value });
         }
 
         public override bool Validate()

@@ -150,6 +150,12 @@
   <data name="Model1_LargeText" xml:space="preserve">
     <value>Large Text</value>
   </data>
+  <data name="Model1_LinkButton_Label" xml:space="preserve">
+    <value>Link Button</value>
+  </data>
+  <data name="Model1_LinkButton_Link" xml:space="preserve">
+    <value>-click me-</value>
+  </data>
   <data name="Model1_Password" xml:space="preserve">
     <value>Password</value>
   </data>

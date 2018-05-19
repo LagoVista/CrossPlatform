@@ -13,6 +13,8 @@ namespace LagoVista.XPlat.iOS.Services
     {
         public bool IsUnlocked => true;
 
+        public bool IsSetup => true;
+
         /// <summary>
         /// Stores data.
         /// </summary>
@@ -103,8 +105,15 @@ namespace LagoVista.XPlat.iOS.Services
 
         public void Store(string key, string value)
         {
-            var buffer = System.Text.UTF8Encoding.UTF8.GetBytes(value);
-            Store(key, buffer);
+            if (!String.IsNullOrEmpty(value))
+            {
+                var buffer = System.Text.UTF8Encoding.UTF8.GetBytes(value);
+                Store(key, buffer);
+            }
+            else
+            {
+                Delete(key);
+            }
         }
         
 

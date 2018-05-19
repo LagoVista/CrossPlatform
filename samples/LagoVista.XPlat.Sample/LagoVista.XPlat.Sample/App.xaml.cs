@@ -42,6 +42,8 @@ namespace LagoVista.XPlat.Sample
                 MainViewModel = typeof(MainViewModel)
             };
 
+            DeviceInfo.Register();
+
             SLWIOC.RegisterSingleton<IAppConfig>(new AppConfig());
             LagoVista.Client.Core.Startup.Init(serverInfo);
             SLWIOC.RegisterSingleton<IClientAppInfo>(clientAppInfo);
@@ -50,7 +52,10 @@ namespace LagoVista.XPlat.Sample
             navigation.Add<MainViewModel, MainPage>();
             navigation.Add<ServicesViewModel, ServicesView>();
             navigation.Add<SecureStorageViewModel, SecureStorageView>();
+            navigation.Add<ControlSampleViewModel, ControlSampleView>();
             navigation.Add<ViewModel2, Model2View>();
+
+            
 
             SLWIOC.RegisterSingleton<IViewModelNavigation>(navigation);
 

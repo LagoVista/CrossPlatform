@@ -3,11 +3,13 @@ using LagoVista.Core;
 using System;
 using System.Threading.Tasks;
 using System.IO;
+using System.Linq;
 using Windows.Storage;
 using Windows.Foundation.Collections;
 using Newtonsoft.Json;
 using System.Diagnostics;
 using System.Collections.Generic;
+using System.Text;
 
 namespace LagoVista.Core.UWP.Services
 {
@@ -239,22 +241,32 @@ namespace LagoVista.Core.UWP.Services
 
         public Task<string> ReadAllTextAsync(string fileName)
         {
-            throw new NotImplementedException();
+            return GetAsync<string>(fileName);
         }
 
-        public Task<string> WriteAllTextAsync(string fileName, string text)
+        public async Task<string> WriteAllTextAsync(string fileName, string text)
         {
-            throw new NotImplementedException();
+            await StoreAsync(text, fileName);
+            return text;
         }
 
-        public Task<List<string>> ReadAllLinesAsync(string fileName)
+        public async Task<List<string>> ReadAllLinesAsync(string fileName)
         {
-            throw new NotImplementedException();
+            var output = await ReadAllTextAsync(fileName);
+            return output.Split('\r').ToList();
         }
 
-        public Task<string> WriteAllLinesAsync(string fileName, List<string> text)
+        public async Task<string> WriteAllLinesAsync(string fileName, List<string> text)
         {
-            throw new NotImplementedException();
+            var bldr = new StringBuilder();
+            foreach(var line in text)
+            {
+                bldr.AppendLine(line);                    
+            }
+
+            await WriteAllTextAsync(fileName, bldr.ToString());
+
+            return bldr.ToString();
         }
 
         public Task<byte[]> ReadAllBytesAsync(string fileName)

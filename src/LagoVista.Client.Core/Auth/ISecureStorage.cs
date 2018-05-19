@@ -29,7 +29,16 @@ namespace LagoVista.Client.Core.Auth
         /// <param name="newPassword"></param>
         void Reset(string newPassword);
 
+        /// <summary>
+        /// Returns true if secure storage has been setup w/ a password and false if not.
+        /// </summary>
+        bool IsSetup { get; }
 
+        /// <summary>
+        /// Return a key from secure storage.
+        /// </summary>
+        /// <param name="key"></param>
+        /// <returns></returns>
         string Retrieve(string key);
 
         /// <summary>

@@ -33,6 +33,7 @@ namespace LagoVista.XPlat.Sample
             public bool EmitTestingCode => true;
 
             public string AppId => "C2781A0A72DB4634975F868F0C0405C3";
+
             public string ClientType => "mobileapp";
 
             public VersionInfo Version { get; private set; }
@@ -45,7 +46,7 @@ namespace LagoVista.XPlat.Sample
 
             public string TermsAndConditionsLink { get { return "https://www.nuviot.com"; } }
 
-            public string LicenseLink { get { return "https://www.nuviot.com"; } }
+            public string PrivacyStatementLink { get { return "https://www.nuviot.com"; } }
         }
 
     }

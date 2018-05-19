@@ -14,11 +14,10 @@ namespace LagoVista.XPlat.Droid
     {
         public static void Init(Context context, string key)
         {
-            SLWIOC.RegisterSingleton<ILogger>(new Loggers.MobileCenterLogger(key));
+            SLWIOC.RegisterSingleton<ILogger>(new Loggers.AppCenterLogger(key));
             SLWIOC.Register<IStorageService>(new StorageService());
             SLWIOC.Register<IPopupServices>(new LagoVista.XPlat.Core.Services.PopupServices());
             SLWIOC.Register<INetworkService>(new NetworkService());
-            SLWIOC.Register<IDeviceInfo>(new DeviceInfo());
             SLWIOC.Register<ITCPClient, Services.TCPClient>();
             SLWIOC.Register<IUDPClient, Services.UDPClient>();
             SLWIOC.Register<IWebSocket, Services.WebSocket>();

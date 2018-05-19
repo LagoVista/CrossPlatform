@@ -2,7 +2,11 @@
 <package>
   <metadata>
     <id>LagoVista.Client.Core</id>
+<<<<<<< HEAD
     <version>1.2.209-alpha1059</version>
+=======
+    <version>1.2.215-alpha1334</version>
+>>>>>>> e3cd94e7cb8f086f2f36676ab9f24e768b7c34c9
     <authors>Software Logistics, LLC</authors>
     <owners>Software Logistics, LLC</owners>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>

@@ -459,4 +459,7 @@
   <data name="About_Version" xml:space="preserve">
     <value>Version:</value>
   </data>
+  <data name="MainMenu_About" xml:space="preserve">
+    <value>About</value>
+  </data>
 </root>

@@ -116,6 +116,7 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="LagoVista.Core">
+<<<<<<< HEAD
       <Version>1.2.181-alpha1716</Version>
     </PackageReference>
     <PackageReference Include="LagoVista.Core.Authentication">
@@ -129,15 +130,37 @@
     </PackageReference>
     <PackageReference Include="LagoVista.UserAdmin.Models">
       <Version>2.1.346-beta1435</Version>
+=======
+      <Version>1.2.214-alpha1112</Version>
+    </PackageReference>
+    <PackageReference Include="LagoVista.Core.Authentication">
+      <Version>1.2.214-alpha1112</Version>
+    </PackageReference>
+    <PackageReference Include="LagoVista.Core.Networking">
+      <Version>1.2.214-alpha1112</Version>
+    </PackageReference>
+    <PackageReference Include="LagoVista.IoT.Logging">
+      <Version>1.2.214-alpha1112</Version>
+    </PackageReference>
+    <PackageReference Include="LagoVista.UserAdmin.Models">
+      <Version>1.2.214-alpha1112</Version>
+>>>>>>> e3cd94e7cb8f086f2f36676ab9f24e768b7c34c9
     </PackageReference>
     <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform">
       <Version>6.0.8</Version>
     </PackageReference>
     <PackageReference Include="Newtonsoft.Json">
+<<<<<<< HEAD
       <Version>11.0.2</Version>
     </PackageReference>
     <PackageReference Include="Xamarin.Forms">
       <Version>2.5.1.527436</Version>
+=======
+      <Version>11.0.1</Version>
+    </PackageReference>
+    <PackageReference Include="Xamarin.Forms">
+      <Version>2.5.0.280555</Version>
+>>>>>>> e3cd94e7cb8f086f2f36676ab9f24e768b7c34c9
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
