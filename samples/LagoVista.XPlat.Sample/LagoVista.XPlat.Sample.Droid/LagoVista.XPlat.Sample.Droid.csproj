@@ -121,6 +121,18 @@
       <Version>0.4.7</Version>
     </PackageReference>
     <PackageReference Include="LagoVista.Core.Authentication">
+<<<<<<< HEAD
+      <Version>1.2.181-alpha1716</Version>
+    </PackageReference>
+    <PackageReference Include="LagoVista.Core.Networking">
+      <Version>1.2.181-alpha1716</Version>
+    </PackageReference>
+    <PackageReference Include="LagoVista.IoT.Logging">
+      <Version>1.2.181-alpha1716</Version>
+    </PackageReference>
+    <PackageReference Include="LagoVista.MQTT.Core">
+      <Version>1.2.208-alpha1733</Version>
+=======
       <Version>1.2.214-alpha1112</Version>
     </PackageReference>
     <PackageReference Include="LagoVista.Core.Networking">
@@ -132,6 +144,7 @@
     <PackageReference Include="LagoVista.MQTT.Core">
       <Version>
       </Version>
+>>>>>>> e3cd94e7cb8f086f2f36676ab9f24e768b7c34c9
     </PackageReference>
     <PackageReference Include="LagoVista.UserAdmin.Models">
       <Version>1.2.214-alpha1112</Version>
