@@ -272,14 +272,14 @@ namespace LagoVista.XPlat.Core.Services
             {
                 Debug.WriteLine(String.Empty);
                 Debug.WriteLine("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
-                throw new Exception($"Could not find matching view for: {viewModelType.FullName}.");
+                Debug.WriteLine($"Could not find matching view for: {viewModelType.FullName}.");
                 Debug.WriteLine("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
                 Debug.WriteLine(String.Empty);
-
 
             }
 
             var viewType = _viewModelLookup[viewModelType];
+            Debug.Write($"Creating View {viewType.FullName} for {viewModelType.FullName}.");
 
             try
             {
@@ -317,12 +317,41 @@ namespace LagoVista.XPlat.Core.Services
             ViewModelBackStack.Clear();
             ViewModelBackStack.Push(viewModel);
 
-            var view = Activator.CreateInstance(_viewModelLookup[viewModelType]) as LagoVistaContentPage;
-            view.ViewModel = viewModel as XPlatViewModel;
-            _navigation = view.Navigation;
-            _app.MainPage = new LagoVistaNavigationPage(view);
+            if (!_viewModelLookup.ContainsKey(viewModelType))
+            {
+                Debug.WriteLine(String.Empty);
+                Debug.WriteLine("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+                Debug.WriteLine($"Could not find matching view for: {viewModelType.FullName}.");
+                Debug.WriteLine("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+                Debug.WriteLine(String.Empty);
+
+            }
+
+            var viewType = _viewModelLookup[viewModelType];
+
+            Debug.Write($"Creating View {viewType.FullName} for {viewModelType.FullName}.");
+
+            try
+            {
+                var view = Activator.CreateInstance(viewType) as LagoVistaContentPage;
+                view.ViewModel = viewModel as XPlatViewModel;
+                _navigation = view.Navigation;
+                _app.MainPage = new LagoVistaNavigationPage(view);
+            }
+            catch(Exception ex)
+            {
+                Debug.WriteLine(String.Empty);
+                Debug.WriteLine("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+                Debug.WriteLine($"Error creating instance of {viewType.FullName}.");
+                Debug.WriteLine(ex.Message);
+                Debug.WriteLine(ex.StackTrace);
+                Debug.WriteLine("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+                Debug.WriteLine(String.Empty);
+
+            }
 
             return Task.FromResult(default(object));
+
         }
     }
 }
