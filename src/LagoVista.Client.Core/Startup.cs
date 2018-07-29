@@ -18,9 +18,9 @@ namespace LagoVista.Client.Core
 
     public static class Startup
     {
-        public static void Init(ServerInfo serverInfo)
+        public static void Init(ServerInfo serverInfo, IAppStyle appStyle = null)
         {
-            SLWIOC.RegisterSingleton<IAppStyle>(new AppStyle());
+            SLWIOC.RegisterSingleton<IAppStyle>(appStyle == null ? new AppStyle() : appStyle);
 
             SLWIOC.RegisterSingleton<ServerInfo>(serverInfo);
             SLWIOC.RegisterSingleton<IAuthClient>(new AuthClient());

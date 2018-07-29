@@ -15,7 +15,7 @@ namespace LagoVista.Client.Core.Net
             _rawRestClient = rawRestClient;
         }
 
-        public async Task<InvokeResult<ListResponse<TSummaryModel>>> GetForOrgAsync(string path, CancellationTokenSource cancellationTokenSource = null)
+        public async Task<ListResponse<TSummaryModel>> GetForOrgAsync(string path, CancellationTokenSource cancellationTokenSource = null)
         {
             if (cancellationTokenSource == null) cancellationTokenSource = new CancellationTokenSource(TimeSpan.FromSeconds(60));
             var response = await _rawRestClient.GetAsync(path, cancellationTokenSource);

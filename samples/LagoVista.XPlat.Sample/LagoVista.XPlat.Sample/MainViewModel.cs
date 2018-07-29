@@ -3,9 +3,12 @@ using LagoVista.Client.Core.ViewModels;
 using LagoVista.Core.Models.UIMetaData;
 using System.Collections.Generic;
 using LagoVista.Core.Models;
+using System.Linq;
 using LagoVista.Core.Commanding;
 using LagoVista.Client.Core.ViewModels.Auth;
 using LagoVista.Client.Core.ViewModels.Other;
+using LagoVista.Core.PlatformSupport;
+using System.Diagnostics;
 
 namespace LagoVista.XPlat.Sample
 {
@@ -46,15 +49,22 @@ namespace LagoVista.XPlat.Sample
                     Name = "Control Sample",
                     FontIconKey = "fa-gear"
                 },
+                new MenuItem()
+                {
+                    Command = new RelayCommand(StartListening),
+                    Name = "Start COM7 Serial Port",
+                    FontIconKey = "fa-gear"
+                },
             };
         }
 
-        public override Task InitAsync()
+        public async override Task InitAsync()
         {
             var model1 = new Model1();
             model1.Model2Litems = new List<Model2>();
             var response = DetailResponse<Model1>.Create(model1);
-            
+
+        
 
             var frmEditPasswordLink = FormField.Create("EditPassword",
             new LagoVista.Core.Attributes.FormFieldAttribute(FieldType: LagoVista.Core.Attributes.FieldTypes.LinkButton));
@@ -81,7 +91,50 @@ namespace LagoVista.XPlat.Sample
 
             FormAdapter.AddChildList<ViewModel2>(nameof(Model1.Model2Litems), model1.Model2Litems);
 
-            return base.InitAsync();
+            await base.InitAsync();
+        }
+
+        private async void StartListening()
+        {
+            var ports = await DeviceManager.GetSerialPortsAsync();
+            var port = ports.Where(prt => prt.Name.Contains("COM7")).FirstOrDefault();
+            port.BaudRate = 115200;
+            port.Parity = false;
+            port.DataBits = 8;
+
+            var  serialPort = DeviceManager.CreateSerialPort(port);
+            await serialPort.OpenAsync();
+
+            await Task.Run(async () =>
+            {
+                var _running = true;
+                var buffer = new byte[128];
+                //https://mavlink.io/en/guide/serialization.html
+                //https://mavlink.io/en/protocol/overview.html
+                //TODO: Move to a service class
+                while (_running)
+                {
+                    var readCount = await serialPort.ReadAsync(buffer, 0, buffer.Length);
+                    Debug.WriteLine("Bytes Read" + readCount);
+                    for(var idx = 0; idx < readCount; ++idx)
+                    {
+                        if (buffer[idx] == 0xFD)
+                        {
+                            Debug.WriteLine("=====================\r\nSTART MVLINK 2");
+                        }
+                        else if (buffer[idx] == 0xFE)
+                        {
+                            Debug.WriteLine("=====================\r\nSTART MVLINK 1");
+                        }
+                        else
+                        {
+                            Debug.WriteLine($"{idx:000}.  {buffer[idx]:x2}");
+                        }
+                    }
+                }
+
+                Debug.WriteLine("Start next batch\r\r\r");
+            });
         }
 
         public void EditPasswordTap()
@@ -91,7 +144,7 @@ namespace LagoVista.XPlat.Sample
 
         public void HideLinkButton()
         {
-             FormAdapter.HideView(nameof(Model1.LinkButton));
+            FormAdapter.HideView(nameof(Model1.LinkButton));
         }
 
         EditFormAdapter _formAdapter;

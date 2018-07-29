@@ -1,12 +1,12 @@
 ﻿using LagoVista.Core.PlatformSupport;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using System.IO;
 using Windows.Devices.SerialCommunication;
 using LagoVista.Core.Models;
+using System.Threading;
+using Windows.Storage.Streams;
+using System.Diagnostics;
 
 namespace LagoVista.Core.UWP.Services
 {
@@ -15,6 +15,9 @@ namespace LagoVista.Core.UWP.Services
         SerialDevice _serialDevice;
 
         SerialPortInfo _portInfo;
+
+        DataReader _dataReader;
+        DataWriter _dataWriter;
 
         public SerialPort(SerialPortInfo info)
         {
@@ -34,31 +37,103 @@ namespace LagoVista.Core.UWP.Services
 
         public void Dispose()
         {
-            lock(this)
+            lock (this)
             {
-                if(_serialDevice != null)
+                if(_dataReader != null)
+                {
+                    _dataReader.Dispose();
+                    _dataReader = null;
+                }
+
+                if(_dataWriter != null)
+                {
+                    _dataWriter.Dispose();
+                    _dataWriter = null;
+                }
+
+                if (_serialDevice != null)
                 {
                     _serialDevice.Dispose();
                     _serialDevice = null;
                 }
             }
-            throw new NotImplementedException();
         }
 
         public async Task OpenAsync()
         {
             _serialDevice = await SerialDevice.FromIdAsync(_portInfo.Id);
             _serialDevice.BaudRate = (uint)_portInfo.BaudRate;
+            _serialDevice.DataBits = 8;
+            _serialDevice.Parity = SerialParity.None;
+            _serialDevice.StopBits = SerialStopBitCount.One;
+            _serialDevice.WriteTimeout = TimeSpan.FromMilliseconds(100);
+            _serialDevice.ReadTimeout = TimeSpan.FromMilliseconds(100);
+
+            _dataReader = new DataReader(_serialDevice.InputStream);
+            _dataWriter = new DataWriter(_serialDevice.OutputStream);
+
+            _dataReader.InputStreamOptions = InputStreamOptions.Partial;
         }
 
-        public Stream InputStream
+        public async Task<int> ReadAsync(byte[] buffer, int start, int size, CancellationToken cancellationToken = default(CancellationToken))
         {
-            get
+            try
             {
-                return _serialDevice.InputStream.AsStreamForRead();
+                if (_dataReader == null)
+                {
+                    throw new Exception("Port not open.");
+                }
+
+                Task<UInt32> loadAsyncTask;
+                cancellationToken.ThrowIfCancellationRequested();
+
+                loadAsyncTask = _dataReader.LoadAsync((uint)size).AsTask(cancellationToken);
+                UInt32 bytesRead = await loadAsyncTask;
+                var maxToRead = Math.Min(size, bytesRead);
+                for(var idx  = 0; idx < maxToRead; ++idx)
+                {
+                    buffer[idx] = _dataReader.ReadByte();
+                }
+
+                return (int)maxToRead;
+            }
+            catch(Exception ex)
+            {
+                Debug.WriteLine(ex);
+                Debugger.Break();
+                return 0;
+            }
+
+        }
+
+        public async Task WriteAsync(string msg)
+        {
+            if (_dataReader == null)
+            {
+                throw new Exception("Port not open.");
+            }
+
+            _dataWriter.WriteString(msg);
+            var operation = await _dataWriter.StoreAsync();            
+            if(operation != msg.Length)
+            {
+                throw new Exception($"Data Storage Operation Not Successful: {operation}");
             }
         }
 
-        public Stream OutputStream { get { return _serialDevice.OutputStream.AsStreamForWrite();} }
+        public async Task WriteAsync(byte[] buffer)
+        {
+            if (_dataReader == null)
+            {
+                throw new Exception("Port not open.");
+            }
+
+            _dataWriter.WriteBytes(buffer);
+            var operation = await _dataWriter.StoreAsync();
+            if (operation != buffer.Length)
+            {
+                throw new Exception($"Data Storage Operation Not Successful: {operation}");
+            }
+        }
     }
 }

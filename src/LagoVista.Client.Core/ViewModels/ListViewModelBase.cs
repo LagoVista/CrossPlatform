@@ -42,7 +42,7 @@ namespace LagoVista.Client.Core.ViewModels
             var listResponse = await FormRestClient.GetForOrgAsync(GetListURI(), null);
             if (listResponse.Successful)
             {
-                SetListItems(listResponse.Result.Model);
+                SetListItems(listResponse.Model);
             }
 
             return listResponse.ToInvokeResult();

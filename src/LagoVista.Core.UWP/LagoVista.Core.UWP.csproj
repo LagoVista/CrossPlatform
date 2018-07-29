@@ -11,7 +11,7 @@
     <AssemblyName>LagoVista.Core.UWP</AssemblyName>
     <DefaultLanguage>en-US</DefaultLanguage>
     <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>
-    <TargetPlatformVersion>10.0.16299.0</TargetPlatformVersion>
+    <TargetPlatformVersion>10.0.17134.0</TargetPlatformVersion>
     <TargetPlatformMinVersion>10.0.10586.0</TargetPlatformMinVersion>
     <MinimumVisualStudioVersion>14</MinimumVisualStudioVersion>
     <FileAlignment>512</FileAlignment>
@@ -247,19 +247,19 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="LagoVista.Core">
-      <Version>2.1.393-beta1324</Version>
+      <Version>2.1.439-beta1607</Version>
     </PackageReference>
     <PackageReference Include="LagoVista.Core.Authentication">
-      <Version>2.1.393-beta1324</Version>
+      <Version>2.1.439-beta1607</Version>
     </PackageReference>
     <PackageReference Include="LagoVista.Core.Networking">
-      <Version>2.1.393-beta1324</Version>
+      <Version>2.1.439-beta1607</Version>
     </PackageReference>
     <PackageReference Include="LagoVista.IoT.Logging">
-      <Version>2.1.393-beta1324</Version>
+      <Version>2.1.439-beta1607</Version>
     </PackageReference>
     <PackageReference Include="LagoVista.UserAdmin.Models">
-      <Version>2.1.393-beta1324</Version>
+      <Version>2.1.439-beta1607</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.Azure.ServiceBus">
       <Version>1.0.0</Version>

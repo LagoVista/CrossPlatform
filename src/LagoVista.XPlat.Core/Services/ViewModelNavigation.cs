@@ -275,7 +275,7 @@ namespace LagoVista.XPlat.Core.Services
                 Debug.WriteLine($"Could not find matching view for: {viewModelType.FullName}.");
                 Debug.WriteLine("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
                 Debug.WriteLine(String.Empty);
-
+                throw new Exception($"Could not find matching view for: {viewModelType.FullName}.");
             }
 
             var viewType = _viewModelLookup[viewModelType];
@@ -324,7 +324,7 @@ namespace LagoVista.XPlat.Core.Services
                 Debug.WriteLine($"Could not find matching view for: {viewModelType.FullName}.");
                 Debug.WriteLine("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
                 Debug.WriteLine(String.Empty);
-
+                throw new Exception($"Could not find matching view for: {viewModelType.FullName}.");
             }
 
             var viewType = _viewModelLookup[viewModelType];

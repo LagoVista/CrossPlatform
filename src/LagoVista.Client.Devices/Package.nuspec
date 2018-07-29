@@ -1,16 +1,16 @@
 <?xml version="1.0"?>
 <package>
   <metadata>
-    <id>LagoVista.Client.Core</id>
+    <id>LagoVista.Client.Devices</id>
     <version>1.2.438-alpha1729</version>
     <authors>Software Logistics, LLC</authors>
     <owners>Software Logistics, LLC</owners>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <projectUrl>http://github.com/LagoVista</projectUrl>
     <iconUrl>http://bytemaster.blob.core.windows.net/icons/LagoVistaIcon.png</iconUrl>
-    <description>Core Mobile Client Functionality for the LagoVista Devices, IoT and Home Automation Frameworks</description>
+    <description>Provides wrappers for device management rest services.</description>
     <releaseNotes>Pre-release Software</releaseNotes>
-    <copyright>Copyright 2017</copyright>
+    <copyright>Copyright 2018</copyright>
     <tags>HomeAutomation IoT LagoVista</tags>
   </metadata>
   <files>

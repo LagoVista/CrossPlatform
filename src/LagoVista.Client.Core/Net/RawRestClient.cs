@@ -14,6 +14,7 @@ using LagoVista.Core.Authentication.Models;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 using LagoVista.Client.Core.Resources;
+using LagoVista.Core.Models.UIMetaData;
 
 namespace LagoVista.Client.Core.Net
 {
@@ -76,7 +77,7 @@ namespace LagoVista.Client.Core.Net
             }
         }
 
-        public async Task<RawResponse> PerformCall(Func<Task<HttpResponseMessage>> call, CancellationTokenSource cancellationTokenSource = null)
+        private async Task<RawResponse> PerformCall(Func<Task<HttpResponseMessage>> call, CancellationTokenSource cancellationTokenSource = null, ListRequest listRequest = null)
         {
             if (cancellationTokenSource == null) cancellationTokenSource = new CancellationTokenSource(TimeSpan.FromSeconds(60));
 
@@ -91,6 +92,16 @@ namespace LagoVista.Client.Core.Net
                 if (_authManager.IsAuthenticated)
                 {
                     _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", _authManager.AccessToken);
+                }
+
+                if(listRequest != null)
+                {
+                    if (!String.IsNullOrEmpty(listRequest.NextPartitionKey)) _httpClient.DefaultRequestHeaders.Add("x-nextpartitionkey", listRequest.NextPartitionKey);
+                    if (!String.IsNullOrEmpty(listRequest.NextRowKey)) _httpClient.DefaultRequestHeaders.Add("x-nextrowkey", listRequest.NextRowKey);
+                    _httpClient.DefaultRequestHeaders.Add("x-pageindex", listRequest.PageIndex.ToString());
+                    _httpClient.DefaultRequestHeaders.Add("x-pagesize", Math.Max(50, listRequest.PageSize).ToString());
+                    if(!String.IsNullOrEmpty(listRequest.StartDate)) _httpClient.DefaultRequestHeaders.Add("x-filter-startdate", listRequest.StartDate);
+                    if (!String.IsNullOrEmpty(listRequest.EndDate)) _httpClient.DefaultRequestHeaders.Add("x-filter-enddate", listRequest.EndDate);
                 }
 
                 retry = false;
@@ -213,6 +224,15 @@ namespace LagoVista.Client.Core.Net
             return response.ToInvokeResult();
         }
 
+        public async Task<InvokeResult> PutAsync<TModel>(string path, TModel model, CancellationTokenSource cancellationTokenSource = null) where TModel : class
+        {
+            if (cancellationTokenSource == null) cancellationTokenSource = new CancellationTokenSource(TimeSpan.FromSeconds(60));
+
+            var json = JsonConvert.SerializeObject(model, new Newtonsoft.Json.JsonSerializerSettings() { ContractResolver = new CamelCasePropertyNamesContractResolver(), });
+            var response = await PutAsync(path, json, cancellationTokenSource);
+            return response.ToInvokeResult();
+        }
+
         public async Task<InvokeResult<TResponseModel>> PostAsync<TModel, TResponseModel>(string path, TModel model, CancellationTokenSource cancellationTokenSource = null) where TModel : class where TResponseModel : class
         {
             if (cancellationTokenSource == null) cancellationTokenSource = new CancellationTokenSource(TimeSpan.FromSeconds(60));
@@ -236,5 +256,23 @@ namespace LagoVista.Client.Core.Net
             var response = await GetAsync(path, cancellationTokenSource);
             return response.ToInvokeResult<TResponseModel>();
         }
+
+        public async Task<ListResponse<TResponseModel>> GetListResponseAsync<TResponseModel>(string path, ListRequest listRequest, CancellationTokenSource cancellationTokenSource = null) where TResponseModel : class
+        {
+            if (cancellationTokenSource == null) cancellationTokenSource = new CancellationTokenSource(TimeSpan.FromSeconds(60));
+
+            var response = await PerformCall(async () =>
+            {
+                var timedEvent = _logger.StartTimedEvent("RawRestClient_Get", path);
+                var httpResponse = await _httpClient.GetAsync(path);
+                _logger.EndTimedEvent(timedEvent);
+                return httpResponse;
+
+            }, cancellationTokenSource, listRequest);
+
+            return response.ToListResponse<TResponseModel>();
+            
+        }
+
     }
 }

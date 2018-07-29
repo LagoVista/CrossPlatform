@@ -8,6 +8,6 @@ namespace LagoVista.Client.Core
 {
     public interface IListRestClient<TSummaryModel> where TSummaryModel : class
     {
-        Task<InvokeResult<ListResponse<TSummaryModel>>> GetForOrgAsync(String path, CancellationTokenSource cancellationTokenSource = null);
+        Task<ListResponse<TSummaryModel>> GetForOrgAsync(String path, CancellationTokenSource cancellationTokenSource = null);
     }
 }
