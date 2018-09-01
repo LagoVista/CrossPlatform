@@ -6,7 +6,7 @@ namespace LagoVista.Client.Core.Resources
 {
     public class AppStyle : IAppStyle
     {
-        public Color TitleBarBackground => NamedColors.NuvIoTBlack;
+        public Color TitleBarBackground => NamedColors.NuvIoTDark;
 
         public Color TitleBarText => NamedColors.NuvIoTWhite;
 
