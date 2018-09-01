@@ -131,6 +131,7 @@
     <Compile Include="IconFonts\WeatherIconsModule.cs" />
     <Compile Include="Loggers\AppCenterLogger.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Renderers\TextAreaRenderer.cs" />
     <Compile Include="Services\DispatcherService.cs" />
     <Compile Include="Services\NetworkService.cs" />
     <Compile Include="Services\Reachability.cs" />

@@ -6,17 +6,18 @@ namespace LagoVista.XPlat.Core.Controls.FormControls
     public class TextAreaRow : FormControl
     {
         FormFieldHeader _header;
-        Editor _editor;
+        TextArea _editor;
 
         public TextAreaRow(FormViewer formViewer, FormField field) : base(formViewer, field)
         {
             _header = new FormFieldHeader(field.Label);
 
-            _editor = new Editor()
+            _editor = new TextArea()
             {
                 Text = field.Value,
                 HeightRequest = 120
             };
+
             _editor.TextChanged += _editor_TextChanged;
 
             Children.Add(_header);

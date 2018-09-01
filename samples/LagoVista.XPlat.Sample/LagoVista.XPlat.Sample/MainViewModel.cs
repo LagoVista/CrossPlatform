@@ -51,6 +51,12 @@ namespace LagoVista.XPlat.Sample
                 },
                 new MenuItem()
                 {
+                    Command = new RelayCommand(() => ViewModelNavigation.NavigateAsync<FullPageViewModel>(this)),
+                    Name = "Full SCreen",
+                    FontIconKey = "fa-gear"
+                },
+                new MenuItem()
+                {
                     Command = new RelayCommand(StartListening),
                     Name = "Start COM7 Serial Port",
                     FontIconKey = "fa-gear"

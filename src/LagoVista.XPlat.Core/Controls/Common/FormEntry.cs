@@ -56,4 +56,12 @@ namespace LagoVista.XPlat.Core
 
         private IAppStyle AppStyle { get { return SLWIOC.Get<IAppStyle>(); } }
     }
+
+    public class TextArea : Xamarin.Forms.Editor
+    {
+        public TextArea()
+        {
+
+        }
+    }
 }

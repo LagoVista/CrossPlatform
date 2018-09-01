@@ -128,11 +128,9 @@ namespace LagoVista.XPlat.Core
             }
 
             _loadingContainer = new Grid() { IsVisible = false };
-
             _loadingMask = new Grid() { BackgroundColor = Xamarin.Forms.Color.Black, Opacity = 0.50 };
             _loadingContainer.Children.Add(_loadingMask);
             _loadingContainer.Children.Add(_activityIndicator);
-            _loadingContainer.SetValue(Grid.RowProperty, 1);
         }
 
         private void CreateMenu()
@@ -162,6 +160,9 @@ namespace LagoVista.XPlat.Core
             {
                 HeightRequest = TOOL_BAR_HEIGHT
             };
+
+            _toolBar.Padding = new Thickness(0, 6, 0, 0);
+
             _toolBar.ColumnDefinitions.Add(new ColumnDefinition() { Width = new GridLength(1, GridUnitType.Auto) });
             _toolBar.ColumnDefinitions.Add(new ColumnDefinition() { Width = new GridLength(1, GridUnitType.Star) });
             _toolBar.ColumnDefinitions.Add(new ColumnDefinition() { Width = new GridLength(1, GridUnitType.Auto) });
@@ -169,11 +170,12 @@ namespace LagoVista.XPlat.Core
             _toolBar.BackgroundColor = AppStyle.TitleBarBackground.ToXamFormsColor();
 
             _title = new Label();
-            _title.SetValue(Grid.ColumnProperty, 1);
+            _title.SetValue(Grid.ColumnSpanProperty, 4);
             _title.TextColor = AppStyle.TitleBarText.ToXamFormsColor();
             _title.FontSize = 22;
-            _title.Margin = new Thickness(-5, 3, 0, 0);
+            
             _title.VerticalOptions = new LayoutOptions(LayoutAlignment.Center, false);
+            _title.HorizontalOptions = new LayoutOptions(LayoutAlignment.Center, false);
 
             _leftMenuButton = new IconButton
             {
@@ -181,8 +183,8 @@ namespace LagoVista.XPlat.Core
                 VerticalOptions = new LayoutOptions(LayoutAlignment.Center, false),
                 TextColor = AppStyle.TitleBarText.ToXamFormsColor(),
                 WidthRequest = 48,
-                HeightRequest = 48,
-                FontSize = 22
+                HeightRequest = 48,                
+                FontSize = Device.RuntimePlatform == Device.Android ? 16 : 22 
             };
             _leftMenuButton.Clicked += _leftMenuButton_Clicked;
 
@@ -194,7 +196,7 @@ namespace LagoVista.XPlat.Core
                 TextColor = AppStyle.TitleBarText.ToXamFormsColor(),
                 WidthRequest = 48,
                 HeightRequest = 48,
-                FontSize = 22
+                FontSize = Device.RuntimePlatform == Device.Android ? 16 : 22
             };
             _helpButton.Clicked += _helpButton_Clicked;
             _helpButton.SetValue(Grid.ColumnProperty, 3);
@@ -206,7 +208,7 @@ namespace LagoVista.XPlat.Core
                 TextColor = AppStyle.TitleBarText.ToXamFormsColor(),
                 WidthRequest = 48,
                 HeightRequest = 48,
-                FontSize = 22
+                FontSize = Device.RuntimePlatform == Device.Android ? 16 : 22
             };
             _rightMenuButton.SetValue(Grid.ColumnProperty, 2);
             _rightMenuButton.Clicked += _rightMenuButton_Clicked;
@@ -326,10 +328,6 @@ namespace LagoVista.XPlat.Core
                 {
                     _contentGrid.RowDefinitions.Add(new RowDefinition() { Height = new GridLength(TOOL_BAR_HEIGHT) });
                 }
-                else
-                {
-                    _contentGrid.RowDefinitions.Add(new RowDefinition() { Height = new GridLength(0) });
-                }
 
                 _contentGrid.RowDefinitions.Add(new RowDefinition() { Height = new GridLength(1, GridUnitType.Star) });
 
@@ -348,12 +346,23 @@ namespace LagoVista.XPlat.Core
                 {
                     _mainContent.BackgroundColor = AppStyle.PageBackground.ToXamFormsColor();
                 }
-                _mainContent.SetValue(Grid.RowProperty, 1);
+
+                if (HasToolBar)
+                {
+                    _mainContent.SetValue(Grid.RowProperty, 1);
+                }
+
                 _contentGrid.Children.Add(_mainContent);
-                _contentGrid.Children.Add(_pageMenuMask);
-                _contentGrid.Children.Add(_menu);
-                _contentGrid.Children.Add(_loadingContainer);
-                _contentGrid.Children.Add(_toolBar);
+
+                if (HasToolBar)
+                {
+                    _contentGrid.Children.Add(_pageMenuMask);
+                    _contentGrid.Children.Add(_menu);
+                    _contentGrid.Children.Add(_toolBar);
+                    _loadingContainer.SetValue(Grid.RowProperty, 1);
+                }
+
+                _contentGrid.Children.Add(_loadingContainer);                
             }
         }
 
