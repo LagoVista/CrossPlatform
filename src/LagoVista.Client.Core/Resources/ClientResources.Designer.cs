@@ -10,7 +10,6 @@
 
 namespace LagoVista.Client.Core.Resources {
     using System;
-    using System.Reflection;
     
     
     /// <summary>
@@ -40,7 +39,7 @@ namespace LagoVista.Client.Core.Resources {
         public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("LagoVista.Client.Core.Resources.ClientResources", typeof(ClientResources).GetTypeInfo().Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("LagoVista.Client.Core.Resources.ClientResources", typeof(ClientResources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -926,7 +925,7 @@ namespace LagoVista.Client.Core.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to -enter your accounts email address-.
+        ///   Looks up a localized string similar to -email address-.
         /// </summary>
         public static string SendResetPasswordLink_Email_Watermark {
             get {

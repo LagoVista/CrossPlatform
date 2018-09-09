@@ -56,6 +56,8 @@ namespace LagoVista.XPlat.iOS.Loggers
                         break;
                 }
             }
+
+            AppCenter.Start(key, types.ToArray());
         }
 
         public void AddCustomEvent(LagoVista.Core.PlatformSupport.LogLevel level, string area, string message, params KeyValuePair<string, string>[] args)

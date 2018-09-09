@@ -40,7 +40,7 @@ namespace LagoVista.Core.UWP.Loggers
                 }
             }
 
-            AppCenter.Start($"uwp={key}", types.ToArray());
+            AppCenter.Start(key, types.ToArray());
         }
 
 

@@ -3,6 +3,7 @@ using LagoVista.Core.Authentication.Models;
 using LagoVista.Core.Interfaces;
 using LagoVista.Core.PlatformSupport;
 using LagoVista.UserAdmin.Models.Orgs;
+using LagoVista.UserAdmin.Models.Users;
 using System.Collections.Generic;
 
 namespace LagoVista.Client.Core.ViewModels.Orgs
@@ -33,7 +34,7 @@ namespace LagoVista.Client.Core.ViewModels.Orgs
 
             var result = await PerformNetworkOperation(async () =>
             {
-                var authRequest = new AuthRequest()
+                /*var authRequest = new AuthRequest()
                 {
                     AppId = _appConfig.AppId,
                     ClientType = "mobileapp",
@@ -48,7 +49,9 @@ namespace LagoVista.Client.Core.ViewModels.Orgs
                 };
                 var response = await RestClient.PostAsync<AuthRequest, AuthResponse>("/api/org/change", authRequest);
                 if (!response.Successful) return response.ToInvokeResult();
-                AuthManager.Roles = response.Result.Roles;
+                AuthManager.Roles = response.Result.Roles;*/
+
+                var response = await RestClient.GetAsync<AppUser>($"/api/org/{model.OrgId}/change");
 
                 var refreshResult = await RefreshUserFromServerAsync();
                 if (refreshResult.Successful)

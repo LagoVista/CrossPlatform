@@ -22,7 +22,7 @@ namespace LagoVista.XPlat.Core
 
             if (Device.RuntimePlatform == Device.Android)
             {
-                HeightRequest = 40;
+                HeightRequest = 50;
             }
         }
 
