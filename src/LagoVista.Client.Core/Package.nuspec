@@ -2,7 +2,7 @@
 <package>
   <metadata>
     <id>LagoVista.Client.Core</id>
-    <version>1.2.530-alpha1445</version>
+    <version>1.2.530-alpha1842</version>
     <authors>Software Logistics, LLC</authors>
     <owners>Software Logistics, LLC</owners>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
@@ -14,6 +14,6 @@
     <tags>HomeAutomation IoT LagoVista</tags>
   </metadata>
   <files>
-    <file src="bin\release\netstandard1.3\*.dll" target="lib\netstandard1.3" />
+    <file src="bin\release\netstandard2.0\*.dll" target="lib\netstandard2.0" />
   </files>
 </package>
