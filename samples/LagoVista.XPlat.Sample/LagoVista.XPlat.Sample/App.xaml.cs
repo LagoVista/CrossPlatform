@@ -1,4 +1,8 @@
-﻿using LagoVista.Client.Core;
+﻿//#define DEV
+#define LOCALDEV
+
+
+using LagoVista.Client.Core;
 using LagoVista.Client.Core.Models;
 using LagoVista.Client.Core.ViewModels.Auth;
 using LagoVista.Core.Interfaces;
@@ -31,11 +35,21 @@ namespace LagoVista.XPlat.Sample
 
         private void InitServices()
         {
+#if DEV
             var serverInfo = new ServerInfo()
             {
                 SSL = true,
                 RootUrl = "dev-api.nuviot.com",
             };
+#endif
+
+#if LOCALDEV
+            var serverInfo = new ServerInfo()
+            {
+                SSL = false,
+                RootUrl = "localhost:5000",
+            };
+#endif
 
             var clientAppInfo = new ClientAppInfo()
             {
@@ -44,7 +58,11 @@ namespace LagoVista.XPlat.Sample
 
             DeviceInfo.Register();
 
-            SLWIOC.RegisterSingleton<IAppConfig>(new AppConfig());
+            var appConfig = new AppConfig();
+            appConfig.AuthType = AuthTypes.DeviceUser;
+            appConfig.DeviceRepoId = "5CF12598069C400B8B91A3AE8604EA4A";
+
+            SLWIOC.RegisterSingleton<IAppConfig>(appConfig);
             LagoVista.Client.Core.Startup.Init(serverInfo);
             SLWIOC.RegisterSingleton<IClientAppInfo>(clientAppInfo);
             

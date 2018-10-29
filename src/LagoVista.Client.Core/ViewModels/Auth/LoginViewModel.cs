@@ -34,6 +34,8 @@ namespace LagoVista.Client.Core.ViewModels.Auth
         {
             var loginInfo = new AuthRequest()
             {
+                AuthType =_appConfig.AuthType,
+                DeviceRepoId = _appConfig.DeviceRepoId,
                 AppId = _appConfig.AppId,
                 DeviceId = _deviceInfo.DeviceUniqueId,
                 AppInstanceId = AuthManager.AppInstanceId,
@@ -47,7 +49,7 @@ namespace LagoVista.Client.Core.ViewModels.Auth
             var loginResult = await _authClient.LoginAsync(loginInfo);
             if (!loginResult.Successful) return loginResult.ToInvokeResult();
 
-            var authResult = loginResult.Result;
+            var authResult = loginResult.Result;            
             AuthManager.AccessToken = authResult.AccessToken;
             AuthManager.AccessTokenExpirationUTC = authResult.AccessTokenExpiresUTC;
             AuthManager.RefreshToken = authResult.RefreshToken;
