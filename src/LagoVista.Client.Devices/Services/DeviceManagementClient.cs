@@ -4,7 +4,9 @@ using LagoVista.Core.Models.UIMetaData;
 using LagoVista.Core.Validation;
 using LagoVista.IoT.Deployment.Admin.Models;
 using LagoVista.IoT.DeviceAdmin.Models;
+using LagoVista.IoT.DeviceManagement;
 using LagoVista.IoT.DeviceManagement.Core.Models;
+using LagoVista.UserAdmin.Models.Users;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -48,12 +50,12 @@ namespace LagoVista.Client.Devices
             return _restClient.PutAsync($"/api/device/{deviceRepoId}", device);
         }
 
-        public async Task<Device> GetDeviceAsync(String deviceRepoId, String deviceId)
+        public async Task<DetailResponse<Device>> GetDeviceAsync(String deviceRepoId, String deviceId)
         {
             var result = await _restClient.GetAsync<DetailResponse<Device>>($"/api/device/{deviceRepoId}/{deviceId}");
             if (result.Successful)
             {
-                return result.Result.Model;
+                return result.Result;
             }
             else
             {
@@ -175,6 +177,124 @@ namespace LagoVista.Client.Devices
         {
             var result = await _restClient.GetAsync<InvokeResult>($"/api/devices/{parentDeviceId}/{parentDeviceId}/removechild/{chidlDeviceId}");
             return result.Successful ? result.Result : result.ToInvokeResult();
+        }
+
+        public async Task<DetailResponse<Device>> CreateNewDevice(string deviceRepoId)
+        {
+            var uri = $"/api/device/{deviceRepoId}/factory";
+            var result = await _restClient.GetAsync<DetailResponse<Device>>(uri);
+            if (result.Successful)
+            {
+                return result.Result;
+            }
+            else
+            {
+                throw new Exception(result.Errors.First().Message);
+            }
+        }
+
+        public async Task<AppUser> AddDeviceUser(string devicerepoid, DeviceUserRegistrationRequest newUser)
+        {
+            var uri = $"/api/device/{devicerepoid}/userdevice";
+            var result = await _restClient.PostAsync<DeviceUserRegistrationRequest, AppUser>(uri, newUser);
+            if (result.Successful)
+            {
+                return result.Result;
+            }
+            else
+            {
+                throw new Exception(result.Errors.First().Message);
+            }
+
+        }
+
+        public async Task<DeviceConfiguration> GetDeviceConfigurationAsync(string deviceConfigId)
+        {
+            var uri = $"/api/deviceconfig/{deviceConfigId}";
+            var result = await _restClient.GetAsync<DetailResponse<DeviceConfiguration>>(uri);
+            if (result.Successful)
+            {
+                return result.Result.Model;
+            }
+            else
+            {
+                throw new Exception(result.Errors.First().Message);
+            }
+        }
+
+        public Task<ListResponse<DeviceSummary>> GetDeviceSummaryByGroupAsync(string groupid)
+        {
+            throw new NotImplementedException();
+        }
+
+        public async Task<ListResponse<DeviceSummaryData>> GetDeviceSummaryDataForGroupAsync(string devicerepoid, string groupid)
+        {
+            var uri = $"/api/repo/{devicerepoid}/group/{groupid}/devices/summarydata";
+            var result = await _restClient.GetAsync<ListResponse<DeviceSummaryData>>(uri);
+            if (result.Successful)
+            {
+                return result.Result;
+            }
+            else
+            {
+                throw new Exception(result.Errors.First().Message);
+            }
+        }
+
+        public async Task<ListResponse<EntityHeader>> GetDevicesForGroupAsync(string devicerepoid, string groupid)
+        {
+            var uri = $"/api/repo/{devicerepoid}/group/{groupid}/devices";
+            var result = await _restClient.GetAsync<ListResponse<EntityHeader>>(uri);
+            if (result.Successful)
+            {
+                return result.Result;
+            }
+            else
+            {
+                throw new Exception(result.Errors.First().Message);
+            }
+        }
+
+        public async Task<InvokeResult<DeviceGroupEntry>> AddDeviceToGroupAsync(string devicerepoid, string groupid, string deviceid)
+        {
+            var uri = $"/api/repo/{devicerepoid}/group/{groupid}/add/{deviceid}";
+            var result = await _restClient.GetAsync<InvokeResult<DeviceGroupEntry>>(uri);
+            if (result.Successful)
+            {
+                return result.Result;
+            }
+            else
+            {
+                throw new Exception(result.Errors.First().Message);
+            }
+        }
+
+        public async Task<InvokeResult> RemoveDeviceToGroupAsync(string devicerepoid, string groupid, string deviceid)
+        {
+            var uri = $"/api/repo/{devicerepoid}/group/{groupid}/add/{deviceid}";
+            var result = await _restClient.GetAsync<InvokeResult>(uri);
+            if (result.Successful)
+            {
+                return result.Result;
+            }
+            else
+            {
+                throw new Exception(result.Errors.First().Message);
+            }
+        }
+
+        public async Task<ListResponse<DeviceGroupSummary>> GetDeviceGroupsForOrgAsync(string devicerepoid, ListRequest listRequest)
+        {
+            var uri = $"/api/repo/{devicerepoid}/groups";
+            var result = await _restClient.GetListResponseAsync<DeviceGroupSummary>(uri, listRequest);
+            if (result.Successful)
+            {
+                return result;
+            }
+            else
+            {
+                throw new Exception(result.Errors.First().Message);
+            }
         }
     }
 }
