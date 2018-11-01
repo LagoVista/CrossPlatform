@@ -124,6 +124,15 @@
     <Compile Include="Common\Power.xaml.cs">
       <DependentUpon>Power.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\DialogFrame.cs" />
+    <Compile Include="Controls\DynamicFormList.cs" />
+    <Compile Include="Controls\EntryCells\CellBase.cs" />
+    <Compile Include="Controls\EntryCells\CheckboxCell.cs" />
+    <Compile Include="Controls\EntryCells\ListSelectCell.cs" />
+    <Compile Include="Controls\EntryCells\TextEntryCell.cs" />
+    <Compile Include="Controls\LoginView.xaml.cs">
+      <DependentUpon>LoginView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controls\TapableGrid.cs" />
     <Compile Include="Controls\TapableImage.cs" />
     <Compile Include="Common\VolumeControl.xaml.cs">
@@ -182,6 +191,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Controls\LoginView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\DeviceDiscoveryView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -205,6 +218,12 @@
       <Version>2.1.439-beta1607</Version>
     </PackageReference>
     <PackageReference Include="LagoVista.Core.Networking">
+      <Version>2.1.439-beta1607</Version>
+    </PackageReference>
+    <PackageReference Include="LagoVista.IoT.DeviceAdmin.Models">
+      <Version>2.1.439-beta1607</Version>
+    </PackageReference>
+    <PackageReference Include="LagoVista.IoT.DeviceManagement.Models">
       <Version>2.1.439-beta1607</Version>
     </PackageReference>
     <PackageReference Include="LagoVista.IoT.Logging">
