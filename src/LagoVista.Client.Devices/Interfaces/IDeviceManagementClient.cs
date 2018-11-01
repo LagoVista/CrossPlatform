@@ -11,14 +11,14 @@ namespace LagoVista.Client.Devices
     public interface IDeviceManagementClient
     {
         Task<InvokeResult> AddDeviceAsync(string deviceRepoId, Device device);
-        Task<InvokeResult<Device>> GetDeviceAsync(string deviceRepoId, string deviceId);
+        Task<Device> GetDeviceAsync(string deviceRepoId, string deviceId);
         Task<ListResponse<DeviceConfigurationSummary>> GetDeviceConfigsAsync(ListRequest listRequest = null);
         Task<ListResponse<DeviceRepositorySummary>> GetDeviceReposAsync(ListRequest listRequest = null);
         Task<ListResponse<DeploymentInstanceSummary>> GetDeploymentInstancesAsync(ListRequest listRequest = null);
         Task<ListResponse<ClientAppSummary>> GetClientAppsAsync(ListRequest request = null);
         Task<ListResponse<DeviceSummary>> GetDevicesByDeviceTypeIdAsync(String appId);
-        Task<InvokeResult<DeploymentInstance>> GetDeploymentInstanceAsync(string instanceId);
-        Task<InvokeResult<ClientApp>> GetClientAppAsync(String appId);
+        Task<DeploymentInstance> GetDeploymentInstanceAsync(string instanceId);
+        Task<ClientApp> GetClientAppAsync(String appId);
         Task<ListResponse<DeviceSummary>> GetDevicesByDeviceConfigIdAsync(string instanceId, string deviceConfig, ListRequest request = null);
         Task<ListResponse<DeviceSummary>> GetDevicesByDeviceTypeIdAsync(string deviceRepoId, string appDeviceTypeId, ListRequest request = null);
     

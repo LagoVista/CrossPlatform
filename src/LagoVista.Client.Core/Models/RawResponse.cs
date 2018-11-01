@@ -2,7 +2,9 @@
 using LagoVista.Core.Models.UIMetaData;
 using LagoVista.Core.Validation;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Serialization;
 using System;
+using System.Diagnostics;
 
 namespace LagoVista.Client.Core.Models
 {
@@ -108,7 +110,10 @@ namespace LagoVista.Client.Core.Models
                 throw new InvalidOperationException("Attempt to deserilaized empty content.");
             }
 
-            return JsonConvert.DeserializeObject<TModel>(Content);
+            Console.WriteLine(Content);
+            Debug.WriteLine(Content);
+
+            return JsonConvert.DeserializeObject<TModel>(Content, new Newtonsoft.Json.JsonSerializerSettings() { ContractResolver = new CamelCasePropertyNamesContractResolver(), });
         }
 
         public DetailResponse<TModel> ToDetailResponse<TModel>() where TModel : new()
