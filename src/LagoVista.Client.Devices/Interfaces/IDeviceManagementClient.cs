@@ -21,6 +21,11 @@ namespace LagoVista.Client.Devices
         Task<InvokeResult<ClientApp>> GetClientAppAsync(String appId);
         Task<ListResponse<DeviceSummary>> GetDevicesByDeviceConfigIdAsync(string instanceId, string deviceConfig, ListRequest request = null);
         Task<ListResponse<DeviceSummary>> GetDevicesByDeviceTypeIdAsync(string deviceRepoId, string appDeviceTypeId, ListRequest request = null);
+    
+        Task<ListResponse<DeviceSummary>> GetChildDevicesAsync(string deviceRepoId, string deviceId, ListRequest request = null);
+        Task<InvokeResult> AttachChildDeviceAsync(string deviceRepoId, string parentDeviceId, string chidlDeviceId);
+        Task<InvokeResult> RemoveChildDevice(string deviceRepoId, string parentDeviceId, string chidlDeviceId);
+
         Task<ListResponse<DeviceTypeSummary>> GetDeviceTypesAsync(ListRequest listRequest = null);
         Task<InvokeResult> UpdateDeviceAsync(string deviceRepoId, Device device);
     }

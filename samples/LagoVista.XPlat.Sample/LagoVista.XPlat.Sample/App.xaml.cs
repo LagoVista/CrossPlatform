@@ -1,4 +1,9 @@
-﻿using LagoVista.Client.Core;
+﻿//#define DEV
+//#define ENV_LOCALDEV
+#define ENV_MASTER
+
+
+using LagoVista.Client.Core;
 using LagoVista.Client.Core.Models;
 using LagoVista.Client.Core.ViewModels.Auth;
 using LagoVista.Core.Interfaces;
@@ -31,11 +36,31 @@ namespace LagoVista.XPlat.Sample
 
         private void InitServices()
         {
+#if ENV_STAGE
+            var serverInfo = new ServerInfo()
+            {
+                SSL = true,
+                RootUrl = "api.nuviot.com",
+            };
+#elif ENV_DEV
             var serverInfo = new ServerInfo()
             {
                 SSL = true,
                 RootUrl = "dev-api.nuviot.com",
             };
+#elif ENV_LOCALDEV
+            var serverInfo = new ServerInfo()
+            {
+                SSL = false,
+                RootUrl = "localhost:5001",
+            };
+#elif ENV_MASTER
+            var serverInfo = new ServerInfo()
+            {
+                SSL = true,
+                RootUrl = "api.nuviot.com",
+            };
+#endif
 
             var clientAppInfo = new ClientAppInfo()
             {
@@ -44,7 +69,11 @@ namespace LagoVista.XPlat.Sample
 
             DeviceInfo.Register();
 
-            SLWIOC.RegisterSingleton<IAppConfig>(new AppConfig());
+            var appConfig = new AppConfig();
+            appConfig.AuthType = AuthTypes.DeviceUser;
+            appConfig.DeviceRepoId = "189D6E2F61F444529AF881159F6C2190";
+
+            SLWIOC.RegisterSingleton<IAppConfig>(appConfig);
             LagoVista.Client.Core.Startup.Init(serverInfo);
             SLWIOC.RegisterSingleton<IClientAppInfo>(clientAppInfo);
             
@@ -55,8 +84,6 @@ namespace LagoVista.XPlat.Sample
             navigation.Add<ControlSampleViewModel, ControlSampleView>();
             navigation.Add<ViewModel2, Model2View>();
             navigation.Add<FullPageViewModel, FullScreenPage>();
-
-
 
             SLWIOC.RegisterSingleton<IViewModelNavigation>(navigation);
 

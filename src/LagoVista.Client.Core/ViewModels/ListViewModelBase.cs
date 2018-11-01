@@ -63,7 +63,7 @@ namespace LagoVista.Client.Core.ViewModels
 
         public override async Task ReloadedAsync()
         {
-            if (_shouldRefresh || true)
+            if (_shouldRefresh)
             {
                 await PerformNetworkOperation(LoadItems);
                 _shouldRefresh = false;

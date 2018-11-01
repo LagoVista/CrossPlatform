@@ -331,7 +331,7 @@
     <value>Email Address</value>
   </data>
   <data name="SendResetPasswordLink_Email_Watermark" xml:space="preserve">
-    <value>-enter your accounts email address-</value>
+    <value>-email address-</value>
   </data>
   <data name="SendResetPasswordLink_Help" xml:space="preserve">
     <value>If you forgot your password, you can have a link sent to your email address to let you reset it to a new one.</value>

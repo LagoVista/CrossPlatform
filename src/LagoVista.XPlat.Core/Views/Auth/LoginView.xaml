@@ -26,15 +26,16 @@
                     <pge:Label Text="{ext:ClientTranslate Common_Password}" TextColor="White" />
                     <pge:Entry Text="{Binding Password, Mode=TwoWay}" Placeholder="{ext:ClientTranslate Common_Email_Password}" IsPassword="True" Keyboard="Plain" Margin="0,0,0,20"  />
 
-                    <pge:Button Command="{Binding LoginCommand}" Text="{ext:ClientTranslate Common_Login}" HeightRequest="48" />
-                    
+                    <pge:Button Command="{Binding LoginCommand}" Text="{ext:ClientTranslate Common_Login}" HeightRequest="50" FontSize="Small" />
+
                     <Grid>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="50*" />
                             <ColumnDefinition Width="50*" />
                         </Grid.ColumnDefinitions>
-                        <pge:Button Command="{Binding RegisterCommand}" Text="{ext:ClientTranslate Register_Title}" HeightRequest="48" Margin="0,0,10,0" />
-                        <pge:Button Command="{Binding ForgotPasswordCommand}" Text="{ext:ClientTranslate Login_ForgotPassword}" HeightRequest="48" Grid.Column="1" Margin="10,0,0,0" />
+                        <pge:Button Command="{Binding RegisterCommand}" Text="{ext:ClientTranslate Register_Title}" HeightRequest="54" Margin="0,20,10,0" />
+                        <pge:Button Command="{Binding ForgotPasswordCommand}" Text="{ext:ClientTranslate Login_ForgotPassword}" HeightRequest="54" Grid.Column="1" Margin="10,20,0,0"  />
+
                     </Grid>
 
                 </StackLayout>

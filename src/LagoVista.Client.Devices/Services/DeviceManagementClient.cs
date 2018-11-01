@@ -116,5 +116,22 @@ namespace LagoVista.Client.Devices
         {
             return _restClient.GetListResponseAsync<DeploymentInstanceSummary>("/api/deployment/instances", listRequest);
         }
+
+        public Task<ListResponse<DeviceSummary>> GetChildDevicesAsync(string deviceRepoId, string deviceId, ListRequest request = null)
+        {
+            return _restClient.GetListResponseAsync<DeviceSummary>($"/api/devices/{deviceRepoId}/{deviceId}/children", request);
+        }
+
+        public async Task<InvokeResult> AttachChildDeviceAsync(string deviceRepoId, string parentDeviceId, string chidlDeviceId)
+        {
+            var result = await _restClient.GetAsync<InvokeResult>($"/api/devices/{parentDeviceId}/{parentDeviceId}/attachchild/{chidlDeviceId}");
+            return result.Successful ? result.Result : result.ToInvokeResult();
+        }
+
+        public async Task<InvokeResult> RemoveChildDevice(string deviceRepoId, string parentDeviceId, string chidlDeviceId)
+        {
+            var result = await  _restClient.GetAsync<InvokeResult>($"/api/devices/{parentDeviceId}/{parentDeviceId}/removechild/{chidlDeviceId}");
+            return result.Successful ? result.Result: result.ToInvokeResult();
+        }
     }
 }

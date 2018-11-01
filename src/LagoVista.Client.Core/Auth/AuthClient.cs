@@ -36,6 +36,7 @@ namespace LagoVista.Client.Core.Auth
                     var serializerSettings = new JsonSerializerSettings();
                     serializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
                     var authResponse = JsonConvert.DeserializeObject<InvokeResult<AuthResponse>>(resultContent, serializerSettings);
+
                     return authResponse;                    
                 }
                 else

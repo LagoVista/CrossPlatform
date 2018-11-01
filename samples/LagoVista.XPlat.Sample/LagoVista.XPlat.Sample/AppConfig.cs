@@ -47,6 +47,13 @@ namespace LagoVista.XPlat.Sample
             public string TermsAndConditionsLink { get { return "https://www.nuviot.com"; } }
 
             public string PrivacyStatementLink { get { return "https://www.nuviot.com"; } }
+
+            public AuthTypes AuthType { get; set; } = AuthTypes.User;
+
+            public string InstanceId { get; set; }
+            public string InstanceAuthKey { get; set; }
+            public string DeviceId { get; set; }
+            public string DeviceRepoId { get; set; }
         }
 
     }
