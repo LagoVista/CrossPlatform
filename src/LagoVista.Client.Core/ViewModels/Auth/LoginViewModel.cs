@@ -39,7 +39,7 @@ namespace LagoVista.Client.Core.ViewModels.Auth
                 AppId = _appConfig.AppId,
                 DeviceId = _deviceInfo.DeviceUniqueId,
                 AppInstanceId = AuthManager.AppInstanceId,
-                ClientType = "mobileapp",
+                ClientType = _appConfig.ClientType,
                 Email = EmailAddress,
                 Password = Password,
                 UserName = EmailAddress,

@@ -154,7 +154,7 @@ namespace LagoVista.Client.Devices
 
         public Task<ListResponse<DeviceSummary>> GetDevicesByDeviceConfigIdAsync(String deviceRepoId, String deviceConfigId, ListRequest request = null)
         {
-            return _restClient.GetListResponseAsync<DeviceSummary>($"/api/devices/{deviceRepoId}/devicetype/{deviceConfigId}", request);
+            return _restClient.GetListResponseAsync<DeviceSummary>($"/api/devices/{deviceRepoId}/deviceconfig/{deviceConfigId}", request);
         }
 
         public Task<ListResponse<DeploymentInstanceSummary>> GetDeploymentInstancesAsync(ListRequest listRequest = null)

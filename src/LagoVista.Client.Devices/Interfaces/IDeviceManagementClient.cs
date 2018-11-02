@@ -25,7 +25,7 @@ namespace LagoVista.Client.Devices
         Task<ListResponse<DeviceSummary>> GetDevicesByDeviceTypeIdAsync(String appId);
         Task<DeploymentInstance> GetDeploymentInstanceAsync(string instanceId);
         Task<ClientApp> GetClientAppAsync(String appId);
-        Task<ListResponse<DeviceSummary>> GetDevicesByDeviceConfigIdAsync(string instanceId, string deviceConfig, ListRequest request = null);
+        Task<ListResponse<DeviceSummary>> GetDevicesByDeviceConfigIdAsync(string deviceRepoId, string deviceConfig, ListRequest request = null);
         Task<ListResponse<DeviceSummary>> GetDevicesByDeviceTypeIdAsync(string deviceRepoId, string appDeviceTypeId, ListRequest request = null);
 
         Task<ListResponse<DeviceSummary>> GetChildDevicesAsync(string deviceRepoId, string deviceId, ListRequest request = null);
