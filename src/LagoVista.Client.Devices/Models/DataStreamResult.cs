@@ -8,11 +8,9 @@ namespace LagoVista.Client.Devices.Models
     {
         public DataStreamResult()
         {
-            //            Fields = new Dictionary<string, object>();
+        
         }
 
         public string Timestamp { get; set; }
-        //public Dictionary<string, object> Fields { get; set; }
-
     }
 }

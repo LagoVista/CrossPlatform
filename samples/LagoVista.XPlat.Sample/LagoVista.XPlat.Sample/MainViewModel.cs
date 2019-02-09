@@ -1,14 +1,12 @@
-﻿using System.Threading.Tasks;
-using LagoVista.Client.Core.ViewModels;
-using LagoVista.Core.Models.UIMetaData;
-using System.Collections.Generic;
-using LagoVista.Core.Models;
-using System.Linq;
-using LagoVista.Core.Commanding;
+﻿using LagoVista.Client.Core.ViewModels;
 using LagoVista.Client.Core.ViewModels.Auth;
 using LagoVista.Client.Core.ViewModels.Other;
-using LagoVista.Core.PlatformSupport;
+using LagoVista.Core.Commanding;
+using LagoVista.Core.Models.UIMetaData;
+using System.Collections.Generic;
 using System.Diagnostics;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace LagoVista.XPlat.Sample
 {
@@ -61,6 +59,12 @@ namespace LagoVista.XPlat.Sample
                     Name = "Start COM7 Serial Port",
                     FontIconKey = "fa-gear"
                 },
+                new MenuItem()
+                {
+                    Command = new RelayCommand(StartSDPListener),
+                    Name = "Start SSDP Listener",
+                    FontIconKey = "fa-gear"
+                },
             };
         }
 
@@ -70,7 +74,7 @@ namespace LagoVista.XPlat.Sample
             model1.Model2Litems = new List<Model2>();
             var response = DetailResponse<Model1>.Create(model1);
 
-        
+
 
             var frmEditPasswordLink = FormField.Create("EditPassword",
             new LagoVista.Core.Attributes.FormFieldAttribute(FieldType: LagoVista.Core.Attributes.FieldTypes.LinkButton));
@@ -100,6 +104,35 @@ namespace LagoVista.XPlat.Sample
             await base.InitAsync();
         }
 
+        private async void StartSDPListener()
+        {
+            
+
+            var config = new LagoVista.Core.Networking.Models.UPNPConfiguration()
+            {
+                DefaultPageHtml = "<html>HelloWorld</html>",
+                DeviceType = "X_LagoVista_ISY_Kiosk_Device",
+                FriendlyName = "ISY Remote Kiosk",
+                Manufacture = "Software Logistics, LLC",
+                ManufactureUrl = "www.TheWolfBytes.com",
+                ModelDescription = "ISY Remote UI and SmartThings Bridge",
+                ModelName = "ISYRemoteKiosk",
+                ModelNumber = "SL001",
+                ModelUrl = "www.TheWolfBytes.com",
+                SerialNumber = "KSK001"
+            };
+
+            try
+            {
+
+                await _restClient.MakeDiscoverableAsync(9301, config);
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(ex.Message);
+            }
+        }
+
         private async void StartListening()
         {
             var ports = await DeviceManager.GetSerialPortsAsync();
@@ -108,7 +141,7 @@ namespace LagoVista.XPlat.Sample
             port.Parity = false;
             port.DataBits = 8;
 
-            var  serialPort = DeviceManager.CreateSerialPort(port);
+            var serialPort = DeviceManager.CreateSerialPort(port);
             await serialPort.OpenAsync();
 
             await Task.Run(async () =>
@@ -122,7 +155,7 @@ namespace LagoVista.XPlat.Sample
                 {
                     var readCount = await serialPort.ReadAsync(buffer, 0, buffer.Length);
                     Debug.WriteLine("Bytes Read" + readCount);
-                    for(var idx = 0; idx < readCount; ++idx)
+                    for (var idx = 0; idx < readCount; ++idx)
                     {
                         if (buffer[idx] == 0xFD)
                         {
