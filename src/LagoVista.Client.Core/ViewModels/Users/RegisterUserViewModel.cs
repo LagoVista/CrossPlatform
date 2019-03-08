@@ -23,7 +23,11 @@ namespace LagoVista.Client.Core.ViewModels.Users
             RegisterCommand = new RelayCommand(Register);
 
             CancelCommand = new RelayCommand(() => ViewModelNavigation.GoBackAsync());
+
+            AppConfig = appConfig;
         }
+
+        public IAppConfig AppConfig { get; }
 
         public async Task<InvokeResult> SendRegistrationAsync()
         {
@@ -89,7 +93,7 @@ namespace LagoVista.Client.Core.ViewModels.Users
                 return;
             }
 
-            var passwordRegEx = new Regex(@"^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$");
+            var passwordRegEx = new Regex(@"^(?=.*[A-Za-z!@#$%^&])(?=.*\d)[A-Za-z\d]{8,}$");
             if (!passwordRegEx.Match(RegisterModel.Password).Success)
             {
                 await Popups.ShowAsync(ClientResources.Password_Requirements);

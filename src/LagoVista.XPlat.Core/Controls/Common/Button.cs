@@ -14,8 +14,8 @@ namespace LagoVista.XPlat.Core
         public Button()
         {
             BackgroundColor = AppStyle.ButtonBackground.ToXamFormsColor();
-            TextColor = AppStyle.ButtonForeground.ToXamFormsColor();
-            
+            TextColor = AppStyle.ButtonForeground.ToXamFormsColor();            
+            FontSize = 16;            
         }
 
         public new ICommand Command

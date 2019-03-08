@@ -6,10 +6,10 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="LagoVista.Core" Version="2.1.633-beta1111" />
-    <PackageReference Include="LagoVista.IoT.Deployment.Models" Version="2.1.633-beta1111" />
-    <PackageReference Include="LagoVista.IoT.DeviceAdmin.Models" Version="2.1.633-beta1111" />
-    <PackageReference Include="LagoVista.IoT.DeviceManagement.Models" Version="2.1.633-beta1111" />
+    <PackageReference Include="LagoVista.Core" Version="2.1.656-beta1121" />
+    <PackageReference Include="LagoVista.IoT.Deployment.Models" Version="2.1.656-beta1121" />
+    <PackageReference Include="LagoVista.IoT.DeviceAdmin.Models" Version="2.1.656-beta1121" />
+    <PackageReference Include="LagoVista.IoT.DeviceManagement.Models" Version="2.1.656-beta1121" />
   </ItemGroup>
 
   <ItemGroup>

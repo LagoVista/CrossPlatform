@@ -12,11 +12,11 @@ namespace LagoVista.Client.Core.ViewModels.Orgs
     {
 
         IDeviceInfo _deviceInfo;
-        IAppConfig _appConfig;
+        public IAppConfig AppConfig { get; }
         public UserOrgsViewModel(IDeviceInfo deviceInfo, IAppConfig appConfig)
         {
             _deviceInfo = deviceInfo;
-            _appConfig = appConfig;
+            AppConfig = appConfig;
         }
 
         protected override string GetListURI()

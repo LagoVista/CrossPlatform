@@ -7,40 +7,33 @@
     x:Class="LagoVista.XPlat.Core.Views.Auth.LoginView"
     Title="{ext:ClientTranslate Common_Login}">
     <pge:LagoVistaContentPage.MainContent>
-        <ScrollView>
-            <Grid  BackgroundColor="{StaticResource NuvIoTMedium}" >
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="auto" />
-                    <RowDefinition Height="auto" />
-                </Grid.RowDefinitions>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="300" />
-                    <ColumnDefinition Width="*" />
-                </Grid.ColumnDefinitions>
-                <Image Source="softwarelogistics.png" Margin="0,10,0,10" Grid.Row="0" Grid.Column="1" />
-                <StackLayout  HorizontalOptions="Center" Grid.Row="1"  Grid.Column="1" >
-                    <pge:Label Text="{ext:ClientTranslate Common_EmailAddress}"  TextColor="White" />
+        <Grid >
+            <Grid.RowDefinitions>
+                <RowDefinition Height="200" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="300" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            
+            <pge:Image FileName="{Binding AppConfig.AppLogo}" UWPPath="Assets" Grid.Column="1" />
+
+            <ScrollView Grid.Row="1" Grid.Column="1">
+                <StackLayout  >
+                    <pge:Label Text="{ext:ClientTranslate Common_EmailAddress}"  TextColor="{StaticResource NuvIoTBlack}"  FontAttributes="Bold" />
                     <pge:Entry Text="{Binding EmailAddress, Mode=TwoWay}" Placeholder="{ext:ClientTranslate Common_Email_Watermark}"  Keyboard="Email"  />
 
-                    <pge:Label Text="{ext:ClientTranslate Common_Password}" TextColor="White" />
-                    <pge:Entry Text="{Binding Password, Mode=TwoWay}" Placeholder="{ext:ClientTranslate Common_Email_Password}" IsPassword="True" Keyboard="Plain" Margin="0,0,0,20"  />
+                    <pge:Label Text="{ext:ClientTranslate Common_Password}"  TextColor="{StaticResource NuvIoTBlack}"  FontAttributes="Bold" />
+                    <pge:Entry Text="{Binding Password, Mode=TwoWay}" Placeholder="{ext:ClientTranslate Common_Email_Password}" IsPassword="True" Keyboard="Plain" Margin="0,0,0,10"  />
 
-                    <pge:Button Command="{Binding LoginCommand}" Text="{ext:ClientTranslate Common_Login}" HeightRequest="50" FontSize="Small" />
-
-                    <Grid>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="50*" />
-                            <ColumnDefinition Width="50*" />
-                        </Grid.ColumnDefinitions>
-                        <pge:Button Command="{Binding RegisterCommand}" Text="{ext:ClientTranslate Register_Title}" HeightRequest="54" Margin="0,20,10,0" />
-                        <pge:Button Command="{Binding ForgotPasswordCommand}" Text="{ext:ClientTranslate Login_ForgotPassword}" HeightRequest="54" Grid.Column="1" Margin="10,20,0,0"  />
-
-                    </Grid>
-
+                    <pge:Button Command="{Binding LoginCommand}" Text="{ext:ClientTranslate Common_Login}" HeightRequest="42" WidthRequest="100" Margin="0,0,0,20" />
+                    <pge:HyperLinkLabel NavigateCommand="{Binding RegisterCommand}" Text="{ext:ClientTranslate Register_Title}" TextColor="{StaticResource NuvIoTDark}" FontSize="Small" Margin="0,0,0,15"  />
+                    <pge:HyperLinkLabel NavigateCommand="{Binding ForgotPasswordCommand}" Text="{ext:ClientTranslate Login_ForgotPassword}" TextColor="{StaticResource NuvIoTDark}" FontSize="Small"  />
                 </StackLayout>
-                
-            </Grid>
-        </ScrollView>
+            </ScrollView>
+        </Grid>
     </pge:LagoVistaContentPage.MainContent>
 </pge:LagoVistaContentPage>

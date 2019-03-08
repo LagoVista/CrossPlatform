@@ -5,6 +5,7 @@ using Microsoft.AppCenter;
 using Microsoft.AppCenter.Crashes;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 
 namespace LagoVista.Core.UWP.Loggers
 {
@@ -53,6 +54,8 @@ namespace LagoVista.Core.UWP.Loggers
         {
             var duration = DateTime.Now - evt.StartTime;
 
+            Debug.WriteLine($"LEVEL: [TIMEDEVENT] - AREA: {evt.Area} {evt.Description} Duration: {Math.Round(duration.TotalSeconds, 4).ToString()}");
+
             AddCustomEvent(LagoVista.Core.PlatformSupport.LogLevel.Message, evt.Area, evt.Description, new KeyValuePair<string, string>("duration", Math.Round(duration.TotalSeconds, 4).ToString()));
         }
 
@@ -70,8 +73,11 @@ namespace LagoVista.Core.UWP.Loggers
                 }
             }
 
+            Debug.WriteLine($"LEVEL: [{level}] - AREA: [{area}] - {message}");
+
             foreach (var arg in args)
             {
+                Debug.WriteLine($"\t\t\t{arg.Key}  = {arg.Value}");
                 dictionary.Add(arg.Key, arg.Value);
             }
 
@@ -85,10 +91,15 @@ namespace LagoVista.Core.UWP.Loggers
             dictionary.Add("Type", "exception");
             dictionary.Add("StackTrace", ex.StackTrace.Substring(0));
 
+
+            Debug.WriteLine($"LEVEL: [EXCEPTION] - AREA: [{area}] - {ex.Message}");
+
+
             if (_args != null)
             {
                 foreach (var arg in _args)
                 {
+                    Debug.WriteLine($"\t\t\t{arg.Key}  = {arg.Value}");
                     dictionary.Add(arg.Key, arg.Value);
                 }
             }

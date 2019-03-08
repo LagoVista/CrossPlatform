@@ -1,4 +1,7 @@
-﻿using LagoVista.Core.Commanding;
+﻿using LagoVista.Client.Core.Net;
+using LagoVista.Core.Commanding;
+using LagoVista.Core.Interfaces;
+using LagoVista.Core.Models;
 using LagoVista.Core.Models.UIMetaData;
 using LagoVista.Core.Validation;
 using LagoVista.UserAdmin.ViewModels.Organization;
@@ -11,7 +14,7 @@ namespace LagoVista.Client.Core.ViewModels.Orgs
     {
         IClientAppInfo _clientAppInfo;
 
-        public OrgEditorViewModel(IClientAppInfo clientAppInfo)
+        public OrgEditorViewModel(IClientAppInfo clientAppInfo, IAppConfig apppConfig)
         {
             _clientAppInfo = clientAppInfo;
 
@@ -26,7 +29,11 @@ namespace LagoVista.Client.Core.ViewModels.Orgs
                     FontIconKey = "fa-sign-out"
                 }
             };
+
+            AppConfig = AppConfig;
         }
+
+        public IAppConfig AppConfig { get;  }
 
         public override Task PostSaveAsync()
         {
@@ -36,6 +43,17 @@ namespace LagoVista.Client.Core.ViewModels.Orgs
         protected override string GetRequestUri()
         {
             return "/api/org/factory";
+        }
+
+        public async override Task InitAsync()
+        {
+            await RefreshUserFromServerAsync();
+
+            if(!EntityHeader.IsNullOrEmpty(AuthManager.User.CurrentOrganization))
+            {
+                await ViewModelNavigation.SetAsNewRootAsync(_clientAppInfo.MainViewModel);
+            }
+            
         }
 
         protected override void BuildForm(EditFormAdapter form)
@@ -51,6 +69,8 @@ namespace LagoVista.Client.Core.ViewModels.Orgs
             {
                 var saveResult = await FormRestClient.AddAsync("/api/org", this.Model);
                 if (!saveResult.Successful) return saveResult;
+
+                await (RestClient as RawRestClient).RenewRefreshToken();
 
                 var refreshResult = await RefreshUserFromServerAsync();
                 return refreshResult;

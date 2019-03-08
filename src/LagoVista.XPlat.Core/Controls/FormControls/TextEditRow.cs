@@ -27,7 +27,6 @@ namespace LagoVista.XPlat.Core.Controls.FormControls
                 _editor.HeightRequest = 40;
             }
 
-
             _editor.IsPassword = field.FieldType == FieldTypes.Password.ToString();
 
             _editor.TextChanged += _editor_TextChanged;

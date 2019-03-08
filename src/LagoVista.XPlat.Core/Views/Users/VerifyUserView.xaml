@@ -7,30 +7,39 @@
     x:Class="LagoVista.XPlat.Core.Views.Users.VerifyUserView"
     Title="{ext:ClientTranslate Common_Login}">
     <pge:LagoVistaContentPage.MainContent>
-        <ScrollView>
-            <Grid BackgroundColor="#2196F3">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="*" />
-                    <RowDefinition Height="auto" />
-                    <RowDefinition Height="*" />
-                </Grid.RowDefinitions>
-                <Image Source="nuviot.png" HorizontalOptions="Center" />
-                <StackLayout Grid.Row="1" Margin="20" WidthRequest="300" HorizontalOptions="Center" >
-                    <pge:Label IsVisible="{Binding ShowPhoneConfirm}" Text="{ext:ClientTranslate Verify_PhoneNumber}"  TextColor="White" />
+
+        <Grid >
+            <Grid.RowDefinitions>
+                <RowDefinition Height="200" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="300" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <pge:Image FileName="{Binding AppConfig.AppLogo}" UWPPath="Assets" Grid.Column="1" />
+            <ScrollView Grid.Column="1" Grid.Row="1">
+                <StackLayout   >
+                    <pge:Label IsVisible="{Binding ShowPhoneConfirm}" Text="{ext:ClientTranslate Verify_PhoneNumber}"  TextColor="{StaticResource NuvIoTBlack}" />
                     <pge:Entry IsVisible="{Binding ShowPhoneConfirm}" Text="{Binding PhoneNumber, Mode=TwoWay}" Placeholder="{ext:ClientTranslate Verify_PhoneNumber_Watermark}"  />
 
-                    <pge:Label IsVisible="{Binding ShowPhoneConfirm}" Text="{ext:ClientTranslate Verify_ReceivedCode}"  TextColor="White" />
+                    <pge:Button IsVisible="{Binding ShowPhoneConfirm}" Command="{Binding SendSMSConfirmationCommand}" Text="{ext:ClientTranslate Verify_SendSMS}" HeightRequest="42" Margin="0,0,0,10" />
+
+                    <pge:Label IsVisible="{Binding ShowPhoneConfirm}" Text="{ext:ClientTranslate Verify_ReceivedCode}"  TextColor="{StaticResource NuvIoTBlack}" />
                     <pge:Entry IsVisible="{Binding ShowPhoneConfirm}" Text="{Binding SMSCode, Mode=TwoWay}" Placeholder="{ext:ClientTranslate Verify_ReceivedCode_Watermark}"  />
 
-                    <pge:Button IsVisible="{Binding ShowEmailConfirm}" Command="{Binding SendEmailConfirmationCommand}" Text="{ext:ClientTranslate Verify_SendEmail}" HeightRequest="48" />
+                    <pge:Button IsVisible="{Binding ShowEmailConfirm}" Command="{Binding SendEmailConfirmationCommand}" Text="{ext:ClientTranslate Verify_SendEmail}" HeightRequest="42" />
 
-                    <pge:Button IsVisible="{Binding ShowPhoneConfirm}" Command="{Binding SendSMSConfirmationCommand}" Text="{ext:ClientTranslate Verify_SendSMS}" HeightRequest="48" />
+                    <pge:Button IsVisible="{Binding ShowPhoneConfirm}" Command="{Binding ConfirmEnteredSMSCommand}" Text="{ext:ClientTranslate Verify_ConfirmCode}" HeightRequest="42" Margin="0,0,0,10" />
 
-                    <pge:Button IsVisible="{Binding ShowPhoneConfirm}" Command="{Binding ConfirmEnteredSMSCommand}" Text="{ext:ClientTranslate Verify_ConfirmCode}" HeightRequest="48" />
-
-                    <pge:Button  Command="{Binding LogoutCommand}" Text="{ext:ClientTranslate Common_Logout}" HeightRequest="48" />
+                    <pge:HyperLinkLabel NavigateCommand="{Binding LogoutCommand}" Text="{ext:ClientTranslate Common_Logout}" TextColor="{StaticResource NuvIoTDark}" FontSize="Small"   />
                 </StackLayout>
-            </Grid>
-        </ScrollView>
+
+            </ScrollView>
+        </Grid>
+
     </pge:LagoVistaContentPage.MainContent>
 </pge:LagoVistaContentPage>

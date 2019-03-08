@@ -1,6 +1,7 @@
 ﻿using LagoVista.Client.Core.Net;
 using LagoVista.Client.Core.Resources;
 using LagoVista.Core.Commanding;
+using LagoVista.Core.Interfaces;
 using LagoVista.Core.Validation;
 using LagoVista.UserAdmin.Models.DTOs;
 using System;
@@ -10,12 +11,15 @@ namespace LagoVista.Client.Core.ViewModels.Auth
 {
     public class ChangePasswordViewModel : AppViewModelBase
     {
-        public ChangePasswordViewModel(IRestClient rawRestClient)
+        public ChangePasswordViewModel(IRestClient rawRestClient, IAppConfig appConfig)
         {
             ChangePasswordCommand = new RelayCommand(ChangePassword);
             CancelCommand = new RelayCommand(() => ViewModelNavigation.GoBackAsync());
             Model = new UserAdmin.Models.DTOs.ChangePassword();
+            AppConfig = appConfig;
         }
+
+        public IAppConfig AppConfig { get; private set; }
 
         public async Task<InvokeResult> SendResetPassword()
         {

@@ -63,6 +63,19 @@ namespace LagoVista.Client.Devices
             }
         }
 
+        public async Task<DetailResponse<Device>> GetDeviceAsync(String deviceId)
+        {
+            var result = await _restClient.GetAsync<DetailResponse<Device>>($"/clientapi/device/{deviceId}");
+            if (result.Successful)
+            {
+                return result.Result;
+            }
+            else
+            {
+                throw new Exception(result.Errors.First().Message);
+            }
+        }
+
         public Task<ListResponse<ClientAppSummary>> GetClientAppsAsync(ListRequest request = null)
         {
             return _restClient.GetListResponseAsync<ClientAppSummary>($"/api/clientapps", request);

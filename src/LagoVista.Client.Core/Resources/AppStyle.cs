@@ -38,7 +38,7 @@ namespace LagoVista.Client.Core.Resources
 
         public Color ButtonBorder => NamedColors.NuvIoTBlack;
 
-        public Color ButtonForeground => NamedColors.NuvIoTWhite;
+        public Color ButtonForeground => NamedColors.White;
 
         public Color ButtonBackgroundActive => NamedColors.NuvIoTWhite;
 

@@ -3,6 +3,7 @@ using LagoVista.Client.Core.ViewModels.Auth;
 using LagoVista.Client.Core.ViewModels.Other;
 using LagoVista.Core.Commanding;
 using LagoVista.Core.Models.UIMetaData;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
@@ -121,16 +122,15 @@ namespace LagoVista.XPlat.Sample
                 ModelUrl = "www.TheWolfBytes.com",
                 SerialNumber = "KSK001"
             };
-
+            /*
             try
-            {
-
-                await _restClient.MakeDiscoverableAsync(9301, config);
+            {                
+                await RestClient.MakeDiscoverableAsync(9301, config);
             }
             catch (Exception ex)
             {
                 Debug.WriteLine(ex.Message);
-            }
+            }*/
         }
 
         private async void StartListening()

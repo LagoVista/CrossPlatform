@@ -14,7 +14,6 @@ namespace LagoVista.Client.Core.ViewModels.Auth
     public class LoginViewModel : AppViewModelBase
     {
         IAuthClient _authClient;
-        IAppConfig _appConfig;
         IClientAppInfo _clientAppInfo;
         IDeviceInfo _deviceInfo;
 
@@ -26,20 +25,22 @@ namespace LagoVista.Client.Core.ViewModels.Auth
 
             _authClient = authClient;
             _clientAppInfo = clientAppInfo;
-            _appConfig = appConfig;
+            AppConfig = appConfig;
             _deviceInfo = deviceInfo;
         }
+
+        public IAppConfig AppConfig { get; }
 
         public async Task<InvokeResult> PerformLoginAsync()
         {
             var loginInfo = new AuthRequest()
             {
-                AuthType =_appConfig.AuthType,
-                DeviceRepoId = _appConfig.DeviceRepoId,
-                AppId = _appConfig.AppId,
+                AuthType =AppConfig.AuthType,
+                DeviceRepoId = AppConfig.DeviceRepoId,
+                AppId = AppConfig.AppId,
                 DeviceId = _deviceInfo.DeviceUniqueId,
                 AppInstanceId = AuthManager.AppInstanceId,
-                ClientType = _appConfig.ClientType,
+                ClientType = AppConfig.ClientType,
                 Email = EmailAddress,
                 Password = Password,
                 UserName = EmailAddress,

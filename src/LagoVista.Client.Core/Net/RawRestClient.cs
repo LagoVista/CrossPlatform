@@ -44,7 +44,7 @@ namespace LagoVista.Client.Core.Net
             _callSemaphore = new SemaphoreSlim(1);
         }
 
-        private async Task<InvokeResult> RenewRefreshToken()
+        public async Task<InvokeResult> RenewRefreshToken()
         {
             var authRequest = new AuthRequest();
             authRequest.AppId = _appConfig.AppId;
@@ -89,9 +89,19 @@ namespace LagoVista.Client.Core.Net
             while (retry)
             {
                 _httpClient.DefaultRequestHeaders.Clear();
-                if (_authManager.IsAuthenticated)
+                switch(_appConfig.AuthType)
                 {
-                    _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", _authManager.AccessToken);
+                    case AuthTypes.ClientApp:
+                        _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("APIToken", $"{_appConfig.AppId}:{_appConfig.APIToken}");
+
+                        break;
+                    default:
+                        if (_authManager.IsAuthenticated)
+                        {
+                            _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", _authManager.AccessToken);
+                        }
+
+                        break;
                 }
 
                 if(listRequest != null)
@@ -111,14 +121,16 @@ namespace LagoVista.Client.Core.Net
                     var start = DateTime.Now;
                     var response = await call();
                     var delta = DateTime.Now - start;
-
+                    _logger.AddCustomEvent(LogLevel.Message, "RawResetClient_PerformCall", "Begin call");
 
                     if (response.IsSuccessStatusCode)
                     {
+                        _logger.AddCustomEvent(LogLevel.Message, "RawResetClient_PerformCall", "Call Success");
                         rawResponse = RawResponse.FromSuccess(await response.Content.ReadAsStringAsync());
                     }
                     else if (response.StatusCode == System.Net.HttpStatusCode.Unauthorized)
                     {
+                        _logger.AddCustomEvent(LogLevel.Message, "RawResetClient_PerformCall", "Call Unauthorized");
                         _logger.AddCustomEvent(LogLevel.Error, "RawRestClient_PerformCall", "401 From Server");
                         retry = ((await RenewRefreshToken()).Successful);
                         if (!retry)
@@ -128,8 +140,10 @@ namespace LagoVista.Client.Core.Net
                     }
                     else if(response.StatusCode == System.Net.HttpStatusCode.BadGateway)
                     {
+                        
                         await Task.Delay(attempts * 100);
-                        retry = attempts++ < 5;                        
+                        retry = attempts++ < 5;
+                        _logger.AddCustomEvent(LogLevel.Message, "RawResetClient_PerformCall", $"Bad Gateway {attempts} will retry {retry}");
                     }
                     else
                     {
@@ -139,19 +153,21 @@ namespace LagoVista.Client.Core.Net
                     }
 
                 }
-                catch (Exceptions.CouldNotRenewTokenException)
+                catch (Exceptions.CouldNotRenewTokenException ex)
                 {
+                    _logger.AddCustomEvent(LogLevel.Message, "RawResetClient_PerformCall", $"Could Not Renew from Refreh Token {attempts} will not retry");
+                    _logger.AddException("RawResetClient_PerformCall", ex, ex.Message.ToKVP("type"));
                     _callSemaphore.Release();
                     throw;
                 }
                 catch (TaskCanceledException tce)
                 {
-                    _logger.AddException("RawRestClient_PerformCall_TaskCancelled", tce);
+                    _logger.AddException("RawRestClient_PerformCall_TaskCancelled", tce,tce.Message.ToKVP("type"));
                     rawResponse = RawResponse.FromException(tce, tce.CancellationToken.IsCancellationRequested);
                 }
                 catch (Exception ex)
                 {
-                    _logger.AddException("RawRestClient_PerformCall", ex);
+                    _logger.AddException("RawRestClient_PerformCall", ex, ex.Message.ToKVP("type"));
                     rawResponse = RawResponse.FromException(ex);
                 }
             }
@@ -164,6 +180,8 @@ namespace LagoVista.Client.Core.Net
         public Task<RawResponse> GetAsync(string path, CancellationTokenSource cancellationTokenSource = null)
         {
             if (cancellationTokenSource == null) cancellationTokenSource = new CancellationTokenSource(TimeSpan.FromSeconds(60));
+
+            _logger.AddCustomEvent(LogLevel.Message, "RawRestClient_GetAsync", "Begin GET", path.ToKVP("path"));
 
             return PerformCall(async () =>
             {
@@ -178,6 +196,8 @@ namespace LagoVista.Client.Core.Net
         {
             if (cancellationTokenSource == null) cancellationTokenSource = new CancellationTokenSource(TimeSpan.FromSeconds(60));
 
+            _logger.AddCustomEvent(LogLevel.Message, "RawRestClient_GetAsync", "Begin POST", path.ToKVP("path"), payload.ToKVP("content"));
+
             return PerformCall(async () =>
             {
                 var timedEvent = _logger.StartTimedEvent("RawRestClient_Post", path);
@@ -190,6 +210,8 @@ namespace LagoVista.Client.Core.Net
 
         public Task<RawResponse> PutAsync(string path, string payload, CancellationTokenSource cancellationTokenSource = null)
         {
+            _logger.AddCustomEvent(LogLevel.Message, "RawRestClient_GetAsync", "Begin PUT", path.ToKVP("path"), payload.ToKVP("content"));
+
             if (cancellationTokenSource == null) cancellationTokenSource = new CancellationTokenSource(TimeSpan.FromSeconds(60));
 
             return PerformCall(async () =>
@@ -204,11 +226,13 @@ namespace LagoVista.Client.Core.Net
 
         public Task<RawResponse> DeleteAsync(string path, CancellationTokenSource cancellationTokenSource = null)
         {
+            _logger.AddCustomEvent(LogLevel.Message, "RawRestClient_GetAsync", "Begin Delete", path.ToKVP("path"));
+
             return PerformCall(async () =>
             {
                 if (cancellationTokenSource == null) cancellationTokenSource = new CancellationTokenSource(TimeSpan.FromSeconds(60));
 
-                var timedEvent = _logger.StartTimedEvent("RawRestClient_Delete", path);
+                var timedEvent = _logger.StartTimedEvent("RawRestClient_DeleteAsync", path);
                 var result = await _httpClient.DeleteAsync(path, cancellationTokenSource.Token);
                 _logger.EndTimedEvent(timedEvent);
                 return result;
@@ -220,7 +244,12 @@ namespace LagoVista.Client.Core.Net
             if (cancellationTokenSource == null) cancellationTokenSource = new CancellationTokenSource(TimeSpan.FromSeconds(60));
 
             var json = JsonConvert.SerializeObject(model, new Newtonsoft.Json.JsonSerializerSettings() { ContractResolver = new CamelCasePropertyNamesContractResolver(), });
+            
+            _logger.AddCustomEvent(LogLevel.Message, "RawRestClient_PostAsync", "Begin Post", path.ToKVP("path"), json.ToKVP("content"));
+
+            var timedEvent = _logger.StartTimedEvent("RawRestClient_DeleteAsync", path);
             var response = await PostAsync(path, json, cancellationTokenSource);
+            _logger.EndTimedEvent(timedEvent);
             return response.ToInvokeResult();
         }
 
@@ -229,7 +258,11 @@ namespace LagoVista.Client.Core.Net
             if (cancellationTokenSource == null) cancellationTokenSource = new CancellationTokenSource(TimeSpan.FromSeconds(60));
 
             var json = JsonConvert.SerializeObject(model, new Newtonsoft.Json.JsonSerializerSettings() { ContractResolver = new CamelCasePropertyNamesContractResolver(), });
+
+            var timedEvent = _logger.StartTimedEvent("RawRestClient_DeleteAsync", path);
+            _logger.AddCustomEvent(LogLevel.Message, "RawRestClient_PutAsync", "Begin PUT", path.ToKVP("path"), json.ToKVP("content"));            
             var response = await PutAsync(path, json, cancellationTokenSource);
+            _logger.EndTimedEvent(timedEvent);
             return response.ToInvokeResult();
         }
 
@@ -238,6 +271,8 @@ namespace LagoVista.Client.Core.Net
             if (cancellationTokenSource == null) cancellationTokenSource = new CancellationTokenSource(TimeSpan.FromSeconds(60));
 
             var json = JsonConvert.SerializeObject(model, new Newtonsoft.Json.JsonSerializerSettings() { ContractResolver = new CamelCasePropertyNamesContractResolver(), });
+            _logger.AddCustomEvent(LogLevel.Message, "RawRestClient_PostAsync", "Begin PUT", path.ToKVP("path"), json.ToKVP("content"));
+
             var response = await PostAsync(path, json, cancellationTokenSource);
             if (response.Success)
             {
@@ -251,6 +286,8 @@ namespace LagoVista.Client.Core.Net
 
         public async Task<InvokeResult<TResponseModel>> GetAsync<TResponseModel>(string path, CancellationTokenSource cancellationTokenSource = null) where TResponseModel : class
         {
+            _logger.AddCustomEvent(LogLevel.Message, "RawRestClient_GetAsync", "Begin PUT", path.ToKVP("path"));
+
             if (cancellationTokenSource == null) cancellationTokenSource = new CancellationTokenSource(TimeSpan.FromSeconds(60));
 
             var response = await GetAsync(path, cancellationTokenSource);
@@ -259,6 +296,8 @@ namespace LagoVista.Client.Core.Net
 
         public async Task<ListResponse<TResponseModel>> GetListResponseAsync<TResponseModel>(string path, ListRequest listRequest, CancellationTokenSource cancellationTokenSource = null) where TResponseModel : class
         {
+            _logger.AddCustomEvent(LogLevel.Message, "RawRestClient_GetListResponseAsync", "Begin Get", path.ToKVP("path"));
+
             if (cancellationTokenSource == null) cancellationTokenSource = new CancellationTokenSource(TimeSpan.FromSeconds(60));
 
             var response = await PerformCall(async () =>

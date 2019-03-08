@@ -313,7 +313,7 @@ namespace LagoVista.Client.Core.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to -enter your password-.
+        ///   Looks up a localized string similar to Enter your password.
         /// </summary>
         public static string Common_Email_Password {
             get {
@@ -322,7 +322,7 @@ namespace LagoVista.Client.Core.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to -enter your email address-.
+        ///   Looks up a localized string similar to Enter your email address.
         /// </summary>
         public static string Common_Email_Watermark {
             get {
@@ -331,7 +331,7 @@ namespace LagoVista.Client.Core.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Email Address.
+        ///   Looks up a localized string similar to Email.
         /// </summary>
         public static string Common_EmailAddress {
             get {
@@ -709,7 +709,7 @@ namespace LagoVista.Client.Core.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to -confirm your password-.
+        ///   Looks up a localized string similar to Confirm your new password.
         /// </summary>
         public static string Register_ConfirmPassword_Watermark {
             get {
@@ -745,7 +745,7 @@ namespace LagoVista.Client.Core.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to -enter your email address-.
+        ///   Looks up a localized string similar to Enter your email address.
         /// </summary>
         public static string Register_Email_WaterMark {
             get {
@@ -772,7 +772,7 @@ namespace LagoVista.Client.Core.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to -enter your first name-.
+        ///   Looks up a localized string similar to Enter your first name.
         /// </summary>
         public static string Register_FirstName_WaterMark {
             get {
@@ -799,7 +799,7 @@ namespace LagoVista.Client.Core.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to -enter your last name-.
+        ///   Looks up a localized string similar to Enter your last name.
         /// </summary>
         public static string Register_LastName_WaterMark {
             get {
@@ -835,7 +835,7 @@ namespace LagoVista.Client.Core.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to -enter a password-.
+        ///   Looks up a localized string similar to Create a password.
         /// </summary>
         public static string Register_Password_Watermark {
             get {
@@ -862,7 +862,7 @@ namespace LagoVista.Client.Core.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to -confirm your new password-.
+        ///   Looks up a localized string similar to Confirm your new password.
         /// </summary>
         public static string ResetPassword_ConfirmNewPassword_Watermark {
             get {
@@ -898,7 +898,7 @@ namespace LagoVista.Client.Core.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Your Password has Successfully been Reset, you can now log into the system with your email address and new password.
+        ///   Looks up a localized string similar to Your Password has Successfully been Reset, you can now log into the system with your email address and new password..
         /// </summary>
         public static string ResetPassword_SuccessMessage {
             get {
@@ -925,7 +925,7 @@ namespace LagoVista.Client.Core.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to -email address-.
+        ///   Looks up a localized string similar to Enter your email address.
         /// </summary>
         public static string SendResetPasswordLink_Email_Watermark {
             get {
@@ -943,7 +943,7 @@ namespace LagoVista.Client.Core.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to If your account exists an email has be sent to your email account with instructions on how to reset your password..
+        ///   Looks up a localized string similar to If you have entered an email address associated with a valid account, you will receive an email with instructions for resetting your password..
         /// </summary>
         public static string SendResetPasswordLink_Message {
             get {
@@ -1006,7 +1006,7 @@ namespace LagoVista.Client.Core.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to An email message has been sent and and should arrive in your inbox shortly.  If you don&apos;t receive this in a few minutes please check other folders it may arrive in. .
+        ///   Looks up a localized string similar to An email message has been sent and should arrive in your inbox shortly.  If you do not receive it in a few minutes, please check other folders where it may been routed..
         /// </summary>
         public static string Verify_EmailSent {
             get {
@@ -1024,7 +1024,7 @@ namespace LagoVista.Client.Core.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to -enter your phone number-.
+        ///   Looks up a localized string similar to Enter your phone number.
         /// </summary>
         public static string Verify_PhoneNumber_Watermark {
             get {
@@ -1042,7 +1042,7 @@ namespace LagoVista.Client.Core.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to -enter 6 digit code-.
+        ///   Looks up a localized string similar to Enter the 5 or 6 digit code.
         /// </summary>
         public static string Verify_ReceivedCode_Watermark {
             get {

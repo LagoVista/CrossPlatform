@@ -8,21 +8,29 @@ using LagoVista.Client.Core.Resources;
 using System.Collections.Generic;
 using LagoVista.Client.Core.ViewModels.Orgs;
 using System.Threading.Tasks;
+using LagoVista.Core.Authentication.Interfaces;
+using LagoVista.Client.Core.Net;
+using LagoVista.Core.Interfaces;
 
 namespace LagoVista.Client.Core.ViewModels.Users
 {
     public class VerifyUserViewModel : AppViewModelBase
     {
         IClientAppInfo _clientAppInfo;
+        IAuthClient _authClient;
 
-        public VerifyUserViewModel(IClientAppInfo clientAppInfo)
+        public VerifyUserViewModel(IClientAppInfo clientAppInfo, IAuthClient authClient, IAppConfig appConfig)
         {
+            _authClient = authClient;
             _clientAppInfo = clientAppInfo;
             SendEmailConfirmationCommand = new RelayCommand(SendEmailConfirmation);
             SendSMSConfirmationCommand = new RelayCommand(SendSMSConfirmation, ValidPhoneNumber);
             ConfirmEnteredSMSCommand = new RelayCommand(ConfirmSMSCode, () => !String.IsNullOrEmpty(SMSCode));
             LogoutCommand = new RelayCommand(Logout);
+            AppConfig = appConfig;
         }
+
+        public IAppConfig AppConfig { get; }
 
         public void SendEmailConfirmation()
         {
@@ -72,6 +80,9 @@ namespace LagoVista.Client.Core.ViewModels.Users
         {
             if (AuthManager.User.EmailConfirmed && AuthManager.User.PhoneNumberConfirmed)
             {
+                //After we login we need to get a new token that has the latest information.
+                await (RestClient as RawRestClient).RenewRefreshToken();
+                
                 if (EntityHeader.IsNullOrEmpty(AuthManager.User.CurrentOrganization))
                 {
                     await ViewModelNavigation.SetAsNewRootAsync<OrgEditorViewModel>();

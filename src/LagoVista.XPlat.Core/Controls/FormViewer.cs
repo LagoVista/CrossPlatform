@@ -84,8 +84,8 @@ namespace LagoVista.XPlat.Core
 
         private static void HandleFormFieldsAssigned(BindableObject bindable, object oldValue, object newValue)
         {
-            var button = (FormViewer)bindable;
-            button.Form = newValue as EditFormAdapter;
+            var viewer = (FormViewer)bindable;
+            viewer.Form = newValue as EditFormAdapter;
         }
 
         private void AddChild(FormControl field)

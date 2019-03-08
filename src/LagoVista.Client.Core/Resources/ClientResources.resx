@@ -124,13 +124,13 @@
     <value>Add</value>
   </data>
   <data name="Common_EmailAddress" xml:space="preserve">
-    <value>Email Address</value>
+    <value>Email</value>
   </data>
   <data name="Common_Email_Password" xml:space="preserve">
-    <value>-enter your password-</value>
+    <value>Enter your password</value>
   </data>
   <data name="Common_Email_Watermark" xml:space="preserve">
-    <value>-enter your email address-</value>
+    <value>Enter your email address</value>
   </data>
   <data name="Common_ErrorCommunicatingWithServer" xml:space="preserve">
     <value>Sorry, there was an error communicating with the server.   Please try again later.</value>
@@ -160,7 +160,7 @@
     <value>Yes</value>
   </data>
   <data name="Register_ConfirmPassword_Watermark" xml:space="preserve">
-    <value>-confirm your password-</value>
+    <value>Confirm your new password</value>
   </data>
   <data name="Register_Confirm_Password" xml:space="preserve">
     <value>Confirm Password</value>
@@ -178,7 +178,7 @@
     <value>First Name is a Required Field</value>
   </data>
   <data name="Register_FirstName_WaterMark" xml:space="preserve">
-    <value>-enter your first name-</value>
+    <value>Enter your first name</value>
   </data>
   <data name="Register_LastName" xml:space="preserve">
     <value>Last Name</value>
@@ -187,7 +187,7 @@
     <value>Last Name is a Required Field</value>
   </data>
   <data name="Register_LastName_WaterMark" xml:space="preserve">
-    <value>-enter your last name-</value>
+    <value>Enter your last name</value>
   </data>
   <data name="Register_Password" xml:space="preserve">
     <value>Password</value>
@@ -202,7 +202,7 @@
     <value>Your password must contain at least 8 characters, with at least one number and one upper case and one lower case letter</value>
   </data>
   <data name="Register_Password_Watermark" xml:space="preserve">
-    <value>-enter a password-</value>
+    <value>Create a password</value>
   </data>
   <data name="Register_Title" xml:space="preserve">
     <value>Register</value>
@@ -211,19 +211,19 @@
     <value>Confirm Code</value>
   </data>
   <data name="Verify_EmailSent" xml:space="preserve">
-    <value>An email message has been sent and and should arrive in your inbox shortly.  If you don't receive this in a few minutes please check other folders it may arrive in. </value>
+    <value>An email message has been sent and should arrive in your inbox shortly.  If you do not receive it in a few minutes, please check other folders where it may been routed.</value>
   </data>
   <data name="Verify_PhoneNumber" xml:space="preserve">
     <value>Phone Number</value>
   </data>
   <data name="Verify_PhoneNumber_Watermark" xml:space="preserve">
-    <value>-enter your phone number-</value>
+    <value>Enter your phone number</value>
   </data>
   <data name="Verify_ReceivedCode" xml:space="preserve">
     <value>Recevied Code</value>
   </data>
   <data name="Verify_ReceivedCode_Watermark" xml:space="preserve">
-    <value>-enter 6 digit code-</value>
+    <value>Enter the 5 or 6 digit code</value>
   </data>
   <data name="Verify_SendEmail" xml:space="preserve">
     <value>Send Confirmation Email</value>
@@ -310,13 +310,13 @@
     <value>Email Address</value>
   </data>
   <data name="Register_Email_WaterMark" xml:space="preserve">
-    <value>-enter your email address-</value>
+    <value>Enter your email address</value>
   </data>
   <data name="ResetPassword_ConfirmNewPassword" xml:space="preserve">
     <value>Confirm New Password</value>
   </data>
   <data name="ResetPassword_ConfirmNewPassword_Watermark" xml:space="preserve">
-    <value>-confirm your new password-</value>
+    <value>Confirm your new password</value>
   </data>
   <data name="ResetPassword_NewPassword" xml:space="preserve">
     <value>New Password</value>
@@ -331,13 +331,13 @@
     <value>Email Address</value>
   </data>
   <data name="SendResetPasswordLink_Email_Watermark" xml:space="preserve">
-    <value>-email address-</value>
+    <value>Enter your email address</value>
   </data>
   <data name="SendResetPasswordLink_Help" xml:space="preserve">
     <value>If you forgot your password, you can have a link sent to your email address to let you reset it to a new one.</value>
   </data>
   <data name="SendResetPasswordLink_Message" xml:space="preserve">
-    <value>If your account exists an email has be sent to your email account with instructions on how to reset your password.</value>
+    <value>If you have entered an email address associated with a valid account, you will receive an email with instructions for resetting your password.</value>
   </data>
   <data name="SendResetPasswordLink_Title" xml:space="preserve">
     <value>Reset your Password</value>
@@ -379,7 +379,7 @@
     <value>Sorry, there was an error calling the server. Please try again later.</value>
   </data>
   <data name="ResetPassword_SuccessMessage" xml:space="preserve">
-    <value>Your Password has Successfully been Reset, you can now log into the system with your email address and new password</value>
+    <value>Your Password has Successfully been Reset, you can now log into the system with your email address and new password.</value>
   </data>
   <data name="ChangePassword_Success" xml:space="preserve">
     <value>Your Password has successfully been changed.</value>

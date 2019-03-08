@@ -5,6 +5,7 @@ using System.Linq;
 using Foundation;
 using UIKit;
 using LagoVista.XPlat.iOS;
+using LagoVista.Core.Models;
 
 namespace LagoVista.XPlat.Sample.iOS
 {
@@ -25,9 +26,18 @@ namespace LagoVista.XPlat.Sample.iOS
         {
             global::Xamarin.Forms.Forms.Init();
 
+            var version = NSBundle.MainBundle.InfoDictionary[new NSString("CFBundleVersion")].ToString();
+            Console.WriteLine($"NSLog Version {version}");
+
+            UIApplication.SharedApplication.StatusBarStyle = UIStatusBarStyle.LightContent;
+
+            app.StatusBarHidden = false;
+
             Startup.Init(app, "dontcare");
 
-            LoadApplication(new App());
+            var formsApp = new App();
+
+            LoadApplication(formsApp);
             
             return base.FinishedLaunching(app, options);
         }

@@ -37,6 +37,27 @@ namespace LagoVista.XPlat.Sample.UWP
             this.Suspending += OnSuspending;
         }
 
+        protected override void OnActivated(IActivatedEventArgs args)
+        {
+            if (args.Kind == ActivationKind.Protocol)
+            {
+                var logger = SLWIOC.Get<ILogger>();
+
+                var protocolActivatedEventArgs = (args as ProtocolActivatedEventArgs);
+                if (protocolActivatedEventArgs == null)
+                {
+                    logger.AddCustomEvent(LogLevel.Error, "App_OnActivated", "EventArgs Not ProtocolActivatedEventArgs", new System.Collections.Generic.KeyValuePair<string, string>("type", args.GetType().Name));
+                }
+                else
+                {
+                    logger.AddCustomEvent(LogLevel.Message, "App_OnActivated", "URI App Activation", new System.Collections.Generic.KeyValuePair<string, string>("uri", protocolActivatedEventArgs.Uri.ToString()));
+                    LagoVista.XPlat.Sample.App.Instance.HandleURIActivation(protocolActivatedEventArgs.Uri);
+                }
+            }
+
+            base.OnActivated(args);
+        }
+
         /// <summary>
         /// Invoked when the application is launched normally by the end user.  Other entry points
         /// will be used such as when the application is launched to open a specific file.

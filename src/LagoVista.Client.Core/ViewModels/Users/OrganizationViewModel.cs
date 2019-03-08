@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
+using LagoVista.Client.Core.Net;
+using LagoVista.Core.Interfaces;
 using LagoVista.Core.Models.UIMetaData;
 using LagoVista.Core.Validation;
 using LagoVista.Core.ViewModels;
@@ -10,11 +12,15 @@ namespace LagoVista.Client.Core.ViewModels.Users
     public class OrganizationViewModel : FormViewModelBase<CreateOrganizationViewModel>
     {
         IClientAppInfo _clientAppInfo;
+        
 
-        public OrganizationViewModel(IClientAppInfo clientAppInfo)
+        public OrganizationViewModel(IClientAppInfo clientAppInfo, IAppConfig appConfig)
         {
             _clientAppInfo = clientAppInfo;
+            AppConfig = appConfig;
         }
+
+        public IAppConfig AppConfig { get; }
 
         public override void Save()
         {
@@ -24,6 +30,7 @@ namespace LagoVista.Client.Core.ViewModels.Users
                 ViewToModel(FormAdapter, Model);
                 PerformNetworkOperation(async () =>
                 {
+                    await (RestClient as RawRestClient).RenewRefreshToken();
                     await ViewModelNavigation.SetAsNewRootAsync(_clientAppInfo.MainViewModel);
                 });
             }

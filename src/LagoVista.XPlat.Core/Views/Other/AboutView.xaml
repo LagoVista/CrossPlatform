@@ -9,7 +9,7 @@
     LeftMenu="Cancel"
     Title="{ext:ClientTranslate About_About}" >
     <pge:LagoVistaContentPage.MainContent>
-        <Grid BackgroundColor="White">
+        <Grid >
             <ScrollView HorizontalOptions="Center">
                 <StackLayout HorizontalOptions="CenterAndExpand" Margin="10">
 

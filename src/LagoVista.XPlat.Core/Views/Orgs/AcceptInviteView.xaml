@@ -8,20 +8,20 @@
     Title="{ext:ClientTranslate AcceptInvite_Title}">
     <pge:LagoVistaContentPage.MainContent>
         <ScrollView>
-            <Grid BackgroundColor="#2196F3">
+            <Grid>
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="*" />
                     <RowDefinition Height="auto" />
                 </Grid.RowDefinitions>
-                <Image Source="nuviot.png" HorizontalOptions="Center" />
+                <pge:Image FileName="{Binding AppConfig.AppLogo}"  HorizontalOptions="Center" WidthRequest="480" />
                 <StackLayout Grid.Row="1" Margin="20" WidthRequest="300" HorizontalOptions="Center" >
-                    <Label TextColor="White" Text="{ext:ClientTranslate AcceptInvite_Accept_Help}" IsVisible="{Binding IsLoggedIn}" />
+                    <Label TextColor="{StaticResource NuvIoTBlack}" Text="{ext:ClientTranslate AcceptInvite_Accept_Help}" IsVisible="{Binding IsLoggedIn}" />
                     <pge:Button Command="{Binding AcceptInviteCommnad}" Text="{ext:ClientTranslate AcceptInvite_Accept}" HeightRequest="48" IsVisible="{Binding IsLoggedIn}"/>
 
-                    <Label TextColor="White" Text="{ext:ClientTranslate AcceptInvite_AcceptAndLogin_Help}" IsVisible="{Binding IsNotLoggedIn}" />
+                    <Label TextColor="{StaticResource NuvIoTBlack}" Text="{ext:ClientTranslate AcceptInvite_AcceptAndLogin_Help}" IsVisible="{Binding IsNotLoggedIn}" />
                     <pge:Button Command="{Binding AcceptAndLoginCommand}" Text="{ext:ClientTranslate AcceptInvite_AcceptAndLogin}" HeightRequest="48" IsVisible="{Binding IsNotLoggedIn}"/>
 
-                    <Label TextColor="White" Text="{ext:ClientTranslate AcceptInvite_AcceptAndRegister_Help}"  />
+                    <Label TextColor="{StaticResource NuvIoTBlack}" Text="{ext:ClientTranslate AcceptInvite_AcceptAndRegister_Help}"  />
                     <pge:Button Command="{Binding AcceptAndRegisterCommand}" Text="{ext:ClientTranslate AcceptInvite_AcceptAndRegister}" HeightRequest="48" />
                 </StackLayout>
             </Grid>

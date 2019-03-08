@@ -1,6 +1,7 @@
 ﻿using LagoVista.Client.Core.Net;
 using LagoVista.Client.Core.Resources;
 using LagoVista.Core.Commanding;
+using LagoVista.Core.Interfaces;
 using LagoVista.Core.Validation;
 using LagoVista.UserAdmin.Models.DTOs;
 using System;
@@ -10,12 +11,16 @@ namespace LagoVista.Client.Core.ViewModels.Orgs
 {
     public class InviteUserViewModel : AppViewModelBase
     {
-        public InviteUserViewModel(IRestClient rawRestClient)
+        public InviteUserViewModel(IRestClient rawRestClient, IAppConfig appConfig)
         {
             InviteUserCommand = new RelayCommand(InviteUser);
             CancelCommand = new RelayCommand(() => ViewModelNavigation.GoBackAsync());
             Model = new UserAdmin.Models.DTOs.InviteUser();
+
+            AppConfig = appConfig;
         }
+
+        public IAppConfig AppConfig { get; }
 
         public Task<InvokeResult> SendUserInvitation()
         {

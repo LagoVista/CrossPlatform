@@ -2,6 +2,7 @@
 using LagoVista.Client.Core.ViewModels.Auth;
 using LagoVista.Client.Core.ViewModels.Users;
 using LagoVista.Core.Commanding;
+using LagoVista.Core.Interfaces;
 using LagoVista.Core.Validation;
 using LagoVista.Core.ViewModels;
 using System.Threading.Tasks;
@@ -12,12 +13,16 @@ namespace LagoVista.Client.Core.ViewModels.Orgs
     {
         private string _inviteid;
 
-        public AcceptInviteViewModel()
+        public AcceptInviteViewModel(IAppConfig appConfig)
         {
             AcceptInviteCommnad = new RelayCommand(AcceptInvite);
             AcceptAndRegisterCommand = new RelayCommand(AcceptInvite);
             AcceptAndLoginCommand = new RelayCommand(AcceptInvite);
+
+            AppConfig = appConfig;
         }
+
+        public IAppConfig AppConfig { get; }
 
         private async Task<InvokeResult> SendAcceptInvite()
         {

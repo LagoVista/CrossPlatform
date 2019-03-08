@@ -8,23 +8,23 @@
     Title="{ext:ClientTranslate InviteUser_Title}">
     <pge:LagoVistaContentPage.MainContent>
         <ScrollView>
-            <Grid BackgroundColor="#2196F3">
+            <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*" />
                     <RowDefinition Height="auto"/>
                 </Grid.RowDefinitions>
-                <Image Source="nuviot.png" HorizontalOptions="Center" />
+                <Image Source="applogo.png" HorizontalOptions="Center" />
                 <StackLayout Grid.Row="1" Margin="20" WidthRequest="300" HorizontalOptions="Center" >
 
-                    <pge:Label Text="{Binding InviteUserHelpMessage}" TextColor="White"  Margin="0,0,0,20" />
+                    <pge:Label Text="{Binding InviteUserHelpMessage}" TextColor="{StaticResource NuvIoTBlack}"  Margin="0,0,0,20" />
 
-                    <pge:Label Text="{ext:ClientTranslate InviteUser_Name}" TextColor="White" />
+                    <pge:Label Text="{ext:ClientTranslate InviteUser_Name}" TextColor="{StaticResource NuvIoTBlack}" />
                     <pge:Entry Text="{Binding Model.Name, Mode=TwoWay}" Placeholder="{ext:ClientTranslate InviteUser_Name_Watermark}" Keyboard="Plain" />
 
-                    <pge:Label Text="{ext:ClientTranslate InviteUser_Email}" TextColor="White" />
+                    <pge:Label Text="{ext:ClientTranslate InviteUser_Email}" TextColor="{StaticResource NuvIoTBlack}" />
                     <pge:Entry Text="{Binding Model.Email, Mode=TwoWay}" Placeholder="{ext:ClientTranslate InviteUser_Email_Watermark}" Keyboard="Email"  />
 
-                    <pge:Label Text="{ext:ClientTranslate InviteUser_Message}" TextColor="White" />
+                    <pge:Label Text="{ext:ClientTranslate InviteUser_Message}" TextColor="{StaticResource NuvIoTBlack}" />
                     <Editor Text="{Binding Model.Message, Mode=TwoWay}" Keyboard="Plain" HeightRequest="120" Margin="0,0,0,20" />
 
                     <pge:Button Command="{Binding InviteUserCommand}" Text="{ext:ClientTranslate InviteUser_Submit}" HeightRequest="48" />
