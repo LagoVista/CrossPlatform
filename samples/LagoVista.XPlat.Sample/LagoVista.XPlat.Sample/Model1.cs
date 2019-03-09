@@ -24,6 +24,10 @@ namespace LagoVista.XPlat.Sample
         public const string DropDown_Option3 = "option3";
 
 
+        [FormField(LabelResource: Resources.SampleResources.Names.Model1_Secret, FieldType: FieldTypes.Secret, ResourceType: typeof(Resources.SampleResources))]
+        public string MySecretField { get; set; }
+
+    
         [FormField(LabelResource:Resources.SampleResources.Names.Model1_TextField1, FieldType:FieldTypes.Text, ResourceType:typeof(Resources.SampleResources))]
         public string TextField1 { get; set; }
 

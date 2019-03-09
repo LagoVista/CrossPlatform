@@ -3,6 +3,7 @@ using LagoVista.Client.Core.ViewModels.Auth;
 using LagoVista.Client.Core.ViewModels.Other;
 using LagoVista.Core.Commanding;
 using LagoVista.Core.Models.UIMetaData;
+using LagoVista.XPlat.Core;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -69,6 +70,11 @@ namespace LagoVista.XPlat.Sample
             };
         }
 
+        public void HandleMe(object item)
+        {
+            Debug.WriteLine(item.ToString());
+        }
+
         public async override Task InitAsync()
         {
             var model1 = new Model1();
@@ -80,8 +86,9 @@ namespace LagoVista.XPlat.Sample
             var frmEditPasswordLink = FormField.Create("EditPassword",
             new LagoVista.Core.Attributes.FormFieldAttribute(FieldType: LagoVista.Core.Attributes.FieldTypes.LinkButton));
 
-            response.View["linkButton"].Command = new RelayCommand(HideLinkButton);
+        //    response.View["linkButton"].Command = new RelayCommand(HideLinkButton);
 
+            
             frmEditPasswordLink.Label = "Edit Password";
             frmEditPasswordLink.Name = "editPassword";
             frmEditPasswordLink.Watermark = "-edit password-";
@@ -92,15 +99,22 @@ namespace LagoVista.XPlat.Sample
 
             FormAdapter = new EditFormAdapter(this, response.View, this.ViewModelNavigation);
 
+            //response.View[nameof(Model1.MySecretField)].Command = new RelayCommand((arg) => HandleMe(arg));
+
             FormAdapter.AddViewCell(nameof(Model1.TextField1));
             FormAdapter.AddViewCell(nameof(Model1.DropDownBox1));
             FormAdapter.AddViewCell(nameof(Model1.CheckBox1));
             FormAdapter.AddViewCell("editPassword");
             FormAdapter.AddViewCell(nameof(Model1.LinkButton));
+            FormAdapter.AddViewCell(nameof(Model1.MySecretField));
             FormAdapter.AddViewCell(nameof(Model1.Password));
             FormAdapter.AddViewCell(nameof(Model1.MultiLine1));
 
             FormAdapter.AddChildList<ViewModel2>(nameof(Model1.Model2Litems), model1.Model2Litems);
+
+            var field = nameof(Model1.MySecretField).ToJSONName();
+
+            FormAdapter.FormItems.Where(itm=>itm.Name == field).First().Command = new RelayCommand((arg) => HandleMe(arg));
 
             await base.InitAsync();
         }

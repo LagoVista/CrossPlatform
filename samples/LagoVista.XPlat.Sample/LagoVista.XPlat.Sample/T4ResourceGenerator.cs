@@ -1,4 +1,4 @@
-﻿/*12/26/2017 15:53:18*/
+﻿/*3/9/2019 08:00:47*/
 using System.Globalization;
 using System.Reflection;
 
@@ -96,6 +96,9 @@ namespace LagoVista.XPlat.Sample.Resources
 //Resources:SampleResources:Model1_Password
 
 		public static string Model1_Password { get { return GetResourceString("Model1_Password"); } }
+//Resources:SampleResources:Model1_Secret
+
+		public static string Model1_Secret { get { return GetResourceString("Model1_Secret"); } }
 //Resources:SampleResources:Model1_TextField1
 
 		public static string Model1_TextField1 { get { return GetResourceString("Model1_TextField1"); } }
@@ -119,6 +122,7 @@ namespace LagoVista.XPlat.Sample.Resources
 			public const string Model1_LinkButton_Label = "Model1_LinkButton_Label";
 			public const string Model1_LinkButton_Link = "Model1_LinkButton_Link";
 			public const string Model1_Password = "Model1_Password";
+			public const string Model1_Secret = "Model1_Secret";
 			public const string Model1_TextField1 = "Model1_TextField1";
 			public const string Model1_Title = "Model1_Title";
 		}

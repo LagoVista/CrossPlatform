@@ -14,5 +14,12 @@ namespace LagoVista.XPlat.Core
 
             return $"{name.Substring(0, 1).ToUpper()}{name.Substring(1)}";
         }
+
+        public static string ToJSONName(this string name)
+        {
+            /* Property Names are mainly used for JSON, so they are in the format "myProperty", the actual name of the property is "MyProperty" this will convert the key name back to a property */
+
+            return $"{name.Substring(0, 1).ToLower()}{name.Substring(1)}";
+        }
     }
 }

@@ -159,6 +159,9 @@
   <data name="Model1_Password" xml:space="preserve">
     <value>Password</value>
   </data>
+  <data name="Model1_Secret" xml:space="preserve">
+    <value>SecretField</value>
+  </data>
   <data name="Model1_TextField1" xml:space="preserve">
     <value>Text Field</value>
   </data>
