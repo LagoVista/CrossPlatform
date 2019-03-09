@@ -17,6 +17,11 @@ namespace LagoVista.XPlat.Core.Controls.FormControls
 
         RelayCommand _command;
 
+        public const string VIEW_SECRET = "ViewSecret";
+        public const string COPY_SECRET = "CopySecret";
+        public const string REFRESH_SECRET = "RefreshSecret";
+
+
         public TextEditRow(FormViewer formViewer, FormField field) : base(formViewer, field)
         {
             _editorContainer = new Grid();
@@ -51,9 +56,9 @@ namespace LagoVista.XPlat.Core.Controls.FormControls
                 switch (FieldType)
                 {
                     case FieldTypes.Secret:
-                        _editorContainer.Children.Add(new IconButton() { Command = _command, CommandParameter = "view", IconKey = "fa-eye", TextColor = Color.Black }, 1, 0);
-                        _editorContainer.Children.Add(new IconButton() { Command = _command, CommandParameter = "copy", IconKey = "fa-clipboard", TextColor=Color.Black }, 2, 0);
-                        _editorContainer.Children.Add(new IconButton() { Command = _command, CommandParameter="refresh", IconKey = "fa-refresh", TextColor = Color.Black }, 3, 0);
+                        _editorContainer.Children.Add(new IconButton() { Command = _command, CommandParameter = VIEW_SECRET, IconKey = "fa-eye", TextColor = Color.Black }, 1, 0);
+                        _editorContainer.Children.Add(new IconButton() { Command = _command, CommandParameter = COPY_SECRET, IconKey = "fa-clipboard", TextColor = Color.Black }, 2, 0);
+                        _editorContainer.Children.Add(new IconButton() { Command = _command, CommandParameter = REFRESH_SECRET, IconKey = "fa-refresh", TextColor = Color.Black }, 3, 0);
                         break;
                     case FieldTypes.Key:
                         _editor.Keyboard = Keyboard.Plain;
