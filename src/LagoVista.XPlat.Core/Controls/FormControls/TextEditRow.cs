@@ -1,5 +1,6 @@
 ﻿using LagoVista.Core.Attributes;
 using LagoVista.Core.Commanding;
+using LagoVista.Core.Models.Drawing;
 using LagoVista.Core.Models.UIMetaData;
 using System;
 using System.Text.RegularExpressions;
@@ -35,30 +36,27 @@ namespace LagoVista.XPlat.Core.Controls.FormControls
                 Text = field.Value,
                 IsEnabled = field.IsUserEditable,
             };
-
-            if (Device.RuntimePlatform == Device.Android)
-            {
-                _editor.HeightRequest = 40;
-            }
+            
+            _editor.HeightRequest = 40;
 
             _editor.IsPassword = field.FieldType == FieldTypes.Password.ToString();
             _editor.TextChanged += _editor_TextChanged;
 
             _editorContainer.Children.Add(_editor);
-            _editorContainer.ColumnDefinitions.Add(new ColumnDefinition() { Width = new GridLength(1, GridUnitType.Star) });
-            _editorContainer.ColumnDefinitions.Add(new ColumnDefinition() { Width = new GridLength(1, GridUnitType.Auto) });
-            _editorContainer.ColumnDefinitions.Add(new ColumnDefinition() { Width = new GridLength(1, GridUnitType.Auto) });
-            _editorContainer.ColumnDefinitions.Add(new ColumnDefinition() { Width = new GridLength(1, GridUnitType.Auto) });
 
+            _editorContainer.ColumnDefinitions.Add(new ColumnDefinition() { Width = new GridLength(1, GridUnitType.Star) });
 
             if (Enum.TryParse<FieldTypes>(field.FieldType, out FieldTypes fieldType))
             {
                 switch (FieldType)
                 {
                     case FieldTypes.Secret:
-                        _editorContainer.Children.Add(new IconButton() { Command = _command, CommandParameter = VIEW_SECRET, IconKey = "fa-eye", TextColor = Color.Black }, 1, 0);
-                        _editorContainer.Children.Add(new IconButton() { Command = _command, CommandParameter = COPY_SECRET, IconKey = "fa-clipboard", TextColor = Color.Black }, 2, 0);
-                        _editorContainer.Children.Add(new IconButton() { Command = _command, CommandParameter = REFRESH_SECRET, IconKey = "fa-refresh", TextColor = Color.Black }, 3, 0);
+                        _editorContainer.ColumnDefinitions.Add(new ColumnDefinition() { Width = new GridLength(1, GridUnitType.Auto) });
+                        _editorContainer.ColumnDefinitions.Add(new ColumnDefinition() { Width = new GridLength(1, GridUnitType.Auto) });
+                        _editorContainer.ColumnDefinitions.Add(new ColumnDefinition() { Width = new GridLength(1, GridUnitType.Auto) });
+                        _editorContainer.Children.Add(new IconButton() { Command = _command, CommandParameter = VIEW_SECRET, IconKey = "fa-eye", TextColor = NamedColors.NuvIoTDark.ToXamFormsColor() }, 1, 0);
+                        _editorContainer.Children.Add(new IconButton() { Command = _command, CommandParameter = COPY_SECRET, IconKey = "fa-clipboard", TextColor = NamedColors.NuvIoTDark.ToXamFormsColor() }, 2, 0);
+                        _editorContainer.Children.Add(new IconButton() { Command = _command, CommandParameter = REFRESH_SECRET, IconKey = "fa-refresh", TextColor = NamedColors.NuvIoTDark.ToXamFormsColor() }, 3, 0);
                         break;
                     case FieldTypes.Key:
                         _editor.Keyboard = Keyboard.Plain;

@@ -16,6 +16,8 @@ namespace LagoVista.XPlat.Core.Controls.FormControls
             _header = new FormFieldHeader(field.Label);
 
             _switch = new Switch();
+            _switch.Margin = new Thickness(10, 0, 0, 0);
+
             _switch.Toggled += _switch_Toggled;
 
             bool _isToggled = false;

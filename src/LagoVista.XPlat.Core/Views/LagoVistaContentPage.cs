@@ -1,6 +1,7 @@
 ﻿using LagoVista.Client.Core.ViewModels;
 using LagoVista.Core.Interfaces;
 using LagoVista.Core.IOC;
+using LagoVista.Core.Models.Drawing;
 using LagoVista.Core.PlatformSupport;
 using LagoVista.XPlat.Core.Controls.Common;
 using LagoVista.XPlat.Core.Views;
@@ -54,6 +55,8 @@ namespace LagoVista.XPlat.Core
              */
 
             On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
+
+            this.BackgroundColor = AppStyle.TitleBarBackground.ToXamFormsColor();
 
             CreateActivityIndicator();
             CreateMenu();
@@ -164,7 +167,7 @@ namespace LagoVista.XPlat.Core
                 HeightRequest = TOOL_BAR_HEIGHT
             };
 
-            _toolBar.Padding = new Thickness(0, 6, 0, 0);
+            //_toolBar.Padding = new Thickness(0, 6 0, 0);
 
             _toolBar.ColumnDefinitions.Add(new ColumnDefinition() { Width = new GridLength(1, GridUnitType.Auto) });
             _toolBar.ColumnDefinitions.Add(new ColumnDefinition() { Width = new GridLength(1, GridUnitType.Star) });
@@ -176,7 +179,9 @@ namespace LagoVista.XPlat.Core
             _title.SetValue(Grid.ColumnSpanProperty, 4);
             _title.TextColor = AppStyle.TitleBarText.ToXamFormsColor();
             _title.FontSize = 22;
-            
+            _title.FontFamily = "Roboto";
+            _title.FontAttributes = FontAttributes.Bold;
+
             _title.VerticalOptions = new LayoutOptions(LayoutAlignment.Center, false);
             _title.HorizontalOptions = new LayoutOptions(LayoutAlignment.Center, false);
 
@@ -184,10 +189,10 @@ namespace LagoVista.XPlat.Core
             {
                 IsVisible = false,
                 VerticalOptions = new LayoutOptions(LayoutAlignment.Center, false),
-                TextColor = AppStyle.TitleBarText.ToXamFormsColor(),
+                TextColor = NamedColors.NuvIoTDark.ToXamFormsColor(),
                 WidthRequest = 48,
-                HeightRequest = 48,                
-                FontSize = Device.RuntimePlatform == Device.Android ? 16 : 22 
+                HeightRequest = 48,
+                FontSize = Device.RuntimePlatform == Device.Android ? 20 : 28
             };
             _leftMenuButton.Clicked += _leftMenuButton_Clicked;
 
@@ -196,10 +201,10 @@ namespace LagoVista.XPlat.Core
                 IsVisible = false,
                 IconKey = "fa-question",
                 VerticalOptions = new LayoutOptions(LayoutAlignment.Center, false),
-                TextColor = AppStyle.TitleBarText.ToXamFormsColor(),
+                TextColor = NamedColors.NuvIoTDark.ToXamFormsColor(),
                 WidthRequest = 48,
                 HeightRequest = 48,
-                FontSize = Device.RuntimePlatform == Device.Android ? 16 : 22
+                FontSize = Device.RuntimePlatform == Device.Android ? 20 : 28
             };
             _helpButton.Clicked += _helpButton_Clicked;
             _helpButton.SetValue(Grid.ColumnProperty, 3);
@@ -208,10 +213,8 @@ namespace LagoVista.XPlat.Core
             {
                 IsVisible = false,
                 VerticalOptions = new LayoutOptions(LayoutAlignment.Center, false),
-                TextColor = AppStyle.TitleBarText.ToXamFormsColor(),
-                WidthRequest = 48,
-                HeightRequest = 48,
-                FontSize = Device.RuntimePlatform == Device.Android ? 16 : 22
+                TextColor = NamedColors.NuvIoTDark.ToXamFormsColor(),
+                FontSize = Device.RuntimePlatform == Device.Android ? 20 : 28
             };
             _rightMenuButton.SetValue(Grid.ColumnProperty, 2);
             _rightMenuButton.Clicked += _rightMenuButton_Clicked;
@@ -339,7 +342,7 @@ namespace LagoVista.XPlat.Core
                 Content = _contentGrid;
 
                 _mainContent = value;
-                _mainContent.BackgroundColor = Color.White;
+                _mainContent.BackgroundColor = NamedColors.White.ToXamFormsColor();
 
                 if (value.BackgroundColor != null && value.BackgroundColor.R > -1)
                 {
@@ -365,7 +368,7 @@ namespace LagoVista.XPlat.Core
                     _loadingContainer.SetValue(Grid.RowProperty, 1);
                 }
 
-                _contentGrid.Children.Add(_loadingContainer);                
+                _contentGrid.Children.Add(_loadingContainer);
             }
         }
 
@@ -671,9 +674,19 @@ namespace LagoVista.XPlat.Core
                 _leftMenuButton.IsVisible = true;
                 switch (LeftMenu)
                 {
-                    case LeftMenuIcon.Menu: _leftMenuButton.IconKey = "fa-bars"; break;
-                    case LeftMenuIcon.Cancel: _leftMenuButton.IconKey = "fa-chevron-left"; break;
-                    case LeftMenuIcon.Back: _leftMenuButton.IconKey = "fa-chevron-left"; break;
+                    case LeftMenuIcon.Menu:
+                        switch (Device.RuntimePlatform)
+                        {
+                            case Device.iOS:
+                                _leftMenuButton.IconKey = "md-menu";
+                                //          _leftMenuButton.FontSize = 32;
+                                break;
+                            default: _leftMenuButton.IconKey = "ion-android-menu"; break;
+                        }
+
+                        break;
+                    case LeftMenuIcon.Cancel: _leftMenuButton.IconKey = "ep-chevron-left"; break;
+                    case LeftMenuIcon.Back: _leftMenuButton.IconKey = "ep-chevron-left"; break;
                     case LeftMenuIcon.CustomIcon:
                         if (string.IsNullOrEmpty(LeftMenuCustomIcon))
                         {
@@ -696,7 +709,14 @@ namespace LagoVista.XPlat.Core
                 _rightMenuButton.IsVisible = true;
                 switch (RightMenu)
                 {
-                    case RightMenuIcon.Add: _rightMenuButton.IconKey = "fa-plus"; break;
+                    case RightMenuIcon.Add: 
+                        switch (Device.RuntimePlatform)
+                        {
+                            case Device.iOS: _rightMenuButton.IconKey = "md-add";  break;
+                            default: _rightMenuButton.IconKey = "ep-plus"; break;
+                        }
+
+                        break;
                     case RightMenuIcon.Delete: _rightMenuButton.IconKey = "fa-trash"; break;
                     case RightMenuIcon.Save: _rightMenuButton.IconKey = "fa-floppy-o"; break;
                     case RightMenuIcon.Edit: _rightMenuButton.IconKey = "fa-pencil"; break;

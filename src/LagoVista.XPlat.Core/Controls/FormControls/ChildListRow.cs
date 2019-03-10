@@ -1,5 +1,6 @@
 ﻿using LagoVista.Core.Interfaces;
 using LagoVista.Core.IOC;
+using LagoVista.Core.Models.Drawing;
 using LagoVista.Core.Models.UIMetaData;
 using LagoVista.XPlat.Core.Resources;
 using System;
@@ -27,7 +28,7 @@ namespace LagoVista.XPlat.Core.Controls.FormControls
 
             var titleBar = new Grid()
             {
-                BackgroundColor = AppStyle.MenuBarBackground.ToXamFormsColor(),
+                BackgroundColor = AppStyle.TitleBarBackground.ToXamFormsColor(),
                 HeightRequest = 48,
                 HorizontalOptions = new LayoutOptions(LayoutAlignment.Fill, true)
             };
@@ -36,22 +37,32 @@ namespace LagoVista.XPlat.Core.Controls.FormControls
 
             _label = new Label()
             {
-                FontSize = 20,
-                Margin = new Thickness(10, 0, 0, 0),
+                Margin = new Thickness(24, 0, 0, 0),
                 VerticalOptions = new LayoutOptions(LayoutAlignment.Center, false),
-                TextColor = AppStyle.MenuBarForeground.ToXamFormsColor(),
-                Text = field.Label
+                TextColor = AppStyle.TitleBarText.ToXamFormsColor(),
+                Text = field.Label,
+                FontAttributes = FontAttributes.Bold,
+                FontFamily = "Roboto",
+                FontSize = 18
             };
 
             _addImage = new IconButton()
             {
                 Margin = new Thickness(0, 0, 20, 0),
                 VerticalOptions = new LayoutOptions(LayoutAlignment.Center, false),
-                IconKey = "fa-plus",
+                TextColor = NamedColors.NuvIoTDark.ToXamFormsColor(),
                 WidthRequest = 48,
                 HeightRequest = 48,
-                FontSize = 22
+                FontSize = Device.RuntimePlatform == Device.Android ? 20 : 28
             };
+
+            switch (Device.RuntimePlatform)
+            {
+                case Device.iOS: _addImage.IconKey = "md-add"; break;
+                default: _addImage.IconKey = "ep-plus"; break;
+            }
+
+
             _addImage.Clicked += _addImage_Clicked;
             _addImage.SetValue(Grid.ColumnProperty, 1);
 
@@ -90,9 +101,10 @@ namespace LagoVista.XPlat.Core.Controls.FormControls
                 {
                     var label = new Label();
                     label.Margin = new Thickness(15, 10, 10, 10);
-                    label.FontSize = 24;
-                    label.TextColor = Color.FromRgb(0x5B, 0x5B, 0x5B);
+                    label.TextColor = AppStyle.PageText.ToXamFormsColor();
                     label.Text = child.ToEntityHeader().Text;
+                    label.FontFamily = "Roboto";
+                    label.FontSize = 16;
 
                     var grid = new Grid();
                     grid.ColumnDefinitions.Add(new ColumnDefinition() { Width = GridLength.Star });
@@ -105,7 +117,7 @@ namespace LagoVista.XPlat.Core.Controls.FormControls
                     boxView.HeightRequest = 1;
                     boxView.SetValue(Grid.ColumnSpanProperty, 3);
                     boxView.SetValue(Grid.RowProperty, 1);
-                    boxView.Color = Color.SlateGray;
+                    boxView.Color = AppStyle.TitleBarBackground.ToXamFormsColor(); ;
 
                     var tapGenerator = new TapGestureRecognizer();
                     grid.BindingContext = child;
@@ -113,9 +125,9 @@ namespace LagoVista.XPlat.Core.Controls.FormControls
 
                     var deleteButton = new IconButton()
                     {
-                        IconKey = "fa-trash-o",
-                        FontSize = 20,
-                        TextColor = Color.Red,
+                        IconKey = "typcn-delete-outline",
+                        FontSize = 28,
+                        TextColor = NamedColors.Red.ToXamFormsColor(),
                         VerticalOptions = new LayoutOptions(LayoutAlignment.Center, false),
                         Tag = child.ToEntityHeader().Id
                     };
@@ -125,10 +137,10 @@ namespace LagoVista.XPlat.Core.Controls.FormControls
 
                     var img = new Icon()
                     {
-                        IconKey = "fa-chevron-right",
-                        Margin = new Thickness(2, 10, 30, 0),
-                        HeightRequest = 24,
-                        WidthRequest = 24,
+                        IconKey = "md-chevron-right",
+                        Margin = new Thickness(2, 0, 10, 0),
+                        FontSize = 36,
+                        TextColor = NamedColors.NuvIoTDark.ToXamFormsColor(),
                         VerticalOptions = new LayoutOptions(LayoutAlignment.Center, false),
                     };
                     img.SetValue(Grid.ColumnProperty, 2);

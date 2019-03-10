@@ -12,6 +12,7 @@ namespace LagoVista.XPlat.Core
     {
         public Label()
         {
+            FontFamily = "Roboto";
             this.TextColor = AppStyle.LabelText.ToXamFormsColor();
         }
 

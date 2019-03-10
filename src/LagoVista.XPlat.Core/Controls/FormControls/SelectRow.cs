@@ -1,4 +1,5 @@
-﻿using LagoVista.Core.Models.UIMetaData;
+﻿using LagoVista.Core.Models.Drawing;
+using LagoVista.Core.Models.UIMetaData;
 using System;
 using System.Linq;
 using Xamarin.Forms;
@@ -19,6 +20,7 @@ namespace LagoVista.XPlat.Core.Controls.FormControls
             _validationMessage = new FormFieldValidationMessage(field.RequiredMessage);
 
             _picker = new Picker();
+            _picker.FontFamily = "Roboto";
 
             if (field.Options != null)
             {
@@ -37,15 +39,19 @@ namespace LagoVista.XPlat.Core.Controls.FormControls
                 _picker.SelectedIndex = 0;
             }
 
+            _picker.HeightRequest = 40;
+
             var selectedItem = field.Options.Where(opt => opt.Key == field.Value).FirstOrDefault();
             if (selectedItem != null)
             {
                 var index = field.Options.IndexOf(selectedItem);
                 _picker.SelectedIndex = index + 1;
+                _picker.TextColor = AppStyle.PageText.ToXamFormsColor();
             }
             else
             {
                 _picker.SelectedIndex = 0;
+                _picker.TextColor = NamedColors.NuvIoTDark.ToXamFormsColor();
             }
 
             Children.Add(_header);
@@ -62,11 +68,13 @@ namespace LagoVista.XPlat.Core.Controls.FormControls
             {
                 _validationMessage.IsVisible = Field.IsRequired;
                 Field.Value = null;
+                _picker.TextColor = NamedColors.NuvIoTDark.ToXamFormsColor();
             }
             else
             {
                 _validationMessage.IsVisible = false;
                 Field.Value = Field.Options[_picker.SelectedIndex - 1].Key;
+                _picker.TextColor = AppStyle.PageText.ToXamFormsColor();
             }
 
             IsDirty = OriginalValue != Field.Value;

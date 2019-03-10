@@ -37,6 +37,7 @@ namespace LagoVista.XPlat.Core.Controls.Common
             _menuText = new Label();
             _menuText.VerticalOptions = new LayoutOptions(LayoutAlignment.Center, false);
             _menuText.FontSize = 16;
+            _menuText.FontFamily = "Roboto";
             _menuText.TextColor = AppStyle.MenuBarForeground.ToXamFormsColor();
             _menuText.SetValue(Grid.ColumnProperty, 1);
             _menuText.Text = menuItem.Name;

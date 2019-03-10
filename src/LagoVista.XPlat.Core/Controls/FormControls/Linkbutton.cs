@@ -1,7 +1,6 @@
-﻿using LagoVista.Core.Models.UIMetaData;
+﻿using LagoVista.Core.Models.Drawing;
+using LagoVista.Core.Models.UIMetaData;
 using System;
-using System.Collections.Generic;
-using System.Text;
 using Xamarin.Forms;
 
 namespace LagoVista.XPlat.Core.Controls.FormControls
@@ -17,8 +16,11 @@ namespace LagoVista.XPlat.Core.Controls.FormControls
 
             _linkLabel = new Label()
             {
-                TextColor = Color.Blue
+                TextColor = NamedColors.NuvIoTDark.ToXamFormsColor(),
+                Margin = new Thickness(10, 0, 0, 0),
+                FontFamily = "Roboto"
             };
+
             Children.Add(_header);
 
             Children.Add(_header);
@@ -47,7 +49,7 @@ namespace LagoVista.XPlat.Core.Controls.FormControls
 
         private void TapRecognizer_Tapped(object sender, System.EventArgs e)
         {
-            if(Field.Command != null && Field.Command.CanExecute(null))
+            if (Field.Command != null && Field.Command.CanExecute(null))
             {
                 Field.Command.Execute(null);
             }

@@ -73,10 +73,10 @@ namespace LagoVista.XPlat.Core.Controls.FormControls
                 switch (Device.RuntimePlatform)
                 {
 
-                    case Device.Android: return new Thickness(10, 0, 10, 0);
+                    case Device.Android: return new Thickness(20, 0, 10, 0);
                 }
 
-                return new Thickness(10, 5, 10, 8);
+                return new Thickness(20, 5, 10, 8);
             }
         }
     }

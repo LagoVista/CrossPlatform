@@ -6,12 +6,13 @@ namespace LagoVista.XPlat.Core.Controls.FormControls
     {
         public FormFieldHeader() : base()
         {
-            TextColor = Color.FromRgb(0x5B, 0x5B, 0x5B);
+            FontSize = 18;
+            Margin = new Thickness(8, 5, 0, -5);
+            FontAttributes = Xamarin.Forms.FontAttributes.Bold;
         }
 
-        public FormFieldHeader(string value) : base()
+        public FormFieldHeader(string value) : this()
         {
-            TextColor = Color.FromRgb(0x5B, 0x5B, 0x5B);
             Text = value;
         }
     }

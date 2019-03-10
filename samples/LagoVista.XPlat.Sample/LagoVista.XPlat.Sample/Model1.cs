@@ -24,7 +24,8 @@ namespace LagoVista.XPlat.Sample
         public const string DropDown_Option3 = "option3";
 
 
-        [FormField(LabelResource: Resources.SampleResources.Names.Model1_Secret, FieldType: FieldTypes.Secret, ResourceType: typeof(Resources.SampleResources))]
+        [FormField(LabelResource: Resources.SampleResources.Names.Model1_Secret, WaterMark: Resources.SampleResources.Names.Model1_TextField1_WaterMark,
+            FieldType: FieldTypes.Secret, ResourceType: typeof(Resources.SampleResources))]
         public string MySecretField { get; set; }
 
     
@@ -39,11 +40,15 @@ namespace LagoVista.XPlat.Sample
         public bool CheckBox1 { get; set; }
 
 
-        [FormField(LabelResource: Resources.SampleResources.Names.Model1_LargeText, FieldType: FieldTypes.MultiLineText, ResourceType: typeof(Resources.SampleResources))]
+        [FormField(LabelResource: Resources.SampleResources.Names.Model1_LargeText,
+             WaterMark: Resources.SampleResources.Names.Model1_LargeText_WaterMark, 
+            FieldType: FieldTypes.MultiLineText, ResourceType: typeof(Resources.SampleResources))]
         public string MultiLine1 { get; set; }
 
 
-        [FormField(LabelResource: Resources.SampleResources.Names.Model1_Password, FieldType: FieldTypes.Password, ResourceType: typeof(Resources.SampleResources))]
+        [FormField(LabelResource: Resources.SampleResources.Names.Model1_Password,
+             WaterMark: Resources.SampleResources.Names.Model1_Password_WaterMark, 
+            FieldType: FieldTypes.Password, ResourceType: typeof(Resources.SampleResources))]
         public string Password { get; set; }
 
         [FormField(LabelResource: Resources.SampleResources.Names.Model1_ChildList, FieldType: FieldTypes.ChildList, ResourceType: typeof(Resources.SampleResources))]

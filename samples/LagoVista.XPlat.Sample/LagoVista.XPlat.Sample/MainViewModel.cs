@@ -79,9 +79,14 @@ namespace LagoVista.XPlat.Sample
         {
             var model1 = new Model1();
             model1.Model2Litems = new List<Model2>();
+            model1.Model2Litems.Add(new Model2() { Id = "12337", Text = "A little bit of tex" });
+            model1.Model2Litems.Add(new Model2() { Id = "13239", Text = "This is good" });
+            model1.Model2Litems.Add(new Model2() { Id = "1234", Text = "Item A" });
+            model1.Model2Litems.Add(new Model2() { Id = "1235", Text = "Item B" });
+            model1.Model2Litems.Add(new Model2() { Id = "1237", Text = "Item C" });
+            model1.Model2Litems.Add(new Model2() { Id = "1239", Text = "Item D" });
+
             var response = DetailResponse<Model1>.Create(model1);
-
-
 
             var frmEditPasswordLink = FormField.Create("EditPassword",
             new LagoVista.Core.Attributes.FormFieldAttribute(FieldType: LagoVista.Core.Attributes.FieldTypes.LinkButton));
@@ -115,6 +120,8 @@ namespace LagoVista.XPlat.Sample
             var field = nameof(Model1.MySecretField).ToJSONName();
 
             FormAdapter.FormItems.Where(itm=>itm.Name == field).First().Command = new RelayCommand((arg) => HandleMe(arg));
+            
+            
 
             await base.InitAsync();
         }

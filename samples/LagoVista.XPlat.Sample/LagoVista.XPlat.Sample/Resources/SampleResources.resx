@@ -150,6 +150,9 @@
   <data name="Model1_LargeText" xml:space="preserve">
     <value>Large Text</value>
   </data>
+  <data name="Model1_LargeText_WaterMark" xml:space="preserve">
+    <value>Please enter a lot of here</value>
+  </data>
   <data name="Model1_LinkButton_Label" xml:space="preserve">
     <value>Link Button</value>
   </data>
@@ -159,11 +162,17 @@
   <data name="Model1_Password" xml:space="preserve">
     <value>Password</value>
   </data>
+  <data name="Model1_Password_WaterMark" xml:space="preserve">
+    <value>Please enter a password</value>
+  </data>
   <data name="Model1_Secret" xml:space="preserve">
     <value>SecretField</value>
   </data>
   <data name="Model1_TextField1" xml:space="preserve">
     <value>Text Field</value>
+  </data>
+  <data name="Model1_TextField1_WaterMark" xml:space="preserve">
+    <value>Please enter some text</value>
   </data>
   <data name="Model1_Title" xml:space="preserve">
     <value>Model1</value>

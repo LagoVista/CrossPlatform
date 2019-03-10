@@ -39,6 +39,7 @@ namespace LagoVista.XPlat.Core.Controls.Common
                 lbl.Text = ClientResources.CurrentOrganization_Label;
                 lbl.TextColor = Color.LightGray;
                 lbl.FontSize = 18;
+                lbl.FontFamily = "Roboto";
                 lbl.Margin = new Thickness(44, 10, 0, 0);
                 _container.Children.Add(lbl);
 
@@ -47,6 +48,7 @@ namespace LagoVista.XPlat.Core.Controls.Common
                 _orgLabel = new Label();
                 _orgLabel.FontSize = 22;
                 _orgLabel.TextColor = Color.White;
+                _orgLabel.FontFamily = "Roboto";
                 if (_autoManager.IsAuthenticated)
                 {
                     _orgLabel.Text = (_autoManager.User.CurrentOrganization != null) ? _autoManager.User.CurrentOrganization.Text : ClientResources.MainMenu_NoOrganization;

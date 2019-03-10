@@ -1,4 +1,4 @@
-﻿/*3/9/2019 08:00:47*/
+﻿/*3/10/2019 10:58:10*/
 using System.Globalization;
 using System.Reflection;
 
@@ -87,6 +87,9 @@ namespace LagoVista.XPlat.Sample.Resources
 //Resources:SampleResources:Model1_LargeText
 
 		public static string Model1_LargeText { get { return GetResourceString("Model1_LargeText"); } }
+//Resources:SampleResources:Model1_LargeText_WaterMark
+
+		public static string Model1_LargeText_WaterMark { get { return GetResourceString("Model1_LargeText_WaterMark"); } }
 //Resources:SampleResources:Model1_LinkButton_Label
 
 		public static string Model1_LinkButton_Label { get { return GetResourceString("Model1_LinkButton_Label"); } }
@@ -96,12 +99,18 @@ namespace LagoVista.XPlat.Sample.Resources
 //Resources:SampleResources:Model1_Password
 
 		public static string Model1_Password { get { return GetResourceString("Model1_Password"); } }
+//Resources:SampleResources:Model1_Password_WaterMark
+
+		public static string Model1_Password_WaterMark { get { return GetResourceString("Model1_Password_WaterMark"); } }
 //Resources:SampleResources:Model1_Secret
 
 		public static string Model1_Secret { get { return GetResourceString("Model1_Secret"); } }
 //Resources:SampleResources:Model1_TextField1
 
 		public static string Model1_TextField1 { get { return GetResourceString("Model1_TextField1"); } }
+//Resources:SampleResources:Model1_TextField1_WaterMark
+
+		public static string Model1_TextField1_WaterMark { get { return GetResourceString("Model1_TextField1_WaterMark"); } }
 //Resources:SampleResources:Model1_Title
 
 		public static string Model1_Title { get { return GetResourceString("Model1_Title"); } }
@@ -119,11 +128,14 @@ namespace LagoVista.XPlat.Sample.Resources
 			public const string Model1_DropDown_Select = "Model1_DropDown_Select";
 			public const string Model1_Help = "Model1_Help";
 			public const string Model1_LargeText = "Model1_LargeText";
+			public const string Model1_LargeText_WaterMark = "Model1_LargeText_WaterMark";
 			public const string Model1_LinkButton_Label = "Model1_LinkButton_Label";
 			public const string Model1_LinkButton_Link = "Model1_LinkButton_Link";
 			public const string Model1_Password = "Model1_Password";
+			public const string Model1_Password_WaterMark = "Model1_Password_WaterMark";
 			public const string Model1_Secret = "Model1_Secret";
 			public const string Model1_TextField1 = "Model1_TextField1";
+			public const string Model1_TextField1_WaterMark = "Model1_TextField1_WaterMark";
 			public const string Model1_Title = "Model1_Title";
 		}
 	}
