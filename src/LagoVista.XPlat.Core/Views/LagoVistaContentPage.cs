@@ -9,6 +9,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
+using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 
 namespace LagoVista.XPlat.Core
 {
@@ -38,7 +39,7 @@ namespace LagoVista.XPlat.Core
 
         public LagoVistaContentPage() : base()
         {
-            NavigationPage.SetHasNavigationBar(this, false);
+            Xamarin.Forms.NavigationPage.SetHasNavigationBar(this, false);
 
             /*
              * The Page top level consists of a grid, to add additional faeture on top fo the grid such as loading window
@@ -51,6 +52,8 @@ namespace LagoVista.XPlat.Core
              * You can add any content to that node, just as you would to the primary content node of the page.
              * 
              */
+
+            On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
 
             CreateActivityIndicator();
             CreateMenu();
