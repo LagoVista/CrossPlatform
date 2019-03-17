@@ -199,13 +199,14 @@ namespace LagoVista.XPlat.Core
             _helpButton = new IconButton
             {
                 IsVisible = false,
-                IconKey = "fa-question",
+                IconKey = "md-help",
                 VerticalOptions = new LayoutOptions(LayoutAlignment.Center, false),
                 TextColor = NamedColors.NuvIoTDark.ToXamFormsColor(),
                 WidthRequest = 48,
                 HeightRequest = 48,
                 FontSize = Device.RuntimePlatform == Device.Android ? 20 : 28
             };
+
             _helpButton.Clicked += _helpButton_Clicked;
             _helpButton.SetValue(Grid.ColumnProperty, 3);
 
@@ -214,6 +215,8 @@ namespace LagoVista.XPlat.Core
                 IsVisible = false,
                 VerticalOptions = new LayoutOptions(LayoutAlignment.Center, false),
                 TextColor = NamedColors.NuvIoTDark.ToXamFormsColor(),
+                WidthRequest = 48,
+                HeightRequest = 48,
                 FontSize = Device.RuntimePlatform == Device.Android ? 20 : 28
             };
             _rightMenuButton.SetValue(Grid.ColumnProperty, 2);
@@ -315,7 +318,6 @@ namespace LagoVista.XPlat.Core
         }
 
         private IAppStyle AppStyle { get { return SLWIOC.Get<IAppStyle>(); } }
-
 
         public View MainContent
         {

@@ -44,6 +44,7 @@ namespace LagoVista.XPlat.Core
             this.Focused += Entry_Focused;
             this.BackgroundColor = AppStyle.EditControlBackground.ToXamFormsColor();
             this.TextColor = AppStyle.EditControlText.ToXamFormsColor();
+            FontFamily = "Roboto";
 
             if (Device.RuntimePlatform == Device.Android)
             {

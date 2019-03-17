@@ -4,6 +4,7 @@ using Xamarin.Forms.Platform.Android;
 using Xamarin.Forms;
 using Android.Graphics.Drawables;
 
+/*
 [assembly: ExportRenderer(typeof(LagoVista.XPlat.Core.Entry), typeof(LagoVista.XPlat.Droid.Controls.CustomEntryRenderer))]
 namespace LagoVista.XPlat.Droid.Controls
 {
@@ -22,7 +23,7 @@ namespace LagoVista.XPlat.Droid.Controls
             {
                 Control.SetBackgroundColor(global::Android.Graphics.Color.White);
 
-                var customBG = new GradientDrawable();
+              var customBG = new GradientDrawable();
                 //customBG.SetColor(Android.Graphics.Color.Gray);
                 customBG.SetCornerRadius(3);
                 int borderWidth = 2;
@@ -31,4 +32,4 @@ namespace LagoVista.XPlat.Droid.Controls
             }
         }
     }
-}
+}*/

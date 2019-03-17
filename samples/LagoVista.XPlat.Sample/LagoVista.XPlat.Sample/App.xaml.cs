@@ -4,6 +4,7 @@
 //#define ENV_MASTER
 
 
+using Xamarin.Forms.PlatformConfiguration.AndroidSpecific;
 using LagoVista.Client.Core;
 using LagoVista.Client.Core.Models;
 using LagoVista.Client.Core.ViewModels;
@@ -24,7 +25,7 @@ using Xamarin.Forms;
 
 namespace LagoVista.XPlat.Sample
 {
-    public partial class App : Application
+    public partial class App : Xamarin.Forms.Application
     {
         public static App Instance { get; private set;}
 
@@ -33,6 +34,9 @@ namespace LagoVista.XPlat.Sample
             InitializeComponent();
             App.Instance = this;
             InitServices();
+
+            Xamarin.Forms.Application.Current.On<Xamarin.Forms.PlatformConfiguration.Android>().UseWindowSoftInputModeAdjust(WindowSoftInputModeAdjust.Resize);
+
         }
 
         public void HandleURIActivation(Uri uri)

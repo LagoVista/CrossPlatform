@@ -18,7 +18,8 @@ namespace LagoVista.XPlat.Core.Controls.FormControls
             {
                 TextColor = NamedColors.NuvIoTDark.ToXamFormsColor(),
                 Margin = new Thickness(10, 0, 0, 0),
-                FontFamily = "Roboto"
+                FontFamily = "Roboto",
+                FontSize = 18
             };
 
             Children.Add(_header);

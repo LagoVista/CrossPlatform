@@ -106,6 +106,7 @@
     <RestoreProjectStyle>PackageReference</RestoreProjectStyle>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="CustomRenderers\SwitchRenderer.cs" />
     <Compile Include="CustomRenderers\TitleBarButton.cs" />
     <Compile Include="Effects\UnderlineEffect.cs" />
     <Compile Include="Network\TCPClient.cs" />
@@ -140,7 +141,7 @@
       <Version>12.0.1</Version>
     </PackageReference>
     <PackageReference Include="Xamarin.Forms">
-      <Version>3.5.0.129452</Version>
+      <Version>3.6.0.220655</Version>
     </PackageReference>
   </ItemGroup>
   <ItemGroup>

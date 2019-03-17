@@ -36,7 +36,20 @@ namespace LagoVista.XPlat.Sample.UWP
             this.InitializeComponent();
             this.Suspending += OnSuspending;
 
-           
+
+            this.UnhandledException += App_UnhandledException;
+        }
+
+        private void App_UnhandledException(object sender, Windows.UI.Xaml.UnhandledExceptionEventArgs e)
+        {
+            Console.WriteLine("============================================");
+            Console.WriteLine("Unhandled Exception");
+            Console.WriteLine(e.Message);
+            Console.WriteLine(e.Exception.Message);
+            Console.WriteLine(e.Exception.StackTrace);
+            Console.WriteLine("============================================");
+
+            throw e.Exception;
         }
 
         protected override void OnActivated(IActivatedEventArgs args)

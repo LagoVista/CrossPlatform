@@ -1,5 +1,6 @@
 ﻿using LagoVista.Client.Core.ViewModels;
 using LagoVista.Client.Core.ViewModels.Auth;
+using LagoVista.Client.Core.ViewModels.Orgs;
 using LagoVista.Client.Core.ViewModels.Other;
 using LagoVista.Core.Commanding;
 using LagoVista.Core.Models.UIMetaData;
@@ -51,8 +52,38 @@ namespace LagoVista.XPlat.Sample
                 },
                 new MenuItem()
                 {
+                    Command = new RelayCommand(() => ViewModelNavigation.NavigateAsync<ChangePasswordViewModel>(this)),
+                    Name = "Change Password",
+                    FontIconKey = "fa-gear"
+                },
+                new MenuItem()
+                {
+                    Command = new RelayCommand(() => ViewModelNavigation.NavigateAsync<InviteUserViewModel>(this)),
+                    Name = "Invite User",
+                    FontIconKey = "fa-gear"
+                },
+                new MenuItem()
+                {
+                    Command = new RelayCommand(() => ViewModelNavigation.NavigateAsync<AcceptInviteViewModel>(this)),
+                    Name = "Accept Invite",
+                    FontIconKey = "fa-gear"
+                },
+                new MenuItem()
+                {
+                    Command = new RelayCommand(() => ViewModelNavigation.NavigateAsync<UserOrgsViewModel>(this)),
+                    Name = "Change Orgs",
+                    FontIconKey = "fa-gear"
+                },
+                new MenuItem()
+                {
+                    Command = new RelayCommand(() => ViewModelNavigation.NavigateAsync<OrgEditorViewModel>(this)),
+                    Name = "Org Editor",
+                    FontIconKey = "fa-gear"
+                },
+                new MenuItem()
+                {
                     Command = new RelayCommand(() => ViewModelNavigation.NavigateAsync<FullPageViewModel>(this)),
-                    Name = "Full SCreen",
+                    Name = "Full Screen",
                     FontIconKey = "fa-gear"
                 },
                 new MenuItem()
@@ -69,6 +100,12 @@ namespace LagoVista.XPlat.Sample
                 },
             };
         }
+
+        protected override string GetHelpLink()
+        {
+            return "http://support.nuviot.com/help.html#/simulator/index";
+        }
+
 
         public void HandleMe(object item)
         {
@@ -120,16 +157,13 @@ namespace LagoVista.XPlat.Sample
             var field = nameof(Model1.MySecretField).ToJSONName();
 
             FormAdapter.FormItems.Where(itm=>itm.Name == field).First().Command = new RelayCommand((arg) => HandleMe(arg));
-            
-            
+            FormAdapter.FormItems.Where(itm => itm.Name == "checkBox1").First().IsVisible = false;
 
             await base.InitAsync();
         }
 
         private async void StartSDPListener()
         {
-            
-
             var config = new LagoVista.Core.Networking.Models.UPNPConfiguration()
             {
                 DefaultPageHtml = "<html>HelloWorld</html>",
@@ -204,6 +238,7 @@ namespace LagoVista.XPlat.Sample
 
         public void HideLinkButton()
         {
+            FormAdapter.HideView(nameof(Model1.CheckBox1));
             FormAdapter.HideView(nameof(Model1.LinkButton));
         }
 

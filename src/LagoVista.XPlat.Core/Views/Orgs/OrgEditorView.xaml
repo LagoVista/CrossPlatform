@@ -7,6 +7,9 @@
     LeftMenu="Menu"  RightMenu="Save"
     Title="{ext:ClientTranslate OrgEditor_Title}">
     <pge:LagoVistaContentPage.MainContent>
-        <pge:FormViewer Form="{Binding FormAdapter}" />
+        <StackLayout>
+            <pge:Image FileName="{Binding AppConfig.AppLogo}" UWPPath="Assets" Grid.Column="1" />
+            <pge:FormViewer Form="{Binding FormAdapter}" />
+        </StackLayout>
     </pge:LagoVistaContentPage.MainContent>
 </pge:LagoVistaContentPage>

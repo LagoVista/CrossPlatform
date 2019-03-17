@@ -23,12 +23,12 @@
             <pge:Image FileName="{Binding AppConfig.AppLogo}" UWPPath="Assets" Grid.Column="1" />
             <ScrollView Grid.Column="1" Grid.Row="1">
                 <StackLayout   >
-                    <pge:Label IsVisible="{Binding ShowPhoneConfirm}" Text="{ext:ClientTranslate Verify_PhoneNumber}"  TextColor="{StaticResource NuvIoTBlack}" />
+                    <pge:Label IsVisible="{Binding ShowPhoneConfirm}" Text="{ext:ClientTranslate Verify_PhoneNumber}"  TextColor="{StaticResource NuvIoTBlack}" FontAttributes="Bold" />
                     <pge:Entry IsVisible="{Binding ShowPhoneConfirm}" Text="{Binding PhoneNumber, Mode=TwoWay}" Placeholder="{ext:ClientTranslate Verify_PhoneNumber_Watermark}"  />
 
                     <pge:Button IsVisible="{Binding ShowPhoneConfirm}" Command="{Binding SendSMSConfirmationCommand}" Text="{ext:ClientTranslate Verify_SendSMS}" HeightRequest="42" Margin="0,0,0,10" />
 
-                    <pge:Label IsVisible="{Binding ShowPhoneConfirm}" Text="{ext:ClientTranslate Verify_ReceivedCode}"  TextColor="{StaticResource NuvIoTBlack}" />
+                    <pge:Label IsVisible="{Binding ShowPhoneConfirm}" Text="{ext:ClientTranslate Verify_ReceivedCode}"  TextColor="{StaticResource NuvIoTBlack}" FontAttributes="Bold" />
                     <pge:Entry IsVisible="{Binding ShowPhoneConfirm}" Text="{Binding SMSCode, Mode=TwoWay}" Placeholder="{ext:ClientTranslate Verify_ReceivedCode_Watermark}"  />
 
                     <pge:Button IsVisible="{Binding ShowEmailConfirm}" Command="{Binding SendEmailConfirmationCommand}" Text="{ext:ClientTranslate Verify_SendEmail}" HeightRequest="42" />

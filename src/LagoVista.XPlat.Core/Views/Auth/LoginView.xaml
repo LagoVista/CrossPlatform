@@ -9,7 +9,7 @@
     <pge:LagoVistaContentPage.MainContent>
         <Grid >
             <Grid.RowDefinitions>
-                <RowDefinition Height="200" />
+                <RowDefinition Height="160" />
                 <RowDefinition Height="auto" />
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
@@ -24,13 +24,13 @@
             <ScrollView Grid.Row="1" Grid.Column="1">
                 <StackLayout  >
                     <pge:Label Text="{ext:ClientTranslate Common_EmailAddress}"  TextColor="{StaticResource NuvIoTBlack}"  FontAttributes="Bold" />
-                    <pge:Entry Text="{Binding EmailAddress, Mode=TwoWay}" Placeholder="{ext:ClientTranslate Common_Email_Watermark}"  Keyboard="Email"  />
+                    <pge:Entry Text="{Binding EmailAddress, Mode=TwoWay}" Placeholder="{ext:ClientTranslate Common_Email_Watermark}"  Keyboard="Email" />
 
                     <pge:Label Text="{ext:ClientTranslate Common_Password}"  TextColor="{StaticResource NuvIoTBlack}"  FontAttributes="Bold" />
                     <pge:Entry Text="{Binding Password, Mode=TwoWay}" Placeholder="{ext:ClientTranslate Common_Email_Password}" IsPassword="True" Keyboard="Plain" Margin="0,0,0,10"  />
 
                     <pge:Button Command="{Binding LoginCommand}" Text="{ext:ClientTranslate Common_Login}" HeightRequest="42" WidthRequest="100" Margin="0,0,0,20" />
-                    <pge:HyperLinkLabel NavigateCommand="{Binding RegisterCommand}" Text="{ext:ClientTranslate Register_Title}" TextColor="{StaticResource NuvIoTDark}" FontSize="Small" Margin="0,0,0,15"  />
+                    <pge:HyperLinkLabel NavigateCommand="{Binding RegisterCommand}" Text="{ext:ClientTranslate Register_Title}" TextColor="{StaticResource NuvIoTDark}" FontSize="Small"  />
                     <pge:HyperLinkLabel NavigateCommand="{Binding ForgotPasswordCommand}" Text="{ext:ClientTranslate Login_ForgotPassword}" TextColor="{StaticResource NuvIoTDark}" FontSize="Small"  />
                 </StackLayout>
             </ScrollView>

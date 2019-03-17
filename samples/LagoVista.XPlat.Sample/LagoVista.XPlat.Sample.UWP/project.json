@@ -4,7 +4,7 @@
     "LagoVista.Core.Networking": "2.1.656-beta1121",
     "LagoVista.UserAdmin": "2.1.656-beta1121",
     "Microsoft.NETCore.UniversalWindowsPlatform": "6.1.9",
-    "Xamarin.Forms": "3.5.0.129452"
+    "Xamarin.Forms": "3.6.0.220655"
   },
   "frameworks": {
     "uap10.0.16299": {}

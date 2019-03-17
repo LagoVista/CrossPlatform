@@ -934,7 +934,7 @@ namespace LagoVista.Client.Core.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to If you forgot your password, you can have a link sent to your email address to let you reset it to a new one..
+        ///   Looks up a localized string similar to Please enter the email address you used to create your NuvIoT account and press Send Link. You will receive an email with a link that will allow you to reset your password..
         /// </summary>
         public static string SendResetPasswordLink_Help {
             get {
@@ -943,7 +943,7 @@ namespace LagoVista.Client.Core.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to If you have entered an email address associated with a valid account, you will receive an email with instructions for resetting your password..
+        ///   Looks up a localized string similar to If your email account is in the system, you will be sent a message with a link you can use to reset your password. If you do not receive a Password Reset Email within 5 minutes, please check your junk or other folder..
         /// </summary>
         public static string SendResetPasswordLink_Message {
             get {

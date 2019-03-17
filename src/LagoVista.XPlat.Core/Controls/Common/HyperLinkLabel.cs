@@ -56,8 +56,7 @@ namespace LagoVista.XPlat.Core
         /// Initializes static members of the <see cref="HyperLinkLabel" /> class.
         /// </summary>
         static HyperLinkLabel()
-        {
-
+        {           
         }
 
         /// <summary>
@@ -65,15 +64,17 @@ namespace LagoVista.XPlat.Core
         /// </summary>
         public HyperLinkLabel()
         {
+            HeightRequest = 48;
+
             NavigateCommand = new Command(() => { });
 
             _tapGestureRecognizer = new TapGestureRecognizer() { Command = NavigateCommand };
 
             GestureRecognizers.Add(_tapGestureRecognizer);
-            TextColor = Xamarin.Forms.Color.FromRgb(NamedColors.NuvIoTDark.R, NamedColors.NuvIoTDark.G, NamedColors.NuvIoTDark.B);
+            TextColor = NamedColors.NuvIoTDark.ToXamFormsColor();
 
+            FontFamily = "Roboto";
             var effectName = $"{UnderlineEffect.EffectNamespace}.{nameof(UnderlineEffect)}";
-
             var effect = Effect.Resolve(effectName);
             Effects.Add(effect);
         }

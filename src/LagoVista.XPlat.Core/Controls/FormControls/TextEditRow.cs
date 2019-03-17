@@ -36,7 +36,7 @@ namespace LagoVista.XPlat.Core.Controls.FormControls
                 Text = field.Value,
                 IsEnabled = field.IsUserEditable,
             };
-            
+
             _editor.HeightRequest = 40;
 
             _editor.IsPassword = field.FieldType == FieldTypes.Password.ToString();
@@ -54,9 +54,9 @@ namespace LagoVista.XPlat.Core.Controls.FormControls
                         _editorContainer.ColumnDefinitions.Add(new ColumnDefinition() { Width = new GridLength(1, GridUnitType.Auto) });
                         _editorContainer.ColumnDefinitions.Add(new ColumnDefinition() { Width = new GridLength(1, GridUnitType.Auto) });
                         _editorContainer.ColumnDefinitions.Add(new ColumnDefinition() { Width = new GridLength(1, GridUnitType.Auto) });
-                        _editorContainer.Children.Add(new IconButton() { Command = _command, CommandParameter = VIEW_SECRET, IconKey = "fa-eye", TextColor = NamedColors.NuvIoTDark.ToXamFormsColor() }, 1, 0);
-                        _editorContainer.Children.Add(new IconButton() { Command = _command, CommandParameter = COPY_SECRET, IconKey = "fa-clipboard", TextColor = NamedColors.NuvIoTDark.ToXamFormsColor() }, 2, 0);
-                        _editorContainer.Children.Add(new IconButton() { Command = _command, CommandParameter = REFRESH_SECRET, IconKey = "fa-refresh", TextColor = NamedColors.NuvIoTDark.ToXamFormsColor() }, 3, 0);
+                        _editorContainer.Children.Add(new IconButton() { Command = _command, WidthRequest = 36, CommandParameter = VIEW_SECRET, IconKey = "fa-eye", TextColor = NamedColors.NuvIoTDark.ToXamFormsColor() }, 1, 0);
+                        _editorContainer.Children.Add(new IconButton() { Command = _command, WidthRequest = 36, CommandParameter = COPY_SECRET, IconKey = "fa-clipboard", TextColor = NamedColors.NuvIoTDark.ToXamFormsColor() }, 2, 0);
+                        _editorContainer.Children.Add(new IconButton() { Command = _command, WidthRequest = 36, CommandParameter = REFRESH_SECRET, IconKey = "fa-refresh", TextColor = NamedColors.NuvIoTDark.ToXamFormsColor() }, 3, 0);
                         break;
                     case FieldTypes.Key:
                         _editor.Keyboard = Keyboard.Plain;

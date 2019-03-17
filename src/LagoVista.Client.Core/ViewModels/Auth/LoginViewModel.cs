@@ -70,13 +70,39 @@ namespace LagoVista.Client.Core.ViewModels.Auth
             return InvokeResult.Success;
         }
 
-        public async void Register()
+        public void Register()
         {
-            await ViewModelNavigation.NavigateAsync<RegisterUserViewModel>(this);
+            switch(AppConfig.Environment)
+            {
+                case Environments.Production:
+                case Environments.Beta: Services.Network.OpenURI(new System.Uri("https://www.nuviot.com/account/register")); break;
+
+                case Environments.Local: 
+                case Environments.LocalDevelopment: Services.Network.OpenURI(new System.Uri("http://localhost:5000/account/register")); break;
+
+                case Environments.Development: Services.Network.OpenURI(new System.Uri("https://dev.nuviot.com/account/register")); break;
+
+                case Environments.Staging:
+                case Environments.Testing: Services.Network.OpenURI(new System.Uri("https://test.nuviot.com/account/register")); break;
+            }
         }
 
         public async void ForgotPassword()
         {
+            switch (AppConfig.Environment)
+            {
+                case Environments.Production:
+                case Environments.Beta: Services.Network.OpenURI(new System.Uri("https://www.nuviot.com/account/forgotpassword")); break;
+
+                case Environments.Local:
+                case Environments.LocalDevelopment: Services.Network.OpenURI(new System.Uri("http://localhost:5000/account/forgotpassword")); break;
+
+                case Environments.Development: Services.Network.OpenURI(new System.Uri("https://dev.nuviot.com/account/forgotpassword")); break;
+
+                case Environments.Staging:
+                case Environments.Testing: Services.Network.OpenURI(new System.Uri("https://test.nuviot.com/account/forgotpassword")); break;
+            }
+
             await ViewModelNavigation.NavigateAsync<SendResetPasswordLinkViewModel>(this);
         }
 
@@ -85,23 +111,27 @@ namespace LagoVista.Client.Core.ViewModels.Auth
             var loginResult = await PerformNetworkOperation(PerformLoginAsync);
             if(loginResult.Successful)
             {
-                if (AuthManager.User.EmailConfirmed && AuthManager.User.PhoneNumberConfirmed)
+                if (AuthManager.User.EmailConfirmed && AuthManager.User.PhoneNumberConfirmed &&
+                    !EntityHeader.IsNullOrEmpty(AuthManager.User.CurrentOrganization)) 
                 {
+                    await ViewModelNavigation.SetAsNewRootAsync(_clientAppInfo.MainViewModel);
+
                     // If no org, have them add an org....
-                    if (EntityHeader.IsNullOrEmpty(AuthManager.User.CurrentOrganization))
-                    {
-                        await ViewModelNavigation.SetAsNewRootAsync<OrgEditorViewModel>();
-                    }
-                    else
-                    {
-                        // We are good, so show main screen.
-                        await ViewModelNavigation.SetAsNewRootAsync(_clientAppInfo.MainViewModel);
-                    }
+                    /*                    if (EntityHeader.IsNullOrEmpty(AuthManager.User.CurrentOrganization))
+                                        {
+                                            await ViewModelNavigation.SetAsNewRootAsync<OrgEditorViewModel>();
+                                        }
+                                        else*
+                                        {
+                                            // We are good, so show main screen.
+                                            await ViewModelNavigation.SetAsNewRootAsync(_clientAppInfo.MainViewModel);
+                                        }*/
                 }
                 else
                 {
+                    await Popups.ShowAsync("Please complete the setup process on the NuvIoT web site before logging in to the mobile  application.");
                     // Show verify user screen.
-                    await ViewModelNavigation.SetAsNewRootAsync<VerifyUserViewModel>();
+                    //await ViewModelNavigation.SetAsNewRootAsync<VerifyUserViewModel>();
                 }
             }
         }
