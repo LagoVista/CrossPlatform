@@ -87,7 +87,7 @@ namespace LagoVista.Client.Core.ViewModels.Auth
             }
         }
 
-        public async void ForgotPassword()
+        public  void ForgotPassword()
         {
             switch (AppConfig.Environment)
             {
@@ -102,8 +102,6 @@ namespace LagoVista.Client.Core.ViewModels.Auth
                 case Environments.Staging:
                 case Environments.Testing: Services.Network.OpenURI(new System.Uri("https://test.nuviot.com/account/forgotpassword")); break;
             }
-
-            await ViewModelNavigation.NavigateAsync<SendResetPasswordLinkViewModel>(this);
         }
 
         public async void LoginAsync()
