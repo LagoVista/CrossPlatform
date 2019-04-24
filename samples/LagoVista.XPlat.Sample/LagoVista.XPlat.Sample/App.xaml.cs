@@ -116,6 +116,8 @@ namespace LagoVista.XPlat.Sample
             navigation.Add<ControlSampleViewModel, ControlSampleView>();
             navigation.Add<ViewModel2, Model2View>();
             navigation.Add<SplashViewModel, SplashView>();
+            navigation.Add<NetworkingViewModel, NetworkView>();
+            navigation.Add<SettingsViewModel, SettingsView>();
             navigation.Add<FullPageViewModel, FullScreenPage>();
 
             SLWIOC.RegisterSingleton<IViewModelNavigation>(navigation);

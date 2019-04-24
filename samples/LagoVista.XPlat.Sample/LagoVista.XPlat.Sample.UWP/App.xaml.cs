@@ -3,6 +3,7 @@ using LagoVista.Core.PlatformSupport;
 using LagoVista.Core.UWP.Services;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
@@ -42,12 +43,12 @@ namespace LagoVista.XPlat.Sample.UWP
 
         private void App_UnhandledException(object sender, Windows.UI.Xaml.UnhandledExceptionEventArgs e)
         {
-            Console.WriteLine("============================================");
-            Console.WriteLine("Unhandled Exception");
-            Console.WriteLine(e.Message);
-            Console.WriteLine(e.Exception.Message);
-            Console.WriteLine(e.Exception.StackTrace);
-            Console.WriteLine("============================================");
+            Debug.WriteLine("============================================");
+            Debug.WriteLine("Unhandled Exception");
+            Debug.WriteLine(e.Message);
+            Debug.WriteLine(e.Exception.Message);
+            Debug.WriteLine(e.Exception.StackTrace);
+            Debug.WriteLine("============================================");
 
             throw e.Exception;
         }
@@ -80,7 +81,7 @@ namespace LagoVista.XPlat.Sample.UWP
         /// <param name="e">Details about the launch request and process.</param>
         protected override void OnLaunched(LaunchActivatedEventArgs e)
         {
-            Frame rootFrame = Window.Current.Content as Frame;
+            var rootFrame = Window.Current.Content as Frame;
 
             if (rootFrame == null)
             {

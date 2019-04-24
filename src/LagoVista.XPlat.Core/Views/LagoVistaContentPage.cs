@@ -199,12 +199,12 @@ namespace LagoVista.XPlat.Core
             _helpButton = new IconButton
             {
                 IsVisible = false,
-                IconKey = "md-help",
+                IconKey = "ion-help",
                 VerticalOptions = new LayoutOptions(LayoutAlignment.Center, false),
                 TextColor = NamedColors.NuvIoTDark.ToXamFormsColor(),
                 WidthRequest = 48,
                 HeightRequest = 48,
-                FontSize = Device.RuntimePlatform == Device.Android ? 20 : 28
+                FontSize = Device.RuntimePlatform == Device.Android ? 20 : 24
             };
 
             _helpButton.Clicked += _helpButton_Clicked;

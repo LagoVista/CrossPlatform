@@ -22,26 +22,9 @@ namespace LagoVista.Core.UWP.Loggers
 
         public bool DebugMode { get; set; }
 
-        public AppCenterLogger(string key, params AppCenterModes[] args)
+        public AppCenterLogger(string key)
         {
-            var types = new List<Type>();
-            foreach(var arg in args)
-            {
-                switch(arg)
-                {
-                    case AppCenterModes.Analytics:
-                        types.Add(typeof(Analytics));
-                        break;
-                    case AppCenterModes.Crashes:
-                        types.Add(typeof(Crashes));
-                        break;
-                    case AppCenterModes.Push:
-                        types.Add(typeof(Push));
-                        break;
-                }
-            }
-
-            AppCenter.Start(key, types.ToArray());
+            AppCenter.Start(key, typeof(Analytics), typeof(Crashes));
         }
 
 

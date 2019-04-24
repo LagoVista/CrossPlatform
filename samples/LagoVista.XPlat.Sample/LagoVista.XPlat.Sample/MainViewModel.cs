@@ -88,6 +88,19 @@ namespace LagoVista.XPlat.Sample
                 },
                 new MenuItem()
                 {
+                    Command = new RelayCommand(() => ViewModelNavigation.NavigateAsync<SettingsViewModel>(this)),
+                    Name = "Settings View",
+                    FontIconKey = "fa-gear"
+                },
+                                new MenuItem()
+                {
+                    Command = new RelayCommand(() => ViewModelNavigation.NavigateAsync<NetworkingViewModel>(this)),
+                    Name = "Networking View",
+                    FontIconKey = "fa-gear"
+                },
+
+                new MenuItem()
+                {
                     Command = new RelayCommand(StartListening),
                     Name = "Start COM7 Serial Port",
                     FontIconKey = "fa-gear"

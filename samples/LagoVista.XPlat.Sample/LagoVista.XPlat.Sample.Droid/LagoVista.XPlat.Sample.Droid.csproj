@@ -111,16 +111,16 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="LagoVista.Core.Authentication">
-      <Version>2.1.656-beta1121</Version>
+      <Version>2.1.707-beta1639</Version>
     </PackageReference>
     <PackageReference Include="LagoVista.Core.Networking">
-      <Version>2.1.656-beta1121</Version>
+      <Version>2.1.707-beta1639</Version>
     </PackageReference>
     <PackageReference Include="LagoVista.IoT.Logging">
-      <Version>2.1.656-beta1121</Version>
+      <Version>2.1.707-beta1639</Version>
     </PackageReference>
     <PackageReference Include="LagoVista.UserAdmin.Models">
-      <Version>2.1.656-beta1121</Version>
+      <Version>2.1.707-beta1639</Version>
     </PackageReference>
     <PackageReference Include="System.Runtime.CompilerServices.Unsafe">
       <Version>4.4.0</Version>

@@ -36,9 +36,15 @@
     <EmbeddedResource Update="FullScreenPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
+    <EmbeddedResource Update="NetworkView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
     <EmbeddedResource Update="Resources\SampleResources.resx">
       <Generator>
       </Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="SettingsView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="SplashView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>

@@ -48,53 +48,53 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="LagoVista.Core, Version=0.8.0.0, Culture=neutral, PublicKeyToken=2698135e9954a85d, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\LagoVista.Core.Networking.2.1.656-beta1121\lib\netstandard1.2\LagoVista.Core.dll</HintPath>
+      <HintPath>..\..\packages\LagoVista.Core.Networking.2.1.707-beta1639\lib\netstandard1.2\LagoVista.Core.dll</HintPath>
     </Reference>
     <Reference Include="LagoVista.Core.Authentication, Version=0.8.0.0, Culture=neutral, PublicKeyToken=dcf35d1740df1edc, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\LagoVista.Core.Authentication.2.1.656-beta1121\lib\netstandard1.2\LagoVista.Core.Authentication.dll</HintPath>
+      <HintPath>..\..\packages\LagoVista.Core.Authentication.2.1.707-beta1639\lib\netstandard1.2\LagoVista.Core.Authentication.dll</HintPath>
     </Reference>
     <Reference Include="LagoVista.Core.Networking, Version=0.8.0.0, Culture=neutral, PublicKeyToken=650a46bd96014ff6, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\LagoVista.Core.Networking.2.1.656-beta1121\lib\netstandard1.2\LagoVista.Core.Networking.dll</HintPath>
+      <HintPath>..\..\packages\LagoVista.Core.Networking.2.1.707-beta1639\lib\netstandard1.2\LagoVista.Core.Networking.dll</HintPath>
     </Reference>
     <Reference Include="LagoVista.IoT.Logging, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\LagoVista.IoT.Logging.2.1.656-beta1121\lib\netstandard1.2\LagoVista.IoT.Logging.dll</HintPath>
+      <HintPath>..\..\packages\LagoVista.IoT.Logging.2.1.707-beta1639\lib\netstandard1.2\LagoVista.IoT.Logging.dll</HintPath>
     </Reference>
     <Reference Include="LagoVista.UserAdmin.Models, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\LagoVista.UserAdmin.Models.2.1.656-beta1121\lib\netstandard1.2\LagoVista.UserAdmin.Models.dll</HintPath>
+      <HintPath>..\..\packages\LagoVista.UserAdmin.Models.2.1.707-beta1639\lib\netstandard1.2\LagoVista.UserAdmin.Models.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.AppCenter, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Microsoft.AppCenter.1.13.2\lib\Xamarin.iOS10\Microsoft.AppCenter.dll</HintPath>
+      <HintPath>..\..\packages\Microsoft.AppCenter.1.14.0\lib\Xamarin.iOS10\Microsoft.AppCenter.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.AppCenter.Analytics, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Microsoft.AppCenter.Analytics.1.13.2\lib\Xamarin.iOS10\Microsoft.AppCenter.Analytics.dll</HintPath>
+      <HintPath>..\..\packages\Microsoft.AppCenter.Analytics.1.14.0\lib\Xamarin.iOS10\Microsoft.AppCenter.Analytics.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.AppCenter.Analytics.iOS.Bindings, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Microsoft.AppCenter.Analytics.1.13.2\lib\Xamarin.iOS10\Microsoft.AppCenter.Analytics.iOS.Bindings.dll</HintPath>
+      <HintPath>..\..\packages\Microsoft.AppCenter.Analytics.1.14.0\lib\Xamarin.iOS10\Microsoft.AppCenter.Analytics.iOS.Bindings.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.AppCenter.Crashes, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Microsoft.AppCenter.Crashes.1.13.2\lib\Xamarin.iOS10\Microsoft.AppCenter.Crashes.dll</HintPath>
+      <HintPath>..\..\packages\Microsoft.AppCenter.Crashes.1.14.0\lib\Xamarin.iOS10\Microsoft.AppCenter.Crashes.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.AppCenter.Crashes.iOS.Bindings, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Microsoft.AppCenter.Crashes.1.13.2\lib\Xamarin.iOS10\Microsoft.AppCenter.Crashes.iOS.Bindings.dll</HintPath>
+      <HintPath>..\..\packages\Microsoft.AppCenter.Crashes.1.14.0\lib\Xamarin.iOS10\Microsoft.AppCenter.Crashes.iOS.Bindings.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.AppCenter.Distribute, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Microsoft.AppCenter.Distribute.1.13.2\lib\Xamarin.iOS10\Microsoft.AppCenter.Distribute.dll</HintPath>
+      <HintPath>..\..\packages\Microsoft.AppCenter.Distribute.1.14.0\lib\Xamarin.iOS10\Microsoft.AppCenter.Distribute.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.AppCenter.Distribute.iOS.Bindings, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Microsoft.AppCenter.Distribute.1.13.2\lib\Xamarin.iOS10\Microsoft.AppCenter.Distribute.iOS.Bindings.dll</HintPath>
+      <HintPath>..\..\packages\Microsoft.AppCenter.Distribute.1.14.0\lib\Xamarin.iOS10\Microsoft.AppCenter.Distribute.iOS.Bindings.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.AppCenter.iOS.Bindings, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Microsoft.AppCenter.1.13.2\lib\Xamarin.iOS10\Microsoft.AppCenter.iOS.Bindings.dll</HintPath>
+      <HintPath>..\..\packages\Microsoft.AppCenter.1.14.0\lib\Xamarin.iOS10\Microsoft.AppCenter.iOS.Bindings.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.AppCenter.Push, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Microsoft.AppCenter.Push.1.13.2\lib\Xamarin.iOS10\Microsoft.AppCenter.Push.dll</HintPath>
+      <HintPath>..\..\packages\Microsoft.AppCenter.Push.1.14.0\lib\Xamarin.iOS10\Microsoft.AppCenter.Push.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.AppCenter.Push.iOS.Bindings, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Microsoft.AppCenter.Push.1.13.2\lib\Xamarin.iOS10\Microsoft.AppCenter.Push.iOS.Bindings.dll</HintPath>
+      <HintPath>..\..\packages\Microsoft.AppCenter.Push.1.14.0\lib\Xamarin.iOS10\Microsoft.AppCenter.Push.iOS.Bindings.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Newtonsoft.Json.12.0.1\lib\netstandard2.0\Newtonsoft.Json.dll</HintPath>
+      <HintPath>..\..\packages\Newtonsoft.Json.12.0.2\lib\netstandard2.0\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="Square.SocketRocket, Version=0.5.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Square.SocketRocket.0.5.1\lib\Xamarin.iOS\Square.SocketRocket.dll</HintPath>
