@@ -8,18 +8,18 @@
     <None Remove="Package.nuspec" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="LagoVista.Core.Authentication" Version="2.1.707-beta1639" />
-    <PackageReference Include="LagoVista.Core.Networking" Version="2.1.707-beta1639" />
-    <PackageReference Include="LagoVista.IoT.Logging" Version="2.1.707-beta1639" />
-    <PackageReference Include="LagoVista.UserAdmin.Models" Version="2.1.707-beta1639" />
-    <PackageReference Include="Microsoft.AppCenter" Version="1.14.0" />
-    <PackageReference Include="Microsoft.AppCenter.Analytics" Version="1.14.0" />
-    <PackageReference Include="Microsoft.AppCenter.Crashes" Version="1.14.0" />
-    <PackageReference Include="Microsoft.AppCenter.Distribute" Version="1.14.0" />
-    <PackageReference Include="Microsoft.AppCenter.Push" Version="1.14.0" />
+    <PackageReference Include="LagoVista.Core.Authentication" Version="2.1.740-beta0913" />
+    <PackageReference Include="LagoVista.Core.Networking" Version="2.1.740-beta0913" />
+    <PackageReference Include="LagoVista.IoT.Logging" Version="2.1.740-beta0913" />
+    <PackageReference Include="LagoVista.UserAdmin.Models" Version="2.1.740-beta0913" />
+    <PackageReference Include="Microsoft.AppCenter" Version="2.0.0" />
+    <PackageReference Include="Microsoft.AppCenter.Analytics" Version="2.0.0" />
+    <PackageReference Include="Microsoft.AppCenter.Crashes" Version="2.0.0" />
+    <PackageReference Include="Microsoft.AppCenter.Distribute" Version="2.0.0" />
+    <PackageReference Include="Microsoft.AppCenter.Push" Version="2.0.0" />
     <PackageReference Include="Newtonsoft.Json" Version="12.0.2" />
-    <PackageReference Include="Xamarin.Forms" Version="3.6.0.220655" />
-    <PackageReference Include="LagoVista.Core" Version="2.1.707-beta1639" />
+    <PackageReference Include="Xamarin.Forms" Version="4.0.0.425677" />
+    <PackageReference Include="LagoVista.Core" Version="2.1.740-beta0913" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\LagoVista.Client.Core\LagoVista.Client.Core.csproj" />

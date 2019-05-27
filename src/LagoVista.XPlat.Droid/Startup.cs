@@ -5,8 +5,8 @@ using LagoVista.XPlat.Droid.Services;
 using LagoVista.Core;
 using LagoVista.Client.Core.Auth;
 using LagoVista.Client.Core;
-using LagoVista.Client;
 using LagoVista.Client.Core.Net;
+using LagoVista.Client.Core.Interfaces;
 
 namespace LagoVista.XPlat.Droid
 {
@@ -22,6 +22,7 @@ namespace LagoVista.XPlat.Droid
             SLWIOC.Register<IUDPClient, Services.UDPClient>();
             SLWIOC.Register<IWebSocket, Services.WebSocket>();
             SLWIOC.Register<ISecureStorage>(new SecureStorage());
+            SLWIOC.Register<IClipBoard, Services.ClipBoard>();
             SLWIOC.Register<IDispatcherServices>(new DispatcherServices(context));
 
             IconFonts.IconFontSupport.RegisterFonts();

@@ -204,7 +204,7 @@ namespace LagoVista.XPlat.Sample
         private async void StartListening()
         {
             var ports = await DeviceManager.GetSerialPortsAsync();
-            var port = ports.Where(prt => prt.Name.Contains("COM7")).FirstOrDefault();
+            var port = ports.Where(prt => prt.Name.Contains("COM3")).FirstOrDefault();
             port.BaudRate = 115200;
             port.Parity = false;
             port.DataBits = 8;

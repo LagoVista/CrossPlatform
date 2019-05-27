@@ -1,12 +1,10 @@
-﻿using LagoVista.Core.PlatformSupport;
+﻿using LagoVista.Core.Models;
+using LagoVista.Core.PlatformSupport;
 using System;
-using System.Threading.Tasks;
-using System.IO;
-using Windows.Devices.SerialCommunication;
-using LagoVista.Core.Models;
 using System.Threading;
+using System.Threading.Tasks;
+using Windows.Devices.SerialCommunication;
 using Windows.Storage.Streams;
-using System.Diagnostics;
 
 namespace LagoVista.Core.UWP.Services
 {
@@ -39,13 +37,13 @@ namespace LagoVista.Core.UWP.Services
         {
             lock (this)
             {
-                if(_dataReader != null)
+                if (_dataReader != null)
                 {
                     _dataReader.Dispose();
                     _dataReader = null;
                 }
 
-                if(_dataWriter != null)
+                if (_dataWriter != null)
                 {
                     _dataWriter.Dispose();
                     _dataWriter = null;
@@ -77,33 +75,23 @@ namespace LagoVista.Core.UWP.Services
 
         public async Task<int> ReadAsync(byte[] buffer, int start, int size, CancellationToken cancellationToken = default(CancellationToken))
         {
-            try
+            if (_dataReader == null)
             {
-                if (_dataReader == null)
-                {
-                    throw new Exception("Port not open.");
-                }
-
-                Task<UInt32> loadAsyncTask;
-                cancellationToken.ThrowIfCancellationRequested();
-
-                loadAsyncTask = _dataReader.LoadAsync((uint)size).AsTask(cancellationToken);
-                UInt32 bytesRead = await loadAsyncTask;
-                var maxToRead = Math.Min(size, bytesRead);
-                for(var idx  = 0; idx < maxToRead; ++idx)
-                {
-                    buffer[idx] = _dataReader.ReadByte();
-                }
-
-                return (int)maxToRead;
-            }
-            catch(Exception ex)
-            {
-                Debug.WriteLine(ex);
-                Debugger.Break();
-                return 0;
+                throw new Exception("Port not open.");
             }
 
+            Task<UInt32> loadAsyncTask;
+            cancellationToken.ThrowIfCancellationRequested();
+
+            loadAsyncTask = _dataReader.LoadAsync((uint)size).AsTask(cancellationToken);
+            UInt32 bytesRead = await loadAsyncTask;
+            var maxToRead = Math.Min(size, bytesRead);
+            for (var idx = 0; idx < maxToRead; ++idx)
+            {
+                buffer[idx] = _dataReader.ReadByte();
+            }
+
+            return (int)maxToRead;
         }
 
         public async Task WriteAsync(string msg)
@@ -114,8 +102,8 @@ namespace LagoVista.Core.UWP.Services
             }
 
             _dataWriter.WriteString(msg);
-            var operation = await _dataWriter.StoreAsync();            
-            if(operation != msg.Length)
+            var operation = await _dataWriter.StoreAsync();
+            if (operation != msg.Length)
             {
                 throw new Exception($"Data Storage Operation Not Successful: {operation}");
             }

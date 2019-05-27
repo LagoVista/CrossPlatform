@@ -1,4 +1,5 @@
 ﻿using LagoVista.Client.Core.Auth;
+using LagoVista.Client.Core.Interfaces;
 using LagoVista.Core.IOC;
 using LagoVista.Core.Networking.Interfaces;
 using LagoVista.Core.PlatformSupport;
@@ -29,6 +30,8 @@ namespace LagoVista.Core.UWP
             SLWIOC.Register<IWebServer>(typeof(WebServer));
             SLWIOC.Register<ISecureStorage>(new SecureStorage());
             SLWIOC.Register<ISSDPServer>(new SSDPServer());
+
+            SLWIOC.Register<IClipBoard>(new ClipBoard());
 
             SLWIOC.Register<ITimerFactory>(new TimerFactory());
 

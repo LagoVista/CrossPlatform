@@ -8,6 +8,7 @@ using LagoVista.Client.Core.Net;
 using LagoVista.Client.Core.Auth;
 using LagoVista.Client;
 using LagoVista.Client.Core;
+using LagoVista.Client.Core.Interfaces;
 
 namespace LagoVista.XPlat.iOS
 {
@@ -23,6 +24,7 @@ namespace LagoVista.XPlat.iOS
             SLWIOC.Register<ITCPClient, Services.TCPClient>();
             SLWIOC.Register<IUDPClient, Services.UDPClient>();
             SLWIOC.Register<IWebSocket, Services.WebSocket>();
+            SLWIOC.Register<IClipBoard, Services.ClipBoard>();
             SLWIOC.Register<IDispatcherServices>(new DispatcherService(app));
 
             IconFonts.IconFontSupport.RegisterFonts();
