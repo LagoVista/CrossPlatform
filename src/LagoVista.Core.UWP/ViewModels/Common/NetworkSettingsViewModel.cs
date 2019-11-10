@@ -12,12 +12,7 @@ using Windows.Security.Credentials;
 namespace LagoVista.Core.UWP.ViewModels.Common
 {
     public class NetworkSettingsViewModel : ViewModelBase
-    {
-        RelayCommand _refreshWiFiCommand;
-        RelayCommand _connectToWiFiCommand;
-        RelayCommand _cancelConnectToWiFiCommand;
-        RelayCommand _nextCommand;
-
+    {           
         public class SettingsSection
         {
             public String Name { get; set; }
@@ -29,6 +24,13 @@ namespace LagoVista.Core.UWP.ViewModels.Common
                 return Name;
             }
         }
+
+        /*     
+        RelayCommand _refreshWiFiCommand;
+        RelayCommand _connectToWiFiCommand;
+        RelayCommand _cancelConnectToWiFiCommand;
+        RelayCommand _nextCommand;
+
 
         private const string WIFI_Initial_State = "WiFiInitialState";
         private const string WIFI_Connecting_State = "WiFiConnectingState";
@@ -103,6 +105,7 @@ namespace LagoVista.Core.UWP.ViewModels.Common
         {
             DirectConnection = WiredNetworks.Instance.GetDirectConnection();
         }
+        
 
         private async Task SetupWifi()
         {
@@ -214,5 +217,6 @@ namespace LagoVista.Core.UWP.ViewModels.Common
         public RelayCommand ConnectToWiFiCommand { get { return _connectToWiFiCommand; } }
         public RelayCommand NextCommand { get { return _nextCommand; } }
         public RelayCommand CancelConnectToWiFiCommand { get { return _cancelConnectToWiFiCommand; } }
+        */
     }
 }

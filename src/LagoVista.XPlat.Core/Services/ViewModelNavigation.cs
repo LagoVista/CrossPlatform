@@ -29,16 +29,21 @@ namespace LagoVista.XPlat.Core.Services
 
         public void Start<V>() where V : XPlatViewModel
         {
-            var view = Activator.CreateInstance(_viewModelLookup[typeof(V)]) as LagoVistaContentPage;
+
+            if (!_viewModelLookup.ContainsKey(typeof(V)))
+            {
+                throw new Exception($"Could not find initial view for view model type [{typeof(V).Name}");
+            }
+
+            var primaryViewType = _viewModelLookup[typeof(V)];
+
+            var view = Activator.CreateInstance(primaryViewType) as LagoVistaContentPage;
+
             _navigation = view.Navigation;
+
             var viewModel = SLWIOC.CreateForType<V>();
             view.ViewModel = viewModel;
-            _app.MainPage = new LagoVistaNavigationPage(view)
-            {
-                Title = "HelloWorld"
-            };
-
-            Debug.WriteLine(_app.MainPage);
+            _app.MainPage = new LagoVistaNavigationPage(view);
         }
 
         public void Add<T, V>() where T : ViewModelBase where V : ILagoVistaPage
@@ -289,7 +294,7 @@ namespace LagoVista.XPlat.Core.Services
                 _navigation = view.Navigation;
                 _app.MainPage = new LagoVistaNavigationPage(view);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 Debug.WriteLine(String.Empty);
                 Debug.WriteLine("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
@@ -338,7 +343,7 @@ namespace LagoVista.XPlat.Core.Services
                 _navigation = view.Navigation;
                 _app.MainPage = new LagoVistaNavigationPage(view);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 Debug.WriteLine(String.Empty);
                 Debug.WriteLine("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");

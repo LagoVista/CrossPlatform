@@ -5,7 +5,6 @@ using LagoVista.Client.Core.ViewModels.Other;
 using LagoVista.Core.Commanding;
 using LagoVista.Core.Models.UIMetaData;
 using LagoVista.XPlat.Core;
-using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
@@ -92,13 +91,18 @@ namespace LagoVista.XPlat.Sample
                     Name = "Settings View",
                     FontIconKey = "fa-gear"
                 },
-                                new MenuItem()
+                new MenuItem()
                 {
                     Command = new RelayCommand(() => ViewModelNavigation.NavigateAsync<NetworkingViewModel>(this)),
                     Name = "Networking View",
                     FontIconKey = "fa-gear"
                 },
-
+                new MenuItem()
+                {                                                            
+                    Command = new RelayCommand(() => ViewModelNavigation.NavigateAsync<WiFiNetworksViewModel>(this)),
+                    Name = "WiFi Network View",
+                    FontIconKey = "fa-gear"
+                },
                 new MenuItem()
                 {
                     Command = new RelayCommand(StartListening),
@@ -139,11 +143,12 @@ namespace LagoVista.XPlat.Sample
             var response = DetailResponse<Model1>.Create(model1);
 
             var frmEditPasswordLink = FormField.Create("EditPassword",
-            new LagoVista.Core.Attributes.FormFieldAttribute(FieldType: LagoVista.Core.Attributes.FieldTypes.LinkButton));
+            new LagoVista.Core.Attributes.FormFieldAttribute(FieldType: LagoVista.Core.Attributes.FieldTypes.LinkButton),
+            null);
 
-        //    response.View["linkButton"].Command = new RelayCommand(HideLinkButton);
+            //    response.View["linkButton"].Command = new RelayCommand(HideLinkButton);
 
-            
+
             frmEditPasswordLink.Label = "Edit Password";
             frmEditPasswordLink.Name = "editPassword";
             frmEditPasswordLink.Watermark = "-edit password-";
@@ -169,7 +174,7 @@ namespace LagoVista.XPlat.Sample
 
             var field = nameof(Model1.MySecretField).ToJSONName();
 
-            FormAdapter.FormItems.Where(itm=>itm.Name == field).First().Command = new RelayCommand((arg) => HandleMe(arg));
+            FormAdapter.FormItems.Where(itm => itm.Name == field).First().Command = new RelayCommand((arg) => HandleMe(arg));
             FormAdapter.FormItems.Where(itm => itm.Name == "checkBox1").First().IsVisible = false;
 
             await base.InitAsync();

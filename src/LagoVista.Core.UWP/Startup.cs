@@ -1,8 +1,11 @@
 ﻿using LagoVista.Client.Core.Auth;
 using LagoVista.Client.Core.Interfaces;
+using LagoVista.Core.Geo;
 using LagoVista.Core.IOC;
 using LagoVista.Core.Networking.Interfaces;
+using LagoVista.Core.Networking.WiFi;
 using LagoVista.Core.PlatformSupport;
+using LagoVista.Core.UWP.Networking;
 using LagoVista.Core.UWP.Services;
 using Windows.UI.Core;
 
@@ -22,9 +25,13 @@ namespace LagoVista.Core.UWP
             SLWIOC.RegisterSingleton<INetworkService>(new NetworkService());
             SLWIOC.Register<IImaging>(new Imaging());
             SLWIOC.Register<IBindingHelper>(new BindingHelper());
+            SLWIOC.RegisterSingleton<IGeoLocator>(new GeoLocator());
 
             SLWIOC.RegisterSingleton<ISSDPClient>(new SSDPClient());
             SLWIOC.RegisterSingleton<IWebServer>(new WebServer());
+
+            SLWIOC.RegisterSingleton<IWiFiAdaptersService>(new WiFiAdaptersService());
+            SLWIOC.RegisterSingleton<IWiFiNetworksService>(new WiFiNetworksService(dispatcher));
 
             SLWIOC.Register<ISSDPClient>(typeof(SSDPClient));
             SLWIOC.Register<IWebServer>(typeof(WebServer));

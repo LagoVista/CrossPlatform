@@ -10,6 +10,7 @@ using Windows.UI.Xaml;
 using Windows.UI.Xaml.Media.Animation;
 using LagoVista.Core.PlatformSupport;
 using LagoVista.Core.IOC;
+using System.Diagnostics;
 
 namespace LagoVista.UWP.UI
 {
@@ -66,7 +67,13 @@ namespace LagoVista.UWP.UI
                 lock (this)
                 {
                     _initialized = true;
+
                     var content = Content as Panel;
+                    if (content == null)
+                    {
+                        throw new NullReferenceException("Could not cast content to panel.");
+                    }
+
                     Content = null;
                     var contentContainer = new Grid();
 
@@ -76,7 +83,6 @@ namespace LagoVista.UWP.UI
                     _mask.Children.Add(_loadingMessage);
                     _mask.Children.Add(_progressRing);
                     _mask.Visibility = Windows.UI.Xaml.Visibility.Collapsed;
-
 
                     _popupWindowMask = new Grid();
                     _popupWindowMask.Visibility = Visibility.Collapsed;
@@ -102,22 +108,22 @@ namespace LagoVista.UWP.UI
                     backgroundRect.SetValue(Grid.ColumnSpanProperty, 3);
                     backgroundRect.SetValue(Grid.RowSpanProperty, 3);
 
-                    _popupMessage = new TextBlock() { Width=580, VerticalAlignment = VerticalAlignment.Top, HorizontalAlignment = HorizontalAlignment.Left, Foreground = new SolidColorBrush(Colors.Black), FontSize=32 };
+                    _popupMessage = new TextBlock() { Width = 580, VerticalAlignment = VerticalAlignment.Top, HorizontalAlignment = HorizontalAlignment.Left, Foreground = new SolidColorBrush(Colors.Black), FontSize = 32 };
                     _popupMessage.Margin = new Thickness(10);
                     _popupMessage.SetValue(Grid.RowProperty, 1);
                     _popupMessage.SetValue(Grid.ColumnProperty, 1);
                     _popupMessage.TextWrapping = TextWrapping.Wrap;
-                    _dismissButton = new Button() { Content = "OK", VerticalAlignment = VerticalAlignment.Bottom, HorizontalAlignment = HorizontalAlignment.Right, Width=120, Height=60, Margin=new Thickness(10) };
+                    _dismissButton = new Button() { Content = "OK", VerticalAlignment = VerticalAlignment.Bottom, HorizontalAlignment = HorizontalAlignment.Right, Width = 120, Height = 60, Margin = new Thickness(10) };
                     _dismissButton.SetValue(Grid.RowProperty, 1);
                     _dismissButton.SetValue(Grid.ColumnProperty, 1);
                     _dismissButton.Click += (e, a) =>
                     {
                         var containerViewModel = DataContext as ViewModelBase;
-                        if(containerViewModel != null)
-                          containerViewModel.MessageText = String.Empty;
+                        if (containerViewModel != null)
+                            containerViewModel.MessageText = String.Empty;
                         _popupWindowMask.Visibility = Visibility.Collapsed;
                     };
-                    
+
 
                     _popupWindowMask.Children.Add(backgroundRect);
                     _popupWindowMask.Children.Add(rect);
@@ -130,22 +136,24 @@ namespace LagoVista.UWP.UI
                     Content = contentContainer;
 
                     var vm = DataContext as ViewModelBase;
-                    SystemNavigationManager.GetForCurrentView().AppViewBackButtonVisibility = Navigation.Instance.CanGoBack() ? AppViewBackButtonVisibility.Visible : AppViewBackButtonVisibility.Collapsed;
+                    SystemNavigationManager.GetForCurrentView().AppViewBackButtonVisibility = _navigation.CanGoBack() ? AppViewBackButtonVisibility.Visible : AppViewBackButtonVisibility.Collapsed;
                 }
             }
         }
-       
+
+        private IViewModelNavigation _navigation => SLWIOC.Get<IViewModelNavigation>();
+
 
         private async void LagoVistaPage_BackRequested(object sender, BackRequestedEventArgs e)
         {
             var localViewModel = DataContext as ViewModelBase;
             if (localViewModel != null)
             {
-                if (Navigation.Instance.CanGoBack())
-                    await Navigation.Instance.GoBackAsync();
+                if (_navigation.CanGoBack())
+                    await _navigation.GoBackAsync();
             }
             else
-                await Navigation.Instance.GoBackAsync();
+                await _navigation.GoBackAsync();
         }
 
         public ViewModelBase ViewModel
@@ -173,6 +181,7 @@ namespace LagoVista.UWP.UI
                     {
                         vm.LaunchArgs = e.Parameter as ViewModelLaunchArgs;
                         await vm.InitAsync();
+                        SetViewModel(vm);
                     });
                 }
                 else
@@ -180,17 +189,23 @@ namespace LagoVista.UWP.UI
                     if (e.Parameter is ViewModelLaunchArgs)
                     {
                         var args = e.Parameter as ViewModelLaunchArgs;
-                        vm = Activator.CreateInstance(args.ViewModelType) as ViewModelBase;
+                        vm = SLWIOC.CreateForType(args.ViewModelType) as ViewModelBase;
                         vm.PropertyChanged += Vm_PropertyChanged;
                         await PerformNetworkOperation(async () =>
-                        {
+                        {   
                             vm.LaunchArgs = e.Parameter as ViewModelLaunchArgs;
                             await vm.InitAsync();
-                        });
-                        DataContext = vm;
+                            
+                            SetViewModel(vm);
+                        });                        
                     }
                 }
             }
+        }
+
+        protected virtual void SetViewModel(ViewModelBase vm)
+        {
+            DataContext = vm;
         }
 
         protected override void OnNavigatingFrom(NavigatingCancelEventArgs e)
@@ -294,12 +309,6 @@ namespace LagoVista.UWP.UI
                     vm.PropertyChanged -= Vm_PropertyChanged;
                 }
             }
-        }
-
-
-        private void Vm_NavigateToViewModel(object sender, ViewModelLaunchArgs e)
-        {
-            Navigation.Instance.Navigate(e);
         }
 
 
