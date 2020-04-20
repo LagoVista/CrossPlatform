@@ -67,7 +67,7 @@ namespace LagoVista.XPlat.Droid.Services
         }
 
         public void OpenURI(System.Uri uri)
-        {
+        {           
             Xamarin.Forms.Device.OpenUri(uri);
         }
     }

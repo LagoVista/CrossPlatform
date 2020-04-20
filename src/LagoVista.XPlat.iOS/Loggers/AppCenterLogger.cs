@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using Microsoft.AppCenter.Analytics;
-using Microsoft.AppCenter.Push;
 using Microsoft.AppCenter;
 using Microsoft.AppCenter.Crashes;
 using LagoVista.Core.PlatformSupport;
