@@ -8,7 +8,7 @@ namespace LagoVista.XPlat.Sample
 {
     public class WiFiNetworksViewModel : XPlatViewModel
     {
-        IWiFiAdapters _adaptersService;
+   /*     IWiFiAdapters _adaptersService;
         IWiFiNetworks _networksServices;
 
         public WiFiNetworksViewModel(IWiFiAdapters adapters, IWiFiNetworks networks)
@@ -68,6 +68,6 @@ namespace LagoVista.XPlat.Sample
 
                 Set(ref _selectedConnection, value);
             }
-        }
+        }*/
     }
 }
