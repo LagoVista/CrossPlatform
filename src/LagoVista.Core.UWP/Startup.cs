@@ -24,6 +24,7 @@ namespace LagoVista.Core.UWP
 
             SLWIOC.RegisterSingleton<INetworkService>(new NetworkService());
             SLWIOC.Register<IImaging>(new Imaging());
+            SLWIOC.Register<IBluetoothSerial,BluetoothSerial>();
             SLWIOC.Register<IBindingHelper>(new BindingHelper());
             SLWIOC.RegisterSingleton<IGeoLocator>(new GeoLocator());
 

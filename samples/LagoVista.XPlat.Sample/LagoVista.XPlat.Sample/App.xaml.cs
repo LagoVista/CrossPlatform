@@ -120,6 +120,7 @@ namespace LagoVista.XPlat.Sample
             navigation.Add<NetworkingViewModel, NetworkView>();
             navigation.Add<SettingsViewModel, SettingsView>();
             navigation.Add<FullPageViewModel, FullScreenPage>();
+            navigation.Add<BTSerialViewModel, BTSerialView>();
 
             SLWIOC.RegisterSingleton<IViewModelNavigation>(navigation);
 
@@ -133,7 +134,7 @@ namespace LagoVista.XPlat.Sample
                 System.Diagnostics.Debug.WriteLine(ex.Message);
             }
 
-            navigation.Start<SplashViewModel>();
+            navigation.Start<MainViewModel>();
         }
 
         protected override void OnStart()

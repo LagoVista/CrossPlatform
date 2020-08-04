@@ -16,9 +16,12 @@
     <MinimumVisualStudioVersion>14</MinimumVisualStudioVersion>
     <EnableDotNetNativeCompatibleProfile>true</EnableDotNetNativeCompatibleProfile>
     <FileAlignment>512</FileAlignment>
-    <PackageCertificateKeyFile>tempforbuilding.snk</PackageCertificateKeyFile>
+    <PackageCertificateKeyFile>
+    </PackageCertificateKeyFile>
     <ProjectTypeGuids>{A5A43C5B-DE2A-4C0C-9213-0A381AF9435A};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <RuntimeIdentifiers>win10-arm;win10-arm-aot;win10-x86;win10-x86-aot;win10-x64;win10-x64-aot</RuntimeIdentifiers>
+    <PackageCertificateThumbprint>23F6D9FF6E89CABF43EEBDF551A236B0057E45F5</PackageCertificateThumbprint>
+    <AppxPackageSigningEnabled>True</AppxPackageSigningEnabled>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|ARM'">
     <DebugSymbols>true</DebugSymbols>
@@ -118,6 +121,7 @@
     <Content Include="Assets\Fonts\RobotoCondensed-Light.ttf" />
     <Content Include="Assets\Fonts\RobotoCondensed-LightItalic.ttf" />
     <Content Include="Assets\Fonts\RobotoCondensed-Regular.ttf" />
+    <None Include="LagoVista.XPlat.Sample.UWP_TemporaryKey.pfx" />
     <None Include="tempforbuilding.snk" />
   </ItemGroup>
   <ItemGroup>

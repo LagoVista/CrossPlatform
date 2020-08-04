@@ -75,6 +75,10 @@ namespace LagoVista.XPlat.Core.Controls.FormControls
                 Children.Add(_validationMessage);
                 Margin = RowMargin;
             }
+
+            _editor.Focus();
+
+            Refresh();
         }
 
         public override void Refresh()

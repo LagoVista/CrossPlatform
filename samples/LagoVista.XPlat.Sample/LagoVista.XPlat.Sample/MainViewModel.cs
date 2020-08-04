@@ -4,6 +4,7 @@ using LagoVista.Client.Core.ViewModels.Orgs;
 using LagoVista.Client.Core.ViewModels.Other;
 using LagoVista.Core.Commanding;
 using LagoVista.Core.Models.UIMetaData;
+using LagoVista.Core.Validation;
 using LagoVista.XPlat.Core;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -12,7 +13,7 @@ using System.Threading.Tasks;
 
 namespace LagoVista.XPlat.Sample
 {
-    public class MainViewModel : XPlatViewModel
+    public class MainViewModel : FormViewModelBase<Model1>
     {
 
         public MainViewModel()
@@ -98,7 +99,7 @@ namespace LagoVista.XPlat.Sample
                     FontIconKey = "fa-gear"
                 },
                 new MenuItem()
-                {                                                            
+                {
                     Command = new RelayCommand(() => ViewModelNavigation.NavigateAsync<WiFiNetworksViewModel>(this)),
                     Name = "WiFi Network View",
                     FontIconKey = "fa-gear"
@@ -115,6 +116,12 @@ namespace LagoVista.XPlat.Sample
                     Name = "Start SSDP Listener",
                     FontIconKey = "fa-gear"
                 },
+                 new MenuItem()
+                {
+                    Command = new RelayCommand(() => ViewModelNavigation.NavigateAsync<BTSerialViewModel>(this)),
+                    Name = "BT Serial View",
+                    FontIconKey = "fa-gear"
+                },
             };
         }
 
@@ -129,9 +136,10 @@ namespace LagoVista.XPlat.Sample
             Debug.WriteLine(item.ToString());
         }
 
-        public async override Task InitAsync()
+        public override Task InitAsync()
         {
             var model1 = new Model1();
+            model1.TextField1 = "DEFAULT FIELD VALUE";
             model1.Model2Litems = new List<Model2>();
             model1.Model2Litems.Add(new Model2() { Id = "12337", Text = "A little bit of tex" });
             model1.Model2Litems.Add(new Model2() { Id = "13239", Text = "This is good" });
@@ -157,27 +165,34 @@ namespace LagoVista.XPlat.Sample
 
             response.View.Add("editPassword", frmEditPasswordLink);
 
-            FormAdapter = new EditFormAdapter(this, response.View, this.ViewModelNavigation);
+            var formAdapter = new EditFormAdapter(model1, response.View, this.ViewModelNavigation);
 
             //response.View[nameof(Model1.MySecretField)].Command = new RelayCommand((arg) => HandleMe(arg));
 
-            FormAdapter.AddViewCell(nameof(Model1.TextField1));
-            FormAdapter.AddViewCell(nameof(Model1.DropDownBox1));
-            FormAdapter.AddViewCell(nameof(Model1.CheckBox1));
-            FormAdapter.AddViewCell("editPassword");
-            FormAdapter.AddViewCell(nameof(Model1.LinkButton));
-            FormAdapter.AddViewCell(nameof(Model1.MySecretField));
-            FormAdapter.AddViewCell(nameof(Model1.Password));
-            FormAdapter.AddViewCell(nameof(Model1.MultiLine1));
+            formAdapter.AddViewCell(nameof(Model1.TextField1));
+            formAdapter.AddViewCell(nameof(Model1.DropDownBox1));
+            formAdapter.AddViewCell(nameof(Model1.CheckBox1));
+            formAdapter.AddViewCell("editPassword");
+            formAdapter.AddViewCell(nameof(Model1.LinkButton));
+            formAdapter.AddViewCell(nameof(Model1.MySecretField));
+            formAdapter.AddViewCell(nameof(Model1.Password));
+            formAdapter.AddViewCell(nameof(Model1.MultiLine1));
 
-            FormAdapter.AddChildList<ViewModel2>(nameof(Model1.Model2Litems), model1.Model2Litems);
+            formAdapter.AddChildList<ViewModel2>(nameof(Model1.Model2Litems), model1.Model2Litems);
 
             var field = nameof(Model1.MySecretField).ToJSONName();
 
-            FormAdapter.FormItems.Where(itm => itm.Name == field).First().Command = new RelayCommand((arg) => HandleMe(arg));
-            FormAdapter.FormItems.Where(itm => itm.Name == "checkBox1").First().IsVisible = false;
+            formAdapter.FormItems.Where(itm => itm.Name == field).First().Command = new RelayCommand((arg) => HandleMe(arg));
+            formAdapter.FormItems.Where(itm => itm.Name == "checkBox1").First().IsVisible = false;
 
-            await base.InitAsync();
+            ModelToView(model1, formAdapter);
+
+            FormAdapter = formAdapter;
+
+            return Task.CompletedTask;
+
+
+            //            await base.InitAsync();
         }
 
         private async void StartSDPListener()
@@ -258,6 +273,21 @@ namespace LagoVista.XPlat.Sample
         {
             FormAdapter.HideView(nameof(Model1.CheckBox1));
             FormAdapter.HideView(nameof(Model1.LinkButton));
+        }
+
+        public override Task<InvokeResult> SaveRecordAsync()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        protected override string GetRequestUri()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        protected override void BuildForm(EditFormAdapter form)
+        {
+            throw new System.NotImplementedException();
         }
 
         EditFormAdapter _formAdapter;
