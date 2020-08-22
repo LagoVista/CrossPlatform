@@ -1,8 +1,6 @@
 ﻿using LagoVista.Client.Core.Models;
 using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace LagoVista.Client.Core.Interfaces
@@ -11,7 +9,6 @@ namespace LagoVista.Client.Core.Interfaces
     {
         event EventHandler<string> ReceivedLine;
 
-        event EventHandler<BTDevice> DeviceFound;
 
         event EventHandler<int> DFUProgress;
 

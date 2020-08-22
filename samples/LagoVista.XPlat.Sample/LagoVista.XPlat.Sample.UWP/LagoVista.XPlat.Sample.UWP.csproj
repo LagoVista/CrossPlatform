@@ -20,7 +20,7 @@
     </PackageCertificateKeyFile>
     <ProjectTypeGuids>{A5A43C5B-DE2A-4C0C-9213-0A381AF9435A};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <RuntimeIdentifiers>win10-arm;win10-arm-aot;win10-x86;win10-x86-aot;win10-x64;win10-x64-aot</RuntimeIdentifiers>
-    <PackageCertificateThumbprint>23F6D9FF6E89CABF43EEBDF551A236B0057E45F5</PackageCertificateThumbprint>
+    <PackageCertificateThumbprint>7CA8742AA5DBE0249A44F9D2BF86337F8953483B</PackageCertificateThumbprint>
     <AppxPackageSigningEnabled>True</AppxPackageSigningEnabled>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|ARM'">
@@ -213,13 +213,13 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="LagoVista.Core">
-      <Version>2.1.907-beta0629</Version>
+      <Version>2.1.1142-beta1228</Version>
     </PackageReference>
     <PackageReference Include="LagoVista.Core.Networking">
-      <Version>2.1.907-beta0629</Version>
+      <Version>2.1.1142-beta1228</Version>
     </PackageReference>
     <PackageReference Include="LagoVista.UserAdmin">
-      <Version>2.1.906-beta0929</Version>
+      <Version>2.1.1142-beta1228</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform">
       <Version>6.2.10</Version>

@@ -11,18 +11,46 @@
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="*" />
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
-            <Label Text="Blue Tooth Devices" />
-            <ListView ItemsSource="{Binding Devices}" Grid.Row="1" SelectedItem="{Binding SelectedDevice, Mode=TwoWay}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="50*" />
+                <ColumnDefinition Width="50*" />
+            </Grid.ColumnDefinitions>
+                <Label Text="Blue Tooth Devices" />
+            <Button Command="{Binding SendDFUCommand}" Text="Send DFU" Grid.Row="1" />
+            <ListView ItemsSource="{Binding Devices}" Grid.Row="2" SelectedItem="{Binding SelectedDevice, Mode=TwoWay}" Grid.ColumnSpan="2">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
-                            <Label Text="{Binding DeviceName}" />
+                            <Label Text="{Binding DeviceName}"  FontSize="Large" />
                         </ViewCell>
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
+
+            <ListView ItemsSource="{Binding Data}" Grid.Row="3" SelectedItem="{Binding SelectedDevice, Mode=TwoWay}" Grid.Column="0">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Label Text="{Binding .}" />
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
+            <ListView ItemsSource="{Binding Log}" Grid.Row="3" SelectedItem="{Binding SelectedDevice, Mode=TwoWay}" Grid.Column="1">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Label Text="{Binding .}" />
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
         </Grid>
     </pge:LagoVistaContentPage.MainContent >
 </pge:LagoVistaContentPage
