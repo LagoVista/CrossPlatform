@@ -54,7 +54,7 @@ namespace LagoVista.XPlat.Core
              * 
              */
 
-            On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
+           // On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
 
             this.BackgroundColor = AppStyle.TitleBarBackground.ToXamFormsColor();
 
@@ -164,10 +164,13 @@ namespace LagoVista.XPlat.Core
         {
             _toolBar = new Grid
             {
-                HeightRequest = TOOL_BAR_HEIGHT
+                HeightRequest = (Device.RuntimePlatform == Device.iOS) ? (TOOL_BAR_HEIGHT ) : TOOL_BAR_HEIGHT
             };
 
-            //_toolBar.Padding = new Thickness(0, 6 0, 0);
+            if(Device.RuntimePlatform == Device.iOS)
+            {
+                _toolBar.Margin = new Thickness(0, 50, 0, 0);
+            }
 
             _toolBar.ColumnDefinitions.Add(new ColumnDefinition() { Width = new GridLength(1, GridUnitType.Auto) });
             _toolBar.ColumnDefinitions.Add(new ColumnDefinition() { Width = new GridLength(1, GridUnitType.Star) });
@@ -328,13 +331,21 @@ namespace LagoVista.XPlat.Core
                 switch (Device.RuntimePlatform)
                 {
                     case Device.iOS:
-                        _contentGrid.Margin = new Thickness(0, 20, 0, 0);
+                        //_contentGrid.Margin = new Thickness(0, 50, 0, 0);
                         break;
                 }
 
                 if (HasToolBar)
                 {
-                    _contentGrid.RowDefinitions.Add(new RowDefinition() { Height = new GridLength(TOOL_BAR_HEIGHT) });
+                    switch (Device.RuntimePlatform)
+                    {
+                        case Device.iOS:
+                            _contentGrid.RowDefinitions.Add(new RowDefinition() { Height = new GridLength(TOOL_BAR_HEIGHT + 50) });
+                            break;
+                        default:
+                            _contentGrid.RowDefinitions.Add(new RowDefinition() { Height = new GridLength(TOOL_BAR_HEIGHT) });
+                            break;
+                    }
                 }
 
                 _contentGrid.RowDefinitions.Add(new RowDefinition() { Height = new GridLength(1, GridUnitType.Star) });

@@ -22,6 +22,7 @@ namespace LagoVista.XPlat.iOS
             SLWIOC.RegisterSingleton<ISecureStorage>(new SecureStorage());
             SLWIOC.Register<IPopupServices>(new LagoVista.XPlat.Core.Services.PopupServices());
             SLWIOC.Register<ITCPClient, Services.TCPClient>();
+            SLWIOC.Register<IBluetoothSerial, Services.BluetoothSerial>();
             SLWIOC.Register<IUDPClient, Services.UDPClient>();
             SLWIOC.Register<IWebSocket, Services.WebSocket>();
             SLWIOC.Register<IClipBoard, Services.ClipBoard>();

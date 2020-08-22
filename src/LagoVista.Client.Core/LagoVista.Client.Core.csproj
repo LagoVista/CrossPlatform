@@ -4,7 +4,6 @@
     <TargetFramework>netstandard2.0</TargetFramework>
     <NetStandardImplicitPackageVersion>2.0.3</NetStandardImplicitPackageVersion>
     <SignAssembly>true</SignAssembly>
-    <DelaySign>False</DelaySign>
     <DebugType>Full</DebugType>
     <AssemblyOriginatorKeyFile>clientcore.key.snk</AssemblyOriginatorKeyFile>
     <AssemblyVersion>1.2.1.1</AssemblyVersion>
