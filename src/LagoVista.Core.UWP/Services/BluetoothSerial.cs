@@ -56,6 +56,16 @@ namespace LagoVista.Core.UWP.Services
             _currentDevice = device;
         }
 
+        public Task DisconnectAsync(BTDevice device)
+        {
+            if (_currentDevice == device)
+            {
+                CancelReadTask();
+            }
+
+            return Task.CompletedTask;
+        }
+
         public async Task<ObservableCollection<BTDevice>> SearchAsync()
         {
             var deviceInfo = await DeviceInformation.FindAllAsync(RfcommDeviceService.GetDeviceSelector(RfcommServiceId.SerialPort));

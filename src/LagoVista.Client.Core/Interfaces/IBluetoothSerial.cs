@@ -23,6 +23,8 @@ namespace LagoVista.Client.Core.Interfaces
 
         Task ConnectAsync(BTDevice device);
 
+        Task DisconnectAsync(BTDevice deviceId);
+
         Task SendDFUAsync(BTDevice device, byte[] firmware);
 
         Task SendLineAsync(String msg);

@@ -66,6 +66,20 @@ namespace LagoVista.XPlat.Sample
             Log.Insert(0, $"Progress {e}%");
         }
 
+        public override async Task IsClosingAsync()
+        {
+            if(SelectedDevice != null)
+            {
+                IsBusy = true;
+                await _btSerial.SendLineAsync($"QUIT\n");
+                await Task.Delay(1000);
+                await _btSerial.DisconnectAsync(SelectedDevice);
+                IsBusy = false;
+            }
+
+            await base.IsClosingAsync();
+        }
+
         public override async Task InitAsync()
         {
             Devices = await _btSerial.SearchAsync();
