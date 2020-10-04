@@ -27,6 +27,8 @@ namespace LagoVista.Client.Core.Interfaces
 
         Task SendDFUAsync(BTDevice device, byte[] firmware);
 
-        Task SendLineAsync(String msg);
+        Task SendAsync(String msg);
+
+        BTDevice CurrentDevice { get; }
     }
 }
