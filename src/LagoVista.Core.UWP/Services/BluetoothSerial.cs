@@ -28,12 +28,14 @@ namespace LagoVista.Core.UWP.Services
         private SemaphoreSlim _msgReceivedFlag = new SemaphoreSlim(0);
 
         public event EventHandler<string> ReceivedLine;
-        public event EventHandler<int> DFUProgress;
+        public event EventHandler<DFUProgress> DFUProgress;
         public event EventHandler DFUCompleted;
         public event EventHandler<string> DFUFailed;
         public event EventHandler<BTDevice> DeviceConnected;
         public event EventHandler<BTDevice> DeviceConnecting;
         public event EventHandler<BTDevice> DeviceDisconnected;
+
+        private string _lastError = null;
 
         BTDevice _currentDevice = null;
 
@@ -88,7 +90,8 @@ namespace LagoVista.Core.UWP.Services
 
         private async Task<String> WaitForResponseAsync()
         {
-            await _msgReceivedFlag.WaitAsync();
+            _lastMessage = null;
+            await _msgReceivedFlag.WaitAsync(2000);
             return _lastMessage;
         }
 
@@ -113,6 +116,11 @@ namespace LagoVista.Core.UWP.Services
                 var storeResult = await dataWriterObject.StoreAsync();
 
                 response = await WaitForResponseAsync();
+
+                if (response == null)
+                {
+                    throw new Exception("Timeout waiting for response from device.");
+                }
 
                 for (var idx = 0; idx < blocks; ++idx)
                 {
@@ -142,8 +150,18 @@ namespace LagoVista.Core.UWP.Services
                     storeResult = await dataWriterObject.StoreAsync();
 
                     var blockResponse = await WaitForResponseAsync();
+                    if(blockResponse == null)
+                    {
+                        throw new Exception(_lastMessage);
+                    }
 
-                    DFUProgress?.Invoke(this, (idx * 100) / blocks);
+                    DFUProgress?.Invoke(this, new DFUProgress()
+                    {
+                        Progress = (idx * 100) / blocks,
+                        BlockIndex = idx,
+                        TotalBlockCount = blocks,
+                        CheckSum= checkSum
+                    });
                 }
 
                 DFUCompleted?.Invoke(this, null);
@@ -229,6 +247,13 @@ namespace LagoVista.Core.UWP.Services
                     _lastMessage = dataReaderObject.ReadString(bytesRead);
                     this.ReceivedLine?.Invoke(this, _lastMessage);
                     _msgReceivedFlag.Release();
+                    if(_lastMessage != null && _lastMessage.StartsWith("fail"))
+                    {
+                        _lastError = _lastMessage;
+                        DFUFailed(this, _lastMessage);
+                        _lastMessage = null;
+                    }
+
                     Debug.WriteLine(_lastMessage);
                 }
                 catch (Exception)

@@ -10,7 +10,7 @@ namespace LagoVista.Client.Core.Interfaces
         event EventHandler<string> ReceivedLine;
 
 
-        event EventHandler<int> DFUProgress;
+        event EventHandler<DFUProgress> DFUProgress;
 
         event EventHandler DFUCompleted;
         event EventHandler<string> DFUFailed;

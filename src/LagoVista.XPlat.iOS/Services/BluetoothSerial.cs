@@ -40,7 +40,7 @@ namespace LagoVista.XPlat.iOS.Services
 
         public event EventHandler<string> ReceivedLine;
         public event EventHandler<BTDevice> DeviceFound;
-        public event EventHandler<int> DFUProgress;
+        public event EventHandler<DFUProgress> DFUProgress;
         public event EventHandler DFUCompleted;
         public event EventHandler<string> DFUFailed;
         public event EventHandler<BTDevice> DeviceConnected;
@@ -68,6 +68,11 @@ namespace LagoVista.XPlat.iOS.Services
         }
 
         public Task SendLineAsync(string msg)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task DisconnectAsync(BTDevice deviceId)
         {
             throw new NotImplementedException();
         }

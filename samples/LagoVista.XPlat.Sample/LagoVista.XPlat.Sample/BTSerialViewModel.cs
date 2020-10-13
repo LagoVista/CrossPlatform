@@ -33,8 +33,20 @@ namespace LagoVista.XPlat.Sample
 
         private void _btSerial_ReceivedLine(object sender, string e)
         {
-            Data.Insert(0, e);
+            var lines = e.Split('\r');
+            foreach (var line in lines)
+            {
+                var parts = line.Split('=');
+                if (parts.Length == 2)
+                {
+                    var key = parts[0].Trim();
+                    var value = parts[1].Trim();
+
+                   
+                }
+            }
         }
+
 
         private void _btSerial_DeviceDisconnected(object sender, BTDevice e)
         {

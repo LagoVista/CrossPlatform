@@ -26,7 +26,7 @@ namespace LagoVista.XPlat.Sample
 
             public string AppName => "The Sample App";
 
-            public string AppLogo { get { return "applogo.png"; } }
+            public string AppLogo { get { return "applogob.png"; } }
             public string APIToken => "";
 
             public string CompanyLogo { get { return "slsys.png"; } }
