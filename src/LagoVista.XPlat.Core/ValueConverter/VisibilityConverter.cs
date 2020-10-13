@@ -33,5 +33,4 @@ namespace LagoVista.XPlat.Core.ValueConverter
             return default(object);
         }
     }
-
 }

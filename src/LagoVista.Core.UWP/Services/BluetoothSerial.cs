@@ -1,18 +1,15 @@
 ﻿using LagoVista.Client.Core.Interfaces;
 using LagoVista.Client.Core.Models;
 using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
-using System.IO;
-using System.Linq;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using Windows.Devices.Bluetooth.Rfcomm;
 using Windows.Devices.Enumeration;
 using Windows.Networking.Sockets;
 using Windows.Storage.Streams;
+using Windows.UI.WebUI;
 
 namespace LagoVista.Core.UWP.Services
 {
@@ -20,8 +17,8 @@ namespace LagoVista.Core.UWP.Services
     {
         private RfcommDeviceService _service;
         private StreamSocket _socket;
-        private DataWriter dataWriterObject;
-        private DataReader dataReaderObject;
+        private DataWriter _dataWriterObject;
+        private DataReader _dataReaderObject;
 
         private CancellationTokenSource _listenCancelTokenSource = new CancellationTokenSource();
 
@@ -43,27 +40,49 @@ namespace LagoVista.Core.UWP.Services
 
         public async Task ConnectAsync(BTDevice device)
         {
-            DeviceConnecting?.Invoke(this, device);
+            if (_currentDevice != null)
+            {
+                throw new InvalidOperationException("Already Connected.");
+            }
 
-            _service = await RfcommDeviceService.FromIdAsync(device.DeviceId);
+            if (device == null)
+            {
+                throw new ArgumentNullException(nameof(device));
+            }
+
+            DeviceConnecting?.Invoke(this, device); 
+
+             _service = await RfcommDeviceService.FromIdAsync(device.DeviceId);
 
             _socket = new StreamSocket();
 
             await _socket.ConnectAsync(_service.ConnectionHostName, _service.ConnectionServiceName);
-            dataWriterObject = new DataWriter(_socket.OutputStream);
+            _dataWriterObject = new DataWriter(_socket.OutputStream);
             Listen();
 
-            DeviceConnected?.Invoke(this, device);
-
             _currentDevice = device;
+
+            DeviceConnected?.Invoke(this, device);
         }
 
         public Task DisconnectAsync(BTDevice device)
         {
-            if (_currentDevice == device)
+            if (device == null)
             {
-                CancelReadTask();
+                throw new ArgumentNullException(nameof(device));
             }
+
+            if (_currentDevice == null)
+            {
+                throw new InvalidOperationException("No connected.");
+            }
+
+            if (_currentDevice != device)
+            {
+                throw new InvalidOperationException("Attempt to close a not conected device.");
+            }
+
+            CancelReadTask();
 
             return Task.CompletedTask;
         }
@@ -84,12 +103,16 @@ namespace LagoVista.Core.UWP.Services
                 });
             }
 
-
             return pairedDevices;
         }
 
         private async Task<String> WaitForResponseAsync()
         {
+            if(_currentDevice == null)
+            {
+                throw new InvalidOperationException("No connected.");
+            }
+
             _lastMessage = null;
             await _msgReceivedFlag.WaitAsync(2000);
             return _lastMessage;
@@ -97,25 +120,52 @@ namespace LagoVista.Core.UWP.Services
 
         public async Task SendDFUAsync(BTDevice device, byte[] firmware)
         {
+            if (_currentDevice == null)
+            {
+                throw new InvalidOperationException("No connected.");
+            }
+
             try
             {
-                await SendLineAsync("FIRMWARE\n");
+                await SendAsync("FIRMWARE\n");
 
                 var response = await WaitForResponseAsync();
                 while (response.Trim() != "ok-start")
                 {
                     response = await WaitForResponseAsync();
+                    Console.WriteLine("INCORRECT RESPONSE, EXPECTING ok-start : " + response);
                 }
+
+                Console.WriteLine("RECEIVED : " + response);
+
+                var length = firmware.Length;
+
+                _dataWriterObject.WriteByte((byte)(length >> 24));
+                _dataWriterObject.WriteByte((byte)(length >> 16));
+                _dataWriterObject.WriteByte((byte)(length >> 8));
+                _dataWriterObject.WriteByte((byte)(length & 0xFF));
+
+                var storeResult = await _dataWriterObject.StoreAsync();
+                if(storeResult != 4)
+                {
+                    throw new Exception($"Should have written 4 bytes for buffer size, wrote {storeResult}");
+                }
+
+                response = await WaitForResponseAsync();
 
                 int blockSize = 500;
 
                 short blocks = (short)((firmware.Length / blockSize) + 1);
 
-                dataWriterObject.WriteByte((byte)(blocks >> 8));
-                dataWriterObject.WriteByte((byte)(blocks & 0xFF));
-                var storeResult = await dataWriterObject.StoreAsync();
+                _dataWriterObject.WriteByte((byte)(blocks >> 8));
+                _dataWriterObject.WriteByte((byte)(blocks & 0xFF));
+                storeResult = await _dataWriterObject.StoreAsync();
 
                 response = await WaitForResponseAsync();
+                if (storeResult != 2)
+                {
+                    throw new Exception($"Should have written 2 bytes for block size, wrote {storeResult}");
+                }
 
                 if (response == null)
                 {
@@ -129,9 +179,9 @@ namespace LagoVista.Core.UWP.Services
 
                     len = Math.Min(blockSize, len);
 
-                    dataWriterObject.WriteByte((byte)(len >> 8));
-                    dataWriterObject.WriteByte((byte)(len & 0xFF));
-                    storeResult = await dataWriterObject.StoreAsync();
+                    _dataWriterObject.WriteByte((byte)(len >> 8));
+                    _dataWriterObject.WriteByte((byte)(len & 0xFF));
+                    storeResult = await _dataWriterObject.StoreAsync();
 
                     var sendBuffer = new byte[len];
                     Array.Copy(firmware, start, sendBuffer, 0, len);
@@ -143,11 +193,11 @@ namespace LagoVista.Core.UWP.Services
                         checkSum += sendBuffer[ch];
                     }
 
-                    dataWriterObject.WriteBytes(sendBuffer);
-                    storeResult = await dataWriterObject.StoreAsync();
+                    _dataWriterObject.WriteBytes(sendBuffer);
+                    storeResult = await _dataWriterObject.StoreAsync();
 
-                    dataWriterObject.WriteByte((byte)(checkSum));
-                    storeResult = await dataWriterObject.StoreAsync();
+                    _dataWriterObject.WriteByte((byte)(checkSum));
+                    storeResult = await _dataWriterObject.StoreAsync();
 
                     var blockResponse = await WaitForResponseAsync();
                     if(blockResponse == null)
@@ -166,31 +216,45 @@ namespace LagoVista.Core.UWP.Services
 
                 DFUCompleted?.Invoke(this, null);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
-                _socket.Dispose();
-                _socket = null;
+                if (_socket != null)
+                {
+                    _socket.Dispose();
+                    _socket = null;
+                }
+
                 DFUFailed?.Invoke(this, ex.Message);
                 DeviceDisconnected?.Invoke(this, _currentDevice);
                 _currentDevice = null;
             }
         }
 
-        public async Task SendLineAsync(string msg)
+        public async Task SendAsync(string msg)
         {
             try
             {
-                dataWriterObject.WriteString(msg);
+                if (_currentDevice == null)
+                {
+                    throw new ArgumentNullException(nameof(CurrentDevice));
+                }
+
+                _dataWriterObject.WriteString(msg);
 
                 // Launch an async task to complete the write operation
-                await dataWriterObject.StoreAsync();
+                await _dataWriterObject.StoreAsync();
             }
-            catch(Exception)
+            catch (Exception)
             {
-                _socket.Dispose();
-                _socket = null;
+                if (_socket != null)
+                {
+                    _socket.Dispose();
+                    _socket = null;
+                }
+
                 DeviceDisconnected?.Invoke(this, _currentDevice);
                 _currentDevice = null;
+                throw;
             }
 
         }
@@ -209,7 +273,7 @@ namespace LagoVista.Core.UWP.Services
                 _listenCancelTokenSource = new CancellationTokenSource();
                 if (_socket.InputStream != null)
                 {
-                    dataReaderObject = new DataReader(_socket.InputStream);
+                    _dataReaderObject = new DataReader(_socket.InputStream);
                     // keep reading the serial input
                     while (true && _socket != null)
                     {
@@ -219,8 +283,12 @@ namespace LagoVista.Core.UWP.Services
             }
             catch (Exception)
             {
-                _socket.Dispose();
-                _socket = null;
+                if (_socket != null)
+                {
+                    _socket.Dispose();
+                    _socket = null;
+                }
+
                 DeviceDisconnected?.Invoke(this, _currentDevice);
                 _currentDevice = null;
             }
@@ -234,9 +302,9 @@ namespace LagoVista.Core.UWP.Services
 
             cancellationToken.ThrowIfCancellationRequested();
 
-            dataReaderObject.InputStreamOptions = InputStreamOptions.Partial;
+            _dataReaderObject.InputStreamOptions = InputStreamOptions.Partial;
 
-            loadAsyncTask = dataReaderObject.LoadAsync(ReadBufferLength).AsTask(cancellationToken);
+            loadAsyncTask = _dataReaderObject.LoadAsync(ReadBufferLength).AsTask(cancellationToken);
 
             // Launch the task and wait
             UInt32 bytesRead = await loadAsyncTask;
@@ -244,7 +312,7 @@ namespace LagoVista.Core.UWP.Services
             {
                 try
                 {
-                    _lastMessage = dataReaderObject.ReadString(bytesRead);
+                    _lastMessage = _dataReaderObject.ReadString(bytesRead);
                     this.ReceivedLine?.Invoke(this, _lastMessage);
                     _msgReceivedFlag.Release();
                     if(_lastMessage != null && _lastMessage.StartsWith("fail"))
@@ -258,8 +326,12 @@ namespace LagoVista.Core.UWP.Services
                 }
                 catch (Exception)
                 {
-                    _socket.Dispose();
-                    _socket = null;
+                    if (_socket != null)
+                    {
+                        _socket.Dispose();
+                        _socket = null;
+                    }
+
                     DeviceDisconnected?.Invoke(this, _currentDevice);
                     _currentDevice = null;
                 }
@@ -281,6 +353,7 @@ namespace LagoVista.Core.UWP.Services
             }
         }
 
+        public BTDevice CurrentDevice { get => _currentDevice; }
 
     }
 }

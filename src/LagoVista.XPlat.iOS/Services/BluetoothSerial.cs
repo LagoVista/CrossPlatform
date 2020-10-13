@@ -12,6 +12,8 @@ namespace LagoVista.XPlat.iOS.Services
     {
         CBCentralManager _mgr;
 
+        public BTDevice CurrentDevice => throw new NotImplementedException();
+
         public BluetoothSerial()
         {
             _mgr = new CBCentralManager();
@@ -67,7 +69,12 @@ namespace LagoVista.XPlat.iOS.Services
             throw new NotImplementedException();
         }
 
-        public Task SendLineAsync(string msg)
+        public Task SendAsync(string msg)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task DisconnectAsync(BTDevice deviceId)
         {
             throw new NotImplementedException();
         }

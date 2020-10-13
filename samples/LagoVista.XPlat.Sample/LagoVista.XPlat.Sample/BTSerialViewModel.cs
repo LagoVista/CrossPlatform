@@ -83,7 +83,7 @@ namespace LagoVista.XPlat.Sample
             if(SelectedDevice != null)
             {
                 IsBusy = true;
-                await _btSerial.SendLineAsync($"QUIT\n");
+                await _btSerial.SendAsync($"QUIT\n");
                 await Task.Delay(1000);
                 await _btSerial.DisconnectAsync(SelectedDevice);
                 IsBusy = false;
@@ -109,8 +109,8 @@ namespace LagoVista.XPlat.Sample
         private async void Connect(BTDevice device)
         {
             await _btSerial.ConnectAsync(device);
-            await _btSerial.SendLineAsync($"HELLO\n");
-            await _btSerial.SendLineAsync($"QUERY\n");
+            await _btSerial.SendAsync($"HELLO\n");
+            await _btSerial.SendAsync($"QUERY\n");
         }
 
         public async void SendDFU()

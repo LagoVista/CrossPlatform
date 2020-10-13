@@ -192,7 +192,7 @@ namespace LagoVista.XPlat.Core
             {
                 IsVisible = false,
                 VerticalOptions = new LayoutOptions(LayoutAlignment.Center, false),
-                TextColor = NamedColors.NuvIoTDark.ToXamFormsColor(),
+                TextColor = AppStyle.TitleBarText.ToXamFormsColor(),
                 WidthRequest = 48,
                 HeightRequest = 48,
                 FontSize = Device.RuntimePlatform == Device.Android ? 20 : 28
@@ -204,7 +204,7 @@ namespace LagoVista.XPlat.Core
                 IsVisible = false,
                 IconKey = "ion-help",
                 VerticalOptions = new LayoutOptions(LayoutAlignment.Center, false),
-                TextColor = NamedColors.NuvIoTDark.ToXamFormsColor(),
+                TextColor = AppStyle.TitleBarText.ToXamFormsColor(),
                 WidthRequest = 48,
                 HeightRequest = 48,
                 FontSize = Device.RuntimePlatform == Device.Android ? 20 : 24
@@ -217,7 +217,7 @@ namespace LagoVista.XPlat.Core
             {
                 IsVisible = false,
                 VerticalOptions = new LayoutOptions(LayoutAlignment.Center, false),
-                TextColor = NamedColors.NuvIoTDark.ToXamFormsColor(),
+                TextColor = AppStyle.TitleBarText.ToXamFormsColor(),
                 WidthRequest = 48,
                 HeightRequest = 48,
                 FontSize = Device.RuntimePlatform == Device.Android ? 20 : 28

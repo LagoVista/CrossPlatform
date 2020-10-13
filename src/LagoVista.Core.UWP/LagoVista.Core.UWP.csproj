@@ -250,19 +250,19 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="LagoVista.Core">
-      <Version>2.1.1142-beta1228</Version>
+      <Version>2.1.1233-beta0543</Version>
     </PackageReference>
     <PackageReference Include="LagoVista.Core.Authentication">
-      <Version>2.1.1142-beta1228</Version>
+      <Version>2.1.1233-beta0543</Version>
     </PackageReference>
     <PackageReference Include="LagoVista.Core.Networking">
-      <Version>2.1.1142-beta1228</Version>
+      <Version>2.1.1233-beta0543</Version>
     </PackageReference>
     <PackageReference Include="LagoVista.IoT.Logging">
-      <Version>2.1.1142-beta1228</Version>
+      <Version>2.1.1233-beta0543</Version>
     </PackageReference>
     <PackageReference Include="LagoVista.UserAdmin.Models">
-      <Version>2.1.1142-beta1228</Version>
+      <Version>2.1.1233-beta0543</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform">
       <Version>6.2.10</Version>
