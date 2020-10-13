@@ -61,7 +61,7 @@ namespace LagoVista.XPlat.iOS.Services
             var spp = CBUUID.FromString("00001101-0000-1000-8000-00805f9b34fb");
             _mgr.ScanForPeripherals(new[] { spp });
 
-            return  Task<ObservableCollection<BTDevice>>.FromResult(new ObservableCollection<BTDevice>());
+            return Task<ObservableCollection<BTDevice>>.FromResult(new ObservableCollection<BTDevice>());
         }
 
         public Task SendDFUAsync(BTDevice device, byte[] firmware)
@@ -79,9 +79,5 @@ namespace LagoVista.XPlat.iOS.Services
             throw new NotImplementedException();
         }
 
-        public Task DisconnectAsync(BTDevice deviceId)
-        {
-            throw new NotImplementedException();
-        }
     }
 }
