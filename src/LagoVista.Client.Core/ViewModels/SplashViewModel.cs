@@ -1,9 +1,6 @@
-﻿using LagoVista.Client.Core.Net;
-using LagoVista.Client.Core.ViewModels;
-using LagoVista.Client.Core.ViewModels.Users;
+﻿using LagoVista.Client.Core.ViewModels.Users;
 using LagoVista.Core.Commanding;
 using LagoVista.Core.Models;
-using LagoVista.Core.ViewModels;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -11,7 +8,6 @@ namespace LagoVista.Client.Core.ViewModels
 {
     public class SplashViewModel : AppViewModelBase
     {
-
         IClientAppInfo _clientAppInfo;
         IRestClient _rawRestClient;
 

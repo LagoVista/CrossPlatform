@@ -8,20 +8,15 @@ using Xamarin.Forms.PlatformConfiguration.AndroidSpecific;
 using LagoVista.Client.Core;
 using LagoVista.Client.Core.Models;
 using LagoVista.Client.Core.ViewModels;
-using LagoVista.Client.Core.ViewModels.Auth;
 using LagoVista.Core.Interfaces;
 using LagoVista.Core.IOC;
 using LagoVista.Core.PlatformSupport;
 using LagoVista.Core.ViewModels;
 using LagoVista.XPlat.Core.Services;
 using LagoVista.XPlat.Core.Views;
-using LagoVista.XPlat.Core.Views.Auth;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-using Xamarin.Forms;
+using LagoVista.XPlat.Sample.Views;
+using LagoVista.XPlat.Sample.ViewModels;
 
 namespace LagoVista.XPlat.Sample
 {
@@ -96,7 +91,7 @@ namespace LagoVista.XPlat.Sample
 
             var clientAppInfo = new ClientAppInfo()
             {
-                MainViewModel = typeof(MainViewModel)
+                MainViewModel = typeof(HomeViewModel)
             };
 
             DeviceInfo.Register();
@@ -110,7 +105,8 @@ namespace LagoVista.XPlat.Sample
             SLWIOC.RegisterSingleton<IClientAppInfo>(clientAppInfo);
             
             var navigation = new ViewModelNavigation(this);
-            navigation.Add<MainViewModel, MainPage>();
+            navigation.Add<HomeViewModel, HomeView>();
+            navigation.Add<FormControlsViewModel, FormControlsView>();
             navigation.Add<ServicesViewModel, ServicesView>();
             navigation.Add<SecureStorageViewModel, SecureStorageView>();
             navigation.Add<ControlSampleViewModel, ControlSampleView>();
@@ -134,7 +130,7 @@ namespace LagoVista.XPlat.Sample
                 System.Diagnostics.Debug.WriteLine(ex.Message);
             }
 
-            navigation.Start<MainViewModel>();
+            navigation.Start<SplashViewModel>();
         }
 
         protected override void OnStart()

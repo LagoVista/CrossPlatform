@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<pge:LagoVistaContentPage
+        xmlns:pge="clr-namespace:LagoVista.XPlat.Core;assembly=LagoVista.XPlat.Core"
+        xmlns="http://xamarin.com/schemas/2014/forms" 
+        xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+        x:Class="LagoVista.XPlat.Sample.Views.HomeView">
+    <pge:LagoVistaContentPage.Content >
+        <ListView ItemsSource="{Binding MenuOptions}" SelectedItem="{Binding SelectedMenuOption}" BackgroundColor="White">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <Label Text="{Binding Title}" Margin="10" FontSize="Large" VerticalTextAlignment="Center" />
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </pge:LagoVistaContentPage.Content>
+</pge:LagoVistaContentPage>

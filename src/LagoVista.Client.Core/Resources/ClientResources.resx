@@ -462,4 +462,7 @@
   <data name="MainMenu_About" xml:space="preserve">
     <value>About</value>
   </data>
+  <data name="MonitorDevice_SelectInputCommand" xml:space="preserve">
+    <value>-select input command-</value>
+  </data>
 </root>

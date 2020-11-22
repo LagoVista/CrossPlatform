@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<pge:LagoVistaContentPage 
+    xmlns:pge="clr-namespace:LagoVista.XPlat.Core;assembly=LagoVista.XPlat.Core"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:trs="clr-namespace:LagoVista.XPlat.Core.Extensions;assembly=LagoVista.XPlat.Core"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    LeftMenu="Back"
+    x:Class="LagoVista.XPlat.Core.Views.DeviceAccess.DeviceReposView"
+    Title="{trs:ClientTranslate DeviceReposView_Title}" >
+
+    <pge:LagoVistaContentPage.MainContent>
+        <Grid>
+            <ListView ItemsSource="{Binding ListItems}" SelectedItem="{Binding SelectedItem, Mode=TwoWay}" RowHeight="64" IsVisible="{Binding HasRepos}" x:Name="RepositoriesList" >
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid HeightRequest="64" Padding="0,16,0,0">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="32" />
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="8" />
+                                    <ColumnDefinition Width="auto" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="auto" />
+                                </Grid.ColumnDefinitions>
+                                <Label Text="{Binding Id}"  x:Name="RepoItemId" IsVisible="False" />
+                                <pge:Icon IconKey="fa-database"  Grid.Column="1" FontSize="24" VerticalOptions="Center" TextColor="{StaticResource NuvIoTBlack}" />
+                                <Label Text="{Binding Name}" Margin="8,0,0,0" Grid.Column="2" FontSize="24" TextColor="{StaticResource NuvIoTBlack}" FontFamily="Roboto" VerticalOptions="Center" />
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            <StackLayout IsVisible="{Binding EmptyRepos}" Margin="20,50,20,0" >
+                <Label Text="{trs:ClientTranslate DeviceReposView_NoDeviceRepos}" Margin="0,0,0,10" />
+            </StackLayout>
+        </Grid>
+    </pge:LagoVistaContentPage.MainContent>
+</pge:LagoVistaContentPage >

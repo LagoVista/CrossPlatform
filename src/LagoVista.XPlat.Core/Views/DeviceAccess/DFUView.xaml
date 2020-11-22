@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<pge:LagoVistaContentPage 
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:trs="clr-namespace:LagoVista.XPlat.Core.Extensions;assembly=LagoVista.XPlat.Core"
+    xmlns:pge="clr-namespace:LagoVista.XPlat.Core;assembly=LagoVista.XPlat.Core"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    x:Class="LagoVista.XPlat.Core.Views.DeviceAccess.DFUView">
+    <pge:LagoVistaContentPage.MainContent>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <StackLayout Grid.Row="1" Margin="20" IsVisible="{Binding HasServerFirmware}">
+                <Label Text="Device Firmware" FontSize="Medium"/>
+                <Label Text="{Binding FirmwareName}" FontSize="Medium"  />
+                <Label Text="Device Firmware SKU" FontSize="Medium"/>
+                <Label Text="{Binding FirmwareSKU}" FontSize="Medium"  />
+                <Label Text="Server Firmware Version" FontSize="Medium" />
+                <Label Text="{Binding ServerFirmwareVersion}" FontSize="Medium" />
+                <Label Text="Device Firmware Version" FontSize="Medium"/>
+                <Label Text="{Binding DeviceFirmwareVersion}" FontSize="Medium"  />
+                <ProgressBar Progress="{Binding UploadProgress}"  Margin="30,0,30,0"  HeightRequest="40" />
+                <Label Text="{Binding StatusMessage}" />
+
+                <pge:Button Command="{Binding UpdateDeviceFirmwareCommand}" Text="Update" WidthRequest="120" HorizontalOptions="End" Margin="0,0,30,0" />
+                <pge:Button Command="{Binding CancelUpdateCommand}" Text="Cancel" WidthRequest="120" HorizontalOptions="End" Margin="0,0,30,0" />
+            </StackLayout>
+        </Grid>
+    </pge:LagoVistaContentPage.MainContent>
+</pge:LagoVistaContentPage>

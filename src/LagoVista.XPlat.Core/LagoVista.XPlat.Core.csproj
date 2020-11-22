@@ -8,6 +8,7 @@
     <None Remove="Package.nuspec" />
   </ItemGroup>
   <ItemGroup>
+    <PackageReference Include="DLToolkit.Forms.Controls.FlowListView" Version="2.0.11" />
     <PackageReference Include="LagoVista.Core.Authentication" Version="2.1.1285-beta1826" />
     <PackageReference Include="LagoVista.Core.Networking" Version="2.1.1285-beta1826" />
     <PackageReference Include="LagoVista.IoT.Logging" Version="2.1.1285-beta1826" />
@@ -25,16 +26,51 @@
     <ProjectReference Include="..\LagoVista.Client.Core\LagoVista.Client.Core.csproj" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Update="Views\DeviceAccess\BTDevicePickerView.xaml">
+    <Compile Update="Views\DeviceAccess\DFUView.xaml.cs">
+      <DependentUpon>DFUView.xaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Update="Views\DeviceAccess\ConsoleView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\DeviceAccess\DeviceRepos.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\DeviceAccess\DFUUpdateView.xaml">
+    <EmbeddedResource Update="Views\DeviceAccess\DeviceReposView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\DeviceAccess\ProvisioningView.xaml">
+    <EmbeddedResource Update="Views\DeviceAccess\DeviceReposViewModel.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\DeviceAccess\DevicesView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\DeviceAccess\DeviceView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\DeviceAccess\DFUView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\DeviceAccess\EditDeviceView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\DeviceAccess\IOConfigView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\DeviceAccess\LiveDataStreamView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\DeviceAccess\LiveDataView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\DeviceAccess\LiveMessagesView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\DeviceAccess\PairBTDeviceView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\DeviceAccess\ProvisionDevicewView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>

@@ -1,0 +1,133 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<pge:LagoVistaContentPage   xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:pge="clr-namespace:LagoVista.XPlat.Core;assembly=LagoVista.XPlat.Core"
+             xmlns:trs="clr-namespace:LagoVista.XPlat.Core.Extensions;assembly=LagoVista.XPlat.Core"
+             RightMenu="Edit"
+             EditCommand="{Binding EditDeviceCommand}"
+             LeftMenu="Cancel"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             Title="{trs:ClientTranslate DeviceView_Title}"
+             x:Class="LagoVista.XPlat.Core.Views.DeviceAccess.DeviceView">
+    <pge:LagoVistaContentPage.MainContent >
+        <Grid>
+            <Grid IsVisible="{Binding ViewReady}">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <Picker IsVisible="{Binding HasInputCommands}" ItemsSource="{Binding InputCommands}" SelectedItem="{Binding SelectedInputCommand}" ItemDisplayBinding="{Binding Name}" Margin="5"  />
+                <Grid Grid.Row="1" IsVisible="{Binding DeviceStatusVisible}" >
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto" />
+                        <RowDefinition Height="auto" />
+                        <RowDefinition Height="auto" />
+                        <RowDefinition Height="auto" />
+                        <RowDefinition Height="auto" />
+                        <RowDefinition Height="auto" />
+                        <RowDefinition Height="auto" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+
+                    <Grid HeightRequest="48" BackgroundColor="{StaticResource NuvIoTWhite}" Grid.Row="0"  >
+                        <Label Text="{trs:ClientTranslate MonitorDevice_DeviceInformation}" TextColor="{StaticResource NuvIoTBlack}" FontSize="16" FontFamily="Roboto" Margin="10,0,0,0" VerticalOptions="Center" />
+                    </Grid>
+
+                    <Grid Padding="10" Grid.Row="1" >
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto" />
+                            <RowDefinition Height="auto" />
+                            <RowDefinition Height="auto" />
+                            <RowDefinition Height="auto" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="33*" />
+                            <ColumnDefinition Width="66*" />
+                        </Grid.ColumnDefinitions>
+
+                        <pge:Label Text="{trs:ClientTranslate DeviceView_Name}" Grid.Column="0" Grid.Row="0" FontAttributes="Bold" TextColor="{StaticResource NuvIoTBlack}" FontSize="Small"  />
+                        <pge:Label Text="{Binding Device.Name}" Grid.Column="1" Grid.Row="0" FontSize="Small"  />
+
+                        <pge:Label Text="{trs:ClientTranslate DeviceView_DeviceId}" Grid.Column="0" Grid.Row="1" FontAttributes="Bold" TextColor="{StaticResource NuvIoTBlack}" FontSize="Small"  />
+                        <pge:Label Text="{Binding Device.DeviceId}" Grid.Column="1" Grid.Row="1" FontSize="Small"  />
+
+                        <pge:Label Text="{trs:ClientTranslate DeviceView_Status}" Grid.Column="0" Grid.Row="2" FontAttributes="Bold" TextColor="{StaticResource NuvIoTBlack}" FontSize="Small"  />
+                        <pge:Label Text="{Binding Device.Status.Text}" Grid.Column="1" Grid.Row="2" FontSize="Small"  />
+
+                        <pge:Label Text="{trs:ClientTranslate DeviceView_LastContact}" Grid.Row="3" Grid.Column="0" FontAttributes="Bold" TextColor="{StaticResource NuvIoTBlack}" FontSize="Small"  />
+                        <pge:Label Text="{Binding Device.LastContact, Converter={StaticResource DatePrinterConverter}}" Grid.Column="1" Grid.Row="3" Grid.ColumnSpan="2" FontSize="Small"  />
+                    </Grid>
+
+                    <Grid HeightRequest="48" IsVisible="{Binding HasAttributes}" BackgroundColor="{StaticResource NuvIoTWhite}" Grid.Row="2"  >
+                        <Label Text="{trs:ClientTranslate DeviceView_Attributes}" TextColor="{StaticResource NuvIoTBlack}" FontSize="16" FontFamily="Roboto" Margin="10,0,0,0" VerticalOptions="Center" />
+                    </Grid>
+
+                    <pge:KVPRepeater LabelColor="{StaticResource NuvIoTBlack}" ItemSource="{Binding DeviceAttributes, Mode=TwoWay}" Grid.Row="3" Padding="10"  />
+
+
+                    <Grid HeightRequest="48" IsVisible="{Binding HasStateMachines}" BackgroundColor="{StaticResource NuvIoTWhite}" Grid.Row="4"  >
+                        <Label Text="{trs:ClientTranslate DeviceView_StateMachines}" TextColor="{StaticResource NuvIoTBlack}" FontSize="16" FontFamily="Roboto" Margin="10,0,0,0" VerticalOptions="Center" />
+                    </Grid>
+
+                    <pge:KVPRepeater IsVisible="{Binding HasStateMachines}" LabelColor="{StaticResource NuvIoTBlack}" ItemSource="{Binding StateMachines, Mode=TwoWay}" Grid.Row="5" Padding="10"  />
+
+                    <Grid HeightRequest="48" BackgroundColor="{StaticResource NuvIoTWhite}" Grid.Row="6"  >
+                        <Label Text="{trs:ClientTranslate DeviceView_Messages}" TextColor="{StaticResource NuvIoTBlack}" FontSize="16" FontFamily="Roboto" Margin="10,0,0,0" VerticalOptions="Center" />
+                    </Grid>
+
+                    <ListView Grid.Row="7" ItemsSource="{Binding DeviceMessages}" HasUnevenRows="True" SeparatorVisibility="None"  >
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell IsEnabled="False">
+                                    <Grid Padding="20,10,10,10" >
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="33*" />
+                                            <ColumnDefinition Width="66*" />
+                                        </Grid.ColumnDefinitions>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="auto" />
+                                            <RowDefinition Height="auto" />
+                                            <RowDefinition Height="auto" />
+                                        </Grid.RowDefinitions>
+
+                                        <pge:Label Text="Message Id" Grid.Row="0" FontAttributes="Bold" TextColor="{StaticResource NuvIoTBlack}" FontSize="Small" />
+                                        <pge:Label Text="Timestamp"  Grid.Row="1" FontAttributes="Bold" TextColor="{StaticResource NuvIoTBlack}" FontSize="Small" />
+
+                                        <pge:Label Text="{Binding MessageId}" Grid.Row="0" Grid.Column="1" FontSize="Small" />
+                                        <pge:Label Text="{Binding Timestamp, Converter={StaticResource DatePrinterConverter}}"  Grid.Row="1" Grid.Column="1" FontSize="Small" />
+
+                                        <pge:KVPRepeater ItemSource="{Binding Properties}" Grid.Row="2" Grid.ColumnSpan="2" LabelColor="{StaticResource NuvIoTBlack}" />
+
+                                        <BoxView Grid.ColumnSpan="2" Grid.Row="3" HeightRequest="1" VerticalOptions="End" Color="Silver"  />
+                                    </Grid>
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </Grid>
+                <Grid Grid.RowSpan="2" IsVisible="{Binding InputCommandVisible}" Padding="10" BackgroundColor="White">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="auto" />
+                        <RowDefinition Height="auto" />
+                    </Grid.RowDefinitions>
+                    <Label Text="{Binding SelectedInputCommand.Name}" Grid.Row="0" FontSize="Medium" TextColor="{StaticResource NuvIoTDark}"  />
+                    <ListView ItemsSource="{Binding InputCommandParameters}" Grid.Row="1">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell>
+                                    <StackLayout>
+                                        <Label Text="{Binding Label}" FontAttributes="Bold" FontSize="Small" TextColor="{StaticResource NuvIoTBlack}" />
+                                        <Entry Text="{Binding Value, Mode=TwoWay}" HeightRequest="36" />
+                                    </StackLayout>
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                    <pge:Button Command="{Binding SendCommand}" Text="{trs:ClientTranslate DeviceView_Send}" Grid.Row="2" HeightRequest="48"  />
+                    <pge:Button Command="{Binding CancelSendCommand}" Text="{trs:ClientTranslate Common_Cancel}" Grid.Row="3" HeightRequest="48"  />
+                </Grid>
+            </Grid>
+        </Grid>
+    </pge:LagoVistaContentPage.MainContent>
+</pge:LagoVistaContentPage>

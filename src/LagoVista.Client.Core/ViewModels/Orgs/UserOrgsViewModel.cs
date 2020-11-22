@@ -53,6 +53,8 @@ namespace LagoVista.Client.Core.ViewModels.Orgs
 
                 var response = await RestClient.GetAsync<AppUser>($"/api/org/{model.OrgId}/change");
 
+                await RestClient.RenewRefreshToken();
+             
                 var refreshResult = await RefreshUserFromServerAsync();
                 if (refreshResult.Successful)
                 {

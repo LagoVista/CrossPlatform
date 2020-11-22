@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<pge:LagoVistaContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+        xmlns:pge="clr-namespace:LagoVista.XPlat.Core;assembly=LagoVista.XPlat.Core"
+        xmlns:ctl="clr-namespace:LagoVista.XPlat.Core.Controls.Devices"
+        xmlns:flv="clr-namespace:DLToolkit.Forms.Controls;assembly=DLToolkit.Forms.Controls.FlowListView"  
+        xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+        x:Class="LagoVista.XPlat.Core.Views.DeviceAccess.LiveDataView">
+    <pge:LagoVistaContentPage.MainContent>
+        <flv:FlowListView FlowColumnCount="3"   
+                SeparatorVisibility="Default"   
+                HasUnevenRows="True"  
+                FlowItemsSource="{Binding DataItems}">
+
+            <flv:FlowListView.FlowColumnTemplate>
+                <DataTemplate>
+                    <ctl:ComponentView Label="{Binding Label}" Name="{Binding Key}" DateStamp="{Binding LastUpdated}" Value="{Binding Value}" />
+                </DataTemplate>
+            </flv:FlowListView.FlowColumnTemplate>
+        </flv:FlowListView>
+
+    </pge:LagoVistaContentPage.MainContent>
+    </pge:LagoVistaContentPage>

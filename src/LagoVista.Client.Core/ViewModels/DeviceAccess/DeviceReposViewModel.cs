@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace LagoVista.Client.Core.ViewModels.DeviceAccess
 {
-    class DeviceReposViewModel : ListViewModelBase<DeviceRepositorySummary>
+    public class DeviceReposViewModel : ListViewModelBase<DeviceRepositorySummary>
     {
 
         private bool _hasRepos;

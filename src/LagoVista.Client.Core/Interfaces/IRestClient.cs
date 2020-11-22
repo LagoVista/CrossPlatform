@@ -16,6 +16,7 @@ namespace LagoVista.Client.Core
          */
     public interface IRestClient
     {
+        Task<InvokeResult> RenewRefreshToken();
         Task<RawResponse> GetAsync(String path, CancellationTokenSource tokenSource = null);
         Task<RawResponse> PostAsync(String path, String payload, CancellationTokenSource tokenSource = null);
         Task<RawResponse> PutAsync(String path, String payload, CancellationTokenSource tokenSource = null);
