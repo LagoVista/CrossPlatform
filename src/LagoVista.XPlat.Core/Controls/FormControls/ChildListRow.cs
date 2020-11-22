@@ -42,15 +42,15 @@ namespace LagoVista.XPlat.Core.Controls.FormControls
                 TextColor = AppStyle.TitleBarText.ToXamFormsColor(),
                 Text = field.Label,
                 FontAttributes = FontAttributes.Bold,
-                FontFamily = "Roboto",
-                FontSize = 18
+                FontFamily = AppStyle.ListItemFont,
+                FontSize = AppStyle.ListItemFontSize
             };
 
             _addImage = new IconButton()
             {
                 Margin = new Thickness(0, 0, 20, 0),
                 VerticalOptions = new LayoutOptions(LayoutAlignment.Center, false),
-                TextColor = NamedColors.NuvIoTDark.ToXamFormsColor(),
+                TextColor = AppStyle.HighlightColor.ToXamFormsColor(),
                 WidthRequest = 48,
                 HeightRequest = 48,
                 FontSize = Device.RuntimePlatform == Device.Android ? 20 : 28
@@ -103,8 +103,8 @@ namespace LagoVista.XPlat.Core.Controls.FormControls
                     label.Margin = new Thickness(15, 10, 10, 10);
                     label.TextColor = AppStyle.PageText.ToXamFormsColor();
                     label.Text = child.ToEntityHeader().Text;
-                    label.FontFamily = "Roboto";
-                    label.FontSize = 16;
+                    label.FontFamily = AppStyle.ListItemFont;
+                    label.FontSize = AppStyle.ListItemFontSize;
 
                     var grid = new Grid();
                     grid.ColumnDefinitions.Add(new ColumnDefinition() { Width = GridLength.Star });

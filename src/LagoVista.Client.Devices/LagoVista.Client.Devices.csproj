@@ -4,7 +4,7 @@
     <NetStandardImplicitPackageVersion>2.0.3</NetStandardImplicitPackageVersion>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="LagoVista.Core" Version="2.1.1285-beta1826" />
+    <PackageReference Include="LagoVista.Core" Version="2.1.1286-beta1412" />
     <PackageReference Include="LagoVista.IoT.Deployment.Models" Version="2.1.1285-beta1826" />
     <PackageReference Include="LagoVista.IoT.DeviceAdmin.Models" Version="2.1.1285-beta1826" />
     <PackageReference Include="LagoVista.IoT.DeviceManagement.Models" Version="2.1.1285-beta1826" />

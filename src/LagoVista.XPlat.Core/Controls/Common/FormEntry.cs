@@ -1,10 +1,5 @@
 ﻿using LagoVista.Core.Interfaces;
 using LagoVista.Core.IOC;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Xamarin.Forms;
 
 namespace LagoVista.XPlat.Core
@@ -18,7 +13,9 @@ namespace LagoVista.XPlat.Core
         {
             this.Focused += Entry_Focused;
 
-            FontFamily = "Roboto";
+            FontFamily = AppStyle.EntryFont;
+            FontSize = AppStyle.EntryFontSize;
+
             this.BackgroundColor = AppStyle.EditControlBackground.ToXamFormsColor();
 
             if (Device.RuntimePlatform == Device.Android)
@@ -44,7 +41,8 @@ namespace LagoVista.XPlat.Core
             this.Focused += Entry_Focused;
             this.BackgroundColor = AppStyle.EditControlBackground.ToXamFormsColor();
             this.TextColor = AppStyle.EditControlText.ToXamFormsColor();
-            FontFamily = "Roboto";
+            FontFamily = AppStyle.EntryFont;
+            FontSize = AppStyle.EntryFontSize;
 
             if (Device.RuntimePlatform == Device.Android)
             {

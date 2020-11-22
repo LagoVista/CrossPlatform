@@ -15,39 +15,35 @@ namespace LagoVista.XPlat.Core.Controls.Common
 
         public NavigationViewCell()
         {
-            _text = new Label()
-            {
-                Margin = new Thickness(10),
-                FontSize = 36,
-                TextColor = SLWIOC.Get<IAppStyle>().LabelText.ToXamFormsColor(),
-                FontFamily = "Roboto",
-            };
-
-            _text.SetValue(Grid.ColumnProperty, 1);
-
-
             _icon = new Icon()
             {
                 HorizontalOptions = new LayoutOptions(LayoutAlignment.Center, false),
                 VerticalOptions = new LayoutOptions(LayoutAlignment.Center, false),
-                FontSize = 36,
-                Margin = new Thickness(8, 4, 0, 0),
-                TextColor = SLWIOC.Get<IAppStyle>().HighlightColor.ToXamFormsColor(),
+                FontSize = AppStyle.ListItemFontSize,
+                TextColor = AppStyle.HighlightColor.ToXamFormsColor(),
             };
             _icon.SetValue(Grid.ColumnProperty, 0);
+
+            _text = new Label()
+            {
+                FontSize = AppStyle.ListItemFontSize,
+                TextColor = AppStyle.ListItemColor.ToXamFormsColor(),
+                FontFamily = AppStyle.ListItemFont,
+            };
+            _text.SetValue(Grid.ColumnProperty, 1);
 
             var cheveron = new Icon()
             {
                 HorizontalOptions = new LayoutOptions(LayoutAlignment.Center, false),
                 VerticalOptions = new LayoutOptions(LayoutAlignment.Center, false),
-                FontSize = 36,
-                Margin = new Thickness(8, 4, 0, 0),
-                TextColor = SLWIOC.Get<IAppStyle>().HighlightColor.ToXamFormsColor(),
+                FontSize = AppStyle.ListItemFontSize,
+                TextColor = AppStyle.HighlightColor.ToXamFormsColor(),
                 IconKey = "fa-chevron-right"
             };
             cheveron.SetValue(Grid.ColumnProperty, 2);
 
             _layout = new Grid();
+            _layout.Margin = new Thickness(10);
             _layout.ColumnDefinitions.Add(new ColumnDefinition() { Width = new GridLength(48, GridUnitType.Absolute) });
             _layout.ColumnDefinitions.Add(new ColumnDefinition() { Width = new GridLength(1, GridUnitType.Star) });
             _layout.ColumnDefinitions.Add(new ColumnDefinition() { Width = new GridLength(48, GridUnitType.Absolute) });
@@ -56,9 +52,10 @@ namespace LagoVista.XPlat.Core.Controls.Common
             _layout.Children.Add(_text);
             _layout.Children.Add(cheveron);
 
-            this.View = _layout;
+
+            this.View = _layout;            
             _tapGestureRecognizer = new TapGestureRecognizer() { Command = Command };
-            _layout.GestureRecognizers.Add(_tapGestureRecognizer);
+            this.View.GestureRecognizers.Add(_tapGestureRecognizer);
         }
 
         public static readonly BindableProperty TextProperty = BindableProperty.Create(nameof(Text), typeof(string),
@@ -89,5 +86,6 @@ namespace LagoVista.XPlat.Core.Controls.Common
             set { base.SetValue(CommandProperty, value); }
         }
 
+        private IAppStyle AppStyle { get { return SLWIOC.Get<IAppStyle>(); } }
     }
 }

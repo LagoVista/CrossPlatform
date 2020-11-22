@@ -11,16 +11,6 @@
             <cvts:DatePrinterConverter x:Key="DatePrinterConverter" />
             <cvts:NotNullVisibilityConverter x:Key="NotNullVisibilityConverter" />
             <cvts:NullVisibilityConverter x:Key="NullVisibilityConverter" />
-
-            <Color x:Key="NuvIoTContrast">#FFD48D17</Color>
-            <Color x:Key="PageBackground">#2E533D</Color>
-            <Color x:Key="NuvIoTDark">#1976D2</Color>
-            <Color x:Key="NuvIoTLight">#BBDEFB</Color>
-            <Color x:Key="NuvIoTMedium">#2196F3</Color>
-            <Color x:Key="NuvIoTBlack">#171717</Color>
-            <Color x:Key="NuvIoTWhite">#F3F3F3</Color>
-            <Color x:Key="MenuBarBackground">#2E353D</Color>
-            <Color x:Key="MenuBarForeground">#F3F3F3</Color>
             <Style TargetType="Label" x:Key="SectionLabel" >
                 <Setter Property="FontAttributes"  Value="Bold" />
                 <Setter Property="Margin" Value="10,10,0,0" />

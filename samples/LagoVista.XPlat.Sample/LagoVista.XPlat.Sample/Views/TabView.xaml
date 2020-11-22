@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<pge:LagoVistaContentPage
+    xmlns:pge="clr-namespace:LagoVista.XPlat.Core;assembly=LagoVista.XPlat.Core"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:ctls="clr-namespace:LagoVista.XPlat.Core;assembly=LagoVista.XPlat.Core" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="LagoVista.XPlat.Sample.Views.TabView">
+    <pge:LagoVistaContentPage.TabbedContent>
+        <ctls:TabContentHolder>
+            <ctls:TabContent>
+                <Grid BackgroundColor="Red">
+                    <Label Text="Tab1" />
+                </Grid>                
+            </ctls:TabContent>
+            <ctls:TabContent>
+                <Grid BackgroundColor="Green">
+                    <Label Text="Tab2" />
+                </Grid>
+            </ctls:TabContent>
+            <ctls:TabContent>
+                <Grid BackgroundColor="Blue">
+                    <Label Text="Tab3" />
+                </Grid>
+            </ctls:TabContent>
+        </ctls:TabContentHolder>
+    </pge:LagoVistaContentPage.TabbedContent >
+    <pge:LagoVistaContentPage.TabBar>
+        <ctls:TabBar>
+            <ctls:Tab Label="Device" Icon="fa-microchip" />
+            <ctls:Tab Label="Properties" Icon="fa-microchip" TappedCommand="{Binding PropertiesTabActiveCommand}" />
+            <ctls:Tab Label="Details" Icon="fa-microchip" />
+        </ctls:TabBar>
+    </pge:LagoVistaContentPage.TabBar>    
+</pge:LagoVistaContentPage>

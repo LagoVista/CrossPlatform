@@ -19,9 +19,9 @@
     <Content Include="Icons\ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="LagoVista.Core" Version="2.1.1285-beta1826" />
-    <PackageReference Include="LagoVista.Core.Authentication" Version="2.1.1285-beta1826" />
-    <PackageReference Include="LagoVista.Core.Networking" Version="2.1.1285-beta1826" />
+    <PackageReference Include="LagoVista.Core" Version="2.1.1286-beta1412" />
+    <PackageReference Include="LagoVista.Core.Authentication" Version="2.1.1286-beta1412" />
+    <PackageReference Include="LagoVista.Core.Networking" Version="2.1.1286-beta1412" />
     <PackageReference Include="LagoVista.IoT.Logging" Version="2.1.1285-beta1826" />
     <PackageReference Include="LagoVista.UserAdmin.Models" Version="2.1.1285-beta1826" />
     <PackageReference Include="LagoVista.MediaServices.Models" Version="2.1.1285-beta1826" />

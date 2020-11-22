@@ -1,4 +1,6 @@
-﻿using System;
+﻿using LagoVista.Core.Commanding;
+using LagoVista.Core.ViewModels;
+using System;
 using System.Windows.Input;
 
 namespace LagoVista.Client.Core.ViewModels
@@ -20,4 +22,13 @@ namespace LagoVista.Client.Core.ViewModels
             MenuItemTapped?.Invoke(this, this);
         }
     }
+
+    public class MenuItem<TViewModel> : MenuItem where TViewModel : ViewModelBase
+    {
+        public MenuItem(IViewModelNavigation nav, ViewModelBase vm)
+        {
+            Command = new RelayCommand(() => nav.NavigateAsync<TViewModel>(vm));
+        }
+    }
+
 }

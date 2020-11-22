@@ -1,10 +1,8 @@
 ﻿using LagoVista.Core.Interfaces;
-using System;
 using LagoVista.Core.Models.Drawing;
 
-namespace LagoVista.Client.Core.Resources
+namespace LagoVista.XPlat.Sample
 {
-
     public class AppStyle : IAppStyle
     {
         private readonly Color _black = Color.CreateColor(0, 0, 0);
@@ -15,6 +13,7 @@ namespace LagoVista.Client.Core.Resources
         private readonly Color _red = Color.CreateColor(0xFF, 0x0, 0x0);
         private readonly Color _blue = Color.CreateColor(0x0, 0x0, 0xFF);
 
+        private const string DefaultFont = "Roboto";
 
         public Color TitleBarBackground => NamedColors.NuvIoTDark;
 
@@ -38,11 +37,11 @@ namespace LagoVista.Client.Core.Resources
 
         public Color MenuBarBackground => _darkGray;
 
-        public Color MenuBarForeground => _white;
+        public Color MenuBarForeground => NamedColors.NuvIoTContrast;
 
-        public Color MenuBarBackgroundActive => _darkGray;
+        public Color MenuBarBackgroundActive => _lightGray;
 
-        public Color MenuBarForegroundActive => _lightGray;
+        public Color MenuBarForegroundActive => _darkGray;
 
         public Color ButtonBackground => NamedColors.NuvIoTMedium;
 
@@ -58,32 +57,32 @@ namespace LagoVista.Client.Core.Resources
 
         public Color HighlightColor => NamedColors.NuvIoTContrast;
 
-        public Color RowSeperatorColor => _blue;
+        public Color RowSeperatorColor => NamedColors.NuvIoTDark;
 
-        public Color ListItemColor => NamedColors.NuvIoTBlack;
+        public Color ListItemColor => NamedColors.NuvIoTDark;
 
-        public string HeaderFont => "Roboto";
+        public string HeaderFont => DefaultFont;
 
-        public string ContentFont => "Roboto";
+        public string ContentFont => DefaultFont;
 
-        public string LabelFont => "Roboto";
+        public string LabelFont => DefaultFont;
 
-        public string EntryFont => "Roboto";
+        public string EntryFont => DefaultFont;
 
-        public string MenuFont => "Roboto";
+        public string MenuFont => "Verdana";
 
-        public string ListItemFont => "Roboto";
+        public string ListItemFont => DefaultFont;
 
         public double HeaderFontSize => 24;
 
-        public double LabelFontSize => 14;
+        public double LabelFontSize => 12;
 
-        public double EntryFontSize => 14;
+        public double EntryFontSize => 12;
 
-        public double ContentFontSize => 14;
+        public double ContentFontSize => 12;
 
-        public double MenuFontSize => 14;
+        public double MenuFontSize => 18;
 
-        public double ListItemFontSize => 36;
+        public double ListItemFontSize => 28;
     }
 }

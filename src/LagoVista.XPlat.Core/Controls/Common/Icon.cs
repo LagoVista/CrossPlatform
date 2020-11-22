@@ -30,6 +30,7 @@ namespace LagoVista.XPlat.Core
                 else
                 {
                     SetValue(Icon.IconKeyProperty, value);
+
                     var icon = Iconize.FindIconForKey(value);
                     if (icon == null)
                     {

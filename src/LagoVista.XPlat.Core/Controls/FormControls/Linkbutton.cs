@@ -18,8 +18,8 @@ namespace LagoVista.XPlat.Core.Controls.FormControls
             {
                 TextColor = NamedColors.NuvIoTDark.ToXamFormsColor(),
                 Margin = new Thickness(10, 0, 0, 0),
-                FontFamily = "Roboto",
-                FontSize = 18
+                FontFamily = AppStyle.LabelFont,
+                FontSize = AppStyle.LabelFontSize
             };
 
             Children.Add(_header);
@@ -60,7 +60,5 @@ namespace LagoVista.XPlat.Core.Controls.FormControls
         {
             return !(String.IsNullOrEmpty(Field.Value)) || !Field.IsRequired;
         }
-
-
     }
 }

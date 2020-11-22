@@ -19,6 +19,8 @@
 // ***********************************************************************
 // 
 
+using LagoVista.Core.Interfaces;
+using LagoVista.Core.IOC;
 using LagoVista.Core.Models.Drawing;
 using System;
 using System.Diagnostics;
@@ -73,11 +75,15 @@ namespace LagoVista.XPlat.Core
             GestureRecognizers.Add(_tapGestureRecognizer);
             TextColor = NamedColors.NuvIoTDark.ToXamFormsColor();
 
-            FontFamily = "Roboto";
+            FontFamily = AppStyle.LabelFont;
+            FontSize = AppStyle.LabelFontSize;
+
             var effectName = $"{UnderlineEffect.EffectNamespace}.{nameof(UnderlineEffect)}";
             var effect = Effect.Resolve(effectName);
             Effects.Add(effect);
         }
+
+        private IAppStyle AppStyle { get { return SLWIOC.Get<IAppStyle>(); } }
 
         /// <summary>
         /// Gets or sets the subject.

@@ -20,7 +20,8 @@ namespace LagoVista.XPlat.Core.Controls.FormControls
             _validationMessage = new FormFieldValidationMessage(field.RequiredMessage);
 
             _picker = new Picker();
-            _picker.FontFamily = "Roboto";
+            _picker.FontFamily = AppStyle.LabelFont;
+            _picker.FontSize = AppStyle.LabelFontSize;
 
             if (field.Options != null)
             {

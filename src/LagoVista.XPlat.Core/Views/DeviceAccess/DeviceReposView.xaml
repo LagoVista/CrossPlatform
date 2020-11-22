@@ -3,6 +3,7 @@
     xmlns:pge="clr-namespace:LagoVista.XPlat.Core;assembly=LagoVista.XPlat.Core"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:trs="clr-namespace:LagoVista.XPlat.Core.Extensions;assembly=LagoVista.XPlat.Core"
+    xmlns:ctls="clr-namespace:LagoVista.XPlat.Core.Controls.Common;assembly=LagoVista.XPlat.Core"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     LeftMenu="Back"
     x:Class="LagoVista.XPlat.Core.Views.DeviceAccess.DeviceReposView"
@@ -10,26 +11,10 @@
 
     <pge:LagoVistaContentPage.MainContent>
         <Grid>
-            <ListView ItemsSource="{Binding ListItems}" SelectedItem="{Binding SelectedItem, Mode=TwoWay}" RowHeight="64" IsVisible="{Binding HasRepos}" x:Name="RepositoriesList" >
+            <ListView ItemsSource="{Binding ListItems}" SelectedItem="{Binding SelectedItem, Mode=TwoWay}" IsVisible="{Binding HasRepos}" x:Name="RepositoriesList" >
                 <ListView.ItemTemplate>
                     <DataTemplate>
-                        <ViewCell>
-                            <Grid HeightRequest="64" Padding="0,16,0,0">
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="32" />
-                                </Grid.RowDefinitions>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="8" />
-                                    <ColumnDefinition Width="auto" />
-                                    <ColumnDefinition Width="*" />
-                                    <ColumnDefinition Width="auto" />
-                                </Grid.ColumnDefinitions>
-                                <Label Text="{Binding Id}"  x:Name="RepoItemId" IsVisible="False" />
-                                <pge:Icon IconKey="fa-database"  Grid.Column="1" FontSize="36" VerticalOptions="Center" TextColor="{StaticResource HighlightColor}" />
-                                <Label Text="{Binding Name}" Margin="8,0,0,0" Grid.Column="2" FontSize="36" TextColor="{StaticResource LabelText}" FontFamily="Roboto" VerticalOptions="Center" />
-                                <pge:Icon IconKey="fa-chevron-right"  Grid.Column="3" FontSize="36" VerticalOptions="Center" TextColor="{StaticResource HighlightColor}" />
-                            </Grid>
-                        </ViewCell>
+                        <ctls:NavigationViewCell Icon="fa-database" Text="{Binding Name}" />
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
