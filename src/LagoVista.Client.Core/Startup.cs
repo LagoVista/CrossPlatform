@@ -14,8 +14,6 @@ using System.Resources;
 
 namespace LagoVista.Client.Core
 {
-    
-
     public static class Startup
     {
         public static void Init(ServerInfo serverInfo, IAppStyle appStyle = null)
