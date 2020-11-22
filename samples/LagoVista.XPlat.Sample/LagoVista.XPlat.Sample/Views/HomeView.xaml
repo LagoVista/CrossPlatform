@@ -2,17 +2,17 @@
 <pge:LagoVistaContentPage
         xmlns:pge="clr-namespace:LagoVista.XPlat.Core;assembly=LagoVista.XPlat.Core"
         xmlns="http://xamarin.com/schemas/2014/forms" 
+        xmlns:ctls="clr-namespace:LagoVista.XPlat.Core.Controls.Common;assembly=LagoVista.XPlat.Core"
         xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+        Title="Home View"
         x:Class="LagoVista.XPlat.Sample.Views.HomeView">
-    <pge:LagoVistaContentPage.Content >
+    <pge:LagoVistaContentPage.MainContent >
         <ListView ItemsSource="{Binding MenuOptions}" SelectedItem="{Binding SelectedMenuOption}" BackgroundColor="White">
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    <ViewCell>
-                        <Label Text="{Binding Title}" Margin="10" FontSize="Large" VerticalTextAlignment="Center" />
-                    </ViewCell>
+                    <ctls:NavigationViewCell Command="{Binding Command}" Text="{Binding Name}" Icon="{Binding FontIconKey}" />
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
-    </pge:LagoVistaContentPage.Content>
+    </pge:LagoVistaContentPage.MainContent>
 </pge:LagoVistaContentPage>

@@ -1,5 +1,7 @@
-﻿using LagoVista.Core.IOC;
+﻿using LagoVista.Client.Core.Net;
+using LagoVista.Core.IOC;
 using LagoVista.Core.PlatformSupport;
+using LagoVista.XPlat.UWP.Network;
 using System;
 using System.Diagnostics;
 using Windows.ApplicationModel;
@@ -80,7 +82,7 @@ namespace LagoVista.XPlat.Sample.UWP
                 rootFrame.NavigationFailed += OnNavigationFailed;                
 
                 Xamarin.Forms.Forms.Init(e);
-
+                SLWIOC.Register<IWebSocket, WebSocket>();
                 LagoVista.Core.UWP.Startup.Init(this, rootFrame.Dispatcher, MOBILE_CENTER_KEY);
 
                 Window.Current.Content = rootFrame;

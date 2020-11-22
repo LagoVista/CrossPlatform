@@ -484,6 +484,150 @@ namespace LagoVista.Client.Core.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to No device repositories.
+        /// </summary>
+        public static string DeviceReposView_NoDeviceRepos {
+            get {
+                return ResourceManager.GetString("DeviceReposView_NoDeviceRepos", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Device Respositories.
+        /// </summary>
+        public static string DeviceReposView_Title {
+            get {
+                return ResourceManager.GetString("DeviceReposView_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No devices.
+        /// </summary>
+        public static string DevicesView_NoDevice {
+            get {
+                return ResourceManager.GetString("DevicesView_NoDevice", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to -search devices by id-.
+        /// </summary>
+        public static string DevicesView_SearchWatermark {
+            get {
+                return ResourceManager.GetString("DevicesView_SearchWatermark", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to -select device type-.
+        /// </summary>
+        public static string DevicesView_SelectDeviceType {
+            get {
+                return ResourceManager.GetString("DevicesView_SelectDeviceType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Devices.
+        /// </summary>
+        public static string DevicesView_Title {
+            get {
+                return ResourceManager.GetString("DevicesView_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Attributes.
+        /// </summary>
+        public static string DeviceView_Attributes {
+            get {
+                return ResourceManager.GetString("DeviceView_Attributes", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Device Id.
+        /// </summary>
+        public static string DeviceView_DeviceId {
+            get {
+                return ResourceManager.GetString("DeviceView_DeviceId", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Last Contact.
+        /// </summary>
+        public static string DeviceView_LastContact {
+            get {
+                return ResourceManager.GetString("DeviceView_LastContact", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Messages.
+        /// </summary>
+        public static string DeviceView_Messages {
+            get {
+                return ResourceManager.GetString("DeviceView_Messages", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Name.
+        /// </summary>
+        public static string DeviceView_Name {
+            get {
+                return ResourceManager.GetString("DeviceView_Name", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Send.
+        /// </summary>
+        public static string DeviceView_Send {
+            get {
+                return ResourceManager.GetString("DeviceView_Send", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to State Machines.
+        /// </summary>
+        public static string DeviceView_StateMachines {
+            get {
+                return ResourceManager.GetString("DeviceView_StateMachines", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Status.
+        /// </summary>
+        public static string DeviceView_Status {
+            get {
+                return ResourceManager.GetString("DeviceView_Status", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Device View.
+        /// </summary>
+        public static string DeviceView_Title {
+            get {
+                return ResourceManager.GetString("DeviceView_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Edit Device.
+        /// </summary>
+        public static string EditDevice_Title {
+            get {
+                return ResourceManager.GetString("EditDevice_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Call was not completed..
         /// </summary>
         public static string Err_CallNotCompleted {
@@ -705,6 +849,213 @@ namespace LagoVista.Client.Core.Resources {
         public static string Password_Requirements {
             get {
                 return ResourceManager.GetString("Password_Requirements", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Provision Device.
+        /// </summary>
+        public static string Provions_Title {
+            get {
+                return ResourceManager.GetString("Provions_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cellular Connection Enabled.
+        /// </summary>
+        public static string Provision_CellEnabled {
+            get {
+                return ResourceManager.GetString("Provision_CellEnabled", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Commission.
+        /// </summary>
+        public static string Provision_Commission {
+            get {
+                return ResourceManager.GetString("Provision_Commission", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Device Id.
+        /// </summary>
+        public static string Provision_DeviceId {
+            get {
+                return ResourceManager.GetString("Provision_DeviceId", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Device Type.
+        /// </summary>
+        public static string Provision_DeviceType {
+            get {
+                return ResourceManager.GetString("Provision_DeviceType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Firmware SKU.
+        /// </summary>
+        public static string Provision_Firmware_SKU {
+            get {
+                return ResourceManager.GetString("Provision_Firmware_SKU", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Firmware Version.
+        /// </summary>
+        public static string Provision_Firmware_Version {
+            get {
+                return ResourceManager.GetString("Provision_Firmware_Version", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to GPS Enabled.
+        /// </summary>
+        public static string Provision_GPSEnabled {
+            get {
+                return ResourceManager.GetString("Provision_GPSEnabled", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to GPS Update Rate.
+        /// </summary>
+        public static string Provision_GPSUpdateRate {
+            get {
+                return ResourceManager.GetString("Provision_GPSUpdateRate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Hardawre Version.
+        /// </summary>
+        public static string Provision_Hardware_Version {
+            get {
+                return ResourceManager.GetString("Provision_Hardware_Version", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ping Update Rate.
+        /// </summary>
+        public static string Provision_PingUpdateRate {
+            get {
+                return ResourceManager.GetString("Provision_PingUpdateRate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Reboot.
+        /// </summary>
+        public static string Provision_Reboot {
+            get {
+                return ResourceManager.GetString("Provision_Reboot", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Reset Profile.
+        /// </summary>
+        public static string Provision_ResetProfile {
+            get {
+                return ResourceManager.GetString("Provision_ResetProfile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Server Anonymous Connection.
+        /// </summary>
+        public static string Provision_Server_Anonymous {
+            get {
+                return ResourceManager.GetString("Provision_Server_Anonymous", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Server Host Name.
+        /// </summary>
+        public static string Provision_Server_Host {
+            get {
+                return ResourceManager.GetString("Provision_Server_Host", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Server Password.
+        /// </summary>
+        public static string Provision_Server_Password {
+            get {
+                return ResourceManager.GetString("Provision_Server_Password", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Server User Id.
+        /// </summary>
+        public static string Provision_Server_UserId {
+            get {
+                return ResourceManager.GetString("Provision_Server_UserId", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Server Update Rate.
+        /// </summary>
+        public static string Provision_SrvrUpdateRate {
+            get {
+                return ResourceManager.GetString("Provision_SrvrUpdateRate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Verbose Logging.
+        /// </summary>
+        public static string Provision_VerboseLogging {
+            get {
+                return ResourceManager.GetString("Provision_VerboseLogging", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to WiFi Password.
+        /// </summary>
+        public static string Provision_WiFi_Password {
+            get {
+                return ResourceManager.GetString("Provision_WiFi_Password", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to WiFi SSID.
+        /// </summary>
+        public static string Provision_WiFi_SSID {
+            get {
+                return ResourceManager.GetString("Provision_WiFi_SSID", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to WiFi Connection Enabled.
+        /// </summary>
+        public static string Provision_WiFiEnabled {
+            get {
+                return ResourceManager.GetString("Provision_WiFiEnabled", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Write Profile.
+        /// </summary>
+        public static string Provision_WriteProfile {
+            get {
+                return ResourceManager.GetString("Provision_WriteProfile", resourceCulture);
             }
         }
         

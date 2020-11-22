@@ -25,8 +25,9 @@
                                     <ColumnDefinition Width="auto" />
                                 </Grid.ColumnDefinitions>
                                 <Label Text="{Binding Id}"  x:Name="RepoItemId" IsVisible="False" />
-                                <pge:Icon IconKey="fa-database"  Grid.Column="1" FontSize="24" VerticalOptions="Center" TextColor="{StaticResource NuvIoTBlack}" />
-                                <Label Text="{Binding Name}" Margin="8,0,0,0" Grid.Column="2" FontSize="24" TextColor="{StaticResource NuvIoTBlack}" FontFamily="Roboto" VerticalOptions="Center" />
+                                <pge:Icon IconKey="fa-database"  Grid.Column="1" FontSize="36" VerticalOptions="Center" TextColor="{StaticResource HighlightColor}" />
+                                <Label Text="{Binding Name}" Margin="8,0,0,0" Grid.Column="2" FontSize="36" TextColor="{StaticResource LabelText}" FontFamily="Roboto" VerticalOptions="Center" />
+                                <pge:Icon IconKey="fa-chevron-right"  Grid.Column="3" FontSize="36" VerticalOptions="Center" TextColor="{StaticResource HighlightColor}" />
                             </Grid>
                         </ViewCell>
                     </DataTemplate>

@@ -56,7 +56,7 @@ namespace LagoVista.Client.Core.Resources
 
         public Color ButtonForegroundActive => NamedColors.NuvIoTWhite;
 
-        public Color HighlightColor => NamedColors.NuvIoTWhite;
+        public Color HighlightColor => NamedColors.NuvIoTContrast;
 
         public Color RowSeperatorColor => _blue;
 

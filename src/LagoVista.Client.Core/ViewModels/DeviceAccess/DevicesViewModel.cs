@@ -14,9 +14,11 @@ namespace LagoVista.Client.Core.ViewModels.DeviceAccess
             return base.InitAsync();
         }
 
-        protected override void ItemSelected(DeviceSummary summary)
+        protected override async void ItemSelected(DeviceSummary summary)
         {
             base.ItemSelected(summary);
+
+            await DeviceSelectedAsync(summary);
         }
 
         private bool _hasDevices;
