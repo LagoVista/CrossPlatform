@@ -1,7 +1,7 @@
 ﻿//#define ENV_LOCAL
 //#define ENV_DEV
-#define ENV_STAGE
-//#define ENV_MASTER
+//#define ENV_STAGE
+#define ENV_MASTER
 
 
 using Xamarin.Forms.PlatformConfiguration.AndroidSpecific;

@@ -4,51 +4,61 @@ using LagoVista.Core.Models.Drawing;
 
 namespace LagoVista.Client.Core.Resources
 {
+
     public class AppStyle : IAppStyle
     {
-        public Color TitleBarBackground => NamedColors.NuvIoTWhite;
+        private readonly Color _black = Color.CreateColor(0, 0, 0);
+        private readonly Color _white = Color.CreateColor(0xFF, 0xFF, 0xFF);
+        private readonly Color _darkGray = Color.CreateColor(0x20, 0x20, 0x20);
+        private readonly Color _medGray = Color.CreateColor(0x60, 0x60, 0x60);
+        private readonly Color _lightGray = Color.CreateColor(0xA0, 0xA0, 0xA0);
+        private readonly Color _red = Color.CreateColor(0xFF, 0x0, 0x0);
+        private readonly Color _blue = Color.CreateColor(0x0, 0x0, 0xFF);
 
-        public Color TitleBarText => NamedColors.NuvIoTBlack;
 
-        public Color PageBackground => NamedColors.White;
+        public Color TitleBarBackground => NamedColors.NuvIoTDark;
 
-        public Color PageText => Color.CreateColor(0x33, 0x33, 0x33);
+        public Color TitleBarText => NamedColors.NuvIoTWhite;
 
-        // public Color LabelText => Color.CreateColor(0x80, 0x80, 0x80);
-        public Color LabelText => NamedColors.Black;
-        
-        public Color EditControlBackground => NamedColors.White;
+        public Color PageBackground => NamedColors.NuvIoTWhite;
 
-        public Color EditControlText => NamedColors.NuvIoTBlack;
+        public Color PageText => _darkGray;
 
-        public Color EditControlFrame => Color.CreateColor(0xCC, 0xCC, 0xCC);
+        public Color LabelText => _lightGray;
 
-        public Color EditControlFrameFocus => NamedColors.NuvIoTBlack;
+        public Color EditControlBackground => _white;
 
-        public Color EditControlFrameInvalid => NamedColors.Red;
+        public Color EditControlText => _black;
 
-        public Color MenuBarBackground => Color.CreateColor(0x2E, 0x35, 0x3D);
+        public Color EditControlFrame => _black;
 
-        public Color MenuBarForeground => NamedColors.NuvIoTWhite;
+        public Color EditControlFrameFocus => _darkGray;
 
-        public Color MenuBarBackgroundActive => NamedColors.Black;
+        public Color EditControlFrameInvalid => _black;
 
-        public Color MenuBarForegroundActive => NamedColors.White;
+        public Color MenuBarBackground => _darkGray;
 
-        public Color ButtonBackground => NamedColors.NuvIoTDark;
+        public Color MenuBarForeground => _white;
 
-        public Color ButtonBorder => NamedColors.NuvIoTBlack;
+        public Color MenuBarBackgroundActive => _darkGray;
 
-        public Color ButtonForeground => NamedColors.White;
+        public Color MenuBarForegroundActive => _lightGray;
 
-        public Color ButtonBackgroundActive => NamedColors.NuvIoTWhite;
+        public Color ButtonBackground => NamedColors.NuvIoTMedium;
 
-        public Color ButtonBorderActive => NamedColors.NuvIoTMedium;
+        public Color ButtonBorder => _black;
 
-        public Color ButtonForegroundActive => NamedColors.NuvIoTLight;
+        public Color ButtonBackgroundActive => NamedColors.NuvIoTLight;
 
-        public Color HighlightColor => NamedColors.NuvIoTContrast;
+        public Color ButtonBorderActive => _darkGray;
 
-        public Color RowSeperatorColor => NamedColors.NuvIoTDark;
+        public Color ButtonForeground => NamedColors.NuvIoTWhite;
+
+        public Color ButtonForegroundActive => NamedColors.NuvIoTWhite;
+
+        public Color HighlightColor => NamedColors.NuvIoTWhite;
+
+        public Color RowSeperatorColor => _blue;
+
     }
 }

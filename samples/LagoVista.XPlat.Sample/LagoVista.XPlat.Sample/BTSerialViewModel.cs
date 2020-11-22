@@ -31,6 +31,7 @@ namespace LagoVista.XPlat.Sample
             SendDFUCommand = new RelayCommand(SendDFU);
         }
 
+        
         private void _btSerial_ReceivedLine(object sender, string e)
         {
             var lines = e.Split('\r');
@@ -73,9 +74,9 @@ namespace LagoVista.XPlat.Sample
             Log.Insert(0, "DFU Completed.");
         }
 
-        private void _btSerial_DFUProgress(object sender, int e)
+        private void _btSerial_DFUProgress(object sender, DFUProgress e)
         {
-            Log.Insert(0, $"Progress {e}%");
+            Log.Insert(0, $"Progress {e.Progress}%");
         }
 
         public override async Task IsClosingAsync()
