@@ -55,7 +55,8 @@ namespace LagoVista.XPlat.Core.Controls.Common
 
             this.View = _layout;            
             _tapGestureRecognizer = new TapGestureRecognizer() { Command = Command };
-            this.View.GestureRecognizers.Add(_tapGestureRecognizer);
+         //   this.View.GestureRecognizers.Add(_tapGestureRecognizer);
+            _layout.GestureRecognizers.Add(_tapGestureRecognizer);
         }
 
         public static readonly BindableProperty TextProperty = BindableProperty.Create(nameof(Text), typeof(string),

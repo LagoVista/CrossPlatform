@@ -1,11 +1,4 @@
-﻿using LagoVista.XPlat.Core.Controls.Common;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Xamarin.Forms.Platform.UWP;
-using Xamarin.Forms;
+﻿using Xamarin.Forms.Platform.UWP;
 using LagoVista.XPlat.UWP.CustomRenderers;
 using LagoVista.XPlat.Core;
 

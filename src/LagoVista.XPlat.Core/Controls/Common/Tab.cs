@@ -19,7 +19,7 @@ namespace LagoVista.XPlat.Core
             RowDefinitions.Add(new RowDefinition() { Height = new GridLength(1, GridUnitType.Star) });
             RowDefinitions.Add(new RowDefinition() { Height = new GridLength(1, GridUnitType.Auto) });
 
-            Margin = 4;            
+            Margin = 6;
 
             _label = new Label()
             {
@@ -28,13 +28,13 @@ namespace LagoVista.XPlat.Core
                 FontSize = AppStyle.MenuFontSize,
                 Margin = 4,
                 HorizontalTextAlignment = TextAlignment.Center,
-                VerticalTextAlignment = TextAlignment.Center,
+              //  VerticalTextAlignment = TextAlignment.Center,
             };
 
             _icon = new Icon()
             {
                 TextColor = AppStyle.MenuBarForeground.ToXamFormsColor(),
-                FontSize = 48,
+                FontSize = 36,
                 Margin = new Thickness(0,10, 0,0),
                 HorizontalTextAlignment = TextAlignment.Center,
             };
@@ -45,8 +45,7 @@ namespace LagoVista.XPlat.Core
             _background = new BoxView();
             _background.SetValue(Grid.RowSpanProperty, 2);
             _background.CornerRadius = new CornerRadius(4);
-            _background.WidthRequest = 80;
-
+            _background.WidthRequest = 64;
 
             Children.Add(_background);
             Children.Add(_icon);

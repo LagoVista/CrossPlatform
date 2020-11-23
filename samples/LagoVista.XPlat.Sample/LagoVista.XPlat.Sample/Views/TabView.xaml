@@ -4,6 +4,8 @@
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:ctls="clr-namespace:LagoVista.XPlat.Core;assembly=LagoVista.XPlat.Core" 
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    Title="Tab Demo Form"
+    LeftMenu="Back"
     x:Class="LagoVista.XPlat.Sample.Views.TabView">
     <pge:LagoVistaContentPage.TabbedContent>
         <ctls:TabContentHolder>
@@ -25,7 +27,7 @@
         </ctls:TabContentHolder>
     </pge:LagoVistaContentPage.TabbedContent >
     <pge:LagoVistaContentPage.TabBar>
-        <ctls:TabBar>
+        <ctls:TabBar HeightRequest="90">
             <ctls:Tab Label="Device" Icon="fa-microchip" />
             <ctls:Tab Label="Properties" Icon="fa-microchip" TappedCommand="{Binding PropertiesTabActiveCommand}" />
             <ctls:Tab Label="Details" Icon="fa-microchip" />

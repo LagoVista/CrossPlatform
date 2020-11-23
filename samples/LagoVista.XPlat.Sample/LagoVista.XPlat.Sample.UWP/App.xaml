@@ -4,5 +4,17 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:LagoVista.XPlat.Sample.UWP"
     RequestedTheme="Light">
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.ThemeDictionaries>
+                <ResourceDictionary x:Key="Light">
+                    <SolidColorBrush x:Key="SystemControlHighlightBaseMediumLowBrush" Color="White" />
+                    <SolidColorBrush x:Key="SystemControlHighlightBaseHighBrush" Color="White" />
+                    <SolidColorBrush x:Key="SystemAccentColorLight3" Color="Green"/>
+                    <SolidColorBrush x:Key="SystemAccentColorDark2" Color="Red"/>
 
+                </ResourceDictionary>
+            </ResourceDictionary.ThemeDictionaries>
+        </ResourceDictionary>
+    </Application.Resources>
 </Application>

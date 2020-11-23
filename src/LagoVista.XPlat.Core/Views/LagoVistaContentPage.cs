@@ -39,6 +39,7 @@ namespace LagoVista.XPlat.Core
 
         const int MENU_WIDTH = 300;
         const int TOOL_BAR_HEIGHT = 40;
+        const int TAB_BAR_HEIGHT = 92;
 
         public LagoVistaContentPage() : base()
         {
@@ -136,7 +137,6 @@ namespace LagoVista.XPlat.Core
             }
 
             _loadingContainer = new Grid() { IsVisible = false };
-            _loadingContainer.SetValue(Grid.RowSpanProperty, 2);
             _loadingMask = new Grid() { BackgroundColor = Xamarin.Forms.Color.Black, Opacity = 0.50 };
             _loadingContainer.Children.Add(_loadingMask);
             _loadingContainer.Children.Add(_activityIndicator);
@@ -152,11 +152,9 @@ namespace LagoVista.XPlat.Core
             _menu.WidthRequest = MENU_WIDTH;
             _menu.HorizontalOptions = LayoutOptions.Start;
             _menu.SetValue(Grid.RowProperty, 1);
-            _menu.SetValue(Grid.RowSpanProperty, 2);
 
             _pageMenuMask = new Grid() { BackgroundColor = Xamarin.Forms.Color.Black, Opacity = 0.50 };
             _pageMenuMask.SetValue(Grid.RowProperty, 1);
-            _pageMenuMask.SetValue(Grid.RowSpanProperty, 2);
             _pageMenuMask.IsVisible = false;
 
             var tapGestureRecognizer = new TapGestureRecognizer() { Command = new RelayCommand(() => MenuVisible = false) };
@@ -172,12 +170,16 @@ namespace LagoVista.XPlat.Core
         {
             _toolBar = new Grid
             {
-                HeightRequest = (Device.RuntimePlatform == Device.iOS) ? (TOOL_BAR_HEIGHT) : TOOL_BAR_HEIGHT
+                HeightRequest = TOOL_BAR_HEIGHT
             };
 
             if (Device.RuntimePlatform == Device.iOS)
             {
-                _toolBar.Margin = new Thickness(0, 50, 0, 0);
+                _toolBar.Margin = new Thickness(0, 50, 0, -6);
+            }
+            else
+            {
+                _toolBar.Margin = new Thickness(0, 0, 0, -6);
             }
 
             _toolBar.ColumnDefinitions.Add(new ColumnDefinition() { Width = new GridLength(1, GridUnitType.Auto) });
@@ -207,6 +209,18 @@ namespace LagoVista.XPlat.Core
             };
             _leftMenuButton.Clicked += _leftMenuButton_Clicked;
 
+            _rightMenuButton = new IconButton
+            {
+                IsVisible = false,
+                VerticalOptions = new LayoutOptions(LayoutAlignment.Center, false),
+                TextColor = AppStyle.TitleBarText.ToXamFormsColor(),
+                WidthRequest = 48,
+                HeightRequest = 48,
+                FontSize = Device.RuntimePlatform == Device.Android ? 20 : 28
+            };
+            _rightMenuButton.SetValue(Grid.ColumnProperty, 2);
+            _rightMenuButton.Clicked += _rightMenuButton_Clicked;
+
             _helpButton = new IconButton
             {
                 IsVisible = false,
@@ -220,18 +234,6 @@ namespace LagoVista.XPlat.Core
 
             _helpButton.Clicked += _helpButton_Clicked;
             _helpButton.SetValue(Grid.ColumnProperty, 3);
-
-            _rightMenuButton = new IconButton
-            {
-                IsVisible = false,
-                VerticalOptions = new LayoutOptions(LayoutAlignment.Center, false),
-                TextColor = AppStyle.TitleBarText.ToXamFormsColor(),
-                WidthRequest = 48,
-                HeightRequest = 48,
-                FontSize = Device.RuntimePlatform == Device.Android ? 20 : 28
-            };
-            _rightMenuButton.SetValue(Grid.ColumnProperty, 2);
-            _rightMenuButton.Clicked += _rightMenuButton_Clicked;
 
             _toolBar.Children.Add(_title);
             _toolBar.Children.Add(_leftMenuButton);
@@ -279,7 +281,6 @@ namespace LagoVista.XPlat.Core
             }
         }
 
-
         protected override bool OnBackButtonPressed()
         {
             Device.BeginInvokeOnMainThread(async () =>
@@ -321,8 +322,6 @@ namespace LagoVista.XPlat.Core
         }
         #endregion
 
-        private bool _suspendLayout = false;
-
         protected override void LayoutChildren(double x, double y, double width, double height)
         {
             base.LayoutChildren(x, y, width, height);
@@ -356,27 +355,16 @@ namespace LagoVista.XPlat.Core
 
                 if (HasToolBar)
                 {
-                    switch (Device.RuntimePlatform)
-                    {
-                        case Device.iOS:
-                            _contentGrid.RowDefinitions.Add(new RowDefinition() { Height = new GridLength(TOOL_BAR_HEIGHT + 50) });
-                            break;
-                        default:
-                            _contentGrid.RowDefinitions.Add(new RowDefinition() { Height = new GridLength(TOOL_BAR_HEIGHT) });
-                            break;
-                    }
+                    _contentGrid.RowDefinitions.Add(new RowDefinition() { Height = new GridLength(1, GridUnitType.Auto) });
                 }
 
                 _contentGrid.RowDefinitions.Add(new RowDefinition() { Height = new GridLength(1, GridUnitType.Star) });
-                _contentGrid.RowDefinitions.Add(new RowDefinition() { Height = new GridLength(0) });
-
                 _contentGrid.BackgroundColor = AppStyle.TitleBarBackground.ToXamFormsColor();
 
                 Content = _contentGrid;
 
                 _mainContent = value;
-                _mainContent.Margin = new Thickness(0, 0, 0, -6);
-                _mainContent.BackgroundColor = NamedColors.White.ToXamFormsColor();
+                _mainContent.Margin = new Thickness(0, -6, 0, -6);
 
                 if (value.BackgroundColor != null && value.BackgroundColor.R > -1)
                 {
@@ -387,15 +375,11 @@ namespace LagoVista.XPlat.Core
                     _mainContent.BackgroundColor = AppStyle.PageBackground.ToXamFormsColor();
                 }
 
-                if (HasToolBar)
-                {
-                    _mainContent.SetValue(Grid.RowProperty, 1);
-                }
-
                 _contentGrid.Children.Add(_mainContent);
 
                 if (HasToolBar)
                 {
+                    _mainContent.SetValue(Grid.RowProperty, 1);
                     _contentGrid.Children.Add(_pageMenuMask);
                     _contentGrid.Children.Add(_menu);
                     _contentGrid.Children.Add(_toolBar);
@@ -423,35 +407,24 @@ namespace LagoVista.XPlat.Core
                  * 
                  */
 
-                switch (Device.RuntimePlatform)
-                {
-                    case Device.iOS:
-                        //_contentGrid.Margin = new Thickness(0, 50, 0, 0);
-                        break;
-                }
-
                 if (HasToolBar)
                 {
-                    switch (Device.RuntimePlatform)
-                    {
-                        case Device.iOS:
-                            _contentGrid.RowDefinitions.Add(new RowDefinition() { Height = new GridLength(TOOL_BAR_HEIGHT + 50) });
-                            break;
-                        default:
-                            _contentGrid.RowDefinitions.Add(new RowDefinition() { Height = new GridLength(TOOL_BAR_HEIGHT) });
-                            break;
-                    }
+                    _contentGrid.RowDefinitions.Add(new RowDefinition() { Height = new GridLength(1, GridUnitType.Auto) });
+                }
+                else
+                {
+                    _contentGrid.RowDefinitions.Add(new RowDefinition() { Height = new GridLength(0) });
                 }
 
                 _contentGrid.RowDefinitions.Add(new RowDefinition() { Height = new GridLength(1, GridUnitType.Star) });
-                _contentGrid.RowDefinitions.Add(new RowDefinition() { Height = new GridLength(0) });
+                _contentGrid.RowDefinitions.Add(new RowDefinition() { Height = new GridLength(1, GridUnitType.Auto) });
 
                 _contentGrid.BackgroundColor = AppStyle.TitleBarBackground.ToXamFormsColor();
 
                 Content = _contentGrid;
 
                 _tabbedContent = value;
-                _tabbedContent.BackgroundColor = NamedColors.White.ToXamFormsColor();
+                _tabbedContent.Margin = new Thickness(0, 0, 0, -6);
 
                 if (value.BackgroundColor != null && value.BackgroundColor.R > -1)
                 {
@@ -462,12 +435,15 @@ namespace LagoVista.XPlat.Core
                     _tabbedContent.BackgroundColor = AppStyle.PageBackground.ToXamFormsColor();
                 }
 
-                if (HasToolBar)
-                {
-                    _tabbedContent.SetValue(Grid.RowProperty, 1);
-                }
+                _contentGrid.BackgroundColor = _tabbedContent.BackgroundColor;
+
+                _tabbedContent.SetValue(Grid.RowProperty, 1);
 
                 _contentGrid.Children.Add(_tabbedContent);
+
+                _pageMenuMask.SetValue(Grid.RowSpanProperty, 2);
+                _menu.SetValue(Grid.RowSpanProperty, 2);
+                _loadingContainer.SetValue(Grid.RowSpanProperty, 2);
 
                 if (HasToolBar)
                 {
@@ -490,7 +466,6 @@ namespace LagoVista.XPlat.Core
                 {
                     _tabBar = value;
                     _tabBar.SelectedTabChanged += _tabBar_SelectedTabChanged;
-                    _contentGrid.RowDefinitions[2].Height = new GridLength(1, GridUnitType.Auto);
                     _tabBar.SetValue(Grid.RowProperty, 2);
                     _contentGrid.Children.Add(_tabBar);
                     SelectedTabIndex = 0;
@@ -715,7 +690,7 @@ namespace LagoVista.XPlat.Core
                     }
                 }
 
-                if(_tabbedContent != null)
+                if (_tabbedContent != null)
                 {
                     _tabbedContent.ShowTab(value);
                 }

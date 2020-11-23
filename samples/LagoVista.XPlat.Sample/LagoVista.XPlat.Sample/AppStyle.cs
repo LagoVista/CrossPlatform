@@ -43,7 +43,7 @@ namespace LagoVista.XPlat.Sample
 
         public Color MenuBarForegroundActive => _darkGray;
 
-        public Color ButtonBackground => NamedColors.NuvIoTMedium;
+        public Color ButtonBackground => NamedColors.NuvIoTDark;
 
         public Color ButtonBorder => _black;
 
