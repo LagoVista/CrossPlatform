@@ -12,7 +12,36 @@
                     <SolidColorBrush x:Key="SystemControlHighlightBaseHighBrush" Color="White" />
                     <SolidColorBrush x:Key="SystemAccentColorLight3" Color="Green"/>
                     <SolidColorBrush x:Key="SystemAccentColorDark2" Color="Red"/>
-
+                    <SolidColorBrush x:Key="ButtonForegroundPointerOver" Color="Red"/>
+                    <SolidColorBrush x:Key="ButtonBackgroundPointerOver" Color="Black"/>
+                    <SolidColorBrush x:Key="ButtonBackground" Color="Transparent"/>
+                    <SolidColorBrush x:Key="ButtonForeground" Color="MediumSlateBlue"/>
+                    <SolidColorBrush x:Key="ButtonBorderBrush" Color="MediumSlateBlue"/>
+                    <Style TargetType="Button">
+                        <Setter Property="Background" Value="Azure" />
+                        <Setter Property="Foreground" Value="Yellow" />
+                    </Style>
+                    <ControlTemplate x:Key="DefaultButtonControlTemplate" TargetType="Button">
+                        <Grid x:Name="RootGrid" Background="{TemplateBinding Background}">
+                            <VisualStateManager.VisualStateGroups>
+                                <VisualStateGroup x:Name="CommonStates">
+                                    <VisualState x:Name="PointerOver"/>
+                                </VisualStateGroup>
+                            </VisualStateManager.VisualStateGroups>
+                            <ContentPresenter 
+                                x:Name="ContentPresenter" 
+                                AutomationProperties.AccessibilityView="Raw" 
+                                BorderBrush="{TemplateBinding BorderBrush}" 
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                ContentTemplate="{TemplateBinding ContentTemplate}" 
+                                ContentTransitions="{TemplateBinding ContentTransitions}" 
+                                Content="{TemplateBinding Content}" 
+                                HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}" 
+                                Padding="{TemplateBinding Padding}" 
+                                VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}" 
+                                TextWrapping="WrapWholeWords"/>
+                           </Grid>
+                    </ControlTemplate>
                 </ResourceDictionary>
             </ResourceDictionary.ThemeDictionaries>
         </ResourceDictionary>

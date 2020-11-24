@@ -106,6 +106,7 @@
     <RestoreProjectStyle>PackageReference</RestoreProjectStyle>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="CustomRenderers\ButtonRenderer.cs" />
     <Compile Include="CustomRenderers\SwitchRenderer.cs" />
     <Compile Include="CustomRenderers\TitleBarButton.cs" />
     <Compile Include="Effects\UnderlineEffect.cs" />

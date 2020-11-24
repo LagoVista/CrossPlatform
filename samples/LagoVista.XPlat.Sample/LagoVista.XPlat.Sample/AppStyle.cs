@@ -35,13 +35,13 @@ namespace LagoVista.XPlat.Sample
 
         public Color EditControlFrameInvalid => _black;
 
-        public Color MenuBarBackground => _darkGray;
+        public Color MenuBarBackground => _medGray;
 
         public Color MenuBarForeground => NamedColors.NuvIoTContrast;
 
-        public Color MenuBarBackgroundActive => _lightGray;
+        public Color MenuBarBackgroundActive => _darkGray;
 
-        public Color MenuBarForegroundActive => _darkGray;
+        public Color MenuBarForegroundActive => NamedColors.NuvIoTContrast;
 
         public Color ButtonBackground => NamedColors.NuvIoTDark;
 
