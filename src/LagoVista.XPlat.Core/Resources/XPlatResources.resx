@@ -135,6 +135,12 @@
   <data name="Common_Yes" xml:space="preserve">
     <value>Yes</value>
   </data>
+  <data name="DeviceView_LastContact" xml:space="preserve">
+    <value>Last Contact</value>
+  </data>
+  <data name="DeviceView_Status" xml:space="preserve">
+    <value>Status</value>
+  </data>
   <data name="Msg_ConfirmDeleteItem" xml:space="preserve">
     <value>Delete this item?  This can not be undone.</value>
   </data>

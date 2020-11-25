@@ -3,6 +3,7 @@ using LagoVista.Client.Core.Resources;
 using LagoVista.Core.Commanding;
 using LagoVista.Core.Models.UIMetaData;
 using LagoVista.Core.ViewModels;
+using LagoVista.IoT.Deployment.Admin.Models;
 using LagoVista.IoT.DeviceAdmin.Models;
 using LagoVista.IoT.DeviceManagement.Core.Models;
 using Newtonsoft.Json;
@@ -26,6 +27,7 @@ namespace LagoVista.Client.Core.ViewModels.DeviceAccess
         string _deviceId;
 
         Device _device;
+        DeviceConfiguration _deviceConfiguration;
 
         List<InputCommandEndPoint> _inputCommandEndPoints;
 
@@ -59,6 +61,7 @@ namespace LagoVista.Client.Core.ViewModels.DeviceAccess
                     {
                         Debug.WriteLine(endpoint.InputCommand.Name);
                         Debug.WriteLine(endpoint.EndPoint);
+                       
                     }
                     ViewReady = true;
                 }
