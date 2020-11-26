@@ -37,19 +37,19 @@ namespace LagoVista.XPlat.Core
         /// <summary>
         /// The subject property
         /// </summary>
-        public static readonly BindableProperty SubjectProperty = BindableProperty.Create("Subject", typeof(string),
+        public static readonly BindableProperty SubjectProperty = BindableProperty.Create(nameof(Subject), typeof(string),
             typeof(HyperLinkLabel), string.Empty, BindingMode.OneWay, null, null, null, null);
 
         /// <summary>
         /// The navigate URI property
         /// </summary>
-        public static readonly BindableProperty NavigateUriProperty = BindableProperty.Create("NavigateUri", typeof(string),
+        public static readonly BindableProperty NavigateUriProperty = BindableProperty.Create(nameof(NavigateUri), typeof(string),
             typeof(HyperLinkLabel), string.Empty, BindingMode.OneWay, null, null, null, null);
 
         /// <summary>
         /// The navigate command property
         /// </summary>
-        public static readonly BindableProperty NavigateCommandProperty = BindableProperty.Create("NavigateCommand", typeof(ICommand),
+        public static readonly BindableProperty NavigateCommandProperty = BindableProperty.Create(nameof(NavigateCommand), typeof(ICommand),
             typeof(HyperLinkLabel), null, BindingMode.OneWay, null, null, null, null);
 
         private TapGestureRecognizer _tapGestureRecognizer;

@@ -1,5 +1,6 @@
 ﻿using LagoVista.Client.Core.Models;
 using LagoVista.Client.Core.Resources;
+using LagoVista.Core.Attributes;
 using LagoVista.Core.Commanding;
 using LagoVista.Core.Models.UIMetaData;
 using LagoVista.Core.ViewModels;
@@ -51,18 +52,21 @@ namespace LagoVista.Client.Core.ViewModels.DeviceAccess
                 var path = $"/api/device/{_deviceRepoId}/{_deviceId}/metadata";
 
                 var response1 = await RestClient.GetAsync(path);
-                Debug.WriteLine(response1.Content);
+               
 
                 var response = await RestClient.GetAsync<DetailResponse<Device>>(path);
                 if (response.Successful)
                 {
                     Device = response.Result.Model;
-                    foreach (var endpoint in Device.InputCommandEndPoints)
-                    {
-                        Debug.WriteLine(endpoint.InputCommand.Name);
-                        Debug.WriteLine(endpoint.EndPoint);
-                       
-                    }
+
+                    var form = new EditFormAdapter(response.Result.Model, response.Result.View, ViewModelNavigation);
+
+                    form.AddViewCell(nameof(Device.Name));
+
+                    ShowProperties(form, response.Result.Model);
+
+                    FormAdapter = form;
+
                     ViewReady = true;
                 }
             });
@@ -79,7 +83,7 @@ namespace LagoVista.Client.Core.ViewModels.DeviceAccess
             {
                 switch (notification.PayloadType)
                 {
-                    case "DeviceArchive":
+                    case nameof(DeviceArchive):
                         var archive = JsonConvert.DeserializeObject<DeviceArchive>(notification.Payload);
                         DispatcherServices.Invoke(() =>
                         {
@@ -90,7 +94,7 @@ namespace LagoVista.Client.Core.ViewModels.DeviceAccess
                             }
                         });
                         break;
-                    case "Device":
+                    case nameof(Device):
                         DispatcherServices.Invoke(() =>
                         {
                             Device = JsonConvert.DeserializeObject<Device>(notification.Payload);
@@ -206,6 +210,82 @@ namespace LagoVista.Client.Core.ViewModels.DeviceAccess
         }
 
 
+        private void ShowProperties(EditFormAdapter formAdapter, Device _device)
+        {
+            foreach (var field in _device.PropertiesMetaData)
+            {
+                var formField = FormField.Create(field.Key, new FormFieldAttribute(), null);
+
+                formField.Label = field.Label;
+
+                switch (field.FieldType.Value)
+                {
+                    case ParameterTypes.State:
+                        formField.Options = new List<EnumDescription>();
+                        foreach (var state in field.StateSet.Value.States)
+                        {
+                            formField.Options.Add(new EnumDescription() { Key = state.Key, Label = state.Name, Name = state.Name });
+                        }
+
+                        formField.FieldType = FormField.FieldType_Picker;
+
+                        var initialState = field.StateSet.Value.States.Where(st => st.IsInitialState).FirstOrDefault();
+                        if (initialState != null)
+                        {
+                            formField.Value = initialState.Key;
+                        }
+
+                        break;
+                    case ParameterTypes.String:
+                        formField.FieldType = FormField.FieldType_Text;
+                        formField.Value = field.DefaultValue;
+                        break;
+                    case ParameterTypes.DateTime:
+                        formField.FieldType = FormField.FieldType_DateTime;
+                        formField.Value = field.DefaultValue;
+                        break;
+                    case ParameterTypes.Integer:
+                        formField.FieldType = FormField.FieldType_Integer;
+                        formField.Value = field.DefaultValue;
+                        break;
+                    case ParameterTypes.Decimal:
+                        formField.FieldType = FormField.FieldType_Decimal;
+                        formField.Value = field.DefaultValue;
+                        break;
+                    case ParameterTypes.GeoLocation:
+                        formField.FieldType = FormField.FieldType_Text;
+                        formField.Value = field.DefaultValue;
+                        break;
+                    case ParameterTypes.TrueFalse:
+                        formField.FieldType = FormField.FieldType_CheckBox;
+                        formField.Value = field.DefaultValue;
+                        break;
+                    case ParameterTypes.ValueWithUnit:
+                        formField.FieldType = FormField.FieldType_Decimal;
+                        formField.Value = field.DefaultValue;
+                        break;
+                }
+
+                formField.IsRequired = field.IsRequired;
+                formField.IsUserEditable = !field.IsReadOnly;
+
+                var fieldValue = _device.Properties.Where(prop => prop.Key == field.Key).FirstOrDefault();
+                if (fieldValue != null)
+                {
+                    formField.Value = fieldValue.Value;
+                }
+                else
+                {
+                    formField.Value = formField.DefaultValue;
+                }
+
+                //formAdapter.V
+                formAdapter.FormItems.Add(formField);
+
+                // formAdapter.AddViewCell(field.Key.Substring(0,1).ToUpper() + field.Key.Substring(1));
+            }
+        }
+
         ObservableCollection<Models.InputCommandParameter> _inputCommandParameters;
         public ObservableCollection<Models.InputCommandParameter> InputCommandParameters
         {
@@ -306,6 +386,13 @@ namespace LagoVista.Client.Core.ViewModels.DeviceAccess
 
                 Set(ref _selectedInputCommand, value);
             }
+        }
+
+        EditFormAdapter _editFormAdapter;
+        public EditFormAdapter FormAdapter
+        {
+            get => _editFormAdapter;
+            set => Set(ref _editFormAdapter, value);
         }
 
         private bool _hasInputCommands = false;

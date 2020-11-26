@@ -12,9 +12,9 @@ namespace LagoVista.XPlat.Core
     {
         public Label()
         {
-            FontFamily = AppStyle.LabelFont;
-            FontSize = AppStyle.LabelFontSize;
-            this.TextColor = AppStyle.LabelText.ToXamFormsColor();
+          //  FontFamily = AppStyle.LabelFont;
+         //   FontSize = AppStyle.LabelFontSize;
+       //     this.TextColor = AppStyle.LabelText.ToXamFormsColor();
         }
 
         private IAppStyle AppStyle { get { return SLWIOC.Get<IAppStyle>(); } }

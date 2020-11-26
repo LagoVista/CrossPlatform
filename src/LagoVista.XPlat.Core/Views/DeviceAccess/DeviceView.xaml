@@ -28,15 +28,20 @@
 
 
     <pge:LagoVistaContentPage.Resources>
-        <Style x:Key="LabelContent" >
+        <Style x:Key="LabelContent" TargetType="pge:Label">
             <Setter Property="TextColor" Value="{StaticResource LabelText}" />
-            <Setter Property="FontSize" Value="Large" />
+            <Setter Property="FontSize" Value="Small" />
             <Setter Property="FontAttributes" Value="Bold" />
         </Style>
 
-        <Style x:Key="ValueContent">
+        <Style x:Key="ValueContent" TargetType="pge:Label">
             <Setter Property="TextColor" Value="{StaticResource PageText}" />
             <Setter Property="FontSize" Value="Small" />
+        </Style>
+
+        <Style TargetType="pge:KVPRepeater">
+            <Setter Property="LabelStyle" Value="{StaticResource LabelContent}" />
+            <Setter Property="ValueStyle" Value="{StaticResource LabelContent}" />
         </Style>
     </pge:LagoVistaContentPage.Resources>
     <pge:LagoVistaContentPage.TabbedContent>
@@ -67,6 +72,43 @@
                     <pge:Label Text="{Binding Device.LastContact, Converter={StaticResource DatePrinterConverter}}" Grid.Row="3" Grid.Column="1" Style="{StaticResource ValueContent}"  />
                 </Grid>
             </pge:TabContent>
+            <pge:TabContent>
+                <pge:FormViewer Form="{Binding FormAdapter}" />
+            </pge:TabContent>
+            <pge:TabContent>
+                <pge:KVPRepeater ItemSource="{Binding DeviceAttributes, Mode=TwoWay}" />
+            </pge:TabContent>
+            <pge:TabContent>
+                <ListView ItemsSource="{Binding DeviceMessages}" HasUnevenRows="True" SeparatorVisibility="None"  >
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell IsEnabled="False">
+                                <Grid Padding="20,10,10,10" >
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="33*" />
+                                        <ColumnDefinition Width="66*" />
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="auto" />
+                                        <RowDefinition Height="auto" />
+                                        <RowDefinition Height="auto" />
+                                    </Grid.RowDefinitions>
+
+                                    <pge:Label Text="Message Id" Grid.Row="0" />
+                                    <pge:Label Text="Timestamp"  Grid.Row="1" />
+
+                                    <pge:Label Text="{Binding MessageId}" Grid.Row="0" Grid.Column="1" />
+                                    <pge:Label Text="{Binding Timestamp, Converter={StaticResource DatePrinterConverter}}"  Grid.Row="1" Grid.Column="1" />
+
+                                    <pge:KVPRepeater ItemSource="{Binding Properties}" Grid.Row="2" Grid.ColumnSpan="2" />
+
+                                    <BoxView Grid.ColumnSpan="2" Grid.Row="3" HeightRequest="1" VerticalOptions="End" Color="Silver"  />
+                                </Grid>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </pge:TabContent>
         </pge:TabContentHolder>
     </pge:LagoVistaContentPage.TabbedContent>
 
@@ -75,6 +117,7 @@
             <pge:Tab Label="Device" Icon="fa-microchip" />
             <pge:Tab Label="Properties" Icon="fa-microchip" />
             <pge:Tab Label="Details" Icon="fa-microchip" />
+            <pge:Tab Label="Messages" Icon="fa-microchip" />
             <pge:Tab Label="More" Icon="fa-microchip" />
         </pge:TabBar>
     </pge:LagoVistaContentPage.TabBar>
