@@ -1,6 +1,5 @@
 ﻿using LagoVista.Core.Interfaces;
 using LagoVista.Core.IOC;
-using LagoVista.Core.Models.Drawing;
 using LagoVista.Core.Models.UIMetaData;
 using LagoVista.XPlat.Core.Resources;
 using System;
@@ -28,7 +27,7 @@ namespace LagoVista.XPlat.Core.Controls.FormControls
 
             var titleBar = new Grid()
             {
-                BackgroundColor = AppStyle.TitleBarBackground.ToXamFormsColor(),
+                BackgroundColor = (Xamarin.Forms.Color)Resources["TitleBarBackground"],
                 HeightRequest = 48,
                 HorizontalOptions = new LayoutOptions(LayoutAlignment.Fill, true)
             };
@@ -39,18 +38,18 @@ namespace LagoVista.XPlat.Core.Controls.FormControls
             {
                 Margin = new Thickness(24, 0, 0, 0),
                 VerticalOptions = new LayoutOptions(LayoutAlignment.Center, false),
-                TextColor = AppStyle.TitleBarText.ToXamFormsColor(),
+                TextColor = (Xamarin.Forms.Color)Resources["TitleBarText"],
                 Text = field.Label,
                 FontAttributes = FontAttributes.Bold,
-                FontFamily = AppStyle.ListItemFont,
-                FontSize = AppStyle.ListItemFontSize
+                FontFamily = (string)Resources["ListItemFont"],
+                FontSize = (double)Resources["ListItemFontSize"]
             };
 
             _addImage = new IconButton()
             {
                 Margin = new Thickness(0, 0, 20, 0),
                 VerticalOptions = new LayoutOptions(LayoutAlignment.Center, false),
-                TextColor = AppStyle.HighlightColor.ToXamFormsColor(),
+                TextColor = (Xamarin.Forms.Color)Resources["HighlightColor"],
                 WidthRequest = 48,
                 HeightRequest = 48,
                 FontSize = Device.RuntimePlatform == Device.Android ? 20 : 28
@@ -101,10 +100,10 @@ namespace LagoVista.XPlat.Core.Controls.FormControls
                 {
                     var label = new Label();
                     label.Margin = new Thickness(15, 10, 10, 10);
-                    label.TextColor = AppStyle.PageText.ToXamFormsColor();
+                    label.TextColor = (Xamarin.Forms.Color)Resources["PageText"];
                     label.Text = child.ToEntityHeader().Text;
-                    label.FontFamily = AppStyle.ListItemFont;
-                    label.FontSize = AppStyle.ListItemFontSize;
+                    label.FontFamily = (string)Resources["ListItemFont"];
+                    label.FontSize = (double)Resources["ListItemFontSize"];
 
                     var grid = new Grid();
                     grid.ColumnDefinitions.Add(new ColumnDefinition() { Width = GridLength.Star });
@@ -117,7 +116,7 @@ namespace LagoVista.XPlat.Core.Controls.FormControls
                     boxView.HeightRequest = 1;
                     boxView.SetValue(Grid.ColumnSpanProperty, 3);
                     boxView.SetValue(Grid.RowProperty, 1);
-                    boxView.Color = AppStyle.TitleBarBackground.ToXamFormsColor(); ;
+                    boxView.Color = (Xamarin.Forms.Color)Resources["TitleBarBackground"] ;
 
                     var tapGenerator = new TapGestureRecognizer();
                     grid.BindingContext = child;
@@ -127,7 +126,7 @@ namespace LagoVista.XPlat.Core.Controls.FormControls
                     {
                         IconKey = "typcn-delete-outline",
                         FontSize = 28,
-                        TextColor = NamedColors.Red.ToXamFormsColor(),
+                        TextColor = (Color)Resources["DangerColor"],
                         VerticalOptions = new LayoutOptions(LayoutAlignment.Center, false),
                         Tag = child.ToEntityHeader().Id
                     };
@@ -140,7 +139,7 @@ namespace LagoVista.XPlat.Core.Controls.FormControls
                         IconKey = "md-chevron-right",
                         Margin = new Thickness(2, 0, 10, 0),
                         FontSize = 36,
-                        TextColor = NamedColors.NuvIoTDark.ToXamFormsColor(),
+                        TextColor = (Color)Resources["NavIconColor"],
                         VerticalOptions = new LayoutOptions(LayoutAlignment.Center, false),
                     };
                     img.SetValue(Grid.ColumnProperty, 2);

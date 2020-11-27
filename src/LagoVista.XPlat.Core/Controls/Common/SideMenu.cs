@@ -36,26 +36,33 @@ namespace LagoVista.XPlat.Core.Controls.Common
             {
                 _container.Children.Clear();
 
-                var lbl = new Label();
-                lbl.Text = ClientResources.CurrentOrganization_Label;
-                lbl.TextColor = Color.LightGray;
-                lbl.FontSize = AppStyle.MenuFontSize;
-                lbl.FontFamily = AppStyle.MenuFont;
-                lbl.Margin = new Thickness(44, 10, 0, 0);
+                var lbl = new Label
+                {
+                    Text = ClientResources.CurrentOrganization_Label,
+                    FontSize = (double)Resources["MenuFontSize"],
+                    TextColor = (Color)Resources["MenuBarTitle"],
+                    FontFamily = (string)Resources["MenuFont"],
+                    Margin = new Thickness(44, 10, 0, 0)
+                };
+
                 _container.Children.Add(lbl);
                 
                 var org = new Label();
-                _orgLabel = new Label();
-                _orgLabel.FontSize = AppStyle.HeaderFontSize;
-                _orgLabel.TextColor = Color.White;
-                _orgLabel.FontFamily = AppStyle.HeaderFont;
+                _orgLabel = new Label
+                {
+                    FontSize = (double)Resources["HeaderFontSize"],
+                    TextColor = (Color)Resources["MenuBarTitle"],
+                    FontFamily = (string)Resources["HeaderFont"]
+                };
+
                 if (_autoManager.IsAuthenticated)
                 {
+                    this.IsVisible = true;
                     _orgLabel.Text = (_autoManager.User.CurrentOrganization != null) ? _autoManager.User.CurrentOrganization.Text : ClientResources.MainMenu_NoOrganization;
                 }
                 else
                 {
-                    _orgLabel.Text = "-";
+                    this.IsVisible = false;
                 }
 
                     _orgLabel.Margin = new Thickness(44, 0, 0, 10);
@@ -78,7 +85,5 @@ namespace LagoVista.XPlat.Core.Controls.Common
         {
             MenuItemTapped?.Invoke(sender, e);
         }
-
-        private IAppStyle AppStyle { get { return SLWIOC.Get<IAppStyle>(); } }
     }
 }

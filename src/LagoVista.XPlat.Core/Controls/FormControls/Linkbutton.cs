@@ -18,8 +18,8 @@ namespace LagoVista.XPlat.Core.Controls.FormControls
             {
                 TextColor = NamedColors.NuvIoTDark.ToXamFormsColor(),
                 Margin = new Thickness(10, 0, 0, 0),
-                FontFamily = AppStyle.LabelFont,
-                FontSize = AppStyle.LabelFontSize
+                FontFamily = (string)Resources["LabelFont"],
+                FontSize = (double)Resources["LabelFontSize"]
             };
 
             Children.Add(_header);

@@ -23,9 +23,9 @@ namespace LagoVista.XPlat.Core.Controls.Common
             _icon = new Icon();
             _icon.HorizontalOptions = new LayoutOptions(LayoutAlignment.Center, false);
             _icon.VerticalOptions = new LayoutOptions(LayoutAlignment.Center, false);
-            _icon.FontSize = AppStyle.MenuFontSize;
+            _icon.FontSize = (double)Resources["MenuFontSize"];
             _icon.Margin = new Thickness(8, 4, 0, 0);
-            _icon.TextColor = AppStyle.HighlightColor.ToXamFormsColor();
+            _icon.TextColor = (Color)Resources["MenuIconColor"];
             _icon.IconKey = menuItem.FontIconKey;
             _menuItem = menuItem;
 
@@ -36,9 +36,9 @@ namespace LagoVista.XPlat.Core.Controls.Common
 
             _menuText = new Label();
             _menuText.VerticalOptions = new LayoutOptions(LayoutAlignment.Center, false);
-            _menuText.FontSize = AppStyle.MenuFontSize;
-            _menuText.FontFamily = AppStyle.MenuFont;
-            _menuText.TextColor = AppStyle.MenuBarForeground.ToXamFormsColor();
+            _menuText.FontSize = (double)Resources["MenuFontSize"];
+            _menuText.FontFamily = (String)Resources["MenuFont"];
+            _menuText.TextColor = (Color)Resources["MenuFontColor"];
             _menuText.SetValue(Grid.ColumnProperty, 1);
             _menuText.Text = menuItem.Name;
 
@@ -63,16 +63,15 @@ namespace LagoVista.XPlat.Core.Controls.Common
         {
             if(_menuItem.Command.CanExecute(_menuItem.CommandParameter))
             {
-                _icon.TextColor = AppStyle.HighlightColor.ToXamFormsColor();
-                _menuText.TextColor = AppStyle.MenuBarForeground.ToXamFormsColor();
+                _icon.TextColor = (Color)Resources["MenuIconColor"];
+                _menuText.TextColor = (Color)Resources["MenuFontColor"];
             }
             else
             {
-                _icon.TextColor = Color.LightGray;
-                _menuText.TextColor = Color.LightGray;
+                BackgroundColor = (Color)Resources["MenuBarDisableddDisabled"];
+                _icon.TextColor = (Color)Resources["MenuBarForegroundDisabled"];
+                _menuText.TextColor = (Color)Resources["MenuBarForegroundDisabled"];
             }
         }
-
-        private IAppStyle AppStyle { get { return SLWIOC.Get<IAppStyle>(); } }
-    }
+     }
 }

@@ -1,10 +1,4 @@
-﻿using LagoVista.Core.Interfaces;
-using LagoVista.Core.IOC;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Drawing;
 
 namespace LagoVista.XPlat.Core
 {
@@ -12,11 +6,9 @@ namespace LagoVista.XPlat.Core
     {
         public Label()
         {
-          //  FontFamily = AppStyle.LabelFont;
-         //   FontSize = AppStyle.LabelFontSize;
-       //     this.TextColor = AppStyle.LabelText.ToXamFormsColor();
+            FontFamily = (string)Resources["LabelFont"];
+            FontSize = (double)Resources["LabelFontSize"];
+            TextColor = (Color)Resources["LabelText"];
         }
-
-        private IAppStyle AppStyle { get { return SLWIOC.Get<IAppStyle>(); } }
     }
 }

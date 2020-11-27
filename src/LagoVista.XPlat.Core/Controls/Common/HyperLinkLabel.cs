@@ -75,15 +75,14 @@ namespace LagoVista.XPlat.Core
             GestureRecognizers.Add(_tapGestureRecognizer);
             TextColor = NamedColors.NuvIoTDark.ToXamFormsColor();
 
-            FontFamily = AppStyle.LabelFont;
-            FontSize = AppStyle.LabelFontSize;
+            FontFamily = (String)Resources["LabelFont"];
+            FontSize = (double)Resources["LabelFontSize"];
 
             var effectName = $"{UnderlineEffect.EffectNamespace}.{nameof(UnderlineEffect)}";
             var effect = Effect.Resolve(effectName);
             Effects.Add(effect);
         }
 
-        private IAppStyle AppStyle { get { return SLWIOC.Get<IAppStyle>(); } }
 
         /// <summary>
         /// Gets or sets the subject.

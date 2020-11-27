@@ -1,0 +1,77 @@
+﻿<ResourceDictionary 
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:pge="clr-namespace:LagoVista.XPlat.Core;assembly=LagoVista.XPlat.Core"
+    xmlns:cvts="clr-namespace:LagoVista.XPlat.Core.ValueConverter;assembly=LagoVista.XPlat.Core"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" >
+    
+  
+    <Color x:Key="TitleBarBackground">#FFF0F0</Color>
+    <Color x:Key="NuvIoTDark">#FF00FF</Color>
+
+
+    <Color x:Key="TitleBarText">#000FFF</Color>
+    <Color x:Key="PageBackground">#CCCC</Color>
+    <Color x:Key="PageText" >#FFFF00</Color>
+    <Color x:Key="PageTextHighlighted">#FFF00</Color>
+    <Color x:Key="NavIconColor">Green</Color>
+    <Color x:Key="InvalidColor">Red</Color>
+    <Color x:Key="DangerColor">Red</Color>
+    
+    <Color x:Key="EditControlBackground" >#FFFF00</Color>
+    <Color x:Key="EditControlText" >#FFFF00</Color>  
+    <Color x:Key="EditControlFrame" >#FFFF00</Color>
+    <Color x:Key="EditControlFrameFocus" >#FFFF00</Color>
+    <Color x:Key="EditControlFrameInvalid" >#FFFF00</Color>
+
+    <Color x:Key="MenuBarBackground" >#FFFF00</Color>
+    <Color x:Key="MenuBarForeground" >#FFFF00</Color>
+    <Color x:Key="MenuBarTitle" >#FFFF00</Color>
+    <Color x:Key="MenuIconColor">#FF00FF</Color>
+    <Color x:Key="MenuBarBackgroundActive" >#FFFF00</Color>
+    <Color x:Key="MenuBarForegroundActive" >#FFFF00</Color>
+    <Color x:Key="MenuBarBackgroundDisabled" >#FFFF00</Color>
+    <Color x:Key="MenuBarForegroundDisabled" >#FFFF00</Color>
+    <Color x:Key="MenuIconColorActive">#FF00FF</Color>
+
+    <Color x:Key="ButtonBackground" >#FFFF00</Color>
+    <Color x:Key="ButtonForeground" >#FFFF00</Color>
+    <Color x:Key="ButtonBorder" >#FFFF00</Color>
+
+    <Color x:Key="ButtonBackgroundActive" >#FFFF00</Color>
+    <Color x:Key="ButtonForegroundActive" >#FFFF00</Color>
+    <Color x:Key="ButtonBorderActive" >#FFFF00</Color>
+
+    <Color x:Key="TabBarBackground" >#FFFF00</Color>
+    <Color x:Key="TabBarForeground" >#FFFF00</Color>
+    <Color x:Key="TabBarBackgroundActive" >#FFFF00</Color>
+    <Color x:Key="TabBarForegroundActive" >#FFFF00</Color>
+    <x:String x:Key="TabBarFont">Arial</x:String>
+    <x:Double x:Key="TabBarFontSize">12</x:Double>
+    <x:Double x:Key="TabBarIconFontSize">36</x:Double>
+
+    <Color x:Key="HiglightColor" >#FFFF00</Color>
+
+    <Color x:Key="RowSeperator" >#FFFF00</Color>
+
+    <Color x:Key="ListItemLabelColor" >#FFFF00</Color>
+    <Color x:Key="ListItemDetailColor" >#FFFF00</Color>
+    <Color x:Key="ListItemIconColor">#F0000F</Color>
+    <x:String x:Key="ListItemFont">Arial</x:String>
+    <x:String x:Key="ListItemDetailFont">Arial</x:String>
+    <x:Double x:Key="LiteItemFontSize">20</x:Double>
+    <x:Double x:Key="LiteItemDetailSize">12</x:Double>
+
+    <Color x:Key="LabelText" >#FF0000</Color>
+
+    <x:String x:Key="HeaderFont">Arial</x:String>
+    <x:String x:Key="ContentFont">Arial</x:String>
+    <x:String x:Key="LabelFont">Arial</x:String>
+    <x:String x:Key="EntryFont">Arial</x:String>
+    <x:String x:Key="MenuFont">Arial</x:String>
+   
+    <x:Double x:Key="HeaderFontSize">24</x:Double>
+    <x:Double x:Key="LabelFontSize">12</x:Double>
+    <x:Double x:Key="EntryFontSize">12</x:Double>
+    <x:Double x:Key="PageFontSize">12</x:Double>
+    <x:Double x:Key="MenuFontSize">18</x:Double>
+</ResourceDictionary>

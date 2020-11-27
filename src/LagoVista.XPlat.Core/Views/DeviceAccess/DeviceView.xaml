@@ -28,21 +28,7 @@
 
 
     <pge:LagoVistaContentPage.Resources>
-        <Style x:Key="LabelContent" TargetType="pge:Label">
-            <Setter Property="TextColor" Value="{StaticResource LabelText}" />
-            <Setter Property="FontSize" Value="Small" />
-            <Setter Property="FontAttributes" Value="Bold" />
-        </Style>
-
-        <Style x:Key="ValueContent" TargetType="pge:Label">
-            <Setter Property="TextColor" Value="{StaticResource PageText}" />
-            <Setter Property="FontSize" Value="Small" />
-        </Style>
-
-        <Style TargetType="pge:KVPRepeater">
-            <Setter Property="LabelStyle" Value="{StaticResource LabelContent}" />
-            <Setter Property="ValueStyle" Value="{StaticResource LabelContent}" />
-        </Style>
+       
     </pge:LagoVistaContentPage.Resources>
     <pge:LagoVistaContentPage.TabbedContent>
         <pge:TabContentHolder>

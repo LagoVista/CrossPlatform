@@ -14,9 +14,9 @@ namespace LagoVista.XPlat.Core.Views
     {
         public LagoVistaNavigationPage(Page root) : base(root)
         {
-            BarBackgroundColor = AppStyle.TitleBarBackground.ToXamFormsColor();
-            BarTextColor = AppStyle.TitleBarText.ToXamFormsColor();
-            BackgroundColor = AppStyle.PageBackground.ToXamFormsColor();
+            BarBackgroundColor = (Color)Resources["TitleBarBackground"];
+            BarTextColor = (Color)Resources["TitleBarText"];
+            BackgroundColor = (Color)Resources["PageBackground"];
         }
 
         public void HandleURIActivation(Uri uri)
@@ -39,7 +39,5 @@ namespace LagoVista.XPlat.Core.Views
                 }
             }
         }
-
-        private IAppStyle AppStyle { get { return SLWIOC.Get<IAppStyle>(); } }
     }
 }

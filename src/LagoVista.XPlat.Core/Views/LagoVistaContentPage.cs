@@ -2,7 +2,6 @@
 using LagoVista.Core.Commanding;
 using LagoVista.Core.Interfaces;
 using LagoVista.Core.IOC;
-using LagoVista.Core.Models.Drawing;
 using LagoVista.Core.PlatformSupport;
 using LagoVista.XPlat.Core.Controls.Common;
 using LagoVista.XPlat.Core.Views;
@@ -11,7 +10,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
-using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
+using Color = Xamarin.Forms.Color;
 
 namespace LagoVista.XPlat.Core
 {
@@ -45,6 +44,8 @@ namespace LagoVista.XPlat.Core
         {
             Xamarin.Forms.NavigationPage.SetHasNavigationBar(this, false);
 
+            Resources = Application.Current.Resources;
+
             /*
              * The Page top level consists of a grid, to add additional faeture on top fo the grid such as loading window
              * and a slide out menu, we attach the actual content to the property MainContent, rather than just to the page.
@@ -59,7 +60,8 @@ namespace LagoVista.XPlat.Core
 
             // On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
 
-            this.BackgroundColor = AppStyle.TitleBarBackground.ToXamFormsColor();
+
+            this.BackgroundColor = (Color)Resources["TitleBarBackground"];
 
             CreateActivityIndicator();
             CreateMenu();
@@ -148,7 +150,7 @@ namespace LagoVista.XPlat.Core
             _menu.MenuItemTapped += _menu_MenuItemTapped;
             _menu.IsVisible = false;
             _menu.TranslationX = -MENU_WIDTH;
-            _menu.BackgroundColor = AppStyle.MenuBarBackground.ToXamFormsColor();
+            _menu.BackgroundColor = (Color)Resources["MenuBarBackground"];
             _menu.WidthRequest = MENU_WIDTH;
             _menu.HorizontalOptions = LayoutOptions.Start;
             _menu.SetValue(Grid.RowProperty, 1);
@@ -186,13 +188,13 @@ namespace LagoVista.XPlat.Core
             _toolBar.ColumnDefinitions.Add(new ColumnDefinition() { Width = new GridLength(1, GridUnitType.Star) });
             _toolBar.ColumnDefinitions.Add(new ColumnDefinition() { Width = new GridLength(1, GridUnitType.Auto) });
             _toolBar.ColumnDefinitions.Add(new ColumnDefinition() { Width = new GridLength(1, GridUnitType.Auto) });
-            _toolBar.BackgroundColor = AppStyle.TitleBarBackground.ToXamFormsColor();
+            _toolBar.BackgroundColor = (Color)Resources["TitleBarBackground"];
 
             _title = new Label();
             _title.SetValue(Grid.ColumnSpanProperty, 4);
-            _title.TextColor = AppStyle.TitleBarText.ToXamFormsColor();
-            _title.FontSize = AppStyle.HeaderFontSize;
-            _title.FontFamily = AppStyle.HeaderFont;
+            _title.TextColor = (Color)Resources["TitleBarText"];
+            _title.FontSize = (double)Resources["HeaderFontSize"];
+            _title.FontFamily = (string)Resources["HeaderFont"];
             _title.FontAttributes = FontAttributes.Bold;
 
             _title.VerticalOptions = new LayoutOptions(LayoutAlignment.Center, false);
@@ -202,7 +204,7 @@ namespace LagoVista.XPlat.Core
             {
                 IsVisible = false,
                 VerticalOptions = new LayoutOptions(LayoutAlignment.Center, false),
-                TextColor = AppStyle.TitleBarText.ToXamFormsColor(),
+                TextColor = _title.TextColor,
                 WidthRequest = 48,
                 HeightRequest = 48,
                 FontSize = Device.RuntimePlatform == Device.Android ? 20 : 28
@@ -213,7 +215,7 @@ namespace LagoVista.XPlat.Core
             {
                 IsVisible = false,
                 VerticalOptions = new LayoutOptions(LayoutAlignment.Center, false),
-                TextColor = AppStyle.TitleBarText.ToXamFormsColor(),
+                TextColor = _title.TextColor,
                 WidthRequest = 48,
                 HeightRequest = 48,
                 FontSize = Device.RuntimePlatform == Device.Android ? 20 : 28
@@ -226,7 +228,7 @@ namespace LagoVista.XPlat.Core
                 IsVisible = false,
                 IconKey = "ion-help",
                 VerticalOptions = new LayoutOptions(LayoutAlignment.Center, false),
-                TextColor = AppStyle.TitleBarText.ToXamFormsColor(),
+                TextColor = _title.TextColor,
                 WidthRequest = 48,
                 HeightRequest = 48,
                 FontSize = Device.RuntimePlatform == Device.Android ? 20 : 24
@@ -329,8 +331,6 @@ namespace LagoVista.XPlat.Core
             _title.Text = Title;
         }
 
-        private IAppStyle AppStyle { get { return SLWIOC.Get<IAppStyle>(); } }
-
         public View MainContent
         {
             get { return _mainContent; }
@@ -359,7 +359,7 @@ namespace LagoVista.XPlat.Core
                 }
 
                 _contentGrid.RowDefinitions.Add(new RowDefinition() { Height = new GridLength(1, GridUnitType.Star) });
-                _contentGrid.BackgroundColor = AppStyle.TitleBarBackground.ToXamFormsColor();
+                _contentGrid.BackgroundColor = (Color)Resources["TitleBarBackground"];
 
                 Content = _contentGrid;
 
@@ -372,7 +372,7 @@ namespace LagoVista.XPlat.Core
                 }
                 else
                 {
-                    _mainContent.BackgroundColor = AppStyle.PageBackground.ToXamFormsColor();
+                    _mainContent.BackgroundColor = (Color)Resources["PageBackground"];
                 }
 
                 _contentGrid.Children.Add(_mainContent);
@@ -419,7 +419,7 @@ namespace LagoVista.XPlat.Core
                 _contentGrid.RowDefinitions.Add(new RowDefinition() { Height = new GridLength(1, GridUnitType.Star) });
                 _contentGrid.RowDefinitions.Add(new RowDefinition() { Height = new GridLength(1, GridUnitType.Auto) });
 
-                _contentGrid.BackgroundColor = AppStyle.TitleBarBackground.ToXamFormsColor();
+                _contentGrid.BackgroundColor = (Color)Resources["TitleBarBackground"];
 
                 Content = _contentGrid;
 
@@ -432,7 +432,7 @@ namespace LagoVista.XPlat.Core
                 }
                 else
                 {
-                    _tabbedContent.BackgroundColor = AppStyle.PageBackground.ToXamFormsColor();
+                    _tabbedContent.BackgroundColor = (Color)Resources["PageBackground"];
                 }
 
                 _contentGrid.BackgroundColor = _tabbedContent.BackgroundColor;

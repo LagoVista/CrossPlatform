@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using Xamarin.Forms;
 
 namespace LagoVista.XPlat.Core
 {
@@ -13,8 +14,8 @@ namespace LagoVista.XPlat.Core
     {
         public Button()
         {
-            BackgroundColor = AppStyle.ButtonBackground.ToXamFormsColor();
-            TextColor = AppStyle.ButtonForeground.ToXamFormsColor();         
+            BackgroundColor = (Color)Resources["ButtonBackground"];
+            TextColor = (Color)Resources["ButtonForeground"];         
             
             FontSize = 16;            
         }
@@ -25,6 +26,5 @@ namespace LagoVista.XPlat.Core
              set { base.Command = value; }
         }
         
-        private IAppStyle AppStyle { get { return SLWIOC.Get<IAppStyle>(); } }
     }
 }

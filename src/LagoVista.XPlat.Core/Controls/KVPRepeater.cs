@@ -7,6 +7,19 @@ namespace LagoVista.XPlat.Core
 {
     public class KVPRepeater : StackLayout
     {
+        public KVPRepeater()
+        {
+            if(Resources.ContainsKey("LabelContent"))
+            {
+                LabelStyle = Resources["LabelContent"] as Style;
+            }
+
+            if(Resources.ContainsKey("ValueContent"))
+            {
+                ValueStyle = Resources["ValueContent"] as Style;
+            }
+        }
+
         public static BindableProperty LabelStyleProperty = BindableProperty.Create(propertyName: nameof(LabelStyle), returnType: typeof(Style),
                declaringType: typeof(KVPRepeater), defaultValue: null, defaultBindingMode: BindingMode.Default,
                propertyChanged: (ctl, oldValue, newValue) => { (ctl as KVPRepeater).LabelStyle = newValue as Style; });

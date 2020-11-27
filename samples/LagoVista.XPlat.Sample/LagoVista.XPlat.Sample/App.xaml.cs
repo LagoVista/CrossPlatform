@@ -101,9 +101,7 @@ namespace LagoVista.XPlat.Sample
             appConfig.DeviceRepoId = "189D6E2F61F444529AF881159F6C2190";
 
             SLWIOC.RegisterSingleton<IAppConfig>(appConfig);
-            var style = new AppStyle();
-            this.RegiterStyle(style);
-            LagoVista.Client.Core.Startup.Init(serverInfo, style);
+            LagoVista.Client.Core.Startup.Init(serverInfo);
             SLWIOC.RegisterSingleton<IClientAppInfo>(clientAppInfo);
             
             var navigation = new ViewModelNavigation(this);

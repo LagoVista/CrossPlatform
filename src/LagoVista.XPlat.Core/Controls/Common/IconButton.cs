@@ -15,10 +15,8 @@ namespace LagoVista.XPlat.Core
         public IconButton()
         {
             BackgroundColor = Xamarin.Forms.Color.Transparent;
-            TextColor = AppStyle.TitleBarText.ToXamFormsColor();
+            TextColor = (Color)Resources["TitleBarText"];
         }
-
-        private IAppStyle AppStyle { get { return SLWIOC.Get<IAppStyle>(); } }
 
         public static BindableProperty IconKeyProperty = BindableProperty.Create(nameof(IconKey), typeof(string), typeof(IconButton), default(string), BindingMode.Default, null,
             (view, oldValue, newValue) => (view as IconButton).IconKey = (string)newValue);

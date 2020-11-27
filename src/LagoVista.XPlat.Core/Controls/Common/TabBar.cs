@@ -15,7 +15,7 @@ namespace LagoVista.XPlat.Core
         public TabBar()
         {
             ChildAdded += TabBar_ChildAdded;
-            BackgroundColor = AppStyle.MenuBarBackground.ToXamFormsColor();
+            BackgroundColor = (Color)Resources["MenuBarBackground"];
             _tabs = new ObservableCollection<Tab>();
         }
 
@@ -57,7 +57,5 @@ namespace LagoVista.XPlat.Core
         {
             get => _tabs;
         }
-
-        private IAppStyle AppStyle { get { return SLWIOC.Get<IAppStyle>(); } }
     }
 }

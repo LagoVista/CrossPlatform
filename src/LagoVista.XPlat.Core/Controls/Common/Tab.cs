@@ -23,18 +23,17 @@ namespace LagoVista.XPlat.Core
 
             _label = new Label()
             {
-                TextColor = AppStyle.MenuBarForeground.ToXamFormsColor(),
-                FontFamily = AppStyle.MenuFont,
-                FontSize = AppStyle.MenuFontSize,
+                TextColor = (Color)Resources["TabBarForground"],
+                FontFamily = Resources["TabBarFont"] as string,
+                FontSize = (double)Resources["TabBarFontSize"],
                 Margin = 4,
                 HorizontalTextAlignment = TextAlignment.Center,
-              //  VerticalTextAlignment = TextAlignment.Center,
             };
 
             _icon = new Icon()
             {
-                TextColor = AppStyle.MenuBarForeground.ToXamFormsColor(),
-                FontSize = 36,
+                TextColor = (Color)Resources["TabBarForground"],
+                FontSize = (double)Resources["TabBarIconFontSize"],
                 Margin = new Thickness(0,10, 0,0),
                 HorizontalTextAlignment = TextAlignment.Center,
             };
@@ -94,7 +93,6 @@ namespace LagoVista.XPlat.Core
             set { SetValue(LabelProperty, value); }
         }
 
-        private IAppStyle AppStyle { get { return SLWIOC.Get<IAppStyle>(); } }
 
         public static readonly BindableProperty SelectedProperty = BindableProperty.Create(nameof(Label), typeof(bool), typeof(Tab), false, BindingMode.TwoWay, null,
             (view, oldValue, newValue) => (view as Tab).Selected = (bool)newValue, null, null, null);
@@ -105,9 +103,9 @@ namespace LagoVista.XPlat.Core
             set 
             {
                 SetValue(SelectedProperty, value);
-                _label.TextColor = value ? AppStyle.MenuBarForegroundActive.ToXamFormsColor() : AppStyle.MenuBarForeground.ToXamFormsColor();
-                _icon.TextColor = value ? AppStyle.MenuBarForegroundActive.ToXamFormsColor() : AppStyle.MenuBarForeground.ToXamFormsColor();
-                _background.BackgroundColor = value ? AppStyle.MenuBarBackgroundActive.ToXamFormsColor() : AppStyle.MenuBarBackground.ToXamFormsColor();
+                _label.TextColor = value ? (Color)Resources["TabBarForegroundActive"] : (Color)Resources["TabBarForeground"];
+                _icon.TextColor = _label.TextColor;
+                _background.BackgroundColor = value ? (Color)Resources["TabBarBackgroundActive"] : (Color)Resources["TabBarBackground"];
             }
         }
     }

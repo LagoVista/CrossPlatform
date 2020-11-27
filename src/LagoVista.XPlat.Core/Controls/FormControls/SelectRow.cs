@@ -20,8 +20,8 @@ namespace LagoVista.XPlat.Core.Controls.FormControls
             _validationMessage = new FormFieldValidationMessage(field.RequiredMessage);
 
             _picker = new Picker();
-            _picker.FontFamily = AppStyle.LabelFont;
-            _picker.FontSize = AppStyle.LabelFontSize;
+            _picker.FontFamily = (string)Resources["LabelFont"];
+            _picker.FontSize = (double)Resources["LabelFontSize"];
 
             if (field.Options != null)
             {
@@ -47,12 +47,12 @@ namespace LagoVista.XPlat.Core.Controls.FormControls
             {
                 var index = field.Options.IndexOf(selectedItem);
                 _picker.SelectedIndex = index + 1;
-                _picker.TextColor = AppStyle.PageText.ToXamFormsColor();
+                _picker.TextColor = (Xamarin.Forms.Color) Resources["PageTextHighlighted"];
             }
             else
             {
                 _picker.SelectedIndex = 0;
-                _picker.TextColor = NamedColors.NuvIoTDark.ToXamFormsColor();
+                _picker.TextColor = (Xamarin.Forms.Color)Resources["PageText"]; 
             }
 
             Children.Add(_header);
@@ -69,13 +69,13 @@ namespace LagoVista.XPlat.Core.Controls.FormControls
             {
                 _validationMessage.IsVisible = Field.IsRequired;
                 Field.Value = null;
-                _picker.TextColor = NamedColors.NuvIoTDark.ToXamFormsColor();
+                _picker.TextColor = (Xamarin.Forms.Color)Resources["PageTextHighlighted"]; ;
             }
             else
             {
                 _validationMessage.IsVisible = false;
                 Field.Value = Field.Options[_picker.SelectedIndex - 1].Key;
-                _picker.TextColor = AppStyle.PageText.ToXamFormsColor();
+                _picker.TextColor = (Xamarin.Forms.Color)Resources["PageText"];
             }
 
             IsDirty = OriginalValue != Field.Value;

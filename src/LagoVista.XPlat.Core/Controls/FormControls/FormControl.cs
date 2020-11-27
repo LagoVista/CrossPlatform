@@ -35,8 +35,6 @@ namespace LagoVista.XPlat.Core.Controls.FormControls
             Debug.WriteLine($"{Field.Name} - {Field.IsVisible} - {IsVisible}");
         }
 
-        public IAppStyle AppStyle { get { return SLWIOC.Get<IAppStyle>(); } }
-
         public FieldTypes FieldType
         {
             get

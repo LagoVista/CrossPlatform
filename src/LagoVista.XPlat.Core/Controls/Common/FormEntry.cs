@@ -13,10 +13,10 @@ namespace LagoVista.XPlat.Core
         {
             this.Focused += Entry_Focused;
 
-            FontFamily = AppStyle.EntryFont;
-            FontSize = AppStyle.EntryFontSize;
-
-            this.BackgroundColor = AppStyle.EditControlBackground.ToXamFormsColor();
+            FontFamily = (string)Resources["EntryFont"];
+            FontSize = (double)Resources["EntryFontSize"];
+            BackgroundColor = (Color)Resources["EditControlBackground"];
+            TextColor = (Color)Resources["EditControlText"];
 
             if (Device.RuntimePlatform == Device.Android)
             {
@@ -27,8 +27,6 @@ namespace LagoVista.XPlat.Core
         private void Entry_Focused(object sender, Xamarin.Forms.FocusEventArgs e)
         {
         }
-
-        private IAppStyle AppStyle { get { return SLWIOC.Get<IAppStyle>(); } }
     }
 
     /// <summary>
@@ -39,10 +37,11 @@ namespace LagoVista.XPlat.Core
         public FormEntry()
         {
             this.Focused += Entry_Focused;
-            this.BackgroundColor = AppStyle.EditControlBackground.ToXamFormsColor();
-            this.TextColor = AppStyle.EditControlText.ToXamFormsColor();
-            FontFamily = AppStyle.EntryFont;
-            FontSize = AppStyle.EntryFontSize;
+
+            FontFamily = (string)Resources["EntryFont"];
+            FontSize = (double)Resources["EntryFontSize"];
+            BackgroundColor = (Color)Resources["EditControlBackground"];
+            TextColor = (Color)Resources["EditControlText"];
 
             if (Device.RuntimePlatform == Device.Android)
             {
@@ -53,8 +52,6 @@ namespace LagoVista.XPlat.Core
         private void Entry_Focused(object sender, Xamarin.Forms.FocusEventArgs e)
         {
         }
-
-        private IAppStyle AppStyle { get { return SLWIOC.Get<IAppStyle>(); } }
     }
 
     public class TextArea : Xamarin.Forms.Editor
