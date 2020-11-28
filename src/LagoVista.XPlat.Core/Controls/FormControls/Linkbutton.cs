@@ -1,5 +1,6 @@
 ﻿using LagoVista.Core.Models.Drawing;
 using LagoVista.Core.Models.UIMetaData;
+using LagoVista.XPlat.Core.Services;
 using System;
 using Xamarin.Forms;
 
@@ -18,8 +19,8 @@ namespace LagoVista.XPlat.Core.Controls.FormControls
             {
                 TextColor = NamedColors.NuvIoTDark.ToXamFormsColor(),
                 Margin = new Thickness(10, 0, 0, 0),
-                FontFamily = (string)Resources["LabelFont"],
-                FontSize = (double)Resources["LabelFontSize"]
+                FontFamily = ResourceSupport.GetString("LabelFont"),
+                FontSize = ResourceSupport.GetNumber("LabelFontSize")
             };
 
             Children.Add(_header);

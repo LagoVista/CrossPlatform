@@ -1,29 +1,5 @@
-﻿// ***********************************************************************
-// Assembly         : XLabs.Forms
-// Author           : XLabs Team
-// Created          : 12-27-2015
-// 
-// Last Modified By : XLabs Team
-// Last Modified On : 01-04-2016
-// ***********************************************************************
-// <copyright file="HyperLinkLabel.cs" company="XLabs Team">
-//     Copyright (c) XLabs Team. All rights reserved.
-// </copyright>
-// <summary>
-//       This project is licensed under the Apache 2.0 license
-//       https://github.com/XLabs/Xamarin-Forms-Labs/blob/master/LICENSE
-//       
-//       XLabs is a open source project that aims to provide a powerfull and cross 
-//       platform set of controls tailored to work with Xamarin Forms.
-// </summary>
-// ***********************************************************************
-// 
-
-using LagoVista.Core.Interfaces;
-using LagoVista.Core.IOC;
-using LagoVista.Core.Models.Drawing;
-using System;
-using System.Diagnostics;
+﻿using LagoVista.Core.Models.Drawing;
+using LagoVista.XPlat.Core.Services;
 using System.Windows.Input;
 using Xamarin.Forms;
 
@@ -58,7 +34,7 @@ namespace LagoVista.XPlat.Core
         /// Initializes static members of the <see cref="HyperLinkLabel" /> class.
         /// </summary>
         static HyperLinkLabel()
-        {           
+        {
         }
 
         /// <summary>
@@ -75,8 +51,8 @@ namespace LagoVista.XPlat.Core
             GestureRecognizers.Add(_tapGestureRecognizer);
             TextColor = NamedColors.NuvIoTDark.ToXamFormsColor();
 
-            FontFamily = (String)Resources["LabelFont"];
-            FontSize = (double)Resources["LabelFontSize"];
+            FontFamily = ResourceSupport.GetString("LabelFont");
+            FontSize = ResourceSupport.GetNumber("LabelFontSize");
 
             var effectName = $"{UnderlineEffect.EffectNamespace}.{nameof(UnderlineEffect)}";
             var effect = Effect.Resolve(effectName);

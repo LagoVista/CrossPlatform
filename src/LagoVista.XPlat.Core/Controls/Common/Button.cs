@@ -1,12 +1,5 @@
-﻿using LagoVista.Core.Interfaces;
-using LagoVista.Core.IOC;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using LagoVista.XPlat.Core.Services;
 using System.Windows.Input;
-using Xamarin.Forms;
 
 namespace LagoVista.XPlat.Core
 {
@@ -14,17 +7,15 @@ namespace LagoVista.XPlat.Core
     {
         public Button()
         {
-            BackgroundColor = (Color)Resources["ButtonBackground"];
-            TextColor = (Color)Resources["ButtonForeground"];         
-            
-            FontSize = 16;            
+            BackgroundColor = ResourceSupport.GetColor("ButtonBackground");
+            TextColor = ResourceSupport.GetColor("ButtonForeground");         
+            FontSize = ResourceSupport.GetNumber("ButtonFontSize");            
         }
 
         public new ICommand Command
         {
             get { return base.Command; }
              set { base.Command = value; }
-        }
-        
+        }        
     }
 }

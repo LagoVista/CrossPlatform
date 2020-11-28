@@ -1,6 +1,7 @@
 ﻿using LagoVista.Core.Interfaces;
 using LagoVista.Core.IOC;
 using LagoVista.Core.PlatformSupport;
+using LagoVista.XPlat.Core.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,9 +15,9 @@ namespace LagoVista.XPlat.Core.Views
     {
         public LagoVistaNavigationPage(Page root) : base(root)
         {
-            BarBackgroundColor = (Color)Resources["TitleBarBackground"];
-            BarTextColor = (Color)Resources["TitleBarText"];
-            BackgroundColor = (Color)Resources["PageBackground"];
+            BarBackgroundColor = ResourceSupport.GetColor( "TitleBarBackground");
+            BarTextColor = ResourceSupport.GetColor("TitleBarText");
+            BackgroundColor = ResourceSupport.GetColor("PageBackground");
         }
 
         public void HandleURIActivation(Uri uri)

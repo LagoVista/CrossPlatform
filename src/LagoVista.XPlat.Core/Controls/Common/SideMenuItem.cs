@@ -1,5 +1,6 @@
 ﻿using LagoVista.Core.Interfaces;
 using LagoVista.Core.IOC;
+using LagoVista.XPlat.Core.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,9 +24,9 @@ namespace LagoVista.XPlat.Core.Controls.Common
             _icon = new Icon();
             _icon.HorizontalOptions = new LayoutOptions(LayoutAlignment.Center, false);
             _icon.VerticalOptions = new LayoutOptions(LayoutAlignment.Center, false);
-            _icon.FontSize = (double)Resources["MenuFontSize"];
+            _icon.FontSize = ResourceSupport.GetNumber( "MenuFontSize");
             _icon.Margin = new Thickness(8, 4, 0, 0);
-            _icon.TextColor = (Color)Resources["MenuIconColor"];
+            _icon.TextColor = ResourceSupport.GetColor("MenuIconColor");
             _icon.IconKey = menuItem.FontIconKey;
             _menuItem = menuItem;
 
@@ -36,9 +37,9 @@ namespace LagoVista.XPlat.Core.Controls.Common
 
             _menuText = new Label();
             _menuText.VerticalOptions = new LayoutOptions(LayoutAlignment.Center, false);
-            _menuText.FontSize = (double)Resources["MenuFontSize"];
-            _menuText.FontFamily = (String)Resources["MenuFont"];
-            _menuText.TextColor = (Color)Resources["MenuFontColor"];
+            _menuText.FontSize = ResourceSupport.GetNumber("MenuFontSize");
+            _menuText.FontFamily = ResourceSupport.GetString("MenuFont");
+            _menuText.TextColor = ResourceSupport.GetColor("MenuFontColor");
             _menuText.SetValue(Grid.ColumnProperty, 1);
             _menuText.Text = menuItem.Name;
 
@@ -63,14 +64,14 @@ namespace LagoVista.XPlat.Core.Controls.Common
         {
             if(_menuItem.Command.CanExecute(_menuItem.CommandParameter))
             {
-                _icon.TextColor = (Color)Resources["MenuIconColor"];
-                _menuText.TextColor = (Color)Resources["MenuFontColor"];
+                _icon.TextColor = ResourceSupport.GetColor("MenuIconColor");
+                _menuText.TextColor = ResourceSupport.GetColor("MenuFontColor");
             }
             else
             {
-                BackgroundColor = (Color)Resources["MenuBarDisableddDisabled"];
-                _icon.TextColor = (Color)Resources["MenuBarForegroundDisabled"];
-                _menuText.TextColor = (Color)Resources["MenuBarForegroundDisabled"];
+                BackgroundColor = ResourceSupport.GetColor("MenuBarDisableddDisabled");
+                _icon.TextColor = ResourceSupport.GetColor("MenuBarForegroundDisabled");
+                _menuText.TextColor = ResourceSupport.GetColor("MenuBarForegroundDisabled");
             }
         }
      }

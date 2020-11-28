@@ -1,5 +1,6 @@
 ﻿using LagoVista.Core.Interfaces;
 using LagoVista.Core.IOC;
+using LagoVista.XPlat.Core.Services;
 using System;
 using System.Collections.ObjectModel;
 using System.Linq;
@@ -15,7 +16,7 @@ namespace LagoVista.XPlat.Core
         public TabBar()
         {
             ChildAdded += TabBar_ChildAdded;
-            BackgroundColor = (Color)Resources["MenuBarBackground"];
+            BackgroundColor = ResourceSupport.GetColor("MenuBarBackground");
             _tabs = new ObservableCollection<Tab>();
         }
 

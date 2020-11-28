@@ -1,6 +1,7 @@
 ﻿using LagoVista.Client.Core.Resources;
 using LagoVista.Core.Interfaces;
 using LagoVista.Core.IOC;
+using LagoVista.XPlat.Core.Services;
 using System;
 using System.Collections.Generic;
 using Xamarin.Forms;
@@ -39,20 +40,20 @@ namespace LagoVista.XPlat.Core.Controls.Common
                 var lbl = new Label
                 {
                     Text = ClientResources.CurrentOrganization_Label,
-                    FontSize = (double)Resources["MenuFontSize"],
-                    TextColor = (Color)Resources["MenuBarTitle"],
-                    FontFamily = (string)Resources["MenuFont"],
+                    FontSize = ResourceSupport.GetNumber("MenuFontSize"),
+                    TextColor = ResourceSupport.GetColor("MenuBarTitle"),
+                    FontFamily = ResourceSupport.GetString("MenuFont"),
                     Margin = new Thickness(44, 10, 0, 0)
                 };
 
                 _container.Children.Add(lbl);
-                
+
                 var org = new Label();
                 _orgLabel = new Label
                 {
-                    FontSize = (double)Resources["HeaderFontSize"],
-                    TextColor = (Color)Resources["MenuBarTitle"],
-                    FontFamily = (string)Resources["HeaderFont"]
+                    FontSize = ResourceSupport.GetNumber("HeaderFontSize"),
+                    TextColor = ResourceSupport.GetColor("MenuBarTitle"),
+                    FontFamily = ResourceSupport.GetString("HeaderFont")
                 };
 
                 if (_autoManager.IsAuthenticated)
@@ -65,11 +66,11 @@ namespace LagoVista.XPlat.Core.Controls.Common
                     this.IsVisible = false;
                 }
 
-                    _orgLabel.Margin = new Thickness(44, 0, 0, 10);
+                _orgLabel.Margin = new Thickness(44, 0, 0, 10);
                 _container.Children.Add(_orgLabel);
 
                 _menuItems = value;
-                
+
                 if (_menuItems != null)
                 {
                     foreach (var menuItem in _menuItems)

@@ -8,10 +8,10 @@
         LeftMenu="Menu"
         x:Class="LagoVista.XPlat.Sample.Views.HomeView">
     <pge:LagoVistaContentPage.MainContent >
-        <ListView ItemsSource="{Binding MenuOptions}" SelectedItem="{Binding SelectedMenuOption}" BackgroundColor="White">
+        <ListView ItemsSource="{Binding MenuOptions}" SelectedItem="{Binding SelectedMenuOption}">
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    <ctls:NavigationViewCell Command="{Binding Command}" Text="{Binding Name}" Icon="{Binding FontIconKey}" />
+                    <ctls:NavigationViewCell Command="{Binding Command}" Text="{Binding Name}" Detail="Hello World" Icon="{Binding FontIconKey}" />
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>

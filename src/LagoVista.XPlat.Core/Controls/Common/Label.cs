@@ -1,4 +1,5 @@
-﻿using System.Drawing;
+﻿using LagoVista.XPlat.Core.Services;
+using System.Drawing;
 
 namespace LagoVista.XPlat.Core
 {
@@ -6,9 +7,9 @@ namespace LagoVista.XPlat.Core
     {
         public Label()
         {
-            FontFamily = (string)Resources["LabelFont"];
-            FontSize = (double)Resources["LabelFontSize"];
-            TextColor = (Color)Resources["LabelText"];
+            FontFamily = ResourceSupport.GetString("LabelFont");
+            FontSize = ResourceSupport.GetNumber("LabelFontSize");
+            TextColor = ResourceSupport.GetColor("LabelText");
         }
     }
 }

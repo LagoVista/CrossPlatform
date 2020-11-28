@@ -1,5 +1,6 @@
 ﻿using LagoVista.Core.Models.Drawing;
 using LagoVista.Core.Models.UIMetaData;
+using LagoVista.XPlat.Core.Services;
 using System;
 using System.Linq;
 using Xamarin.Forms;
@@ -20,8 +21,8 @@ namespace LagoVista.XPlat.Core.Controls.FormControls
             _validationMessage = new FormFieldValidationMessage(field.RequiredMessage);
 
             _picker = new Picker();
-            _picker.FontFamily = (string)Resources["LabelFont"];
-            _picker.FontSize = (double)Resources["LabelFontSize"];
+            _picker.FontFamily = ResourceSupport.GetString( "LabelFont");
+            _picker.FontSize = ResourceSupport.GetNumber("LabelFontSize");
 
             if (field.Options != null)
             {
@@ -47,12 +48,12 @@ namespace LagoVista.XPlat.Core.Controls.FormControls
             {
                 var index = field.Options.IndexOf(selectedItem);
                 _picker.SelectedIndex = index + 1;
-                _picker.TextColor = (Xamarin.Forms.Color) Resources["PageTextHighlighted"];
+                _picker.TextColor = ResourceSupport.GetColor("PageTextHighlighted");
             }
             else
             {
                 _picker.SelectedIndex = 0;
-                _picker.TextColor = (Xamarin.Forms.Color)Resources["PageText"]; 
+                _picker.TextColor = ResourceSupport.GetColor("PageText"); 
             }
 
             Children.Add(_header);
@@ -69,13 +70,13 @@ namespace LagoVista.XPlat.Core.Controls.FormControls
             {
                 _validationMessage.IsVisible = Field.IsRequired;
                 Field.Value = null;
-                _picker.TextColor = (Xamarin.Forms.Color)Resources["PageTextHighlighted"]; ;
+                _picker.TextColor = ResourceSupport.GetColor("PageTextHighlighted");
             }
             else
             {
                 _validationMessage.IsVisible = false;
                 Field.Value = Field.Options[_picker.SelectedIndex - 1].Key;
-                _picker.TextColor = (Xamarin.Forms.Color)Resources["PageText"];
+                _picker.TextColor = ResourceSupport.GetColor("PageText");
             }
 
             IsDirty = OriginalValue != Field.Value;

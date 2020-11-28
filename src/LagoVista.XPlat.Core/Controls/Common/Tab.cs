@@ -1,6 +1,7 @@
 ﻿using LagoVista.Core.Commanding;
 using LagoVista.Core.Interfaces;
 using LagoVista.Core.IOC;
+using LagoVista.XPlat.Core.Services;
 using System;
 using System.Windows.Input;
 using Xamarin.Forms;
@@ -23,17 +24,17 @@ namespace LagoVista.XPlat.Core
 
             _label = new Label()
             {
-                TextColor = (Color)Resources["TabBarForground"],
-                FontFamily = Resources["TabBarFont"] as string,
-                FontSize = (double)Resources["TabBarFontSize"],
+                TextColor = ResourceSupport.GetColor("TabBarForground"),
+                FontFamily = ResourceSupport.GetString("TabBarFont"),
+                FontSize = ResourceSupport.GetNumber("TabBarFontSize"),
                 Margin = 4,
                 HorizontalTextAlignment = TextAlignment.Center,
             };
 
             _icon = new Icon()
             {
-                TextColor = (Color)Resources["TabBarForground"],
-                FontSize = (double)Resources["TabBarIconFontSize"],
+                TextColor = ResourceSupport.GetColor("TabBarForground"),
+                FontSize = ResourceSupport.GetNumber("TabBarIconFontSize"),
                 Margin = new Thickness(0,10, 0,0),
                 HorizontalTextAlignment = TextAlignment.Center,
             };
@@ -103,9 +104,9 @@ namespace LagoVista.XPlat.Core
             set 
             {
                 SetValue(SelectedProperty, value);
-                _label.TextColor = value ? (Color)Resources["TabBarForegroundActive"] : (Color)Resources["TabBarForeground"];
+                _label.TextColor = value ? ResourceSupport.GetColor("TabBarForegroundActive") : ResourceSupport.GetColor("TabBarForeground");
                 _icon.TextColor = _label.TextColor;
-                _background.BackgroundColor = value ? (Color)Resources["TabBarBackgroundActive"] : (Color)Resources["TabBarBackground"];
+                _background.BackgroundColor = value ? ResourceSupport.GetColor("TabBarBackgroundActive") : ResourceSupport.GetColor("TabBarBackground");
             }
         }
     }

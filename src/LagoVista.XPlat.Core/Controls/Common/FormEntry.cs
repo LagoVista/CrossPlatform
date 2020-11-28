@@ -1,5 +1,6 @@
 ﻿using LagoVista.Core.Interfaces;
 using LagoVista.Core.IOC;
+using LagoVista.XPlat.Core.Services;
 using Xamarin.Forms;
 
 namespace LagoVista.XPlat.Core
@@ -13,10 +14,10 @@ namespace LagoVista.XPlat.Core
         {
             this.Focused += Entry_Focused;
 
-            FontFamily = (string)Resources["EntryFont"];
-            FontSize = (double)Resources["EntryFontSize"];
-            BackgroundColor = (Color)Resources["EditControlBackground"];
-            TextColor = (Color)Resources["EditControlText"];
+            FontFamily = ResourceSupport.GetString("EntryFont");
+            FontSize = ResourceSupport.GetNumber("EntryFontSize");
+            BackgroundColor = ResourceSupport.GetColor("EditControlBackground");
+            TextColor = ResourceSupport.GetColor("EditControlText");
 
             if (Device.RuntimePlatform == Device.Android)
             {
@@ -38,10 +39,10 @@ namespace LagoVista.XPlat.Core
         {
             this.Focused += Entry_Focused;
 
-            FontFamily = (string)Resources["EntryFont"];
-            FontSize = (double)Resources["EntryFontSize"];
-            BackgroundColor = (Color)Resources["EditControlBackground"];
-            TextColor = (Color)Resources["EditControlText"];
+            FontFamily = ResourceSupport.GetString("EntryFont");
+            FontSize = ResourceSupport.GetNumber("EntryFontSize");
+            BackgroundColor = ResourceSupport.GetColor("EditControlBackground");
+            TextColor = ResourceSupport.GetColor("EditControlText");
 
             if (Device.RuntimePlatform == Device.Android)
             {

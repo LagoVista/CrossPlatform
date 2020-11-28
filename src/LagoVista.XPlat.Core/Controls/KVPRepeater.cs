@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using LagoVista.XPlat.Core.Services;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using Xamarin.Forms;
@@ -9,15 +10,8 @@ namespace LagoVista.XPlat.Core
     {
         public KVPRepeater()
         {
-            if(Resources.ContainsKey("LabelContent"))
-            {
-                LabelStyle = Resources["LabelContent"] as Style;
-            }
-
-            if(Resources.ContainsKey("ValueContent"))
-            {
-                ValueStyle = Resources["ValueContent"] as Style;
-            }
+                LabelStyle = ResourceSupport.GetStyle("LabelContent");
+                ValueStyle = ResourceSupport.GetStyle("ValueContent");
         }
 
         public static BindableProperty LabelStyleProperty = BindableProperty.Create(propertyName: nameof(LabelStyle), returnType: typeof(Style),

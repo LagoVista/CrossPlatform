@@ -1,4 +1,5 @@
-﻿using Xamarin.Forms;
+﻿using LagoVista.XPlat.Core.Services;
+using Xamarin.Forms;
 
 namespace LagoVista.XPlat.Core.Controls.FormControls
 {
@@ -6,13 +7,13 @@ namespace LagoVista.XPlat.Core.Controls.FormControls
     {
         public FormFieldValidationMessage() : base()
         {
-            TextColor = Color.Red;
+            TextColor = ResourceSupport.GetColor("InvalidColor");
             IsVisible = false;
         }
 
         public FormFieldValidationMessage(string value) : base()
         {
-            TextColor = Color.Red;
+            TextColor = ResourceSupport.GetColor("InvalidColor");
             IsVisible = false;
             Text = value;
         }

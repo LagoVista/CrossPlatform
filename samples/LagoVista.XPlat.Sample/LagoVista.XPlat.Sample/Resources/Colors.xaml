@@ -1,21 +1,16 @@
 ﻿<ResourceDictionary 
     xmlns="http://xamarin.com/schemas/2014/forms"
-    xmlns:pge="clr-namespace:LagoVista.XPlat.Core;assembly=LagoVista.XPlat.Core"
-    xmlns:cvts="clr-namespace:LagoVista.XPlat.Core.ValueConverter;assembly=LagoVista.XPlat.Core"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" >
-    
   
-    <Color x:Key="TitleBarBackground">#FFF0F0</Color>
-    <Color x:Key="NuvIoTDark">#FF00FF</Color>
-
-
-    <Color x:Key="TitleBarText">#000FFF</Color>
-    <Color x:Key="PageBackground">#CCCC</Color>
-    <Color x:Key="PageText" >#FFFF00</Color>
-    <Color x:Key="PageTextHighlighted">#FFF00</Color>
-    <Color x:Key="NavIconColor">Green</Color>
-    <Color x:Key="InvalidColor">Red</Color>
-    <Color x:Key="DangerColor">Red</Color>
+    <Color x:Key="TitleBarBackground">#333</Color>
+    
+    <Color x:Key="TitleBarText">#FFF</Color>
+    <Color x:Key="PageBackground">#555</Color>
+    <Color x:Key="PageText" >#CCC</Color>
+    <Color x:Key="PageTextHighlighted">#EEE</Color>
+    <Color x:Key="NavIconColor">#00FF00</Color>
+    <Color x:Key="InvalidColor">#F00</Color>
+    <Color x:Key="DangerColor">#F00</Color>
     
     <Color x:Key="EditControlBackground" >#FFFF00</Color>
     <Color x:Key="EditControlText" >#FFFF00</Color>  
@@ -53,12 +48,13 @@
 
     <Color x:Key="RowSeperator" >#FFFF00</Color>
 
-    <Color x:Key="ListItemLabelColor" >#FFFF00</Color>
+    <Color x:Key="ListItemBackgroundColor" >#333</Color>
+    <Color x:Key="ListItemLabelColor" >#000FFF</Color>
     <Color x:Key="ListItemDetailColor" >#FFFF00</Color>
-    <Color x:Key="ListItemIconColor">#F0000F</Color>
+    <Color x:Key="ListItemIconColor">#000FFF</Color>
     <x:String x:Key="ListItemFont">Arial</x:String>
     <x:String x:Key="ListItemDetailFont">Arial</x:String>
-    <x:Double x:Key="LiteItemFontSize">20</x:Double>
+    <x:Double x:Key="ListItemFontSize">36</x:Double>
     <x:Double x:Key="LiteItemDetailSize">12</x:Double>
 
     <Color x:Key="LabelText" >#FF0000</Color>
@@ -74,4 +70,5 @@
     <x:Double x:Key="EntryFontSize">12</x:Double>
     <x:Double x:Key="PageFontSize">12</x:Double>
     <x:Double x:Key="MenuFontSize">18</x:Double>
+    <x:Double x:Key="ButtonFontSize">18</x:Double>
 </ResourceDictionary>

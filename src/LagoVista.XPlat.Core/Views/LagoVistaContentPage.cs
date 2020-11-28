@@ -10,7 +10,9 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
+using System.Linq;
 using Color = Xamarin.Forms.Color;
+using LagoVista.XPlat.Core.Services;
 
 namespace LagoVista.XPlat.Core
 {
@@ -44,8 +46,6 @@ namespace LagoVista.XPlat.Core
         {
             Xamarin.Forms.NavigationPage.SetHasNavigationBar(this, false);
 
-            Resources = Application.Current.Resources;
-
             /*
              * The Page top level consists of a grid, to add additional faeture on top fo the grid such as loading window
              * and a slide out menu, we attach the actual content to the property MainContent, rather than just to the page.
@@ -60,8 +60,7 @@ namespace LagoVista.XPlat.Core
 
             // On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
 
-
-            this.BackgroundColor = (Color)Resources["TitleBarBackground"];
+            this.BackgroundColor = ResourceSupport.GetColor("PageBackground");
 
             CreateActivityIndicator();
             CreateMenu();
@@ -150,7 +149,7 @@ namespace LagoVista.XPlat.Core
             _menu.MenuItemTapped += _menu_MenuItemTapped;
             _menu.IsVisible = false;
             _menu.TranslationX = -MENU_WIDTH;
-            _menu.BackgroundColor = (Color)Resources["MenuBarBackground"];
+            _menu.BackgroundColor = ResourceSupport.GetColor("MenuBarBackground");
             _menu.WidthRequest = MENU_WIDTH;
             _menu.HorizontalOptions = LayoutOptions.Start;
             _menu.SetValue(Grid.RowProperty, 1);
@@ -188,13 +187,13 @@ namespace LagoVista.XPlat.Core
             _toolBar.ColumnDefinitions.Add(new ColumnDefinition() { Width = new GridLength(1, GridUnitType.Star) });
             _toolBar.ColumnDefinitions.Add(new ColumnDefinition() { Width = new GridLength(1, GridUnitType.Auto) });
             _toolBar.ColumnDefinitions.Add(new ColumnDefinition() { Width = new GridLength(1, GridUnitType.Auto) });
-            _toolBar.BackgroundColor = (Color)Resources["TitleBarBackground"];
+            _toolBar.BackgroundColor = ResourceSupport.GetColor("TitleBarBackground");
 
             _title = new Label();
             _title.SetValue(Grid.ColumnSpanProperty, 4);
-            _title.TextColor = (Color)Resources["TitleBarText"];
-            _title.FontSize = (double)Resources["HeaderFontSize"];
-            _title.FontFamily = (string)Resources["HeaderFont"];
+            _title.TextColor = ResourceSupport.GetColor("TitleBarText");
+            _title.FontSize = ResourceSupport.GetNumber("HeaderFontSize");
+            _title.FontFamily = ResourceSupport.GetString("HeaderFont");
             _title.FontAttributes = FontAttributes.Bold;
 
             _title.VerticalOptions = new LayoutOptions(LayoutAlignment.Center, false);
@@ -359,7 +358,7 @@ namespace LagoVista.XPlat.Core
                 }
 
                 _contentGrid.RowDefinitions.Add(new RowDefinition() { Height = new GridLength(1, GridUnitType.Star) });
-                _contentGrid.BackgroundColor = (Color)Resources["TitleBarBackground"];
+                _contentGrid.BackgroundColor = ResourceSupport.GetColor("TitleBarBackground");
 
                 Content = _contentGrid;
 
@@ -372,7 +371,7 @@ namespace LagoVista.XPlat.Core
                 }
                 else
                 {
-                    _mainContent.BackgroundColor = (Color)Resources["PageBackground"];
+                    _mainContent.BackgroundColor = ResourceSupport.GetColor("PageBackground");
                 }
 
                 _contentGrid.Children.Add(_mainContent);
@@ -419,7 +418,7 @@ namespace LagoVista.XPlat.Core
                 _contentGrid.RowDefinitions.Add(new RowDefinition() { Height = new GridLength(1, GridUnitType.Star) });
                 _contentGrid.RowDefinitions.Add(new RowDefinition() { Height = new GridLength(1, GridUnitType.Auto) });
 
-                _contentGrid.BackgroundColor = (Color)Resources["TitleBarBackground"];
+                _contentGrid.BackgroundColor = ResourceSupport.GetColor("TitleBarBackground");
 
                 Content = _contentGrid;
 
@@ -432,7 +431,7 @@ namespace LagoVista.XPlat.Core
                 }
                 else
                 {
-                    _tabbedContent.BackgroundColor = (Color)Resources["PageBackground"];
+                    _tabbedContent.BackgroundColor = ResourceSupport.GetColor("PageBackground");
                 }
 
                 _contentGrid.BackgroundColor = _tabbedContent.BackgroundColor;
