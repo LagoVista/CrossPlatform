@@ -22,6 +22,7 @@ namespace LagoVista.XPlat.Sample
 {
     public partial class App : Xamarin.Forms.Application
     {
+
         public static App Instance { get; private set;}
 
         public App()

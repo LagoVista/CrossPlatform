@@ -15,12 +15,6 @@
 
         <DataTemplate x:Key="DeviceDescriptor">
             <Grid Width="180" Height="180" d:DataContext="{StaticResource PnPDeviceSampleData}" >
-                <Grid.Resources>
-                    <Style TargetType="TextBlock" >
-                        <Setter Property="Foreground" Value="WHite" />
-                        <Setter Property="Margin" Value="4" />
-                    </Style>
-                </Grid.Resources>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="auto" />
                     <RowDefinition Height="auto" />
@@ -38,7 +32,7 @@
         </DataTemplate>
     </lgv:LagoVistaPage.Resources>
 
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"  d:DataContext="{StaticResource PnPDeviceSampleData}" >
+    <Grid d:DataContext="{StaticResource PnPDeviceSampleData}" >
         <GridView ItemsSource="{Binding Path=Devices}" ItemTemplate="{StaticResource DeviceDescriptor}" />
     </Grid>
 </lgv:LagoVistaPage>

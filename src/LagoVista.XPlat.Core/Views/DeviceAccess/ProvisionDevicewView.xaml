@@ -28,17 +28,17 @@
                         <ColumnDefinition Width="120" />
                         <ColumnDefinition Width="120" />
                     </Grid.ColumnDefinitions>
-                    <pge:Label Text="{trs:ClientTranslate Provision_DeviceType}"  TextColor="{StaticResource NuvIoTBlack}"  FontAttributes="Bold" Grid.Row="0" Grid.Column="1" />
-                    <pge:Label Text="{Binding Platform}"  TextColor="{StaticResource NuvIoTBlack}"  FontAttributes="Bold" Grid.Row="0" Grid.Column="2" />
+                    <pge:Label Text="{trs:ClientTranslate Provision_DeviceType}" Grid.Row="0" Grid.Column="1" />
+                    <pge:Label Text="{Binding Platform}" Grid.Row="0" Grid.Column="2" />
 
-                    <pge:Label Text="{trs:ClientTranslate Provision_Firmware_SKU}"  TextColor="{StaticResource NuvIoTBlack}"  FontAttributes="Bold" Grid.Row="1" Grid.Column="1" />
-                    <pge:Label Text="{Binding FirmwareSKU}"  TextColor="{StaticResource NuvIoTBlack}"  FontAttributes="Bold" Grid.Row="1" Grid.Column="2" />
+                    <pge:Label Text="{trs:ClientTranslate Provision_Firmware_SKU}" Grid.Row="1" Grid.Column="1" />
+                    <pge:Label Text="{Binding FirmwareSKU}" Grid.Row="1" Grid.Column="2" />
 
-                    <pge:Label Text="{trs:ClientTranslate Provision_Firmware_Version}"  TextColor="{StaticResource NuvIoTBlack}"  FontAttributes="Bold" Grid.Row="2" Grid.Column="1" />
-                    <pge:Label Text="{Binding FirmwareVersion}"  TextColor="{StaticResource NuvIoTBlack}"  FontAttributes="Bold" Grid.Row="2" Grid.Column="2" />
+                    <pge:Label Text="{trs:ClientTranslate Provision_Firmware_Version}" Grid.Row="2" Grid.Column="1" />
+                    <pge:Label Text="{Binding FirmwareVersion}" Grid.Row="2" Grid.Column="2" />
 
-                    <pge:Label Text="{trs:ClientTranslate Provision_Hardware_Version}"  TextColor="{StaticResource NuvIoTBlack}"  FontAttributes="Bold" Grid.Row="3" Grid.Column="1" />
-                    <pge:Label Text="{Binding HardwareVersion}"  TextColor="{StaticResource NuvIoTBlack}"  FontAttributes="Bold" Grid.Row="3" Grid.Column="2" />
+                    <pge:Label Text="{trs:ClientTranslate Provision_Hardware_Version}" Grid.Row="3" Grid.Column="1" />
+                    <pge:Label Text="{Binding HardwareVersion}" Grid.Row="3" Grid.Column="2" />
                 </Grid>
                 <StackLayout Grid.Row="1" Grid.ColumnSpan="2">
                     <StackLayout Orientation="Horizontal">
@@ -49,50 +49,50 @@
                     </StackLayout>
                 </StackLayout>
                 <StackLayout Grid.Row="2">
-                    <pge:Label Text="{trs:ClientTranslate Provision_DeviceId}"  TextColor="{StaticResource NuvIoTBlack}"  FontAttributes="Bold" />
+                    <pge:Label Text="{trs:ClientTranslate Provision_DeviceId}" />
                     <pge:Entry Text="{Binding Path=Config.DeviceId, Mode=TwoWay}" />
 
 
-                    <pge:Label Text="{trs:ClientTranslate Provision_VerboseLogging}"  TextColor="{StaticResource NuvIoTBlack}"  FontAttributes="Bold" />
+                    <pge:Label Text="{trs:ClientTranslate Provision_VerboseLogging}" />
                     <CheckBox IsChecked="{Binding Path=Config.VerboseLogging, Mode=TwoWay}" />
 
 
-                    <pge:Label Text="{trs:ClientTranslate Provision_CellEnabled}"  TextColor="{StaticResource NuvIoTBlack}"  FontAttributes="Bold" />
+                    <pge:Label Text="{trs:ClientTranslate Provision_CellEnabled}" />
                     <CheckBox IsChecked="{Binding Path=Config.CellEnabled, Mode=TwoWay}" />
 
 
-                    <pge:Label Text="{trs:ClientTranslate Provision_WiFiEnabled}"  TextColor="{StaticResource NuvIoTBlack}"  FontAttributes="Bold" />
+                    <pge:Label Text="{trs:ClientTranslate Provision_WiFiEnabled}" />
                     <CheckBox IsChecked="{Binding Path=Config.WiFiEnabled, Mode=TwoWay}" />
 
-                    <pge:Label Text="{trs:ClientTranslate Provision_WiFi_SSID}"  TextColor="{StaticResource NuvIoTBlack}"  FontAttributes="Bold" />
+                    <pge:Label Text="{trs:ClientTranslate Provision_WiFi_SSID}" />
                     <pge:Entry Text="{Binding Path=Config.WiFiSSID, Mode=TwoWay}" />
 
-                    <pge:Label Text="{trs:ClientTranslate Provision_WiFi_Pwd}"  TextColor="{StaticResource NuvIoTBlack}"  FontAttributes="Bold" />
+                    <pge:Label Text="{trs:ClientTranslate Provision_WiFi_Pwd}" />
                     <pge:Entry Text="{Binding Path=Config.WiFiPWD, Mode=TwoWay}" />
                 </StackLayout>
                 <StackLayout Grid.Row="2" Grid.Column="1">
-                    <pge:Label Text="{trs:ClientTranslate Provision_Server_Host}"  TextColor="{StaticResource NuvIoTBlack}"  FontAttributes="Bold" />
+                    <pge:Label Text="{trs:ClientTranslate Provision_Server_Host}" />
                     <pge:Entry Text="{Binding Path=Config.SrvrHostName, Mode=TwoWay}" />
 
-                    <pge:Label Text="{trs:ClientTranslate Provision_Server_Anonymous}"  TextColor="{StaticResource NuvIoTBlack}"  FontAttributes="Bold" />
+                    <pge:Label Text="{trs:ClientTranslate Provision_Server_Anonymous}" />
                     <CheckBox IsChecked="{Binding Path=Config.Anonymous, Mode=TwoWay}" />
 
-                    <pge:Label Text="{trs:ClientTranslate Provision_Server_UserId}"  TextColor="{StaticResource NuvIoTBlack}"  FontAttributes="Bold" IsVisible="{Binding !Config.ServerAnonymous}" />
+                    <pge:Label Text="{trs:ClientTranslate Provision_Server_UserId}" IsVisible="{Binding !Config.ServerAnonymous}" />
                     <pge:Entry Text="{Binding Path=Config.SrvrUID, Mode=TwoWay}" />
 
-                    <pge:Label Text="{trs:ClientTranslate Provision_Server_Password}"  TextColor="{StaticResource NuvIoTBlack}"  FontAttributes="Bold" IsVisible="{Binding !Config.ServerAnonymous}" />
+                    <pge:Label Text="{trs:ClientTranslate Provision_Server_Password}" IsVisible="{Binding !Config.ServerAnonymous}" />
                     <pge:Entry Text="{Binding Path=Config.SrvrPWD, Mode=TwoWay}"  Margin="0,0,0,20"/>
 
-                    <pge:Label Text="{trs:ClientTranslate Provision_GPSEnabled}"  TextColor="{StaticResource NuvIoTBlack}"  FontAttributes="Bold" />
+                    <pge:Label Text="{trs:ClientTranslate Provision_GPSEnabled}" />
                     <CheckBox IsChecked="{Binding Path=Config.GPSEnabled, Mode=TwoWay}" />
 
-                    <pge:Label Text="{trs:ClientTranslate Provision_GPSUpdateRate}"  TextColor="{StaticResource NuvIoTBlack}"  FontAttributes="Bold" />
+                    <pge:Label Text="{trs:ClientTranslate Provision_GPSUpdateRate}" />
                     <pge:Entry Text="{Binding Path=Config.GPSUpdateRate, Mode=TwoWay}" />
 
-                    <pge:Label Text="{trs:ClientTranslate Provision_PingUpdateRate}"  TextColor="{StaticResource NuvIoTBlack}"  FontAttributes="Bold" />
+                    <pge:Label Text="{trs:ClientTranslate Provision_PingUpdateRate}" />
                     <pge:Entry Text="{Binding Path=Config.PingRate, Mode=TwoWay}" />
 
-                    <pge:Label Text="{trs:ClientTranslate Provision_SrvrUpdateRate}"  TextColor="{StaticResource NuvIoTBlack}"  FontAttributes="Bold" />
+                    <pge:Label Text="{trs:ClientTranslate Provision_SrvrUpdateRate}" />
                     <pge:Entry Text="{Binding Path=Config.SendUpdateRate, Mode=TwoWay}" />
                 </StackLayout>
             </Grid>
