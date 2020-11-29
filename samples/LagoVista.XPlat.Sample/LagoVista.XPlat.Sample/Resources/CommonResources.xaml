@@ -5,13 +5,13 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" >
 
     <Style x:Key="LabelContent" TargetType="pge:Label">
-        <Setter Property="TextColor" Value="{StaticResource LabelText}" />
+        <Setter Property="TextColor" Value="{DynamicResource LabelText}" />
         <Setter Property="FontSize" Value="Small" />
         <Setter Property="FontAttributes" Value="Bold" />
     </Style>
 
     <Style x:Key="ValueContent" TargetType="pge:Label">
-        <Setter Property="TextColor" Value="{StaticResource PageText}" />
+        <Setter Property="TextColor" Value="{DynamicResource PageText}" />
         <Setter Property="FontSize" Value="Small" />
     </Style>
 

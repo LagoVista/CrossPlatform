@@ -16,6 +16,7 @@ namespace LagoVista.XPlat.Core
 
             FontFamily = ResourceSupport.GetString("EntryFont");
             FontSize = ResourceSupport.GetNumber("EntryFontSize");
+            PlaceholderColor = ResourceSupport.GetColor("EntryPlaceholderColor");
             BackgroundColor = ResourceSupport.GetColor("EditControlBackground");
             TextColor = ResourceSupport.GetColor("EditControlText");
 
@@ -41,6 +42,7 @@ namespace LagoVista.XPlat.Core
 
             FontFamily = ResourceSupport.GetString("EntryFont");
             FontSize = ResourceSupport.GetNumber("EntryFontSize");
+
             BackgroundColor = ResourceSupport.GetColor("EditControlBackground");
             TextColor = ResourceSupport.GetColor("EditControlText");
 

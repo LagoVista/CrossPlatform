@@ -17,6 +17,8 @@ using LagoVista.XPlat.Core.Views;
 using System;
 using LagoVista.XPlat.Sample.Views;
 using LagoVista.XPlat.Sample.ViewModels;
+using Xamarin.Forms;
+using System.Diagnostics;
 
 namespace LagoVista.XPlat.Sample
 {
@@ -32,7 +34,6 @@ namespace LagoVista.XPlat.Sample
             InitServices();
 
             Xamarin.Forms.Application.Current.On<Xamarin.Forms.PlatformConfiguration.Android>().UseWindowSoftInputModeAdjust(WindowSoftInputModeAdjust.Resize);
-
         }
 
         public void HandleURIActivation(Uri uri)
@@ -95,6 +96,12 @@ namespace LagoVista.XPlat.Sample
                 MainViewModel = typeof(HomeViewModel)
             };
 
+            //var dark = new LagoVista.Colors.ThemeDark();
+            //Resources.MergedDictionaries.Add(dark);
+
+            //Device.SetFlags(new string[] { "AppTheme_Experimental" });
+            App.Current.RequestedThemeChanged += Current_RequestedThemeChanged;
+            Debug.WriteLine("APP THEME: " + App.Current.UserAppTheme);
             DeviceInfo.Register();
 
             var appConfig = new AppConfig();
@@ -133,6 +140,11 @@ namespace LagoVista.XPlat.Sample
             }
 
             navigation.Start<SplashViewModel>();
+        }
+
+        private void Current_RequestedThemeChanged(object sender, AppThemeChangedEventArgs e)
+        {
+            Debug.WriteLine("APP THEME CHANGED: " + e.RequestedTheme);
         }
 
         protected override void OnStart()

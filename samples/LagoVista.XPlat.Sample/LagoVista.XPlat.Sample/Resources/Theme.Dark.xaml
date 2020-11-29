@@ -1,0 +1,56 @@
+﻿<ResourceDictionary 
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" >
+  
+    <Color x:Key="TitleBarBackground">#333</Color>
+    <Color x:Key="TitleBarText">#CCC</Color>
+
+    <Color x:Key="HiglightColor" >#D48D17</Color>
+
+    <Color x:Key="PageBackground">#555</Color>
+    <Color x:Key="PageText"  >#CCC</Color>
+    <Color x:Key="PageTextHighlighted">#FFF</Color>
+    <Color x:Key="NavIconColor">#AAA</Color>
+    <Color x:Key="InvalidColor">#F00</Color>
+    <Color x:Key="DangerColor">#F00</Color>
+    <Color x:Key="LabelText" >#CCC</Color>
+
+    <Color x:Key="EditControlBackground" >#575757</Color>
+    <Color x:Key="EditControlText" >#EEE</Color>
+    <Color x:Key="EntryPlaceholderColor">#AAA</Color>
+    <Color x:Key="EditControlFrame" >#FFFF00</Color>
+    <Color x:Key="EditControlFrameFocus" >#FFFF00</Color>
+    <Color x:Key="EditControlFrameInvalid" >#FFFF00</Color>
+
+    <Color x:Key="MenuBarBackground" >#333</Color>
+    <Color x:Key="MenuBarForeground" >#CCC</Color>
+    <Color x:Key="MenuBarTitle" >#AAA</Color>
+    <Color x:Key="MenuIconColor">#D48D17</Color>
+    <Color x:Key="MenuBarBackgroundActive" >#FFFF00</Color>
+    <Color x:Key="MenuBarForegroundActive" >#FFFF00</Color>
+    <Color x:Key="MenuBarBackgroundDisabled" >#FFFF00</Color>
+    <Color x:Key="MenuBarForegroundDisabled" >#FFFF00</Color>
+    <Color x:Key="MenuIconColorActive">#FF00FF</Color>
+
+    <Color x:Key="ButtonBackground" >#333</Color>
+    <Color x:Key="ButtonForeground" >#AAA</Color>
+    <Color x:Key="ButtonBorder" >#555</Color>
+
+    <Color x:Key="ButtonBackgroundActive" >#555</Color>
+    <Color x:Key="ButtonForegroundActive" >#CCC</Color>
+    <Color x:Key="ButtonBorderActive" >#777</Color>
+
+    <Color x:Key="TabBarBackground" >#FFFF00</Color>
+    <Color x:Key="TabBarForeground" >#FFFF00</Color>
+    <Color x:Key="TabBarBackgroundActive" >#FFFF00</Color>
+    <Color x:Key="TabBarForegroundActive" >#FFFF00</Color>
+
+    <Color x:Key="RowSeperator" >#FFFF00</Color>
+
+    <Color x:Key="ListItemBackgroundColor" >#4C4C4C</Color>
+    <Color x:Key="ListItemLabelColor" >#CCC</Color>
+    <Color x:Key="ListItemDetailColor" >#AAA</Color>
+    <Color x:Key="ListItemIconColor">#D48D17</Color>
+
+  
+</ResourceDictionary>

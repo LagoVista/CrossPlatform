@@ -5,45 +5,53 @@
     xmlns:local="using:LagoVista.XPlat.Sample.UWP"
     RequestedTheme="Light">
     <Application.Resources>
+    
         <ResourceDictionary>
-            <ResourceDictionary.ThemeDictionaries>
-                <ResourceDictionary x:Key="Light">
+            <ResourceDictionary.MergedDictionaries>
+               <!-- <ResourceDictionary Source="Resources/ButtonStyle.xaml" />
+                <ResourceDictionary Source="Resources/EditTextStyle.xaml" />-->
+                
+                <ResourceDictionary >
                     <SolidColorBrush x:Key="SystemControlHighlightBaseMediumLowBrush" Color="White" />
                     <SolidColorBrush x:Key="SystemControlHighlightBaseHighBrush" Color="White" />
+                    <SolidColorBrush x:Key="SystemControlHighlightAccentBrush" Color="Pink" />
+                    
+                    
+                    
+                    <!-- List Item BG Colors -->
+                    <!-- https://github.com/xamarin/Xamarin.Forms/blob/0c95d0976cc089fe72476fb037851a64987de83c/Xamarin.Forms.Platform.UAP/Resources.xaml -->
+                    <!-- Mouse Down, Selected BG -->
+                    <SolidColorBrush x:Key="SystemControlHighlightListAccentHighBrush" Color="Green" />
+                    
+                    <!-- Selected BG-->
+                    <SolidColorBrush x:Key="SystemControlHighlightListAccentMediumBrush" Color="Blue" />
+
+                    <!-- Hover Selected BG-->
+                    <SolidColorBrush x:Key="SystemControlHighlightListAccentLowBrush" Color="Red" />
+                    
+                    <!-- Hover BG -->
+                    <SolidColorBrush x:Key="SystemControlHighlightListLowBrush" Color="Tan" />
+                    
+                    <!-- Click BG -->
+                    <SolidColorBrush x:Key="SystemControlHighlightListMediumBrush" Color="Orange" />
+            
+                    <SolidColorBrush x:Key="BackgroundFocusBrush" Color="#CCC" />
+                    <SolidColorBrush x:Key="PlaceholderForegroundFocusBrush" >#666</SolidColorBrush>
+                    <SolidColorBrush x:Key="ForegroundFocusBrush" >#222</SolidColorBrush>
+                    
+
                     <SolidColorBrush x:Key="SystemAccentColorLight3" Color="Green"/>
                     <SolidColorBrush x:Key="SystemAccentColorDark2" Color="Red"/>
-                    <SolidColorBrush x:Key="ButtonForegroundPointerOver" Color="Red"/>
-                    <SolidColorBrush x:Key="ButtonBackgroundPointerOver" Color="Black"/>
+
+                    <SolidColorBrush x:Key="ButtonBorderBrushMediumBrush" Color="Red"/>
+                    <SolidColorBrush x:Key="ButtonBackgroundMediumBrush" Color="Orange" />
+                    <SolidColorBrush x:Key="ButtonForegroundMediumBrush" Color="White" />
+
                     <SolidColorBrush x:Key="ButtonBackground" Color="Transparent"/>
                     <SolidColorBrush x:Key="ButtonForeground" Color="MediumSlateBlue"/>
                     <SolidColorBrush x:Key="ButtonBorderBrush" Color="MediumSlateBlue"/>
-                    <Style TargetType="Button">
-                        <Setter Property="Background" Value="Azure" />
-                        <Setter Property="Foreground" Value="Yellow" />
-                    </Style>
-                    <ControlTemplate x:Key="DefaultButtonControlTemplate" TargetType="Button">
-                        <Grid x:Name="RootGrid" Background="{TemplateBinding Background}">
-                            <VisualStateManager.VisualStateGroups>
-                                <VisualStateGroup x:Name="CommonStates">
-                                    <VisualState x:Name="PointerOver"/>
-                                </VisualStateGroup>
-                            </VisualStateManager.VisualStateGroups>
-                            <ContentPresenter 
-                                x:Name="ContentPresenter" 
-                                AutomationProperties.AccessibilityView="Raw" 
-                                BorderBrush="{TemplateBinding BorderBrush}" 
-                                BorderThickness="{TemplateBinding BorderThickness}"
-                                ContentTemplate="{TemplateBinding ContentTemplate}" 
-                                ContentTransitions="{TemplateBinding ContentTransitions}" 
-                                Content="{TemplateBinding Content}" 
-                                HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}" 
-                                Padding="{TemplateBinding Padding}" 
-                                VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}" 
-                                TextWrapping="WrapWholeWords"/>
-                           </Grid>
-                    </ControlTemplate>
                 </ResourceDictionary>
-            </ResourceDictionary.ThemeDictionaries>
+            </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>
 </Application>

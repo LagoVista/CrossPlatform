@@ -22,19 +22,19 @@
             <pge:Image FileName="{Binding AppConfig.AppLogo}" UWPPath="Assets" Grid.Column="1" />
             <ScrollView Grid.Row="1" Grid.Column="1">
                 <StackLayout  >
-                    <pge:Label Text="{Binding InviteUserHelpMessage}" TextColor="{StaticResource NuvIoTBlack}"  Margin="0,0,0,20" />
+                    <pge:Label Text="{Binding InviteUserHelpMessage}" Margin="0,0,0,20" />
 
-                    <pge:Label Text="{ext:ClientTranslate InviteUser_Name}" TextColor="{StaticResource NuvIoTBlack}" FontAttributes="Bold"  />
+                    <pge:Label Text="{ext:ClientTranslate InviteUser_Name}" FontAttributes="Bold"  />
                     <pge:Entry Text="{Binding Model.Name, Mode=TwoWay}" Placeholder="{ext:ClientTranslate InviteUser_Name_Watermark}" Keyboard="Plain" />
 
-                    <pge:Label Text="{ext:ClientTranslate InviteUser_Email}" TextColor="{StaticResource NuvIoTBlack}" FontAttributes="Bold"  />
+                    <pge:Label Text="{ext:ClientTranslate InviteUser_Email}" />
                     <pge:Entry Text="{Binding Model.Email, Mode=TwoWay}" Placeholder="{ext:ClientTranslate InviteUser_Email_Watermark}" Keyboard="Email"  />
 
-                    <pge:Label Text="{ext:ClientTranslate InviteUser_Message}" TextColor="{StaticResource NuvIoTBlack}" FontAttributes="Bold" />
+                    <pge:Label Text="{ext:ClientTranslate InviteUser_Message}" />
                     <Editor Text="{Binding Model.Message, Mode=TwoWay}" Keyboard="Plain" HeightRequest="120" Margin="0,0,0,20" />
 
                     <pge:Button Command="{Binding InviteUserCommand}" Text="{ext:ClientTranslate InviteUser_Submit}" HeightRequest="48" />
-                    <pge:HyperLinkLabel NavigateCommand="{Binding CancelCommand}" Text="{ext:ClientTranslate Common_Cancel}" TextColor="{StaticResource NuvIoTDark}" FontSize="Small" Margin="0,15,0,0"  />
+                    <pge:HyperLinkLabel NavigateCommand="{Binding CancelCommand}" Text="{ext:ClientTranslate Common_Cancel}" Margin="0,15,0,0"  />
                 </StackLayout>
             </ScrollView>
         </Grid>

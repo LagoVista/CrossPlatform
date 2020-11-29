@@ -25,8 +25,8 @@ namespace LagoVista.XPlat.Core.Controls.Common
             _icon.HorizontalOptions = new LayoutOptions(LayoutAlignment.Center, false);
             _icon.VerticalOptions = new LayoutOptions(LayoutAlignment.Center, false);
             _icon.FontSize = ResourceSupport.GetNumber( "MenuFontSize");
-            _icon.Margin = new Thickness(8, 4, 0, 0);
             _icon.TextColor = ResourceSupport.GetColor("MenuIconColor");
+            _icon.Margin = new Thickness(8, 4, 0, 0);
             _icon.IconKey = menuItem.FontIconKey;
             _menuItem = menuItem;
 
@@ -38,8 +38,8 @@ namespace LagoVista.XPlat.Core.Controls.Common
             _menuText = new Label();
             _menuText.VerticalOptions = new LayoutOptions(LayoutAlignment.Center, false);
             _menuText.FontSize = ResourceSupport.GetNumber("MenuFontSize");
+            _menuText.TextColor = ResourceSupport.GetColor("MenuBarForeground");
             _menuText.FontFamily = ResourceSupport.GetString("MenuFont");
-            _menuText.TextColor = ResourceSupport.GetColor("MenuFontColor");
             _menuText.SetValue(Grid.ColumnProperty, 1);
             _menuText.Text = menuItem.Name;
 

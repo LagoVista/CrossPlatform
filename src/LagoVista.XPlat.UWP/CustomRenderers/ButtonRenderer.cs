@@ -1,5 +1,6 @@
 ﻿using LagoVista.XPlat.Core;
 using LagoVista.XPlat.UWP.CustomRenderers;
+using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Xamarin.Forms.Platform.UWP;
 
@@ -14,8 +15,8 @@ namespace LagoVista.XPlat.UWP.CustomRenderers
             if (Control != null)
             {
                 Control button = Control;
-                var template = Windows.UI.Xaml.Application.Current.Resources["DefaultButtonControlTemplate"] as ControlTemplate;
-                button.Template = template;
+           //     var template = Windows.UI.Xaml.Application.Current.Resources["DefaultButtonStyle"] as Style;
+           //     button.Style = template;
             }
 
         }

@@ -22,7 +22,7 @@ namespace LagoVista.XPlat.Core.Controls.Common
                 HorizontalOptions = new LayoutOptions(LayoutAlignment.Center, false),
                 VerticalOptions = new LayoutOptions(LayoutAlignment.Center, false),
                 FontSize = ResourceSupport.GetNumber("ListItemFontSize"),
-                TextColor = ResourceSupport.GetColor("ListItemLabelColor"),
+                TextColor = ResourceSupport.GetColor("ListItemIconColor"),
             };
             _icon.SetValue(Grid.ColumnProperty, 0);
             _icon.SetValue(Grid.RowSpanProperty, 2);
@@ -31,7 +31,7 @@ namespace LagoVista.XPlat.Core.Controls.Common
             {
                 VerticalOptions = new LayoutOptions(LayoutAlignment.Center, false),
                 FontSize = ResourceSupport.GetNumber("ListItemFontSize"),
-                TextColor = ResourceSupport.GetColor("ListItemIconColor"),
+                TextColor = ResourceSupport.GetColor("ListItemLabelColor"),
                 FontFamily = ResourceSupport.GetString("ListItemFont"),
             };
             _text.SetValue(Grid.ColumnProperty, 1);

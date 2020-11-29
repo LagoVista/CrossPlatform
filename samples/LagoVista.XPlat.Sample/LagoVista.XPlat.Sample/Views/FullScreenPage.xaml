@@ -7,7 +7,7 @@
      x:Class="LagoVista.XPlat.Sample.Views.FullScreenPage">
     <pge:LagoVistaContentPage.MainContent>
         <ScrollView>
-            <Grid  BackgroundColor="{StaticResource NuvIoTMedium}" >
+            <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="auto" />
                     <RowDefinition Height="auto" />
