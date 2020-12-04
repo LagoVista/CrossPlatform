@@ -107,6 +107,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="CustomRenderers\ButtonRenderer.cs" />
+    <Compile Include="CustomRenderers\ComboBoxRenderer.cs" />
     <Compile Include="CustomRenderers\HyperLinkLabelRenderer.cs" />
     <Compile Include="CustomRenderers\SwitchRenderer.cs" />
     <Compile Include="CustomRenderers\TextBoxRenderer.cs" />

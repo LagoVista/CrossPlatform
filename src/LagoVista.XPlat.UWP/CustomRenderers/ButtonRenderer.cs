@@ -18,7 +18,6 @@ namespace LagoVista.XPlat.UWP.CustomRenderers
                 var template = Windows.UI.Xaml.Application.Current.Resources["LGVDefaultButtonStyle"] as Style;
                 button.Style = template;
             }
-
         }
     }
 }

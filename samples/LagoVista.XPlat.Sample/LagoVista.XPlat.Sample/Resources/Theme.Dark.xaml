@@ -16,13 +16,13 @@
     <Color x:Key="DangerColor">#F00</Color>
     <Color x:Key="LabelText" >#CCC</Color>
 
-    <Color x:Key="LinkColor">#00FF00</Color>
-    <Color x:Key="LinkActive">#00FFFF</Color>
-    <Color x:Key="LinkDisabled">#00FF00</Color>
+    <Color x:Key="LinkColor">#3CA4FF</Color>
+    <Color x:Key="LinkActive">#1C84FF</Color>
+    <Color x:Key="LinkDisabled">#888</Color>
 
     <Color x:Key="EditControlBackground" >#777</Color>
     <Color x:Key="EditControlText" >#EEE</Color>
-    <Color x:Key="EditPlaceholderColor">#AAA</Color>
+    <Color x:Key="EditControlPlaceholder">#AAA</Color>
     <Color x:Key="EditControlFrame" >#FFFF00</Color>
 
     <Color x:Key="EditControlBackgroundFocus" >#EEE</Color>

@@ -42,8 +42,6 @@ namespace LagoVista.XPlat.Core
         /// </summary>
         public HyperLinkLabel()
         {
-            HeightRequest = 48;
-
             NavigateCommand = new Command(() => { });
            
             _tapGestureRecognizer = new TapGestureRecognizer() { Command = NavigateCommand };

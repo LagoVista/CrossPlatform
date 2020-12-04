@@ -5,6 +5,7 @@ namespace LagoVista.XPlat.Core.Resources
 {
     public interface IMobileStyle : IAppStyle
     {
+        Color EditControlPlaceholder { get; }
         Color EditControlFrameDisabled { get; }
         Color EditControlBackgroundDisabled { get; }
         Color EditControlTextDisabled { get; }
