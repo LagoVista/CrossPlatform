@@ -45,12 +45,11 @@ namespace LagoVista.XPlat.Core
             HeightRequest = 48;
 
             NavigateCommand = new Command(() => { });
-
+           
             _tapGestureRecognizer = new TapGestureRecognizer() { Command = NavigateCommand };
 
             GestureRecognizers.Add(_tapGestureRecognizer);
-            TextColor = NamedColors.NuvIoTDark.ToXamFormsColor();
-
+            TextColor = ResourceSupport.GetColor("LinkColor");
             FontFamily = ResourceSupport.GetString("LabelFont");
             FontSize = ResourceSupport.GetNumber("LabelFontSize");
 

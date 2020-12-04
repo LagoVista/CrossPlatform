@@ -2,7 +2,7 @@
 
 namespace LagoVista.XPlat.Core.Services
 {
-    public class ResourceSupport
+    public static class ResourceSupport
     {
         public static Color GetColor(string name)
         {

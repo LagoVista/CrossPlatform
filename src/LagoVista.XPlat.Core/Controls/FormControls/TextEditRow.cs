@@ -12,7 +12,7 @@ namespace LagoVista.XPlat.Core.Controls.FormControls
     {
         FormFieldHeader _header;
         FormFieldValidationMessage _validationMessage;
-        FormEntry _editor;
+        Entry _editor;
 
         Grid _editorContainer;
 
@@ -31,7 +31,7 @@ namespace LagoVista.XPlat.Core.Controls.FormControls
 
             _header = new FormFieldHeader(field.Label);
 
-            _editor = new FormEntry()
+            _editor = new Entry()
             {
                 Text = field.Value,
                 IsEnabled = field.IsUserEditable,

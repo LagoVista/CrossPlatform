@@ -15,12 +15,9 @@ namespace LagoVista.XPlat.Core.Controls.FormControls
         {
             _header = new FormFieldHeader(field.Label);
 
-            _linkLabel = new Label()
+            _linkLabel = new HyperLinkLabel()
             {
-                TextColor = NamedColors.NuvIoTDark.ToXamFormsColor(),
                 Margin = new Thickness(10, 0, 0, 0),
-                FontFamily = ResourceSupport.GetString("LabelFont"),
-                FontSize = ResourceSupport.GetNumber("LabelFontSize")
             };
 
             Children.Add(_header);

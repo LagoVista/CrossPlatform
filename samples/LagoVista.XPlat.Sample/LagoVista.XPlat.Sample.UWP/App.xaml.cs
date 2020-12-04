@@ -1,6 +1,7 @@
 ﻿using LagoVista.Client.Core.Net;
 using LagoVista.Core.IOC;
 using LagoVista.Core.PlatformSupport;
+using LagoVista.XPlat.Core.Resources;
 using LagoVista.XPlat.UWP.Network;
 using System;
 using System.Diagnostics;
@@ -28,7 +29,7 @@ namespace LagoVista.XPlat.Sample.UWP
             this.InitializeComponent();
             this.Suspending += OnSuspending;
 
-
+     
             this.UnhandledException += App_UnhandledException;
         }
 
@@ -82,6 +83,7 @@ namespace LagoVista.XPlat.Sample.UWP
                 rootFrame.NavigationFailed += OnNavigationFailed;                
 
                 Xamarin.Forms.Forms.Init(e);
+
                 SLWIOC.Register<IWebSocket, WebSocket>();
                 LagoVista.Core.UWP.Startup.Init(this, rootFrame.Dispatcher, MOBILE_CENTER_KEY);
 
@@ -104,13 +106,6 @@ namespace LagoVista.XPlat.Sample.UWP
             throw new Exception("Failed to load Page " + e.SourcePageType.FullName);
         }
 
-        /// <summary>
-        /// Invoked when application execution is being suspended.  Application state is saved
-        /// without knowing whether the application will be terminated or resumed with the contents
-        /// of memory still intact.
-        /// </summary>
-        /// <param name="sender">The source of the suspend request.</param>
-        /// <param name="e">Details about the suspend request.</param>
         private void OnSuspending(object sender, SuspendingEventArgs e)
         {
             var deferral = e.SuspendingOperation.GetDeferral();

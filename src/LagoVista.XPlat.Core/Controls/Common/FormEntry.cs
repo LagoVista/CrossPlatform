@@ -31,32 +31,6 @@ namespace LagoVista.XPlat.Core
         }
     }
 
-    /// <summary>
-    /// Form Entry will draw an underline
-    /// </summary>
-    public class FormEntry : Xamarin.Forms.Entry
-    {
-        public FormEntry()
-        {
-            this.Focused += Entry_Focused;
-
-            FontFamily = ResourceSupport.GetString("EntryFont");
-            FontSize = ResourceSupport.GetNumber("EntryFontSize");
-
-            BackgroundColor = ResourceSupport.GetColor("EditControlBackground");
-            TextColor = ResourceSupport.GetColor("EditControlText");
-
-            if (Device.RuntimePlatform == Device.Android)
-            {
-                HeightRequest = 40;
-            }
-        }
-
-        private void Entry_Focused(object sender, Xamarin.Forms.FocusEventArgs e)
-        {
-        }
-    }
-
     public class TextArea : Xamarin.Forms.Editor
     {
         public TextArea()

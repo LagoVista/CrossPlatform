@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Xamarin.Forms;
@@ -13,7 +8,6 @@ using Xamarin.Forms.Platform.UWP;
 
 namespace LagoVista.Xplat.UWP.CustomRenderer
 {
-
     public class LGVSwitchRenderer : ViewRenderer<Switch, ToggleSwitch>
     {
         protected override void OnElementChanged(ElementChangedEventArgs<Switch> e)

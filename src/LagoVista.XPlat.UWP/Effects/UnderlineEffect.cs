@@ -15,9 +15,11 @@ namespace LagoVista.XPlat.UWP.Effects
         {
             try
             {
-                var txtBlock = Control as TextBlock;
-                txtBlock.TextDecorations = Windows.UI.Text.TextDecorations.Underline;
-               
+                if (Control != null)
+                {
+                    var txtBlock = Control as TextBlock;
+                    txtBlock.TextDecorations = Windows.UI.Text.TextDecorations.Underline;
+                }
             }
             catch (Exception ex)
             {
