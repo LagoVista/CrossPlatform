@@ -109,6 +109,7 @@
     <Compile Include="CustomRenderers\ButtonRenderer.cs" />
     <Compile Include="CustomRenderers\ComboBoxRenderer.cs" />
     <Compile Include="CustomRenderers\HyperLinkLabelRenderer.cs" />
+    <Compile Include="CustomRenderers\IconButtonRendereer.cs" />
     <Compile Include="CustomRenderers\SwitchRenderer.cs" />
     <Compile Include="CustomRenderers\TextBoxRenderer.cs" />
     <Compile Include="CustomRenderers\TitleBarButton.cs" />

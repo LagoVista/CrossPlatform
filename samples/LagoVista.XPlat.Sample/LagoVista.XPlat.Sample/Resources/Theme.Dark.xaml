@@ -20,11 +20,18 @@
     <Color x:Key="LinkActive">#1C84FF</Color>
     <Color x:Key="LinkDisabled">#888</Color>
 
+    <Color x:Key="EditControlFrameInvalid" >#F00</Color>
+
     <Color x:Key="EditControlBackground" >#777</Color>
     <Color x:Key="EditControlText" >#EEE</Color>
-    <Color x:Key="EditControlPlaceholder">#AAA</Color>
-    <Color x:Key="EditControlFrame" >#FFFF00</Color>
+    <Color x:Key="EditControlPlaceholder">#CCC</Color>
+    <Color x:Key="EditControlFrame" >#555</Color>
 
+    <Color x:Key="EditControlBackgroundActive" >#999</Color>
+    <Color x:Key="EditControlFrameActive">#777</Color>
+    <Color x:Key="EditControlTextActive" >#EEE</Color>
+    <Color x:Key="EditControlPlaceHolderActive" >#CCC</Color>
+   
     <Color x:Key="EditControlBackgroundFocus" >#EEE</Color>
     <Color x:Key="EditControlTextFocus" >#333</Color>
     <Color x:Key="EditControlPlaceholderFocus">#888</Color>
@@ -34,13 +41,7 @@
     <Color x:Key="EditControlBackgroundDisabled" >#575757</Color>
     <Color x:Key="EditControlTextDisabled" >#575757</Color>
     <Color x:Key="EditControlPlaceHolderDisabled" >#575757</Color>
-
-    <Color x:Key="EditControlFrameActive" >#575757</Color>
-    <Color x:Key="EditControlBackgroundActive" >#575757</Color>
-    <Color x:Key="EditControlTextActive" >#575757</Color>
-    <Color x:Key="EditControlPlaceHolderActive" >#575757</Color>
-
-    <Color x:Key="EditControlFrameInvalid" >#FFFF00</Color>
+    
 
     <Color x:Key="MenuBarBackground" >#333</Color>
     <Color x:Key="MenuBarForeground" >#CCC</Color>
@@ -64,10 +65,10 @@
     <Color x:Key="ButtonForegroundActive" >#CCC</Color>
     <Color x:Key="ButtonBorderActive" >#555</Color>
 
-    <Color x:Key="TabBarBackground" >#FFFF00</Color>
-    <Color x:Key="TabBarForeground" >#FFFF00</Color>
-    <Color x:Key="TabBarBackgroundActive" >#FFFF00</Color>
-    <Color x:Key="TabBarForegroundActive" >#FFFF00</Color>
+    <Color x:Key="TabBarBackground" >#333</Color>
+    <Color x:Key="TabBarForeground" >#D48D17</Color>
+    <Color x:Key="TabBarBackgroundActive" >#555</Color>
+    <Color x:Key="TabBarForegroundActive" >#D48D17</Color>
 
     <Color x:Key="RowSeperatorColor" >#FFFF00</Color>
 

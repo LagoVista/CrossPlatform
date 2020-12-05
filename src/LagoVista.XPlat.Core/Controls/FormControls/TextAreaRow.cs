@@ -15,7 +15,8 @@ namespace LagoVista.XPlat.Core.Controls.FormControls
             _editor = new TextArea()
             {
                 Text = field.Value,
-                HeightRequest = 120
+                HeightRequest = 120,
+                Placeholder = field.Watermark
             };
 
             _editor.TextChanged += _editor_TextChanged;

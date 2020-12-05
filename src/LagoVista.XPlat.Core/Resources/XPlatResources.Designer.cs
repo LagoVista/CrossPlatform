@@ -10,7 +10,6 @@
 
 namespace LagoVista.XPlat.Core.Resources {
     using System;
-    using System.Reflection;
     
     
     /// <summary>
@@ -20,7 +19,7 @@ namespace LagoVista.XPlat.Core.Resources {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     public class XPlatResources {
@@ -40,7 +39,7 @@ namespace LagoVista.XPlat.Core.Resources {
         public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("LagoVista.XPlat.Core.Resources.XPlatResources", typeof(XPlatResources).GetTypeInfo().Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("LagoVista.XPlat.Core.Resources.XPlatResources", typeof(XPlatResources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -67,6 +66,15 @@ namespace LagoVista.XPlat.Core.Resources {
         public static string Common_Add {
             get {
                 return ResourceManager.GetString("Common_Add", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cancel.
+        /// </summary>
+        public static string Common_Cancel {
+            get {
+                return ResourceManager.GetString("Common_Cancel", resourceCulture);
             }
         }
         
@@ -98,11 +106,38 @@ namespace LagoVista.XPlat.Core.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to -select-.
+        /// </summary>
+        public static string Common_Select {
+            get {
+                return ResourceManager.GetString("Common_Select", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Yes.
         /// </summary>
         public static string Common_Yes {
             get {
                 return ResourceManager.GetString("Common_Yes", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Last Contact.
+        /// </summary>
+        public static string DeviceView_LastContact {
+            get {
+                return ResourceManager.GetString("DeviceView_LastContact", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Status.
+        /// </summary>
+        public static string DeviceView_Status {
+            get {
+                return ResourceManager.GetString("DeviceView_Status", resourceCulture);
             }
         }
         

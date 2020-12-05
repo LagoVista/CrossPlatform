@@ -47,14 +47,5 @@ namespace LagoVista.XPlat.Core
                 }
             }
         }
-
-
-      
-
-
-
-
-
-
     }
 }

@@ -132,6 +132,9 @@
   <data name="Common_NoConnection" xml:space="preserve">
     <value>There does not appear to be a connection to the internet, please check your connectoin and try again .ater.</value>
   </data>
+  <data name="Common_Select" xml:space="preserve">
+    <value>-select-</value>
+  </data>
   <data name="Common_Yes" xml:space="preserve">
     <value>Yes</value>
   </data>

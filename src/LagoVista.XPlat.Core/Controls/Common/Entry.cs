@@ -12,11 +12,9 @@ namespace LagoVista.XPlat.Core
     {
         public Entry()
         {
-            this.Focused += Entry_Focused;
-
             FontFamily = ResourceSupport.GetString("EntryFont");
             FontSize = ResourceSupport.GetNumber("EntryFontSize");
-            PlaceholderColor = ResourceSupport.GetColor("EntryPlaceholderColor");
+            PlaceholderColor = ResourceSupport.GetColor("EditControlPlaceholder");
             BackgroundColor = ResourceSupport.GetColor("EditControlBackground");
             TextColor = ResourceSupport.GetColor("EditControlText");
 
@@ -28,14 +26,6 @@ namespace LagoVista.XPlat.Core
 
         private void Entry_Focused(object sender, Xamarin.Forms.FocusEventArgs e)
         {
-        }
-    }
-
-    public class TextArea : Xamarin.Forms.Editor
-    {
-        public TextArea()
-        {
-
         }
     }
 }

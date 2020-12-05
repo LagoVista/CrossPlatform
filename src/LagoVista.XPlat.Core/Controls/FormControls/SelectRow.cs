@@ -1,5 +1,6 @@
 ﻿using LagoVista.Core.Models.Drawing;
 using LagoVista.Core.Models.UIMetaData;
+using LagoVista.XPlat.Core.Resources;
 using LagoVista.XPlat.Core.Services;
 using System;
 using System.Linq;
@@ -21,8 +22,9 @@ namespace LagoVista.XPlat.Core.Controls.FormControls
             _validationMessage = new FormFieldValidationMessage(field.RequiredMessage);
 
             _picker = new Picker();
-            _picker.FontFamily = ResourceSupport.GetString( "LabelFont");
+            _picker.FontFamily = ResourceSupport.GetString("EntryFont");
             _picker.FontSize = ResourceSupport.GetNumber("LabelFontSize");
+            _picker.BackgroundColor = ResourceSupport.GetColor("EditControlBackground");
 
             if (field.Options != null)
             {
@@ -33,7 +35,7 @@ namespace LagoVista.XPlat.Core.Controls.FormControls
                 }
                 else
                 {
-                    options.Insert(0, "-select-");
+                    options.Insert(0, XPlatResources.Common_Select);
                 }
 
                 _picker.IsEnabled = field.IsEnabled;
@@ -41,19 +43,17 @@ namespace LagoVista.XPlat.Core.Controls.FormControls
                 _picker.SelectedIndex = 0;
             }
 
-            _picker.HeightRequest = 40;
-
             var selectedItem = field.Options.Where(opt => opt.Key == field.Value).FirstOrDefault();
             if (selectedItem != null)
             {
                 var index = field.Options.IndexOf(selectedItem);
                 _picker.SelectedIndex = index + 1;
-                _picker.TextColor = ResourceSupport.GetColor("PageTextHighlighted");
+                _picker.TextColor = ResourceSupport.GetColor("EditControlText");
             }
             else
             {
                 _picker.SelectedIndex = 0;
-                _picker.TextColor = ResourceSupport.GetColor("PageText"); 
+                _picker.TextColor = ResourceSupport.GetColor("EditControlPlaceholder"); 
             }
 
             Children.Add(_header);
@@ -70,13 +70,13 @@ namespace LagoVista.XPlat.Core.Controls.FormControls
             {
                 _validationMessage.IsVisible = Field.IsRequired;
                 Field.Value = null;
-                _picker.TextColor = ResourceSupport.GetColor("PageTextHighlighted");
+                _picker.TextColor = ResourceSupport.GetColor("EditControlPlaceholder");
             }
             else
             {
                 _validationMessage.IsVisible = false;
                 Field.Value = Field.Options[_picker.SelectedIndex - 1].Key;
-                _picker.TextColor = ResourceSupport.GetColor("PageText");
+                _picker.TextColor = ResourceSupport.GetColor("EditControlText");
             }
 
             IsDirty = OriginalValue != Field.Value;

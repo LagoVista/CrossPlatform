@@ -23,7 +23,6 @@ namespace LagoVista.XPlat.Core.Controls.FormControls
         public const string COPY_SECRET = "CopySecret";
         public const string REFRESH_SECRET = "RefreshSecret";
 
-
         public TextEditRow(FormViewer formViewer, FormField field) : base(formViewer, field)
         {
             _editorContainer = new Grid();
@@ -36,9 +35,10 @@ namespace LagoVista.XPlat.Core.Controls.FormControls
             {
                 Text = field.Value,
                 IsEnabled = field.IsUserEditable,
+                Placeholder = field.Watermark
             };
 
-            _editor.HeightRequest = 40;
+           // _editor.HeightRequest = 40;
 
             _editor.IsPassword = field.FieldType == FieldTypes.Password.ToString();
             _editor.TextChanged += _editor_TextChanged;

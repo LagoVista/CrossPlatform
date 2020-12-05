@@ -140,7 +140,7 @@ namespace LagoVista.XPlat.Sample.ViewModels
         public override Task InitAsync()
         {
             var model1 = new Model1();
-            model1.TextField1 = "DEFAULT FIELD VALUE";
+            model1.TextField1 = "This is the default for the text box";
             model1.Model2Litems = new List<Model2>();
             model1.Model2Litems.Add(new Model2() { Id = "12337", Text = "A little bit of tex" });
             model1.Model2Litems.Add(new Model2() { Id = "13239", Text = "This is good" });
@@ -155,9 +155,6 @@ namespace LagoVista.XPlat.Sample.ViewModels
             new LagoVista.Core.Attributes.FormFieldAttribute(FieldType: LagoVista.Core.Attributes.FieldTypes.LinkButton),
             null);
 
-            //    response.View["linkButton"].Command = new RelayCommand(HideLinkButton);
-
-
             frmEditPasswordLink.Label = "Edit Password";
             frmEditPasswordLink.Name = "editPassword";
             frmEditPasswordLink.Watermark = "-edit password-";
@@ -167,9 +164,6 @@ namespace LagoVista.XPlat.Sample.ViewModels
             response.View.Add("editPassword", frmEditPasswordLink);
 
             var formAdapter = new EditFormAdapter(model1, response.View, this.ViewModelNavigation);
-
-            //response.View[nameof(Model1.MySecretField)].Command = new RelayCommand((arg) => HandleMe(arg));
-
             formAdapter.AddViewCell(nameof(Model1.TextField1));
             formAdapter.AddViewCell(nameof(Model1.DropDownBox1));
             formAdapter.AddViewCell(nameof(Model1.CheckBox1));
@@ -191,9 +185,6 @@ namespace LagoVista.XPlat.Sample.ViewModels
             FormAdapter = formAdapter;
 
             return Task.CompletedTask;
-
-
-            //            await base.InitAsync();
         }
 
         private async void StartSDPListener()

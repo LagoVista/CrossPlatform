@@ -26,11 +26,20 @@
     <ProjectReference Include="..\LagoVista.Client.Core\LagoVista.Client.Core.csproj" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Update="Resources\XPlatResources.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>XPlatResources.resx</DependentUpon>
+    </Compile>
     <Compile Update="Views\DeviceAccess\DFUView.xaml.cs">
       <DependentUpon>DFUView.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Update="Resources\XPlatResources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>XPlatResources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Update="Views\DeviceAccess\ConsoleView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
