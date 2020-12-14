@@ -38,6 +38,17 @@ namespace LagoVista.Client.Core.ViewModels.DeviceAccess
             DeviceMessages = new ObservableCollection<DeviceArchive>();
             SendCommand = new RelayCommand(Send);
             CancelSendCommand = new RelayCommand(CancelSend);
+
+
+            MenuOptions = new List<MenuItem>()
+            {
+                new MenuItem<PairBTDeviceViewModel>(ViewModelNavigation, this) {FontIconKey = "fa-bluetooth", Name = ClientResources.DeviceMore_PairDevice, Help="Associate this application using  BlueTooth" },
+                new MenuItem<ConsoleViewModel>(ViewModelNavigation, this) {FontIconKey = "fa-terminal", Name = ClientResources.DeviceMore_Console, Help="Communicate using terminal" },
+                new MenuItem<IOConfigViewModel>(ViewModelNavigation, this) {FontIconKey = "fa-bolt", Name = ClientResources.DeviceMore_IOConfig, Help="Confiugration the IO Ports" },
+                new MenuItem<ProvisionDeviceViewModel>(ViewModelNavigation, this) {FontIconKey = "fa-wrench", Name = ClientResources.DeviceMore_Provision, Help="Configure primary device settings" },
+                new MenuItem<DFUViewModel>(ViewModelNavigation, this) {FontIconKey = "fa-microchip", Name = ClientResources.DeviceMore_FirmwareUpdate,Help= "Update firmware" },
+                new MenuItem<LiveDataViewModel>(ViewModelNavigation, this) {FontIconKey = "fa-table", Name = ClientResources.DeviceMore_LiveData, Help="View live data" },
+            };
         }
 
         public async override Task InitAsync()
@@ -357,6 +368,8 @@ namespace LagoVista.Client.Core.ViewModels.DeviceAccess
                 Set(ref _device, value);
             }
         }
+
+        public List<MenuItem> MenuOptions { get; }
 
         public RelayCommand SendCommand { get; }
         public RelayCommand CancelSendCommand { get; }

@@ -12,6 +12,7 @@ namespace LagoVista.Client.Core.ViewModels
         public String FontIconKey { get; set; }
 
         public String Name { get; set; }
+        public string Help { get; set; }
 
         public ICommand Command { get; set; }
 

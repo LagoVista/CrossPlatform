@@ -1,6 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <pge:LagoVistaContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:pge="clr-namespace:LagoVista.XPlat.Core;assembly=LagoVista.XPlat.Core"
+             xmlns:ctls="clr-namespace:LagoVista.XPlat.Core.Controls.Common;assembly=LagoVista.XPlat.Core"
              xmlns:trs="clr-namespace:LagoVista.XPlat.Core.Extensions;assembly=LagoVista.XPlat.Core"
              RightMenu="Edit"
              EditCommand="{Binding EditDeviceCommand}"
@@ -26,10 +27,6 @@
                 )
             -->
 
-
-    <pge:LagoVistaContentPage.Resources>
-       
-    </pge:LagoVistaContentPage.Resources>
     <pge:LagoVistaContentPage.TabbedContent>
         <pge:TabContentHolder>
             <pge:TabContent>
@@ -95,16 +92,24 @@
                     </ListView.ItemTemplate>
                 </ListView>
             </pge:TabContent>
+            <pge:TabContent>
+                <ListView ItemsSource="{Binding MenuOptions}" SelectedItem="{Binding SelectedMenuOption}">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ctls:NavigationViewCell Command="{Binding Command}" Text="{Binding Name}" Icon="{Binding FontIconKey}" />
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </pge:TabContent>
         </pge:TabContentHolder>
     </pge:LagoVistaContentPage.TabbedContent>
-
     <pge:LagoVistaContentPage.TabBar>
         <pge:TabBar>
             <pge:Tab Label="Device" Icon="fa-microchip" />
-            <pge:Tab Label="Properties" Icon="fa-microchip" />
-            <pge:Tab Label="Details" Icon="fa-microchip" />
-            <pge:Tab Label="Messages" Icon="fa-microchip" />
-            <pge:Tab Label="More" Icon="fa-microchip" />
+            <pge:Tab Label="Properties" Icon="fa-gear" />
+            <pge:Tab Label="Details" Icon="fa-dashboard" />
+            <pge:Tab Label="Messages" Icon="fa-commenting" />
+            <pge:Tab Label="More" Icon="fa-bars" />
         </pge:TabBar>
     </pge:LagoVistaContentPage.TabBar>
 </pge:LagoVistaContentPage>

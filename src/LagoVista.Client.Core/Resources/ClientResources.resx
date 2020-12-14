@@ -582,4 +582,22 @@
   <data name="Provision_WriteProfile" xml:space="preserve">
     <value>Write Profile</value>
   </data>
+  <data name="DeviceMore_Console" xml:space="preserve">
+    <value>Monitor Console Output</value>
+  </data>
+  <data name="DeviceMore_FirmwareUpdate" xml:space="preserve">
+    <value>Firmware Update</value>
+  </data>
+  <data name="DeviceMore_IOConfig" xml:space="preserve">
+    <value>I/O Configuration</value>
+  </data>
+  <data name="DeviceMore_LiveData" xml:space="preserve">
+    <value>Live Data</value>
+  </data>
+  <data name="DeviceMore_PairDevice" xml:space="preserve">
+    <value>Pair Device</value>
+  </data>
+  <data name="DeviceMore_Provision" xml:space="preserve">
+    <value>Provision</value>
+  </data>
 </root>

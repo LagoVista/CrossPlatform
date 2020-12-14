@@ -24,11 +24,11 @@
 
     <Color x:Key="EditControlBackground" >#777</Color>
     <Color x:Key="EditControlText" >#EEE</Color>
-    <Color x:Key="EditControlPlaceholder">#CCC</Color>
+    <Color x:Key="EditControlPlaceholder" >#CCC</Color>
     <Color x:Key="EditControlFrame" >#555</Color>
 
+    <Color x:Key="EditControlBorderIsActive" >#999</Color>
     <Color x:Key="EditControlBackgroundActive" >#999</Color>
-    <Color x:Key="EditControlFrameActive">#777</Color>
     <Color x:Key="EditControlTextActive" >#EEE</Color>
     <Color x:Key="EditControlPlaceHolderActive" >#CCC</Color>
    
@@ -36,7 +36,7 @@
     <Color x:Key="EditControlTextFocus" >#333</Color>
     <Color x:Key="EditControlPlaceholderFocus">#888</Color>
     <Color x:Key="EditControlFrameFocus" >#333</Color>
-
+   
     <Color x:Key="EditControlFrameDisabled" >#575757</Color>
     <Color x:Key="EditControlBackgroundDisabled" >#575757</Color>
     <Color x:Key="EditControlTextDisabled" >#575757</Color>
@@ -76,6 +76,8 @@
     <Color x:Key="ListItemLabelColor" >#CCC</Color>
     <Color x:Key="ListItemDetailColor" >#AAA</Color>
     <Color x:Key="ListItemIconColor">#D48D17</Color>
-
-  
+    <Color x:Key="SystemControlHighlightBaseMedium">Purple</Color>
+    <Color x:Key="SystemControlBackgroundAltMedium">Green</Color>
+    <Color x:Key="SystemControlForeground">Red</Color>
+    
 </ResourceDictionary>

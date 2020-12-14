@@ -484,6 +484,60 @@ namespace LagoVista.Client.Core.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Monitor Console Output.
+        /// </summary>
+        public static string DeviceMore_Console {
+            get {
+                return ResourceManager.GetString("DeviceMore_Console", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Firmware Update.
+        /// </summary>
+        public static string DeviceMore_FirmwareUpdate {
+            get {
+                return ResourceManager.GetString("DeviceMore_FirmwareUpdate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to I/O Configuration.
+        /// </summary>
+        public static string DeviceMore_IOConfig {
+            get {
+                return ResourceManager.GetString("DeviceMore_IOConfig", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Live Data.
+        /// </summary>
+        public static string DeviceMore_LiveData {
+            get {
+                return ResourceManager.GetString("DeviceMore_LiveData", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Pair Device.
+        /// </summary>
+        public static string DeviceMore_PairDevice {
+            get {
+                return ResourceManager.GetString("DeviceMore_PairDevice", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Provision.
+        /// </summary>
+        public static string DeviceMore_Provision {
+            get {
+                return ResourceManager.GetString("DeviceMore_Provision", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to No device repositories.
         /// </summary>
         public static string DeviceReposView_NoDeviceRepos {

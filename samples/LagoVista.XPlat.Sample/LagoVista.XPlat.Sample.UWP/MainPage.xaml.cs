@@ -80,8 +80,8 @@ namespace LagoVista.XPlat.Sample.UWP
             Application.Current.Resources.MergedDictionaries.Add(editTextStyle);
 
             var comboBoxTextStyle = new ResourceDictionary();
-           // comboBoxTextStyle.Source = new Uri("ms-appx:///Resources/ComboBoxStyle.xaml");
-         //   Application.Current.Resources.MergedDictionaries.Add(comboBoxTextStyle);
+            comboBoxTextStyle.Source = new Uri("ms-appx:///Resources/ComboBoxStyle.xaml");
+            Application.Current.Resources.MergedDictionaries.Add(comboBoxTextStyle);
 
             var iconButtonStyle = new ResourceDictionary();
             iconButtonStyle.Source = new Uri("ms-appx:///Resources/IconButtonStyle.xaml");

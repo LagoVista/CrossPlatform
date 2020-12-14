@@ -15,8 +15,8 @@ namespace LagoVista.XPlat.UWP.CustomRenderers
             if (Control != null)
             {
                Control editControl = Control;
-               Application.Current.Resources.TryGetValue("LGVDefaultTextBoxStyle", out var style);
-               editControl.Style = style as Style;
+         //      Application.Current.Resources.TryGetValue("LGVDefaultTextBoxStyle", out var style);
+           //    editControl.Style = style as Style;
             }
         }
     }
