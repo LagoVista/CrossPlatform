@@ -7,22 +7,14 @@ using LagoVista.Core.Models.UIMetaData;
 using LagoVista.IoT.DeviceAdmin.Models;
 using LagoVista.IoT.DeviceManagement.Core.Models;
 using System;
-using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace LagoVista.Client.Core.ViewModels.DeviceAccess
 {
-    public class DFUViewModel : AppViewModelBase
+    public class DFUViewModel : DeviceViewModelBase
     {
-        private String _deviceRepoId;
-        private String _deviceId;
-
-        public const string DeviceId = "DEVICE_ID";
-        public const string DeviceRepoId = "DEVICE_REPO_ID";
-
         BTDevice _currentDevice;
 
         private string _firmwareUrl;
@@ -85,17 +77,14 @@ namespace LagoVista.Client.Core.ViewModels.DeviceAccess
         {
             await base.InitAsync();
 
-            _deviceRepoId = LaunchArgs.Parameters[DFUViewModel.DeviceRepoId].ToString();
-            _deviceId = LaunchArgs.Parameters[DFUViewModel.DeviceId].ToString();
-
-            if (!await Storage.HasKVPAsync(PairBTDeviceViewModel.ResolveBTDeviceIdKey(_deviceRepoId, _deviceId)))
+            if (!await Storage.HasKVPAsync(PairBTDeviceViewModel.ResolveBTDeviceIdKey(DeviceRepoId, DeviceId)))
             {
                 await Popups.ShowAsync("Must associate a BT Device first.");
                 return;
             }
 
             var devices = await _btSerial.SearchAsync();
-            var btDeviceId = await Storage.GetKVPAsync<string>(PairBTDeviceViewModel.ResolveBTDeviceIdKey(_deviceRepoId, _deviceId));
+            var btDeviceId = await Storage.GetKVPAsync<string>(PairBTDeviceViewModel.ResolveBTDeviceIdKey(DeviceRepoId, DeviceId));
 
             var btDevice = devices.Where(bt => bt.DeviceId == btDeviceId).First();
             if (btDevice == null)
@@ -118,7 +107,7 @@ namespace LagoVista.Client.Core.ViewModels.DeviceAccess
 
                 var result = await PerformNetworkOperation(async () =>
                 {
-                    var getDeviceUri = $"/api/device/{_deviceRepoId}/{_deviceId}";
+                    var getDeviceUri = $"/api/device/{DeviceRepoId}/{DeviceId}";
 
                     var restClient = new FormRestClient<Device>(base.RestClient);
 

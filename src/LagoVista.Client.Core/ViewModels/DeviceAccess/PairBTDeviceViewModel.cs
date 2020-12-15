@@ -13,23 +13,19 @@ using System.Threading.Tasks;
 
 namespace LagoVista.Client.Core.ViewModels.DeviceAccess
 {
-    public class PairBTDeviceViewModel : AppViewModelBase
+    public class PairBTDeviceViewModel : DeviceViewModelBase
     {
-        public const string DeviceId = "DEVICE_ID";
-        public const string DeviceRepoId = "DEVICE_REPO_ID";
-
         private IBluetoothSerial _btSerial;
-        private String _deviceRepoId;
-        private String _deviceId;
 
         public PairBTDeviceViewModel()
         {
             _btSerial = SLWIOC.Create<IBluetoothSerial>();
         }
 
+
         public override async Task InitAsync()
         {
-            await base.InitAsync();
+            await base.InitAsync();            
 
             IsBusy = true;
 
@@ -74,7 +70,7 @@ namespace LagoVista.Client.Core.ViewModels.DeviceAccess
                     result.Result.Model.Properties.Add(newProperty);
                 }
 
-                return await restClient.UpdateAsync($"/api/device/{_deviceRepoId}", result.Result.Model);
+                return await restClient.UpdateAsync($"/api/device/{DeviceRepoId}", result.Result.Model);
             });
         }
 
@@ -87,10 +83,7 @@ namespace LagoVista.Client.Core.ViewModels.DeviceAccess
 
         protected string GetRequestUri()
         {
-            _deviceRepoId = LaunchArgs.Parameters[PairBTDeviceViewModel.DeviceRepoId].ToString();
-            _deviceId = LaunchArgs.Parameters[PairBTDeviceViewModel.DeviceId].ToString();
-
-            return $"/api/device/{_deviceRepoId}/{_deviceId}";
+            return $"/api/device/{DeviceRepoId}/{DeviceId}";
         }
 
         private async void ConnectDeviceAsync(BTDevice device)
@@ -107,15 +100,19 @@ namespace LagoVista.Client.Core.ViewModels.DeviceAccess
                     throw new Exception(updateResult.Errors.First().Message);
                 }
 
-                await Storage.StoreKVP(ResolveBTDeviceIdKey(_deviceRepoId, _deviceId), device.DeviceId);
+                await Storage.StoreKVP(ResolveBTDeviceIdKey(DeviceRepoId, DeviceId), device.DeviceId);
                 await _btSerial.DisconnectAsync(device);
 
                 CloseScreen();
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                await _btSerial.DisconnectAsync(device);
-                await Popups.ShowAsync($"Could not connect to {device.DeviceName}");
+                if (_btSerial.CurrentDevice != null)
+                {
+                    await _btSerial.DisconnectAsync(device);
+                }
+
+                await Popups.ShowAsync($"Could not connect to {device.DeviceName} - {ex.Message}");
             }
         }
 

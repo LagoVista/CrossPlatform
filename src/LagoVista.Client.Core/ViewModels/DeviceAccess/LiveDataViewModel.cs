@@ -8,11 +8,8 @@ using System.Threading.Tasks;
 
 namespace LagoVista.Client.Core.ViewModels.DeviceAccess
 {
-    public class LiveDataViewModel : AppViewModelBase
+    public class LiveDataViewModel : DeviceViewModelBase
     {
-        public const string DeviceId = "DEVICE_ID";
-        public const string DeviceRepoId = "DEVICE_REPO_ID";
-
         private IBluetoothSerial _btSerial;
         private String _deviceRepoId;
         private String _deviceId;
@@ -72,20 +69,18 @@ namespace LagoVista.Client.Core.ViewModels.DeviceAccess
 
         public override async Task InitAsync()
         {
-            _deviceRepoId = LaunchArgs.Parameters[LiveDataViewModel.DeviceRepoId].ToString();
-            _deviceId = LaunchArgs.Parameters[LiveDataViewModel.DeviceId].ToString();
-            _config = await Storage.GetAsync<IOConfig>($"{_deviceId}.ioconfig.json");
+            _config = await Storage.GetAsync<IOConfig>($"{DeviceId}.ioconfig.json");
 
             await base.InitAsync();
 
-            if (!await Storage.HasKVPAsync(PairBTDeviceViewModel.ResolveBTDeviceIdKey(_deviceRepoId, _deviceId)))
+            if (!await Storage.HasKVPAsync(PairBTDeviceViewModel.ResolveBTDeviceIdKey(DeviceRepoId, DeviceId)))
             {
                 await Popups.ShowAsync("Must associate a BT Device first.");
                 return;
             }
 
             var devices = await _btSerial.SearchAsync();
-            var btDeviceId = await Storage.GetKVPAsync<string>(PairBTDeviceViewModel.ResolveBTDeviceIdKey(_deviceRepoId, _deviceId));
+            var btDeviceId = await Storage.GetKVPAsync<string>(PairBTDeviceViewModel.ResolveBTDeviceIdKey(DeviceRepoId, DeviceId));
 
             var btDevice = devices.Where(bt => bt.DeviceId == btDeviceId).First();
             if (btDevice == null)

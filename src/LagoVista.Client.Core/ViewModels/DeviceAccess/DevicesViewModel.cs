@@ -1,8 +1,5 @@
 ﻿using LagoVista.Core.ViewModels;
 using LagoVista.IoT.DeviceManagement.Core.Models;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace LagoVista.Client.Core.ViewModels.DeviceAccess
@@ -48,13 +45,12 @@ namespace LagoVista.Client.Core.ViewModels.DeviceAccess
                 LaunchType = LaunchTypes.View
             };
 
-            launchArgs.Parameters.Add(DeviceViewModel.DeviceRepoId, LaunchArgs.ChildId);
-            launchArgs.Parameters.Add(DeviceViewModel.DeviceId, summary.Id);
+            launchArgs.Parameters.Add(DeviceViewModelBase.DEVICE_ID, LaunchArgs.ChildId);
+            launchArgs.Parameters.Add(DeviceViewModelBase.DEVICE_REPO_ID, summary.Id);
 
             SelectedItem = null;
 
             await ViewModelNavigation.NavigateAsync(launchArgs);
         }
-
     }
 }

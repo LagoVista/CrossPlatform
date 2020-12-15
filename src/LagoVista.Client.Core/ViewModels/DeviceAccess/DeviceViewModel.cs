@@ -20,13 +20,7 @@ using System.Threading.Tasks;
 namespace LagoVista.Client.Core.ViewModels.DeviceAccess
 {
     public class DeviceViewModel : MonitoringViewModelBase
-    {
-        public const string DeviceId = "DEVICE_ID";
-        public const string DeviceRepoId = "DEVICE_REPO_ID";
-
-        string _deviceRepoId;
-        string _deviceId;
-
+    {                
         Device _device;
         DeviceConfiguration _deviceConfiguration;
 
@@ -38,7 +32,6 @@ namespace LagoVista.Client.Core.ViewModels.DeviceAccess
             DeviceMessages = new ObservableCollection<DeviceArchive>();
             SendCommand = new RelayCommand(Send);
             CancelSendCommand = new RelayCommand(CancelSend);
-
 
             MenuOptions = new List<MenuItem>()
             {
@@ -53,14 +46,11 @@ namespace LagoVista.Client.Core.ViewModels.DeviceAccess
 
         public async override Task InitAsync()
         {
-            _deviceRepoId = LaunchArgs.Parameters[DeviceRepoId].ToString();
-            _deviceId = LaunchArgs.Parameters[DeviceId].ToString();
-
             await base.InitAsync();
 
             await PerformNetworkOperation(async () =>
             {
-                var path = $"/api/device/{_deviceRepoId}/{_deviceId}/metadata";
+                var path = $"/api/device/{DeviceRepoId}/{DeviceId}/metadata";
 
                 var response1 = await RestClient.GetAsync(path);
                
@@ -85,7 +75,7 @@ namespace LagoVista.Client.Core.ViewModels.DeviceAccess
 
         public override string GetChannelURI()
         {
-            return $"/api/wsuri/device/{_deviceId}/normal";
+            return $"/api/wsuri/device/{DeviceId}/normal";
         }
 
         public override void HandleMessage(Notification notification)
@@ -214,8 +204,8 @@ namespace LagoVista.Client.Core.ViewModels.DeviceAccess
                 LaunchType = LaunchTypes.Edit
             };
 
-            launchArgs.Parameters.Add(EditDeviceViewModel.DeviceRepoId, _deviceRepoId);
-            launchArgs.Parameters.Add(EditDeviceViewModel.DeviceId, _deviceId);
+            launchArgs.Parameters.Add(EditDeviceViewModel.DeviceRepoId, DeviceRepoId);
+            launchArgs.Parameters.Add(EditDeviceViewModel.DeviceId, DeviceId);
 
             ViewModelNavigation.NavigateAsync(launchArgs);
         }

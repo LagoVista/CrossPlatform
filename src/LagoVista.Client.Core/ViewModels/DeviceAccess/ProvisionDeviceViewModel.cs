@@ -12,13 +12,8 @@ using System.Threading.Tasks;
 
 namespace LagoVista.Client.Core.ViewModels.DeviceAccess
 {
-    public class ProvisionDeviceViewModel : AppViewModelBase
+    public class ProvisionDeviceViewModel : DeviceViewModelBase
     {
-        public const string DeviceId = "DEVICE_ID";
-        public const string DeviceRepoId = "DEVICE_REPO_ID";
-
-        private String _deviceRepoId;
-        private String _deviceId;
         private int _sendIndex;
 
         private BTDevice _currentDevice;
@@ -85,7 +80,7 @@ namespace LagoVista.Client.Core.ViewModels.DeviceAccess
             else if (line == IOCONFIGRECVENDOK)
             {
                 await Popups.ShowAsync("SUCCESS", "Wrote configuration file.");
-                await Storage.StoreAsync(Config, $"{_deviceId}.ioconfig.json");
+                await Storage.StoreAsync(Config, $"{DeviceId}.ioconfig.json");
             }
             else if (line == IOCONFIGRECVENDFAIL)
             {
@@ -179,10 +174,7 @@ namespace LagoVista.Client.Core.ViewModels.DeviceAccess
         {
             await base.InitAsync();
 
-            _deviceRepoId = LaunchArgs.Parameters[ProvisionDeviceViewModel.DeviceRepoId].ToString();
-            _deviceId = LaunchArgs.Parameters[ProvisionDeviceViewModel.DeviceId].ToString();
-
-            if (!await Storage.HasKVPAsync(PairBTDeviceViewModel.ResolveBTDeviceIdKey(_deviceRepoId, _deviceId)))
+            if (!await Storage.HasKVPAsync(PairBTDeviceViewModel.ResolveBTDeviceIdKey(DeviceRepoId, DeviceId)))
             {
                 await Popups.ShowAsync("Must associate a BT Device first.");
                 await CloseScreenAsync();
@@ -190,7 +182,7 @@ namespace LagoVista.Client.Core.ViewModels.DeviceAccess
             }
 
             var devices = await _btSerial.SearchAsync();
-            var btDeviceId = await Storage.GetKVPAsync<string>(PairBTDeviceViewModel.ResolveBTDeviceIdKey(_deviceRepoId, _deviceId));
+            var btDeviceId = await Storage.GetKVPAsync<string>(PairBTDeviceViewModel.ResolveBTDeviceIdKey(DeviceRepoId, DeviceId));
 
             var btDevice = devices.Where(bt => bt.DeviceId == btDeviceId).First();
             if (btDevice == null)
@@ -225,9 +217,7 @@ namespace LagoVista.Client.Core.ViewModels.DeviceAccess
             await _btSerial.SendAsync($"COMMISSION\n");
         }
 
-
         public ObservableCollection<BTDevice> ConnectedDevices { get; private set; } = new ObservableCollection<BTDevice>();
-
 
         public RelayCommand PairDeviceCommand { get; private set; }
 
@@ -248,7 +238,6 @@ namespace LagoVista.Client.Core.ViewModels.DeviceAccess
 
             await base.IsClosingAsync();
         }
-
 
         public RelayCommand CommissionCommand => new RelayCommand(Commission);
 

@@ -10,12 +10,6 @@ namespace LagoVista.Client.Core.ViewModels.DeviceAccess
 {
     public class LiveDataStreamViewModel : MonitoringViewModelBase
     {
-        public const string DeviceId = "DEVICE_ID";
-        public const string DeviceRepoId = "DEVICE_REPO_ID";
-
-        private String _deviceRepoId;
-        private String _deviceId;
-
         Device _device;
 
         public override async Task InitAsync()
@@ -23,14 +17,11 @@ namespace LagoVista.Client.Core.ViewModels.DeviceAccess
             await base.InitAsync();
 
             IsBusy = true;
-
-            _deviceRepoId = LaunchArgs.Parameters[LiveDataStreamViewModel.DeviceRepoId].ToString();
-            _deviceId = LaunchArgs.Parameters[LiveDataStreamViewModel.DeviceId].ToString();
         }
 
         public override string GetChannelURI()
         {
-            return $"/api/wsuri/device/{_deviceId}/normal";
+            return $"/api/wsuri/device/{DeviceId}/normal";
         }
 
         public override void HandleMessage(Notification notification)
