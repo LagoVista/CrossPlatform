@@ -47,8 +47,8 @@ namespace LagoVista.Client.Core.ViewModels.DeviceAccess
                 LaunchType = LaunchTypes.View
             };
 
-            launchArgs.Parameters.Add(DEVICE_ID, DeviceRepoId);
-            launchArgs.Parameters.Add(DEVICE_REPO_ID, DeviceId);
+            launchArgs.Parameters.Add(DEVICE_ID, DeviceId);
+            launchArgs.Parameters.Add(DEVICE_REPO_ID, DeviceRepoId);
 
             ViewModelNavigation.NavigateAsync(launchArgs);
         }

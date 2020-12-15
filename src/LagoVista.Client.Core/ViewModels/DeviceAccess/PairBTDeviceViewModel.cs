@@ -49,28 +49,34 @@ namespace LagoVista.Client.Core.ViewModels.DeviceAccess
                 var restClient = new FormRestClient<Device>(base.RestClient);
 
                 var result = await restClient.GetAsync(GetRequestUri());
-
-                var existingProperty = result.Result.Model.Properties.FirstOrDefault(prop => prop.Key == "BT_MAC_ADDRESS");
-                if (existingProperty != null)
+                if (result.Successful)
                 {
-                    existingProperty.Value = SelectedDevice.DeviceId;
+                    var existingProperty = result.Result.Model.Properties.FirstOrDefault(prop => prop.Key == "BT_MAC_ADDRESS");
+                    if (existingProperty != null)
+                    {
+                        existingProperty.Value = SelectedDevice.DeviceId;
+                    }
+                    else
+                    {
+                        var newProperty = new AttributeValue()
+                        {
+                            AttributeType = LagoVista.Core.Models.EntityHeader<LagoVista.IoT.DeviceAdmin.Models.ParameterTypes>.Create(LagoVista.IoT.DeviceAdmin.Models.ParameterTypes.String),
+                            Name = "Bluetooth MAC Address",
+                            Key = "BT_MAC_ADDRESS",
+                            LastUpdated = DateTime.UtcNow.ToJSONString(),
+                            LastUpdatedBy = AuthManager.User.Name,
+                            Value = SelectedDevice.DeviceId
+                        };
+
+                        result.Result.Model.Properties.Add(newProperty);
+                    }
+
+                    return await restClient.UpdateAsync($"/api/device/{DeviceRepoId}", result.Result.Model);
                 }
                 else
                 {
-                    var newProperty = new AttributeValue()
-                    {
-                        AttributeType = LagoVista.Core.Models.EntityHeader<LagoVista.IoT.DeviceAdmin.Models.ParameterTypes>.Create(LagoVista.IoT.DeviceAdmin.Models.ParameterTypes.String),
-                        Name = "Bluetooth MAC Address",
-                        Key = "BT_MAC_ADDRESS",
-                        LastUpdated = DateTime.UtcNow.ToJSONString(),
-                        LastUpdatedBy = AuthManager.User.Name,
-                        Value = SelectedDevice.DeviceId
-                    };
-
-                    result.Result.Model.Properties.Add(newProperty);
+                    return result.ToInvokeResult();
                 }
-
-                return await restClient.UpdateAsync($"/api/device/{DeviceRepoId}", result.Result.Model);
             });
         }
 

@@ -12,28 +12,27 @@
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="auto" />
-                <RowDefinition Height="auto" />
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
 
-            <SearchBar  SearchCommand="{Binding SeachNowCommand}" Placeholder="{trs:ClientTranslate DevicesView_SearchWatermark}" />
+            <SearchBar  SearchCommand="{Binding SeachNowCommand}" TextColor="{StaticResource EditControlText}" HeightRequest="48"
+                        BackgroundColor="{StaticResource EditControlPlaceholder}" PlaceholderColor="{StaticResource EditControlPlaceholder}"
+                        FontSize="{StaticResource EntryFontSize}" FontFamily="{StaticResource EntryFont}"
+                        Placeholder="{trs:ClientTranslate DevicesView_SearchWatermark}" />
 
-            <StackLayout Grid.Row="1" Orientation="Horizontal" Margin="10">
-                <Label Text="{trs:ClientTranslate DevicesView_SelectDeviceType}" />
-                <pge:HyperLinkLabel NavigateCommand="{Binding SelectDeviceTypeCommand}" Text="{Binding DeviceType}" HorizontalOptions="End"/>
+            <StackLayout IsVisible="{Binding IsListEmpty}" Margin="20,50,20,0" Grid.Row="1" >
+                <Label Text="{trs:ClientTranslate DevicesView_NoDevice}" FontSize="Large"  />
             </StackLayout>
-
-            <ListView ItemsSource="{Binding ListItems}" RowHeight="64" SelectedItem="{Binding SelectedItem, Mode=TwoWay}" Grid.Row="2" >
+     
+            <ListView ItemsSource="{Binding ListItems}" HasUnevenRows="True" SelectedItem="{Binding SelectedItem, Mode=TwoWay}"
+                       IsVisible="{Binding ListHasData}" Grid.Row="1" >
                 <ListView.ItemTemplate>
                     <DataTemplate>
-                        <ctls:NavigationViewCell Icon="fa-microchip" Text="{Binding DeviceName}" />
+                        <ctls:NavigationViewCell Icon="fa-microchip" Text="{Binding DeviceName}" Detail="{Binding DeviceId}" />
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
 
-            <StackLayout IsVisible="{Binding EmptyRepos}" Margin="20,50,20,0" >
-                <Label Text="{trs:ClientTranslate DevicesView_NoDevice}" Margin="0,0,0,10" />
-            </StackLayout>
         </Grid>
     </pge:LagoVistaContentPage.MainContent>
 </pge:LagoVistaContentPage>

@@ -11,7 +11,8 @@
 
     <pge:LagoVistaContentPage.MainContent>
         <Grid>
-            <ListView ItemsSource="{Binding ListItems}" SelectedItem="{Binding SelectedItem, Mode=TwoWay}" IsVisible="{Binding HasRepos}" x:Name="RepositoriesList" >
+            <ListView ItemsSource="{Binding ListItems}" SelectedItem="{Binding SelectedItem, Mode=TwoWay}" IsVisible="{Binding HasRepos}"
+                      HasUnevenRows="True" x:Name="RepositoriesList" >
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ctls:NavigationViewCell Icon="fa-database" Text="{Binding Name}" />

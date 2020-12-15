@@ -35,12 +35,12 @@ namespace LagoVista.Client.Core.ViewModels.DeviceAccess
 
             MenuOptions = new List<MenuItem>()
             {
-                new MenuItem<PairBTDeviceViewModel>(ViewModelNavigation, this) {FontIconKey = "fa-bluetooth", Name = ClientResources.DeviceMore_PairDevice, Help="Associate this application using  BlueTooth" },
-                new MenuItem<ConsoleViewModel>(ViewModelNavigation, this) {FontIconKey = "fa-terminal", Name = ClientResources.DeviceMore_Console, Help="Communicate using terminal" },
-                new MenuItem<IOConfigViewModel>(ViewModelNavigation, this) {FontIconKey = "fa-bolt", Name = ClientResources.DeviceMore_IOConfig, Help="Confiugration the IO Ports" },
-                new MenuItem<ProvisionDeviceViewModel>(ViewModelNavigation, this) {FontIconKey = "fa-wrench", Name = ClientResources.DeviceMore_Provision, Help="Configure primary device settings" },
-                new MenuItem<DFUViewModel>(ViewModelNavigation, this) {FontIconKey = "fa-microchip", Name = ClientResources.DeviceMore_FirmwareUpdate,Help= "Update firmware" },
-                new MenuItem<LiveDataViewModel>(ViewModelNavigation, this) {FontIconKey = "fa-table", Name = ClientResources.DeviceMore_LiveData, Help="View live data" },
+                new MenuItem() { Command = new RelayCommand(() => ShowView<PairBTDeviceViewModel>()), FontIconKey = "fa-bluetooth", Name = ClientResources.DeviceMore_PairDevice, Help="Associate this application using  BlueTooth" },
+                new MenuItem() { Command = new RelayCommand(() => ShowView<ConsoleViewModel>()), FontIconKey = "fa-terminal", Name = ClientResources.DeviceMore_Console, Help="Communicate using terminal" },
+                new MenuItem() { Command = new RelayCommand(() => ShowView<IOConfig>()), FontIconKey = "fa-bolt", Name = ClientResources.DeviceMore_IOConfig, Help="Confiugration the IO Ports" },
+                new MenuItem() { Command = new RelayCommand(() => ShowView<ProvisionDeviceViewModel>()), FontIconKey = "fa-wrench", Name = ClientResources.DeviceMore_Provision, Help="Configure primary device settings" },
+                new MenuItem() { Command = new RelayCommand(() => ShowView<DFUViewModel>()),FontIconKey = "fa-microchip", Name = ClientResources.DeviceMore_FirmwareUpdate,Help= "Update firmware" },
+                new MenuItem() { Command = new RelayCommand(() => ShowView<LiveDataViewModel>()),FontIconKey = "fa-table", Name = ClientResources.DeviceMore_LiveData, Help="View live data" },
             };
         }
 

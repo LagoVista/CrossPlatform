@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace LagoVista.Client.Core.ViewModels
 {
-    public abstract class ListViewModelBase<TSummaryModel> :  AppViewModelBase, IListViewModel where TSummaryModel : class
+    public abstract class ListViewModelBase<TSummaryModel> : AppViewModelBase, IListViewModel where TSummaryModel : class
     {
         ListRestClient<TSummaryModel> _formRestClient;
         private bool _shouldRefresh = false;
@@ -29,11 +29,20 @@ namespace LagoVista.Client.Core.ViewModels
             }
         }
 
-        private bool _isListEmpty;
+        private bool _isListEmpty = false;
         public bool IsListEmpty
         {
             get { return _isListEmpty; }
-            set { Set(ref _isListEmpty, value);  }
+            set
+            {
+                Set(ref _isListEmpty, value);
+                RaisePropertyChanged(nameof(ListHasData));
+            }
+        }
+
+        public bool ListHasData
+        {
+            get { return !_isListEmpty; }
         }
 
         protected async Task<InvokeResult> LoadItems()
@@ -89,14 +98,14 @@ namespace LagoVista.Client.Core.ViewModels
                     _selectedItem = value;
                     ItemSelected(value);
                 }
-                else if(value == null)
+                else if (value == null)
                 {
                     _selectedItem = null;
-                }         
+                }
 
                 RaisePropertyChanged();
             }
-        }       
+        }
     }
 
     public interface IListViewModel

@@ -1,11 +1,23 @@
-﻿using LagoVista.Core.ViewModels;
+﻿using LagoVista.Core.Commanding;
+using LagoVista.Core.ViewModels;
 using LagoVista.IoT.DeviceManagement.Core.Models;
 using System.Threading.Tasks;
+using System.Windows.Input;
 
 namespace LagoVista.Client.Core.ViewModels.DeviceAccess
 {
     public class DevicesViewModel : ListViewModelBase<DeviceSummary>
     {
+        public DevicesViewModel()
+        {
+            //SeachNowCommand = RelayCommand<string>.Create((src) => SearchNow(src));
+        }
+
+        public void SearchNow(string str)
+        {
+
+        }
+
         public override Task InitAsync()
         {
             return base.InitAsync();
@@ -18,18 +30,14 @@ namespace LagoVista.Client.Core.ViewModels.DeviceAccess
             await DeviceSelectedAsync(summary);
         }
 
-        private bool _hasDevices;
-        public bool HasDevices
+        private string _deviceFilter;
+        public string DeviceFilter
         {
-            get { return _hasDevices; }
-            set { Set(ref _hasDevices, value); }
-        }
-
-        private bool _noDevices;
-        public bool NoDevices
-        {
-            get { return _noDevices; }
-            set { Set(ref _noDevices, value); }
+            get { return _deviceFilter; }
+            set
+            {
+                Set(ref _deviceFilter, value);
+            }
         }
 
         protected override string GetListURI()
@@ -45,12 +53,14 @@ namespace LagoVista.Client.Core.ViewModels.DeviceAccess
                 LaunchType = LaunchTypes.View
             };
 
-            launchArgs.Parameters.Add(DeviceViewModelBase.DEVICE_ID, LaunchArgs.ChildId);
-            launchArgs.Parameters.Add(DeviceViewModelBase.DEVICE_REPO_ID, summary.Id);
+            launchArgs.Parameters.Add(DeviceViewModelBase.DEVICE_ID, summary.Id);
+            launchArgs.Parameters.Add(DeviceViewModelBase.DEVICE_REPO_ID, LaunchArgs.ChildId);
 
             SelectedItem = null;
 
             await ViewModelNavigation.NavigateAsync(launchArgs);
         }
+
+        public ICommand SeachNowCommand { get; }
     }
 }
