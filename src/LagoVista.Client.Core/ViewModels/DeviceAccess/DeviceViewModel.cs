@@ -37,7 +37,7 @@ namespace LagoVista.Client.Core.ViewModels.DeviceAccess
             {
                 new MenuItem() { Command = new RelayCommand(() => ShowView<PairBTDeviceViewModel>()), FontIconKey = "fa-bluetooth", Name = ClientResources.DeviceMore_PairDevice, Help="Associate this application using  BlueTooth" },
                 new MenuItem() { Command = new RelayCommand(() => ShowView<ConsoleViewModel>()), FontIconKey = "fa-terminal", Name = ClientResources.DeviceMore_Console, Help="Communicate using terminal" },
-                new MenuItem() { Command = new RelayCommand(() => ShowView<IOConfig>()), FontIconKey = "fa-bolt", Name = ClientResources.DeviceMore_IOConfig, Help="Confiugration the IO Ports" },
+                new MenuItem() { Command = new RelayCommand(() => ShowView<IOConfigViewModel>()), FontIconKey = "fa-bolt", Name = ClientResources.DeviceMore_IOConfig, Help="Confiugration the IO Ports" },
                 new MenuItem() { Command = new RelayCommand(() => ShowView<ProvisionDeviceViewModel>()), FontIconKey = "fa-wrench", Name = ClientResources.DeviceMore_Provision, Help="Configure primary device settings" },
                 new MenuItem() { Command = new RelayCommand(() => ShowView<DFUViewModel>()),FontIconKey = "fa-microchip", Name = ClientResources.DeviceMore_FirmwareUpdate,Help= "Update firmware" },
                 new MenuItem() { Command = new RelayCommand(() => ShowView<LiveDataViewModel>()),FontIconKey = "fa-table", Name = ClientResources.DeviceMore_LiveData, Help="View live data" },

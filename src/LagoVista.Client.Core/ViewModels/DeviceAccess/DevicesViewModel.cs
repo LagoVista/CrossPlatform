@@ -1,6 +1,9 @@
 ﻿using LagoVista.Core.Commanding;
 using LagoVista.Core.ViewModels;
 using LagoVista.IoT.DeviceManagement.Core.Models;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Input;
 
@@ -8,19 +11,29 @@ namespace LagoVista.Client.Core.ViewModels.DeviceAccess
 {
     public class DevicesViewModel : ListViewModelBase<DeviceSummary>
     {
+        IEnumerable<DeviceSummary> _originalDeviceList;
         public DevicesViewModel()
         {
-            //SeachNowCommand = RelayCommand<string>.Create((src) => SearchNow(src));
+            SearchNowCommand = RelayCommand.Create(SearchNow);
+            FilterClearedCommand = new RelayCommand(FilterCleared);
         }
 
-        public void SearchNow(string str)
+        public void SearchNow(object arg)
         {
-
+            if (arg != null)
+                ListItems = new ObservableCollection<DeviceSummary>(_originalDeviceList.Where(itm => (itm.DeviceName.ToLower().Contains(arg.ToString())) ||
+                                                                                                     (itm.DeviceId.ToLower().Contains(arg.ToString()))));
         }
 
-        public override Task InitAsync()
+        public void FilterCleared()
         {
-            return base.InitAsync();
+            ListItems = new ObservableCollection<DeviceSummary>(_originalDeviceList);
+        }
+
+        public async override Task InitAsync()
+        {
+            await base.InitAsync();
+            _originalDeviceList = ListItems;
         }
 
         protected override async void ItemSelected(DeviceSummary summary)
@@ -61,6 +74,8 @@ namespace LagoVista.Client.Core.ViewModels.DeviceAccess
             await ViewModelNavigation.NavigateAsync(launchArgs);
         }
 
-        public ICommand SeachNowCommand { get; }
+        public RelayCommand SearchNowCommand { get; }
+
+        public RelayCommand FilterClearedCommand { get; }
     }
 }

@@ -2,12 +2,14 @@
 <pge:LagoVistaContentPage xmlns="http://xamarin.com/schemas/2014/forms"
         xmlns:pge="clr-namespace:LagoVista.XPlat.Core;assembly=LagoVista.XPlat.Core"
         xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-        x:Class="LagoVista.XPlat.Core.Views.DeviceAccess.ConsoleView">
+        BackgroundColor="Black" x:Class="LagoVista.XPlat.Core.Views.DeviceAccess.ConsoleView">
     <pge:LagoVistaContentPage.MainContent>
-        <ListView ItemsSource="{Binding Lines}">
+        <ListView ItemsSource="{Binding Lines}" Background="Black" Margin="10">
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    <TextCell Text="{Binding .}" />
+                    <ViewCell>
+                        <Label FontSize="Body" FontFamily="Consolas" TextColor="Yellow" Text="{Binding .}" />
+                    </ViewCell>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>

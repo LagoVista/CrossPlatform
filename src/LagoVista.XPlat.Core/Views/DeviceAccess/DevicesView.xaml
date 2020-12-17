@@ -15,10 +15,7 @@
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
 
-            <SearchBar  SearchCommand="{Binding SeachNowCommand}" TextColor="{StaticResource EditControlText}" HeightRequest="48"
-                        BackgroundColor="{StaticResource EditControlPlaceholder}" PlaceholderColor="{StaticResource EditControlPlaceholder}"
-                        FontSize="{StaticResource EntryFontSize}" FontFamily="{StaticResource EntryFont}"
-                        Placeholder="{trs:ClientTranslate DevicesView_SearchWatermark}" />
+            <pge:Entry FontSize="Large" Margin="10" TextChangedCommand="{Binding SearchNowCommand}" Placeholder="{trs:ClientTranslate DevicesView_SearchWatermark}" TextClearedCommand="{Binding FilterClearedCommand}" />
 
             <StackLayout IsVisible="{Binding IsListEmpty}" Margin="20,50,20,0" Grid.Row="1" >
                 <Label Text="{trs:ClientTranslate DevicesView_NoDevice}" FontSize="Large"  />
