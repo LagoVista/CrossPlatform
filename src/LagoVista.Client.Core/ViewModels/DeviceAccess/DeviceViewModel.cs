@@ -1,7 +1,9 @@
-﻿using LagoVista.Client.Core.Models;
+﻿using LagoVista.Client.Core.Interfaces;
+using LagoVista.Client.Core.Models;
 using LagoVista.Client.Core.Resources;
 using LagoVista.Core.Attributes;
 using LagoVista.Core.Commanding;
+using LagoVista.Core.IOC;
 using LagoVista.Core.Models.UIMetaData;
 using LagoVista.Core.ViewModels;
 using LagoVista.IoT.Deployment.Admin.Models;
@@ -24,10 +26,20 @@ namespace LagoVista.Client.Core.ViewModels.DeviceAccess
         Device _device;
         DeviceConfiguration _deviceConfiguration;
 
+
+        private BTDevice _currentDevice;
+        private IBluetoothSerial _btSerial;
+
         List<InputCommandEndPoint> _inputCommandEndPoints;
 
         public DeviceViewModel()
         {
+
+            _btSerial = SLWIOC.Create<IBluetoothSerial>();
+            _btSerial.DeviceConnected += _btSerial_DeviceConnected;
+            _btSerial.DeviceDisconnected += _btSerial_DeviceDisconnected;
+            _btSerial.ReceivedLine += _btSerial_ReceivedLine;
+
             EditDeviceCommand = new RelayCommand(EditDevice);
             DeviceMessages = new ObservableCollection<DeviceArchive>();
             SendCommand = new RelayCommand(Send);
@@ -42,6 +54,55 @@ namespace LagoVista.Client.Core.ViewModels.DeviceAccess
                 new MenuItem() { Command = new RelayCommand(() => ShowView<DFUViewModel>()),FontIconKey = "fa-microchip", Name = ClientResources.DeviceMore_FirmwareUpdate,Help= "Update firmware" },
                 new MenuItem() { Command = new RelayCommand(() => ShowView<LiveDataViewModel>()),FontIconKey = "fa-table", Name = ClientResources.DeviceMore_LiveData, Help="View live data" },
             };
+        }
+
+        private async void TryConnectBluetooth()
+        {
+            var btDeviceKey = PairBTDeviceViewModel.ResolveBTDeviceIdKey(DeviceRepoId, DeviceId);
+
+            if (await Storage.HasKVPAsync(btDeviceKey))
+            {
+                IsBusy = true;
+
+                var devices = await _btSerial.SearchAsync();
+                var btDeviceId = await Storage.GetKVPAsync<string>(btDeviceKey);
+
+                var btDevice = devices.Where(bt => bt.DeviceId == btDeviceId).First();
+                if (btDevice == null)
+                {
+                    await Popups.ShowAsync("Could not find paired device, please repair or connect.");
+                    IsBusy = false;
+                    return;
+                }
+
+                try
+                {
+                    await _btSerial.ConnectAsync(btDevice);
+                    _currentDevice = btDevice;
+                    await Popups.ShowAsync("Connected to device with Bluetooth.");
+
+                    ConnectedViaBluetooth = true;
+                    IsBusy = false;
+                }
+                catch (Exception)
+                {
+                    IsBusy = false;
+                }
+            }
+        }
+
+        private void _btSerial_DeviceDisconnected(object sender, BTDevice e)
+        {
+            ConnectedViaBluetooth = false;
+        }
+
+        private void _btSerial_DeviceConnected(object sender, BTDevice e)
+        {
+        }
+
+        private void _btSerial_ReceivedLine(object sender, string e)
+        {
+
         }
 
         public async override Task InitAsync()
@@ -64,6 +125,7 @@ namespace LagoVista.Client.Core.ViewModels.DeviceAccess
                     ShowProperties(form, response.Result.Model);
                     FormAdapter = form;
                     ViewReady = true;
+                    TryConnectBluetooth();
                 }
             });
         }
@@ -429,5 +491,12 @@ namespace LagoVista.Client.Core.ViewModels.DeviceAccess
             set { Set(ref _deviceStatusVisible, value); }
         }
 
+
+        private bool _connectedViaBluetooth = false;
+        public bool ConnectedViaBluetooth
+        {
+            get { return _connectedViaBluetooth; }
+            set { Set(ref _connectedViaBluetooth, value); }
+        }
     }
 }

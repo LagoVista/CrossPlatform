@@ -83,9 +83,7 @@ namespace LagoVista.Client.Core.ViewModels.DeviceAccess
             }
         }
 
-
-        StringBuilder _builder = new StringBuilder();
-        private async void _btSerial_ReceivedLine(object sender, string e)
+        private void _btSerial_ReceivedLine(object sender, string e)
         {
             var lines = e.Split('\n');
             foreach (var line in lines)
