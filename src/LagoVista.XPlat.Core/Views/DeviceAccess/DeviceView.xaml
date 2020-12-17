@@ -30,8 +30,9 @@
     <pge:LagoVistaContentPage.TabbedContent>
         <pge:TabContentHolder>
             <pge:TabContent>
-                <Grid Padding="10">
+                <Grid Padding="10" IsVisible="{Binding Device, Converter={StaticResource NotNullVisibilityConverter}}">
                     <Grid.RowDefinitions>
+                        <RowDefinition Height="auto" />
                         <RowDefinition Height="auto" />
                         <RowDefinition Height="auto" />
                         <RowDefinition Height="auto" />
@@ -51,8 +52,11 @@
                     <pge:Label Text="{trs:ClientTranslate DeviceView_Status}" Grid.Column="0" Grid.Row="2" Style="{StaticResource LabelContent}"  />
                     <pge:Label Text="{Binding Device.Status.Text}" Grid.Column="1" Grid.Row="2" Style="{StaticResource ValueContent}"  />
 
-                    <pge:Label Text="{trs:ClientTranslate DeviceView_LastContact}" Grid.Row="3" Grid.Column="0" Style="{StaticResource LabelContent}"   />
-                    <pge:Label Text="{Binding Device.LastContact, Converter={StaticResource DatePrinterConverter}}" Grid.Row="3" Grid.Column="1" Style="{StaticResource ValueContent}"  />
+                    <pge:Label Text="{Binding Device.DeviceTypeLabel}" Grid.Column="0" Grid.Row="3" Style="{StaticResource LabelContent}" />
+                    <pge:Label Text="{Binding Device.DeviceType.Text}" Grid.Column="1" Grid.Row="3" Style="{StaticResource ValueContent}" />
+
+                    <pge:Label Text="{trs:ClientTranslate DeviceView_LastContact}" Grid.Row="4" Grid.Column="0" Style="{StaticResource LabelContent}"   />
+                    <pge:Label Text="{Binding Device.LastContact, Converter={StaticResource DatePrinterConverter}}" Grid.Row="4" Grid.Column="1" Style="{StaticResource ValueContent}"  />
                 </Grid>
             </pge:TabContent>
             <pge:TabContent>

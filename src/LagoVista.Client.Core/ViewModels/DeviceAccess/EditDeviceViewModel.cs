@@ -63,6 +63,10 @@ namespace LagoVista.Client.Core.ViewModels.DeviceAccess
                                 formField.FieldType = FormField.FieldType_DateTime;
                                 formField.Value = field.DefaultValue;
                                 break;
+                            case ParameterTypes.Integer:
+                                formField.FieldType = FormField.FieldType_Integer;
+                                formField.Value = field.DefaultValue;
+                                break;
                             case ParameterTypes.Decimal:
                                 formField.FieldType = FormField.FieldType_Decimal;
                                 formField.Value = field.DefaultValue;
@@ -118,6 +122,7 @@ namespace LagoVista.Client.Core.ViewModels.DeviceAccess
             form.AddViewCell(nameof(Model.SerialNumber));
             form.AddViewCell(nameof(Model.DeviceType));
             form.AddViewCell(nameof(Model.GeoLocation));
+            form.AddViewCell(nameof(Model.DisableWatchdog));
 
             ShowProperties();
         }

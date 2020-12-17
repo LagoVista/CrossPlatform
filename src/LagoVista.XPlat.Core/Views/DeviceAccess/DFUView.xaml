@@ -16,16 +16,16 @@
             </Grid.RowDefinitions>
 
             <StackLayout Grid.Row="1" Margin="20" IsVisible="{Binding HasServerFirmware}">
-                <Label Text="Device Firmware" FontSize="Medium"/>
-                <Label Text="{Binding FirmwareName}" FontSize="Medium"  />
-                <Label Text="Device Firmware SKU" FontSize="Medium"/>
-                <Label Text="{Binding FirmwareSKU}" FontSize="Medium"  />
-                <Label Text="Server Firmware Version" FontSize="Medium" />
-                <Label Text="{Binding ServerFirmwareVersion}" FontSize="Medium" />
-                <Label Text="Device Firmware Version" FontSize="Medium"/>
-                <Label Text="{Binding DeviceFirmwareVersion}" FontSize="Medium"  />
+                <pge:Label Text="Device Firmware" FontSize="Medium"/>
+                <pge:Label Text="{Binding FirmwareName}" FontSize="Medium"  />
+                <pge:Label Text="Device Firmware SKU" FontSize="Medium"/>
+                <pge:Label Text="{Binding FirmwareSKU}" FontSize="Medium"  />
+                <pge:Label Text="Server Firmware Version" FontSize="Medium" />
+                <pge:Label Text="{Binding ServerFirmwareVersion}" FontSize="Medium" />
+                <pge:Label Text="Device Firmware Version" FontSize="Medium"/>
+                <pge:Label Text="{Binding DeviceFirmwareVersion}" FontSize="Medium"  />
                 <ProgressBar Progress="{Binding UploadProgress}"  Margin="30,0,30,0"  HeightRequest="40" />
-                <Label Text="{Binding StatusMessage}" />
+                <pge:Label Text="{Binding StatusMessage}" />
 
                 <pge:Button Command="{Binding UpdateDeviceFirmwareCommand}" Text="Update" WidthRequest="120" HorizontalOptions="End" Margin="0,0,30,0" />
                 <pge:Button Command="{Binding CancelUpdateCommand}" Text="Cancel" WidthRequest="120" HorizontalOptions="End" Margin="0,0,30,0" />

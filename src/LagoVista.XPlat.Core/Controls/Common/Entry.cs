@@ -34,7 +34,7 @@ namespace LagoVista.XPlat.Core
         {
             if (string.IsNullOrEmpty(e.NewTextValue))
             {
-                TextClearedCommand.Execute(null);
+                TextClearedCommand?.Execute(null);
             }
             else
             {

@@ -61,13 +61,8 @@ namespace LagoVista.Client.Core.ViewModels.DeviceAccess
                     Device = response.Result.Model;
 
                     var form = new EditFormAdapter(response.Result.Model, response.Result.View, ViewModelNavigation);
-
-                    form.AddViewCell(nameof(Device.Name));
-
                     ShowProperties(form, response.Result.Model);
-
                     FormAdapter = form;
-
                     ViewReady = true;
                 }
             });
@@ -98,7 +93,11 @@ namespace LagoVista.Client.Core.ViewModels.DeviceAccess
                     case nameof(Device):
                         DispatcherServices.Invoke(() =>
                         {
-                            Device = JsonConvert.DeserializeObject<Device>(notification.Payload);
+                            var device = JsonConvert.DeserializeObject<Device>(notification.Payload);
+                            device.DeviceIdLabel = Device.DeviceIdLabel;
+                            device.DeviceNameLabel = Device.DeviceNameLabel;
+                            device.DeviceTypeLabel = Device.DeviceTypeLabel;
+                            Device = device;
                         });
 
                         break;
@@ -280,10 +279,7 @@ namespace LagoVista.Client.Core.ViewModels.DeviceAccess
                     formField.Value = formField.DefaultValue;
                 }
 
-                //formAdapter.V
                 formAdapter.FormItems.Add(formField);
-
-                // formAdapter.AddViewCell(field.Key.Substring(0,1).ToUpper() + field.Key.Substring(1));
             }
         }
 
