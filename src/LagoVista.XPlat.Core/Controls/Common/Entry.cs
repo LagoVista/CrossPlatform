@@ -17,11 +17,6 @@ namespace LagoVista.XPlat.Core
             BackgroundColor = ResourceSupport.GetColor("EditControlBackground");
             TextColor = ResourceSupport.GetColor("EditControlText");
             TextChanged += Entry_TextChanged;
-
-            if (Device.RuntimePlatform == Device.Android)
-            {
-                HeightRequest = 50;
-            }
         }
 
         public static readonly BindableProperty TextChangedCommandProperty = BindableProperty.Create(nameof(TextChangedCommand), typeof(RelayCommand),

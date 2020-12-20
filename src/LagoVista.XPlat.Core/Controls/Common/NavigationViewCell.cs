@@ -20,7 +20,7 @@ namespace LagoVista.XPlat.Core.Controls.Common
         {
             _layout = new Grid();
             _layout.HeightRequest = 72;
-     
+
             _icon = new Icon()
             {
                 HorizontalOptions = new LayoutOptions(LayoutAlignment.Center, false),
@@ -28,7 +28,7 @@ namespace LagoVista.XPlat.Core.Controls.Common
                 FontSize = ResourceSupport.GetNumber("ListItemFontSize"),
                 TextColor = ResourceSupport.GetColor("ListItemIconColor"),
             };
-            
+
             _icon.SetValue(Grid.ColumnProperty, 0);
             _icon.SetValue(Grid.RowSpanProperty, 2);
 
@@ -77,9 +77,7 @@ namespace LagoVista.XPlat.Core.Controls.Common
             _layout.Children.Add(_detail);
             _layout.Children.Add(_chevron);
 
-            this.View = _layout;
-            _tapGestureRecognizer = new TapGestureRecognizer() { Command = Command };
-            _layout.GestureRecognizers.Add(_tapGestureRecognizer);
+            this.View = _layout; 
         }
 
         public static readonly BindableProperty TextProperty = BindableProperty.Create(nameof(Text), typeof(string),
@@ -89,7 +87,13 @@ namespace LagoVista.XPlat.Core.Controls.Common
          typeof(NavigationViewCell), string.Empty, BindingMode.OneWay, null, (view, oldValue, newValue) => (view as NavigationViewCell).Detail = (string)newValue);
 
         public static readonly BindableProperty CommandProperty = BindableProperty.Create(nameof(Command), typeof(ICommand),
-            typeof(NavigationViewCell), null, BindingMode.OneWay, null, (view, oldValue, newValue) => (view as NavigationViewCell)._tapGestureRecognizer.Command = (ICommand)newValue);
+            typeof(NavigationViewCell), null, BindingMode.OneWay, null, (view, oldValue, newValue) =>
+            {
+                var viewCell = view as NavigationViewCell;
+                viewCell._tapGestureRecognizer = new TapGestureRecognizer();
+                viewCell._tapGestureRecognizer.Command = (ICommand)newValue;
+                viewCell._layout.GestureRecognizers.Add(viewCell._tapGestureRecognizer);
+            });
 
         public static readonly BindableProperty IconProperty = BindableProperty.Create(nameof(Text), typeof(string),
             typeof(NavigationViewCell), string.Empty, BindingMode.OneWay, null, (view, oldValue, newValue) => (view as NavigationViewCell)._icon.IconKey = (string)newValue);
@@ -127,7 +131,7 @@ namespace LagoVista.XPlat.Core.Controls.Common
         public bool HasChevron
         {
             get { return (bool)base.GetValue(HasChevronProperty); }
-            set { base.SetValue(HasChevronProperty, value);  }
+            set { base.SetValue(HasChevronProperty, value); }
         }
 
         public string Icon

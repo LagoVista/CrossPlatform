@@ -16,8 +16,8 @@
     <Color x:Key="DangerColor">#F00</Color>
     <Color x:Key="LabelText" >#CCC</Color>
 
-    <Color x:Key="LinkColor">#3CA4FF</Color>
-    <Color x:Key="LinkActive">#1C84FF</Color>
+    <Color x:Key="LinkColor">#D48D17</Color>
+    <Color x:Key="LinkActive">#D48D17</Color>
     <Color x:Key="LinkDisabled">#888</Color>
 
     <Color x:Key="EditControlFrameInvalid" >#F00</Color>

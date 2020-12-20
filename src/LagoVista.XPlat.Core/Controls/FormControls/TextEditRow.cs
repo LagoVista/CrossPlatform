@@ -26,7 +26,7 @@ namespace LagoVista.XPlat.Core.Controls.FormControls
         public TextEditRow(FormViewer formViewer, FormField field) : base(formViewer, field)
         {
             _editorContainer = new Grid();
-
+            _editorContainer.RowDefinitions.Add(new RowDefinition() { Height = new GridLength(32, GridUnitType.Absolute) });
             _command = field.Command;
 
             _header = new FormFieldHeader(field.Label);
@@ -37,8 +37,6 @@ namespace LagoVista.XPlat.Core.Controls.FormControls
                 IsEnabled = field.IsUserEditable,
                 Placeholder = field.Watermark
             };
-
-           // _editor.HeightRequest = 40;
 
             _editor.IsPassword = field.FieldType == FieldTypes.Password.ToString();
             _editor.TextChanged += _editor_TextChanged;

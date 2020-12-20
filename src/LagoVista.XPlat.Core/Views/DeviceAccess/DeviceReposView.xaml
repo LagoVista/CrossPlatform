@@ -11,11 +11,11 @@
 
     <pge:LagoVistaContentPage.MainContent>
         <Grid>
-            <ListView ItemsSource="{Binding ListItems}" SelectedItem="{Binding SelectedItem, Mode=TwoWay}" IsVisible="{Binding HasRepos}"
+            <ListView ItemsSource="{Binding ListItems}" SelectedItem="{Binding SelectedItem}" IsVisible="{Binding HasRepos}"
                       HasUnevenRows="True" x:Name="RepositoriesList" >
                 <ListView.ItemTemplate>
                     <DataTemplate>
-                        <ctls:NavigationViewCell Icon="fa-database" Text="{Binding Name}" />
+                        <ctls:NavigationViewCell Command="{Binding RepoSelectedCommand}" Icon="fa-database" Text="{Binding Name}" Detail="Test" />
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>

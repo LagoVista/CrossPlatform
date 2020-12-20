@@ -1,10 +1,10 @@
 ﻿using LagoVista.Core.Models.Drawing;
 using LagoVista.Core.Models.UIMetaData;
+using LagoVista.XPlat.Core.Controls.Common;
 using LagoVista.XPlat.Core.Resources;
 using LagoVista.XPlat.Core.Services;
 using System;
 using System.Linq;
-using Xamarin.Forms;
 
 namespace LagoVista.XPlat.Core.Controls.FormControls
 {
@@ -22,10 +22,7 @@ namespace LagoVista.XPlat.Core.Controls.FormControls
             _validationMessage = new FormFieldValidationMessage(field.RequiredMessage);
 
             _picker = new Picker();
-            _picker.FontFamily = ResourceSupport.GetString("EntryFont");
-            _picker.FontSize = ResourceSupport.GetNumber("LabelFontSize");
-            _picker.BackgroundColor = ResourceSupport.GetColor("EditControlBackground");
-
+            
             if (field.Options != null)
             {
                 var options = field.Options.Select(opt => opt.Label).ToList();
