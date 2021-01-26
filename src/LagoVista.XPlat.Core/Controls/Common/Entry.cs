@@ -13,9 +13,13 @@ namespace LagoVista.XPlat.Core
         {
             FontFamily = ResourceSupport.GetString("EntryFont");
             FontSize = ResourceSupport.GetNumber("EntryFontSize");
-            PlaceholderColor = ResourceSupport.GetColor("EditControlPlaceholder");
-            BackgroundColor = ResourceSupport.GetColor("EditControlBackground");
-            TextColor = ResourceSupport.GetColor("EditControlText");
+            if (Device.RuntimePlatform != Device.UWP)
+            {
+                PlaceholderColor = ResourceSupport.GetColor("EditControlPlaceholder");
+                BackgroundColor = ResourceSupport.GetColor("EditControlBackground");
+                TextColor = ResourceSupport.GetColor("EditControlText");
+            }
+
             TextChanged += Entry_TextChanged;
         }
 

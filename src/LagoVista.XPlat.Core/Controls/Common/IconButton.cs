@@ -1,16 +1,10 @@
 ﻿using LagoVista.Client.Core.Icons;
-using LagoVista.Core.Interfaces;
-using LagoVista.Core.IOC;
 using LagoVista.XPlat.Core.Services;
 using System;
 using Xamarin.Forms;
 
 namespace LagoVista.XPlat.Core
 {
-    /// <summary>
-    /// Defines the <see cref="IconButton" /> control.
-    /// </summary>
-    /// <seealso cref="Xamarin.Forms.Button" />
     public class IconButton : Button
     {
         public IconButton()

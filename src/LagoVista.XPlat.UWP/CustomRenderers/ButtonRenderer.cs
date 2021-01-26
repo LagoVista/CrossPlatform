@@ -1,5 +1,4 @@
-﻿using LagoVista.XPlat.Core;
-using LagoVista.XPlat.UWP.CustomRenderers;
+﻿using LagoVista.XPlat.UWP.CustomRenderers;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Xamarin.Forms.Platform.UWP;

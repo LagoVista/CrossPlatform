@@ -13,13 +13,13 @@
     <PackageReference Include="LagoVista.Core.Networking" Version="2.1.1286-beta1412" />
     <PackageReference Include="LagoVista.IoT.Logging" Version="2.1.1285-beta1826" />
     <PackageReference Include="LagoVista.UserAdmin.Models" Version="2.1.1285-beta1826" />
-    <PackageReference Include="Microsoft.AppCenter" Version="4.0.0" />
-    <PackageReference Include="Microsoft.AppCenter.Analytics" Version="4.0.0" />
-    <PackageReference Include="Microsoft.AppCenter.Crashes" Version="4.0.0" />
-    <PackageReference Include="Microsoft.AppCenter.Distribute" Version="4.0.0" />
+    <PackageReference Include="Microsoft.AppCenter" Version="4.1.0" />
+    <PackageReference Include="Microsoft.AppCenter.Analytics" Version="4.1.0" />
+    <PackageReference Include="Microsoft.AppCenter.Crashes" Version="4.1.0" />
+    <PackageReference Include="Microsoft.AppCenter.Distribute" Version="4.1.0" />
     <PackageReference Include="Microsoft.NETCore.Platforms" Version="5.0.0" />
     <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
-    <PackageReference Include="Xamarin.Forms" Version="4.8.0.1687" />
+    <PackageReference Include="Xamarin.Forms" Version="5.0.0.1905" />
     <PackageReference Include="LagoVista.Core" Version="2.1.1286-beta1412" />
   </ItemGroup>
   <ItemGroup>

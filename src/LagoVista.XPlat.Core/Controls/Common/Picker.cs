@@ -1,4 +1,5 @@
 ﻿using LagoVista.XPlat.Core.Services;
+using Xamarin.Forms;
 
 namespace LagoVista.XPlat.Core
 {
@@ -8,8 +9,12 @@ namespace LagoVista.XPlat.Core
         {
             FontFamily = ResourceSupport.GetString("EntryFont");
             FontSize = ResourceSupport.GetNumber("EntryFontSize");
-            BackgroundColor = ResourceSupport.GetColor("EditControlBackground");
-            TextColor = ResourceSupport.GetColor("EditControlText");
+            
+            if (Device.RuntimePlatform != Device.UWP)
+            {
+                TextColor = ResourceSupport.GetColor("EditControlText");
+                BackgroundColor = ResourceSupport.GetColor("EditControlBackground");
+            }
         }
     }
 }

@@ -11,11 +11,6 @@ namespace LagoVista.XPlat.Core
             TextColor = ResourceSupport.GetColor("ButtonForeground");         
             FontSize = ResourceSupport.GetNumber("ButtonFontSize");            
         }
-
-        public new ICommand Command
-        {
-            get { return base.Command; }
-             set { base.Command = value; }
-        }        
+ 
     }
 }

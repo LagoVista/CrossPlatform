@@ -5,11 +5,19 @@
     xmlns:local="using:LagoVista.XPlat.Sample.UWP"
     RequestedTheme="Light">
     <Application.Resources>
-  <!--      <ResourceDictionary>
+        <ResourceDictionary>
+            <ResourceDictionary.ThemeDictionaries>
+                <ResourceDictionary Source="Resources/FormsColors.xaml" x:Key="Light" />
+                <ResourceDictionary Source="Resources/FormsColors.xaml" x:Key="Dark" />
+            </ResourceDictionary.ThemeDictionaries>
             <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="Resources/EditTextStyle.xaml" />
+                <ResourceDictionary Source="Resources/Theme.Dark.xaml" />
+                <!--   <ResourceDictionary Source="Resources/EditTextStyle.xaml" />
                 <ResourceDictionary Source="Resources/ButtonStyle.xaml" />
+                <ResourceDictionary Source="Resources/IconButtonStyle.xaml" />-->
+                <ResourceDictionary Source="Resources/FormsColors.xaml" />
+                <ResourceDictionary Source="Resources/ComboBoxStyle.xaml" />
             </ResourceDictionary.MergedDictionaries>
-        </ResourceDictionary>-->
+           </ResourceDictionary>
     </Application.Resources>
 </Application>

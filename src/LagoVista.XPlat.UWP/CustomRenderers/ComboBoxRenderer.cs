@@ -3,6 +3,7 @@ using Windows.UI.Xaml.Controls;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.UWP;
 
+
 [assembly: ExportRenderer(typeof(Picker), typeof(ComboBoxRenderer))]
 namespace LagoVista.XPlat.UWP.CustomRenderers
 {
@@ -14,8 +15,8 @@ namespace LagoVista.XPlat.UWP.CustomRenderers
             if (Control != null)
             {
                 Control comboBox = Control;
-             //   var template = Windows.UI.Xaml.Application.Current.Resources["LGVComboBox"] as Windows.UI.Xaml.Style;
-               // comboBox.Style = template;
+           //     var template = Windows.UI.Xaml.Application.Current.Resources["PickerStyle"] as Windows.UI.Xaml.Style;
+             //   comboBox.Style = template;
             }
         }
     }

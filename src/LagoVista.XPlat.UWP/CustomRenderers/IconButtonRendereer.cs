@@ -3,10 +3,10 @@ using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Xamarin.Forms.Platform.UWP;
 
-[assembly: ExportRenderer(typeof(LagoVista.XPlat.Core.IconButton), typeof(IconButtonRendereer))]
+[assembly: ExportRenderer(typeof(LagoVista.XPlat.Core.IconButton), typeof(IconButtonRenderer), Priority =1)]
 namespace LagoVista.XPlat.UWP.CustomRenderers
 {
-    public class IconButtonRendereer : ButtonRenderer
+    public class IconButtonRenderer : ButtonRenderer
     {
         protected override void OnElementChanged(ElementChangedEventArgs<global::Xamarin.Forms.Button> e)
         {
