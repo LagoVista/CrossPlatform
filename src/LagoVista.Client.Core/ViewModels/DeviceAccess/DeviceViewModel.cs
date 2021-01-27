@@ -33,7 +33,7 @@ namespace LagoVista.Client.Core.ViewModels.DeviceAccess
 
         public DeviceViewModel()
         {
-            _btSerial = SLWIOC.Create<IBluetoothSerial>();
+            _btSerial = SLWIOC.Get<IBluetoothSerial>();
             _btSerial.DeviceConnected += _btSerial_DeviceConnected;
             _btSerial.DeviceDisconnected += _btSerial_DeviceDisconnected;
             _btSerial.ReceivedLine += _btSerial_ReceivedLine;

@@ -28,7 +28,7 @@ namespace LagoVista.Client.Core.ViewModels.DeviceAccess
 
         public ProvisionDeviceViewModel()
         {
-            _btSerial = SLWIOC.Create<IBluetoothSerial>();
+            _btSerial = SLWIOC.Get<IBluetoothSerial>();
             _btSerial.DeviceConnected += _btSerial_DeviceConnected;
             _btSerial.DeviceDisconnected += _btSerial_DeviceDisconnected;
             _btSerial.ReceivedLine += _btSerial_ReceivedLine;
@@ -38,8 +38,8 @@ namespace LagoVista.Client.Core.ViewModels.DeviceAccess
             WriteConfigurationCommand = new RelayCommand(async () => await WriteProfileAsync(), () => _btSerial.CurrentDevice != null);
             ResetConfigurationCommand = new RelayCommand(async () => await ResetConfigurationAsync(), () => _btSerial.CurrentDevice != null);
             RebootCommand = new RelayCommand(async () => await RebootAsync(), () => _btSerial.CurrentDevice != null);
-
         }
+
         private void _btSerial_DeviceDisconnected(object sender, BTDevice e)
         {
             WriteConfigurationCommand.RaiseCanExecuteChanged();
@@ -196,7 +196,7 @@ namespace LagoVista.Client.Core.ViewModels.DeviceAccess
             {
                 IsBusy = true;
 
-                await _btSerial.ConnectAsync(btDevice);
+                //await _btSerial.ConnectAsync(btDevice);
                 await _btSerial.SendAsync("HELLO\n");
                 await Task.Delay(250);
                 await _btSerial.SendAsync("PAUSE\n");

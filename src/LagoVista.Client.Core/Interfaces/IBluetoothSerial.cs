@@ -30,5 +30,7 @@ namespace LagoVista.Client.Core.Interfaces
         Task SendAsync(String msg);
 
         BTDevice CurrentDevice { get; }
+
+        bool IsConnected { get; }
     }
 }

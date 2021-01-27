@@ -3,6 +3,7 @@ using LagoVista.Client.Core.Models;
 using System;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
+using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using Windows.Devices.Bluetooth.Rfcomm;
@@ -34,6 +35,13 @@ namespace LagoVista.Core.UWP.Services
         BTDevice _currentDevice = null;
 
         private string _lastMessage = null;
+
+        private static int _btSerialIdx = 0;
+
+        public BluetoothSerial()
+        {
+            _btSerialIdx++;
+        }
 
         public async Task ConnectAsync(BTDevice device)
         {
@@ -326,11 +334,16 @@ namespace LagoVista.Core.UWP.Services
 
             // Launch the task and wait
             UInt32 bytesRead = await loadAsyncTask;
+            IBuffer buffer = null;
             if (bytesRead > 0)
             {
                 try
                 {
-                    var msg = _dataReaderObject.ReadString(bytesRead);
+                    buffer = _dataReaderObject.ReadBuffer(bytesRead);
+
+                    var dataReader = Windows.Storage.Streams.DataReader.FromBuffer(buffer);
+                    var msg = dataReader.ReadString(buffer.Length);
+
                     var lines = msg.Split("\n");
                     foreach (var line in lines)
                     {
@@ -340,6 +353,22 @@ namespace LagoVista.Core.UWP.Services
                             _lastMessage = line.Substring("fwupdate=".Length);
                             _msgReceivedFlag.Release();
                         }
+                    }
+                }
+                catch(ArgumentOutOfRangeException)
+                {
+                    if(buffer != null)
+                    {
+                        var hexBuffer = new StringBuilder();
+                        var dataReader = Windows.Storage.Streams.DataReader.FromBuffer(buffer);
+                        for (int idx = 0; idx < bytesRead; ++idx)
+                        {
+                            var ch = dataReader.ReadByte();
+                            hexBuffer.Append($"0x{ch:X2} ");
+                        }
+
+                        Debug.WriteLine("Caught invalid string from BT");
+                        Debug.WriteLine(hexBuffer.ToString());
                     }
                 }
                 catch (Exception ex)
@@ -374,6 +403,8 @@ namespace LagoVista.Core.UWP.Services
         }
 
         public BTDevice CurrentDevice { get => _currentDevice; }
+
+        public bool IsConnected { get => _currentDevice != null; }
 
     }
 }
