@@ -2,10 +2,8 @@
 using LagoVista.Client.Core.Models;
 using LagoVista.Core.IOC;
 using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace LagoVista.Client.Core.ViewModels.DeviceAccess
@@ -19,12 +17,11 @@ namespace LagoVista.Client.Core.ViewModels.DeviceAccess
         private String _deviceId;
         private int _sendIndex;
 
-        private BTDevice _currentDevice;
         private IBluetoothSerial _btSerial;
 
         public ConsoleViewModel()
         {
-            _btSerial = SLWIOC.Create<IBluetoothSerial>();
+            _btSerial = SLWIOC.Get<IBluetoothSerial>();
             _btSerial.DeviceConnected += _btSerial_DeviceConnected;
             _btSerial.DeviceDisconnected += _btSerial_DeviceDisconnected;
             _btSerial.ReceivedLine += _btSerial_ReceivedLine;
@@ -35,9 +32,9 @@ namespace LagoVista.Client.Core.ViewModels.DeviceAccess
             Lines.Insert(0, "Device Disconnected");
         }
 
-        private void _btSerial_DeviceConnected(object sender, BTDevice e)
+        private async void _btSerial_DeviceConnected(object sender, BTDevice e)
         {
-
+            await Popups.ShowAsync("Device Disconnected.");
         }
 
         public override async Task InitAsync()
@@ -48,7 +45,6 @@ namespace LagoVista.Client.Core.ViewModels.DeviceAccess
 
             _deviceRepoId = LaunchArgs.Parameters[ConsoleViewModel.DeviceRepoId].ToString();
             _deviceId = LaunchArgs.Parameters[ConsoleViewModel.DeviceId].ToString();
-
 
             if (!await Storage.HasKVPAsync(PairBTDeviceViewModel.ResolveBTDeviceIdKey(_deviceRepoId, _deviceId)))
             {
@@ -71,8 +67,7 @@ namespace LagoVista.Client.Core.ViewModels.DeviceAccess
             try
             {
                 Lines.Insert(0, "connecting to device.");
-                await _btSerial.ConnectAsync(btDevice);
-                _currentDevice = btDevice;
+                
                 Lines.Insert(0, "device connected.");
                 IsBusy = false;
             }
@@ -95,23 +90,5 @@ namespace LagoVista.Client.Core.ViewModels.DeviceAccess
         }
 
         public ObservableCollection<string> Lines { get; } = new ObservableCollection<string>();
-        public override async Task IsClosingAsync()
-        {
-            if (_currentDevice != null)
-            {
-                // set to temporary value so we can check that it's no
-                // longer current and not popup a device disconnected
-                // message
-                var device = _currentDevice;
-                _currentDevice = null;
-                try
-                {
-                    await _btSerial.DisconnectAsync(device);
-                }
-                catch (Exception) { }
-            }
-
-            await base.IsClosingAsync();
-        }
     }
 }

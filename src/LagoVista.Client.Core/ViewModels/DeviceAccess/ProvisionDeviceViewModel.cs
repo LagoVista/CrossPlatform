@@ -16,7 +16,6 @@ namespace LagoVista.Client.Core.ViewModels.DeviceAccess
     {
         private int _sendIndex;
 
-        private BTDevice _currentDevice;
         private IBluetoothSerial _btSerial;
 
         System.Threading.SemaphoreSlim _recvSemephor;
@@ -162,7 +161,7 @@ namespace LagoVista.Client.Core.ViewModels.DeviceAccess
         async Task RebootAsync()
         {
             await _btSerial.SendAsync("REBOOT\n");
-            await _btSerial.DisconnectAsync(_currentDevice);
+            await _btSerial.DisconnectAsync();
         }
 
         async Task ResetConfigurationAsync()
@@ -203,8 +202,6 @@ namespace LagoVista.Client.Core.ViewModels.DeviceAccess
                 await Task.Delay(250);
 
                 await _btSerial.SendAsync("SYSCONFIG-SEND\n");
-
-                _currentDevice = btDevice;
             }
             catch (Exception)
             {
@@ -223,14 +220,11 @@ namespace LagoVista.Client.Core.ViewModels.DeviceAccess
 
         public override async Task IsClosingAsync()
         {
-            if (_currentDevice != null)
-            {
+            if(_btSerial.IsConnected)
+            { 
                 try
                 {
                     await _btSerial.SendAsync("CONTINUE\n");
-                    await Task.Delay(1000);
-                    await _btSerial.DisconnectAsync(_currentDevice);
-                    _currentDevice = null;
                 }
                 catch (Exception)
                 { }

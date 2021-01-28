@@ -107,7 +107,7 @@ namespace LagoVista.Client.Core.ViewModels.DeviceAccess
                 }
 
                 await Storage.StoreKVP(ResolveBTDeviceIdKey(DeviceRepoId, DeviceId), device.DeviceId);
-                await _btSerial.DisconnectAsync(device);
+                await _btSerial.DisconnectAsync();
 
                 CloseScreen();
             }
@@ -115,7 +115,7 @@ namespace LagoVista.Client.Core.ViewModels.DeviceAccess
             {
                 if (_btSerial.CurrentDevice != null)
                 {
-                    await _btSerial.DisconnectAsync(device);
+                    await _btSerial.DisconnectAsync();
                 }
 
                 await Popups.ShowAsync($"Could not connect to {device.DeviceName} - {ex.Message}");

@@ -15,8 +15,6 @@ namespace LagoVista.Client.Core.ViewModels.DeviceAccess
 {
     public class DFUViewModel : DeviceViewModelBase
     {
-        BTDevice _currentDevice;
-
         private string _firmwareUrl;
 
         private IBluetoothSerial _btSerial;
@@ -67,10 +65,7 @@ namespace LagoVista.Client.Core.ViewModels.DeviceAccess
 
         private async void _btSerial_DeviceConnected(object sender, BTDevice e)
         {
-            if (_currentDevice != null)
-            {
-                await Popups.ShowAsync("Connection lost to device.");
-            }
+            await Popups.ShowAsync("Connection lost to device.");
         }
 
         public override async Task InitAsync()
@@ -93,6 +88,12 @@ namespace LagoVista.Client.Core.ViewModels.DeviceAccess
                 return;
             }
 
+            if(!_btSerial.IsConnected)
+            {
+                await Popups.ShowAsync("Device not connected.");
+                return;
+            }
+
             try
             {
                 await _btSerial.ConnectAsync(btDevice);
@@ -102,8 +103,6 @@ namespace LagoVista.Client.Core.ViewModels.DeviceAccess
                 await _btSerial.SendAsync("PAUSE\n");
                 await Task.Delay(250);
                 await _btSerial.SendAsync("PROPERTIES\n");
-
-                _currentDevice = btDevice;
 
                 var result = await PerformNetworkOperation(async () =>
                 {
@@ -146,25 +145,6 @@ namespace LagoVista.Client.Core.ViewModels.DeviceAccess
 
         }
 
-        public override async Task IsClosingAsync()
-        {
-            try
-            {
-                if (_currentDevice != null)
-                {
-                    var device = _currentDevice;
-                    _currentDevice = null;
-
-                    await _btSerial.SendAsync("CONTINUE\n");
-                    await Task.Delay(1000);
-                    await _btSerial.DisconnectAsync(device);
-                }
-            }
-            catch (Exception) { }
-
-
-            await base.IsClosingAsync();
-        }
 
 
         public async void UpdateDeviceFirmware()
@@ -174,7 +154,7 @@ namespace LagoVista.Client.Core.ViewModels.DeviceAccess
             var buffer = await responseMessage.Content.ReadAsByteArrayAsync();
             StatusMessage = "Firmware Downloading starting device firmware update.";
             await _btSerial.SendAsync("READFIRMWARE\n");
-            await _btSerial.SendDFUAsync(_currentDevice, buffer);
+            await _btSerial.SendDFUAsync(buffer);
         }
 
         public LagoVista.Core.Commanding.RelayCommand UpdateDeviceFirmwareCommand { get; private set; }

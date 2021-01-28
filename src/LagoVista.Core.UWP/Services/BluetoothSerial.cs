@@ -57,11 +57,19 @@ namespace LagoVista.Core.UWP.Services
 
             DeviceConnecting?.Invoke(this, device);
 
+            Debug.WriteLine("Finding device by id: " + device.DeviceId);
             _service = await RfcommDeviceService.FromIdAsync(device.DeviceId);
+            if (_service == null)
+            {
+                throw new InvalidOperationException("Could not find service.");
+            }
 
+            Debug.WriteLine("Found service.");
             _socket = new StreamSocket();
 
+            Debug.WriteLine($"Connecting to {_service.ConnectionHostName} with service name: {_service.ConnectionServiceName}.");
             await _socket.ConnectAsync(_service.ConnectionHostName, _service.ConnectionServiceName);
+            Debug.WriteLine($"SUCCESS - connecting to {_service.ConnectionHostName} with service name: {_service.ConnectionServiceName}.");
             _dataWriterObject = new DataWriter(_socket.OutputStream);
             Listen();
 
@@ -70,21 +78,12 @@ namespace LagoVista.Core.UWP.Services
             DeviceConnected?.Invoke(this, device);
         }
 
-        public Task DisconnectAsync(BTDevice device)
+        public Task DisconnectAsync()
         {
-            if (device == null)
-            {
-                throw new ArgumentNullException(nameof(device));
-            }
-
+            
             if (_currentDevice == null)
             {
                 throw new InvalidOperationException("No connected.");
-            }
-
-            if (_currentDevice != device)
-            {
-                throw new InvalidOperationException("Attempt to close a not conected device.");
             }
 
             CancelReadTask();
@@ -129,7 +128,7 @@ namespace LagoVista.Core.UWP.Services
             return _lastMessage;
         }
 
-        public async Task SendDFUAsync(BTDevice device, byte[] firmware)
+        public async Task SendDFUAsync(byte[] firmware)
         {
             if (_currentDevice == null)
             {
@@ -294,10 +293,13 @@ namespace LagoVista.Core.UWP.Services
         {
             try
             {
+                Debug.WriteLine("Starting listening.");
                 _listenCancelTokenSource = new CancellationTokenSource();
                 if (_socket.InputStream != null)
                 {
+                    Debug.WriteLine("Opening data reader object.");
                     _dataReaderObject = new DataReader(_socket.InputStream);
+                    Debug.WriteLine("Opened data reader object, starting listen loop");
                     // keep reading the serial input
                     while (true && _socket != null)
                     {

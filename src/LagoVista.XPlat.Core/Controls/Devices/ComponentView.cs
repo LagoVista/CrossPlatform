@@ -30,10 +30,10 @@ namespace LagoVista.XPlat.Core.Controls.Devices
 
             Margin = 10;
 
-            _label = new Label() { FontSize = 24, Margin = new Thickness(4, 0, 0, 0), };
+            _label = new Label() { FontSize = 24, Margin = new Thickness(4, 0, 0, 0), TextColor = Color.Black };
             _name = new Label();
             _dateStamp = new Label() { VerticalTextAlignment = TextAlignment.End, Margin = new Thickness(4, 0, 0, 4), };
-            _value = new Label() { FontSize = 24, VerticalTextAlignment = TextAlignment.Center, Margin = new Thickness(0, 0, 4, 0), HorizontalTextAlignment = TextAlignment.End };
+            _value = new Label() { FontSize = 24, VerticalTextAlignment = TextAlignment.Center, Margin = new Thickness(0, 0, 4, 0), HorizontalTextAlignment = TextAlignment.End, TextColor = Color.Black };
 
             _frame = new Frame() { BorderColor = Color.LightBlue, BackgroundColor = Color.LightGray, CornerRadius = 10 };
 

@@ -18,7 +18,6 @@ namespace LagoVista.Client.Core.ViewModels.DeviceAccess
         private String _deviceId;
         private int _sendIndex;
 
-        private BTDevice _currentDevice;
         private IBluetoothSerial _btSerial;
 
         System.Threading.SemaphoreSlim _recvSemephor;
@@ -33,7 +32,7 @@ namespace LagoVista.Client.Core.ViewModels.DeviceAccess
 
         public IOConfigViewModel()
         {
-            _btSerial = SLWIOC.Create<IBluetoothSerial>();
+            _btSerial = SLWIOC.Get<IBluetoothSerial>();
             _btSerial.DeviceConnected += _btSerial_DeviceConnected;
             _btSerial.DeviceDisconnected += _btSerial_DeviceDisconnected;
             _btSerial.ReceivedLine += _btSerial_ReceivedLine;
@@ -51,11 +50,6 @@ namespace LagoVista.Client.Core.ViewModels.DeviceAccess
             WriteConfigurationCommand.RaiseCanExecuteChanged();
             ResetConfigurationCommand.RaiseCanExecuteChanged();
             RebootCommand.RaiseCanExecuteChanged();
-
-            if (_currentDevice != null)
-            {
-                Popups.ShowAsync("Connection lost to device.");
-            }
         }
 
         private void _btSerial_DeviceConnected(object sender, BTDevice e)
@@ -149,7 +143,10 @@ namespace LagoVista.Client.Core.ViewModels.DeviceAccess
             {
                 IsBusy = true;
 
-                await _btSerial.ConnectAsync(btDevice);
+                if (!_btSerial.IsConnected)
+                {
+                    throw new InvalidOperationException("Not connected to bluetooth.");
+                }
 
                 await _btSerial.SendAsync("HELLO\n");
                 await Task.Delay(250);
@@ -157,33 +154,18 @@ namespace LagoVista.Client.Core.ViewModels.DeviceAccess
                 await Task.Delay(250);
 
                 await _btSerial.SendAsync("IOCONFIG-SEND\n");
-
-                _currentDevice = btDevice;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                await Popups.ShowAsync("Could not connect to device.");
+                await Popups.ShowAsync($"Could not connect to device: {ex.Message}");
             }
         }
 
         public override async Task IsClosingAsync()
-        {
-            if (_currentDevice != null)
-            {
-                // set to temporary value so we can check that it's no
-                // longer current and not popup a device disconnected
-                // message
-                var device = _currentDevice;
-                _currentDevice = null;
-                try
-                {
-                    await _btSerial.SendAsync("CONTINUE\n");
-                    await Task.Delay(500);
-                    await _btSerial.DisconnectAsync(device);
-                }
-                catch (Exception) { }
-            }
-
+        {            
+            if(_btSerial.IsConnected)
+                await _btSerial.SendAsync("CONTINUE\n");
+            
             await base.IsClosingAsync();
         }
 
@@ -243,7 +225,7 @@ namespace LagoVista.Client.Core.ViewModels.DeviceAccess
         async Task RebootAsync()
         {
             await _btSerial.SendAsync("REBOOT\n");
-            await _btSerial.DisconnectAsync(_currentDevice);
+            await _btSerial.DisconnectAsync();
         }
 
 

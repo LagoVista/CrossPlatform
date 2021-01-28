@@ -83,7 +83,7 @@ namespace LagoVista.XPlat.Sample.ViewModels
                 IsBusy = true;
                 await _btSerial.SendAsync($"QUIT\n");
                 await Task.Delay(1000);
-                await _btSerial.DisconnectAsync(SelectedDevice);
+                await _btSerial.DisconnectAsync();
                 IsBusy = false;
             }
 
@@ -121,7 +121,7 @@ namespace LagoVista.XPlat.Sample.ViewModels
                 dfu[idx] = (byte)(rnd.Next() & 0xFF);
             }
 
-            await _btSerial.SendDFUAsync(SelectedDevice, dfu);
+            await _btSerial.SendDFUAsync(dfu);
         }
 
         private BTDevice _selectedDevice;
