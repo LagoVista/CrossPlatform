@@ -10,6 +10,8 @@ namespace LagoVista.XPlat.Droid.Services
     {
         public BTDevice CurrentDevice => null;
 
+        public bool IsConnected => throw new NotImplementedException();
+
         public event EventHandler<string> ReceivedLine;
         public event EventHandler<DFUProgress> DFUProgress;
         public event EventHandler DFUCompleted;
@@ -28,6 +30,11 @@ namespace LagoVista.XPlat.Droid.Services
             return Task.CompletedTask;
         }
 
+        public Task DisconnectAsync()
+        {
+            throw new NotImplementedException();
+        }
+
         public async Task<ObservableCollection<BTDevice>> SearchAsync()
         {
             await Task.Delay(1);
@@ -42,6 +49,11 @@ namespace LagoVista.XPlat.Droid.Services
         public Task SendDFUAsync(BTDevice device, byte[] firmware)
         {
             return Task.CompletedTask;
+        }
+
+        public Task SendDFUAsync(byte[] firmware)
+        {
+            throw new NotImplementedException();
         }
     }
 }

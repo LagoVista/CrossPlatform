@@ -82,8 +82,9 @@ namespace LagoVista.Client.Core.ViewModels.DeviceAccess
                     ConnectedViaBluetooth = true;
                     IsBusy = false;
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
+                    await Popups.ShowAsync("Could not connect to device via Bluetooth: " + ex.Message);
                     IsBusy = false;
                 }
             }
