@@ -178,7 +178,7 @@ namespace LagoVista.XPlat.Sample.ViewModels
             var field = nameof(Model1.MySecretField).ToJSONName();
 
             formAdapter.FormItems.Where(itm => itm.Name == field).First().Command = new RelayCommand((arg) => HandleMe(arg));
-            formAdapter.FormItems.Where(itm => itm.Name == "checkBox1").First().IsVisible = false;
+     //       formAdapter.FormItems.Where(itm => itm.Name == "checkBox1").First().IsVisible = false;
 
             ModelToView(model1, formAdapter);
 

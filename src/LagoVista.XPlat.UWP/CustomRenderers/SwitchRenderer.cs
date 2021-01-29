@@ -20,9 +20,11 @@ namespace LagoVista.Xplat.UWP.CustomRenderer
                 {
                     var control = new ToggleSwitch();
                     control.Toggled += OnNativeToggled;
-                    control.Loaded += OnControlLoaded;
+                    //control.Loaded += OnControlLoaded;
                     control.ClearValue(ToggleSwitch.OnContentProperty);
                     control.ClearValue(ToggleSwitch.OffContentProperty);
+                    Windows.UI.Xaml.Application.Current.Resources.TryGetValue("LGVToggleSwitchStyle", out var style);
+                    control.Style = style as Windows.UI.Xaml.Style;
 
                     SetNativeControl(control);
                 }
@@ -36,20 +38,21 @@ namespace LagoVista.Xplat.UWP.CustomRenderer
             ((IElementController)Element).SetValueFromRenderer(Switch.IsToggledProperty, Control.IsOn);
         }
 
-        void UpdateFlowDirection()
-        {
+		void UpdateFlowDirection()
+		{
 
-        }
+		}
 
         void UpdateOnColor()
         {
 
         }
-
-        protected override void OnElementPropertyChanged(object sender, PropertyChangedEventArgs e)
+        /*
+		protected override void OnElementPropertyChanged(object sender, PropertyChangedEventArgs e)
         {
             base.OnElementPropertyChanged(sender, e);
 
+            
             if (e.PropertyName == Switch.IsToggledProperty.PropertyName)
             {
                 Control.IsOn = Element.IsToggled;
@@ -69,6 +72,6 @@ namespace LagoVista.Xplat.UWP.CustomRenderer
             UpdateOnColor();
             Control.Loaded -= OnControlLoaded;
         }
-
+        */
     }
 }

@@ -19,7 +19,7 @@ namespace LagoVista.Client.Core.ViewModels.DeviceAccess
 
         public PairBTDeviceViewModel()
         {
-            _btSerial = SLWIOC.Create<IBluetoothSerial>();
+            _btSerial = SLWIOC.Get<IBluetoothSerial>();
         }
 
 
