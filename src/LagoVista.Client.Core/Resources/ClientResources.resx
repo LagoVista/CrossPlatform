@@ -600,4 +600,7 @@
   <data name="DeviceMore_Provision" xml:space="preserve">
     <value>Provision</value>
   </data>
+  <data name="Provision_BaudRate" xml:space="preserve">
+    <value>Modem Baud Rate</value>
+  </data>
 </root>

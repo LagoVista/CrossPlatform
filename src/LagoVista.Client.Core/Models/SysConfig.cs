@@ -112,6 +112,7 @@ namespace LagoVista.Client.Core.Models
             set => Set(ref _pingRate, value);
         }
 
+
         int _sendUpdateRate;
 
         [JsonProperty("sendUpdateRate")]

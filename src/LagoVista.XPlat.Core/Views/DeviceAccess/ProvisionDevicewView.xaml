@@ -89,6 +89,9 @@
                     <pge:Label Text="{trs:ClientTranslate Provision_GPSUpdateRate}" />
                     <pge:Entry Text="{Binding Path=Config.GPSUpdateRate, Mode=TwoWay}" />
 
+                    <pge:Label Text="{trs:ClientTranslate Provision_BaudRate}" />
+                    <pge:Entry Text="{Binding Path=Config.GPRSModemBaudRate, Mode=TwoWay}" />
+
                     <pge:Label Text="{trs:ClientTranslate Provision_PingUpdateRate}" />
                     <pge:Entry Text="{Binding Path=Config.PingRate, Mode=TwoWay}" />
 
