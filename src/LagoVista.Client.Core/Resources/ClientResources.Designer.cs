@@ -916,6 +916,15 @@ namespace LagoVista.Client.Core.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Modem Baud Rate.
+        /// </summary>
+        public static string Provision_BaudRate {
+            get {
+                return ResourceManager.GetString("Provision_BaudRate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Cellular Connection Enabled.
         /// </summary>
         public static string Provision_CellEnabled {
