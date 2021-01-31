@@ -1,17 +1,12 @@
 ﻿using LagoVista.Core.PlatformSupport;
 using System;
-using LagoVista.Core.Networking;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using Windows.Networking.Connectivity;
 using System.Collections.ObjectModel;
-using System.Diagnostics;
 using LagoVista.Core.Models;
-using LagoVista.Core.UWP.Networking;
 using Windows.Networking;
-using Windows.ApplicationModel.Resources;
 
 namespace LagoVista.Core.UWP.Services
 {
@@ -45,7 +40,6 @@ namespace LagoVista.Core.UWP.Services
                 return connectionState >= NetworkConnectivityLevel.InternetAccess;
             }
         }
-
 
         public string GetIPV4Address()
         {

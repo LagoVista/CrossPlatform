@@ -1,24 +1,16 @@
-﻿using LagoVista.Client.Core.Interfaces;
-using LagoVista.Client.Core.Models;
+﻿using LagoVista.Client.Core.Models;
 using LagoVista.Core.Commanding;
-using LagoVista.Core.IOC;
 using Newtonsoft.Json;
 using System;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace LagoVista.Client.Core.ViewModels.DeviceAccess
 {
-    public class IOConfigViewModel : AppViewModelBase
+    public class IOConfigViewModel : DeviceViewModelBase
     {
-        private String _deviceRepoId;
-        private String _deviceId;
         private int _sendIndex;
-
-        private IBluetoothSerial _btSerial;
 
         System.Threading.SemaphoreSlim _recvSemephor;
 
@@ -27,46 +19,33 @@ namespace LagoVista.Client.Core.ViewModels.DeviceAccess
         const string IOCONFIGRECVENDOK = "IOCONFIG-RECV-END:OK";
         const string IOCONFIGRECVENDFAIL = "IOCONFIG-RECV-END:FAIL";
 
-        public const string DeviceId = "DEVICE_ID";
-        public const string DeviceRepoId = "DEVICE_REPO_ID";
-
         public IOConfigViewModel()
         {
-            _btSerial = SLWIOC.Get<IBluetoothSerial>();
-            _btSerial.DeviceConnected += _btSerial_DeviceConnected;
-            _btSerial.DeviceDisconnected += _btSerial_DeviceDisconnected;
-            _btSerial.ReceivedLine += _btSerial_ReceivedLine;
-
             Config = null;
 
-            WriteConfigurationCommand = new RelayCommand(async () => await WriteProfileAsync(), () => _btSerial.CurrentDevice != null);
-            ResetConfigurationCommand = new RelayCommand(async () => await ResetConfigurationAsync(), () => _btSerial.CurrentDevice != null);
-            RebootCommand = new RelayCommand(async () => await RebootAsync(), () => _btSerial.CurrentDevice != null);
+            WriteConfigurationCommand = new RelayCommand(async () => await WriteProfileAsync(), () => DeviceConnected);
+            ResetConfigurationCommand = new RelayCommand(async () => await ResetConfigurationAsync(), () => DeviceConnected);
+            RebootCommand = new RelayCommand(async () => await RebootAsync(), () => DeviceConnected);
 
         }
 
-        private void _btSerial_DeviceDisconnected(object sender, BTDevice e)
+        protected override void OnBTSerial_DeviceDisconnected()
         {
-            WriteConfigurationCommand.RaiseCanExecuteChanged();
-            ResetConfigurationCommand.RaiseCanExecuteChanged();
-            RebootCommand.RaiseCanExecuteChanged();
-        }
-
-        private void _btSerial_DeviceConnected(object sender, BTDevice e)
-        {
+            base.OnBTSerial_DeviceDisconnected();
             WriteConfigurationCommand.RaiseCanExecuteChanged();
             ResetConfigurationCommand.RaiseCanExecuteChanged();
             RebootCommand.RaiseCanExecuteChanged();
         }
 
         StringBuilder _builder = new StringBuilder();
-        private async void _btSerial_ReceivedLine(object sender, string line)
+        //private async void _btSerial_ReceivedLine(object sender, string line)
+        protected override async void OnBTSerail_LineReceived(string line)
         {
             Debug.WriteLine(line);
             if (line == IOCONFIGRECVENDOK)
             {
                 await Popups.ShowAsync("SUCCESS", "Wrote configuration file.");
-                await Storage.StoreAsync(Config, $"{_deviceId}.ioconfig.json");
+                await Storage.StoreAsync(Config, $"{DeviceId}.ioconfig.json");
             }
             else if (line == IOCONFIGRECVENDFAIL)
             {
@@ -120,40 +99,21 @@ namespace LagoVista.Client.Core.ViewModels.DeviceAccess
         {
             await base.InitAsync();
 
-            _deviceRepoId = LaunchArgs.Parameters[IOConfigViewModel.DeviceRepoId].ToString();
-            _deviceId = LaunchArgs.Parameters[IOConfigViewModel.DeviceId].ToString();
-
-            if (!await Storage.HasKVPAsync(PairBTDeviceViewModel.ResolveBTDeviceIdKey(_deviceRepoId, _deviceId)))
-            {
-                await Popups.ShowAsync("Must associate a BT Device first.");
-                return;
-            }
-
-            var devices = await _btSerial.SearchAsync();
-            var btDeviceId = await Storage.GetKVPAsync<string>(PairBTDeviceViewModel.ResolveBTDeviceIdKey(_deviceRepoId, _deviceId));
-
-            var btDevice = devices.Where(bt => bt.DeviceId == btDeviceId).First();
-            if (btDevice == null)
-            {
-                await Popups.ShowAsync("Could not find paired device.");
-                return;
-            }
-
             try
             {
                 IsBusy = true;
 
-                if (!_btSerial.IsConnected)
+                if (!DeviceConnected)
                 {
                     throw new InvalidOperationException("Not connected to bluetooth.");
                 }
 
-                await _btSerial.SendAsync("HELLO\n");
+                await SendAsync("HELLO\n");
                 await Task.Delay(250);
-                await _btSerial.SendAsync("PAUSE\n");
+                await SendAsync("PAUSE\n");
                 await Task.Delay(250);
 
-                await _btSerial.SendAsync("IOCONFIG-SEND\n");
+                await SendAsync("IOCONFIG-SEND\n");
             }
             catch (Exception ex)
             {
@@ -162,10 +122,8 @@ namespace LagoVista.Client.Core.ViewModels.DeviceAccess
         }
 
         public override async Task IsClosingAsync()
-        {            
-            if(_btSerial.IsConnected)
-                await _btSerial.SendAsync("CONTINUE\n");
-            
+        {
+            await SendAsync("CONTINUE\n");
             await base.IsClosingAsync();
         }
 
@@ -176,7 +134,7 @@ namespace LagoVista.Client.Core.ViewModels.DeviceAccess
                 BusyMessage = "Writing Configuration.";
                 IsBusy = true;
 
-                await _btSerial.SendAsync("IOCONFIG-RECV-START\n");
+                await SendAsync("IOCONFIG-RECV-START\n");
                 var chunkSize = 100;
                 var json = JsonConvert.SerializeObject(Config);
                 var remaining = json.Length;
@@ -198,7 +156,7 @@ namespace LagoVista.Client.Core.ViewModels.DeviceAccess
                     }
 
                     _recvSemephor = new System.Threading.SemaphoreSlim(0);
-                    await _btSerial.SendAsync($"IOCONFIG-RECV:{_sendIndex:x2},{crc:x2},{jsonChunk}\n");
+                    await SendAsync($"IOCONFIG-RECV:{_sendIndex:x2},{crc:x2},{jsonChunk}\n");
                     if (await _recvSemephor.WaitAsync(3000))
                     {
                         Debug.WriteLine("CONFIRMED: " + _sendIndex);
@@ -212,7 +170,7 @@ namespace LagoVista.Client.Core.ViewModels.DeviceAccess
                     }
                 }
 
-                await _btSerial.SendAsync("IOCONFIG-RECV-END\n");
+                await SendAsync("IOCONFIG-RECV-END\n");
 
                 IsBusy = false;
             }
@@ -224,14 +182,14 @@ namespace LagoVista.Client.Core.ViewModels.DeviceAccess
 
         async Task RebootAsync()
         {
-            await _btSerial.SendAsync("REBOOT\n");
-            await _btSerial.DisconnectAsync();
+            await SendAsync("REBOOT\n");
+            await DisconnectAsync();
         }
 
 
         async Task ResetConfigurationAsync()
         {
-            await _btSerial.SendAsync("RESET-STATE\n");
+            await SendAsync("RESET-STATE\n");
         }
 
         private IOConfig _ioConfig;

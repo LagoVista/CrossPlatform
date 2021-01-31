@@ -556,6 +556,15 @@ namespace LagoVista.Client.Core.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Device Serial Port Access.
+        /// </summary>
+        public static string DeviceSerialPort_View {
+            get {
+                return ResourceManager.GetString("DeviceSerialPort_View", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to No devices.
         /// </summary>
         public static string DevicesView_NoDevice {
@@ -714,6 +723,15 @@ namespace LagoVista.Client.Core.Resources {
         public static string Err_NotAuthorized {
             get {
                 return ResourceManager.GetString("Err_NotAuthorized", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You are not connected to the internet..
+        /// </summary>
+        public static string Err_NotConnected {
+            get {
+                return ResourceManager.GetString("Err_NotConnected", resourceCulture);
             }
         }
         

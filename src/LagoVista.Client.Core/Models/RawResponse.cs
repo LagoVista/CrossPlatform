@@ -54,6 +54,17 @@ namespace LagoVista.Client.Core.Models
             };
         }
 
+        public static RawResponse FromNotConnected()
+        {
+            return new RawResponse()
+            {
+                Success = false,
+                FaultType = FaultTypes.NotConnectedError,
+                ErrorMessage = ClientResources.Err_NotConnected
+
+            };
+        }
+
         public static RawResponse FromTokenError()
         {
             return new RawResponse()

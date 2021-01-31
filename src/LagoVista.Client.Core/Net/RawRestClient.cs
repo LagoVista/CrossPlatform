@@ -15,6 +15,7 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 using LagoVista.Client.Core.Resources;
 using LagoVista.Core.Models.UIMetaData;
+using System.Collections.Generic;
 
 namespace LagoVista.Client.Core.Net
 {
@@ -31,14 +32,16 @@ namespace LagoVista.Client.Core.Net
         IAuthClient _authClient;
         IDeviceInfo _deviceInfo;
         IAppConfig _appConfig;
+        INetworkService _networkService;
         SemaphoreSlim _callSemaphore;
 
-        public RawRestClient(HttpClient httpClient, IDeviceInfo deviceInfo, IAppConfig appConfig, IAuthClient authClient, IAuthManager authManager, ILogger logger)
+        public RawRestClient(HttpClient httpClient, INetworkService networkService, IDeviceInfo deviceInfo, IAppConfig appConfig, IAuthClient authClient, IAuthManager authManager, ILogger logger)
         {
             _httpClient = httpClient;
             _authClient = authClient;
             _deviceInfo = deviceInfo;
             _authManager = authManager;
+            _networkService = networkService;
             _logger = logger;
             _appConfig = appConfig;
             _callSemaphore = new SemaphoreSlim(1);
@@ -79,6 +82,11 @@ namespace LagoVista.Client.Core.Net
 
         private async Task<RawResponse> PerformCall(Func<Task<HttpResponseMessage>> call, CancellationTokenSource cancellationTokenSource = null, ListRequest listRequest = null)
         {
+            if (!_networkService.IsInternetConnected)
+            {
+                return RawResponse.FromNotConnected();
+            }
+
             if (cancellationTokenSource == null) cancellationTokenSource = new CancellationTokenSource(TimeSpan.FromSeconds(60));
 
             await _callSemaphore.WaitAsync();
@@ -89,7 +97,7 @@ namespace LagoVista.Client.Core.Net
             while (retry)
             {
                 _httpClient.DefaultRequestHeaders.Clear();
-                switch(_appConfig.AuthType)
+                switch (_appConfig.AuthType)
                 {
                     case AuthTypes.ClientApp:
                         _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("APIToken", $"{_appConfig.AppId}:{_appConfig.APIToken}");
@@ -104,13 +112,13 @@ namespace LagoVista.Client.Core.Net
                         break;
                 }
 
-                if(listRequest != null)
+                if (listRequest != null)
                 {
                     if (!String.IsNullOrEmpty(listRequest.NextPartitionKey)) _httpClient.DefaultRequestHeaders.Add("x-nextpartitionkey", listRequest.NextPartitionKey);
                     if (!String.IsNullOrEmpty(listRequest.NextRowKey)) _httpClient.DefaultRequestHeaders.Add("x-nextrowkey", listRequest.NextRowKey);
                     _httpClient.DefaultRequestHeaders.Add("x-pageindex", listRequest.PageIndex.ToString());
                     _httpClient.DefaultRequestHeaders.Add("x-pagesize", Math.Max(50, listRequest.PageSize).ToString());
-                    if(!String.IsNullOrEmpty(listRequest.StartDate)) _httpClient.DefaultRequestHeaders.Add("x-filter-startdate", listRequest.StartDate);
+                    if (!String.IsNullOrEmpty(listRequest.StartDate)) _httpClient.DefaultRequestHeaders.Add("x-filter-startdate", listRequest.StartDate);
                     if (!String.IsNullOrEmpty(listRequest.EndDate)) _httpClient.DefaultRequestHeaders.Add("x-filter-enddate", listRequest.EndDate);
                 }
 
@@ -138,9 +146,9 @@ namespace LagoVista.Client.Core.Net
                             rawResponse = RawResponse.FromNotAuthorized();
                         }
                     }
-                    else if(response.StatusCode == System.Net.HttpStatusCode.BadGateway)
+                    else if (response.StatusCode == System.Net.HttpStatusCode.BadGateway)
                     {
-                        
+
                         await Task.Delay(attempts * 100);
                         retry = attempts++ < 5;
                         _logger.AddCustomEvent(LogLevel.Message, "RawResetClient_PerformCall", $"Bad Gateway {attempts} will retry {retry}");
@@ -162,7 +170,7 @@ namespace LagoVista.Client.Core.Net
                 }
                 catch (TaskCanceledException tce)
                 {
-                    _logger.AddException("RawRestClient_PerformCall_TaskCancelled", tce,tce.Message.ToKVP("type"));
+                    _logger.AddException("RawRestClient_PerformCall_TaskCancelled", tce, tce.Message.ToKVP("type"));
                     rawResponse = RawResponse.FromException(tce, tce.CancellationToken.IsCancellationRequested);
                 }
                 catch (Exception ex)
@@ -177,19 +185,56 @@ namespace LagoVista.Client.Core.Net
             return rawResponse;
         }
 
-        public Task<RawResponse> GetAsync(string path, CancellationTokenSource cancellationTokenSource = null)
+        private Dictionary<string, string> _offlineCache = new Dictionary<string, string>();
+
+        private String GetCachedRequest(string path)
         {
+            if (_offlineCache.ContainsKey(path))
+            {
+                return _offlineCache[path];
+            }
+            else
+            {
+                return null;
+            }
+        }
+
+        private void AddCheckedResponse(string path, RawResponse response)
+        {
+            if (response.Success)
+            {
+
+                if (_offlineCache.ContainsKey(path))
+                {
+                    _offlineCache.Remove(path);
+                }
+
+                _offlineCache.Add(path, JsonConvert.SerializeObject(response));
+            }
+        }
+
+        public async Task<RawResponse> GetAsync(string path, CancellationTokenSource cancellationTokenSource = null)
+        {
+            if (!_networkService.IsInternetConnected)
+            {
+                var cachedResponse = GetCachedRequest(path);
+                return JsonConvert.DeserializeObject<RawResponse>(cachedResponse);
+            }
+        
             if (cancellationTokenSource == null) cancellationTokenSource = new CancellationTokenSource(TimeSpan.FromSeconds(60));
 
             _logger.AddCustomEvent(LogLevel.Message, "RawRestClient_GetAsync", "Begin GET", path.ToKVP("path"));
 
-            return PerformCall(async () =>
+            var response = await PerformCall(async () =>
             {
                 var timedEvent = _logger.StartTimedEvent("RawRestClient_Get", path);
                 var result = await _httpClient.GetAsync(path, cancellationTokenSource.Token);
                 _logger.EndTimedEvent(timedEvent);
                 return result;
             }, cancellationTokenSource);
+
+            AddCheckedResponse(path, response);
+            return response;
         }
 
         public Task<RawResponse> PostAsync(string path, string payload, CancellationTokenSource cancellationTokenSource = null)
@@ -244,7 +289,7 @@ namespace LagoVista.Client.Core.Net
             if (cancellationTokenSource == null) cancellationTokenSource = new CancellationTokenSource(TimeSpan.FromSeconds(60));
 
             var json = JsonConvert.SerializeObject(model, new Newtonsoft.Json.JsonSerializerSettings() { ContractResolver = new CamelCasePropertyNamesContractResolver(), });
-            
+
             _logger.AddCustomEvent(LogLevel.Message, "RawRestClient_PostAsync", "Begin Post", path.ToKVP("path"), json.ToKVP("content"));
 
             var timedEvent = _logger.StartTimedEvent("RawRestClient_DeleteAsync", path);
@@ -260,7 +305,7 @@ namespace LagoVista.Client.Core.Net
             var json = JsonConvert.SerializeObject(model, new Newtonsoft.Json.JsonSerializerSettings() { ContractResolver = new CamelCasePropertyNamesContractResolver(), });
 
             var timedEvent = _logger.StartTimedEvent("RawRestClient_DeleteAsync", path);
-            _logger.AddCustomEvent(LogLevel.Message, "RawRestClient_PutAsync", "Begin PUT", path.ToKVP("path"), json.ToKVP("content"));            
+            _logger.AddCustomEvent(LogLevel.Message, "RawRestClient_PutAsync", "Begin PUT", path.ToKVP("path"), json.ToKVP("content"));
             var response = await PutAsync(path, json, cancellationTokenSource);
             _logger.EndTimedEvent(timedEvent);
             return response.ToInvokeResult();
@@ -286,16 +331,31 @@ namespace LagoVista.Client.Core.Net
 
         public async Task<InvokeResult<TResponseModel>> GetAsync<TResponseModel>(string path, CancellationTokenSource cancellationTokenSource = null) where TResponseModel : class
         {
+            if (!_networkService.IsInternetConnected)
+            {
+                var cachedResponse = GetCachedRequest(path);
+                return JsonConvert.DeserializeObject<RawResponse>(cachedResponse).ToInvokeResult<TResponseModel>();
+            }
+
             _logger.AddCustomEvent(LogLevel.Message, "RawRestClient_GetAsync", "Begin PUT", path.ToKVP("path"));
 
             if (cancellationTokenSource == null) cancellationTokenSource = new CancellationTokenSource(TimeSpan.FromSeconds(60));
 
             var response = await GetAsync(path, cancellationTokenSource);
+
+            AddCheckedResponse(path, response);
+
             return response.ToInvokeResult<TResponseModel>();
         }
 
         public async Task<ListResponse<TResponseModel>> GetListResponseAsync<TResponseModel>(string path, ListRequest listRequest, CancellationTokenSource cancellationTokenSource = null) where TResponseModel : class
         {
+            if (!_networkService.IsInternetConnected)
+            {
+                var cachedResponse = GetCachedRequest(path);
+                return JsonConvert.DeserializeObject<RawResponse>(cachedResponse).ToListResponse<TResponseModel>();
+            }
+
             _logger.AddCustomEvent(LogLevel.Message, "RawRestClient_GetListResponseAsync", "Begin Get", path.ToKVP("path"));
 
             if (cancellationTokenSource == null) cancellationTokenSource = new CancellationTokenSource(TimeSpan.FromSeconds(60));
@@ -309,8 +369,10 @@ namespace LagoVista.Client.Core.Net
 
             }, cancellationTokenSource, listRequest);
 
+            AddCheckedResponse(path, response);
+
             return response.ToListResponse<TResponseModel>();
-            
+
         }
 
     }

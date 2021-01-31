@@ -603,4 +603,10 @@
   <data name="Provision_BaudRate" xml:space="preserve">
     <value>Modem Baud Rate</value>
   </data>
+  <data name="Err_NotConnected" xml:space="preserve">
+    <value>You are not connected to the internet.</value>
+  </data>
+  <data name="DeviceSerialPort_View" xml:space="preserve">
+    <value>Device Serial Port Access</value>
+  </data>
 </root>

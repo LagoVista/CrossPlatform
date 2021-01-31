@@ -43,20 +43,26 @@
                         <ColumnDefinition Width="66*" />
                     </Grid.ColumnDefinitions>
 
-                    <pge:Label Text="{Binding Device.DeviceNameLabel}" Grid.Column="0" Grid.Row="0" Style="{StaticResource LabelContent}"  />
-                    <pge:Label Text="{Binding Device.Name}" Grid.Column="1" Grid.Row="0" Style="{StaticResource ValueContent}"  />
+                    <Label Text="{Binding DeviceId}" />
+                    <StackLayout Grid.Column="1">
+                        <Rectangle WidthRequest="40" HeightRequest="40" BackgroundColor="{Binding ConnectedViaBluetooth, Converter={StaticResource RedGreenConverter}}" ></Rectangle>
+                        <Label Text="{Binding ConnectionStatus}" />
+                    </StackLayout>
+                    
+                    <pge:Label Text="{Binding Device.DeviceNameLabel}" Grid.Column="0" Grid.Row="1" Style="{StaticResource LabelContent}"  />
+                    <pge:Label Text="{Binding Device.Name}" Grid.Column="1" Grid.Row="1" Style="{StaticResource ValueContent}"  />
 
-                    <pge:Label Text="{Binding Device.DeviceIdLabel}" Grid.Column="0" Grid.Row="1" Style="{StaticResource LabelContent}" />
-                    <pge:Label Text="{Binding Device.DeviceId}" Grid.Column="1" Grid.Row="1" Style="{StaticResource ValueContent}" />
+                    <pge:Label Text="{Binding Device.DeviceIdLabel}" Grid.Column="0" Grid.Row="2" Style="{StaticResource LabelContent}" />
+                    <pge:Label Text="{Binding Device.DeviceId}" Grid.Column="1" Grid.Row="2" Style="{StaticResource ValueContent}" />
 
-                    <pge:Label Text="{trs:ClientTranslate DeviceView_Status}" Grid.Column="0" Grid.Row="2" Style="{StaticResource LabelContent}"  />
-                    <pge:Label Text="{Binding Device.Status.Text}" Grid.Column="1" Grid.Row="2" Style="{StaticResource ValueContent}"  />
+                    <pge:Label Text="{trs:ClientTranslate DeviceView_Status}" Grid.Column="0" Grid.Row="3" Style="{StaticResource LabelContent}"  />
+                    <pge:Label Text="{Binding Device.Status.Text}" Grid.Column="1" Grid.Row="3" Style="{StaticResource ValueContent}"  />
 
-                    <pge:Label Text="{Binding Device.DeviceTypeLabel}" Grid.Column="0" Grid.Row="3" Style="{StaticResource LabelContent}" />
-                    <pge:Label Text="{Binding Device.DeviceType.Text}" Grid.Column="1" Grid.Row="3" Style="{StaticResource ValueContent}" />
+                    <pge:Label Text="{Binding Device.DeviceTypeLabel}" Grid.Column="0" Grid.Row="4" Style="{StaticResource LabelContent}" />
+                    <pge:Label Text="{Binding Device.DeviceType.Text}" Grid.Column="1" Grid.Row="4" Style="{StaticResource ValueContent}" />
 
-                    <pge:Label Text="{trs:ClientTranslate DeviceView_LastContact}" Grid.Row="4" Grid.Column="0" Style="{StaticResource LabelContent}"   />
-                    <pge:Label Text="{Binding Device.LastContact, Converter={StaticResource DatePrinterConverter}}" Grid.Row="4" Grid.Column="1" Style="{StaticResource ValueContent}"  />
+                    <pge:Label Text="{trs:ClientTranslate DeviceView_LastContact}" Grid.Row="5" Grid.Column="0" Style="{StaticResource LabelContent}"   />
+                    <pge:Label Text="{Binding Device.LastContact, Converter={StaticResource DatePrinterConverter}}" Grid.Row="5" Grid.Column="1" Style="{StaticResource ValueContent}"  />
                 </Grid>
             </pge:TabContent>
             <pge:TabContent>

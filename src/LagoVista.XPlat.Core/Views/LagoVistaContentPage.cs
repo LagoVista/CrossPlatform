@@ -927,7 +927,6 @@ namespace LagoVista.XPlat.Core
             _hasAppeared = true;
         }
 
-
         protected async override void OnDisappearing()
         {
             _menu.IsVisible = false;

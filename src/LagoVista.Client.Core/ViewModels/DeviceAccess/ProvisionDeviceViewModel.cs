@@ -16,7 +16,6 @@ namespace LagoVista.Client.Core.ViewModels.DeviceAccess
     {
         private int _sendIndex;
 
-        private IBluetoothSerial _btSerial;
 
         System.Threading.SemaphoreSlim _recvSemephor;
 
@@ -27,26 +26,14 @@ namespace LagoVista.Client.Core.ViewModels.DeviceAccess
 
         public ProvisionDeviceViewModel()
         {
-            _btSerial = SLWIOC.Get<IBluetoothSerial>();
-            _btSerial.DeviceConnected += _btSerial_DeviceConnected;
-            _btSerial.DeviceDisconnected += _btSerial_DeviceDisconnected;
-            _btSerial.ReceivedLine += _btSerial_ReceivedLine;
-
             Config = null;
 
-            WriteConfigurationCommand = new RelayCommand(async () => await WriteProfileAsync(), () => _btSerial.CurrentDevice != null);
-            ResetConfigurationCommand = new RelayCommand(async () => await ResetConfigurationAsync(), () => _btSerial.CurrentDevice != null);
-            RebootCommand = new RelayCommand(async () => await RebootAsync(), () => _btSerial.CurrentDevice != null);
+            WriteConfigurationCommand = new RelayCommand(async () => await WriteProfileAsync(), () => DeviceConnected);
+            ResetConfigurationCommand = new RelayCommand(async () => await ResetConfigurationAsync(), () => DeviceConnected);
+            RebootCommand = new RelayCommand(async () => await RebootAsync(), () => DeviceConnected);
         }
 
-        private void _btSerial_DeviceDisconnected(object sender, BTDevice e)
-        {
-            WriteConfigurationCommand.RaiseCanExecuteChanged();
-            ResetConfigurationCommand.RaiseCanExecuteChanged();
-            RebootCommand.RaiseCanExecuteChanged();
-        }
-
-        private void _btSerial_DeviceConnected(object sender, BTDevice e)
+        protected override void OnBTSerial_DeviceDisconnected()
         {
             WriteConfigurationCommand.RaiseCanExecuteChanged();
             ResetConfigurationCommand.RaiseCanExecuteChanged();
@@ -54,7 +41,9 @@ namespace LagoVista.Client.Core.ViewModels.DeviceAccess
         }
 
         StringBuilder _builder = new StringBuilder();
-        private async void _btSerial_ReceivedLine(object sender, string line)
+        //   private async void _btSerial_ReceivedLine(object sender, string line)
+
+        protected async override void OnBTSerail_MsgReceived(string line)
         {
             if (line.StartsWith(CRC_OK_MSG_HDR))
             {
@@ -117,7 +106,7 @@ namespace LagoVista.Client.Core.ViewModels.DeviceAccess
             BusyMessage = "Writing Configuration.";
             IsBusy = true;
 
-            await _btSerial.SendAsync("SYSCONFIG-RECV-START\n");
+            await SendAsync("SYSCONFIG-RECV-START\n");
             var chunkSize = 100;
             var json = JsonConvert.SerializeObject(Config);
             var remaining = json.Length;
@@ -139,7 +128,7 @@ namespace LagoVista.Client.Core.ViewModels.DeviceAccess
                 }
 
                 _recvSemephor = new System.Threading.SemaphoreSlim(0);
-                await _btSerial.SendAsync($"SYSCONFIG-RECV:{_sendIndex:x2},{crc:x2},{jsonChunk}\n");
+                await SendAsync($"SYSCONFIG-RECV:{_sendIndex:x2},{crc:x2},{jsonChunk}\n");
                 if (await _recvSemephor.WaitAsync(3000))
                 {
                     Debug.WriteLine("CONFIRMED: " + _sendIndex);
@@ -153,65 +142,39 @@ namespace LagoVista.Client.Core.ViewModels.DeviceAccess
                 }
             }
 
-            await _btSerial.SendAsync("SYSCONFIG-RECV-END\n");
+            await SendAsync("SYSCONFIG-RECV-END\n");
 
             IsBusy = false;
         }
 
         async Task RebootAsync()
         {
-            await _btSerial.SendAsync("REBOOT\n");
-            await _btSerial.DisconnectAsync();
+            await SendAsync("REBOOT\n");
+            await DisconnectAsync();
         }
 
         async Task ResetConfigurationAsync()
         {
-            await _btSerial.SendAsync("RESET-STATE\n");
+            await SendAsync("RESET-STATE\n");
         }
 
         public override async Task InitAsync()
         {
             await base.InitAsync();
 
-            if (!await Storage.HasKVPAsync(PairBTDeviceViewModel.ResolveBTDeviceIdKey(DeviceRepoId, DeviceId)))
-            {
-                await Popups.ShowAsync("Must associate a BT Device first.");
-                await CloseScreenAsync();
-                return;
-            }
+            //await _btSerial.ConnectAsync(btDevice);
+            await SendAsync("HELLO\n");
+            await Task.Delay(250);
+            await SendAsync("PAUSE\n");
+            await Task.Delay(250);
 
-            var devices = await _btSerial.SearchAsync();
-            var btDeviceId = await Storage.GetKVPAsync<string>(PairBTDeviceViewModel.ResolveBTDeviceIdKey(DeviceRepoId, DeviceId));
-
-            var btDevice = devices.Where(bt => bt.DeviceId == btDeviceId).First();
-            if (btDevice == null)
-            {
-                await Popups.ShowAsync("Could not find paired device.");
-                await CloseScreenAsync();
-                return;
-            }
-
-            try
-            {
-                IsBusy = true;
-
-                //await _btSerial.ConnectAsync(btDevice);
-                await _btSerial.SendAsync("HELLO\n");
-                await Task.Delay(250);
-                await _btSerial.SendAsync("PAUSE\n");
-                await Task.Delay(250);
-
-                await _btSerial.SendAsync("SYSCONFIG-SEND\n");
-            }
-            catch (Exception)
-            {
-                await Popups.ShowAsync("Could not connect to device.");
-            }
+            await SendAsync("SYSCONFIG-SEND\n");
         }
 
         public async void Commission()
         {
-            await _btSerial.SendAsync($"COMMISSION\n");
+            await SendAsync($"COMMISSION\n");
+            await DisconnectAsync();
         }
 
         public ObservableCollection<BTDevice> ConnectedDevices { get; private set; } = new ObservableCollection<BTDevice>();
@@ -220,18 +183,9 @@ namespace LagoVista.Client.Core.ViewModels.DeviceAccess
 
         public override async Task IsClosingAsync()
         {
-            if(_btSerial.IsConnected)
-            { 
-                try
-                {
-                    await _btSerial.SendAsync("CONTINUE\n");
-                }
-                catch (Exception)
-                { }
-            }
-
+            await SendAsync("CONTINUE\n");
             await base.IsClosingAsync();
-        }
+        } 
 
         public RelayCommand CommissionCommand => new RelayCommand(Commission);
 

@@ -1,6 +1,4 @@
-﻿using LagoVista.Client.Core.Interfaces;
-using LagoVista.Client.Core.Models;
-using LagoVista.Core.IOC;
+﻿using LagoVista.Client.Core.Models;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
@@ -9,23 +7,15 @@ namespace LagoVista.Client.Core.ViewModels.DeviceAccess
 {
     public class LiveDataViewModel : DeviceViewModelBase
     {
-        private IBluetoothSerial _btSerial;
         
         IOConfig _config;
 
-        public LiveDataViewModel()
+        protected async override void OnBTSerial_DeviceDisconnected()
         {
-            _btSerial = SLWIOC.Get<IBluetoothSerial>();
-            _btSerial.ReceivedLine += _btSerial_ReceivedLine;
-            _btSerial.DeviceDisconnected += _btSerial_DeviceDisconnected;
+            await Popups.ShowAsync("Device Disconnected.");
         }
 
-        private async void _btSerial_DeviceDisconnected(object sender, BTDevice e)
-        {
-                await Popups.ShowAsync("Device Disconnected.");
-        }
-
-        private void _btSerial_ReceivedLine(object sender, string e)
+        protected override void OnBTSerail_MsgReceived(string e)
         {
             DispatcherServices.Invoke(() =>
             {
@@ -63,22 +53,6 @@ namespace LagoVista.Client.Core.ViewModels.DeviceAccess
             _config = await Storage.GetAsync<IOConfig>($"{DeviceId}.ioconfig.json");
 
             await base.InitAsync();
-
-            if (!await Storage.HasKVPAsync(PairBTDeviceViewModel.ResolveBTDeviceIdKey(DeviceRepoId, DeviceId)))
-            {
-                await Popups.ShowAsync("Must associate a BT Device first.");
-                return;
-            }
-
-            var devices = await _btSerial.SearchAsync();
-            var btDeviceId = await Storage.GetKVPAsync<string>(PairBTDeviceViewModel.ResolveBTDeviceIdKey(DeviceRepoId, DeviceId));
-
-            var btDevice = devices.Where(bt => bt.DeviceId == btDeviceId).First();
-            if (btDevice == null)
-            {
-                await Popups.ShowAsync("Could not find paired device.");
-                return;
-            }
         }
 
         public ObservableCollection<LiveDataItem> DataItems { get; set; } = new ObservableCollection<LiveDataItem>();

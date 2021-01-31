@@ -46,6 +46,7 @@ namespace LagoVista.Client.Core.ViewModels.DeviceAccess
             MenuOptions = new List<MenuItem>()
             {
                 new MenuItem() { Command = new RelayCommand(() => ShowView<PairBTDeviceViewModel>()), FontIconKey = "fa-bluetooth", Name = ClientResources.DeviceMore_PairDevice, Help="Associate this application using  BlueTooth" },
+                new MenuItem() { Command = new RelayCommand(() => ShowView<DeviceSerialPortAccessViewModel>()), FontIconKey = "fa-wrench", Name = ClientResources.DeviceSerialPort_View, Help="Hard-wired serial port" },
                 new MenuItem() { Command = new RelayCommand(() => ShowView<ConsoleViewModel>()), FontIconKey = "fa-terminal", Name = ClientResources.DeviceMore_Console, Help="Communicate using terminal" },
                 new MenuItem() { Command = new RelayCommand(() => ShowView<IOConfigViewModel>()), FontIconKey = "fa-bolt", Name = ClientResources.DeviceMore_IOConfig, Help="Confiugration the IO Ports" },
                 new MenuItem() { Command = new RelayCommand(() => ShowView<ProvisionDeviceViewModel>()), FontIconKey = "fa-wrench", Name = ClientResources.DeviceMore_Provision, Help="Configure primary device settings" },
@@ -57,19 +58,19 @@ namespace LagoVista.Client.Core.ViewModels.DeviceAccess
         private async void TryConnectBluetooth()
         {
             var btDeviceKey = PairBTDeviceViewModel.ResolveBTDeviceIdKey(DeviceRepoId, DeviceId);
+            ConnectedViaBluetooth = false;
 
             if (await Storage.HasKVPAsync(btDeviceKey))
             {
-                IsBusy = true;
+                ConnectionStatus = "Connecting via Bluetooth";
 
                 var devices = await _btSerial.SearchAsync();
                 var btDeviceId = await Storage.GetKVPAsync<string>(btDeviceKey);
 
-                var btDevice = devices.Where(bt => bt.DeviceId == btDeviceId).First();
+                var btDevice = devices.Where(bt => bt.DeviceId == btDeviceId).FirstOrDefault();
                 if (btDevice == null)
                 {
-                    await Popups.ShowAsync("Could not find paired device, please repair or connect.");
-                    IsBusy = false;
+                    ConnectionStatus = "Invalid device pairing";
                     return;
                 }
 
@@ -77,16 +78,18 @@ namespace LagoVista.Client.Core.ViewModels.DeviceAccess
                 {
                     await _btSerial.ConnectAsync(btDevice);
                     _currentDevice = btDevice;
-                    await Popups.ShowAsync("Connected to device with Bluetooth.");
+                    ConnectionStatus = "Connected";
 
                     ConnectedViaBluetooth = true;
-                    IsBusy = false;
                 }
                 catch (Exception ex)
                 {
                     await Popups.ShowAsync("Could not connect to device via Bluetooth: " + ex.Message);
-                    IsBusy = false;
                 }
+            }
+            else
+            {
+                ConnectionStatus = "No device pairing";
             }
         }
 
@@ -490,12 +493,29 @@ namespace LagoVista.Client.Core.ViewModels.DeviceAccess
             set { Set(ref _deviceStatusVisible, value); }
         }
 
-
         private bool _connectedViaBluetooth = false;
         public bool ConnectedViaBluetooth
         {
             get { return _connectedViaBluetooth; }
             set { Set(ref _connectedViaBluetooth, value); }
+        }
+
+        private string _connectionStatus;
+        public string ConnectionStatus
+        {
+            get { return _connectionStatus; }
+            set { Set(ref _connectionStatus, value);  }
+        }
+
+        public async override Task IsClosingAsync()
+        {
+            if(_btSerial.IsConnected)
+            {
+                DisconnectBTDevice();
+            }
+
+            await base.IsClosingAsync();
+
         }
     }
 }

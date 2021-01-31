@@ -27,6 +27,7 @@ namespace LagoVista.XPlat.Core
             nav.Add<DeviceReposViewModel, DeviceReposView>();
             nav.Add<DeviceViewModel, DeviceView>();
             nav.Add<DevicesViewModel, DevicesView>();
+            nav.Add<DeviceSerialPortAccessViewModel, DeviceSerialPortAccessView>();
             nav.Add<DFUViewModel, DFUView>();
             nav.Add<EditDeviceViewModel, EditDeviceView>();
             nav.Add<IOConfigViewModel, IOConfigView>();

@@ -1,6 +1,7 @@
 ﻿using LagoVista.Core.Models;
 using LagoVista.Core.PlatformSupport;
 using System;
+using System.Diagnostics;
 using System.Threading;
 using System.Threading.Tasks;
 using Windows.Devices.SerialCommunication;
@@ -60,17 +61,24 @@ namespace LagoVista.Core.UWP.Services
         public async Task OpenAsync()
         {
             _serialDevice = await SerialDevice.FromIdAsync(_portInfo.Id);
-            _serialDevice.BaudRate = (uint)_portInfo.BaudRate;
-            _serialDevice.DataBits = 8;
-            _serialDevice.Parity = SerialParity.None;
-            _serialDevice.StopBits = SerialStopBitCount.One;
-            _serialDevice.WriteTimeout = TimeSpan.FromMilliseconds(100);
-            _serialDevice.ReadTimeout = TimeSpan.FromMilliseconds(100);
+            if (_serialDevice == null)
+            {
+                Debug.WriteLine("Could not open serial port.");
+            }
+            else
+            {
+                _serialDevice.BaudRate = (uint)_portInfo.BaudRate;
+                _serialDevice.DataBits = 8;
+                _serialDevice.Parity = SerialParity.None;
+                _serialDevice.StopBits = SerialStopBitCount.One;
+                _serialDevice.WriteTimeout = TimeSpan.FromMilliseconds(100);
+                _serialDevice.ReadTimeout = TimeSpan.FromMilliseconds(100);
 
-            _dataReader = new DataReader(_serialDevice.InputStream);
-            _dataWriter = new DataWriter(_serialDevice.OutputStream);
+                _dataReader = new DataReader(_serialDevice.InputStream);
+                _dataWriter = new DataWriter(_serialDevice.OutputStream);
 
-            _dataReader.InputStreamOptions = InputStreamOptions.Partial;
+                _dataReader.InputStreamOptions = InputStreamOptions.Partial;
+            }
         }
 
         public async Task<int> ReadAsync(byte[] buffer, int start, int size, CancellationToken cancellationToken = default(CancellationToken))

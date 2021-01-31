@@ -17,6 +17,7 @@
 
     <cvts:VisibilityConverter x:Key="VisibilityConverter" />
     <cvts:ColorConverter  x:Key="ColorConverter" />
+    <cvts:RedGreenConverter  x:Key="RedGreenConverter" />
     <cvts:DatePrinterConverter x:Key="DatePrinterConverter" />
     <cvts:NotNullVisibilityConverter x:Key="NotNullVisibilityConverter" />
     <cvts:NullVisibilityConverter x:Key="NullVisibilityConverter" />

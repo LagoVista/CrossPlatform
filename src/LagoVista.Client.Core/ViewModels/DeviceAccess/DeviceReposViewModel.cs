@@ -1,9 +1,6 @@
 ﻿using LagoVista.Core.Commanding;
 using LagoVista.IoT.DeviceManagement.Core.Models;
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace LagoVista.Client.Core.ViewModels.DeviceAccess

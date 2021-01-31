@@ -80,12 +80,6 @@ namespace LagoVista.Core.UWP.Services
 
         public Task DisconnectAsync()
         {
-            
-            if (_currentDevice == null)
-            {
-                throw new InvalidOperationException("No connected.");
-            }
-
             CancelReadTask();
 
             return Task.CompletedTask;
@@ -279,9 +273,7 @@ namespace LagoVista.Core.UWP.Services
                 _currentDevice = null;
                 throw;
             }
-
         }
-
 
         /// <summary>
         /// - Create a DataReader object

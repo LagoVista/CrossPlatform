@@ -30,4 +30,26 @@ namespace LagoVista.XPlat.Core.ValueConverter
             throw new NotImplementedException();
         }
     }
+
+    public class RedGreenConverter : IValueConverter
+    {
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            if(System.Convert.ToBoolean(value))
+            {
+                return Xamarin.Forms.Color.Green;
+            }
+            else
+            {
+                return Xamarin.Forms.Color.Red;
+            }
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            throw new NotImplementedException();
+        }
+    }
+
+
 }
