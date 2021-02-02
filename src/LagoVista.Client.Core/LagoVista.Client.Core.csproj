@@ -16,7 +16,13 @@
     <None Remove="Orgs\**" />
   </ItemGroup>
   <ItemGroup>
+    <None Remove="Resources\esptool.py" />
+  </ItemGroup>
+  <ItemGroup>
     <Content Include="Icons\ReadMe.txt" />
+    <Content Include="Resources\esptool.py">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="LagoVista.Core" Version="2.1.1286-beta1412" />

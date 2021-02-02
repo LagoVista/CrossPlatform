@@ -30,6 +30,7 @@ namespace LagoVista.Core.UWP
 
             SLWIOC.RegisterSingleton<ISSDPClient>(new SSDPClient());
             SLWIOC.RegisterSingleton<IWebServer>(new WebServer());
+            SLWIOC.RegisterSingleton<IProcessOutputeWriter, ProcessOutputWriter>();
 
             SLWIOC.RegisterSingleton<IWiFiAdaptersService>(new WiFiAdaptersService());
             SLWIOC.RegisterSingleton<IWiFiNetworksService>(new WiFiNetworksService(dispatcher));
@@ -39,12 +40,14 @@ namespace LagoVista.Core.UWP
             SLWIOC.Register<ISecureStorage>(new SecureStorage());
             SLWIOC.Register<ISSDPServer>(new SSDPServer());
 
+            SLWIOC.Register<IAppServices>(typeof(AppServices));
+
             SLWIOC.Register<IClipBoard>(new ClipBoard());
 
             SLWIOC.Register<ITimerFactory>(new TimerFactory());
 
             SLWIOC.Register<IDirectoryServices>(new DirectoryServices());
-
+         
             IconFonts.IconFontSupport.RegisterFonts();
         }
     }

@@ -1,11 +1,16 @@
-﻿using LagoVista.Client.Core.Models;
+﻿using LagoVista.Client.Core.Interfaces;
+using LagoVista.Client.Core.Models;
 using LagoVista.Client.Core.Net;
+using LagoVista.Core;
+using LagoVista.Core.Commanding;
 using LagoVista.Core.Models;
 using LagoVista.Core.Models.UIMetaData;
 using LagoVista.IoT.DeviceAdmin.Models;
 using LagoVista.IoT.DeviceManagement.Core.Models;
 using System;
+using System.Collections.ObjectModel;
 using System.Diagnostics;
+using System.IO;
 using System.Threading.Tasks;
 
 namespace LagoVista.Client.Core.ViewModels.DeviceAccess
@@ -13,11 +18,17 @@ namespace LagoVista.Client.Core.ViewModels.DeviceAccess
     public class DFUViewModel : DeviceViewModelBase
     {
         private string _firmwareUrl;
+        IAppServices _appServices;
+        IProcessOutputeWriter _processsOutputWriter;
 
-        public DFUViewModel()
+
+        public DFUViewModel(IProcessOutputeWriter processOutputWriter, IAppServices appServices)
         {
-            UpdateDeviceFirmwareCommand = new LagoVista.Core.Commanding.RelayCommand(UpdateDeviceFirmware);
-            CancelUpdatedCommand = new LagoVista.Core.Commanding.RelayCommand(CancelUpdate);
+            _appServices = appServices;
+            _processsOutputWriter = processOutputWriter;
+            UpdateDeviceFirmwareCommand = new RelayCommand(UpdateDeviceFirmware);
+            CancelUpdatedCommand = new RelayCommand(CancelUpdate);
+            StartSerialUpdateCommand = new RelayCommand(StartSerialUpdate);
         }
 
         protected override void OnDFUProgress(DFUProgress progress)
@@ -54,54 +65,65 @@ namespace LagoVista.Client.Core.ViewModels.DeviceAccess
             }
         }
 
+        public void StartSerialUpdate()
+        {
+            var path = @"c:\users\kevin\appdata\local\programs\python\python37\";
+            path = @"C:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_64\";
+            var esptoolPath = Path.Combine(_appServices.AppInstallDirectory, "Resources");
+            var scriptFile = Path.Combine(esptoolPath, "esptool.py");
+            RunProcess($"{path}python.exe", @"C:\", scriptFile, "Run Script");
+        }
 
         public override async Task InitAsync()
         {
             await base.InitAsync();
 
-            try
+            if (DeviceConnected)
             {
-          
-                await SendAsync("HELLO\n");
-                await Task.Delay(250);
-                await SendAsync("PAUSE\n");
-                await Task.Delay(250);
-                await SendAsync("PROPERTIES\n");
-
-                var result = await PerformNetworkOperation(async () =>
+                try
                 {
-                    var getDeviceUri = $"/api/device/{DeviceRepoId}/{DeviceId}";
+                    await SendAsync("HELLO\n");
+                    await Task.Delay(250);
+                    await SendAsync("PAUSE\n");
+                    await Task.Delay(250);
+                    await SendAsync("PROPERTIES\n");
 
-                    var restClient = new FormRestClient<Device>(base.RestClient);
-
-                    var device = await restClient.GetAsync(getDeviceUri);
-                    var deviceType = await this.RestClient.GetAsync<DetailResponse<DeviceType>>($"/api/devicetype/{device.Result.Model.DeviceType.Id}");
-                    if (EntityHeader.IsNullOrEmpty(deviceType.Result.Model.Firmware))
+                    var result = await PerformNetworkOperation(async () =>
                     {
-                        throw new Exception($"No firmware found for device type {deviceType.Result.Model.Name}");
+                        var getDeviceUri = $"/api/device/{DeviceRepoId}/{DeviceId}";
+
+                        var restClient = new FormRestClient<Device>(base.RestClient);
+
+                        var device = await restClient.GetAsync(getDeviceUri);
+                        var deviceType = await this.RestClient.GetAsync<DetailResponse<DeviceType>>($"/api/devicetype/{device.Result.Model.DeviceType.Id}");
+                        if (EntityHeader.IsNullOrEmpty(deviceType.Result.Model.Firmware))
+                        {
+                            throw new Exception($"No firmware found for device type {deviceType.Result.Model.Name}");
+                        }
+
+                        var firmware = await this.RestClient.GetAsync<DetailResponse<Firmware>>($"/api/firmware/{deviceType.Result.Model.Firmware.Id}");
+                        _firmwareUrl = $"/api/firmware/download/{firmware.Result.Model.Id}/{firmware.Result.Model.DefaultRevision.Id}";
+
+                        HasServerFirmware = true;
+                        FirmwareName = firmware.Result.Model.Name;
+                        FirmwareSKU = firmware.Result.Model.FirmwareSku;
+                        ServerFirmwareVersion = firmware.Result.Model.DefaultRevision.Text;
+                    });
+
+                    if (!result)
+                    {
+                        await Popups.ShowAsync("Could not connect to server.");
+                        this.CloseScreen();
                     }
-
-                    var firmware = await this.RestClient.GetAsync<DetailResponse<Firmware>>($"/api/firmware/{deviceType.Result.Model.Firmware.Id}");
-                    _firmwareUrl = $"/api/firmware/download/{firmware.Result.Model.Id}/{firmware.Result.Model.DefaultRevision.Id}";
-
-                    HasServerFirmware = true;
-                    FirmwareName = firmware.Result.Model.Name;
-                    FirmwareSKU = firmware.Result.Model.FirmwareSku;
-                    ServerFirmwareVersion = firmware.Result.Model.DefaultRevision.Text;
-                });
-
-                if (!result)
+                }
+                catch (Exception)
                 {
-                    await Popups.ShowAsync("Could not connect to server.");
+                    await Popups.ShowAsync("Could not connect to device.");
                     this.CloseScreen();
                 }
             }
-            catch (Exception)
-            {
-                await Popups.ShowAsync("Could not connect to device.");
-                this.CloseScreen();
-            }
 
+            HasServerFirmware = true;
         }
 
         private void CancelUpdate()
@@ -109,6 +131,53 @@ namespace LagoVista.Client.Core.ViewModels.DeviceAccess
 
         }
 
+
+        private void RunProcess(string cmd, string path, string args, string actionType, bool clearConsole = true, bool checkRemote = true)
+        {
+            var proc = new Process
+            {
+                StartInfo = new ProcessStartInfo
+                {
+                    FileName = cmd,
+                    Arguments = args,
+                    UseShellExecute = false,
+                    WorkingDirectory = path,
+                    RedirectStandardOutput = true,
+                    RedirectStandardError = true,
+                    CreateNoWindow = true
+                }
+            };
+
+            _processsOutputWriter.AddMessage(LogType.Message, $"cd {path}");
+            _processsOutputWriter.AddMessage(LogType.Message, $"{proc.StartInfo.FileName} {proc.StartInfo.Arguments}");
+
+            proc.Start();
+
+            while (!proc.StandardOutput.EndOfStream)
+            {
+                var line = proc.StandardOutput.ReadLine().Trim();
+                _processsOutputWriter.AddMessage(LogType.Message, line);
+            }
+
+            while (!proc.StandardError.EndOfStream)
+            {
+                var line = proc.StandardError.ReadLine().Trim();
+                _processsOutputWriter.AddMessage(LogType.Error, line);
+            }
+
+            if (proc.ExitCode == 0)
+            {
+                _processsOutputWriter.AddMessage(LogType.Success, $"Success {actionType}");
+            }
+            else
+            {
+                _processsOutputWriter.AddMessage(LogType.Error, $"Error {actionType}!");
+            }
+
+            _processsOutputWriter.AddMessage(LogType.Message, "------------------------------");
+            _processsOutputWriter.AddMessage(LogType.Message, "");
+            _processsOutputWriter.Flush();
+        }
 
         public async void UpdateDeviceFirmware()
         {
@@ -120,8 +189,10 @@ namespace LagoVista.Client.Core.ViewModels.DeviceAccess
             SendDFU(buffer);
         }
 
-        public LagoVista.Core.Commanding.RelayCommand UpdateDeviceFirmwareCommand { get; private set; }
-        public LagoVista.Core.Commanding.RelayCommand CancelUpdatedCommand { get; private set; }
+        public RelayCommand UpdateDeviceFirmwareCommand { get; private set; }
+        public RelayCommand CancelUpdatedCommand { get; private set; }
+
+        public RelayCommand StartSerialUpdateCommand { get; private set; }
 
         private string _deviceFirmwareVersion;
         public string DeviceFirmwareVersion
@@ -177,6 +248,11 @@ namespace LagoVista.Client.Core.ViewModels.DeviceAccess
         {
             get { return _statusMessage; }
             set { Set(ref _statusMessage, value); }
+        }
+
+        public ObservableCollection<ConsoleOutput> Output
+        {
+            get { return _processsOutputWriter.Output; }
         }
     }
 }
