@@ -63,7 +63,7 @@ namespace LagoVista.Core.UWP.Services
             _serialDevice = await SerialDevice.FromIdAsync(_portInfo.Id);
             if (_serialDevice == null)
             {
-                Debug.WriteLine("Could not open serial port.");
+                throw new InvalidOperationException($"Could not find serial port with id: {_portInfo.Id}");
             }
             else
             {
