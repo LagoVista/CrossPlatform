@@ -68,7 +68,7 @@ namespace LagoVista.Client.Core.ViewModels.DeviceAccess
         public void StartSerialUpdate()
         {
             var path = @"c:\users\kevin\appdata\local\programs\python\python37\";
-            path = @"C:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_64\";
+       //     path = @"C:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_64\";
             var esptoolPath = Path.Combine(_appServices.AppInstallDirectory, "Resources");
             var scriptFile = Path.Combine(esptoolPath, "esptool.py");
             RunProcess($"{path}python.exe", @"C:\", scriptFile, "Run Script");
