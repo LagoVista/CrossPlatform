@@ -8,10 +8,12 @@ namespace LagoVista.XPlat.WPF.Services
     public class ProcessOutputWriter : LagoVista.Client.Core.Interfaces.IProcessOutputeWriter
     {
         ObservableCollection<ConsoleOutput> _buffer = new ObservableCollection<ConsoleOutput>();
+        Dispatcher _dispatcher;
 
         public ProcessOutputWriter()
         {
             Output = new ObservableCollection<ConsoleOutput>();
+            _dispatcher = Dispatcher.CurrentDispatcher;
         }
 
         public void AddMessage(LogType type, String message)
@@ -38,7 +40,7 @@ namespace LagoVista.XPlat.WPF.Services
                 _buffer.Clear();
             }
 
-            Dispatcher.CurrentDispatcher.BeginInvoke((Action)delegate
+            _dispatcher.BeginInvoke(DispatcherPriority.Normal, (Action)delegate
             {
                 lock (Output)
                 {
@@ -49,10 +51,11 @@ namespace LagoVista.XPlat.WPF.Services
 
                     foreach (var msg in tmpBuffer)
                     {
-                        Output.Add(msg);
+                       Output.Add(msg);
                     }
                 }
             });
+
         }
 
         public ObservableCollection<ConsoleOutput> Output

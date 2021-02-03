@@ -1,18 +1,24 @@
-﻿using LagoVista.Client.Core.Interfaces;
+﻿using InTheHand.Net.Sockets;
+using LagoVista.Client.Core.Interfaces;
 using LagoVista.Client.Core.Models;
 using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Text;
 using System.Threading.Tasks;
 
-namespace LagoVista.XPlat.WPF.Services
+namespace LagoVista.AppLoader.Services
 {
     public class BluetoothSerial : IBluetoothSerial
     {
+        BluetoothClient _client;
+
+        public BluetoothSerial()
+        {
+            _client = new BluetoothClient();
+        }
+
         public BTDevice CurrentDevice => throw new NotImplementedException();
 
-        public bool IsConnected => throw new NotImplementedException();
+        public bool IsConnected => false;
 
         public event EventHandler<string> ReceivedLine;
         public event EventHandler<DFUProgress> DFUProgress;
@@ -34,7 +40,19 @@ namespace LagoVista.XPlat.WPF.Services
 
         public Task<ObservableCollection<BTDevice>> SearchAsync()
         {
-            throw new NotImplementedException();
+            var btDevices = new ObservableCollection<BTDevice>();
+
+            var devices =  _client.DiscoverDevices();
+            foreach(var device in devices)
+            {
+                var btDevice = new BTDevice()
+                {
+                    DeviceId = device.DeviceAddress.ToString(),
+                    DeviceName = device.DeviceName
+                };
+            }
+
+            return Task.FromResult(btDevices);
         }
 
         public Task SendAsync(string msg)

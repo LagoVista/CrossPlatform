@@ -271,13 +271,13 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="LagoVista.Core">
-      <Version>2.1.1286-beta1412</Version>
+      <Version>2.1.1359-beta1343</Version>
     </PackageReference>
     <PackageReference Include="LagoVista.Core.Networking">
-      <Version>2.1.1286-beta1412</Version>
+      <Version>2.1.1359-beta1343</Version>
     </PackageReference>
     <PackageReference Include="LagoVista.UserAdmin">
-      <Version>2.1.1285-beta1826</Version>
+      <Version>2.1.1359-beta1343</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform">
       <Version>6.2.11</Version>

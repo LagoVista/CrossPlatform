@@ -21,7 +21,7 @@ namespace LagoVista.Client.Core.ViewModels.DeviceAccess
             _btSerial = SLWIOC.Get<IBluetoothSerial>();
         }
 
-        public override Task InitAsync()
+        public async override Task InitAsync()
         {
             _btSerial.DeviceConnected += _btSerial_DeviceConnected;
             _btSerial.DeviceDisconnected += _btSerial_DeviceDisconnected;
@@ -29,8 +29,10 @@ namespace LagoVista.Client.Core.ViewModels.DeviceAccess
             _btSerial.DFUProgress += _btSerial_DFUProgress;
             _btSerial.DFUFailed += _btSerial_DFUFailed;
             _btSerial.DFUCompleted += _btSerial_DFUCompleted;
-     
-            return base.InitAsync();
+
+            var devices = await _btSerial.SearchAsync();
+
+            await base.InitAsync();
         }
 
         public override Task ReloadedAsync()

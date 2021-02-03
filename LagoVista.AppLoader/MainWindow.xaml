@@ -1,27 +1,11 @@
-﻿<Window x:Class="LagoVista.AppLoader.MainWindow"
+﻿<NavigationWindow x:Class="LagoVista.AppLoader.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:ctls="clr-namespace:LagoVista.AppLoader.Controls"
         xmlns:local="clr-namespace:LagoVista.AppLoader"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="auto" />
-            <RowDefinition Height="*" />
-        </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-
-        </Grid.ColumnDefinitions>
-
-        <Button Command="{Binding StartSerialUpdateCommand}" Content="Serial Update" Width="120" Height="40" />
-        <ListBox ItemsSource="{Binding Output}" Grid.Row="1">
-            <ListBox.ItemTemplate>
-                <DataTemplate>
-                    <TextBlock Text="{Binding Output}" />
-                </DataTemplate>
-            </ListBox.ItemTemplate>
-        </ListBox>
-    </Grid>
-</Window>
+        WindowStartupLocation="CenterScreen"
+        Title="MainWindow" Height="600" Width="800">
+</NavigationWindow>

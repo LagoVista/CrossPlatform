@@ -1,16 +1,16 @@
 ﻿#define ENV_MASTER
 
+using LagoVista.Client.Core;
+using LagoVista.Client.Core.Interfaces;
 using LagoVista.Client.Core.Models;
 using LagoVista.Core.Interfaces;
 using LagoVista.Core.IOC;
+using LagoVista.Core.PlatformSupport;
+using LagoVista.Core.ViewModels;
 using LagoVista.XPlat.WPF.Services;
 using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Data;
-using System.Linq;
-using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Navigation;
 
 namespace LagoVista.AppLoader
 {
@@ -19,7 +19,7 @@ namespace LagoVista.AppLoader
     /// </summary>
     public partial class App : Application
     {
-        public App()
+        private void InitApp()
         {
 #if ENV_MASTER
             var serverInfo = new ServerInfo()
@@ -48,10 +48,18 @@ namespace LagoVista.AppLoader
             };            
 #endif
 
+            SLWIOC.RegisterSingleton<IBluetoothSerial>(new Services.BluetoothSerial());
             SLWIOC.RegisterSingleton<IAppConfig>(new AppConfig());
+            SLWIOC.RegisterSingleton<IPopupServices, Services.PopupService>();
+            SLWIOC.RegisterSingleton<IClientAppInfo>(new ClientAppInfo());
             DeviceInfo.Register("WPF001");
             LagoVista.Xplat.WPF.Startup.Init();
             LagoVista.Client.Core.Startup.Init(serverInfo);
+        }
+
+        public App()
+        {
+            InitApp();
         }
     }
 }

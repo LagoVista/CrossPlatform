@@ -8,9 +8,12 @@ using LagoVista.Core.Models.UIMetaData;
 using LagoVista.IoT.DeviceAdmin.Models;
 using LagoVista.IoT.DeviceManagement.Core.Models;
 using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.IO;
+using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace LagoVista.Client.Core.ViewModels.DeviceAccess
@@ -65,12 +68,46 @@ namespace LagoVista.Client.Core.ViewModels.DeviceAccess
             }
         }
 
+        private List<string> GetFlashingArgs()
+        {
+            var fwPath = @"X:\ESP32\";
+
+            var args = new List<string>();
+            args.Add("--chip esp32");
+            args.Add(@"--port COM8");
+            args.Add("--baud 460800");
+            args.Add("--before default_reset");
+            args.Add("--after hard_reset");
+            args.Add("write_flash");
+            args.Add("-z");
+            args.Add("--flash_mode dio");
+            args.Add("--flash_freq 40m");
+            args.Add("--flash_size detect");
+            args.Add($"0x1000 {fwPath}bootloader_dio_40m.bin");
+            args.Add($"0x8000 {fwPath}partitions.bin");
+            args.Add($"0xe000 {fwPath}boot_app0.bin");
+            args.Add($"0x10000 {fwPath}firmware.bin");
+
+            return args;
+        }
+
         public void StartSerialUpdate()
         {
+            var comPort = "COM8";
+
             var path = @"c:\users\kevin\appdata\local\programs\python\python37\";
-       //     path = @"C:\Program Files (x86)\Microsoft Visual Studio\Shared\Python37_64\";
             var esptoolPath = Path.Combine(_appServices.AppInstallDirectory, "Resources");
-            var scriptFile = Path.Combine(esptoolPath, "esptool.py");
+
+
+
+            var args = GetFlashingArgs();
+            var argString = new StringBuilder();
+            foreach(var arg in args)
+            {
+                argString.Append($"{arg} ");
+            }
+           
+            var scriptFile = Path.Combine(esptoolPath, $"esptool.py {argString}");
             RunProcess($"{path}python.exe", @"C:\", scriptFile, "Run Script");
         }
 
@@ -134,49 +171,68 @@ namespace LagoVista.Client.Core.ViewModels.DeviceAccess
 
         private void RunProcess(string cmd, string path, string args, string actionType, bool clearConsole = true, bool checkRemote = true)
         {
-            var proc = new Process
+            Task.Run(() => 
             {
-                StartInfo = new ProcessStartInfo
+                var proc = new Process
                 {
-                    FileName = cmd,
-                    Arguments = args,
-                    UseShellExecute = false,
-                    WorkingDirectory = path,
-                    RedirectStandardOutput = true,
-                    RedirectStandardError = true,
-                    CreateNoWindow = true
+                    StartInfo = new ProcessStartInfo
+                    {
+                        FileName = cmd,
+                        Arguments = args,
+                        UseShellExecute = false,
+                        WorkingDirectory = path,
+                        RedirectStandardOutput = true,
+                        RedirectStandardError = true,
+                        CreateNoWindow = true
+                    }
+                };
+
+                proc.OutputDataReceived += Proc_OutputDataReceived;
+                proc.ErrorDataReceived += Proc_ErrorDataReceived;
+
+                _processsOutputWriter.AddMessage(LogType.Message, $"cd {path}");
+                _processsOutputWriter.AddMessage(LogType.Message, $"{proc.StartInfo.FileName} {proc.StartInfo.Arguments}");
+
+                proc.Start();
+
+                while (!proc.StandardOutput.EndOfStream)
+                {
+                    var line = proc.StandardOutput.ReadLine().Trim();
+                    _processsOutputWriter.AddMessage(LogType.Message, line);
+                    _processsOutputWriter.Flush();
+                    Debug.WriteLine(line);
                 }
-            };
 
-            _processsOutputWriter.AddMessage(LogType.Message, $"cd {path}");
-            _processsOutputWriter.AddMessage(LogType.Message, $"{proc.StartInfo.FileName} {proc.StartInfo.Arguments}");
+                while (!proc.StandardError.EndOfStream)
+                {
+                    var line = proc.StandardError.ReadLine().Trim();
+                    _processsOutputWriter.AddMessage(LogType.Error, line);
+                    _processsOutputWriter.Flush();
+                }
 
-            proc.Start();
+                if (proc.ExitCode == 0)
+                {
+                    _processsOutputWriter.AddMessage(LogType.Success, $"Success {actionType}");
+                }
+                else
+                {
+                    _processsOutputWriter.AddMessage(LogType.Error, $"Error {actionType}!");
+                }
 
-            while (!proc.StandardOutput.EndOfStream)
-            {
-                var line = proc.StandardOutput.ReadLine().Trim();
-                _processsOutputWriter.AddMessage(LogType.Message, line);
-            }
+                _processsOutputWriter.AddMessage(LogType.Message, "------------------------------");
+                _processsOutputWriter.AddMessage(LogType.Message, "");
+                _processsOutputWriter.Flush();
+            });
+        }
 
-            while (!proc.StandardError.EndOfStream)
-            {
-                var line = proc.StandardError.ReadLine().Trim();
-                _processsOutputWriter.AddMessage(LogType.Error, line);
-            }
+        private void Proc_ErrorDataReceived(object sender, DataReceivedEventArgs e)
+        {
+            throw new NotImplementedException();
+        }
 
-            if (proc.ExitCode == 0)
-            {
-                _processsOutputWriter.AddMessage(LogType.Success, $"Success {actionType}");
-            }
-            else
-            {
-                _processsOutputWriter.AddMessage(LogType.Error, $"Error {actionType}!");
-            }
-
-            _processsOutputWriter.AddMessage(LogType.Message, "------------------------------");
-            _processsOutputWriter.AddMessage(LogType.Message, "");
-            _processsOutputWriter.Flush();
+        private void Proc_OutputDataReceived(object sender, DataReceivedEventArgs e)
+        {
+            _processsOutputWriter.AddMessage(LogType.Message, e.Data);
         }
 
         public async void UpdateDeviceFirmware()

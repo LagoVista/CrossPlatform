@@ -51,7 +51,17 @@ namespace LagoVista.XPlat.WPF.Services
 
         public async Task<Stream> Get(Locations location, string fileName, string folderName = "")
         {
-            throw new NotImplementedException();
+            var outputPath = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
+            var fullFileName = Path.Combine(outputPath, fileName);
+            if (System.IO.File.Exists(outputPath))
+            {
+                return System.IO.File.Open(fullFileName, FileMode.Open);
+            }
+            else
+            {
+                return System.IO.File.Open(fullFileName, FileMode.Create);
+            }
+            
         }
 
         public async Task<TObject> GetAsync<TObject>(string fileName) where TObject : class

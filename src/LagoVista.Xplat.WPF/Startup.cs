@@ -9,7 +9,6 @@ namespace LagoVista.Xplat.WPF
     {
         public static void Init()
         {
-            SLWIOC.RegisterSingleton<IBluetoothSerial>(new BluetoothSerial());
             SLWIOC.RegisterSingleton<IStorageService>(new StorageService());
             SLWIOC.RegisterSingleton<INetworkService>(new NetworkService());
             SLWIOC.RegisterSingleton<ILogger>(new Logger());

@@ -47,13 +47,16 @@ namespace LagoVista.Client.Core.ViewModels.DeviceAccess
                     try
                     {
                         var bytesRead = await _currentPort.ReadAsync(buffer, 0, buffer.Length, _listenCancelTokenSource.Token);
-                        var text = ASCIIEncoding.ASCII.GetString(buffer, 0, bytesRead);
-                        var lines = text.Split('\n');
-                        foreach (var line in lines)
+                        if (bytesRead > 0)
                         {
-                            if (!String.IsNullOrEmpty(line.Trim()))
+                            var text = ASCIIEncoding.ASCII.GetString(buffer, 0, bytesRead);
+                            var lines = text.Split('\n');
+                            foreach (var line in lines)
                             {
-                                Lines.Add("<<<< " + DateTime.Now + ": " + line.Trim());
+                                if (!String.IsNullOrEmpty(line.Trim()))
+                                {
+                                    Lines.Add("<<<< " + DateTime.Now + ": " + line.Trim());
+                                }
                             }
                         }
                     }
