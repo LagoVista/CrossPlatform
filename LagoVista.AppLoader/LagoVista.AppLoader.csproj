@@ -90,6 +90,16 @@
     </ApplicationDefinition>
     <Compile Include="ClientAppInfo.cs" />
     <Compile Include="Common\LagoVistaPage.cs" />
+    <Compile Include="Controls\Icon.cs" />
+    <Compile Include="IconFonts\EntypoPlusModule.cs" />
+    <Compile Include="IconFonts\FontAwesomeModule.cs" />
+    <Compile Include="IconFonts\IconFontSupport.cs" />
+    <Compile Include="IconFonts\IoniconsModule.cs" />
+    <Compile Include="IconFonts\MaterialModule.cs" />
+    <Compile Include="IconFonts\MeteoconsModule.cs" />
+    <Compile Include="IconFonts\SimpleLineIconsModule.cs" />
+    <Compile Include="IconFonts\TypiconsModule.cs" />
+    <Compile Include="IconFonts\WeatherIconsModule.cs" />
     <Compile Include="Services\BluetoothSerial.cs" />
     <Compile Include="Services\PopupService.cs" />
     <Compile Include="Services\ViewModelNavigation.cs" />
@@ -182,6 +192,32 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <Resource Include="Assets\Fonts\iconize-entypoplus.ttf" />
+    <Resource Include="Assets\Fonts\iconize-fontawesome.ttf" />
+    <Resource Include="Assets\Fonts\iconize-ionicons.ttf" />
+    <Resource Include="Assets\Fonts\iconize-material.ttf" />
+    <Resource Include="Assets\Fonts\iconize-meteocons.ttf" />
+    <Resource Include="Assets\Fonts\iconize-simplelineicons.ttf" />
+    <Resource Include="Assets\Fonts\iconize-typicons.ttf" />
+    <Resource Include="Assets\Fonts\iconize-weathericons.ttf" />
+    <Resource Include="Assets\Fonts\Roboto-Black.ttf" />
+    <Resource Include="Assets\Fonts\Roboto-BlackItalic.ttf" />
+    <Resource Include="Assets\Fonts\Roboto-Bold.ttf" />
+    <Resource Include="Assets\Fonts\Roboto-BoldItalic.ttf" />
+    <Resource Include="Assets\Fonts\Roboto-Italic.ttf" />
+    <Resource Include="Assets\Fonts\Roboto-Light.ttf" />
+    <Resource Include="Assets\Fonts\Roboto-LightItalic.ttf" />
+    <Resource Include="Assets\Fonts\Roboto-Medium.ttf" />
+    <Resource Include="Assets\Fonts\Roboto-MediumItalic.ttf" />
+    <Resource Include="Assets\Fonts\Roboto-Regular.ttf" />
+    <Resource Include="Assets\Fonts\Roboto-Thin.ttf" />
+    <Resource Include="Assets\Fonts\Roboto-ThinItalic.ttf" />
+    <Resource Include="Assets\Fonts\RobotoCondensed-Bold.ttf" />
+    <Resource Include="Assets\Fonts\RobotoCondensed-BoldItalic.ttf" />
+    <Resource Include="Assets\Fonts\RobotoCondensed-Italic.ttf" />
+    <Resource Include="Assets\Fonts\RobotoCondensed-Light.ttf" />
+    <Resource Include="Assets\Fonts\RobotoCondensed-LightItalic.ttf" />
+    <Resource Include="Assets\Fonts\RobotoCondensed-Regular.ttf" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -200,6 +236,9 @@
       <Project>{fdcf7ced-8d81-480c-b038-d973a9b8d2fd}</Project>
       <Name>LagoVista.XPlat.WPF</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Resources\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

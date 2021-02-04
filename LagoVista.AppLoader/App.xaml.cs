@@ -54,6 +54,7 @@ namespace LagoVista.AppLoader
             SLWIOC.RegisterSingleton<IAppConfig>(appConfig);
             SLWIOC.RegisterSingleton<IPopupServices, Services.PopupService>();
             SLWIOC.RegisterSingleton<IClientAppInfo>(new ClientAppInfo());
+            LagoVista.Core.WPF.IconFonts.IconFontSupport.RegisterFonts();
             DeviceInfo.Register("WPF001");
             LagoVista.Xplat.WPF.Startup.Init(appConfig);
             LagoVista.Client.Core.Startup.Init(serverInfo);
