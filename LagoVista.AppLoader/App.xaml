@@ -4,6 +4,6 @@
              xmlns:local="clr-namespace:LagoVista.AppLoader"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-         
+        <ResourceDictionary Source="/Resources/Colors.xaml" />
     </Application.Resources>
 </Application>

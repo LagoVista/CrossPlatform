@@ -8,6 +8,7 @@
       xmlns:pge="clr-namespace:LagoVista.AppLoader.Common"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
+      Background="#555"            
       Title="DeviceReposView">
 
     <Grid>
@@ -16,7 +17,7 @@
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
         <ctls:Icon IconKey="fa-gear" />
-        <ListView ItemsSource="{Binding ListItems}" Grid.Row="1" SelectedItem="{Binding SelectedItem, Mode=TwoWay}">
+        <ListView ItemsSource="{Binding ListItems}" Grid.Row="1" Margin="5" SelectedItem="{Binding SelectedItem, Mode=TwoWay}">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <TextBlock Text="{Binding Name}" />
