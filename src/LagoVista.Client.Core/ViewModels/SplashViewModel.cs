@@ -9,7 +9,6 @@ namespace LagoVista.Client.Core.ViewModels
     public class SplashViewModel : AppViewModelBase
     {
         IClientAppInfo _clientAppInfo;
-        IRestClient _rawRestClient;
 
         private bool _notLoggedIn = false;
         public bool NotLoggedIn
@@ -25,13 +24,12 @@ namespace LagoVista.Client.Core.ViewModels
             set { Set(ref _isLoading, value); }
         }
 
-        public SplashViewModel(IClientAppInfo clientAppInfo, IRestClient rawRestClient)
+        public SplashViewModel(IClientAppInfo clientAppInfo)
         {
             LoginCommand = new RelayCommand(Login);
             NotLoggedIn = false;
             IsLoading = true;
             _clientAppInfo = clientAppInfo;
-            _rawRestClient = rawRestClient;
         }
 
         public override async Task InitAsync()

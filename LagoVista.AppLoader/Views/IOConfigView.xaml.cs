@@ -17,11 +17,11 @@ using System.Windows.Shapes;
 namespace LagoVista.AppLoader.Views
 {
     /// <summary>
-    /// Interaction logic for Splash.xaml
+    /// Interaction logic for IOConfigView.xaml
     /// </summary>
-    public partial class Splash : LagoVistaPage
+    public partial class IOConfigView : LagoVistaPage
     {
-        public Splash()
+        public IOConfigView()
         {
             InitializeComponent();
         }

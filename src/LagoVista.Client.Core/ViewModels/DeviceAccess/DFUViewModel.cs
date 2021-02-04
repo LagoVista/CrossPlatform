@@ -93,12 +93,8 @@ namespace LagoVista.Client.Core.ViewModels.DeviceAccess
 
         public void StartSerialUpdate()
         {
-            var comPort = "COM8";
-
             var path = @"c:\users\kevin\appdata\local\programs\python\python37\";
             var esptoolPath = Path.Combine(_appServices.AppInstallDirectory, "Resources");
-
-
 
             var args = GetFlashingArgs();
             var argString = new StringBuilder();

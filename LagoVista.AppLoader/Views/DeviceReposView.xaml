@@ -1,21 +1,22 @@
-﻿<pge:LagoVistaPage x:Class="LagoVista.AppLoader.Views.Splash"
+﻿<pge:LagoVistaPage x:Class="LagoVista.AppLoader.Views.DeviceReposView"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:LagoVista.AppLoader.Views"
       xmlns:ctls="clr-namespace:LagoVista.AppLoader.Controls"
       xmlns:pge="clr-namespace:LagoVista.AppLoader.Common"
-      xmlns:local="clr-namespace:LagoVista.AppLoader.Views"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="Splash">
+      Title="DeviceReposView">
 
     <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="*" />
-            <RowDefinition Height="auto" />
-        </Grid.RowDefinitions>
-        
-        <Button Content="Login"  Command="{Binding LoginCommand}" Grid.Row="1" />
+        <ListView ItemsSource="{Binding ListItems}" SelectedItem="{Binding SelectedItem, Mode=TwoWay}">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock Text="{Binding Name}" />
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
     </Grid>
 </pge:LagoVistaPage>

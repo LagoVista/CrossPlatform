@@ -48,12 +48,14 @@ namespace LagoVista.AppLoader
             };            
 #endif
 
+            var appConfig = new AppConfig();
+
             SLWIOC.RegisterSingleton<IBluetoothSerial>(new Services.BluetoothSerial());
-            SLWIOC.RegisterSingleton<IAppConfig>(new AppConfig());
+            SLWIOC.RegisterSingleton<IAppConfig>(appConfig);
             SLWIOC.RegisterSingleton<IPopupServices, Services.PopupService>();
             SLWIOC.RegisterSingleton<IClientAppInfo>(new ClientAppInfo());
             DeviceInfo.Register("WPF001");
-            LagoVista.Xplat.WPF.Startup.Init();
+            LagoVista.Xplat.WPF.Startup.Init(appConfig);
             LagoVista.Client.Core.Startup.Init(serverInfo);
         }
 

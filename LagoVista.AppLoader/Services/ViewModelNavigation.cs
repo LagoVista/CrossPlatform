@@ -1,4 +1,5 @@
-﻿using LagoVista.Client.Core;
+﻿using LagoVista.AppLoader.Common;
+using LagoVista.Client.Core;
 using LagoVista.Core.IOC;
 using LagoVista.Core.ViewModels;
 using System;
@@ -15,7 +16,7 @@ namespace LagoVista.AppLoader.Services
         private readonly Application _app;
         private readonly NavigationWindow _navWindow;
 
-        private Dictionary<Type, String> _registeredViews = new Dictionary<Type, String>();
+        private Dictionary<Type, Type> _registeredViews = new Dictionary<Type, Type>();
 
         public ViewModelNavigation(NavigationWindow navWindow)
         {
@@ -25,7 +26,7 @@ namespace LagoVista.AppLoader.Services
 
         private void _navWindow_Navigated(object sender, NavigationEventArgs e)
         {
-             
+
         }
 
         public bool CanGoBack()
@@ -81,7 +82,14 @@ namespace LagoVista.AppLoader.Services
 
         public Task NavigateAsync(ViewModelLaunchArgs args)
         {
-            throw new NotImplementedException();
+            var view = _registeredViews[args.ViewModelType];
+            var page = Activator.CreateInstance(view) as LagoVistaPage;
+            _navWindow.Navigate(page);
+            var vm = SLWIOC.CreateForType(args.ViewModelType) as ViewModelBase;
+            vm.LaunchArgs =args;
+
+            page.DataContext = vm;
+            return Task.CompletedTask;
         }
 
         public Task NavigateAsync(ViewModelBase parentViewModel, Type viewModelType, params KeyValuePair<string, object>[] args)
@@ -94,50 +102,57 @@ namespace LagoVista.AppLoader.Services
             throw new NotImplementedException();
         }
 
-        public void ClearHistory()
-        {
-            if (!this._navWindow.NavigationService.CanGoBack && !this._navWindow.NavigationService.CanGoForward)
-            {
-                return;
-            }
-
-            var entry = this._navWindow.NavigationService.RemoveBackEntry();
-            while (entry != null)
-            {
-                entry = this._navWindow.NavigationService.RemoveBackEntry();
-            }
-
-//            this.Frame.Navigate(new PageFunction<string>() { RemoveFromJournal = true });
-        }
-
-        public async Task SetAsNewRootAsync<TViewModel>(params KeyValuePair<string, object>[] args) where TViewModel : ViewModelBase
+        public Task SetAsNewRootAsync<TViewModel>(params KeyValuePair<string, object>[] args) where TViewModel : ViewModelBase
         {
             var view = _registeredViews[typeof(TViewModel)];
-//            _navWindow.Source = ;
-            _navWindow.NavigationService.Navigate(new Uri(view, UriKind.Relative));
-
-            var page = _navWindow.Content as Page;
+            var page = Activator.CreateInstance(view) as LagoVistaPage;
+            _navWindow.Navigate(page);
+            page.ClearNavStack = true;
 
             var vm = SLWIOC.CreateForType(typeof(TViewModel)) as ViewModelBase;
+            vm.LaunchArgs = new ViewModelLaunchArgs()
+            {
+                IsNewRoot = true,
+                LaunchType = LaunchTypes.Other,
+            };
+
+            foreach (var arg in args)
+            {
+                vm.LaunchArgs.Parameters.Add(arg.Key, arg.Value);
+            }
+
             page.DataContext = vm;
-            await vm.InitAsync();
 
-            this.ClearHistory();
+            return Task.CompletedTask;
         }
 
-        public async Task SetAsNewRootAsync(Type viewModelType, params KeyValuePair<string, object>[] args)
+        public Task SetAsNewRootAsync(Type viewModelType, params KeyValuePair<string, object>[] args)
         {
-            this.ClearHistory();
-
             var view = _registeredViews[viewModelType];
-            _navWindow.Source = new Uri(view);
+            var page = Activator.CreateInstance(view) as LagoVistaPage;
+            _navWindow.Navigate(page);
+            page.ClearNavStack = true;
+
             var vm = SLWIOC.CreateForType(viewModelType) as ViewModelBase;
-            await vm.InitAsync();
+            vm.LaunchArgs = new ViewModelLaunchArgs()
+            {
+                IsNewRoot = true,
+                LaunchType = LaunchTypes.Other,
+            };
+
+            foreach (var arg in args)
+            {
+                vm.LaunchArgs.Parameters.Add(arg.Key, arg.Value);
+            }
+
+            page.DataContext = vm;
+
+            return Task.CompletedTask;
         }
 
-        public void RegisterPage<TViewModel>(String page)
+        public void RegisterPage<TViewModel, TView>()
         {
-            _registeredViews.Add(typeof(TViewModel), page);
+            _registeredViews.Add(typeof(TViewModel), typeof(TView));
         }
     }
 }

@@ -6,6 +6,7 @@ using LagoVista.Core.ViewModels;
 using System.Windows.Controls;
 using System.Windows.Navigation;
 using System.Linq;
+using LagoVista.AppLoader.Views;
 
 namespace LagoVista.AppLoader
 {
@@ -21,22 +22,18 @@ namespace LagoVista.AppLoader
             InitializeComponent();
 
             _navigation = new Services.ViewModelNavigation(this);
-            _navigation.RegisterPage<SplashViewModel>("/Views/Splash.xaml");
-            _navigation.RegisterPage<DFUViewModel>("/Views/DFUView.xaml");
-            _navigation.RegisterPage<LoginViewModel>("/Views/LoginPage.xaml");
+            _navigation.RegisterPage<DeviceReposViewModel, DeviceReposView>();
+            _navigation.RegisterPage<DevicesViewModel, DevicesView>();
+            _navigation.RegisterPage<DeviceViewModel, DeviceView>();
+            _navigation.RegisterPage<SplashViewModel, Splash>();
+            _navigation.RegisterPage<DFUViewModel, DFUView>();
+            _navigation.RegisterPage<LoginViewModel, LoginPage>();
             SLWIOC.RegisterSingleton<IViewModelNavigation>(_navigation);
 
-            Source = new System.Uri("/views/Splash.xaml", System.UriKind.Relative);
-
-            this.LoadCompleted += MainWindow_LoadCompleted;            
-        }
-
-        private async void MainWindow_LoadCompleted(object sender, NavigationEventArgs e)
-        {
-            var obj = this.Content as Page;
+            var splashPage = new Splash();
             var vm = SLWIOC.CreateForType(typeof(SplashViewModel)) as ViewModelBase;
-            obj.DataContext = vm;
-            await vm.InitAsync();            
+            splashPage.DataContext = vm;
+            Navigate(splashPage);
         }
     }
 }

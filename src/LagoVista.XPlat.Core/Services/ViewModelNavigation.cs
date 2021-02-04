@@ -272,6 +272,11 @@ namespace LagoVista.XPlat.Core.Services
                 LaunchType = LaunchTypes.Other
             };
 
+            foreach (var arg in args)
+            {
+                viewModel.LaunchArgs.Parameters.Add(arg.Key, arg.Value);
+            }
+
             var viewModelType = typeof(TViewModel);
             if (!_viewModelLookup.ContainsKey(viewModelType))
             {
@@ -318,6 +323,11 @@ namespace LagoVista.XPlat.Core.Services
                 IsNewRoot = true,
                 LaunchType = LaunchTypes.Other,
             };
+
+            foreach (var arg in args)
+            {
+                viewModel.LaunchArgs.Parameters.Add(arg.Key, arg.Value);
+            }
 
             ViewModelBackStack.Clear();
             ViewModelBackStack.Push(viewModel);

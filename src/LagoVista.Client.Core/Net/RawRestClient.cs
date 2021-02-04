@@ -26,14 +26,14 @@ namespace LagoVista.Client.Core.Net
      */
     public class RawRestClient : IRestClient
     {
-        HttpClient _httpClient;
-        IAuthManager _authManager;
-        ILogger _logger;
-        IAuthClient _authClient;
-        IDeviceInfo _deviceInfo;
-        IAppConfig _appConfig;
-        INetworkService _networkService;
-        SemaphoreSlim _callSemaphore;
+        readonly HttpClient _httpClient;
+        readonly IAuthManager _authManager;
+        readonly ILogger _logger;
+        readonly IAuthClient _authClient;
+        readonly IDeviceInfo _deviceInfo;
+        readonly IAppConfig _appConfig;
+        readonly INetworkService _networkService;
+        readonly SemaphoreSlim _callSemaphore;
 
         public RawRestClient(HttpClient httpClient, INetworkService networkService, IDeviceInfo deviceInfo, IAppConfig appConfig, IAuthClient authClient, IAuthManager authManager, ILogger logger)
         {

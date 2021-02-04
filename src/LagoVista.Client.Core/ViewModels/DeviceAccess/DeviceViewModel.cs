@@ -35,7 +35,7 @@ namespace LagoVista.Client.Core.ViewModels.DeviceAccess
         {
             _btSerial = SLWIOC.Get<IBluetoothSerial>();
             _btSerial.DeviceConnected += _btSerial_DeviceConnected;
-            _btSerial.DeviceDisconnected += _btSerial_DeviceDisconnected;
+            _btSerial.DeviceDisconnected += btSerial_DeviceDisconnected;
             _btSerial.ReceivedLine += _btSerial_ReceivedLine;
 
             EditDeviceCommand = new RelayCommand(EditDevice);
@@ -93,7 +93,7 @@ namespace LagoVista.Client.Core.ViewModels.DeviceAccess
             }
         }
 
-        private void _btSerial_DeviceDisconnected(object sender, BTDevice e)
+        private void btSerial_DeviceDisconnected(object sender, BTDevice e)
         {
             ConnectedViaBluetooth = false;
         }

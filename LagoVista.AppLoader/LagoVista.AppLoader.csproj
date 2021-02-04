@@ -89,14 +89,30 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="ClientAppInfo.cs" />
+    <Compile Include="Common\LagoVistaPage.cs" />
     <Compile Include="Services\BluetoothSerial.cs" />
     <Compile Include="Services\PopupService.cs" />
     <Compile Include="Services\ViewModelNavigation.cs" />
+    <Compile Include="Views\DeviceReposView.xaml.cs">
+      <DependentUpon>DeviceReposView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\DevicesView.xaml.cs">
+      <DependentUpon>DevicesView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\DeviceView.cs">
+      <DependentUpon>DeviceView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\DFUView.xaml.cs">
       <DependentUpon>DFUView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\IOConfigView.xaml.cs">
+      <DependentUpon>IOConfigView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\LoginPage.xaml.cs">
       <DependentUpon>LoginPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ProvisionView.xaml.cs">
+      <DependentUpon>ProvisionView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Splash.xaml.cs">
       <DependentUpon>Splash.xaml</DependentUpon>
@@ -115,11 +131,31 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Views\DeviceReposView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\DevicesView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\DeviceView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\DFUView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\IOConfigView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\LoginPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ProvisionView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

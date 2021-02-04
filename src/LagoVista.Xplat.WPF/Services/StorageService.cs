@@ -1,4 +1,5 @@
 ﻿using LagoVista.Core;
+using LagoVista.Core.Interfaces;
 using LagoVista.Core.PlatformSupport;
 using Newtonsoft.Json;
 using System;
@@ -16,22 +17,32 @@ namespace LagoVista.XPlat.WPF.Services
         Dictionary<string, string> _iotSettings = new Dictionary<string, string>();
 
 
+        private const string IOT_SETTINGS = "IOTSETTINGS.json";
+
+        private readonly IAppConfig _appConfig;
+
+        public StorageService(IAppConfig appConfig)
+        {
+            _appConfig = appConfig ?? throw new ArgumentNullException(nameof(appConfig));
+        }
+
         private Dictionary<string, string> AppSettings
         {
-            get
-            {
-                return _iotSettings;
-            }
+            get { return _iotSettings; }
         }
 
         private async Task LoadSettingsIfRequired()
         {
+            if (_iotSettings == null)
+            {
+                _iotSettings = await this.GetAsync<Dictionary<string, string>>(IOT_SETTINGS);
+            }
             throw new NotImplementedException();
         }
 
         private async Task SaveSettingsIfRequired()
         {
-            await StoreAsync(_iotSettings, "IOTSETTINGS.json");
+            await StoreAsync(_iotSettings, IOT_SETTINGS);
         }
 
         public async Task ClearKVP(string key)
@@ -44,24 +55,48 @@ namespace LagoVista.XPlat.WPF.Services
             await SaveSettingsIfRequired();
         }
 
-        public Task<Stream> Get(Uri rui)
+        public Task<Stream> Get(Uri uri)
         {
             throw new NotImplementedException();
         }
 
-        public async Task<Stream> Get(Locations location, string fileName, string folderName = "")
+        private string GetAppDataPath(Locations location)
         {
-            var outputPath = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
-            var fullFileName = Path.Combine(outputPath, fileName);
-            if (System.IO.File.Exists(outputPath))
+            var outputPath = String.Empty;
+            switch (location)
             {
-                return System.IO.File.Open(fullFileName, FileMode.Open);
+                case Locations.Default:
+                case Locations.Roaming:
+                case Locations.Local:
+                    outputPath = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
+                    break;
+                case Locations.Temp:
+                    outputPath = System.IO.Path.GetTempPath();
+                    break;
+            }
+
+            outputPath = Path.Combine(outputPath, _appConfig.AppName);
+            if (!Directory.Exists(outputPath))
+            {
+                Directory.CreateDirectory(outputPath);
+            }
+
+            return outputPath;
+        }
+
+        public  Task<Stream> Get(Locations location, string fileName, string folderName = "")
+        {
+            var outputPath = GetAppDataPath(location);
+            var fullFileName = Path.Combine(outputPath, fileName);
+            if (File.Exists(fullFileName))
+            {
+                return Task.FromResult(File.Open(fullFileName, FileMode.Open) as Stream);
             }
             else
             {
-                return System.IO.File.Open(fullFileName, FileMode.Create);
+                return Task.FromResult(File.Create(fullFileName) as Stream);
             }
-            
+
         }
 
         public async Task<TObject> GetAsync<TObject>(string fileName) where TObject : class
@@ -77,6 +112,10 @@ namespace LagoVista.XPlat.WPF.Services
                     using (var rdr = new StreamReader(inputStream))
                     {
                         var json = rdr.ReadToEnd();
+                        if (String.IsNullOrEmpty(json))
+                        {
+                            return null;
+                        }
                         return JsonConvert.DeserializeObject<TObject>(json);
                     }
                 }
@@ -123,11 +162,10 @@ namespace LagoVista.XPlat.WPF.Services
         public Task<string> StoreAsync<TObject>(TObject instance, string fileName) where TObject : class
         {
             var json = JsonConvert.SerializeObject(instance);
-            var outputPath = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
-            var fullFileName = Path.Combine(outputPath, fileName);
+            var fullFileName = Path.Combine(GetAppDataPath(Locations.Default), fileName);
             try
             {
-                System.IO.File.Delete(fileName);
+                File.Delete(fileName);
 
             }
             catch (Exception)
@@ -137,7 +175,7 @@ namespace LagoVista.XPlat.WPF.Services
 
             try
             {
-                System.IO.File.WriteAllText(fullFileName, json);
+                File.WriteAllText(fullFileName, json);
             }
             catch (Exception ex)
             {
@@ -165,16 +203,29 @@ namespace LagoVista.XPlat.WPF.Services
             }
         }
 
-        public Task<string> StoreAsync(Stream stream, string fileName, Locations location = Locations.Default, string folder = "")
+        public async Task<string> StoreAsync(Stream stream, string fileName, Locations location = Locations.Default, string folder = "")
         {
-            throw new NotImplementedException();
+            var outputPath = GetAppDataPath(location);
+            var fullFileName = Path.Combine(outputPath, fileName);
+            using (var file = System.IO.File.Create(fullFileName))
+            {
+                await stream.CopyToAsync(file);
+            }
+
+            return fullFileName;
         }
 
         public Task<Stream> Get(string fileName, Locations location = Locations.Default, string folder = "")
         {
-            throw new NotImplementedException();
-        }
+            var outputPath = GetAppDataPath(location);
+            var fullFileName = Path.Combine(outputPath, fileName);
+            if (File.Exists(fullFileName))
+            {
+                return Task.FromResult(File.Open(fullFileName, FileMode.Open) as Stream);
+            }
 
+            return null;
+        }
 
         public Task<string> ReadAllTextAsync(string fileName)
         {
@@ -208,12 +259,13 @@ namespace LagoVista.XPlat.WPF.Services
 
         public Task<byte[]> ReadAllBytesAsync(string fileName)
         {
-            throw new NotImplementedException();
+            return Task.FromResult(System.IO.File.ReadAllBytes(fileName));
         }
 
         public Task<string> WriteAllBytesAsync(string fileName, byte[] buffer)
         {
-            throw new NotImplementedException();
+            System.IO.File.WriteAllBytes(fileName, buffer);
+            return Task.FromResult(fileName);
         }
     }
 }

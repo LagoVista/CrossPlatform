@@ -10,8 +10,8 @@ namespace LagoVista.Client.Core.Net
     public class AuthManager : IAuthManager
     {
         private const string AUTH_MGR_SETTINGS = "AUTHSETTINGS.JSON";
-        IStorageService _storage;
-        IDeviceInfo _deviceInfo;
+        readonly IStorageService _storage;
+        readonly IDeviceInfo _deviceInfo;
 
         public AuthManager(IStorageService storage, IDeviceInfo deviceInfo)
         {

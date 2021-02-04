@@ -6,6 +6,6 @@ namespace LagoVista.AppLoader
 {
     public class ClientAppInfo : IClientAppInfo
     {
-        public Type MainViewModel => typeof(DFUViewModel);
+        public Type MainViewModel => typeof(DeviceReposViewModel);
     }
 }
