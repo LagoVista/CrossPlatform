@@ -60,7 +60,10 @@ namespace LagoVista.XPlat.Core
 
             // On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
 
-            this.BackgroundColor = ResourceSupport.GetColor("PageBackground");
+            if (Device.RuntimePlatform != Device.UWP)
+            {
+                this.BackgroundColor = ResourceSupport.GetColor("PageBackground");
+            }
 
             CreateActivityIndicator();
             CreateMenu();
@@ -122,7 +125,12 @@ namespace LagoVista.XPlat.Core
         private void CreateActivityIndicator()
         {
             _activityIndicator = new ActivityIndicator() { IsRunning = false };
-            _activityIndicator.Color = Xamarin.Forms.Color.White;
+
+            if (Device.RuntimePlatform != Device.UWP)
+            {
+                _activityIndicator.Color = Xamarin.Forms.Color.White;
+            }
+
             _activityIndicator.VerticalOptions = new LayoutOptions(LayoutAlignment.Center, false);
 
             switch (Device.RuntimePlatform)
@@ -149,10 +157,16 @@ namespace LagoVista.XPlat.Core
             _menu.MenuItemTapped += _menu_MenuItemTapped;
             _menu.IsVisible = false;
             _menu.TranslationX = -MENU_WIDTH;
-            _menu.BackgroundColor = ResourceSupport.GetColor("MenuBarBackground");
+
+            if (Device.RuntimePlatform != Device.UWP)
+            {
+                _menu.BackgroundColor = ResourceSupport.GetColor("MenuBarBackground");
+            }
+
             _menu.WidthRequest = MENU_WIDTH;
             _menu.HorizontalOptions = LayoutOptions.Start;
             _menu.SetValue(Grid.RowProperty, 1);
+
 
             _pageMenuMask = new Grid() { BackgroundColor = Xamarin.Forms.Color.Black, Opacity = 0.50 };
             _pageMenuMask.SetValue(Grid.RowProperty, 1);
@@ -187,11 +201,10 @@ namespace LagoVista.XPlat.Core
             _toolBar.ColumnDefinitions.Add(new ColumnDefinition() { Width = new GridLength(1, GridUnitType.Star) });
             _toolBar.ColumnDefinitions.Add(new ColumnDefinition() { Width = new GridLength(1, GridUnitType.Auto) });
             _toolBar.ColumnDefinitions.Add(new ColumnDefinition() { Width = new GridLength(1, GridUnitType.Auto) });
-            _toolBar.BackgroundColor = ResourceSupport.GetColor("TitleBarBackground");
+
 
             _title = new Label();
             _title.SetValue(Grid.ColumnSpanProperty, 4);
-            _title.TextColor = ResourceSupport.GetColor("TitleBarText");
             _title.FontSize = ResourceSupport.GetNumber("HeaderFontSize");
             _title.FontFamily = ResourceSupport.GetString("HeaderFont");
             _title.FontAttributes = FontAttributes.Bold;
@@ -203,7 +216,6 @@ namespace LagoVista.XPlat.Core
             {
                 IsVisible = false,
                 VerticalOptions = new LayoutOptions(LayoutAlignment.Center, false),
-                TextColor = _title.TextColor,
                 WidthRequest = 48,
                 HeightRequest = 48,
                 FontSize = Device.RuntimePlatform == Device.Android ? 20 : 28
@@ -214,7 +226,6 @@ namespace LagoVista.XPlat.Core
             {
                 IsVisible = false,
                 VerticalOptions = new LayoutOptions(LayoutAlignment.Center, false),
-                TextColor = _title.TextColor,
                 WidthRequest = 48,
                 HeightRequest = 48,
                 FontSize = Device.RuntimePlatform == Device.Android ? 20 : 28
@@ -227,7 +238,6 @@ namespace LagoVista.XPlat.Core
                 IsVisible = false,
                 IconKey = "ion-help",
                 VerticalOptions = new LayoutOptions(LayoutAlignment.Center, false),
-                TextColor = _title.TextColor,
                 WidthRequest = 48,
                 HeightRequest = 48,
                 FontSize = Device.RuntimePlatform == Device.Android ? 20 : 24
@@ -235,6 +245,15 @@ namespace LagoVista.XPlat.Core
 
             _helpButton.Clicked += _helpButton_Clicked;
             _helpButton.SetValue(Grid.ColumnProperty, 3);
+
+            if (Device.RuntimePlatform != Device.UWP)
+            {
+                _toolBar.BackgroundColor = ResourceSupport.GetColor("TitleBarBackground");
+                _title.TextColor = ResourceSupport.GetColor("TitleBarText");
+                _leftMenuButton.TextColor = _title.TextColor;
+                _rightMenuButton.TextColor = _title.TextColor;
+                _helpButton.TextColor = _title.TextColor;
+            }
 
             _toolBar.Children.Add(_title);
             _toolBar.Children.Add(_leftMenuButton);
@@ -358,20 +377,23 @@ namespace LagoVista.XPlat.Core
                 }
 
                 _contentGrid.RowDefinitions.Add(new RowDefinition() { Height = new GridLength(1, GridUnitType.Star) });
-                _contentGrid.BackgroundColor = ResourceSupport.GetColor("TitleBarBackground");
-
+          
                 Content = _contentGrid;
 
                 _mainContent = value;
                 _mainContent.Margin = new Thickness(0, -6, 0, -6);
 
-                if (value.BackgroundColor != null && value.BackgroundColor.R > -1)
+                if (Device.RuntimePlatform != Device.UWP)
                 {
-                    _mainContent.BackgroundColor = value.BackgroundColor;
-                }
-                else
-                {
-                    _mainContent.BackgroundColor = ResourceSupport.GetColor("PageBackground");
+                    _contentGrid.BackgroundColor = ResourceSupport.GetColor("TitleBarBackground");
+                    if (value.BackgroundColor != null && value.BackgroundColor.R > -1)
+                    {
+                        _mainContent.BackgroundColor = value.BackgroundColor;
+                    }
+                    else
+                    {
+                        _mainContent.BackgroundColor = ResourceSupport.GetColor("PageBackground");
+                    }
                 }
 
                 _contentGrid.Children.Add(_mainContent);
@@ -418,23 +440,27 @@ namespace LagoVista.XPlat.Core
                 _contentGrid.RowDefinitions.Add(new RowDefinition() { Height = new GridLength(1, GridUnitType.Star) });
                 _contentGrid.RowDefinitions.Add(new RowDefinition() { Height = new GridLength(1, GridUnitType.Auto) });
 
-                _contentGrid.BackgroundColor = ResourceSupport.GetColor("TitleBarBackground");
-
+               
                 Content = _contentGrid;
 
                 _tabbedContent = value;
                 _tabbedContent.Margin = new Thickness(0, 0, 0, -6);
 
-                if (value.BackgroundColor != null && value.BackgroundColor.R > -1)
+                if (Device.RuntimePlatform != Device.UWP)
                 {
-                    _tabbedContent.BackgroundColor = value.BackgroundColor;
-                }
-                else
-                {
-                    _tabbedContent.BackgroundColor = ResourceSupport.GetColor("PageBackground");
-                }
+                    _contentGrid.BackgroundColor = ResourceSupport.GetColor("TitleBarBackground");
 
-                _contentGrid.BackgroundColor = _tabbedContent.BackgroundColor;
+                    if (value.BackgroundColor != null && value.BackgroundColor.R > -1)
+                    {
+                        _tabbedContent.BackgroundColor = value.BackgroundColor;
+                    }
+                    else
+                    {
+                        _tabbedContent.BackgroundColor = ResourceSupport.GetColor("PageBackground");
+                    }
+
+                    _contentGrid.BackgroundColor = _tabbedContent.BackgroundColor;
+                }
 
                 _tabbedContent.SetValue(Grid.RowProperty, 1);
 
@@ -609,8 +635,6 @@ namespace LagoVista.XPlat.Core
             get { return (ICommand)GetValue(HelpCommandProperty); }
             set { SetValue(HelpCommandProperty, value); }
         }
-
-
 
         public static readonly BindableProperty DeleteCommandProperty = BindableProperty.Create(nameof(DeleteCommand), typeof(ICommand), typeof(LagoVistaContentPage), default(ICommand), BindingMode.Default, null,
             (view, oldValue, newValue) => (view as LagoVistaContentPage).DeleteCommand = (ICommand)newValue);

@@ -58,6 +58,7 @@ namespace LagoVista.XPlat.Core.Controls.FormControls
                         _editorContainer.Children.Add(new IconButton() { Command = _command, WidthRequest = 36, CommandParameter = VIEW_SECRET, IconKey = "fa-eye", TextColor = highlightColor }, 1, 0);
                         _editorContainer.Children.Add(new IconButton() { Command = _command, WidthRequest = 36, CommandParameter = COPY_SECRET, IconKey = "fa-clipboard", TextColor = highlightColor }, 2, 0);
                         _editorContainer.Children.Add(new IconButton() { Command = _command, WidthRequest = 36, CommandParameter = REFRESH_SECRET, IconKey = "fa-refresh", TextColor = highlightColor }, 3, 0);
+
                         break;
                     case FieldTypes.Key:
                         _editor.Keyboard = Keyboard.Plain;

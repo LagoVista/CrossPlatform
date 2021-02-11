@@ -115,9 +115,7 @@ namespace LagoVista.Client.Core.ViewModels.DeviceAccess
             {
                 var path = $"/api/device/{DeviceRepoId}/{DeviceId}/metadata";
 
-                var response1 = await RestClient.GetAsync(path);
-               
-
+              
                 var response = await RestClient.GetAsync<DetailResponse<Device>>(path);
                 if (response.Successful)
                 {
@@ -129,6 +127,8 @@ namespace LagoVista.Client.Core.ViewModels.DeviceAccess
                     ViewReady = true;
                     TryConnectBluetooth();
                 }
+
+                return response.ToInvokeResult();
             });
         }
 

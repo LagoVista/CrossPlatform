@@ -3,12 +3,14 @@
 using LagoVista.Client.Core;
 using LagoVista.Client.Core.Interfaces;
 using LagoVista.Client.Core.Models;
+using LagoVista.Client.Core.Net;
 using LagoVista.Core.Interfaces;
 using LagoVista.Core.IOC;
 using LagoVista.Core.PlatformSupport;
 using LagoVista.Core.ViewModels;
 using LagoVista.XPlat.WPF.Services;
 using System;
+using System.Net.WebSockets;
 using System.Windows;
 using System.Windows.Navigation;
 
@@ -52,6 +54,7 @@ namespace LagoVista.AppLoader
 
             SLWIOC.RegisterSingleton<IBluetoothSerial>(new Services.BluetoothSerial());
             SLWIOC.RegisterSingleton<IAppConfig>(appConfig);
+            SLWIOC.Register<IWebSocket, Services.WebSocket>();
             SLWIOC.RegisterSingleton<IPopupServices, Services.PopupService>();
             SLWIOC.RegisterSingleton<IClientAppInfo>(new ClientAppInfo());
             LagoVista.Core.WPF.IconFonts.IconFontSupport.RegisterFonts();

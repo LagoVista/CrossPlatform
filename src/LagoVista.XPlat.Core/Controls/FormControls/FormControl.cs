@@ -1,6 +1,4 @@
 ﻿using LagoVista.Core.Attributes;
-using LagoVista.Core.Interfaces;
-using LagoVista.Core.IOC;
 using LagoVista.Core.Models.UIMetaData;
 using System;
 using System.ComponentModel;

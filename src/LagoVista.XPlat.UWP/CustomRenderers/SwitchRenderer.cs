@@ -23,8 +23,11 @@ namespace LagoVista.Xplat.UWP.CustomRenderer
                     //control.Loaded += OnControlLoaded;
                     control.ClearValue(ToggleSwitch.OnContentProperty);
                     control.ClearValue(ToggleSwitch.OffContentProperty);
-                    Windows.UI.Xaml.Application.Current.Resources.TryGetValue("LGVToggleSwitchStyle", out var style);
-                    control.Style = style as Windows.UI.Xaml.Style;
+                    if (Windows.UI.Xaml.Application.Current.Resources.Keys.Contains("IconButtonStyle"))
+                    {
+                        Windows.UI.Xaml.Application.Current.Resources.TryGetValue("LGVToggleSwitchStyle", out var style);
+                        control.Style = style as Windows.UI.Xaml.Style;
+                    }
 
                     SetNativeControl(control);
                 }

@@ -2,7 +2,6 @@
 using System.Threading;
 using System.Threading.Tasks;
 using LagoVista.Core.Models.UIMetaData;
-using LagoVista.Core.Validation;
 
 namespace LagoVista.Client.Core.Net
 {
@@ -10,7 +9,7 @@ namespace LagoVista.Client.Core.Net
     {
         IRestClient _rawRestClient;
 
-        public ListRestClient(IRestClient rawRestClient) 
+        public ListRestClient(IRestClient rawRestClient)
         {
             _rawRestClient = rawRestClient;
         }

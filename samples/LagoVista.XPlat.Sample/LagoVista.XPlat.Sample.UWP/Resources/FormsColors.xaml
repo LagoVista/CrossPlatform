@@ -2,10 +2,13 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 
+    <Color x:Key="LinkColor">#D48D17</Color>
+
+    <Color x:Key="SystemAccentColor">Purple</Color>
+
     <SolidColorBrush x:Key="SystemControlBackgroundAltHighBrush" Color="{ThemeResource EditControlBackground}"></SolidColorBrush>
     <SolidColorBrush x:Key="SystemControlBackgroundBaseLowBrush" Color="Green"></SolidColorBrush>
-    <SolidColorBrush x:Key="TextControlBackground" Color="{ThemeResource HighlightColor}"></SolidColorBrush>
-   
+    
     <SolidColorBrush x:Key="SystemControlDisabledBaseLowBrush" ></SolidColorBrush>
     <SolidColorBrush x:Key="SystemControlDisabledTransparentBrush"></SolidColorBrush>
     <SolidColorBrush x:Key="SystemControlDisabledChromeDisabledLowBrush"></SolidColorBrush>
@@ -13,17 +16,25 @@
     <SolidColorBrush x:Key="SystemControlForegroundBaseHighBrush" Color="{ThemeResource EditControlText}"></SolidColorBrush>
     <SolidColorBrush x:Key="SystemControlForegroundChromeDisabledLowBrush" Color="{ThemeResource EditControlTextDisabled}"></SolidColorBrush>
     <SolidColorBrush x:Key="SystemColorWindowTextColor" Color="{ThemeResource EditControlTextActive}"></SolidColorBrush>
+   
     
-    <SolidColorBrush x:Key="SystemControlHighlightAccentBrush"></SolidColorBrush>
-    <SolidColorBrush x:Key="SystemControlHighlightAltChromeWhiteBrush"></SolidColorBrush>
-    <SolidColorBrush x:Key="SystemControlHighlightChromeAltLowBrush"></SolidColorBrush>
-    
-    <SolidColorBrush x:Key="SystemControlPageTextBaseMediumBrush"></SolidColorBrush>
-    <SolidColorBrush x:Key="SystemControlPageTextChromeBlackMediumLowBrush"></SolidColorBrush>
-    
-    <SolidColorBrush x:Key="TextBoxButtonBorderThemeBrush"></SolidColorBrush>
-    <SolidColorBrush x:Key="TextBoxButtonBackgroundThemeBrush"></SolidColorBrush>
-    
+    <SolidColorBrush x:Key="SystemControlHighlightAccentBrush" Color="{StaticResource LinkColor}"></SolidColorBrush>
+    <SolidColorBrush x:Key="SystemControlHighlightAltChromeWhiteBrush">White</SolidColorBrush>
+    <SolidColorBrush x:Key="SystemControlHighlightChromeAltLowBrush">Tan</SolidColorBrush>
+
+    <!-- Placeholder Not Focused -->
+    <SolidColorBrush x:Key="SystemControlPageTextBaseMediumBrush">Orange</SolidColorBrush>
+    <!-- PlaceHolder Focus -->
+    <SolidColorBrush x:Key="SystemControlPageTextChromeBlackMediumLowBrush">Blue</SolidColorBrush>
+
+
+
+    <!--
+    <SolidColorBrush x:Key="TextControlBackground" Color="{ThemeResource HighlightColor}"></SolidColorBrush>
+  
+    <SolidColorBrush x:Key="TextBoxButtonBorderThemeBrush">Yellow</SolidColorBrush>
+    <SolidColorBrush x:Key="TextBoxButtonBackgroundThemeBrush">Gold</SolidColorBrush>
+
     <SolidColorBrush x:Key="ComboBoxForeground" Color="Green"></SolidColorBrush>
     <SolidColorBrush x:Key="ComboBoxBackground" Color="Red"></SolidColorBrush>
     <SolidColorBrush x:Key="ComboBoxBorderBrush"></SolidColorBrush>
@@ -60,6 +71,6 @@
     <SolidColorBrush x:Key="ComboBoxItemForegroundSelectedPointerOver"></SolidColorBrush>
     <SolidColorBrush x:Key="ComboBoxItemBackgroundSelectedPressed"></SolidColorBrush>
     <SolidColorBrush x:Key="ComboBoxItemBorderBrushSelectedPressed"></SolidColorBrush>
-    <SolidColorBrush x:Key="ComboBoxItemForegroundSelectedPressed"> </SolidColorBrush>
+    <SolidColorBrush x:Key="ComboBoxItemForegroundSelectedPressed"> </SolidColorBrush>-->
 
 </ResourceDictionary>

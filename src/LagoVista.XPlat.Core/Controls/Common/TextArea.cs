@@ -1,4 +1,5 @@
 ﻿using LagoVista.XPlat.Core.Services;
+using Xamarin.Forms;
 
 namespace LagoVista.XPlat.Core
 {
@@ -6,8 +7,11 @@ namespace LagoVista.XPlat.Core
     {
         public TextArea()
         {
-            FontFamily = ResourceSupport.GetString("EntryFont");
-            FontSize = ResourceSupport.GetNumber("EntryFontSize");
+            if (Device.RuntimePlatform != Device.UWP)
+            {
+                FontFamily = ResourceSupport.GetString("EntryFont");
+                FontSize = ResourceSupport.GetNumber("EntryFontSize");
+            }
            // PlaceholderColor = ResourceSupport.GetColor("EditControlPlaceholder");
            // BackgroundColor = ResourceSupport.GetColor("EditControlBackground");
            // TextColor = ResourceSupport.GetColor("EditControlText");

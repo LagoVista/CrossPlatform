@@ -86,11 +86,12 @@ namespace LagoVista.Client.Core.ViewModels
 
         public async Task<InvokeResult> PerformNetworkOperation(Func<Task<InvokeResult>> action, bool suppressErrorPopup = false)
         {
+            /*
             if (!IsNetworkConnected)
             {
                 await Popups.ShowAsync(ClientResources.Common_NoConnection);
                 return InvokeResult.FromErrors(ClientResources.Common_NoConnection.ToErrorMessage());
-            }
+            }*/
 
             IsBusy = true;
 

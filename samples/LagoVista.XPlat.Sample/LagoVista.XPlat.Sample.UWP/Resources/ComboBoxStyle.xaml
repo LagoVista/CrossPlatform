@@ -6,7 +6,7 @@
     <Style TargetType="local:FormsComboBox" >
         <Setter Property="Padding" Value="12,5,0,7" />
         <Setter Property="MinWidth" Value="{ThemeResource ComboBoxThemeMinWidth}" />
-        <Setter Property="Foreground" Value="{ThemeResource SystemControlForegroundBaseHighBrush}" />
+         <Setter Property="Foreground" Value="{ThemeResource SystemControlForegroundBaseHighBrush}" />
         <Setter Property="Background" Value="{ThemeResource SystemControlBackgroundAltHighBrush}" />
         <Setter Property="BorderBrush" Value="{ThemeResource TextBoxButtonBorderThemeBrush}" />
         <Setter Property="BorderThickness" Value="{ThemeResource ComboBoxBorderThemeThickness}" />

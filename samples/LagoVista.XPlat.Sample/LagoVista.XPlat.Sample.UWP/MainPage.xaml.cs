@@ -71,6 +71,7 @@ namespace LagoVista.XPlat.Sample.UWP
                 }
             }
 
+            /*
             var buttonDictionary = new ResourceDictionary();
             buttonDictionary.Source = new Uri("ms-appx:///Resources/ButtonStyle.xaml");
             Application.Current.Resources.MergedDictionaries.Add(buttonDictionary);
@@ -86,6 +87,7 @@ namespace LagoVista.XPlat.Sample.UWP
             var iconButtonStyle = new ResourceDictionary();
             iconButtonStyle.Source = new Uri("ms-appx:///Resources/IconButtonStyle.xaml");
             Application.Current.Resources.MergedDictionaries.Add(iconButtonStyle);
+            */
 
             this.InitializeComponent();
 

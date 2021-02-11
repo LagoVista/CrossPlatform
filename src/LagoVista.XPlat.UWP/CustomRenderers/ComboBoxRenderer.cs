@@ -14,9 +14,10 @@ namespace LagoVista.XPlat.UWP.CustomRenderers
             base.OnElementChanged(e);
             if (Control != null)
             {
+
                 Control comboBox = Control;
-           //     var template = Windows.UI.Xaml.Application.Current.Resources["PickerStyle"] as Windows.UI.Xaml.Style;
-             //   comboBox.Style = template;
+                //     var template = Windows.UI.Xaml.Application.Current.Resources["PickerStyle"] as Windows.UI.Xaml.Style;
+                //   comboBox.Style = template;
             }
         }
     }

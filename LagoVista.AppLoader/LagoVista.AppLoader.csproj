@@ -91,6 +91,7 @@
     <Compile Include="ClientAppInfo.cs" />
     <Compile Include="Common\LagoVistaPage.cs" />
     <Compile Include="Controls\Icon.cs" />
+    <Compile Include="Controls\NavigationRow.cs" />
     <Compile Include="IconFonts\EntypoPlusModule.cs" />
     <Compile Include="IconFonts\FontAwesomeModule.cs" />
     <Compile Include="IconFonts\IconFontSupport.cs" />
@@ -101,6 +102,7 @@
     <Compile Include="IconFonts\TypiconsModule.cs" />
     <Compile Include="IconFonts\WeatherIconsModule.cs" />
     <Compile Include="Services\BluetoothSerial.cs" />
+    <Compile Include="Services\WebSocket.cs" />
     <Compile Include="Services\PopupService.cs" />
     <Compile Include="Services\ViewModelNavigation.cs" />
     <Compile Include="Views\DeviceReposView.xaml.cs">

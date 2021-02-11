@@ -121,4 +121,12 @@
             </Setter.Value>
         </Setter>
     </Style>
+    <Style TargetType="TextBlock" x:Key="ListItemTitle" >
+        <Setter Property="Foreground">
+            <Setter.Value>
+                <SolidColorBrush Color="{DynamicResource PageText}"/>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="FontSize" Value="24"/>
+    </Style>
 </ResourceDictionary>

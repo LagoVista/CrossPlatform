@@ -60,7 +60,7 @@ namespace LagoVista.Client.Core.ViewModels.DeviceAccess
                             }
                         }
                     }
-                    catch (TaskCanceledException)
+                    catch (Exception)
                     {
                         _running = false;
                         Lines.Add("DISCONNECTED");

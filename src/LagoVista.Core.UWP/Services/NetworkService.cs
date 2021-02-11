@@ -36,7 +36,13 @@ namespace LagoVista.Core.UWP.Services
         {
             get
             {
-                var connectionState = NetworkInformation.GetInternetConnectionProfile().GetNetworkConnectivityLevel();
+                var connectionProfile = NetworkInformation.GetInternetConnectionProfile();
+                if(connectionProfile == null)
+                {
+                    return false;
+                }
+
+                var connectionState = connectionProfile.GetNetworkConnectivityLevel();
                 return connectionState >= NetworkConnectivityLevel.InternetAccess;
             }
         }

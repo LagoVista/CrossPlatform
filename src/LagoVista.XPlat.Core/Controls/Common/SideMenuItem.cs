@@ -62,16 +62,19 @@ namespace LagoVista.XPlat.Core.Controls.Common
 
         private void Command_CanExecuteChanged(object sender, EventArgs e)
         {
-            if(_menuItem.Command.CanExecute(_menuItem.CommandParameter))
+            if (Device.RuntimePlatform != Device.UWP)
             {
-                _icon.TextColor = ResourceSupport.GetColor("MenuIconColor");
-                _menuText.TextColor = ResourceSupport.GetColor("MenuFontColor");
-            }
-            else
-            {
-                BackgroundColor = ResourceSupport.GetColor("MenuBarDisableddDisabled");
-                _icon.TextColor = ResourceSupport.GetColor("MenuBarForegroundDisabled");
-                _menuText.TextColor = ResourceSupport.GetColor("MenuBarForegroundDisabled");
+                if (_menuItem.Command.CanExecute(_menuItem.CommandParameter))
+                {
+                    _icon.TextColor = ResourceSupport.GetColor("MenuIconColor");
+                    _menuText.TextColor = ResourceSupport.GetColor("MenuFontColor");
+                }
+                else
+                {
+                    BackgroundColor = ResourceSupport.GetColor("MenuBarDisableddDisabled");
+                    _icon.TextColor = ResourceSupport.GetColor("MenuBarForegroundDisabled");
+                    _menuText.TextColor = ResourceSupport.GetColor("MenuBarForegroundDisabled");
+                }
             }
         }
      }

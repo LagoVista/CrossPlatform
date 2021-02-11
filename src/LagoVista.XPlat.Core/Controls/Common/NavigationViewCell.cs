@@ -26,18 +26,16 @@ namespace LagoVista.XPlat.Core.Controls.Common
                 HorizontalOptions = new LayoutOptions(LayoutAlignment.Center, false),
                 VerticalOptions = new LayoutOptions(LayoutAlignment.Center, true),
                 FontSize = ResourceSupport.GetNumber("ListItemFontSize"),
-                TextColor = ResourceSupport.GetColor("ListItemIconColor"),
             };
 
-            _icon.SetValue(Grid.ColumnProperty, 0);
+
+                _icon.SetValue(Grid.ColumnProperty, 0);
             _icon.SetValue(Grid.RowSpanProperty, 2);
 
             _text = new Label()
             {
                 VerticalOptions = new LayoutOptions(LayoutAlignment.Center, true),
                 FontSize = ResourceSupport.GetNumber("ListItemFontSize"),
-                TextColor = ResourceSupport.GetColor("ListItemLabelColor"),
-                FontFamily = ResourceSupport.GetString("ListItemFont"),
             };
             _text.SetValue(Grid.ColumnProperty, 1);
             _text.SetValue(Grid.RowSpanProperty, 2);
@@ -45,8 +43,6 @@ namespace LagoVista.XPlat.Core.Controls.Common
             _detail = new Label()
             {
                 FontSize = ResourceSupport.GetNumber("LiteItemDetailSize"),
-                TextColor = ResourceSupport.GetColor("ListItemDetailColor"),
-                FontFamily = ResourceSupport.GetString("ListItemDetailFont"),
                 IsVisible = false,
             };
             _detail.SetValue(Grid.ColumnProperty, 1);
@@ -57,14 +53,12 @@ namespace LagoVista.XPlat.Core.Controls.Common
                 HorizontalOptions = new LayoutOptions(LayoutAlignment.Center, false),
                 VerticalOptions = new LayoutOptions(LayoutAlignment.Center, true),
                 FontSize = ResourceSupport.GetNumber("ListItemFontSize"),
-                TextColor = ResourceSupport.GetColor("NavIconColor"),
                 IconKey = "fa-chevron-right",
             };
             _chevron.SetValue(Grid.ColumnProperty, 2);
             _chevron.SetValue(Grid.RowSpanProperty, 2);
 
             _layout.Margin = new Thickness(10);
-            _layout.BackgroundColor = ResourceSupport.GetColor("ListItemBackgroundColor");
             _layout.ColumnDefinitions.Add(new ColumnDefinition() { Width = new GridLength(48, GridUnitType.Absolute) });
             _layout.ColumnDefinitions.Add(new ColumnDefinition() { Width = new GridLength(1, GridUnitType.Star) });
             _layout.ColumnDefinitions.Add(new ColumnDefinition() { Width = new GridLength(48, GridUnitType.Absolute) });
@@ -76,6 +70,18 @@ namespace LagoVista.XPlat.Core.Controls.Common
             _layout.Children.Add(_text);
             _layout.Children.Add(_detail);
             _layout.Children.Add(_chevron);
+
+
+            if (Device.RuntimePlatform != Device.UWP)
+            {
+                _layout.BackgroundColor = ResourceSupport.GetColor("ListItemBackgroundColor");
+                _text.TextColor = ResourceSupport.GetColor("ListItemLabelColor");
+                _text.FontFamily = ResourceSupport.GetString("ListItemFont");
+                _detail.FontFamily = ResourceSupport.GetString("ListItemDetailFont");
+                _detail.TextColor = ResourceSupport.GetColor("ListItemDetailColor");
+                _chevron.TextColor = ResourceSupport.GetColor("NavIconColor");
+                _icon.TextColor = ResourceSupport.GetColor("ListItemIconColor");
+            }
 
             this.View = _layout; 
         }

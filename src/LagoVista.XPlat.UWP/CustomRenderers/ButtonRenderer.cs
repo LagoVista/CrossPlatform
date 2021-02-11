@@ -13,9 +13,12 @@ namespace LagoVista.XPlat.UWP.CustomRenderers
             base.OnElementChanged(e);
             if (Control != null)
             {
-                Control button = Control;
-                var template = Windows.UI.Xaml.Application.Current.Resources["LGVDefaultButtonStyle"] as Style;
-                button.Style = template;
+                if (Windows.UI.Xaml.Application.Current.Resources.Keys.Contains("LGVDefaultButtonStyle"))
+                {
+                    Control button = Control;
+                    var template = Windows.UI.Xaml.Application.Current.Resources["LGVDefaultButtonStyle"] as Style;
+                    button.Style = template;
+                }
             }
         }
     }
