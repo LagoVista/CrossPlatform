@@ -71,6 +71,7 @@ namespace LagoVista.XPlat.Core.Controls.Common
             _layout.Children.Add(_detail);
             _layout.Children.Add(_chevron);
 
+            _detail.SetOnAppTheme<Color>(Label.TextColorProperty, ResourceSupport.GetColor("TextLowLight"), ResourceSupport.GetColor("TextLowDark"));
 
             if (Device.RuntimePlatform != Device.UWP)
             {
@@ -82,6 +83,9 @@ namespace LagoVista.XPlat.Core.Controls.Common
                 _chevron.TextColor = ResourceSupport.GetColor("NavIconColor");
                 _icon.TextColor = ResourceSupport.GetColor("ListItemIconColor");
             }
+
+            _chevron.TextColor = ResourceSupport.AccentColor;
+            _icon.TextColor = ResourceSupport.AccentColor;
 
             this.View = _layout; 
         }

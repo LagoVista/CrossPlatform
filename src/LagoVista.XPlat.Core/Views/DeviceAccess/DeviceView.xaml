@@ -66,7 +66,9 @@
                 </Grid>
             </pge:TabContent>
             <pge:TabContent>
-                <pge:FormViewer Form="{Binding FormAdapter}" />
+                <Grid WidthRequest="500">
+                <pge:FormViewer Form="{Binding FormAdapter}" WidthRequest="400" />
+                </Grid>
             </pge:TabContent>
             <pge:TabContent>
                 <pge:KVPRepeater ItemSource="{Binding DeviceAttributes, Mode=TwoWay}" />

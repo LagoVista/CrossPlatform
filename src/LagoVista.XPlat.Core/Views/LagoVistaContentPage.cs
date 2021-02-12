@@ -60,7 +60,7 @@ namespace LagoVista.XPlat.Core
 
             // On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
 
-            if (Device.RuntimePlatform != Device.UWP)
+            if (UseCustomColors)
             {
                 this.BackgroundColor = ResourceSupport.GetColor("PageBackground");
             }
@@ -70,6 +70,8 @@ namespace LagoVista.XPlat.Core
             AddToolBar();
             AddBindings();
         }
+
+        public bool UseCustomColors = false;
 
         public void HandleURIActivation(Uri uri)
         {
@@ -126,11 +128,6 @@ namespace LagoVista.XPlat.Core
         {
             _activityIndicator = new ActivityIndicator() { IsRunning = false };
 
-            if (Device.RuntimePlatform != Device.UWP || Application.Current.RequestedTheme == OSAppTheme.Dark)
-            {
-                _activityIndicator.Color = Xamarin.Forms.Color.White;
-            }
-
             _activityIndicator.VerticalOptions = new LayoutOptions(LayoutAlignment.Center, false);
 
             switch (Device.RuntimePlatform)
@@ -145,8 +142,12 @@ namespace LagoVista.XPlat.Core
                     break;
             }
 
+            _activityIndicator.SetOnAppTheme(ActivityIndicator.ColorProperty, ResourceSupport.GetColor("AccentColorLight"), ResourceSupport.GetColor("AccentColorDark"));
+
             _loadingContainer = new Grid() { IsVisible = false };
-            _loadingMask = new Grid() { BackgroundColor = Xamarin.Forms.Color.Black, Opacity = 0.50 };
+            _loadingMask = new Grid();
+
+            _loadingMask.SetOnAppTheme(Grid.BackgroundColorProperty, ResourceSupport.GetColor("PageMaskLight"), ResourceSupport.GetColor("PageMaskDark"));
             _loadingContainer.Children.Add(_loadingMask);
             _loadingContainer.Children.Add(_activityIndicator);
         }
@@ -158,17 +159,13 @@ namespace LagoVista.XPlat.Core
             _menu.IsVisible = false;
             _menu.TranslationX = -MENU_WIDTH;
 
-            if (Device.RuntimePlatform != Device.UWP)
-            {
-                _menu.BackgroundColor = ResourceSupport.GetColor("MenuBarBackground");
-            }
-
             _menu.WidthRequest = MENU_WIDTH;
             _menu.HorizontalOptions = LayoutOptions.Start;
             _menu.SetValue(Grid.RowProperty, 1);
 
 
-            _pageMenuMask = new Grid() { BackgroundColor = Xamarin.Forms.Color.Black, Opacity = 0.50 };
+            _pageMenuMask = new Grid() {};
+            _pageMenuMask.SetOnAppTheme(Grid.BackgroundColorProperty, ResourceSupport.GetColor("PageMaskLight"), ResourceSupport.GetColor("PageMaskDark"));
             _pageMenuMask.SetValue(Grid.RowProperty, 1);
             _pageMenuMask.IsVisible = false;
 
@@ -246,7 +243,7 @@ namespace LagoVista.XPlat.Core
             _helpButton.Clicked += _helpButton_Clicked;
             _helpButton.SetValue(Grid.ColumnProperty, 3);
 
-            if (Device.RuntimePlatform != Device.UWP)
+            if (UseCustomColors)
             {
                 _toolBar.BackgroundColor = ResourceSupport.GetColor("TitleBarBackground");
                 _title.TextColor = ResourceSupport.GetColor("TitleBarText");
@@ -383,7 +380,7 @@ namespace LagoVista.XPlat.Core
                 _mainContent = value;
                 _mainContent.Margin = new Thickness(0, -6, 0, -6);
 
-                if (Device.RuntimePlatform != Device.UWP)
+                if (UseCustomColors)
                 {
                     _contentGrid.BackgroundColor = ResourceSupport.GetColor("TitleBarBackground");
                     if (value.BackgroundColor != null && value.BackgroundColor.R > -1)
@@ -446,7 +443,7 @@ namespace LagoVista.XPlat.Core
                 _tabbedContent = value;
                 _tabbedContent.Margin = new Thickness(0, 0, 0, -6);
 
-                if (Device.RuntimePlatform != Device.UWP)
+                if (UseCustomColors)
                 {
                     _contentGrid.BackgroundColor = ResourceSupport.GetColor("TitleBarBackground");
 
@@ -842,7 +839,12 @@ namespace LagoVista.XPlat.Core
 
                         break;
                     case LeftMenuIcon.Cancel: _leftMenuButton.IconKey = "ep-chevron-left"; break;
-                    case LeftMenuIcon.Back: _leftMenuButton.IconKey = "ep-chevron-left"; break;
+                    case LeftMenuIcon.Back:
+                        if (Device.RuntimePlatform != Device.UWP)
+                        {
+                            _leftMenuButton.IconKey = "ep-chevron-left";
+                        }
+                        break;
                     case LeftMenuIcon.CustomIcon:
                         if (string.IsNullOrEmpty(LeftMenuCustomIcon))
                         {

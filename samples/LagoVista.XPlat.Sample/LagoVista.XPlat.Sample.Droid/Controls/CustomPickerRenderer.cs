@@ -1,28 +1,25 @@
 ﻿using Android.Content;
-using Xamarin.Forms.Platform.Android;
-using Xamarin.Forms;
 using Android.Graphics.Drawables;
 using System;
+using Xamarin.Forms;
+using Xamarin.Forms.Platform.Android;
 
-[assembly: ExportRenderer(typeof(LagoVista.XPlat.Core.Entry), typeof(LagoVista.XPlat.Droid.Controls.CustomEntryRenderer))]
+[assembly: ExportRenderer(typeof(LagoVista.XPlat.Core.Picker), typeof(LagoVista.XPlat.Droid.Controls.CustomPickerRenderer))]
 namespace LagoVista.XPlat.Droid.Controls
 {
-
-    public class CustomEntryRenderer : EntryRenderer
+    public class CustomPickerRenderer : PickerRenderer
     {
-        public CustomEntryRenderer(Context context) : base(context)
+        public CustomPickerRenderer(Context context) : base(context)
         {
         }
 
-        protected override void OnElementChanged(ElementChangedEventArgs<Entry> e)
+        protected override void OnElementChanged(ElementChangedEventArgs<Picker> e)
         {
             base.OnElementChanged(e);
 
             if (Control != null)
             {
                 var pix = Resources.DisplayMetrics.Density;
-
-                Control.SetBackgroundColor(global::Android.Graphics.Color.White);
                 var customBG = new GradientDrawable();
                 customBG.SetCornerRadius(3);
                 int borderWidth = 2;

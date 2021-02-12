@@ -23,6 +23,7 @@ namespace LagoVista.XPlat.Core.Controls.Common
             Content = _container;
             _autoManager = authManager;
             this.BackgroundColor = Color.FromRgb(0x3f, 0x3F, 0x3f);
+            this.SetOnAppTheme<Color>(SideMenu.BackgroundColorProperty, ResourceSupport.GetColor("MenuBarBackgroundLight"), ResourceSupport.GetColor("MenuBarBackgroundDark"));
         }
 
         private void AuthManager_OrgChanged(object sender, LagoVista.Core.Models.EntityHeader e)
@@ -42,17 +43,14 @@ namespace LagoVista.XPlat.Core.Controls.Common
                 {
                     Text = ClientResources.CurrentOrganization_Label,
                     FontSize = ResourceSupport.GetNumber("MenuFontSize"),
-                    FontFamily = ResourceSupport.GetString("MenuFont"),
                     Margin = new Thickness(44, 10, 0, 0)
                 };
 
                 _container.Children.Add(lbl);
 
-                var org = new Label();
                 _orgLabel = new Label
                 {
                     FontSize = ResourceSupport.GetNumber("HeaderFontSize"),
-                    FontFamily = ResourceSupport.GetString("HeaderFont")
                 };
 
                 if (_autoManager.IsAuthenticated)
@@ -81,6 +79,8 @@ namespace LagoVista.XPlat.Core.Controls.Common
 
                 if (Device.RuntimePlatform != Device.UWP)
                 {
+                    _orgLabel.FontFamily = ResourceSupport.GetString("HeaderFont");
+                    lbl.FontFamily = ResourceSupport.GetString("MenuFont");
                     lbl.TextColor = ResourceSupport.GetColor("MenuBarTitle");
                
                 }

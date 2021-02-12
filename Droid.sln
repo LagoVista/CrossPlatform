@@ -1,15 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.28307.329
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30717.126
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LagoVista.XPlat.Sample.Droid", "samples\LagoVista.XPlat.Sample\LagoVista.XPlat.Sample.Droid\LagoVista.XPlat.Sample.Droid.csproj", "{FC5CA425-5659-4A42-AD3B-E8514FA05961}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LagoVista.Client.Core", "src\LagoVista.Client.Core\LagoVista.Client.Core.csproj", "{0925EC67-4A2D-4119-8340-45DF32C8A27D}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LagoVista.XPlat.Core", "src\LagoVista.XPlat.Core\LagoVista.XPlat.Core.csproj", "{8253DC4C-A872-430B-8CFC-852395EBCF4B}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LagoVista.XPlat.Droid", "src\LagoVista.XPlat.Droid\LagoVista.XPlat.Droid.csproj", "{981E1800-122A-4204-8826-3B981B8DFEA4}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LagoVista.XPlat.Sample", "samples\LagoVista.XPlat.Sample\LagoVista.XPlat.Sample\LagoVista.XPlat.Sample.csproj", "{5BD688A6-8E30-4EBB-AA95-1D689B864EDC}"
 EndProject
@@ -33,10 +31,6 @@ Global
 		{8253DC4C-A872-430B-8CFC-852395EBCF4B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8253DC4C-A872-430B-8CFC-852395EBCF4B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8253DC4C-A872-430B-8CFC-852395EBCF4B}.Release|Any CPU.Build.0 = Release|Any CPU
-		{981E1800-122A-4204-8826-3B981B8DFEA4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{981E1800-122A-4204-8826-3B981B8DFEA4}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{981E1800-122A-4204-8826-3B981B8DFEA4}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{981E1800-122A-4204-8826-3B981B8DFEA4}.Release|Any CPU.Build.0 = Release|Any CPU
 		{5BD688A6-8E30-4EBB-AA95-1D689B864EDC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{5BD688A6-8E30-4EBB-AA95-1D689B864EDC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5BD688A6-8E30-4EBB-AA95-1D689B864EDC}.Release|Any CPU.ActiveCfg = Release|Any CPU

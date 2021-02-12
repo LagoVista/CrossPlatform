@@ -8,15 +8,17 @@
     x:Class="LagoVista.XPlat.Sample.Views.ControlSampleView">
     <pge:LagoVistaContentPage.MainContent >
         <StackLayout>
-            
-            
+
+
             <pge:IconButton IconKey="fa-trash" FontSize="Large" TextColor="Red" 
                             Command="{Binding IconButtonTapCommand}" CommandParameter="{Binding MyValue}" />
 
             <pge:Button Text="Press Me" />
-            <Button Text="Or Press Me" />
+            <Button Text="Or Press Me - Disabled" IsEnabled="False" />
+            <Entry Placeholder="Entry enabled, this is place holder" />
+            <Entry Placeholder="Entry disabled, this is place holder" IsEnabled="False" />
             <Switch />
-               <CheckBox />
+            <CheckBox Color="Green"  />
             <Picker SelectedItem="Four">
                 <Picker.Items>
                     <x:String>One</x:String>

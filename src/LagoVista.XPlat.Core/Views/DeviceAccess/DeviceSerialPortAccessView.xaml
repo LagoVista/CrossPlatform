@@ -24,7 +24,7 @@
                 </Grid.ColumnDefinitions>
                 <Button Command="{Binding ClosePortCommand}" Text="Close Port" IsVisible="{Binding IsPortOpen}" Grid.Column="0" />
                 <Button Command="{Binding OpenPortCommand}" Text="Open Port" IsVisible="{Binding IsPortClosed}" Grid.Column="0" />
-                <Label Text="{Binding SelectedPort.Name}" FontSize="Medium" TextColor="{StaticResource PageText}" Grid.Column="1" />
+                <Label Text="{Binding SelectedPort.Name}" FontSize="Medium" Grid.Column="1" />
                 <Button Command="{Binding DoneCommand}" Text="Done"  Grid.Column="2" />
             </Grid>
             <ListView  ItemsSource="{Binding SerialPorts}" HasUnevenRows="True" SelectedItem="{Binding SelectedPort, Mode=TwoWay}" IsVisible="{Binding SelectedPort, Converter={StaticResource NullVisibilityConverter}}" Grid.Row="1" >

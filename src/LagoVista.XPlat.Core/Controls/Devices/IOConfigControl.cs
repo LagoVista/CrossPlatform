@@ -56,6 +56,12 @@ namespace LagoVista.XPlat.Core.Controls.Devices
             _configNameLabel.SetValue(Grid.ColumnProperty, 2);
             _configScalerLabel.SetValue(Grid.ColumnProperty, 3);
 
+
+            _configType.Margin = new Thickness(5);
+            _configLabel.Margin = new Thickness(5);
+            _configName.Margin = new Thickness(5);
+            _configScaler.Margin = new Thickness(5);
+
             Children.Add(_configTypeLabel);
             Children.Add(_configLabelLabel);
             Children.Add(_configNameLabel);
