@@ -126,7 +126,7 @@ namespace LagoVista.XPlat.Core
         {
             _activityIndicator = new ActivityIndicator() { IsRunning = false };
 
-            if (Device.RuntimePlatform != Device.UWP)
+            if (Device.RuntimePlatform != Device.UWP || Application.Current.RequestedTheme == OSAppTheme.Dark)
             {
                 _activityIndicator.Color = Xamarin.Forms.Color.White;
             }

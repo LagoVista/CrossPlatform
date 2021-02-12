@@ -105,9 +105,13 @@ namespace LagoVista.XPlat.Core
             set 
             {
                 SetValue(SelectedProperty, value);
-                _label.TextColor = value ? ResourceSupport.GetColor("TabBarForegroundActive") : ResourceSupport.GetColor("TabBarForeground");
-                _icon.TextColor = _label.TextColor;
-                _background.BackgroundColor = value ? ResourceSupport.GetColor("TabBarBackgroundActive") : ResourceSupport.GetColor("TabBarBackground");
+
+                if (Device.RuntimePlatform != Device.UWP)
+                {
+                    _label.TextColor = value ? ResourceSupport.GetColor("TabBarForegroundActive") : ResourceSupport.GetColor("TabBarForeground");
+                    _icon.TextColor = _label.TextColor;
+                    _background.BackgroundColor = value ? ResourceSupport.GetColor("TabBarBackgroundActive") : ResourceSupport.GetColor("TabBarBackground");
+                }
             }
         }
     }
