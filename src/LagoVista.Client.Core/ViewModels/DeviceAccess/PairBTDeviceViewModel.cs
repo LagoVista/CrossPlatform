@@ -22,7 +22,6 @@ namespace LagoVista.Client.Core.ViewModels.DeviceAccess
             _btSerial = SLWIOC.Get<IBluetoothSerial>();
         }
 
-
         public override async Task InitAsync()
         {
             await base.InitAsync();            

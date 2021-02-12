@@ -47,9 +47,13 @@ namespace LagoVista.XPlat.Core
             _tapGestureRecognizer = new TapGestureRecognizer() { Command = NavigateCommand };
 
             GestureRecognizers.Add(_tapGestureRecognizer);
-            if (Device.RuntimePlatform != Device.UWP)
+            if (ResourceSupport.UseCustomColors)
             {
                 TextColor = ResourceSupport.GetColor("LinkColor");
+            }
+
+            if(ResourceSupport.UseCustomfonts)
+            { 
                 FontFamily = ResourceSupport.GetString("LabelFont");
                 FontSize = ResourceSupport.GetNumber("LabelFontSize");
             }

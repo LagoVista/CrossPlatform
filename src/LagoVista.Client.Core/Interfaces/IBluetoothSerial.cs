@@ -18,6 +18,7 @@ namespace LagoVista.Client.Core.Interfaces
         event EventHandler<BTDevice> DeviceConnected;
         event EventHandler<BTDevice> DeviceConnecting;
         event EventHandler<BTDevice> DeviceDisconnected;
+        event EventHandler<BTDevice> DeviceDiscovered;
 
         Task<ObservableCollection<BTDevice>> SearchAsync();
 

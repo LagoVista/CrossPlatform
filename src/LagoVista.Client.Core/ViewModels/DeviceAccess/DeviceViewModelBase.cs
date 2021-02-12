@@ -30,8 +30,6 @@ namespace LagoVista.Client.Core.ViewModels.DeviceAccess
             _btSerial.DFUFailed += _btSerial_DFUFailed;
             _btSerial.DFUCompleted += _btSerial_DFUCompleted;
 
-            var devices = await _btSerial.SearchAsync();
-
             await base.InitAsync();
         }
 

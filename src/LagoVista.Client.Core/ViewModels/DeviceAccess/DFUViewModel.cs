@@ -22,10 +22,10 @@ namespace LagoVista.Client.Core.ViewModels.DeviceAccess
     {
         private string _firmwareUrl;
         IAppServices _appServices;
-        IProcessOutputeWriter _processsOutputWriter;
+        IProcessOutputWriter _processsOutputWriter;
 
 
-        public DFUViewModel(IProcessOutputeWriter processOutputWriter, IAppServices appServices)
+        public DFUViewModel(IProcessOutputWriter processOutputWriter, IAppServices appServices)
         {
             _appServices = appServices;
             _processsOutputWriter = processOutputWriter;

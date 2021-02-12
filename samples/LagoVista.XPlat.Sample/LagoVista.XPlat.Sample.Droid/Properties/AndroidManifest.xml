@@ -2,5 +2,14 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android" android:installLocation="auto" package="com.software_logistics.nuviot.sampleapp" android:versionCode="1" android:versionName="0.8">
 	<uses-sdk android:minSdkVersion="28" android:targetSdkVersion="29" />
 	<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+  <uses-permission android:name="android.permission.ACCESS_COURSE_LOCATION" />
+  <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+  <uses-permission android:name="android.permission.CAMERA" />
+  <uses-permission android:name="android.permission.BLUETOOTH" />
+  <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+  <uses-permission android:name="android.permission.NFC" />
+  <uses-permission android:name="android.permission.NFC_TRANSACTION_EVENT" />
+  <uses-permission android:name="android.permission.BIND_NFC_SERVICE" />
+  <uses-feature android:name="android.hardware.usb.host"></uses-feature>
 	<application android:label="LagoVista Sample" android:icon="@drawable/icon"></application>
 </manifest>

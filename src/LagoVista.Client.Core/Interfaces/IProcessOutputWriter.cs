@@ -6,7 +6,7 @@ using System.Text;
 
 namespace LagoVista.Client.Core.Interfaces
 {
-    public interface IProcessOutputeWriter
+    public interface IProcessOutputWriter
     {
         void AddMessage(LogType type, string message);
         void Flush(Boolean clear = false);
