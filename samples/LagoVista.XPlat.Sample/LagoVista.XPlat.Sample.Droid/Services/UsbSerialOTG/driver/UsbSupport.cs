@@ -21,7 +21,7 @@
  * Portions of this library are based on Xamarin USB Serial for Android (https://bitbucket.org/lusovu/xamarinusbserial).
  */
 
-namespace LagoVista.XPlat.Droid.Services>UsbSerialOTG.driver
+namespace LagoVista.XPlat.Droid.Services.UsbSerialOTG.Driver
 {
     /// <summary>
     /// Fixes Xamarin bug with missing constants

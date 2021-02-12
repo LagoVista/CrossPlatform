@@ -22,18 +22,9 @@
  */
 
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-using Android.App;
-using Android.Content;
 using Android.Hardware.Usb;
 using Android.OS;
-using Android.Runtime;
 using Android.Util;
-using Android.Views;
-using Android.Widget;
-using Java.Util;
 using Java.IO;
 using Java.Lang;
 using Java.Nio;
