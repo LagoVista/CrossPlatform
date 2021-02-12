@@ -2,24 +2,26 @@
     x:Class="LagoVista.XPlat.Sample.UWP.App"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="using:LagoVista.XPlat.Sample.UWP"
-    RequestedTheme="Light">
+    xmlns:local="using:LagoVista.XPlat.Sample.UWP">
     <Application.Resources>
-        <ResourceDictionary>
+     <!--   <ResourceDictionary>
             <ResourceDictionary.ThemeDictionaries>
-                <ResourceDictionary Source="Resources/FormsColors.xaml" x:Key="Light" />
+                     <ResourceDictionary Source="Resources/FormsColors.xaml" x:Key="Light" />
                 <ResourceDictionary Source="Resources/FormsColors.xaml" x:Key="Dark" />
             </ResourceDictionary.ThemeDictionaries>
             <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="Resources/Theme.Dark.xaml" />
-                <!--   <ResourceDictionary Source="Resources/EditTextStyle.xaml" />
+                                <ResourceDictionary Source="Resources/FormsColors.xaml" />
+ <ResourceDictionary Source="Resources/IconButtonStyle.xaml" />
                 <ResourceDictionary Source="Resources/ButtonStyle.xaml" />
-                <ResourceDictionary Source="Resources/IconButtonStyle.xaml" />-->
-                <ResourceDictionary Source="Resources/FormsColors.xaml" />
+
+                <ResourceDictionary Source="Resources/Theme.Dark.xaml" />
+                <ResourceDictionary Source="Resources/ComboBoxStyle.xaml" />
+
                 <ResourceDictionary Source="Resources/FormsCheckboxStyle.xaml" />
                 <ResourceDictionary Source="Resources/ToggleSwitchStyle.xaml" />
-                <ResourceDictionary Source="Resources/ComboBoxStyle.xaml" />
+
+               <ResourceDictionary Source="Resources/EditTextStyle.xaml" />
+
             </ResourceDictionary.MergedDictionaries>
-           </ResourceDictionary>
-    </Application.Resources>
+        </ResourceDictionary>-->    </Application.Resources>
 </Application>

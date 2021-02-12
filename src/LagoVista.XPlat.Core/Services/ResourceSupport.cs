@@ -13,6 +13,21 @@ namespace LagoVista.XPlat.Core.Services
             return default;
         }
 
+        public static Color AccentColor
+        {
+            get
+            {
+                if (Device.RuntimePlatform != Device.UWP)
+                {
+                    return GetColor(Application.Current.RequestedTheme == OSAppTheme.Dark ? "AccentDark" : "AccentLight");
+                }
+                else
+                {
+                    return Color.Accent;
+                }
+            }
+        }
+
         public static Style GetStyle(string name)
         {
 

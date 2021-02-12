@@ -15,7 +15,7 @@
                       HasUnevenRows="True" x:Name="RepositoriesList" >
                 <ListView.ItemTemplate>
                     <DataTemplate>
-                        <ctls:NavigationViewCell Command="{Binding RepoSelectedCommand}" Icon="fa-database" Text="{Binding Name}" Detail="Test" />
+                        <ctls:NavigationViewCell Command="{Binding RepoSelectedCommand}" Icon="fa-database" Text="{Binding Name}" Detail="{Binding Description  }" />
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>

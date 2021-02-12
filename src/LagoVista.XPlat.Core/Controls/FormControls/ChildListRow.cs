@@ -28,7 +28,6 @@ namespace LagoVista.XPlat.Core.Controls.FormControls
 
             var titleBar = new Grid()
             {
-                BackgroundColor = ResourceSupport.GetColor("TitleBarBackground"),
                 HeightRequest = 48,
                 HorizontalOptions = new LayoutOptions(LayoutAlignment.Fill, true)
             };
@@ -39,10 +38,9 @@ namespace LagoVista.XPlat.Core.Controls.FormControls
             {
                 Margin = new Thickness(24, 0, 0, 0),
                 VerticalOptions = new LayoutOptions(LayoutAlignment.Center, false),
-                TextColor = ResourceSupport.GetColor("TitleBarText"),
                 Text = field.Label,
                 FontAttributes = FontAttributes.Bold,
-                FontFamily = ResourceSupport.GetString( "ListItemFont"),
+                FontFamily = ResourceSupport.GetString("ListItemFont"),
                 FontSize = ResourceSupport.GetNumber("ListItemFontSize")
             };
 
@@ -50,7 +48,6 @@ namespace LagoVista.XPlat.Core.Controls.FormControls
             {
                 Margin = new Thickness(0, 0, 20, 0),
                 VerticalOptions = new LayoutOptions(LayoutAlignment.Center, false),
-                TextColor = ResourceSupport.GetColor("HighlightColor"),
                 WidthRequest = 48,
                 HeightRequest = 48,
                 FontSize = Device.RuntimePlatform == Device.Android ? 20 : 28
@@ -60,6 +57,13 @@ namespace LagoVista.XPlat.Core.Controls.FormControls
             {
                 case Device.iOS: _addImage.IconKey = "md-add"; break;
                 default: _addImage.IconKey = "ep-plus"; break;
+            }
+
+            if (Device.RuntimePlatform != Device.UWP)
+            {
+                titleBar.BackgroundColor = ResourceSupport.GetColor("TitleBarBackground");
+                _label.TextColor = ResourceSupport.GetColor("TitleBarText");
+                _addImage.TextColor = ResourceSupport.GetColor("HighlightColor");
             }
 
 
@@ -101,7 +105,6 @@ namespace LagoVista.XPlat.Core.Controls.FormControls
                 {
                     var label = new Label();
                     label.Margin = new Thickness(15, 10, 10, 10);
-                    label.TextColor = ResourceSupport.GetColor("PageText");
                     label.Text = child.ToEntityHeader().Text;
                     label.FontFamily = ResourceSupport.GetString("ListItemFont");
                     label.FontSize = ResourceSupport.GetNumber("ListItemFontSize");
@@ -117,8 +120,7 @@ namespace LagoVista.XPlat.Core.Controls.FormControls
                     boxView.HeightRequest = 1;
                     boxView.SetValue(Grid.ColumnSpanProperty, 3);
                     boxView.SetValue(Grid.RowProperty, 1);
-                    boxView.Color = ResourceSupport.GetColor("TitleBarBackground");
-
+                  
                     var tapGenerator = new TapGestureRecognizer();
                     grid.BindingContext = child;
                     tapGenerator.Tapped += Item_Tapped;
@@ -127,7 +129,6 @@ namespace LagoVista.XPlat.Core.Controls.FormControls
                     {
                         IconKey = "typcn-delete-outline",
                         FontSize = 28,
-                        TextColor = ResourceSupport.GetColor("DangerColor"),
                         VerticalOptions = new LayoutOptions(LayoutAlignment.Center, false),
                         Tag = child.ToEntityHeader().Id
                     };
@@ -140,11 +141,17 @@ namespace LagoVista.XPlat.Core.Controls.FormControls
                         IconKey = "md-chevron-right",
                         Margin = new Thickness(2, 0, 10, 0),
                         FontSize = 36,
-                        TextColor = ResourceSupport.GetColor("NavIconColor"),
                         VerticalOptions = new LayoutOptions(LayoutAlignment.Center, false),
                     };
                     img.SetValue(Grid.ColumnProperty, 2);
 
+                    if (Device.RuntimePlatform != Device.UWP)
+                    {
+                        label.TextColor = ResourceSupport.GetColor("PageText");
+                        boxView.Color = ResourceSupport.GetColor("TitleBarBackground");
+                        deleteButton.TextColor = ResourceSupport.GetColor("DangerColor");
+                        img.TextColor = ResourceSupport.GetColor("NavIconColor");
+                    }
 
                     grid.GestureRecognizers.Add(tapGenerator);
 

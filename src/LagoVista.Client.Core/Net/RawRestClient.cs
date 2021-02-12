@@ -32,15 +32,18 @@ namespace LagoVista.Client.Core.Net
         readonly IAuthClient _authClient;
         readonly IDeviceInfo _deviceInfo;
         readonly IAppConfig _appConfig;
+        readonly IStorageService _storageService;
         readonly INetworkService _networkService;
         readonly SemaphoreSlim _callSemaphore;
 
-        public RawRestClient(HttpClient httpClient, INetworkService networkService, IDeviceInfo deviceInfo, IAppConfig appConfig, IAuthClient authClient, IAuthManager authManager, ILogger logger)
+        public RawRestClient(HttpClient httpClient, INetworkService networkService, IDeviceInfo deviceInfo, IStorageService storageService,
+                    IAppConfig appConfig, IAuthClient authClient, IAuthManager authManager, ILogger logger)
         {
             _httpClient = httpClient;
             _authClient = authClient;
             _deviceInfo = deviceInfo;
             _authManager = authManager;
+            _storageService = storageService;
             _networkService = networkService;
             _logger = logger;
             _appConfig = appConfig;
@@ -185,10 +188,17 @@ namespace LagoVista.Client.Core.Net
             return rawResponse;
         }
 
-        private Dictionary<string, string> _offlineCache = new Dictionary<string, string>();
+        private Dictionary<string, string> _offlineCache = default;
 
-        private String GetCachedRequest(string path)
+        private async Task<String> GetCachedRequestAsync(string path)
         {
+            if (_offlineCache == null)
+            {
+                _offlineCache = await _storageService.GetAsync<Dictionary<string, string>>("OfflineCache.json");
+                if (_offlineCache == null)
+                    _offlineCache = new Dictionary<string, string>();
+            }
+
             if (_offlineCache.ContainsKey(path))
             {
                 return _offlineCache[path];
@@ -199,17 +209,24 @@ namespace LagoVista.Client.Core.Net
             }
         }
 
-        private void AddCheckedResponse(string path, RawResponse response)
+        private async Task AddCachedResponseAsync(string path, RawResponse response)
         {
             if (response.Success)
             {
+                if (_offlineCache == null)
+                {
+                    _offlineCache = await _storageService.GetAsync<Dictionary<string, string>>("OfflineCache.json");
+                    if (_offlineCache == null)
+                        _offlineCache = new Dictionary<string, string>();
+                }
 
                 if (_offlineCache.ContainsKey(path))
                 {
                     _offlineCache.Remove(path);
                 }
 
-                _offlineCache.Add(path, JsonConvert.SerializeObject(response));
+                _offlineCache.Add(path, response.Content);
+                await _storageService.StoreAsync(_offlineCache, "OfflineCache.json");
             }
         }
 
@@ -217,10 +234,13 @@ namespace LagoVista.Client.Core.Net
         {
             if (!_networkService.IsInternetConnected)
             {
-                var cachedResponse = GetCachedRequest(path);
-                return JsonConvert.DeserializeObject<RawResponse>(cachedResponse);
+                var cachedResponse = await GetCachedRequestAsync(path);
+                if (cachedResponse != null)
+                {
+                    return RawResponse.FromSuccess(cachedResponse);
+                }
             }
-        
+
             if (cancellationTokenSource == null) cancellationTokenSource = new CancellationTokenSource(TimeSpan.FromSeconds(60));
 
             _logger.AddCustomEvent(LogLevel.Message, "RawRestClient_GetAsync", "Begin GET", path.ToKVP("path"));
@@ -233,7 +253,7 @@ namespace LagoVista.Client.Core.Net
                 return result;
             }, cancellationTokenSource);
 
-            AddCheckedResponse(path, response);
+            await AddCachedResponseAsync(path, response);
             return response;
         }
 
@@ -333,8 +353,11 @@ namespace LagoVista.Client.Core.Net
         {
             if (!_networkService.IsInternetConnected)
             {
-                var cachedResponse = GetCachedRequest(path);
-                return JsonConvert.DeserializeObject<RawResponse>(cachedResponse).ToInvokeResult<TResponseModel>();
+                var cachedResponse = await GetCachedRequestAsync(path);
+                if (cachedResponse != null)
+                {
+                    return InvokeResult<TResponseModel>.Create( JsonConvert.DeserializeObject<TResponseModel>(cachedResponse));
+                }
             }
 
             _logger.AddCustomEvent(LogLevel.Message, "RawRestClient_GetAsync", "Begin PUT", path.ToKVP("path"));
@@ -343,7 +366,7 @@ namespace LagoVista.Client.Core.Net
 
             var response = await GetAsync(path, cancellationTokenSource);
 
-            AddCheckedResponse(path, response);
+            await AddCachedResponseAsync(path, response);
 
             return response.ToInvokeResult<TResponseModel>();
         }
@@ -352,8 +375,11 @@ namespace LagoVista.Client.Core.Net
         {
             if (!_networkService.IsInternetConnected)
             {
-                var cachedResponse = GetCachedRequest(path);
-                return JsonConvert.DeserializeObject<RawResponse>(cachedResponse).ToListResponse<TResponseModel>();
+                var cachedResponse = await GetCachedRequestAsync(path);
+                if (cachedResponse != null)
+                {
+                    return JsonConvert.DeserializeObject<ListResponse<TResponseModel>>(cachedResponse);
+                }
             }
 
             _logger.AddCustomEvent(LogLevel.Message, "RawRestClient_GetListResponseAsync", "Begin Get", path.ToKVP("path"));
@@ -369,7 +395,7 @@ namespace LagoVista.Client.Core.Net
 
             }, cancellationTokenSource, listRequest);
 
-            AddCheckedResponse(path, response);
+            await AddCachedResponseAsync(path, response);
 
             return response.ToListResponse<TResponseModel>();
 

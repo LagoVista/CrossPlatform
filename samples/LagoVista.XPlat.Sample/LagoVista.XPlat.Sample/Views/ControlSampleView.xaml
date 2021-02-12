@@ -7,18 +7,27 @@
     LeftMenu="Back"
     x:Class="LagoVista.XPlat.Sample.Views.ControlSampleView">
     <pge:LagoVistaContentPage.MainContent >
-        <Grid>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="*" />
-                <RowDefinition Height="80" />
-                <RowDefinition Height="*" />
-            </Grid.RowDefinitions>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="80" />
-                <ColumnDefinition Width="*" />
-            </Grid.ColumnDefinitions>
-            <pge:IconButton IconKey="fa-trash" Grid.Row="1" Grid.Column="1" FontSize="Large" TextColor="Red" Command="{Binding IconButtonTapCommand}" CommandParameter="{Binding MyValue}" />
-        </Grid>
+        <StackLayout>
+
+
+            <pge:IconButton IconKey="fa-trash" FontSize="Large" TextColor="Red" 
+                            Command="{Binding IconButtonTapCommand}" CommandParameter="{Binding MyValue}" />
+
+            <pge:Button Text="Press Me" />
+            <Button Text="Or Press Me - Disabled" IsEnabled="False" />
+            <Entry Placeholder="Entry enabled, this is place holder" />
+            <Entry Placeholder="Entry disabled, this is place holder" IsEnabled="False" />
+            <Switch />
+            <CheckBox Color="Green"  />
+            <Picker SelectedItem="Four">
+                <Picker.Items>
+                    <x:String>One</x:String>
+                    <x:String>Two</x:String>
+                    <x:String>Three</x:String>
+                    <x:String>Four</x:String>
+                    <x:String>Five</x:String>
+                </Picker.Items>
+            </Picker>
+        </StackLayout>
     </pge:LagoVistaContentPage.MainContent >
 </pge:LagoVistaContentPage>

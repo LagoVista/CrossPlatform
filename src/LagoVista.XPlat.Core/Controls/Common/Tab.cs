@@ -1,6 +1,4 @@
 ﻿using LagoVista.Core.Commanding;
-using LagoVista.Core.Interfaces;
-using LagoVista.Core.IOC;
 using LagoVista.XPlat.Core.Services;
 using System;
 using System.Windows.Input;
@@ -24,8 +22,6 @@ namespace LagoVista.XPlat.Core
 
             _label = new Label()
             {
-                TextColor = ResourceSupport.GetColor("TabBarForground"),
-                FontFamily = ResourceSupport.GetString("TabBarFont"),
                 FontSize = ResourceSupport.GetNumber("TabBarFontSize"),
                 Margin = 4,
                 HorizontalTextAlignment = TextAlignment.Center,
@@ -33,12 +29,11 @@ namespace LagoVista.XPlat.Core
 
             _icon = new Icon()
             {
-                TextColor = ResourceSupport.GetColor("TabBarForground"),
                 FontSize = ResourceSupport.GetNumber("TabBarIconFontSize"),
-                Margin = new Thickness(0,10, 0,0),
+                Margin = new Thickness(0, 10, 0, 0),
                 HorizontalTextAlignment = TextAlignment.Center,
             };
-            
+
             _icon.SetValue(Grid.RowProperty, 0);
             _label.SetValue(Grid.RowProperty, 1);
 
@@ -51,14 +46,20 @@ namespace LagoVista.XPlat.Core
             Children.Add(_icon);
             Children.Add(_label);
 
-            var tapGestureRecognizer = new TapGestureRecognizer() { Command = new RelayCommand(Tapped)};
+            var tapGestureRecognizer = new TapGestureRecognizer() { Command = new RelayCommand(Tapped) };
             _background.GestureRecognizers.Add(tapGestureRecognizer);
             _icon.GestureRecognizers.Add(tapGestureRecognizer);
             _label.GestureRecognizers.Add(tapGestureRecognizer);
             this.GestureRecognizers.Add(tapGestureRecognizer);
-        }
 
-        void Tapped()
+            if (Device.RuntimePlatform != Device.UWP)
+            {
+                _label.TextColor = ResourceSupport.GetColor("TabBarForground");
+                _icon.TextColor = ResourceSupport.GetColor("TabBarForground");
+                _label.FontFamily = ResourceSupport.GetString("TabBarFont");
+            }
+        }
+            void Tapped()
         {
             TabTapped?.Invoke(this, null);
             if (TappedCommand != null && TappedCommand.CanExecute(null))
@@ -104,9 +105,16 @@ namespace LagoVista.XPlat.Core
             set 
             {
                 SetValue(SelectedProperty, value);
-                _label.TextColor = value ? ResourceSupport.GetColor("TabBarForegroundActive") : ResourceSupport.GetColor("TabBarForeground");
+
+                _label.TextColor = value ? Color.Accent : Color.Default;
                 _icon.TextColor = _label.TextColor;
-                _background.BackgroundColor = value ? ResourceSupport.GetColor("TabBarBackgroundActive") : ResourceSupport.GetColor("TabBarBackground");
+                _label.FontAttributes = value ? FontAttributes.Bold : FontAttributes.None;
+                _icon.FontAttributes = value ? FontAttributes.Bold : FontAttributes.None;
+
+                if (Device.RuntimePlatform != Device.UWP)
+                {
+                    _background.BackgroundColor = value ? ResourceSupport.GetColor("TabBarBackgroundActive") : ResourceSupport.GetColor("TabBarBackground");
+                }
             }
         }
     }

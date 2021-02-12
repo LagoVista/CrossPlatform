@@ -22,6 +22,8 @@ namespace LagoVista.XPlat.Core.Controls.Common
             authManager.OrgChanged += AuthManager_OrgChanged;
             Content = _container;
             _autoManager = authManager;
+            this.BackgroundColor = Color.FromRgb(0x3f, 0x3F, 0x3f);
+            this.SetOnAppTheme<Color>(SideMenu.BackgroundColorProperty, ResourceSupport.GetColor("MenuBarBackgroundLight"), ResourceSupport.GetColor("MenuBarBackgroundDark"));
         }
 
         private void AuthManager_OrgChanged(object sender, LagoVista.Core.Models.EntityHeader e)
@@ -41,19 +43,14 @@ namespace LagoVista.XPlat.Core.Controls.Common
                 {
                     Text = ClientResources.CurrentOrganization_Label,
                     FontSize = ResourceSupport.GetNumber("MenuFontSize"),
-                    TextColor = ResourceSupport.GetColor("MenuBarTitle"),
-                    FontFamily = ResourceSupport.GetString("MenuFont"),
                     Margin = new Thickness(44, 10, 0, 0)
                 };
 
                 _container.Children.Add(lbl);
 
-                var org = new Label();
                 _orgLabel = new Label
                 {
                     FontSize = ResourceSupport.GetNumber("HeaderFontSize"),
-                    TextColor = ResourceSupport.GetColor("MenuBarTitle"),
-                    FontFamily = ResourceSupport.GetString("HeaderFont")
                 };
 
                 if (_autoManager.IsAuthenticated)
@@ -78,6 +75,14 @@ namespace LagoVista.XPlat.Core.Controls.Common
                         menuItem.MenuItemTapped += MenuItem_MenuItemTapped;
                         _container.Children.Add(new SideMenuItem(menuItem));
                     }
+                }
+
+                if (Device.RuntimePlatform != Device.UWP)
+                {
+                    _orgLabel.FontFamily = ResourceSupport.GetString("HeaderFont");
+                    lbl.FontFamily = ResourceSupport.GetString("MenuFont");
+                    lbl.TextColor = ResourceSupport.GetColor("MenuBarTitle");
+               
                 }
             }
         }

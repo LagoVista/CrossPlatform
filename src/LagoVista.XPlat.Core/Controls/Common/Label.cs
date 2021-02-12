@@ -1,5 +1,6 @@
 ﻿using LagoVista.XPlat.Core.Services;
 using System.Drawing;
+using Xamarin.Forms;
 
 namespace LagoVista.XPlat.Core
 {
@@ -7,9 +8,12 @@ namespace LagoVista.XPlat.Core
     {
         public Label()
         {
-            FontFamily = ResourceSupport.GetString("LabelFont");
-            FontSize = ResourceSupport.GetNumber("LabelFontSize");
-            TextColor = ResourceSupport.GetColor("LabelText");
+            if (Device.RuntimePlatform != Device.UWP)
+            {
+                FontFamily = ResourceSupport.GetString("LabelFont");
+                FontSize = ResourceSupport.GetNumber("LabelFontSize");
+                TextColor = ResourceSupport.GetColor("LabelText");
+            }
         }
     }
 }

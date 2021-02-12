@@ -47,9 +47,12 @@ namespace LagoVista.XPlat.Core
             _tapGestureRecognizer = new TapGestureRecognizer() { Command = NavigateCommand };
 
             GestureRecognizers.Add(_tapGestureRecognizer);
-            TextColor = ResourceSupport.GetColor("LinkColor");
-            FontFamily = ResourceSupport.GetString("LabelFont");
-            FontSize = ResourceSupport.GetNumber("LabelFontSize");
+            if (Device.RuntimePlatform != Device.UWP)
+            {
+                TextColor = ResourceSupport.GetColor("LinkColor");
+                FontFamily = ResourceSupport.GetString("LabelFont");
+                FontSize = ResourceSupport.GetNumber("LabelFontSize");
+            }
 
             var effectName = $"{UnderlineEffect.EffectNamespace}.{nameof(UnderlineEffect)}";
             var effect = Effect.Resolve(effectName);

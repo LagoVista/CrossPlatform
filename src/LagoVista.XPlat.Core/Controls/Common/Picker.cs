@@ -7,11 +7,10 @@ namespace LagoVista.XPlat.Core
     {
         public Picker()
         {
-            FontFamily = ResourceSupport.GetString("EntryFont");
-            FontSize = ResourceSupport.GetNumber("EntryFontSize");
-            
             if (Device.RuntimePlatform != Device.UWP)
             {
+                FontFamily = ResourceSupport.GetString("EntryFont");
+                FontSize = ResourceSupport.GetNumber("EntryFontSize");
                 TextColor = ResourceSupport.GetColor("EditControlText");
                 BackgroundColor = ResourceSupport.GetColor("EditControlBackground");
             }

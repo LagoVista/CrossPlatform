@@ -16,11 +16,10 @@
             <RowDefinition Height="30" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
-        <ctls:Icon IconKey="fa-gear" />
         <ListView ItemsSource="{Binding ListItems}" Grid.Row="1" Margin="5" SelectedItem="{Binding SelectedItem, Mode=TwoWay}">
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    <TextBlock Text="{Binding Name}" />
+                    <TextBlock Text="{Binding Name}" Style="{StaticResource ListItemTitle}" />
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>

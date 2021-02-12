@@ -9,8 +9,13 @@
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="DeviceView">
+    <TabControl>
+        <TabItem Header="Device">
+            
+        </TabItem>
+        <TabItem Header="Device">
 
-    <Grid>
-        
-    </Grid>
+        </TabItem>
+    </TabControl>
+    
 </pge:LagoVistaPage>

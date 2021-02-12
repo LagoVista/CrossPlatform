@@ -18,6 +18,7 @@ namespace LagoVista.XPlat.Core
             _formControls = new List<FormControl>();
 
             _container = new StackLayout();
+            _container.WidthRequest = 400;
             Content = _container;
         }
 

@@ -106,13 +106,6 @@
     <RestoreProjectStyle>PackageReference</RestoreProjectStyle>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="CustomRenderers\ButtonRenderer.cs" />
-    <Compile Include="CustomRenderers\ComboBoxRenderer.cs" />
-    <Compile Include="CustomRenderers\HyperLinkLabelRenderer.cs" />
-    <Compile Include="CustomRenderers\IconButtonRendereer.cs" />
-    <Compile Include="CustomRenderers\SwitchRenderer.cs" />
-    <Compile Include="CustomRenderers\TextBoxRenderer.cs" />
-    <Compile Include="CustomRenderers\TitleBarButton.cs" />
     <Compile Include="Effects\UnderlineEffect.cs" />
     <Compile Include="Extensions\ColorExtensions.cs" />
     <Compile Include="Network\TCPClient.cs" />
@@ -156,6 +149,9 @@
       <Project>{d5dd4ca3-3b5c-4a0e-aa82-4cebb9a7160d}</Project>
       <Name>LagoVista.XPlat.Core</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="CustomRenderers\" />
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>

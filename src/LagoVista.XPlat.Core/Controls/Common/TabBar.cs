@@ -1,6 +1,4 @@
-﻿using LagoVista.Core.Interfaces;
-using LagoVista.Core.IOC;
-using LagoVista.XPlat.Core.Services;
+﻿using LagoVista.XPlat.Core.Services;
 using System;
 using System.Collections.ObjectModel;
 using System.Linq;
@@ -16,15 +14,18 @@ namespace LagoVista.XPlat.Core
         public TabBar()
         {
             ChildAdded += TabBar_ChildAdded;
-            BackgroundColor = ResourceSupport.GetColor("MenuBarBackground");
             _tabs = new ObservableCollection<Tab>();
-        }
 
+            if (Device.RuntimePlatform != Device.UWP)
+            {
+                BackgroundColor = ResourceSupport.GetColor("MenuBarBackground");
+            }
+        }
         private void TabBar_ChildAdded(object sender, ElementEventArgs e)
         {
             IsVisible = true;
             var tab = Children.Last() as Tab;
-            if(tab == null)
+            if (tab == null)
             {
                 throw new ArgumentException("Should only add tabs to tab bar.");
             }
@@ -34,15 +35,15 @@ namespace LagoVista.XPlat.Core
             _tabs.Add(tab);
 
             ColumnDefinitions.Add(new ColumnDefinition() { Width = new GridLength(1, GridUnitType.Star) });
-            tab.SetValue(Grid.ColumnProperty, _tabs.Count() - 1);            
+            tab.SetValue(Grid.ColumnProperty, _tabs.Count() - 1);
         }
 
         private void Tab_TabTapped(object sender, EventArgs e)
         {
             var tappedTab = sender as Tab;
-            if(!tappedTab.Selected)
+            if (!tappedTab.Selected)
             {
-                foreach(var child in Children)
+                foreach (var child in Children)
                 {
                     var tab = child as Tab;
                     tab.Selected = false;

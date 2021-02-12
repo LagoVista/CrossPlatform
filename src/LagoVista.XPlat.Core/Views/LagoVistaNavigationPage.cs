@@ -1,12 +1,7 @@
-﻿using LagoVista.Core.Interfaces;
-using LagoVista.Core.IOC;
+﻿using LagoVista.Core.IOC;
 using LagoVista.Core.PlatformSupport;
 using LagoVista.XPlat.Core.Services;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Xamarin.Forms;
 
 namespace LagoVista.XPlat.Core.Views
@@ -15,9 +10,15 @@ namespace LagoVista.XPlat.Core.Views
     {
         public LagoVistaNavigationPage(Page root) : base(root)
         {
-            BarBackgroundColor = ResourceSupport.GetColor( "TitleBarBackground");
-            BarTextColor = ResourceSupport.GetColor("TitleBarText");
-            BackgroundColor = ResourceSupport.GetColor("PageBackground");
+            if (Device.RuntimePlatform != Device.UWP)
+            {
+                if (Device.RuntimePlatform != Device.UWP)
+                {
+                    BarBackgroundColor = ResourceSupport.GetColor("TitleBarBackground");
+                    BarTextColor = ResourceSupport.GetColor("TitleBarText");
+                    BackgroundColor = ResourceSupport.GetColor("PageBackground");
+                }
+            }
         }
 
         public void HandleURIActivation(Uri uri)

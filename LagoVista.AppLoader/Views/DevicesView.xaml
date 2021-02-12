@@ -11,10 +11,10 @@
       Title="DevicesView">
 
     <Grid>
-        <ListView ItemsSource="{Binding ListItems}">
+        <ListView ItemsSource="{Binding ListItems}" Grid.Row="1" Margin="5" SelectedItem="{Binding SelectedItem, Mode=TwoWay}">
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    <TextBlock Text="{Binding Name}" />
+                    <TextBlock Text="{Binding DeviceName}" Style="{StaticResource ListItemTitle}" />
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
