@@ -7,14 +7,17 @@ namespace LagoVista.XPlat.Core
     public class Button : Xamarin.Forms.Button
     {
         public Button()
-        {       
-            if (Device.RuntimePlatform != Device.UWP)
+        {
+            if (ResourceSupport.UseCustomColors)
             {
-                FontSize = ResourceSupport.GetNumber("ButtonFontSize");
                 BackgroundColor = ResourceSupport.GetColor("ButtonBackground");
                 TextColor = ResourceSupport.GetColor("ButtonForeground");
             }
+
+            if (ResourceSupport.UseCustomfonts)
+            {
+                FontSize = ResourceSupport.GetNumber("ButtonFontSize");
+            }
         }
- 
     }
 }

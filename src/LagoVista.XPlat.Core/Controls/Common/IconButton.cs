@@ -10,8 +10,8 @@ namespace LagoVista.XPlat.Core
         public IconButton()
         {
             BackgroundColor = Xamarin.Forms.Color.Transparent;
-            if (Device.RuntimePlatform != Device.UWP)
-            {
+            if(ResourceSupport.UseCustomColors)
+            { 
                 TextColor = ResourceSupport.GetColor("TitleBarText");
             }
         }

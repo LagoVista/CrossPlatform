@@ -77,12 +77,15 @@ namespace LagoVista.XPlat.Core.Controls.Common
                     }
                 }
 
-                if (Device.RuntimePlatform != Device.UWP)
+                if(ResourceSupport.UseCustomfonts)
                 {
                     _orgLabel.FontFamily = ResourceSupport.GetString("HeaderFont");
                     lbl.FontFamily = ResourceSupport.GetString("MenuFont");
+                }
+
+                if (ResourceSupport.UseCustomColors)
+                {
                     lbl.TextColor = ResourceSupport.GetColor("MenuBarTitle");
-               
                 }
             }
         }

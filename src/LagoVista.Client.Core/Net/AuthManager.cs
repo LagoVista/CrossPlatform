@@ -1,6 +1,8 @@
-﻿using LagoVista.Core.Interfaces;
+﻿using LagoVista.Client.Core.ViewModels.Auth;
+using LagoVista.Core.Interfaces;
 using LagoVista.Core.Models;
 using LagoVista.Core.PlatformSupport;
+using LagoVista.Core.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -12,11 +14,13 @@ namespace LagoVista.Client.Core.Net
         private const string AUTH_MGR_SETTINGS = "AUTHSETTINGS.JSON";
         readonly IStorageService _storage;
         readonly IDeviceInfo _deviceInfo;
+        readonly IViewModelNavigation _vmNavigation;
 
-        public AuthManager(IStorageService storage, IDeviceInfo deviceInfo)
+        public AuthManager(IStorageService storage, IDeviceInfo deviceInfo, IViewModelNavigation vmNavigation)
         {
             _deviceInfo = deviceInfo;
             _storage = storage;
+            _vmNavigation = vmNavigation;
         }
 
         public string AccessToken { get; set; }
@@ -77,6 +81,7 @@ namespace LagoVista.Client.Core.Net
             Roles = new List<EntityHeader>();
 
             await PersistAsync();
+            await _vmNavigation.SetAsNewRootAsync<LoginViewModel>();
         }
 
         public Task PersistAsync()

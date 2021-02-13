@@ -11,10 +11,14 @@ namespace LagoVista.XPlat.Core
     {
         public Entry()
         {
-            if (Device.RuntimePlatform != Device.UWP)
+            if(ResourceSupport.UseCustomfonts)
             {
                 FontFamily = ResourceSupport.GetString("EntryFont");
                 FontSize = ResourceSupport.GetNumber("EntryFontSize");
+            }
+
+            if (ResourceSupport.UseCustomColors)
+            {
                 PlaceholderColor = ResourceSupport.GetColor("EditControlPlaceholder");
                 BackgroundColor = ResourceSupport.GetColor("EditControlBackground");
                 TextColor = ResourceSupport.GetColor("EditControlText");

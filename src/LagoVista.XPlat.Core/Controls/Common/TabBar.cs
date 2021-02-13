@@ -16,7 +16,7 @@ namespace LagoVista.XPlat.Core
             ChildAdded += TabBar_ChildAdded;
             _tabs = new ObservableCollection<Tab>();
 
-            if (Device.RuntimePlatform != Device.UWP)
+            if (ResourceSupport.UseCustomColors)
             {
                 BackgroundColor = ResourceSupport.GetColor("MenuBarBackground");
             }

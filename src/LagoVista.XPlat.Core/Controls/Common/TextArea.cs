@@ -7,7 +7,7 @@ namespace LagoVista.XPlat.Core
     {
         public TextArea()
         {
-            if (Device.RuntimePlatform != Device.UWP)
+            if (ResourceSupport.UseCustomfonts)
             {
                 FontFamily = ResourceSupport.GetString("EntryFont");
                 FontSize = ResourceSupport.GetNumber("EntryFontSize");

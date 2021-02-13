@@ -13,6 +13,8 @@ namespace LagoVista.XPlat.Core.Controls.FormControls
 
         public CheckBoxRow(FormViewer formViewer, FormField field) : base(formViewer, field)
         {
+            Orientation = StackOrientation.Horizontal;
+
             _header = new FormFieldHeader(field.Label);
 
             _switch = new Switch();

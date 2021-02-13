@@ -27,14 +27,7 @@ namespace LagoVista.XPlat.Core.Services
         {
             get
             {
-                if (Device.RuntimePlatform != Device.UWP)
-                {
-                    return GetColor(Application.Current.RequestedTheme == OSAppTheme.Dark ? "AccentDark" : "AccentLight");
-                }
-                else
-                {
-                    return Color.Accent;
-                }
+                return Color.Accent;
             }
         }
 

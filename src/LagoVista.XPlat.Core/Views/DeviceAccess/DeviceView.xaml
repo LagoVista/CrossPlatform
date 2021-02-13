@@ -98,14 +98,14 @@
                                     <pge:KVPRepeater ItemSource="{Binding Properties}" Grid.Row="2" Grid.ColumnSpan="2" />
 
                                     <BoxView Grid.ColumnSpan="2" Grid.Row="3" HeightRequest="1" VerticalOptions="End" Color="Silver"  />
-                                </Grid>
+                                </Grid> 
                             </ViewCell>
                         </DataTemplate>
                     </ListView.ItemTemplate>
                 </ListView>
             </pge:TabContent>
             <pge:TabContent>
-                <ListView ItemsSource="{Binding MenuOptions}" SelectedItem="{Binding SelectedMenuOption}">
+                <ListView ItemsSource="{Binding MenuOptions}" SelectedItem="{Binding SelectedMenuOption}" HasUnevenRows="true">
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <ctls:NavigationViewCell Command="{Binding Command}" Text="{Binding Name}" Icon="{Binding FontIconKey}" />

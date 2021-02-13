@@ -1,6 +1,5 @@
 ﻿using LagoVista.Core.Attributes;
 using LagoVista.Core.Commanding;
-using LagoVista.Core.Models.Drawing;
 using LagoVista.Core.Models.UIMetaData;
 using LagoVista.XPlat.Core.Services;
 using System;
@@ -26,7 +25,8 @@ namespace LagoVista.XPlat.Core.Controls.FormControls
         public TextEditRow(FormViewer formViewer, FormField field) : base(formViewer, field)
         {
             _editorContainer = new Grid();
-            _editorContainer.RowDefinitions.Add(new RowDefinition() { Height = new GridLength(32, GridUnitType.Absolute) });
+
+            _editorContainer.RowDefinitions.Add(new RowDefinition() { Height = new GridLength(1, GridUnitType.Auto) });
             _command = field.Command;
 
             _header = new FormFieldHeader(field.Label);
@@ -45,8 +45,6 @@ namespace LagoVista.XPlat.Core.Controls.FormControls
 
             _editorContainer.ColumnDefinitions.Add(new ColumnDefinition() { Width = new GridLength(1, GridUnitType.Star) });
 
-            var highlightColor = ResourceSupport.GetColor("HighlightColor");
-
             if (Enum.TryParse<FieldTypes>(field.FieldType, out FieldTypes fieldType))
             {
                 switch (FieldType)
@@ -55,9 +53,9 @@ namespace LagoVista.XPlat.Core.Controls.FormControls
                         _editorContainer.ColumnDefinitions.Add(new ColumnDefinition() { Width = new GridLength(1, GridUnitType.Auto) });
                         _editorContainer.ColumnDefinitions.Add(new ColumnDefinition() { Width = new GridLength(1, GridUnitType.Auto) });
                         _editorContainer.ColumnDefinitions.Add(new ColumnDefinition() { Width = new GridLength(1, GridUnitType.Auto) });
-                        _editorContainer.Children.Add(new IconButton() { Command = _command, WidthRequest = 36, CommandParameter = VIEW_SECRET, IconKey = "fa-eye", TextColor = highlightColor }, 1, 0);
-                        _editorContainer.Children.Add(new IconButton() { Command = _command, WidthRequest = 36, CommandParameter = COPY_SECRET, IconKey = "fa-clipboard", TextColor = highlightColor }, 2, 0);
-                        _editorContainer.Children.Add(new IconButton() { Command = _command, WidthRequest = 36, CommandParameter = REFRESH_SECRET, IconKey = "fa-refresh", TextColor = highlightColor }, 3, 0);
+                        _editorContainer.Children.Add(new IconButton() { Command = _command, WidthRequest = 36, CommandParameter = VIEW_SECRET, IconKey = "fa-eye", TextColor = ResourceSupport.AccentColor }, 1, 0);
+                        _editorContainer.Children.Add(new IconButton() { Command = _command, WidthRequest = 36, CommandParameter = COPY_SECRET, IconKey = "fa-clipboard", TextColor = ResourceSupport.AccentColor }, 2, 0);
+                        _editorContainer.Children.Add(new IconButton() { Command = _command, WidthRequest = 36, CommandParameter = REFRESH_SECRET, IconKey = "fa-refresh", TextColor = ResourceSupport.AccentColor }, 3, 0);
 
                         break;
                     case FieldTypes.Key:

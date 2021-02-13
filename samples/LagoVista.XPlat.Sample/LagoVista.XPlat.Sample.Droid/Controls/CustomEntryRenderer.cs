@@ -3,7 +3,7 @@ using Xamarin.Forms.Platform.Android;
 using Xamarin.Forms;
 using Android.Graphics.Drawables;
 using System;
-
+/*
 [assembly: ExportRenderer(typeof(LagoVista.XPlat.Core.Entry), typeof(LagoVista.XPlat.Droid.Controls.CustomEntryRenderer))]
 namespace LagoVista.XPlat.Droid.Controls
 {
@@ -34,3 +34,4 @@ namespace LagoVista.XPlat.Droid.Controls
         }
     }
 }
+*/

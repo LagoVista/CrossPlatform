@@ -28,8 +28,7 @@ namespace LagoVista.XPlat.Core.Controls.Common
                 FontSize = ResourceSupport.GetNumber("ListItemFontSize"),
             };
 
-
-                _icon.SetValue(Grid.ColumnProperty, 0);
+            _icon.SetValue(Grid.ColumnProperty, 0);
             _icon.SetValue(Grid.RowSpanProperty, 2);
 
             _text = new Label()
@@ -73,21 +72,25 @@ namespace LagoVista.XPlat.Core.Controls.Common
 
             _detail.SetOnAppTheme<Color>(Label.TextColorProperty, ResourceSupport.GetColor("TextLowLight"), ResourceSupport.GetColor("TextLowDark"));
 
-            if (Device.RuntimePlatform != Device.UWP)
+            if (ResourceSupport.UseCustomColors)
             {
                 _layout.BackgroundColor = ResourceSupport.GetColor("ListItemBackgroundColor");
                 _text.TextColor = ResourceSupport.GetColor("ListItemLabelColor");
                 _text.FontFamily = ResourceSupport.GetString("ListItemFont");
-                _detail.FontFamily = ResourceSupport.GetString("ListItemDetailFont");
                 _detail.TextColor = ResourceSupport.GetColor("ListItemDetailColor");
                 _chevron.TextColor = ResourceSupport.GetColor("NavIconColor");
                 _icon.TextColor = ResourceSupport.GetColor("ListItemIconColor");
             }
 
+            if(ResourceSupport.UseCustomfonts)
+            {
+                _detail.FontFamily = ResourceSupport.GetString("ListItemDetailFont");
+            }
+
             _chevron.TextColor = ResourceSupport.AccentColor;
             _icon.TextColor = ResourceSupport.AccentColor;
 
-            this.View = _layout; 
+            this.View = _layout;
         }
 
         public static readonly BindableProperty TextProperty = BindableProperty.Create(nameof(Text), typeof(string),

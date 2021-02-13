@@ -5,14 +5,9 @@
     <Color x:Key="MenuBarBackgroundLight" >#CfAAAAAA</Color>
     <Color x:Key="MenuBarBackgroundDark" >#Cf555555</Color>
 
-    <Color x:Key="AccentLight" >#D48D17</Color>
-    <Color x:Key="AccentDark" >#D48D17</Color>
-
     <Color x:Key="PageMaskLight" >#3f666666</Color>
     <Color x:Key="PageMaskDark" >#3f666666</Color>
 
     <Color x:Key="TextLowLight" >#333</Color>
     <Color x:Key="TextLowDark" >#AAA</Color>
-
-
 </ResourceDictionary>

@@ -20,7 +20,10 @@ namespace LagoVista.XPlat.Core.Controls.Common
             _icon.VerticalOptions = new LayoutOptions(LayoutAlignment.Center, false);
             _icon.FontSize = ResourceSupport.GetNumber("MenuFontSize");
           
-            _icon.Margin = new Thickness(8, 4, 0, 0);
+            if(Device.RuntimePlatform != Device.Android)
+                _icon.Margin = new Thickness(8, 4, 0, 0);
+
+            _icon.TextColor = ResourceSupport.AccentColor;
             _icon.IconKey = menuItem.FontIconKey;
             _menuItem = menuItem;
 
@@ -42,11 +45,26 @@ namespace LagoVista.XPlat.Core.Controls.Common
             tapRecognizer.Tapped += TapRecognizer_Tapped;
             this.GestureRecognizers.Add(tapRecognizer);
 
-            if (Device.RuntimePlatform != Device.UWP)
+            if (!_menuItem.Command.CanExecute(null))
+            {
+                _icon.Opacity = 0.5;
+                _menuText.Opacity = 0.5;
+            }
+            else
+            {
+                _icon.Opacity = 1;
+                _menuText.Opacity = 1;
+            }
+
+            if (ResourceSupport.UseCustomfonts)
             {
                 _menuText.FontFamily = ResourceSupport.GetString("MenuFont");
-                _menuText.TextColor = ResourceSupport.GetColor("MenuBarForeground");
+            }
+
+            if (ResourceSupport.UseCustomColors)
+            {
                 _icon.TextColor = ResourceSupport.GetColor("MenuIconColor");
+                _menuText.TextColor = ResourceSupport.GetColor("MenuBarForeground");
             }
         }
 
@@ -61,16 +79,15 @@ namespace LagoVista.XPlat.Core.Controls.Common
 
         private void Command_CanExecuteChanged(object sender, EventArgs e)
         {
-            if (_menuItem.Command.CanExecute(_menuItem.CommandParameter))
+            if(!_menuItem.Command.CanExecute(_menuItem.CommandParameter))
             {
-                _icon.TextColor = ResourceSupport.GetColor("MenuIconColor");
-                _menuText.TextColor = ResourceSupport.GetColor("MenuFontColor");
+                _icon.Opacity = 0.5;
+                _menuText.Opacity = 0.5;
             }
             else
             {
-                BackgroundColor = ResourceSupport.GetColor("MenuBarDisableddDisabled");
-                _icon.TextColor = ResourceSupport.GetColor("MenuBarForegroundDisabled");
-                _menuText.TextColor = ResourceSupport.GetColor("MenuBarForegroundDisabled");
+                _icon.Opacity = 1;
+                _menuText.Opacity = 1;
             }
         }
     }
