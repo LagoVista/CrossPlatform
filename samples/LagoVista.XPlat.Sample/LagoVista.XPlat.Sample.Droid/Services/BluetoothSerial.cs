@@ -283,7 +283,7 @@ namespace LagoVista.XPlat.Droid.Services
 
                 var response = await WaitForResponseAsync();
                 int retryCount = 0;
-                while (response.Trim() != "ok-start;" && retryCount++ < 5)
+                while ((response == null || response.Trim() != "ok-start;") && retryCount++ < 5)
                 {
                     response = await WaitForResponseAsync();
                     Log.Debug("NuvIoT - BluetoothSerial", "INCORRECT RESPONSE, EXPECTING ok-start : " + response);

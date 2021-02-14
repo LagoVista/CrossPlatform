@@ -33,7 +33,8 @@ namespace LagoVista.XPlat.Droid
                 SLWIOC.Register<INetworkService>(new NetworkService());
                 SLWIOC.Register<ITCPClient, Services.TCPClient>();
                 SLWIOC.Register<IUDPClient, Services.UDPClient>();
-                
+
+                SLWIOC.Register<IAppServices, Services.AppService>();
                 SLWIOC.Register<IWebSocket, Services.WebSocket>();
                 SLWIOC.Register<ISecureStorage>(new SecureStorage());
                 SLWIOC.Register<IClipBoard, Services.ClipBoard>();
