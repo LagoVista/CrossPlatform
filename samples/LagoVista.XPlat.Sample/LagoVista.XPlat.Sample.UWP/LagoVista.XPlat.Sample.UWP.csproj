@@ -16,11 +16,10 @@
     <MinimumVisualStudioVersion>14</MinimumVisualStudioVersion>
     <EnableDotNetNativeCompatibleProfile>true</EnableDotNetNativeCompatibleProfile>
     <FileAlignment>512</FileAlignment>
-    <PackageCertificateKeyFile>
-    </PackageCertificateKeyFile>
+    <PackageCertificateKeyFile>LagoVista.XPlat.Sample.UWP_TemporaryKey.pfx</PackageCertificateKeyFile>
     <ProjectTypeGuids>{A5A43C5B-DE2A-4C0C-9213-0A381AF9435A};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <RuntimeIdentifiers>win10-arm;win10-arm-aot;win10-x86;win10-x86-aot;win10-x64;win10-x64-aot</RuntimeIdentifiers>
-    <PackageCertificateThumbprint>2D689D80D6BDB21DDCA9B21DC91828426C3A2A8E</PackageCertificateThumbprint>
+    <PackageCertificateThumbprint>753CBF41B691A0F271B3602E4C999E697D08FB4E</PackageCertificateThumbprint>
     <AppxPackageSigningEnabled>True</AppxPackageSigningEnabled>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|ARM'">
@@ -239,13 +238,13 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="LagoVista.Core">
-      <Version>2.1.1359-beta1343</Version>
+      <Version>2.1.1393-beta1224</Version>
     </PackageReference>
     <PackageReference Include="LagoVista.Core.Networking">
-      <Version>2.1.1359-beta1343</Version>
+      <Version>2.1.1393-beta1224</Version>
     </PackageReference>
     <PackageReference Include="LagoVista.UserAdmin">
-      <Version>2.1.1359-beta1343</Version>
+      <Version>2.1.1393-beta1224</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform">
       <Version>6.2.11</Version>

@@ -39,31 +39,31 @@
       <HintPath>..\packages\32feet.NET.3.5.0.0\lib\net\InTheHand.Net.Personal.dll</HintPath>
     </Reference>
     <Reference Include="LagoVista.Core, Version=0.8.0.0, Culture=neutral, PublicKeyToken=2698135e9954a85d, processorArchitecture=MSIL">
-      <HintPath>..\packages\LagoVista.Core.Networking.2.1.1359-beta1343\lib\netstandard1.2\LagoVista.Core.dll</HintPath>
+      <HintPath>..\packages\LagoVista.Core.Networking.2.1.1393-beta1224\lib\netstandard1.2\LagoVista.Core.dll</HintPath>
     </Reference>
     <Reference Include="LagoVista.Core.Authentication, Version=0.8.0.0, Culture=neutral, PublicKeyToken=dcf35d1740df1edc, processorArchitecture=MSIL">
-      <HintPath>..\packages\LagoVista.Core.Authentication.2.1.1359-beta1343\lib\netstandard1.2\LagoVista.Core.Authentication.dll</HintPath>
+      <HintPath>..\packages\LagoVista.Core.Authentication.2.1.1393-beta1224\lib\netstandard1.2\LagoVista.Core.Authentication.dll</HintPath>
     </Reference>
     <Reference Include="LagoVista.Core.Networking, Version=0.8.0.0, Culture=neutral, PublicKeyToken=650a46bd96014ff6, processorArchitecture=MSIL">
-      <HintPath>..\packages\LagoVista.Core.Networking.2.1.1359-beta1343\lib\netstandard1.2\LagoVista.Core.Networking.dll</HintPath>
+      <HintPath>..\packages\LagoVista.Core.Networking.2.1.1393-beta1224\lib\netstandard1.2\LagoVista.Core.Networking.dll</HintPath>
     </Reference>
     <Reference Include="LagoVista.IoT.Deployment.Models, Version=1.2.1.1, Culture=neutral, PublicKeyToken=abe84fdbcd1b29f6, processorArchitecture=MSIL">
-      <HintPath>..\packages\LagoVista.IoT.Deployment.Models.2.1.1359-beta1343\lib\netstandard2.0\LagoVista.IoT.Deployment.Models.dll</HintPath>
+      <HintPath>..\packages\LagoVista.IoT.Deployment.Models.2.1.1393-beta1224\lib\netstandard2.0\LagoVista.IoT.Deployment.Models.dll</HintPath>
     </Reference>
     <Reference Include="LagoVista.IoT.DeviceAdmin.Models, Version=1.2.211.1131, Culture=neutral, PublicKeyToken=5198f7de98eb82dc, processorArchitecture=MSIL">
-      <HintPath>..\packages\LagoVista.IoT.DeviceAdmin.Models.2.1.1359-beta1343\lib\netstandard2.0\LagoVista.IoT.DeviceAdmin.Models.dll</HintPath>
+      <HintPath>..\packages\LagoVista.IoT.DeviceAdmin.Models.2.1.1393-beta1224\lib\netstandard2.0\LagoVista.IoT.DeviceAdmin.Models.dll</HintPath>
     </Reference>
     <Reference Include="LagoVista.IoT.DeviceManagement.Models, Version=1.2.211.1114, Culture=neutral, PublicKeyToken=19a6fe73e836ff35, processorArchitecture=MSIL">
-      <HintPath>..\packages\LagoVista.IoT.DeviceManagement.Models.2.1.1359-beta1343\lib\netstandard2.0\LagoVista.IoT.DeviceManagement.Models.dll</HintPath>
+      <HintPath>..\packages\LagoVista.IoT.DeviceManagement.Models.2.1.1393-beta1224\lib\netstandard2.0\LagoVista.IoT.DeviceManagement.Models.dll</HintPath>
     </Reference>
     <Reference Include="LagoVista.MediaServices.Models, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\LagoVista.MediaServices.Models.2.1.1359-beta1343\lib\netstandard2.0\LagoVista.MediaServices.Models.dll</HintPath>
+      <HintPath>..\packages\LagoVista.MediaServices.Models.2.1.1393-beta1224\lib\netstandard2.0\LagoVista.MediaServices.Models.dll</HintPath>
     </Reference>
     <Reference Include="LagoVista.UserAdmin, Version=1.0.0.0, Culture=neutral, PublicKeyToken=d82d96a640bfd2da, processorArchitecture=MSIL">
-      <HintPath>..\packages\LagoVista.UserAdmin.2.1.1359-beta1343\lib\netstandard2.0\LagoVista.UserAdmin.dll</HintPath>
+      <HintPath>..\packages\LagoVista.UserAdmin.2.1.1393-beta1224\lib\netstandard2.0\LagoVista.UserAdmin.dll</HintPath>
     </Reference>
     <Reference Include="LagoVista.UserAdmin.Models, Version=1.0.0.0, Culture=neutral, PublicKeyToken=2698135e9954a85d, processorArchitecture=MSIL">
-      <HintPath>..\packages\LagoVista.UserAdmin.2.1.1359-beta1343\lib\netstandard2.0\LagoVista.UserAdmin.Models.dll</HintPath>
+      <HintPath>..\packages\LagoVista.UserAdmin.Models.2.1.1393-beta1224\lib\netstandard1.2\LagoVista.UserAdmin.Models.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>

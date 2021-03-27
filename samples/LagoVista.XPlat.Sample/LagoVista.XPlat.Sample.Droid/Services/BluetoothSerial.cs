@@ -152,25 +152,28 @@ namespace LagoVista.XPlat.Droid.Services
 
             _myUUID = UUID.RandomUUID();
 
-            try
+            var attempt = 0;
+            while (attempt++ < 5)
             {
-                var serialUUID = UUID.FromString("00001101-0000-1000-8000-00805f9b34fb");
-                var socket = androidBluetoothDevice.CreateRfcommSocketToServiceRecord(serialUUID);
-                await socket.ConnectAsync();
-                _inputStream = socket.InputStream;
-                _outputStream = socket.OutputStream;
-                _bluetoothSocket = socket;
+                try
+                {
+                    var serialUUID = UUID.FromString("00001101-0000-1000-8000-00805f9b34fb");
+                    var socket = androidBluetoothDevice.CreateRfcommSocketToServiceRecord(serialUUID);
+                    await socket.ConnectAsync();
+                    _inputStream = socket.InputStream;
+                    _outputStream = socket.OutputStream;
+                    _bluetoothSocket = socket;
 
-                SetState(BluetoothSerialState.Connected);
-                StartListening();
-                DeviceConnected?.Invoke(this, device);
-                CurrentDevice = device;
-            }
-            catch (IOException ex)
-            {
-                await _popups.ShowAsync("Could not create Bluetooth Socket.");
-                ShutDown(ex);
-                throw;
+                    SetState(BluetoothSerialState.Connected);
+                    StartListening();
+                    DeviceConnected?.Invoke(this, device);
+                    CurrentDevice = device;
+                }
+                catch (IOException ex)
+                {
+                    await _popups.ShowAsync($"Could not create Bluetooth Socket, Attempt {attempt} of 5");
+                    ShutDown(ex);
+                }
             }
         }
 
@@ -421,6 +424,12 @@ namespace LagoVista.XPlat.Droid.Services
                     }
                 }
             });
+        }
+
+        public Task StopSearchingAsync()
+        {
+            _context.UnregisterReceiver(_receiver);
+            return Task.CompletedTask;
         }
 
         class DeviceDiscoveredReceiver : BroadcastReceiver

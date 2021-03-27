@@ -25,15 +25,15 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="LagoVista.Core" Version="2.1.1359-beta1343" />
-    <PackageReference Include="LagoVista.Core.Authentication" Version="2.1.1359-beta1343" />
-    <PackageReference Include="LagoVista.Core.Networking" Version="2.1.1359-beta1343" />
-    <PackageReference Include="LagoVista.IoT.Logging" Version="2.1.1359-beta1343" />
-    <PackageReference Include="LagoVista.UserAdmin.Models" Version="2.1.1359-beta1343" />
-    <PackageReference Include="LagoVista.MediaServices.Models" Version="2.1.1359-beta1343" />
-    <PackageReference Include="LagoVista.IoT.DeviceAdmin.Models" Version="2.1.1359-beta1343" />
-    <PackageReference Include="LagoVista.IoT.Deployment.Models" Version="2.1.1359-beta1343" />
-    <PackageReference Include="LagoVista.IoT.DeviceManagement.Models" Version="2.1.1359-beta1343" />
+    <PackageReference Include="LagoVista.Core" Version="2.1.1393-beta1224" />
+    <PackageReference Include="LagoVista.Core.Authentication" Version="2.1.1393-beta1224" />
+    <PackageReference Include="LagoVista.Core.Networking" Version="2.1.1393-beta1224" />
+    <PackageReference Include="LagoVista.IoT.Logging" Version="2.1.1393-beta1224" />
+    <PackageReference Include="LagoVista.UserAdmin.Models" Version="2.1.1393-beta1224" />
+    <PackageReference Include="LagoVista.MediaServices.Models" Version="2.1.1393-beta1224" />
+    <PackageReference Include="LagoVista.IoT.DeviceAdmin.Models" Version="2.1.1393-beta1224" />
+    <PackageReference Include="LagoVista.IoT.Deployment.Models" Version="2.1.1393-beta1224" />
+    <PackageReference Include="LagoVista.IoT.DeviceManagement.Models" Version="2.1.1393-beta1224" />
     <PackageReference Include="Microsoft.AppCenter" Version="4.1.0" />
     <PackageReference Include="Microsoft.AppCenter.Analytics" Version="4.1.0" />
     <PackageReference Include="Microsoft.AppCenter.Crashes" Version="4.1.0" />

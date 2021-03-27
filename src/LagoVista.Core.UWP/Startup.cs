@@ -30,7 +30,7 @@ namespace LagoVista.Core.UWP
 
             SLWIOC.RegisterSingleton<ISSDPClient>(new SSDPClient());
             SLWIOC.RegisterSingleton<IWebServer>(new WebServer());
-            SLWIOC.RegisterSingleton<IProcessOutputeWriter, ProcessOutputWriter>();
+            SLWIOC.RegisterSingleton<IProcessOutputWriter, ProcessOutputWriter>();
 
             SLWIOC.RegisterSingleton<IWiFiAdaptersService>(new WiFiAdaptersService());
             SLWIOC.RegisterSingleton<IWiFiNetworksService>(new WiFiNetworksService(dispatcher));

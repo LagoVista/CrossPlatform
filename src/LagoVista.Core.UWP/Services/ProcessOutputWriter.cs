@@ -4,7 +4,7 @@ using System.Collections.ObjectModel;
 
 namespace LagoVista.Core.UWP.Services
 {
-    public class ProcessOutputWriter : LagoVista.Client.Core.Interfaces.IProcessOutputeWriter
+    public class ProcessOutputWriter : LagoVista.Client.Core.Interfaces.IProcessOutputWriter
     {
         ObservableCollection<ConsoleOutput> _buffer = new ObservableCollection<ConsoleOutput>();
         private readonly IDispatcherServices _dispatcherService;

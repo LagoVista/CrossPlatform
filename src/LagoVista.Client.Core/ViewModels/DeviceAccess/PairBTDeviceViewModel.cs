@@ -29,6 +29,7 @@ namespace LagoVista.Client.Core.ViewModels.DeviceAccess
             IsBusy = true;
 
             var devices = await _btSerial.SearchAsync();
+            _btSerial.DeviceDiscovered += _btSerial_DeviceDiscovered;
             ConnectedDevices.Clear();
             foreach (var device in devices)
             {
@@ -39,6 +40,11 @@ namespace LagoVista.Client.Core.ViewModels.DeviceAccess
             }
 
             IsBusy = false;
+        }
+
+        private void _btSerial_DeviceDiscovered(object sender, BTDevice e)
+        {
+            ConnectedDevices.Add(e);
         }
 
         public async Task<InvokeResult> SetBTDeviceIdAsync()
@@ -77,6 +83,13 @@ namespace LagoVista.Client.Core.ViewModels.DeviceAccess
                     return result.ToInvokeResult();
                 }
             });
+        }
+
+        public override Task IsClosingAsync()
+        {
+            _btSerial.DeviceDiscovered -= _btSerial_DeviceDiscovered;
+            _btSerial.StopSearchingAsync();
+            return base.IsClosingAsync();
         }
 
         private BTDevice _selectedDevice;

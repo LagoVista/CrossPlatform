@@ -21,6 +21,7 @@ namespace LagoVista.Client.Core.Interfaces
         event EventHandler<BTDevice> DeviceDiscovered;
 
         Task<ObservableCollection<BTDevice>> SearchAsync();
+        Task StopSearchingAsync();
 
         Task ConnectAsync(BTDevice device);
 

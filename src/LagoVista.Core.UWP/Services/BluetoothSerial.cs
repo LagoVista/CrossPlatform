@@ -31,6 +31,7 @@ namespace LagoVista.Core.UWP.Services
         public event EventHandler<BTDevice> DeviceConnected;
         public event EventHandler<BTDevice> DeviceConnecting;
         public event EventHandler<BTDevice> DeviceDisconnected;
+        public event EventHandler<BTDevice> DeviceDiscovered;
 
         BTDevice _currentDevice = null;
 
