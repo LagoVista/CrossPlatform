@@ -1,269 +1,242 @@
-﻿using LagoVista.Core;
-using LagoVista.Core.Interfaces;
-using LagoVista.Core.PlatformSupport;
-using Newtonsoft.Json;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using LagoVista.Core.PlatformSupport;
+using Newtonsoft.Json;
+using System.Net.Http;
+using System.Diagnostics;
 
-namespace LagoVista.XPlat.WPF.Services
+namespace LagoVista.Core.WPF.PlatformSupport
 {
-    public class StorageService : IStorageService
+    public class StorageService : LagoVista.Core.PlatformSupport.IStorageService
     {
-        Dictionary<string, string> _iotSettings = new Dictionary<string, string>();
+        Dictionary<String, Object> _kvpStorage;
 
-
-        private const string IOT_SETTINGS = "IOTSETTINGS.json";
-
-        private readonly IAppConfig _appConfig;
-
-        public StorageService(IAppConfig appConfig)
+        private String GetAppDataDirectory(Locations location = Locations.Default)
         {
-            _appConfig = appConfig ?? throw new ArgumentNullException(nameof(appConfig));
+            var name = Process.GetCurrentProcess().ProcessName;
+
+            var dir = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
+
+            if (location == Locations.Temp)
+                dir = System.IO.Path.GetTempPath();
+            else if (location == Locations.Local)
+                dir = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
+
+            dir = Path.Combine(dir, name);
+            if (!Directory.Exists(dir))
+                Directory.CreateDirectory(dir);
+
+            return dir;
         }
 
-        private Dictionary<string, string> AppSettings
+        private String GetAppRelativeFileNameIfNecessary(String fileName, Locations location = Locations.Default)
         {
-            get { return _iotSettings; }
-        }
-
-        private async Task LoadSettingsIfRequired()
-        {
-            if (_iotSettings == null)
+            if (!fileName.Contains("\\"))
             {
-                _iotSettings = await this.GetAsync<Dictionary<string, string>>(IOT_SETTINGS);
+                return Path.Combine(GetAppDataDirectory(), fileName);
             }
-            throw new NotImplementedException();
+            else
+            {
+                return fileName;
+            }
         }
 
-        private async Task SaveSettingsIfRequired()
+        private async Task<Dictionary<string, object>> GetDictionary()
         {
-            await StoreAsync(_iotSettings, IOT_SETTINGS);
+            if (_kvpStorage != null)
+                return _kvpStorage;
+
+            _kvpStorage = await GetAsync<Dictionary<string, object>>("KVPSTORAGE.DAT");
+            if (_kvpStorage == null)
+                _kvpStorage = new Dictionary<string, object>();
+
+            return _kvpStorage;
+        }
+
+        private async Task PersistDictionary()
+        {
+            await StoreAsync(_kvpStorage, "KVPSTORAGE.DAT");
         }
 
         public async Task ClearKVP(string key)
         {
-            await LoadSettingsIfRequired();
-
-            if (AppSettings.ContainsKey(key))
-                AppSettings.Remove(key);
-
-            await SaveSettingsIfRequired();
+            (await GetDictionary()).Clear();
+            await PersistDictionary();
         }
 
         public Task<Stream> Get(Uri uri)
         {
-            throw new NotImplementedException();
-        }
-
-        private string GetAppDataPath(Locations location)
-        {
-            var outputPath = String.Empty;
-            switch (location)
-            {
-                case Locations.Default:
-                case Locations.Roaming:
-                case Locations.Local:
-                    outputPath = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
-                    break;
-                case Locations.Temp:
-                    outputPath = System.IO.Path.GetTempPath();
-                    break;
-            }
-
-            outputPath = Path.Combine(outputPath, _appConfig.AppName);
-            if (!Directory.Exists(outputPath))
-            {
-                Directory.CreateDirectory(outputPath);
-            }
-
-            return outputPath;
-        }
-
-        public  Task<Stream> Get(Locations location, string fileName, string folderName = "")
-        {
-            var outputPath = GetAppDataPath(location);
-            var fullFileName = Path.Combine(outputPath, fileName);
-            if (File.Exists(fullFileName))
-            {
-                return Task.FromResult(File.Open(fullFileName, FileMode.Open) as Stream);
-            }
-            else
-            {
-                return Task.FromResult(File.Create(fullFileName) as Stream);
-            }
-
-        }
-
-        public async Task<TObject> GetAsync<TObject>(string fileName) where TObject : class
-        {
-            using (var inputStream = await Get(Locations.Local, fileName))
-            {
-                if (inputStream == null)
-                {
-                    return null;
-                }
-                else
-                {
-                    using (var rdr = new StreamReader(inputStream))
-                    {
-                        var json = rdr.ReadToEnd();
-                        if (String.IsNullOrEmpty(json))
-                        {
-                            return null;
-                        }
-                        return JsonConvert.DeserializeObject<TObject>(json);
-                    }
-                }
-            }
-        }
-
-        public async Task<T> GetKVPAsync<T>(string key, T defaultValue = default(T)) where T : class
-        {
-            await LoadSettingsIfRequired();
-
-            if (AppSettings.ContainsKey(key))
-            {
-                var json = AppSettings[key] as string;
-                if (!String.IsNullOrEmpty(json))
-                {
-                    return JsonConvert.DeserializeObject<T>(json);
-                }
-            }
-
-            return defaultValue;
-        }
-
-        public async Task<bool> HasKVPAsync(string key)
-        {
-            await LoadSettingsIfRequired();
-
-            return AppSettings.ContainsKey(key);
-        }
-
-        public async Task<Uri> StoreAsync(Stream stream, Locations location, string fileName, string folderName = "")
-        {
-            var outputPath = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
-            var fullOutputFile = Path.Combine(outputPath, fileName);
-
-            using (var fileStream = new FileStream(fullOutputFile, FileMode.OpenOrCreate))
-            using (var streamWriter = new StreamWriter(fileStream))
-            {
-            }
-
-            return new Uri(fullOutputFile);
-        }
-
-        //TODO: Need to figure out why we are returning a string.
-        public Task<string> StoreAsync<TObject>(TObject instance, string fileName) where TObject : class
-        {
-            var json = JsonConvert.SerializeObject(instance);
-            var fullFileName = Path.Combine(GetAppDataPath(Locations.Default), fileName);
-            try
-            {
-                File.Delete(fileName);
-
-            }
-            catch (Exception)
-            {
-                Debug.WriteLine("Could not delete file, may not exist.");
-            }
-
-            try
-            {
-                File.WriteAllText(fullFileName, json);
-            }
-            catch (Exception ex)
-            {
-                Debug.WriteLine("EXCEPTION SAVING SETTINGS: " + ex.Message);
-                Debug.WriteLine(ex.StackTrace);
-            }
-
-            return Task.FromResult(fullFileName);
-        }
-
-        public async Task StoreKVP<T>(string key, T value) where T : class
-        {
-            try
-            {
-                await LoadSettingsIfRequired();
-
-                AppSettings[key] = JsonConvert.SerializeObject(value);
-
-                await SaveSettingsIfRequired();
-            }
-            catch (Exception ex)
-            {
-                Debug.WriteLine("EXCEPTION SAVING SETTINGS: " + ex.Message);
-                Debug.WriteLine(ex.StackTrace);
-            }
-        }
-
-        public async Task<string> StoreAsync(Stream stream, string fileName, Locations location = Locations.Default, string folder = "")
-        {
-            var outputPath = GetAppDataPath(location);
-            var fullFileName = Path.Combine(outputPath, fileName);
-            using (var file = System.IO.File.Create(fullFileName))
-            {
-                await stream.CopyToAsync(file);
-            }
-
-            return fullFileName;
+            var client = new HttpClient();
+            return client.GetStreamAsync(uri);
         }
 
         public Task<Stream> Get(string fileName, Locations location = Locations.Default, string folder = "")
         {
-            var outputPath = GetAppDataPath(location);
-            var fullFileName = Path.Combine(outputPath, fileName);
-            if (File.Exists(fullFileName))
+            if (!String.IsNullOrEmpty(folder))
             {
-                return Task.FromResult(File.Open(fullFileName, FileMode.Open) as Stream);
+                fileName = Path.Combine(folder, fileName);
+                if (!System.IO.Directory.Exists(folder))
+                {
+                    System.IO.Directory.CreateDirectory(folder);
+                }
+            }
+            else
+            {
+                fileName = GetAppRelativeFileNameIfNecessary(fileName, location);
             }
 
-            return null;
+            if (System.IO.File.Exists(fileName))
+            {
+                var file = System.IO.File.OpenRead(fileName);
+                return Task.FromResult(file as Stream);
+            }
+            else
+            {
+                return Task.FromResult(default(Stream));
+            }
+        }
+
+        public Task<TObject> GetAsync<TObject>(string fileName) where TObject : class
+        {
+            fileName = GetAppRelativeFileNameIfNecessary(fileName);
+            if (System.IO.File.Exists(fileName))
+            {
+                var json = System.IO.File.ReadAllText(fileName);
+                var instance = JsonConvert.DeserializeObject<TObject>(json);
+
+                return Task.FromResult(instance);
+            }
+            else
+            {
+                return Task.FromResult(default(TObject));
+            }
+        }
+
+        public async Task<T> GetKVPAsync<T>(string key, T defaultValue = null) where T : class
+        {
+            var dictionary = await GetDictionary();
+            if (dictionary.ContainsKey(key))
+            {
+                return dictionary[key] as T;
+            }
+            else
+            {
+                return defaultValue;
+            }
+        }
+
+        public async Task<bool> HasKVPAsync(string key)
+        {
+            var dictionary = await GetDictionary();
+            return (dictionary.ContainsKey(key));
+        }
+
+        public Task<string> StoreAsync(Stream stream, string fileName, Locations location = Locations.Default, string folder = "")
+        {
+            if (!String.IsNullOrEmpty(folder))
+            {
+                fileName = Path.Combine(folder, fileName);
+                if (!System.IO.Directory.Exists(folder))
+                {
+                    System.IO.Directory.CreateDirectory(folder);
+                }
+            }
+            else
+            {
+                fileName = GetAppRelativeFileNameIfNecessary(fileName, location);
+            }
+
+            if (System.IO.File.Exists(fileName))
+                System.IO.File.Delete(fileName);
+
+            using (var file = System.IO.File.Create(fileName))
+            {
+                stream.Seek(0, SeekOrigin.Begin);
+                stream.CopyTo(file);
+            }
+
+            return Task.FromResult(fileName);
+        }
+
+        public Task<string> StoreAsync<TObject>(TObject instance, string fileName) where TObject : class
+        {
+            fileName = GetAppRelativeFileNameIfNecessary(fileName);
+
+            var json = JsonConvert.SerializeObject(instance);
+            System.IO.File.WriteAllText(fileName, json);
+
+            return Task.FromResult(fileName);
+        }
+
+        public async Task StoreKVP<T>(string key, T value) where T : class
+        {
+            var dictionary = await GetDictionary();
+            if (dictionary.ContainsKey(key))
+            {
+                dictionary.Remove(key);
+            }
+
+            dictionary.Add(key, value);
+
+            await PersistDictionary();
         }
 
         public Task<string> ReadAllTextAsync(string fileName)
         {
-            return GetAsync<string>(fileName);
+            fileName = GetAppRelativeFileNameIfNecessary(fileName);
+            return Task.FromResult(System.IO.File.ReadAllText(fileName));
         }
 
-        public async Task<string> WriteAllTextAsync(string fileName, string text)
+        public Task<string> WriteAllTextAsync(string fileName, string text)
         {
-            await StoreAsync(text, fileName);
-            return text;
+            fileName = GetAppRelativeFileNameIfNecessary(fileName);
+            System.IO.File.WriteAllText(fileName, text);
+            return Task.FromResult(fileName);
         }
 
-        public async Task<List<string>> ReadAllLinesAsync(string fileName)
+        public Task<List<string>> ReadAllLinesAsync(string fileName)
         {
-            var output = await ReadAllTextAsync(fileName);
-            return output.Split('\r').ToList();
-        }
-
-        public async Task<string> WriteAllLinesAsync(string fileName, List<string> text)
-        {
-            var bldr = new StringBuilder();
-            foreach (var line in text)
+            fileName = GetAppRelativeFileNameIfNecessary(fileName);
+            var allLines = System.IO.File.ReadAllLines(fileName);
+            if (allLines != null)
             {
-                bldr.AppendLine(line);
+                return Task.FromResult(allLines.ToList());
             }
-
-            await WriteAllTextAsync(fileName, bldr.ToString());
-
-            return bldr.ToString();
+            else
+            {
+                return Task.FromResult(default(List<string>));
+            }
         }
+
+        public Task<string> WriteAllLinesAsync(string fileName, List<string> text)
+        {
+            fileName = GetAppRelativeFileNameIfNecessary(fileName);
+            System.IO.File.WriteAllLines(fileName, text);
+            return Task.FromResult(fileName);
+        }
+
+
 
         public Task<byte[]> ReadAllBytesAsync(string fileName)
         {
-            return Task.FromResult(System.IO.File.ReadAllBytes(fileName));
+            fileName = GetAppRelativeFileNameIfNecessary(fileName);
+            if (System.IO.File.Exists(fileName))
+            {
+                return Task.FromResult(System.IO.File.ReadAllBytes(fileName));
+            }
+            else
+            {
+                return Task.FromResult(default(byte[]));
+            }
         }
 
         public Task<string> WriteAllBytesAsync(string fileName, byte[] buffer)
         {
+            fileName = GetAppRelativeFileNameIfNecessary(fileName);
             System.IO.File.WriteAllBytes(fileName, buffer);
             return Task.FromResult(fileName);
         }

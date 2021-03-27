@@ -1,0 +1,248 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{29EF95A4-5A47-4029-AC17-F23067DC2F8D}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>LagoVista.AppLoader</RootNamespace>
+    <AssemblyName>LagoVista.AppLoader</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="InTheHand.Net.Personal, Version=3.5.605.0, Culture=neutral, PublicKeyToken=ea38caa273134499, processorArchitecture=MSIL">
+      <HintPath>..\packages\32feet.NET.3.5.0.0\lib\net\InTheHand.Net.Personal.dll</HintPath>
+    </Reference>
+    <Reference Include="LagoVista.Core, Version=0.8.0.0, Culture=neutral, PublicKeyToken=2698135e9954a85d, processorArchitecture=MSIL">
+      <HintPath>..\packages\LagoVista.Core.Networking.2.1.1359-beta1343\lib\netstandard1.2\LagoVista.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="LagoVista.Core.Authentication, Version=0.8.0.0, Culture=neutral, PublicKeyToken=dcf35d1740df1edc, processorArchitecture=MSIL">
+      <HintPath>..\packages\LagoVista.Core.Authentication.2.1.1359-beta1343\lib\netstandard1.2\LagoVista.Core.Authentication.dll</HintPath>
+    </Reference>
+    <Reference Include="LagoVista.Core.Networking, Version=0.8.0.0, Culture=neutral, PublicKeyToken=650a46bd96014ff6, processorArchitecture=MSIL">
+      <HintPath>..\packages\LagoVista.Core.Networking.2.1.1359-beta1343\lib\netstandard1.2\LagoVista.Core.Networking.dll</HintPath>
+    </Reference>
+    <Reference Include="LagoVista.IoT.Deployment.Models, Version=1.2.1.1, Culture=neutral, PublicKeyToken=abe84fdbcd1b29f6, processorArchitecture=MSIL">
+      <HintPath>..\packages\LagoVista.IoT.Deployment.Models.2.1.1359-beta1343\lib\netstandard2.0\LagoVista.IoT.Deployment.Models.dll</HintPath>
+    </Reference>
+    <Reference Include="LagoVista.IoT.DeviceAdmin.Models, Version=1.2.211.1131, Culture=neutral, PublicKeyToken=5198f7de98eb82dc, processorArchitecture=MSIL">
+      <HintPath>..\packages\LagoVista.IoT.DeviceAdmin.Models.2.1.1359-beta1343\lib\netstandard2.0\LagoVista.IoT.DeviceAdmin.Models.dll</HintPath>
+    </Reference>
+    <Reference Include="LagoVista.IoT.DeviceManagement.Models, Version=1.2.211.1114, Culture=neutral, PublicKeyToken=19a6fe73e836ff35, processorArchitecture=MSIL">
+      <HintPath>..\packages\LagoVista.IoT.DeviceManagement.Models.2.1.1359-beta1343\lib\netstandard2.0\LagoVista.IoT.DeviceManagement.Models.dll</HintPath>
+    </Reference>
+    <Reference Include="LagoVista.MediaServices.Models, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\LagoVista.MediaServices.Models.2.1.1359-beta1343\lib\netstandard2.0\LagoVista.MediaServices.Models.dll</HintPath>
+    </Reference>
+    <Reference Include="LagoVista.UserAdmin, Version=1.0.0.0, Culture=neutral, PublicKeyToken=d82d96a640bfd2da, processorArchitecture=MSIL">
+      <HintPath>..\packages\LagoVista.UserAdmin.2.1.1359-beta1343\lib\netstandard2.0\LagoVista.UserAdmin.dll</HintPath>
+    </Reference>
+    <Reference Include="LagoVista.UserAdmin.Models, Version=1.0.0.0, Culture=neutral, PublicKeyToken=2698135e9954a85d, processorArchitecture=MSIL">
+      <HintPath>..\packages\LagoVista.UserAdmin.2.1.1359-beta1343\lib\netstandard2.0\LagoVista.UserAdmin.Models.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="ClientAppInfo.cs" />
+    <Compile Include="Common\LagoVistaPage.cs" />
+    <Compile Include="Controls\Icon.cs" />
+    <Compile Include="Controls\NavigationRow.cs" />
+    <Compile Include="IconFonts\EntypoPlusModule.cs" />
+    <Compile Include="IconFonts\FontAwesomeModule.cs" />
+    <Compile Include="IconFonts\IconFontSupport.cs" />
+    <Compile Include="IconFonts\IoniconsModule.cs" />
+    <Compile Include="IconFonts\MaterialModule.cs" />
+    <Compile Include="IconFonts\MeteoconsModule.cs" />
+    <Compile Include="IconFonts\SimpleLineIconsModule.cs" />
+    <Compile Include="IconFonts\TypiconsModule.cs" />
+    <Compile Include="IconFonts\WeatherIconsModule.cs" />
+    <Compile Include="Services\BluetoothSerial.cs" />
+    <Compile Include="Services\WebSocket.cs" />
+    <Compile Include="Services\PopupService.cs" />
+    <Compile Include="Services\ViewModelNavigation.cs" />
+    <Compile Include="Views\DeviceReposView.xaml.cs">
+      <DependentUpon>DeviceReposView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\DevicesView.xaml.cs">
+      <DependentUpon>DevicesView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\DeviceView.cs">
+      <DependentUpon>DeviceView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\DFUView.xaml.cs">
+      <DependentUpon>DFUView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\IOConfigView.xaml.cs">
+      <DependentUpon>IOConfigView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\LoginPage.xaml.cs">
+      <DependentUpon>LoginPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ProvisionView.xaml.cs">
+      <DependentUpon>ProvisionView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Splash.xaml.cs">
+      <DependentUpon>Splash.xaml</DependentUpon>
+    </Compile>
+    <Page Include="MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="AppConfig.cs" />
+    <Compile Include="Controls\AutoScrollListBox.cs" />
+    <Compile Include="MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Page Include="Resources\Colors.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\DeviceReposView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\DevicesView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\DeviceView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\DFUView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\IOConfigView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\LoginPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ProvisionView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Splash.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <Resource Include="Assets\Fonts\iconize-entypoplus.ttf" />
+    <Resource Include="Assets\Fonts\iconize-fontawesome.ttf" />
+    <Resource Include="Assets\Fonts\iconize-ionicons.ttf" />
+    <Resource Include="Assets\Fonts\iconize-material.ttf" />
+    <Resource Include="Assets\Fonts\iconize-meteocons.ttf" />
+    <Resource Include="Assets\Fonts\iconize-simplelineicons.ttf" />
+    <Resource Include="Assets\Fonts\iconize-typicons.ttf" />
+    <Resource Include="Assets\Fonts\iconize-weathericons.ttf" />
+    <Resource Include="Assets\Fonts\Roboto-Black.ttf" />
+    <Resource Include="Assets\Fonts\Roboto-BlackItalic.ttf" />
+    <Resource Include="Assets\Fonts\Roboto-Bold.ttf" />
+    <Resource Include="Assets\Fonts\Roboto-BoldItalic.ttf" />
+    <Resource Include="Assets\Fonts\Roboto-Italic.ttf" />
+    <Resource Include="Assets\Fonts\Roboto-Light.ttf" />
+    <Resource Include="Assets\Fonts\Roboto-LightItalic.ttf" />
+    <Resource Include="Assets\Fonts\Roboto-Medium.ttf" />
+    <Resource Include="Assets\Fonts\Roboto-MediumItalic.ttf" />
+    <Resource Include="Assets\Fonts\Roboto-Regular.ttf" />
+    <Resource Include="Assets\Fonts\Roboto-Thin.ttf" />
+    <Resource Include="Assets\Fonts\Roboto-ThinItalic.ttf" />
+    <Resource Include="Assets\Fonts\RobotoCondensed-Bold.ttf" />
+    <Resource Include="Assets\Fonts\RobotoCondensed-BoldItalic.ttf" />
+    <Resource Include="Assets\Fonts\RobotoCondensed-Italic.ttf" />
+    <Resource Include="Assets\Fonts\RobotoCondensed-Light.ttf" />
+    <Resource Include="Assets\Fonts\RobotoCondensed-LightItalic.ttf" />
+    <Resource Include="Assets\Fonts\RobotoCondensed-Regular.ttf" />
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\src\LagoVista.Client.Core\LagoVista.Client.Core.csproj">
+      <Project>{9eb75b0f-f283-498e-aa42-fb49512aef93}</Project>
+      <Name>LagoVista.Client.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\src\LagoVista.Xplat.WPF\LagoVista.XPlat.WPF.csproj">
+      <Project>{fdcf7ced-8d81-480c-b038-d973a9b8d2fd}</Project>
+      <Name>LagoVista.XPlat.WPF</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

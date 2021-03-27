@@ -17,7 +17,6 @@ namespace LagoVista.XPlat.WPF.Services
             deviceInfo.DeviceType = "Windows - UWP";
 
             deviceInfo.DeviceUniqueId = uniqueId;
-            Debug.WriteLine("Could not determine unique device id for Xamarin Forms app.");
 
             SLWIOC.Register<IDeviceInfo>(deviceInfo);
         }

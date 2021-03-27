@@ -5,7 +5,7 @@ using System.Windows.Threading;
 
 namespace LagoVista.XPlat.WPF.Services
 {
-    public class ProcessOutputWriter : LagoVista.Client.Core.Interfaces.IProcessOutputeWriter
+    public class ProcessOutputWriter : LagoVista.Client.Core.Interfaces.IProcessOutputWriter
     {
         ObservableCollection<ConsoleOutput> _buffer = new ObservableCollection<ConsoleOutput>();
         Dispatcher _dispatcher;

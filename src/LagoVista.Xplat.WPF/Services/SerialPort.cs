@@ -1,44 +1,129 @@
 ﻿using LagoVista.Core.PlatformSupport;
 using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Threading;
 using System.Threading.Tasks;
+using LagoVista.Core.Models;
+using System.IO;
+using System.Threading;
 
-namespace LagoVista.XPlat.WPF.Services
+namespace LagoVista.Core.WPF.PlatformSupport
 {
     public class SerialPort : ISerialPort
     {
-        public bool IsConnected => throw new NotImplementedException();
+        System.IO.Ports.SerialPort _serialPort;
+        SerialPortInfo _portInfo;
+
+        public SerialPort(SerialPortInfo portInfo)
+        {
+            _portInfo = portInfo;
+        }
+
+        public bool IsConnected
+        {
+            get
+            {
+                lock (this)
+                {
+                    if (_serialPort == null)
+                    {
+                        return false;
+                    }
+
+                    return _serialPort.IsOpen;
+                }
+            }
+        }
+
+        public Stream InputStream
+        {
+            get
+            {
+                if (_serialPort == null)
+                    throw new InvalidOperationException("Serial Port Not Open");
+
+                return _serialPort.BaseStream;
+            }
+        }
+
+        public Stream OutputStream
+        {
+            get
+            {
+                if (_serialPort == null)
+                    throw new InvalidOperationException("Serial Port Not Open");
+
+                return _serialPort.BaseStream;
+            }
+        }
 
         public Task CloseAsync()
         {
-            throw new NotImplementedException();
+            Dispose();
+            return Task.FromResult(default(object));
         }
 
         public void Dispose()
         {
-            throw new NotImplementedException();
+            lock (this)
+            {
+                try
+                {
+                    if (_serialPort != null)
+                    {
+                        if (_serialPort.IsOpen)
+                            _serialPort.Close();
+
+                        _serialPort.Dispose();
+                        _serialPort = null;
+                    }
+                }
+                catch(Exception ex)
+                {
+                    /* NOP */
+                    _serialPort = null;
+                }
+            }
         }
 
         public Task OpenAsync()
         {
-            throw new NotImplementedException();
+            try
+            {
+                lock (this)
+                {
+                    _serialPort = new System.IO.Ports.SerialPort(_portInfo.Id, _portInfo.BaudRate);
+                    _serialPort.Open();
+
+                    return Task.FromResult(default(object));
+                }
+            }
+            catch (Exception ex)
+            {
+                _serialPort = null;
+                throw new Exception("Could not open serial port.",ex);
+            }
         }
 
-        public Task<int> ReadAsync(byte[] bufffer, int start, int size, CancellationToken token = default)
+        public Task<int> ReadAsync(byte[] buffer, int offset, int size, CancellationToken token = default)
         {
-            throw new NotImplementedException();
+            var bytesAvailable =_serialPort.BytesToRead;
+            if (bytesAvailable > 0)
+            {
+                _serialPort.Read(buffer, offset, bytesAvailable);
+            }
+
+            return Task.FromResult(bytesAvailable);
         }
 
         public Task WriteAsync(string msg)
         {
-            throw new NotImplementedException();
+            _serialPort.Write(msg);
+            return Task.CompletedTask;
         }
 
         public Task WriteAsync(byte[] buffer)
         {
-            throw new NotImplementedException();
+            _serialPort.Write(buffer, 0, buffer.Length);
+            return Task.CompletedTask;
         }
     }
 }

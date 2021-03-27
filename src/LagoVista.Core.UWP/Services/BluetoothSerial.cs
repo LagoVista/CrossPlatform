@@ -397,6 +397,11 @@ namespace LagoVista.Core.UWP.Services
             }
         }
 
+        public Task StopSearchingAsync()
+        {
+            return Task.CompletedTask;
+        }
+
         public BTDevice CurrentDevice { get => _currentDevice; }
 
         public bool IsConnected { get => _currentDevice != null; }

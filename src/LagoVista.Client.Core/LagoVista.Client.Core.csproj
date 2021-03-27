@@ -1,8 +1,7 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <VersionPrefix>1.2</VersionPrefix>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <NetStandardImplicitPackageVersion>2.0.3</NetStandardImplicitPackageVersion>
     <SignAssembly>true</SignAssembly>
     <DebugType>Full</DebugType>
     <AssemblyOriginatorKeyFile>clientcore.key.snk</AssemblyOriginatorKeyFile>
@@ -25,22 +24,22 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="LagoVista.Core" Version="2.1.1393-beta1224" />
-    <PackageReference Include="LagoVista.Core.Authentication" Version="2.1.1393-beta1224" />
-    <PackageReference Include="LagoVista.Core.Networking" Version="2.1.1393-beta1224" />
-    <PackageReference Include="LagoVista.IoT.Logging" Version="2.1.1393-beta1224" />
-    <PackageReference Include="LagoVista.UserAdmin.Models" Version="2.1.1393-beta1224" />
-    <PackageReference Include="LagoVista.MediaServices.Models" Version="2.1.1393-beta1224" />
-    <PackageReference Include="LagoVista.IoT.DeviceAdmin.Models" Version="2.1.1393-beta1224" />
-    <PackageReference Include="LagoVista.IoT.Deployment.Models" Version="2.1.1393-beta1224" />
-    <PackageReference Include="LagoVista.IoT.DeviceManagement.Models" Version="2.1.1393-beta1224" />
-    <PackageReference Include="Microsoft.AppCenter" Version="4.1.0" />
-    <PackageReference Include="Microsoft.AppCenter.Analytics" Version="4.1.0" />
-    <PackageReference Include="Microsoft.AppCenter.Crashes" Version="4.1.0" />
-    <PackageReference Include="Microsoft.AppCenter.Distribute" Version="4.1.0" />
+    <PackageReference Include="LagoVista.Core" Version="2.1.1408-beta1613" />
+    <PackageReference Include="LagoVista.Core.Authentication" Version="2.1.1408-beta1613" />
+    <PackageReference Include="LagoVista.Core.Networking" Version="2.1.1408-beta1613" />
+    <PackageReference Include="LagoVista.IoT.Logging" Version="2.1.1408-beta1613" />
+    <PackageReference Include="LagoVista.UserAdmin.Models" Version="2.1.1408-beta1613" />
+    <PackageReference Include="LagoVista.MediaServices.Models" Version="2.1.1408-beta1613" />
+    <PackageReference Include="LagoVista.IoT.DeviceAdmin.Models" Version="2.1.1408-beta1613" />
+    <PackageReference Include="LagoVista.IoT.Deployment.Models" Version="2.1.1408-beta1613" />
+    <PackageReference Include="LagoVista.IoT.DeviceManagement.Models" Version="2.1.1408-beta1613" />
+    <PackageReference Include="Microsoft.AppCenter" Version="4.2.0" />
+    <PackageReference Include="Microsoft.AppCenter.Analytics" Version="4.2.0" />
+    <PackageReference Include="Microsoft.AppCenter.Crashes" Version="4.2.0" />
+    <PackageReference Include="Microsoft.AppCenter.Distribute" Version="4.2.0" />
     <PackageReference Include="Microsoft.AppCenter.Push" Version="3.4.3" />
-    <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
-    <PackageReference Include="Xamarin.Forms" Version="5.0.0.1931" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+    <PackageReference Include="Xamarin.Forms" Version="5.0.0.2012" />
   </ItemGroup>
   <ItemGroup>
     <Compile Update="Resources\ClientResources.Designer.cs">

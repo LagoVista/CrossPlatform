@@ -1,13 +1,12 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <NetStandardImplicitPackageVersion>2.0.3</NetStandardImplicitPackageVersion>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="LagoVista.Core" Version="2.1.1393-beta1224" />
-    <PackageReference Include="LagoVista.IoT.Deployment.Models" Version="2.1.1393-beta1224" />
-    <PackageReference Include="LagoVista.IoT.DeviceAdmin.Models" Version="2.1.1393-beta1224" />
-    <PackageReference Include="LagoVista.IoT.DeviceManagement.Models" Version="2.1.1393-beta1224" />
+    <PackageReference Include="LagoVista.Core" Version="2.1.1408-beta1613" />
+    <PackageReference Include="LagoVista.IoT.Deployment.Models" Version="2.1.1408-beta1613" />
+    <PackageReference Include="LagoVista.IoT.DeviceAdmin.Models" Version="2.1.1408-beta1613" />
+    <PackageReference Include="LagoVista.IoT.DeviceManagement.Models" Version="2.1.1408-beta1613" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\LagoVista.Client.Core\LagoVista.Client.Core.csproj" />
