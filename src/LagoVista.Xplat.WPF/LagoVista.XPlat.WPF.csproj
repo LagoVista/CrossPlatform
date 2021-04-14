@@ -1,17 +1,13 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
-
+<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <TargetFramework>net5.0-windows</TargetFramework>
     <UseWPF>true</UseWPF>
   </PropertyGroup>
-
   <ItemGroup>
     <PackageReference Include="LagoVista.Core" Version="2.1.1408-beta1613" />
     <PackageReference Include="System.IO.Ports" Version="5.0.1" />
   </ItemGroup>
-
   <ItemGroup>
     <ProjectReference Include="..\LagoVista.Client.Core\LagoVista.Client.Core.csproj" />
   </ItemGroup>
-
-  </Project>
+</Project>
