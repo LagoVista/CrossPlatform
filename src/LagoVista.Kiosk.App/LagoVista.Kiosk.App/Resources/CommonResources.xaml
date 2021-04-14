@@ -1,0 +1,28 @@
+﻿<ResourceDictionary 
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:pge="clr-namespace:LagoVista.XPlat.Core;assembly=LagoVista.XPlat.Core"
+    xmlns:cvts="clr-namespace:LagoVista.XPlat.Core.ValueConverter;assembly=LagoVista.XPlat.Core"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" >
+
+    <Style x:Key="LabelContent" TargetType="pge:Label">
+        <Setter Property="TextColor" Value="{DynamicResource LabelText}" />
+        <Setter Property="FontSize" Value="Small" />
+        <Setter Property="FontAttributes" Value="Bold" />
+    </Style>
+
+    <Style x:Key="ValueContent" TargetType="pge:Label">
+        <Setter Property="TextColor" Value="{DynamicResource PageText}" />
+        <Setter Property="FontSize" Value="Small" />
+    </Style>
+
+    <cvts:VisibilityConverter x:Key="VisibilityConverter" />
+    <cvts:ColorConverter  x:Key="ColorConverter" />
+    <cvts:RedGreenConverter  x:Key="RedGreenConverter" />
+    <cvts:DatePrinterConverter x:Key="DatePrinterConverter" />
+    <cvts:NotNullVisibilityConverter x:Key="NotNullVisibilityConverter" />
+    <cvts:NullVisibilityConverter x:Key="NullVisibilityConverter" />
+    <Style TargetType="Label" x:Key="SectionLabel" >
+        <Setter Property="FontAttributes"  Value="Bold" />
+        <Setter Property="Margin" Value="10,10,0,0" />
+    </Style>
+</ResourceDictionary>
