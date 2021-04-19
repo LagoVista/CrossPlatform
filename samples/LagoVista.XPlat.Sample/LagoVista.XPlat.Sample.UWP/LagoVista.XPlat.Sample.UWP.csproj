@@ -238,16 +238,16 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="LagoVista.Core">
-      <Version>2.1.1393-beta1224</Version>
+      <Version>2.1.1434.1859</Version>
     </PackageReference>
     <PackageReference Include="LagoVista.Core.Networking">
-      <Version>2.1.1393-beta1224</Version>
+      <Version>2.1.1434.1859</Version>
     </PackageReference>
     <PackageReference Include="LagoVista.UserAdmin">
-      <Version>2.1.1393-beta1224</Version>
+      <Version>2.1.1406-beta1632</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform">
-      <Version>6.2.11</Version>
+      <Version>6.2.12</Version>
     </PackageReference>
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
