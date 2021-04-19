@@ -6,15 +6,8 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
         Title="Home View"
         LeftMenu="Menu"
-        x:Class="LagoVista.Kiosk.App.Views.HomeView">
+        x:Class="LagoVista.Kiosk.App.Views.KioskViewerView">
 	<pge:LagoVistaContentPage.MainContent>
-		<ListView ItemsSource="{Binding MenuOptions}" HasUnevenRows="true" SelectedItem="{Binding SelectedMenuOption}">
-			<ListView.ItemTemplate>
-				<DataTemplate>
-					<ctls:NavigationViewCell Command="{Binding Command}" Text="{Binding CommandParameter}" 
-                                             Detail="{Binding Name}" Icon="{Binding FontIconKey}" />
-				</DataTemplate>
-			</ListView.ItemTemplate>
-		</ListView>
+		<WebView Source="{Binding Url}"></WebView>
 	</pge:LagoVistaContentPage.MainContent>
 </pge:LagoVistaContentPage>

@@ -1,7 +1,7 @@
 ﻿//#define ENV_LOCAL
-//#define ENV_DEV
+#define ENV_DEV
 //#define ENV_STAGE
-#define ENV_MASTER
+//#define ENV_MASTER
 
 using System;
 using Xamarin.Forms;
@@ -110,6 +110,7 @@ namespace LagoVista.Kiosk.App
 
             var navigation = new ViewModelNavigation(this);
             navigation.Add<HomeViewModel, HomeView>();
+            navigation.Add<KioskViewerViewModel, KioskViewerView>();
             navigation.Add<SplashViewModel, SplashView>();
 
             SLWIOC.RegisterSingleton<IViewModelNavigation>(navigation);

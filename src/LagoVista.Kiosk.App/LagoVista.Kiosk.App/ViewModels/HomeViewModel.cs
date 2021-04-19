@@ -1,61 +1,99 @@
-﻿using LagoVista.Client.Core.ViewModels;
+﻿using LagoVista.Client.Core;
+using LagoVista.Client.Core.ViewModels;
 using LagoVista.Core.Commanding;
+using LagoVista.Core.Interfaces;
+using LagoVista.Core.IOC;
+using LagoVista.Core.ViewModels;
+using LagoVista.XPlat.Core.Services;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace LagoVista.Kiosk.App.ViewModels
 {
-	public class HomeViewModel : AppViewModelBase
+	public class HomeViewModel : ListViewModelBase<KioskView>
 	{
-		private Uri url;
-
-		public Uri Url
+		private ObservableCollection<MenuItem> menuOptions;
+		public ObservableCollection<MenuItem> MenuOptions
 		{
-			get => url;
-			set 
-			{
-				Set(ref url, value);
-			}
+			get => menuOptions;
+			set { Set(ref menuOptions, value); }
+		}
+
+		private object selectedMenuOption;
+		public object SelectedMenuOption
+		{
+			get => selectedMenuOption; 
+			set => Set(ref selectedMenuOption, value);
 		}
 
 		public HomeViewModel()
 		{
-			var menuItems = new ObservableCollection<MenuItem>();
-
-			var kiosks = GetKiosks();
-			foreach (var kiosk in kiosks)
+			var menuItems = new ObservableCollection<MenuItem>()
 			{
-				menuItems.Add(new MenuItem()
+				new MenuItem()
 				{
-					FontIconKey = string.IsNullOrWhiteSpace(kiosk.Value.Item2)
-						? "fa-gear"
-						: "fa-gear",
-					Name = kiosk.Value.Item1,
-					Command = new RelayCommand(() => DoNavigation(kiosk.Value.Item2)),
-					CommandParameter = kiosk
-				});
-			};
+					FontIconKey = "fa-gear",
+					Name = "Change Organization",
+					Command = new RelayCommand(async () => await DoNavigationAsync("https://bing.com")),
+					CommandParameter = ""
+				},
 
-			menuItems.Add(new MenuItem() { FontIconKey = "fa-gear", Name = "Logout", Command = new RelayCommand(() => AuthManager.LogoutAsync()) });
+				new MenuItem() { FontIconKey = "fa-gear", Name = "Logout", Command = new RelayCommand(() => AuthManager.LogoutAsync()) }
+			};
 
 			MenuItems = menuItems;
 		}
 
-		private void DoNavigation(string address)
+		private async Task DoNavigationAsync(string address)
 		{
-			Url = new Uri(address);
+			var viewModelLaunchArgs = new ViewModelLaunchArgs()
+			{
+				ParentViewModel = this,
+				LaunchType = LaunchTypes.View,
+				ViewModelType = typeof(KioskViewerViewModel)
+			};
+			viewModelLaunchArgs.Parameters.Add("url", address);
+
+			SLWIOC.TryResolve<IViewModelNavigation>(out var navigation);
+			await navigation.NavigateAsync(viewModelLaunchArgs);
 		}
 
-		private Dictionary<Guid, Tuple<string, string>> GetKiosks()
+		protected override string GetListURI()
 		{
-			return new Dictionary<Guid, Tuple<string, string>>()
-			{
-				{ Guid.NewGuid(), Tuple.Create("Kiosk 1", "https://bing.com") },
-				{ Guid.NewGuid(), Tuple.Create("Kiosk 2", "https://duckduckgo.com")  },
-				{ Guid.NewGuid(), Tuple.Create("Kiosk 3", "https://epicsearch.in")  }
-			};
+			return "/api/ui/kiosks";
 		}
+
+		protected override void SetListItems(IEnumerable<KioskView> items)
+		{
+			base.SetListItems(items);
+
+			var menuOptions = new ObservableCollection<MenuItem>();
+
+			foreach (var kiosk in items)
+			{
+				menuOptions.Add(new MenuItem()
+				{
+					FontIconKey = "fa-gear",
+					Name = kiosk.Name,
+					Command = new RelayCommand(async () => await DoNavigationAsync("https://www.bing.com"/*kiosk.Id*/)),
+					CommandParameter = kiosk.Title
+				});
+			};
+
+			MenuOptions = menuOptions;
+		}
+	}
+
+	public class KioskView
+	{
+		public string Id { get; set; }
+
+		public string Name { get; set; }
+
+		public string Title { get; set; }
 	}
 }
