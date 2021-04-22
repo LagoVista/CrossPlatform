@@ -1,5 +1,6 @@
 ﻿using LagoVista.Client.Core;
 using LagoVista.Client.Core.ViewModels;
+using LagoVista.Client.Core.ViewModels.Orgs;
 using LagoVista.Core.Commanding;
 using LagoVista.Core.Interfaces;
 using LagoVista.Core.IOC;
@@ -16,6 +17,8 @@ namespace LagoVista.Kiosk.App.ViewModels
 {
 	public class HomeViewModel : ListViewModelBase<KioskView>
 	{
+		private readonly IRestClient _restClient;
+
 		private ObservableCollection<MenuItem> menuOptions;
 		public ObservableCollection<MenuItem> MenuOptions
 		{
@@ -24,25 +27,21 @@ namespace LagoVista.Kiosk.App.ViewModels
 		}
 
 		private object selectedMenuOption;
+
 		public object SelectedMenuOption
 		{
-			get => selectedMenuOption; 
+			get => selectedMenuOption;
 			set => Set(ref selectedMenuOption, value);
 		}
 
-		public HomeViewModel()
+		public HomeViewModel(IRestClient restClient)
 		{
+			_restClient = restClient ?? throw new ArgumentNullException(nameof(restClient));
+
 			var menuItems = new ObservableCollection<MenuItem>()
 			{
-				new MenuItem()
-				{
-					FontIconKey = "fa-gear",
-					Name = "Change Organization",
-					Command = new RelayCommand(async () => await DoNavigationAsync("https://bing.com")),
-					CommandParameter = ""
-				},
-
-				new MenuItem() { FontIconKey = "fa-gear", Name = "Logout", Command = new RelayCommand(() => AuthManager.LogoutAsync()) }
+				new MenuItem() {FontIconKey = "fa-sign-in", Name = "Change Organization", Command =  new RelayCommand(() => ViewModelNavigation.NavigateAsync<UserOrgsViewModel>(this)) },
+				new MenuItem() { FontIconKey = "fa-sign-out", Name = "Logout", Command = new RelayCommand(() => AuthManager.LogoutAsync()) }
 			};
 
 			MenuItems = menuItems;
@@ -50,13 +49,15 @@ namespace LagoVista.Kiosk.App.ViewModels
 
 		private async Task DoNavigationAsync(string address)
 		{
+			var response = await _restClient.GetAsync<KioskClientAppSummary>(address);
+
 			var viewModelLaunchArgs = new ViewModelLaunchArgs()
 			{
 				ParentViewModel = this,
 				LaunchType = LaunchTypes.View,
 				ViewModelType = typeof(KioskViewerViewModel)
 			};
-			viewModelLaunchArgs.Parameters.Add("url", address);
+			viewModelLaunchArgs.Parameters.Add("url", response.Result.KioskUrl);
 
 			SLWIOC.TryResolve<IViewModelNavigation>(out var navigation);
 			await navigation.NavigateAsync(viewModelLaunchArgs);
@@ -75,11 +76,12 @@ namespace LagoVista.Kiosk.App.ViewModels
 
 			foreach (var kiosk in items)
 			{
+				var endpointUrl = $"/api/kioskclientapp/{kiosk.Id}";
 				menuOptions.Add(new MenuItem()
 				{
-					FontIconKey = "fa-gear",
+					FontIconKey = "fa-desktop",
 					Name = kiosk.Name,
-					Command = new RelayCommand(async () => await DoNavigationAsync("https://www.bing.com"/*kiosk.Id*/)),
+					Command = new RelayCommand(async () => await DoNavigationAsync(endpointUrl)),
 					CommandParameter = kiosk.Title
 				});
 			};
@@ -95,5 +97,10 @@ namespace LagoVista.Kiosk.App.ViewModels
 		public string Name { get; set; }
 
 		public string Title { get; set; }
+	}
+
+	public class KioskClientAppSummary
+	{
+		public string KioskUrl { get; set; }
 	}
 }

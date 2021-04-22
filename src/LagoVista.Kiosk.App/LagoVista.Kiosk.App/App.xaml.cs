@@ -133,17 +133,5 @@ namespace LagoVista.Kiosk.App
         {
             Debug.WriteLine("APP THEME CHANGED: " + e.RequestedTheme);
         }
-
-        //protected override void OnStart()
-        //{
-        //}
-
-        //protected override void OnSleep()
-        //{
-        //}
-
-        //protected override void OnResume()
-        //{
-        //}
     }
 }
