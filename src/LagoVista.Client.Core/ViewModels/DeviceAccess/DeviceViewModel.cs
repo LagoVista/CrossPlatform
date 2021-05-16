@@ -22,7 +22,7 @@ using System.Threading.Tasks;
 namespace LagoVista.Client.Core.ViewModels.DeviceAccess
 {
     public class DeviceViewModel : MonitoringViewModelBase
-    {                
+    {
         Device _device;
         DeviceConfiguration _deviceConfiguration;
 
@@ -58,7 +58,7 @@ namespace LagoVista.Client.Core.ViewModels.DeviceAccess
         }
 
         private async void _btSerial_DeviceDiscovered(object sender, BTDevice e)
-        {            
+        {
             try
             {
                 if (e.DeviceId == _btDeviceId && !_btSerial.IsConnected)
@@ -86,7 +86,22 @@ namespace LagoVista.Client.Core.ViewModels.DeviceAccess
 
                 ConnectionStatus = "Connecting via Bluetooth";
 
-                await _btSerial.SearchAsync();                
+                var pairedDevices = await _btSerial.SearchAsync();
+                var pairedDevice = pairedDevices.Where(pd => pd.DeviceId == _btDeviceId).FirstOrDefault();
+                if (pairedDevice != null)
+                {
+                    try
+                    {
+                        await _btSerial.ConnectAsync(pairedDevice);
+                        _currentDevice = pairedDevice;
+                        ConnectionStatus = "Connected";
+                        ConnectedViaBluetooth = true;
+                    }
+                    catch (Exception ex)
+                    {
+
+                    }
+                }
             }
             else
             {
@@ -116,7 +131,7 @@ namespace LagoVista.Client.Core.ViewModels.DeviceAccess
             {
                 var path = $"/api/device/{DeviceRepoId}/{DeviceId}/metadata";
 
-              
+
                 var response = await RestClient.GetAsync<DetailResponse<Device>>(path);
                 if (response.Successful)
                 {
@@ -508,12 +523,12 @@ namespace LagoVista.Client.Core.ViewModels.DeviceAccess
         public string ConnectionStatus
         {
             get { return _connectionStatus; }
-            set { Set(ref _connectionStatus, value);  }
+            set { Set(ref _connectionStatus, value); }
         }
 
         public async override Task IsClosingAsync()
         {
-            if(_btSerial.IsConnected)
+            if (_btSerial.IsConnected)
             {
                 DisconnectBTDevice();
             }
