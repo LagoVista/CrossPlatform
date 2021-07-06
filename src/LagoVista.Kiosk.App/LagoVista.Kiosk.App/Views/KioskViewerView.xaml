@@ -8,6 +8,6 @@
         LeftMenu="Menu"
         x:Class="LagoVista.Kiosk.App.Views.KioskViewerView">
 	<pge:LagoVistaContentPage.MainContent>
-		<WebView Source="{Binding Url}"></WebView>
+		<WebView x:Name="KioskViewer" Source="{Binding Url}"></WebView>		
 	</pge:LagoVistaContentPage.MainContent>
 </pge:LagoVistaContentPage>

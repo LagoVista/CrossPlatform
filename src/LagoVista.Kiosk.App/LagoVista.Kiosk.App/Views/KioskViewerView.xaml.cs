@@ -1,11 +1,5 @@
 ﻿using LagoVista.XPlat.Core;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
 namespace LagoVista.Kiosk.App.Views
@@ -16,6 +10,12 @@ namespace LagoVista.Kiosk.App.Views
 		public KioskViewerView()
 		{
 			InitializeComponent();
+		}
+
+		protected override bool OnBackButtonPressed()
+		{
+			KioskViewer.Source = new Uri("about:blank");
+			return base.OnBackButtonPressed();
 		}
 	}
 }
