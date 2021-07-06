@@ -187,7 +187,7 @@ namespace LagoVista.XPlat.Sample.ViewModels
             return Task.CompletedTask;
         }
 
-        private async void StartSDPListener()
+        private void StartSDPListener()
         {
             var config = new LagoVista.Core.Networking.Models.UPNPConfiguration()
             {
@@ -281,14 +281,6 @@ namespace LagoVista.XPlat.Sample.ViewModels
         {
             throw new System.NotImplementedException();
         }
-
-        EditFormAdapter _formAdapter;
-        public EditFormAdapter FormAdapter
-        {
-            get { return _formAdapter; }
-            private set { Set(ref _formAdapter, value); }
-        }
-
     }
 
 }

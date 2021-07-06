@@ -30,6 +30,7 @@ namespace LagoVista.Droid.Simulator
 			global::Microsoft.AppCenter.Distribute.Resource.String.appcenter_distribute_downloading_error = global::LagoVista.Droid.Simulator.Resource.String.appcenter_distribute_downloading_error;
 			global::Microsoft.AppCenter.Distribute.Resource.String.appcenter_distribute_downloading_mandatory_update = global::LagoVista.Droid.Simulator.Resource.String.appcenter_distribute_downloading_mandatory_update;
 			global::Microsoft.AppCenter.Distribute.Resource.String.appcenter_distribute_downloading_update = global::LagoVista.Droid.Simulator.Resource.String.appcenter_distribute_downloading_update;
+			global::Microsoft.AppCenter.Distribute.Resource.String.appcenter_distribute_downloading_version = global::LagoVista.Droid.Simulator.Resource.String.appcenter_distribute_downloading_version;
 			global::Microsoft.AppCenter.Distribute.Resource.String.appcenter_distribute_install = global::LagoVista.Droid.Simulator.Resource.String.appcenter_distribute_install;
 			global::Microsoft.AppCenter.Distribute.Resource.String.appcenter_distribute_install_ready_message = global::LagoVista.Droid.Simulator.Resource.String.appcenter_distribute_install_ready_message;
 			global::Microsoft.AppCenter.Distribute.Resource.String.appcenter_distribute_install_ready_title = global::LagoVista.Droid.Simulator.Resource.String.appcenter_distribute_install_ready_title;
@@ -331,6 +332,7 @@ namespace LagoVista.Droid.Simulator
 			global::Xamarin.Forms.Platform.Android.Resource.Attribute.barLength = global::LagoVista.Droid.Simulator.Resource.Attribute.barLength;
 			global::Xamarin.Forms.Platform.Android.Resource.Attribute.behavior_autoHide = global::LagoVista.Droid.Simulator.Resource.Attribute.behavior_autoHide;
 			global::Xamarin.Forms.Platform.Android.Resource.Attribute.behavior_autoShrink = global::LagoVista.Droid.Simulator.Resource.Attribute.behavior_autoShrink;
+			global::Xamarin.Forms.Platform.Android.Resource.Attribute.behavior_draggable = global::LagoVista.Droid.Simulator.Resource.Attribute.behavior_draggable;
 			global::Xamarin.Forms.Platform.Android.Resource.Attribute.behavior_expandedOffset = global::LagoVista.Droid.Simulator.Resource.Attribute.behavior_expandedOffset;
 			global::Xamarin.Forms.Platform.Android.Resource.Attribute.behavior_fitToContents = global::LagoVista.Droid.Simulator.Resource.Attribute.behavior_fitToContents;
 			global::Xamarin.Forms.Platform.Android.Resource.Attribute.behavior_halfExpandedRatio = global::LagoVista.Droid.Simulator.Resource.Attribute.behavior_halfExpandedRatio;
@@ -353,6 +355,7 @@ namespace LagoVista.Droid.Simulator
 			global::Xamarin.Forms.Platform.Android.Resource.Attribute.boxCornerRadiusTopEnd = global::LagoVista.Droid.Simulator.Resource.Attribute.boxCornerRadiusTopEnd;
 			global::Xamarin.Forms.Platform.Android.Resource.Attribute.boxCornerRadiusTopStart = global::LagoVista.Droid.Simulator.Resource.Attribute.boxCornerRadiusTopStart;
 			global::Xamarin.Forms.Platform.Android.Resource.Attribute.boxStrokeColor = global::LagoVista.Droid.Simulator.Resource.Attribute.boxStrokeColor;
+			global::Xamarin.Forms.Platform.Android.Resource.Attribute.boxStrokeErrorColor = global::LagoVista.Droid.Simulator.Resource.Attribute.boxStrokeErrorColor;
 			global::Xamarin.Forms.Platform.Android.Resource.Attribute.boxStrokeWidth = global::LagoVista.Droid.Simulator.Resource.Attribute.boxStrokeWidth;
 			global::Xamarin.Forms.Platform.Android.Resource.Attribute.boxStrokeWidthFocused = global::LagoVista.Droid.Simulator.Resource.Attribute.boxStrokeWidthFocused;
 			global::Xamarin.Forms.Platform.Android.Resource.Attribute.buttonBarButtonStyle = global::LagoVista.Droid.Simulator.Resource.Attribute.buttonBarButtonStyle;
@@ -514,6 +517,7 @@ namespace LagoVista.Droid.Simulator
 			global::Xamarin.Forms.Platform.Android.Resource.Attribute.enforceMaterialTheme = global::LagoVista.Droid.Simulator.Resource.Attribute.enforceMaterialTheme;
 			global::Xamarin.Forms.Platform.Android.Resource.Attribute.enforceTextAppearance = global::LagoVista.Droid.Simulator.Resource.Attribute.enforceTextAppearance;
 			global::Xamarin.Forms.Platform.Android.Resource.Attribute.ensureMinTouchTargetSize = global::LagoVista.Droid.Simulator.Resource.Attribute.ensureMinTouchTargetSize;
+			global::Xamarin.Forms.Platform.Android.Resource.Attribute.errorContentDescription = global::LagoVista.Droid.Simulator.Resource.Attribute.errorContentDescription;
 			global::Xamarin.Forms.Platform.Android.Resource.Attribute.errorEnabled = global::LagoVista.Droid.Simulator.Resource.Attribute.errorEnabled;
 			global::Xamarin.Forms.Platform.Android.Resource.Attribute.errorIconDrawable = global::LagoVista.Droid.Simulator.Resource.Attribute.errorIconDrawable;
 			global::Xamarin.Forms.Platform.Android.Resource.Attribute.errorIconTint = global::LagoVista.Droid.Simulator.Resource.Attribute.errorIconTint;
@@ -558,7 +562,10 @@ namespace LagoVista.Droid.Simulator
 			global::Xamarin.Forms.Platform.Android.Resource.Attribute.fontWeight = global::LagoVista.Droid.Simulator.Resource.Attribute.fontWeight;
 			global::Xamarin.Forms.Platform.Android.Resource.Attribute.foregroundInsidePadding = global::LagoVista.Droid.Simulator.Resource.Attribute.foregroundInsidePadding;
 			global::Xamarin.Forms.Platform.Android.Resource.Attribute.gapBetweenBars = global::LagoVista.Droid.Simulator.Resource.Attribute.gapBetweenBars;
+			global::Xamarin.Forms.Platform.Android.Resource.Attribute.gestureInsetBottomIgnored = global::LagoVista.Droid.Simulator.Resource.Attribute.gestureInsetBottomIgnored;
 			global::Xamarin.Forms.Platform.Android.Resource.Attribute.goIcon = global::LagoVista.Droid.Simulator.Resource.Attribute.goIcon;
+			global::Xamarin.Forms.Platform.Android.Resource.Attribute.haloColor = global::LagoVista.Droid.Simulator.Resource.Attribute.haloColor;
+			global::Xamarin.Forms.Platform.Android.Resource.Attribute.haloRadius = global::LagoVista.Droid.Simulator.Resource.Attribute.haloRadius;
 			global::Xamarin.Forms.Platform.Android.Resource.Attribute.headerLayout = global::LagoVista.Droid.Simulator.Resource.Attribute.headerLayout;
 			global::Xamarin.Forms.Platform.Android.Resource.Attribute.height = global::LagoVista.Droid.Simulator.Resource.Attribute.height;
 			global::Xamarin.Forms.Platform.Android.Resource.Attribute.helperText = global::LagoVista.Droid.Simulator.Resource.Attribute.helperText;
@@ -574,6 +581,7 @@ namespace LagoVista.Droid.Simulator
 			global::Xamarin.Forms.Platform.Android.Resource.Attribute.hintTextColor = global::LagoVista.Droid.Simulator.Resource.Attribute.hintTextColor;
 			global::Xamarin.Forms.Platform.Android.Resource.Attribute.homeAsUpIndicator = global::LagoVista.Droid.Simulator.Resource.Attribute.homeAsUpIndicator;
 			global::Xamarin.Forms.Platform.Android.Resource.Attribute.homeLayout = global::LagoVista.Droid.Simulator.Resource.Attribute.homeLayout;
+			global::Xamarin.Forms.Platform.Android.Resource.Attribute.horizontalOffset = global::LagoVista.Droid.Simulator.Resource.Attribute.horizontalOffset;
 			global::Xamarin.Forms.Platform.Android.Resource.Attribute.hoveredFocusedTranslationZ = global::LagoVista.Droid.Simulator.Resource.Attribute.hoveredFocusedTranslationZ;
 			global::Xamarin.Forms.Platform.Android.Resource.Attribute.icon = global::LagoVista.Droid.Simulator.Resource.Attribute.icon;
 			global::Xamarin.Forms.Platform.Android.Resource.Attribute.iconEndPadding = global::LagoVista.Droid.Simulator.Resource.Attribute.iconEndPadding;
@@ -615,6 +623,8 @@ namespace LagoVista.Droid.Simulator
 			global::Xamarin.Forms.Platform.Android.Resource.Attribute.itemTextAppearanceInactive = global::LagoVista.Droid.Simulator.Resource.Attribute.itemTextAppearanceInactive;
 			global::Xamarin.Forms.Platform.Android.Resource.Attribute.itemTextColor = global::LagoVista.Droid.Simulator.Resource.Attribute.itemTextColor;
 			global::Xamarin.Forms.Platform.Android.Resource.Attribute.keylines = global::LagoVista.Droid.Simulator.Resource.Attribute.keylines;
+			global::Xamarin.Forms.Platform.Android.Resource.Attribute.labelBehavior = global::LagoVista.Droid.Simulator.Resource.Attribute.labelBehavior;
+			global::Xamarin.Forms.Platform.Android.Resource.Attribute.labelStyle = global::LagoVista.Droid.Simulator.Resource.Attribute.labelStyle;
 			global::Xamarin.Forms.Platform.Android.Resource.Attribute.labelVisibilityMode = global::LagoVista.Droid.Simulator.Resource.Attribute.labelVisibilityMode;
 			global::Xamarin.Forms.Platform.Android.Resource.Attribute.lastBaselineToBottomHeight = global::LagoVista.Droid.Simulator.Resource.Attribute.lastBaselineToBottomHeight;
 			global::Xamarin.Forms.Platform.Android.Resource.Attribute.layout = global::LagoVista.Droid.Simulator.Resource.Attribute.layout;
@@ -674,6 +684,7 @@ namespace LagoVista.Droid.Simulator
 			global::Xamarin.Forms.Platform.Android.Resource.Attribute.maxButtonHeight = global::LagoVista.Droid.Simulator.Resource.Attribute.maxButtonHeight;
 			global::Xamarin.Forms.Platform.Android.Resource.Attribute.maxCharacterCount = global::LagoVista.Droid.Simulator.Resource.Attribute.maxCharacterCount;
 			global::Xamarin.Forms.Platform.Android.Resource.Attribute.maxImageSize = global::LagoVista.Droid.Simulator.Resource.Attribute.maxImageSize;
+			global::Xamarin.Forms.Platform.Android.Resource.Attribute.maxLines = global::LagoVista.Droid.Simulator.Resource.Attribute.maxLines;
 			global::Xamarin.Forms.Platform.Android.Resource.Attribute.measureWithLargestChild = global::LagoVista.Droid.Simulator.Resource.Attribute.measureWithLargestChild;
 			global::Xamarin.Forms.Platform.Android.Resource.Attribute.menu = global::LagoVista.Droid.Simulator.Resource.Attribute.menu;
 			global::Xamarin.Forms.Platform.Android.Resource.Attribute.minTouchTargetSize = global::LagoVista.Droid.Simulator.Resource.Attribute.minTouchTargetSize;
@@ -686,7 +697,10 @@ namespace LagoVista.Droid.Simulator
 			global::Xamarin.Forms.Platform.Android.Resource.Attribute.numericModifiers = global::LagoVista.Droid.Simulator.Resource.Attribute.numericModifiers;
 			global::Xamarin.Forms.Platform.Android.Resource.Attribute.overlapAnchor = global::LagoVista.Droid.Simulator.Resource.Attribute.overlapAnchor;
 			global::Xamarin.Forms.Platform.Android.Resource.Attribute.paddingBottomNoButtons = global::LagoVista.Droid.Simulator.Resource.Attribute.paddingBottomNoButtons;
+			global::Xamarin.Forms.Platform.Android.Resource.Attribute.paddingBottomSystemWindowInsets = global::LagoVista.Droid.Simulator.Resource.Attribute.paddingBottomSystemWindowInsets;
 			global::Xamarin.Forms.Platform.Android.Resource.Attribute.paddingEnd = global::LagoVista.Droid.Simulator.Resource.Attribute.paddingEnd;
+			global::Xamarin.Forms.Platform.Android.Resource.Attribute.paddingLeftSystemWindowInsets = global::LagoVista.Droid.Simulator.Resource.Attribute.paddingLeftSystemWindowInsets;
+			global::Xamarin.Forms.Platform.Android.Resource.Attribute.paddingRightSystemWindowInsets = global::LagoVista.Droid.Simulator.Resource.Attribute.paddingRightSystemWindowInsets;
 			global::Xamarin.Forms.Platform.Android.Resource.Attribute.paddingStart = global::LagoVista.Droid.Simulator.Resource.Attribute.paddingStart;
 			global::Xamarin.Forms.Platform.Android.Resource.Attribute.paddingTopNoTitle = global::LagoVista.Droid.Simulator.Resource.Attribute.paddingTopNoTitle;
 			global::Xamarin.Forms.Platform.Android.Resource.Attribute.panelBackground = global::LagoVista.Droid.Simulator.Resource.Attribute.panelBackground;
@@ -697,10 +711,16 @@ namespace LagoVista.Droid.Simulator
 			global::Xamarin.Forms.Platform.Android.Resource.Attribute.passwordToggleEnabled = global::LagoVista.Droid.Simulator.Resource.Attribute.passwordToggleEnabled;
 			global::Xamarin.Forms.Platform.Android.Resource.Attribute.passwordToggleTint = global::LagoVista.Droid.Simulator.Resource.Attribute.passwordToggleTint;
 			global::Xamarin.Forms.Platform.Android.Resource.Attribute.passwordToggleTintMode = global::LagoVista.Droid.Simulator.Resource.Attribute.passwordToggleTintMode;
+			global::Xamarin.Forms.Platform.Android.Resource.Attribute.placeholderText = global::LagoVista.Droid.Simulator.Resource.Attribute.placeholderText;
+			global::Xamarin.Forms.Platform.Android.Resource.Attribute.placeholderTextAppearance = global::LagoVista.Droid.Simulator.Resource.Attribute.placeholderTextAppearance;
+			global::Xamarin.Forms.Platform.Android.Resource.Attribute.placeholderTextColor = global::LagoVista.Droid.Simulator.Resource.Attribute.placeholderTextColor;
 			global::Xamarin.Forms.Platform.Android.Resource.Attribute.popupMenuBackground = global::LagoVista.Droid.Simulator.Resource.Attribute.popupMenuBackground;
 			global::Xamarin.Forms.Platform.Android.Resource.Attribute.popupMenuStyle = global::LagoVista.Droid.Simulator.Resource.Attribute.popupMenuStyle;
 			global::Xamarin.Forms.Platform.Android.Resource.Attribute.popupTheme = global::LagoVista.Droid.Simulator.Resource.Attribute.popupTheme;
 			global::Xamarin.Forms.Platform.Android.Resource.Attribute.popupWindowStyle = global::LagoVista.Droid.Simulator.Resource.Attribute.popupWindowStyle;
+			global::Xamarin.Forms.Platform.Android.Resource.Attribute.prefixText = global::LagoVista.Droid.Simulator.Resource.Attribute.prefixText;
+			global::Xamarin.Forms.Platform.Android.Resource.Attribute.prefixTextAppearance = global::LagoVista.Droid.Simulator.Resource.Attribute.prefixTextAppearance;
+			global::Xamarin.Forms.Platform.Android.Resource.Attribute.prefixTextColor = global::LagoVista.Droid.Simulator.Resource.Attribute.prefixTextColor;
 			global::Xamarin.Forms.Platform.Android.Resource.Attribute.preserveIconSpacing = global::LagoVista.Droid.Simulator.Resource.Attribute.preserveIconSpacing;
 			global::Xamarin.Forms.Platform.Android.Resource.Attribute.pressedTranslationZ = global::LagoVista.Droid.Simulator.Resource.Attribute.pressedTranslationZ;
 			global::Xamarin.Forms.Platform.Android.Resource.Attribute.progressBarPadding = global::LagoVista.Droid.Simulator.Resource.Attribute.progressBarPadding;
@@ -725,6 +745,7 @@ namespace LagoVista.Droid.Simulator
 			global::Xamarin.Forms.Platform.Android.Resource.Attribute.seekBarStyle = global::LagoVista.Droid.Simulator.Resource.Attribute.seekBarStyle;
 			global::Xamarin.Forms.Platform.Android.Resource.Attribute.selectableItemBackground = global::LagoVista.Droid.Simulator.Resource.Attribute.selectableItemBackground;
 			global::Xamarin.Forms.Platform.Android.Resource.Attribute.selectableItemBackgroundBorderless = global::LagoVista.Droid.Simulator.Resource.Attribute.selectableItemBackgroundBorderless;
+			global::Xamarin.Forms.Platform.Android.Resource.Attribute.selectionRequired = global::LagoVista.Droid.Simulator.Resource.Attribute.selectionRequired;
 			global::Xamarin.Forms.Platform.Android.Resource.Attribute.shapeAppearance = global::LagoVista.Droid.Simulator.Resource.Attribute.shapeAppearance;
 			global::Xamarin.Forms.Platform.Android.Resource.Attribute.shapeAppearanceLargeComponent = global::LagoVista.Droid.Simulator.Resource.Attribute.shapeAppearanceLargeComponent;
 			global::Xamarin.Forms.Platform.Android.Resource.Attribute.shapeAppearanceMediumComponent = global::LagoVista.Droid.Simulator.Resource.Attribute.shapeAppearanceMediumComponent;
@@ -739,8 +760,10 @@ namespace LagoVista.Droid.Simulator
 			global::Xamarin.Forms.Platform.Android.Resource.Attribute.singleChoiceItemLayout = global::LagoVista.Droid.Simulator.Resource.Attribute.singleChoiceItemLayout;
 			global::Xamarin.Forms.Platform.Android.Resource.Attribute.singleLine = global::LagoVista.Droid.Simulator.Resource.Attribute.singleLine;
 			global::Xamarin.Forms.Platform.Android.Resource.Attribute.singleSelection = global::LagoVista.Droid.Simulator.Resource.Attribute.singleSelection;
+			global::Xamarin.Forms.Platform.Android.Resource.Attribute.sliderStyle = global::LagoVista.Droid.Simulator.Resource.Attribute.sliderStyle;
 			global::Xamarin.Forms.Platform.Android.Resource.Attribute.snackbarButtonStyle = global::LagoVista.Droid.Simulator.Resource.Attribute.snackbarButtonStyle;
 			global::Xamarin.Forms.Platform.Android.Resource.Attribute.snackbarStyle = global::LagoVista.Droid.Simulator.Resource.Attribute.snackbarStyle;
+			global::Xamarin.Forms.Platform.Android.Resource.Attribute.snackbarTextViewStyle = global::LagoVista.Droid.Simulator.Resource.Attribute.snackbarTextViewStyle;
 			global::Xamarin.Forms.Platform.Android.Resource.Attribute.spanCount = global::LagoVista.Droid.Simulator.Resource.Attribute.spanCount;
 			global::Xamarin.Forms.Platform.Android.Resource.Attribute.spinBars = global::LagoVista.Droid.Simulator.Resource.Attribute.spinBars;
 			global::Xamarin.Forms.Platform.Android.Resource.Attribute.spinnerDropDownItemStyle = global::LagoVista.Droid.Simulator.Resource.Attribute.spinnerDropDownItemStyle;
@@ -770,6 +793,9 @@ namespace LagoVista.Droid.Simulator
 			global::Xamarin.Forms.Platform.Android.Resource.Attribute.subtitleTextAppearance = global::LagoVista.Droid.Simulator.Resource.Attribute.subtitleTextAppearance;
 			global::Xamarin.Forms.Platform.Android.Resource.Attribute.subtitleTextColor = global::LagoVista.Droid.Simulator.Resource.Attribute.subtitleTextColor;
 			global::Xamarin.Forms.Platform.Android.Resource.Attribute.subtitleTextStyle = global::LagoVista.Droid.Simulator.Resource.Attribute.subtitleTextStyle;
+			global::Xamarin.Forms.Platform.Android.Resource.Attribute.suffixText = global::LagoVista.Droid.Simulator.Resource.Attribute.suffixText;
+			global::Xamarin.Forms.Platform.Android.Resource.Attribute.suffixTextAppearance = global::LagoVista.Droid.Simulator.Resource.Attribute.suffixTextAppearance;
+			global::Xamarin.Forms.Platform.Android.Resource.Attribute.suffixTextColor = global::LagoVista.Droid.Simulator.Resource.Attribute.suffixTextColor;
 			global::Xamarin.Forms.Platform.Android.Resource.Attribute.suggestionRowLayout = global::LagoVista.Droid.Simulator.Resource.Attribute.suggestionRowLayout;
 			global::Xamarin.Forms.Platform.Android.Resource.Attribute.switchMinWidth = global::LagoVista.Droid.Simulator.Resource.Attribute.switchMinWidth;
 			global::Xamarin.Forms.Platform.Android.Resource.Attribute.switchPadding = global::LagoVista.Droid.Simulator.Resource.Attribute.switchPadding;
@@ -827,15 +853,22 @@ namespace LagoVista.Droid.Simulator
 			global::Xamarin.Forms.Platform.Android.Resource.Attribute.textColorAlertDialogListItem = global::LagoVista.Droid.Simulator.Resource.Attribute.textColorAlertDialogListItem;
 			global::Xamarin.Forms.Platform.Android.Resource.Attribute.textColorSearchUrl = global::LagoVista.Droid.Simulator.Resource.Attribute.textColorSearchUrl;
 			global::Xamarin.Forms.Platform.Android.Resource.Attribute.textEndPadding = global::LagoVista.Droid.Simulator.Resource.Attribute.textEndPadding;
+			global::Xamarin.Forms.Platform.Android.Resource.Attribute.textInputLayoutFocusedRectEnabled = global::LagoVista.Droid.Simulator.Resource.Attribute.textInputLayoutFocusedRectEnabled;
 			global::Xamarin.Forms.Platform.Android.Resource.Attribute.textInputStyle = global::LagoVista.Droid.Simulator.Resource.Attribute.textInputStyle;
 			global::Xamarin.Forms.Platform.Android.Resource.Attribute.textLocale = global::LagoVista.Droid.Simulator.Resource.Attribute.textLocale;
 			global::Xamarin.Forms.Platform.Android.Resource.Attribute.textStartPadding = global::LagoVista.Droid.Simulator.Resource.Attribute.textStartPadding;
 			global::Xamarin.Forms.Platform.Android.Resource.Attribute.theme = global::LagoVista.Droid.Simulator.Resource.Attribute.theme;
 			global::Xamarin.Forms.Platform.Android.Resource.Attribute.themeLineHeight = global::LagoVista.Droid.Simulator.Resource.Attribute.themeLineHeight;
 			global::Xamarin.Forms.Platform.Android.Resource.Attribute.thickness = global::LagoVista.Droid.Simulator.Resource.Attribute.thickness;
+			global::Xamarin.Forms.Platform.Android.Resource.Attribute.thumbColor = global::LagoVista.Droid.Simulator.Resource.Attribute.thumbColor;
+			global::Xamarin.Forms.Platform.Android.Resource.Attribute.thumbElevation = global::LagoVista.Droid.Simulator.Resource.Attribute.thumbElevation;
+			global::Xamarin.Forms.Platform.Android.Resource.Attribute.thumbRadius = global::LagoVista.Droid.Simulator.Resource.Attribute.thumbRadius;
 			global::Xamarin.Forms.Platform.Android.Resource.Attribute.thumbTextPadding = global::LagoVista.Droid.Simulator.Resource.Attribute.thumbTextPadding;
 			global::Xamarin.Forms.Platform.Android.Resource.Attribute.thumbTint = global::LagoVista.Droid.Simulator.Resource.Attribute.thumbTint;
 			global::Xamarin.Forms.Platform.Android.Resource.Attribute.thumbTintMode = global::LagoVista.Droid.Simulator.Resource.Attribute.thumbTintMode;
+			global::Xamarin.Forms.Platform.Android.Resource.Attribute.tickColor = global::LagoVista.Droid.Simulator.Resource.Attribute.tickColor;
+			global::Xamarin.Forms.Platform.Android.Resource.Attribute.tickColorActive = global::LagoVista.Droid.Simulator.Resource.Attribute.tickColorActive;
+			global::Xamarin.Forms.Platform.Android.Resource.Attribute.tickColorInactive = global::LagoVista.Droid.Simulator.Resource.Attribute.tickColorInactive;
 			global::Xamarin.Forms.Platform.Android.Resource.Attribute.tickMark = global::LagoVista.Droid.Simulator.Resource.Attribute.tickMark;
 			global::Xamarin.Forms.Platform.Android.Resource.Attribute.tickMarkTint = global::LagoVista.Droid.Simulator.Resource.Attribute.tickMarkTint;
 			global::Xamarin.Forms.Platform.Android.Resource.Attribute.tickMarkTintMode = global::LagoVista.Droid.Simulator.Resource.Attribute.tickMarkTintMode;
@@ -857,13 +890,21 @@ namespace LagoVista.Droid.Simulator
 			global::Xamarin.Forms.Platform.Android.Resource.Attribute.toolbarStyle = global::LagoVista.Droid.Simulator.Resource.Attribute.toolbarStyle;
 			global::Xamarin.Forms.Platform.Android.Resource.Attribute.tooltipForegroundColor = global::LagoVista.Droid.Simulator.Resource.Attribute.tooltipForegroundColor;
 			global::Xamarin.Forms.Platform.Android.Resource.Attribute.tooltipFrameBackground = global::LagoVista.Droid.Simulator.Resource.Attribute.tooltipFrameBackground;
+			global::Xamarin.Forms.Platform.Android.Resource.Attribute.tooltipStyle = global::LagoVista.Droid.Simulator.Resource.Attribute.tooltipStyle;
 			global::Xamarin.Forms.Platform.Android.Resource.Attribute.tooltipText = global::LagoVista.Droid.Simulator.Resource.Attribute.tooltipText;
 			global::Xamarin.Forms.Platform.Android.Resource.Attribute.track = global::LagoVista.Droid.Simulator.Resource.Attribute.track;
+			global::Xamarin.Forms.Platform.Android.Resource.Attribute.trackColor = global::LagoVista.Droid.Simulator.Resource.Attribute.trackColor;
+			global::Xamarin.Forms.Platform.Android.Resource.Attribute.trackColorActive = global::LagoVista.Droid.Simulator.Resource.Attribute.trackColorActive;
+			global::Xamarin.Forms.Platform.Android.Resource.Attribute.trackColorInactive = global::LagoVista.Droid.Simulator.Resource.Attribute.trackColorInactive;
+			global::Xamarin.Forms.Platform.Android.Resource.Attribute.trackHeight = global::LagoVista.Droid.Simulator.Resource.Attribute.trackHeight;
 			global::Xamarin.Forms.Platform.Android.Resource.Attribute.trackTint = global::LagoVista.Droid.Simulator.Resource.Attribute.trackTint;
 			global::Xamarin.Forms.Platform.Android.Resource.Attribute.trackTintMode = global::LagoVista.Droid.Simulator.Resource.Attribute.trackTintMode;
+			global::Xamarin.Forms.Platform.Android.Resource.Attribute.transitionShapeAppearance = global::LagoVista.Droid.Simulator.Resource.Attribute.transitionShapeAppearance;
 			global::Xamarin.Forms.Platform.Android.Resource.Attribute.ttcIndex = global::LagoVista.Droid.Simulator.Resource.Attribute.ttcIndex;
 			global::Xamarin.Forms.Platform.Android.Resource.Attribute.useCompatPadding = global::LagoVista.Droid.Simulator.Resource.Attribute.useCompatPadding;
 			global::Xamarin.Forms.Platform.Android.Resource.Attribute.useMaterialThemeColors = global::LagoVista.Droid.Simulator.Resource.Attribute.useMaterialThemeColors;
+			global::Xamarin.Forms.Platform.Android.Resource.Attribute.values = global::LagoVista.Droid.Simulator.Resource.Attribute.values;
+			global::Xamarin.Forms.Platform.Android.Resource.Attribute.verticalOffset = global::LagoVista.Droid.Simulator.Resource.Attribute.verticalOffset;
 			global::Xamarin.Forms.Platform.Android.Resource.Attribute.viewInflaterClass = global::LagoVista.Droid.Simulator.Resource.Attribute.viewInflaterClass;
 			global::Xamarin.Forms.Platform.Android.Resource.Attribute.voiceIcon = global::LagoVista.Droid.Simulator.Resource.Attribute.voiceIcon;
 			global::Xamarin.Forms.Platform.Android.Resource.Attribute.windowActionBar = global::LagoVista.Droid.Simulator.Resource.Attribute.windowActionBar;
@@ -998,6 +1039,13 @@ namespace LagoVista.Droid.Simulator
 			global::Xamarin.Forms.Platform.Android.Resource.Color.material_on_surface_disabled = global::LagoVista.Droid.Simulator.Resource.Color.material_on_surface_disabled;
 			global::Xamarin.Forms.Platform.Android.Resource.Color.material_on_surface_emphasis_high_type = global::LagoVista.Droid.Simulator.Resource.Color.material_on_surface_emphasis_high_type;
 			global::Xamarin.Forms.Platform.Android.Resource.Color.material_on_surface_emphasis_medium = global::LagoVista.Droid.Simulator.Resource.Color.material_on_surface_emphasis_medium;
+			global::Xamarin.Forms.Platform.Android.Resource.Color.material_on_surface_stroke = global::LagoVista.Droid.Simulator.Resource.Color.material_on_surface_stroke;
+			global::Xamarin.Forms.Platform.Android.Resource.Color.material_slider_active_tick_marks_color = global::LagoVista.Droid.Simulator.Resource.Color.material_slider_active_tick_marks_color;
+			global::Xamarin.Forms.Platform.Android.Resource.Color.material_slider_active_track_color = global::LagoVista.Droid.Simulator.Resource.Color.material_slider_active_track_color;
+			global::Xamarin.Forms.Platform.Android.Resource.Color.material_slider_halo_color = global::LagoVista.Droid.Simulator.Resource.Color.material_slider_halo_color;
+			global::Xamarin.Forms.Platform.Android.Resource.Color.material_slider_inactive_tick_marks_color = global::LagoVista.Droid.Simulator.Resource.Color.material_slider_inactive_tick_marks_color;
+			global::Xamarin.Forms.Platform.Android.Resource.Color.material_slider_inactive_track_color = global::LagoVista.Droid.Simulator.Resource.Color.material_slider_inactive_track_color;
+			global::Xamarin.Forms.Platform.Android.Resource.Color.material_slider_thumb_color = global::LagoVista.Droid.Simulator.Resource.Color.material_slider_thumb_color;
 			global::Xamarin.Forms.Platform.Android.Resource.Color.mtrl_bottom_nav_colored_item_tint = global::LagoVista.Droid.Simulator.Resource.Color.mtrl_bottom_nav_colored_item_tint;
 			global::Xamarin.Forms.Platform.Android.Resource.Color.mtrl_bottom_nav_colored_ripple_color = global::LagoVista.Droid.Simulator.Resource.Color.mtrl_bottom_nav_colored_ripple_color;
 			global::Xamarin.Forms.Platform.Android.Resource.Color.mtrl_bottom_nav_item_tint = global::LagoVista.Droid.Simulator.Resource.Color.mtrl_bottom_nav_item_tint;
@@ -1023,6 +1071,8 @@ namespace LagoVista.Droid.Simulator
 			global::Xamarin.Forms.Platform.Android.Resource.Color.mtrl_choice_chip_ripple_color = global::LagoVista.Droid.Simulator.Resource.Color.mtrl_choice_chip_ripple_color;
 			global::Xamarin.Forms.Platform.Android.Resource.Color.mtrl_choice_chip_text_color = global::LagoVista.Droid.Simulator.Resource.Color.mtrl_choice_chip_text_color;
 			global::Xamarin.Forms.Platform.Android.Resource.Color.mtrl_error = global::LagoVista.Droid.Simulator.Resource.Color.mtrl_error;
+			global::Xamarin.Forms.Platform.Android.Resource.Color.mtrl_fab_bg_color_selector = global::LagoVista.Droid.Simulator.Resource.Color.mtrl_fab_bg_color_selector;
+			global::Xamarin.Forms.Platform.Android.Resource.Color.mtrl_fab_icon_text_color_selector = global::LagoVista.Droid.Simulator.Resource.Color.mtrl_fab_icon_text_color_selector;
 			global::Xamarin.Forms.Platform.Android.Resource.Color.mtrl_fab_ripple_color = global::LagoVista.Droid.Simulator.Resource.Color.mtrl_fab_ripple_color;
 			global::Xamarin.Forms.Platform.Android.Resource.Color.mtrl_filled_background_color = global::LagoVista.Droid.Simulator.Resource.Color.mtrl_filled_background_color;
 			global::Xamarin.Forms.Platform.Android.Resource.Color.mtrl_filled_icon_tint = global::LagoVista.Droid.Simulator.Resource.Color.mtrl_filled_icon_tint;
@@ -1058,6 +1108,7 @@ namespace LagoVista.Droid.Simulator
 			global::Xamarin.Forms.Platform.Android.Resource.Color.primary_text_default_material_light = global::LagoVista.Droid.Simulator.Resource.Color.primary_text_default_material_light;
 			global::Xamarin.Forms.Platform.Android.Resource.Color.primary_text_disabled_material_dark = global::LagoVista.Droid.Simulator.Resource.Color.primary_text_disabled_material_dark;
 			global::Xamarin.Forms.Platform.Android.Resource.Color.primary_text_disabled_material_light = global::LagoVista.Droid.Simulator.Resource.Color.primary_text_disabled_material_light;
+			global::Xamarin.Forms.Platform.Android.Resource.Color.radiobutton_themeable_attribute_color = global::LagoVista.Droid.Simulator.Resource.Color.radiobutton_themeable_attribute_color;
 			global::Xamarin.Forms.Platform.Android.Resource.Color.ripple_material_dark = global::LagoVista.Droid.Simulator.Resource.Color.ripple_material_dark;
 			global::Xamarin.Forms.Platform.Android.Resource.Color.ripple_material_light = global::LagoVista.Droid.Simulator.Resource.Color.ripple_material_light;
 			global::Xamarin.Forms.Platform.Android.Resource.Color.secondary_text_default_material_dark = global::LagoVista.Droid.Simulator.Resource.Color.secondary_text_default_material_dark;
@@ -1320,6 +1371,7 @@ namespace LagoVista.Droid.Simulator
 			global::Xamarin.Forms.Platform.Android.Resource.Dimension.mtrl_card_spacing = global::LagoVista.Droid.Simulator.Resource.Dimension.mtrl_card_spacing;
 			global::Xamarin.Forms.Platform.Android.Resource.Dimension.mtrl_chip_pressed_translation_z = global::LagoVista.Droid.Simulator.Resource.Dimension.mtrl_chip_pressed_translation_z;
 			global::Xamarin.Forms.Platform.Android.Resource.Dimension.mtrl_chip_text_size = global::LagoVista.Droid.Simulator.Resource.Dimension.mtrl_chip_text_size;
+			global::Xamarin.Forms.Platform.Android.Resource.Dimension.mtrl_edittext_rectangle_top_offset = global::LagoVista.Droid.Simulator.Resource.Dimension.mtrl_edittext_rectangle_top_offset;
 			global::Xamarin.Forms.Platform.Android.Resource.Dimension.mtrl_exposed_dropdown_menu_popup_elevation = global::LagoVista.Droid.Simulator.Resource.Dimension.mtrl_exposed_dropdown_menu_popup_elevation;
 			global::Xamarin.Forms.Platform.Android.Resource.Dimension.mtrl_exposed_dropdown_menu_popup_vertical_offset = global::LagoVista.Droid.Simulator.Resource.Dimension.mtrl_exposed_dropdown_menu_popup_vertical_offset;
 			global::Xamarin.Forms.Platform.Android.Resource.Dimension.mtrl_exposed_dropdown_menu_popup_vertical_padding = global::LagoVista.Droid.Simulator.Resource.Dimension.mtrl_exposed_dropdown_menu_popup_vertical_padding;
@@ -1363,6 +1415,16 @@ namespace LagoVista.Droid.Simulator
 			global::Xamarin.Forms.Platform.Android.Resource.Dimension.mtrl_shape_corner_size_large_component = global::LagoVista.Droid.Simulator.Resource.Dimension.mtrl_shape_corner_size_large_component;
 			global::Xamarin.Forms.Platform.Android.Resource.Dimension.mtrl_shape_corner_size_medium_component = global::LagoVista.Droid.Simulator.Resource.Dimension.mtrl_shape_corner_size_medium_component;
 			global::Xamarin.Forms.Platform.Android.Resource.Dimension.mtrl_shape_corner_size_small_component = global::LagoVista.Droid.Simulator.Resource.Dimension.mtrl_shape_corner_size_small_component;
+			global::Xamarin.Forms.Platform.Android.Resource.Dimension.mtrl_slider_halo_radius = global::LagoVista.Droid.Simulator.Resource.Dimension.mtrl_slider_halo_radius;
+			global::Xamarin.Forms.Platform.Android.Resource.Dimension.mtrl_slider_label_padding = global::LagoVista.Droid.Simulator.Resource.Dimension.mtrl_slider_label_padding;
+			global::Xamarin.Forms.Platform.Android.Resource.Dimension.mtrl_slider_label_radius = global::LagoVista.Droid.Simulator.Resource.Dimension.mtrl_slider_label_radius;
+			global::Xamarin.Forms.Platform.Android.Resource.Dimension.mtrl_slider_label_square_side = global::LagoVista.Droid.Simulator.Resource.Dimension.mtrl_slider_label_square_side;
+			global::Xamarin.Forms.Platform.Android.Resource.Dimension.mtrl_slider_thumb_elevation = global::LagoVista.Droid.Simulator.Resource.Dimension.mtrl_slider_thumb_elevation;
+			global::Xamarin.Forms.Platform.Android.Resource.Dimension.mtrl_slider_thumb_radius = global::LagoVista.Droid.Simulator.Resource.Dimension.mtrl_slider_thumb_radius;
+			global::Xamarin.Forms.Platform.Android.Resource.Dimension.mtrl_slider_track_height = global::LagoVista.Droid.Simulator.Resource.Dimension.mtrl_slider_track_height;
+			global::Xamarin.Forms.Platform.Android.Resource.Dimension.mtrl_slider_track_side_padding = global::LagoVista.Droid.Simulator.Resource.Dimension.mtrl_slider_track_side_padding;
+			global::Xamarin.Forms.Platform.Android.Resource.Dimension.mtrl_slider_track_top = global::LagoVista.Droid.Simulator.Resource.Dimension.mtrl_slider_track_top;
+			global::Xamarin.Forms.Platform.Android.Resource.Dimension.mtrl_slider_widget_height = global::LagoVista.Droid.Simulator.Resource.Dimension.mtrl_slider_widget_height;
 			global::Xamarin.Forms.Platform.Android.Resource.Dimension.mtrl_snackbar_action_text_color_alpha = global::LagoVista.Droid.Simulator.Resource.Dimension.mtrl_snackbar_action_text_color_alpha;
 			global::Xamarin.Forms.Platform.Android.Resource.Dimension.mtrl_snackbar_background_corner_radius = global::LagoVista.Droid.Simulator.Resource.Dimension.mtrl_snackbar_background_corner_radius;
 			global::Xamarin.Forms.Platform.Android.Resource.Dimension.mtrl_snackbar_background_overlay_color_alpha = global::LagoVista.Droid.Simulator.Resource.Dimension.mtrl_snackbar_background_overlay_color_alpha;
@@ -1373,10 +1435,17 @@ namespace LagoVista.Droid.Simulator
 			global::Xamarin.Forms.Platform.Android.Resource.Dimension.mtrl_textinput_box_label_cutout_padding = global::LagoVista.Droid.Simulator.Resource.Dimension.mtrl_textinput_box_label_cutout_padding;
 			global::Xamarin.Forms.Platform.Android.Resource.Dimension.mtrl_textinput_box_stroke_width_default = global::LagoVista.Droid.Simulator.Resource.Dimension.mtrl_textinput_box_stroke_width_default;
 			global::Xamarin.Forms.Platform.Android.Resource.Dimension.mtrl_textinput_box_stroke_width_focused = global::LagoVista.Droid.Simulator.Resource.Dimension.mtrl_textinput_box_stroke_width_focused;
+			global::Xamarin.Forms.Platform.Android.Resource.Dimension.mtrl_textinput_counter_margin_start = global::LagoVista.Droid.Simulator.Resource.Dimension.mtrl_textinput_counter_margin_start;
 			global::Xamarin.Forms.Platform.Android.Resource.Dimension.mtrl_textinput_end_icon_margin_start = global::LagoVista.Droid.Simulator.Resource.Dimension.mtrl_textinput_end_icon_margin_start;
 			global::Xamarin.Forms.Platform.Android.Resource.Dimension.mtrl_textinput_outline_box_expanded_padding = global::LagoVista.Droid.Simulator.Resource.Dimension.mtrl_textinput_outline_box_expanded_padding;
 			global::Xamarin.Forms.Platform.Android.Resource.Dimension.mtrl_textinput_start_icon_margin_end = global::LagoVista.Droid.Simulator.Resource.Dimension.mtrl_textinput_start_icon_margin_end;
 			global::Xamarin.Forms.Platform.Android.Resource.Dimension.mtrl_toolbar_default_height = global::LagoVista.Droid.Simulator.Resource.Dimension.mtrl_toolbar_default_height;
+			global::Xamarin.Forms.Platform.Android.Resource.Dimension.mtrl_tooltip_arrowSize = global::LagoVista.Droid.Simulator.Resource.Dimension.mtrl_tooltip_arrowSize;
+			global::Xamarin.Forms.Platform.Android.Resource.Dimension.mtrl_tooltip_cornerSize = global::LagoVista.Droid.Simulator.Resource.Dimension.mtrl_tooltip_cornerSize;
+			global::Xamarin.Forms.Platform.Android.Resource.Dimension.mtrl_tooltip_minHeight = global::LagoVista.Droid.Simulator.Resource.Dimension.mtrl_tooltip_minHeight;
+			global::Xamarin.Forms.Platform.Android.Resource.Dimension.mtrl_tooltip_minWidth = global::LagoVista.Droid.Simulator.Resource.Dimension.mtrl_tooltip_minWidth;
+			global::Xamarin.Forms.Platform.Android.Resource.Dimension.mtrl_tooltip_padding = global::LagoVista.Droid.Simulator.Resource.Dimension.mtrl_tooltip_padding;
+			global::Xamarin.Forms.Platform.Android.Resource.Dimension.mtrl_transition_shared_axis_slide_distance = global::LagoVista.Droid.Simulator.Resource.Dimension.mtrl_transition_shared_axis_slide_distance;
 			global::Xamarin.Forms.Platform.Android.Resource.Dimension.notification_action_icon_size = global::LagoVista.Droid.Simulator.Resource.Dimension.notification_action_icon_size;
 			global::Xamarin.Forms.Platform.Android.Resource.Dimension.notification_action_text_size = global::LagoVista.Droid.Simulator.Resource.Dimension.notification_action_text_size;
 			global::Xamarin.Forms.Platform.Android.Resource.Dimension.notification_big_circle_margin = global::LagoVista.Droid.Simulator.Resource.Dimension.notification_big_circle_margin;
@@ -1507,6 +1576,13 @@ namespace LagoVista.Droid.Simulator
 			global::Xamarin.Forms.Platform.Android.Resource.Drawable.ic_mtrl_chip_checked_black = global::LagoVista.Droid.Simulator.Resource.Drawable.ic_mtrl_chip_checked_black;
 			global::Xamarin.Forms.Platform.Android.Resource.Drawable.ic_mtrl_chip_checked_circle = global::LagoVista.Droid.Simulator.Resource.Drawable.ic_mtrl_chip_checked_circle;
 			global::Xamarin.Forms.Platform.Android.Resource.Drawable.ic_mtrl_chip_close_circle = global::LagoVista.Droid.Simulator.Resource.Drawable.ic_mtrl_chip_close_circle;
+			global::Xamarin.Forms.Platform.Android.Resource.Drawable.material_ic_calendar_black_24dp = global::LagoVista.Droid.Simulator.Resource.Drawable.material_ic_calendar_black_24dp;
+			global::Xamarin.Forms.Platform.Android.Resource.Drawable.material_ic_clear_black_24dp = global::LagoVista.Droid.Simulator.Resource.Drawable.material_ic_clear_black_24dp;
+			global::Xamarin.Forms.Platform.Android.Resource.Drawable.material_ic_edit_black_24dp = global::LagoVista.Droid.Simulator.Resource.Drawable.material_ic_edit_black_24dp;
+			global::Xamarin.Forms.Platform.Android.Resource.Drawable.material_ic_keyboard_arrow_left_black_24dp = global::LagoVista.Droid.Simulator.Resource.Drawable.material_ic_keyboard_arrow_left_black_24dp;
+			global::Xamarin.Forms.Platform.Android.Resource.Drawable.material_ic_keyboard_arrow_right_black_24dp = global::LagoVista.Droid.Simulator.Resource.Drawable.material_ic_keyboard_arrow_right_black_24dp;
+			global::Xamarin.Forms.Platform.Android.Resource.Drawable.material_ic_menu_arrow_down_black_24dp = global::LagoVista.Droid.Simulator.Resource.Drawable.material_ic_menu_arrow_down_black_24dp;
+			global::Xamarin.Forms.Platform.Android.Resource.Drawable.material_ic_menu_arrow_up_black_24dp = global::LagoVista.Droid.Simulator.Resource.Drawable.material_ic_menu_arrow_up_black_24dp;
 			global::Xamarin.Forms.Platform.Android.Resource.Drawable.mtrl_dialog_background = global::LagoVista.Droid.Simulator.Resource.Drawable.mtrl_dialog_background;
 			global::Xamarin.Forms.Platform.Android.Resource.Drawable.mtrl_dropdown_arrow = global::LagoVista.Droid.Simulator.Resource.Drawable.mtrl_dropdown_arrow;
 			global::Xamarin.Forms.Platform.Android.Resource.Drawable.mtrl_ic_arrow_drop_down = global::LagoVista.Droid.Simulator.Resource.Drawable.mtrl_ic_arrow_drop_down;
@@ -1608,6 +1684,9 @@ namespace LagoVista.Droid.Simulator
 			global::Xamarin.Forms.Platform.Android.Resource.Id.checkbox = global::LagoVista.Droid.Simulator.Resource.Id.checkbox;
 			global::Xamarin.Forms.Platform.Android.Resource.Id.@checked = global::LagoVista.Droid.Simulator.Resource.Id.@checked;
 			global::Xamarin.Forms.Platform.Android.Resource.Id.chip = global::LagoVista.Droid.Simulator.Resource.Id.chip;
+			global::Xamarin.Forms.Platform.Android.Resource.Id.chip1 = global::LagoVista.Droid.Simulator.Resource.Id.chip1;
+			global::Xamarin.Forms.Platform.Android.Resource.Id.chip2 = global::LagoVista.Droid.Simulator.Resource.Id.chip2;
+			global::Xamarin.Forms.Platform.Android.Resource.Id.chip3 = global::LagoVista.Droid.Simulator.Resource.Id.chip3;
 			global::Xamarin.Forms.Platform.Android.Resource.Id.chip_group = global::LagoVista.Droid.Simulator.Resource.Id.chip_group;
 			global::Xamarin.Forms.Platform.Android.Resource.Id.chronometer = global::LagoVista.Droid.Simulator.Resource.Id.chronometer;
 			global::Xamarin.Forms.Platform.Android.Resource.Id.clear_text = global::LagoVista.Droid.Simulator.Resource.Id.clear_text;
@@ -1649,12 +1728,14 @@ namespace LagoVista.Droid.Simulator
 			global::Xamarin.Forms.Platform.Android.Resource.Id.fill_vertical = global::LagoVista.Droid.Simulator.Resource.Id.fill_vertical;
 			global::Xamarin.Forms.Platform.Android.Resource.Id.fitToContents = global::LagoVista.Droid.Simulator.Resource.Id.fitToContents;
 			global::Xamarin.Forms.Platform.Android.Resource.Id.@fixed = global::LagoVista.Droid.Simulator.Resource.Id.@fixed;
+			global::Xamarin.Forms.Platform.Android.Resource.Id.floating = global::LagoVista.Droid.Simulator.Resource.Id.floating;
 			global::Xamarin.Forms.Platform.Android.Resource.Id.flyoutcontent_appbar = global::LagoVista.Droid.Simulator.Resource.Id.flyoutcontent_appbar;
 			global::Xamarin.Forms.Platform.Android.Resource.Id.forever = global::LagoVista.Droid.Simulator.Resource.Id.forever;
 			global::Xamarin.Forms.Platform.Android.Resource.Id.fragment_container_view_tag = global::LagoVista.Droid.Simulator.Resource.Id.fragment_container_view_tag;
 			global::Xamarin.Forms.Platform.Android.Resource.Id.FUNCTION = global::LagoVista.Droid.Simulator.Resource.Id.FUNCTION;
 			global::Xamarin.Forms.Platform.Android.Resource.Id.ghost_view = global::LagoVista.Droid.Simulator.Resource.Id.ghost_view;
 			global::Xamarin.Forms.Platform.Android.Resource.Id.ghost_view_holder = global::LagoVista.Droid.Simulator.Resource.Id.ghost_view_holder;
+			global::Xamarin.Forms.Platform.Android.Resource.Id.gone = global::LagoVista.Droid.Simulator.Resource.Id.gone;
 			global::Xamarin.Forms.Platform.Android.Resource.Id.group_divider = global::LagoVista.Droid.Simulator.Resource.Id.group_divider;
 			global::Xamarin.Forms.Platform.Android.Resource.Id.hideable = global::LagoVista.Droid.Simulator.Resource.Id.hideable;
 			global::Xamarin.Forms.Platform.Android.Resource.Id.home = global::LagoVista.Droid.Simulator.Resource.Id.home;
@@ -1701,6 +1782,7 @@ namespace LagoVista.Droid.Simulator
 			global::Xamarin.Forms.Platform.Android.Resource.Id.mtrl_card_checked_layer_id = global::LagoVista.Droid.Simulator.Resource.Id.mtrl_card_checked_layer_id;
 			global::Xamarin.Forms.Platform.Android.Resource.Id.mtrl_child_content_container = global::LagoVista.Droid.Simulator.Resource.Id.mtrl_child_content_container;
 			global::Xamarin.Forms.Platform.Android.Resource.Id.mtrl_internal_children_alpha_tag = global::LagoVista.Droid.Simulator.Resource.Id.mtrl_internal_children_alpha_tag;
+			global::Xamarin.Forms.Platform.Android.Resource.Id.mtrl_motion_snapshot_view = global::LagoVista.Droid.Simulator.Resource.Id.mtrl_motion_snapshot_view;
 			global::Xamarin.Forms.Platform.Android.Resource.Id.mtrl_picker_fullscreen = global::LagoVista.Droid.Simulator.Resource.Id.mtrl_picker_fullscreen;
 			global::Xamarin.Forms.Platform.Android.Resource.Id.mtrl_picker_header = global::LagoVista.Droid.Simulator.Resource.Id.mtrl_picker_header;
 			global::Xamarin.Forms.Platform.Android.Resource.Id.mtrl_picker_header_selection_text = global::LagoVista.Droid.Simulator.Resource.Id.mtrl_picker_header_selection_text;
@@ -1735,6 +1817,7 @@ namespace LagoVista.Droid.Simulator
 			global::Xamarin.Forms.Platform.Android.Resource.Id.right_icon = global::LagoVista.Droid.Simulator.Resource.Id.right_icon;
 			global::Xamarin.Forms.Platform.Android.Resource.Id.right_side = global::LagoVista.Droid.Simulator.Resource.Id.right_side;
 			global::Xamarin.Forms.Platform.Android.Resource.Id.rounded = global::LagoVista.Droid.Simulator.Resource.Id.rounded;
+			global::Xamarin.Forms.Platform.Android.Resource.Id.row_index_key = global::LagoVista.Droid.Simulator.Resource.Id.row_index_key;
 			global::Xamarin.Forms.Platform.Android.Resource.Id.save_non_transition_alpha = global::LagoVista.Droid.Simulator.Resource.Id.save_non_transition_alpha;
 			global::Xamarin.Forms.Platform.Android.Resource.Id.save_overlay_view = global::LagoVista.Droid.Simulator.Resource.Id.save_overlay_view;
 			global::Xamarin.Forms.Platform.Android.Resource.Id.scale = global::LagoVista.Droid.Simulator.Resource.Id.scale;
@@ -1793,12 +1876,17 @@ namespace LagoVista.Droid.Simulator
 			global::Xamarin.Forms.Platform.Android.Resource.Id.tag_unhandled_key_listeners = global::LagoVista.Droid.Simulator.Resource.Id.tag_unhandled_key_listeners;
 			global::Xamarin.Forms.Platform.Android.Resource.Id.test_checkbox_android_button_tint = global::LagoVista.Droid.Simulator.Resource.Id.test_checkbox_android_button_tint;
 			global::Xamarin.Forms.Platform.Android.Resource.Id.test_checkbox_app_button_tint = global::LagoVista.Droid.Simulator.Resource.Id.test_checkbox_app_button_tint;
+			global::Xamarin.Forms.Platform.Android.Resource.Id.test_radiobutton_android_button_tint = global::LagoVista.Droid.Simulator.Resource.Id.test_radiobutton_android_button_tint;
+			global::Xamarin.Forms.Platform.Android.Resource.Id.test_radiobutton_app_button_tint = global::LagoVista.Droid.Simulator.Resource.Id.test_radiobutton_app_button_tint;
 			global::Xamarin.Forms.Platform.Android.Resource.Id.text = global::LagoVista.Droid.Simulator.Resource.Id.text;
 			global::Xamarin.Forms.Platform.Android.Resource.Id.text2 = global::LagoVista.Droid.Simulator.Resource.Id.text2;
 			global::Xamarin.Forms.Platform.Android.Resource.Id.textEnd = global::LagoVista.Droid.Simulator.Resource.Id.textEnd;
 			global::Xamarin.Forms.Platform.Android.Resource.Id.textinput_counter = global::LagoVista.Droid.Simulator.Resource.Id.textinput_counter;
 			global::Xamarin.Forms.Platform.Android.Resource.Id.textinput_error = global::LagoVista.Droid.Simulator.Resource.Id.textinput_error;
 			global::Xamarin.Forms.Platform.Android.Resource.Id.textinput_helper_text = global::LagoVista.Droid.Simulator.Resource.Id.textinput_helper_text;
+			global::Xamarin.Forms.Platform.Android.Resource.Id.textinput_placeholder = global::LagoVista.Droid.Simulator.Resource.Id.textinput_placeholder;
+			global::Xamarin.Forms.Platform.Android.Resource.Id.textinput_prefix_text = global::LagoVista.Droid.Simulator.Resource.Id.textinput_prefix_text;
+			global::Xamarin.Forms.Platform.Android.Resource.Id.textinput_suffix_text = global::LagoVista.Droid.Simulator.Resource.Id.textinput_suffix_text;
 			global::Xamarin.Forms.Platform.Android.Resource.Id.textSpacerNoButtons = global::LagoVista.Droid.Simulator.Resource.Id.textSpacerNoButtons;
 			global::Xamarin.Forms.Platform.Android.Resource.Id.textSpacerNoTitle = global::LagoVista.Droid.Simulator.Resource.Id.textSpacerNoTitle;
 			global::Xamarin.Forms.Platform.Android.Resource.Id.textStart = global::LagoVista.Droid.Simulator.Resource.Id.textStart;
@@ -1828,8 +1916,10 @@ namespace LagoVista.Droid.Simulator
 			global::Xamarin.Forms.Platform.Android.Resource.Id.view_tree_saved_state_registry_owner = global::LagoVista.Droid.Simulator.Resource.Id.view_tree_saved_state_registry_owner;
 			global::Xamarin.Forms.Platform.Android.Resource.Id.visible = global::LagoVista.Droid.Simulator.Resource.Id.visible;
 			global::Xamarin.Forms.Platform.Android.Resource.Id.visible_removing_fragment_view_tag = global::LagoVista.Droid.Simulator.Resource.Id.visible_removing_fragment_view_tag;
+			global::Xamarin.Forms.Platform.Android.Resource.Id.withinBounds = global::LagoVista.Droid.Simulator.Resource.Id.withinBounds;
 			global::Xamarin.Forms.Platform.Android.Resource.Id.withText = global::LagoVista.Droid.Simulator.Resource.Id.withText;
 			global::Xamarin.Forms.Platform.Android.Resource.Id.wrap_content = global::LagoVista.Droid.Simulator.Resource.Id.wrap_content;
+			global::Xamarin.Forms.Platform.Android.Resource.Id.zero_corner_chip = global::LagoVista.Droid.Simulator.Resource.Id.zero_corner_chip;
 			global::Xamarin.Forms.Platform.Android.Resource.Integer.abc_config_activityDefaultDur = global::LagoVista.Droid.Simulator.Resource.Integer.abc_config_activityDefaultDur;
 			global::Xamarin.Forms.Platform.Android.Resource.Integer.abc_config_activityShortDur = global::LagoVista.Droid.Simulator.Resource.Integer.abc_config_activityShortDur;
 			global::Xamarin.Forms.Platform.Android.Resource.Integer.app_bar_elevation_anim_duration = global::LagoVista.Droid.Simulator.Resource.Integer.app_bar_elevation_anim_duration;
@@ -1961,7 +2051,9 @@ namespace LagoVista.Droid.Simulator
 			global::Xamarin.Forms.Platform.Android.Resource.Layout.support_simple_spinner_dropdown_item = global::LagoVista.Droid.Simulator.Resource.Layout.support_simple_spinner_dropdown_item;
 			global::Xamarin.Forms.Platform.Android.Resource.Layout.Tabbar = global::LagoVista.Droid.Simulator.Resource.Layout.Tabbar;
 			global::Xamarin.Forms.Platform.Android.Resource.Layout.test_action_chip = global::LagoVista.Droid.Simulator.Resource.Layout.test_action_chip;
+			global::Xamarin.Forms.Platform.Android.Resource.Layout.test_chip_zero_corner_radius = global::LagoVista.Droid.Simulator.Resource.Layout.test_chip_zero_corner_radius;
 			global::Xamarin.Forms.Platform.Android.Resource.Layout.test_design_checkbox = global::LagoVista.Droid.Simulator.Resource.Layout.test_design_checkbox;
+			global::Xamarin.Forms.Platform.Android.Resource.Layout.test_design_radiobutton = global::LagoVista.Droid.Simulator.Resource.Layout.test_design_radiobutton;
 			global::Xamarin.Forms.Platform.Android.Resource.Layout.test_reflow_chipgroup = global::LagoVista.Droid.Simulator.Resource.Layout.test_reflow_chipgroup;
 			global::Xamarin.Forms.Platform.Android.Resource.Layout.test_toolbar = global::LagoVista.Droid.Simulator.Resource.Layout.test_toolbar;
 			global::Xamarin.Forms.Platform.Android.Resource.Layout.test_toolbar_custom_background = global::LagoVista.Droid.Simulator.Resource.Layout.test_toolbar_custom_background;
@@ -2014,8 +2106,12 @@ namespace LagoVista.Droid.Simulator
 			global::Xamarin.Forms.Platform.Android.Resource.String.fab_transformation_sheet_behavior = global::LagoVista.Droid.Simulator.Resource.String.fab_transformation_sheet_behavior;
 			global::Xamarin.Forms.Platform.Android.Resource.String.hide_bottom_view_on_scroll_behavior = global::LagoVista.Droid.Simulator.Resource.String.hide_bottom_view_on_scroll_behavior;
 			global::Xamarin.Forms.Platform.Android.Resource.String.icon_content_description = global::LagoVista.Droid.Simulator.Resource.String.icon_content_description;
+			global::Xamarin.Forms.Platform.Android.Resource.String.item_view_role_description = global::LagoVista.Droid.Simulator.Resource.String.item_view_role_description;
+			global::Xamarin.Forms.Platform.Android.Resource.String.material_slider_range_end = global::LagoVista.Droid.Simulator.Resource.String.material_slider_range_end;
+			global::Xamarin.Forms.Platform.Android.Resource.String.material_slider_range_start = global::LagoVista.Droid.Simulator.Resource.String.material_slider_range_start;
 			global::Xamarin.Forms.Platform.Android.Resource.String.mtrl_badge_numberless_content_description = global::LagoVista.Droid.Simulator.Resource.String.mtrl_badge_numberless_content_description;
 			global::Xamarin.Forms.Platform.Android.Resource.String.mtrl_chip_close_icon_content_description = global::LagoVista.Droid.Simulator.Resource.String.mtrl_chip_close_icon_content_description;
+			global::Xamarin.Forms.Platform.Android.Resource.String.mtrl_exceed_max_badge_number_content_description = global::LagoVista.Droid.Simulator.Resource.String.mtrl_exceed_max_badge_number_content_description;
 			global::Xamarin.Forms.Platform.Android.Resource.String.mtrl_exceed_max_badge_number_suffix = global::LagoVista.Droid.Simulator.Resource.String.mtrl_exceed_max_badge_number_suffix;
 			global::Xamarin.Forms.Platform.Android.Resource.String.mtrl_picker_a11y_next_month = global::LagoVista.Droid.Simulator.Resource.String.mtrl_picker_a11y_next_month;
 			global::Xamarin.Forms.Platform.Android.Resource.String.mtrl_picker_a11y_prev_month = global::LagoVista.Droid.Simulator.Resource.String.mtrl_picker_a11y_prev_month;
@@ -2058,6 +2154,7 @@ namespace LagoVista.Droid.Simulator
 			global::Xamarin.Forms.Platform.Android.Resource.String.status_bar_notification_info_overflow = global::LagoVista.Droid.Simulator.Resource.String.status_bar_notification_info_overflow;
 			global::Xamarin.Forms.Platform.Android.Resource.Style.AlertDialog_AppCompat = global::LagoVista.Droid.Simulator.Resource.Style.AlertDialog_AppCompat;
 			global::Xamarin.Forms.Platform.Android.Resource.Style.AlertDialog_AppCompat_Light = global::LagoVista.Droid.Simulator.Resource.Style.AlertDialog_AppCompat_Light;
+			global::Xamarin.Forms.Platform.Android.Resource.Style.AndroidThemeColorAccentYellow = global::LagoVista.Droid.Simulator.Resource.Style.AndroidThemeColorAccentYellow;
 			global::Xamarin.Forms.Platform.Android.Resource.Style.Animation_AppCompat_Dialog = global::LagoVista.Droid.Simulator.Resource.Style.Animation_AppCompat_Dialog;
 			global::Xamarin.Forms.Platform.Android.Resource.Style.Animation_AppCompat_DropDownUp = global::LagoVista.Droid.Simulator.Resource.Style.Animation_AppCompat_DropDownUp;
 			global::Xamarin.Forms.Platform.Android.Resource.Style.Animation_AppCompat_Tooltip = global::LagoVista.Droid.Simulator.Resource.Style.Animation_AppCompat_Tooltip;
@@ -2136,6 +2233,8 @@ namespace LagoVista.Droid.Simulator
 			global::Xamarin.Forms.Platform.Android.Resource.Style.Base_ThemeOverlay_AppCompat_Light = global::LagoVista.Droid.Simulator.Resource.Style.Base_ThemeOverlay_AppCompat_Light;
 			global::Xamarin.Forms.Platform.Android.Resource.Style.Base_ThemeOverlay_MaterialComponents_Dialog = global::LagoVista.Droid.Simulator.Resource.Style.Base_ThemeOverlay_MaterialComponents_Dialog;
 			global::Xamarin.Forms.Platform.Android.Resource.Style.Base_ThemeOverlay_MaterialComponents_Dialog_Alert = global::LagoVista.Droid.Simulator.Resource.Style.Base_ThemeOverlay_MaterialComponents_Dialog_Alert;
+			global::Xamarin.Forms.Platform.Android.Resource.Style.Base_ThemeOverlay_MaterialComponents_Dialog_Alert_Framework = global::LagoVista.Droid.Simulator.Resource.Style.Base_ThemeOverlay_MaterialComponents_Dialog_Alert_Framework;
+			global::Xamarin.Forms.Platform.Android.Resource.Style.Base_ThemeOverlay_MaterialComponents_Light_Dialog_Alert_Framework = global::LagoVista.Droid.Simulator.Resource.Style.Base_ThemeOverlay_MaterialComponents_Light_Dialog_Alert_Framework;
 			global::Xamarin.Forms.Platform.Android.Resource.Style.Base_ThemeOverlay_MaterialComponents_MaterialAlertDialog = global::LagoVista.Droid.Simulator.Resource.Style.Base_ThemeOverlay_MaterialComponents_MaterialAlertDialog;
 			global::Xamarin.Forms.Platform.Android.Resource.Style.Base_Theme_AppCompat = global::LagoVista.Droid.Simulator.Resource.Style.Base_Theme_AppCompat;
 			global::Xamarin.Forms.Platform.Android.Resource.Style.Base_Theme_AppCompat_CompactMenu = global::LagoVista.Droid.Simulator.Resource.Style.Base_Theme_AppCompat_CompactMenu;
@@ -2187,6 +2286,10 @@ namespace LagoVista.Droid.Simulator
 			global::Xamarin.Forms.Platform.Android.Resource.Style.Base_V21_Theme_AppCompat_Dialog = global::LagoVista.Droid.Simulator.Resource.Style.Base_V21_Theme_AppCompat_Dialog;
 			global::Xamarin.Forms.Platform.Android.Resource.Style.Base_V21_Theme_AppCompat_Light = global::LagoVista.Droid.Simulator.Resource.Style.Base_V21_Theme_AppCompat_Light;
 			global::Xamarin.Forms.Platform.Android.Resource.Style.Base_V21_Theme_AppCompat_Light_Dialog = global::LagoVista.Droid.Simulator.Resource.Style.Base_V21_Theme_AppCompat_Light_Dialog;
+			global::Xamarin.Forms.Platform.Android.Resource.Style.Base_V21_Theme_MaterialComponents = global::LagoVista.Droid.Simulator.Resource.Style.Base_V21_Theme_MaterialComponents;
+			global::Xamarin.Forms.Platform.Android.Resource.Style.Base_V21_Theme_MaterialComponents_Dialog = global::LagoVista.Droid.Simulator.Resource.Style.Base_V21_Theme_MaterialComponents_Dialog;
+			global::Xamarin.Forms.Platform.Android.Resource.Style.Base_V21_Theme_MaterialComponents_Light = global::LagoVista.Droid.Simulator.Resource.Style.Base_V21_Theme_MaterialComponents_Light;
+			global::Xamarin.Forms.Platform.Android.Resource.Style.Base_V21_Theme_MaterialComponents_Light_Dialog = global::LagoVista.Droid.Simulator.Resource.Style.Base_V21_Theme_MaterialComponents_Light_Dialog;
 			global::Xamarin.Forms.Platform.Android.Resource.Style.Base_V22_Theme_AppCompat = global::LagoVista.Droid.Simulator.Resource.Style.Base_V22_Theme_AppCompat;
 			global::Xamarin.Forms.Platform.Android.Resource.Style.Base_V22_Theme_AppCompat_Light = global::LagoVista.Droid.Simulator.Resource.Style.Base_V22_Theme_AppCompat_Light;
 			global::Xamarin.Forms.Platform.Android.Resource.Style.Base_V23_Theme_AppCompat = global::LagoVista.Droid.Simulator.Resource.Style.Base_V23_Theme_AppCompat;
@@ -2270,6 +2373,7 @@ namespace LagoVista.Droid.Simulator
 			global::Xamarin.Forms.Platform.Android.Resource.Style.Base_Widget_MaterialComponents_PopupMenu_ContextMenu = global::LagoVista.Droid.Simulator.Resource.Style.Base_Widget_MaterialComponents_PopupMenu_ContextMenu;
 			global::Xamarin.Forms.Platform.Android.Resource.Style.Base_Widget_MaterialComponents_PopupMenu_ListPopupWindow = global::LagoVista.Droid.Simulator.Resource.Style.Base_Widget_MaterialComponents_PopupMenu_ListPopupWindow;
 			global::Xamarin.Forms.Platform.Android.Resource.Style.Base_Widget_MaterialComponents_PopupMenu_Overflow = global::LagoVista.Droid.Simulator.Resource.Style.Base_Widget_MaterialComponents_PopupMenu_Overflow;
+			global::Xamarin.Forms.Platform.Android.Resource.Style.Base_Widget_MaterialComponents_Slider = global::LagoVista.Droid.Simulator.Resource.Style.Base_Widget_MaterialComponents_Slider;
 			global::Xamarin.Forms.Platform.Android.Resource.Style.Base_Widget_MaterialComponents_TextInputEditText = global::LagoVista.Droid.Simulator.Resource.Style.Base_Widget_MaterialComponents_TextInputEditText;
 			global::Xamarin.Forms.Platform.Android.Resource.Style.Base_Widget_MaterialComponents_TextInputLayout = global::LagoVista.Droid.Simulator.Resource.Style.Base_Widget_MaterialComponents_TextInputLayout;
 			global::Xamarin.Forms.Platform.Android.Resource.Style.Base_Widget_MaterialComponents_TextView = global::LagoVista.Droid.Simulator.Resource.Style.Base_Widget_MaterialComponents_TextView;
@@ -2343,6 +2447,7 @@ namespace LagoVista.Droid.Simulator
 			global::Xamarin.Forms.Platform.Android.Resource.Style.ShapeAppearance_MaterialComponents_MediumComponent = global::LagoVista.Droid.Simulator.Resource.Style.ShapeAppearance_MaterialComponents_MediumComponent;
 			global::Xamarin.Forms.Platform.Android.Resource.Style.ShapeAppearance_MaterialComponents_SmallComponent = global::LagoVista.Droid.Simulator.Resource.Style.ShapeAppearance_MaterialComponents_SmallComponent;
 			global::Xamarin.Forms.Platform.Android.Resource.Style.ShapeAppearance_MaterialComponents_Test = global::LagoVista.Droid.Simulator.Resource.Style.ShapeAppearance_MaterialComponents_Test;
+			global::Xamarin.Forms.Platform.Android.Resource.Style.ShapeAppearance_MaterialComponents_Tooltip = global::LagoVista.Droid.Simulator.Resource.Style.ShapeAppearance_MaterialComponents_Tooltip;
 			global::Xamarin.Forms.Platform.Android.Resource.Style.TestStyleWithLineHeight = global::LagoVista.Droid.Simulator.Resource.Style.TestStyleWithLineHeight;
 			global::Xamarin.Forms.Platform.Android.Resource.Style.TestStyleWithLineHeightAppearance = global::LagoVista.Droid.Simulator.Resource.Style.TestStyleWithLineHeightAppearance;
 			global::Xamarin.Forms.Platform.Android.Resource.Style.TestStyleWithoutLineHeight = global::LagoVista.Droid.Simulator.Resource.Style.TestStyleWithoutLineHeight;
@@ -2418,7 +2523,10 @@ namespace LagoVista.Droid.Simulator
 			global::Xamarin.Forms.Platform.Android.Resource.Style.TextAppearance_Design_Error = global::LagoVista.Droid.Simulator.Resource.Style.TextAppearance_Design_Error;
 			global::Xamarin.Forms.Platform.Android.Resource.Style.TextAppearance_Design_HelperText = global::LagoVista.Droid.Simulator.Resource.Style.TextAppearance_Design_HelperText;
 			global::Xamarin.Forms.Platform.Android.Resource.Style.TextAppearance_Design_Hint = global::LagoVista.Droid.Simulator.Resource.Style.TextAppearance_Design_Hint;
+			global::Xamarin.Forms.Platform.Android.Resource.Style.TextAppearance_Design_Placeholder = global::LagoVista.Droid.Simulator.Resource.Style.TextAppearance_Design_Placeholder;
+			global::Xamarin.Forms.Platform.Android.Resource.Style.TextAppearance_Design_Prefix = global::LagoVista.Droid.Simulator.Resource.Style.TextAppearance_Design_Prefix;
 			global::Xamarin.Forms.Platform.Android.Resource.Style.TextAppearance_Design_Snackbar_Message = global::LagoVista.Droid.Simulator.Resource.Style.TextAppearance_Design_Snackbar_Message;
+			global::Xamarin.Forms.Platform.Android.Resource.Style.TextAppearance_Design_Suffix = global::LagoVista.Droid.Simulator.Resource.Style.TextAppearance_Design_Suffix;
 			global::Xamarin.Forms.Platform.Android.Resource.Style.TextAppearance_Design_Tab = global::LagoVista.Droid.Simulator.Resource.Style.TextAppearance_Design_Tab;
 			global::Xamarin.Forms.Platform.Android.Resource.Style.TextAppearance_MaterialComponents_Badge = global::LagoVista.Droid.Simulator.Resource.Style.TextAppearance_MaterialComponents_Badge;
 			global::Xamarin.Forms.Platform.Android.Resource.Style.TextAppearance_MaterialComponents_Body1 = global::LagoVista.Droid.Simulator.Resource.Style.TextAppearance_MaterialComponents_Body1;
@@ -2435,9 +2543,11 @@ namespace LagoVista.Droid.Simulator
 			global::Xamarin.Forms.Platform.Android.Resource.Style.TextAppearance_MaterialComponents_Overline = global::LagoVista.Droid.Simulator.Resource.Style.TextAppearance_MaterialComponents_Overline;
 			global::Xamarin.Forms.Platform.Android.Resource.Style.TextAppearance_MaterialComponents_Subtitle1 = global::LagoVista.Droid.Simulator.Resource.Style.TextAppearance_MaterialComponents_Subtitle1;
 			global::Xamarin.Forms.Platform.Android.Resource.Style.TextAppearance_MaterialComponents_Subtitle2 = global::LagoVista.Droid.Simulator.Resource.Style.TextAppearance_MaterialComponents_Subtitle2;
+			global::Xamarin.Forms.Platform.Android.Resource.Style.TextAppearance_MaterialComponents_Tooltip = global::LagoVista.Droid.Simulator.Resource.Style.TextAppearance_MaterialComponents_Tooltip;
 			global::Xamarin.Forms.Platform.Android.Resource.Style.TextAppearance_Widget_AppCompat_ExpandedMenu_Item = global::LagoVista.Droid.Simulator.Resource.Style.TextAppearance_Widget_AppCompat_ExpandedMenu_Item;
 			global::Xamarin.Forms.Platform.Android.Resource.Style.TextAppearance_Widget_AppCompat_Toolbar_Subtitle = global::LagoVista.Droid.Simulator.Resource.Style.TextAppearance_Widget_AppCompat_Toolbar_Subtitle;
 			global::Xamarin.Forms.Platform.Android.Resource.Style.TextAppearance_Widget_AppCompat_Toolbar_Title = global::LagoVista.Droid.Simulator.Resource.Style.TextAppearance_Widget_AppCompat_Toolbar_Title;
+			global::Xamarin.Forms.Platform.Android.Resource.Style.ThemeOverlayColorAccentRed = global::LagoVista.Droid.Simulator.Resource.Style.ThemeOverlayColorAccentRed;
 			global::Xamarin.Forms.Platform.Android.Resource.Style.ThemeOverlay_AppCompat = global::LagoVista.Droid.Simulator.Resource.Style.ThemeOverlay_AppCompat;
 			global::Xamarin.Forms.Platform.Android.Resource.Style.ThemeOverlay_AppCompat_ActionBar = global::LagoVista.Droid.Simulator.Resource.Style.ThemeOverlay_AppCompat_ActionBar;
 			global::Xamarin.Forms.Platform.Android.Resource.Style.ThemeOverlay_AppCompat_Dark = global::LagoVista.Droid.Simulator.Resource.Style.ThemeOverlay_AppCompat_Dark;
@@ -2465,8 +2575,10 @@ namespace LagoVista.Droid.Simulator
 			global::Xamarin.Forms.Platform.Android.Resource.Style.ThemeOverlay_MaterialComponents_DayNight_BottomSheetDialog = global::LagoVista.Droid.Simulator.Resource.Style.ThemeOverlay_MaterialComponents_DayNight_BottomSheetDialog;
 			global::Xamarin.Forms.Platform.Android.Resource.Style.ThemeOverlay_MaterialComponents_Dialog = global::LagoVista.Droid.Simulator.Resource.Style.ThemeOverlay_MaterialComponents_Dialog;
 			global::Xamarin.Forms.Platform.Android.Resource.Style.ThemeOverlay_MaterialComponents_Dialog_Alert = global::LagoVista.Droid.Simulator.Resource.Style.ThemeOverlay_MaterialComponents_Dialog_Alert;
+			global::Xamarin.Forms.Platform.Android.Resource.Style.ThemeOverlay_MaterialComponents_Dialog_Alert_Framework = global::LagoVista.Droid.Simulator.Resource.Style.ThemeOverlay_MaterialComponents_Dialog_Alert_Framework;
 			global::Xamarin.Forms.Platform.Android.Resource.Style.ThemeOverlay_MaterialComponents_Light = global::LagoVista.Droid.Simulator.Resource.Style.ThemeOverlay_MaterialComponents_Light;
 			global::Xamarin.Forms.Platform.Android.Resource.Style.ThemeOverlay_MaterialComponents_Light_BottomSheetDialog = global::LagoVista.Droid.Simulator.Resource.Style.ThemeOverlay_MaterialComponents_Light_BottomSheetDialog;
+			global::Xamarin.Forms.Platform.Android.Resource.Style.ThemeOverlay_MaterialComponents_Light_Dialog_Alert_Framework = global::LagoVista.Droid.Simulator.Resource.Style.ThemeOverlay_MaterialComponents_Light_Dialog_Alert_Framework;
 			global::Xamarin.Forms.Platform.Android.Resource.Style.ThemeOverlay_MaterialComponents_MaterialAlertDialog = global::LagoVista.Droid.Simulator.Resource.Style.ThemeOverlay_MaterialComponents_MaterialAlertDialog;
 			global::Xamarin.Forms.Platform.Android.Resource.Style.ThemeOverlay_MaterialComponents_MaterialAlertDialog_Centered = global::LagoVista.Droid.Simulator.Resource.Style.ThemeOverlay_MaterialComponents_MaterialAlertDialog_Centered;
 			global::Xamarin.Forms.Platform.Android.Resource.Style.ThemeOverlay_MaterialComponents_MaterialAlertDialog_Picker_Date = global::LagoVista.Droid.Simulator.Resource.Style.ThemeOverlay_MaterialComponents_MaterialAlertDialog_Picker_Date;
@@ -2644,6 +2756,7 @@ namespace LagoVista.Droid.Simulator
 			global::Xamarin.Forms.Platform.Android.Resource.Style.Widget_Design_ScrimInsetsFrameLayout = global::LagoVista.Droid.Simulator.Resource.Style.Widget_Design_ScrimInsetsFrameLayout;
 			global::Xamarin.Forms.Platform.Android.Resource.Style.Widget_Design_Snackbar = global::LagoVista.Droid.Simulator.Resource.Style.Widget_Design_Snackbar;
 			global::Xamarin.Forms.Platform.Android.Resource.Style.Widget_Design_TabLayout = global::LagoVista.Droid.Simulator.Resource.Style.Widget_Design_TabLayout;
+			global::Xamarin.Forms.Platform.Android.Resource.Style.Widget_Design_TextInputEditText = global::LagoVista.Droid.Simulator.Resource.Style.Widget_Design_TextInputEditText;
 			global::Xamarin.Forms.Platform.Android.Resource.Style.Widget_Design_TextInputLayout = global::LagoVista.Droid.Simulator.Resource.Style.Widget_Design_TextInputLayout;
 			global::Xamarin.Forms.Platform.Android.Resource.Style.Widget_MaterialComponents_ActionBar_Primary = global::LagoVista.Droid.Simulator.Resource.Style.Widget_MaterialComponents_ActionBar_Primary;
 			global::Xamarin.Forms.Platform.Android.Resource.Style.Widget_MaterialComponents_ActionBar_PrimarySurface = global::LagoVista.Droid.Simulator.Resource.Style.Widget_MaterialComponents_ActionBar_PrimarySurface;
@@ -2715,8 +2828,11 @@ namespace LagoVista.Droid.Simulator
 			global::Xamarin.Forms.Platform.Android.Resource.Style.Widget_MaterialComponents_PopupMenu_ContextMenu = global::LagoVista.Droid.Simulator.Resource.Style.Widget_MaterialComponents_PopupMenu_ContextMenu;
 			global::Xamarin.Forms.Platform.Android.Resource.Style.Widget_MaterialComponents_PopupMenu_ListPopupWindow = global::LagoVista.Droid.Simulator.Resource.Style.Widget_MaterialComponents_PopupMenu_ListPopupWindow;
 			global::Xamarin.Forms.Platform.Android.Resource.Style.Widget_MaterialComponents_PopupMenu_Overflow = global::LagoVista.Droid.Simulator.Resource.Style.Widget_MaterialComponents_PopupMenu_Overflow;
+			global::Xamarin.Forms.Platform.Android.Resource.Style.Widget_MaterialComponents_ShapeableImageView = global::LagoVista.Droid.Simulator.Resource.Style.Widget_MaterialComponents_ShapeableImageView;
+			global::Xamarin.Forms.Platform.Android.Resource.Style.Widget_MaterialComponents_Slider = global::LagoVista.Droid.Simulator.Resource.Style.Widget_MaterialComponents_Slider;
 			global::Xamarin.Forms.Platform.Android.Resource.Style.Widget_MaterialComponents_Snackbar = global::LagoVista.Droid.Simulator.Resource.Style.Widget_MaterialComponents_Snackbar;
 			global::Xamarin.Forms.Platform.Android.Resource.Style.Widget_MaterialComponents_Snackbar_FullWidth = global::LagoVista.Droid.Simulator.Resource.Style.Widget_MaterialComponents_Snackbar_FullWidth;
+			global::Xamarin.Forms.Platform.Android.Resource.Style.Widget_MaterialComponents_Snackbar_TextView = global::LagoVista.Droid.Simulator.Resource.Style.Widget_MaterialComponents_Snackbar_TextView;
 			global::Xamarin.Forms.Platform.Android.Resource.Style.Widget_MaterialComponents_TabLayout = global::LagoVista.Droid.Simulator.Resource.Style.Widget_MaterialComponents_TabLayout;
 			global::Xamarin.Forms.Platform.Android.Resource.Style.Widget_MaterialComponents_TabLayout_Colored = global::LagoVista.Droid.Simulator.Resource.Style.Widget_MaterialComponents_TabLayout_Colored;
 			global::Xamarin.Forms.Platform.Android.Resource.Style.Widget_MaterialComponents_TabLayout_PrimarySurface = global::LagoVista.Droid.Simulator.Resource.Style.Widget_MaterialComponents_TabLayout_PrimarySurface;
@@ -2737,6 +2853,7 @@ namespace LagoVista.Droid.Simulator
 			global::Xamarin.Forms.Platform.Android.Resource.Style.Widget_MaterialComponents_Toolbar_Primary = global::LagoVista.Droid.Simulator.Resource.Style.Widget_MaterialComponents_Toolbar_Primary;
 			global::Xamarin.Forms.Platform.Android.Resource.Style.Widget_MaterialComponents_Toolbar_PrimarySurface = global::LagoVista.Droid.Simulator.Resource.Style.Widget_MaterialComponents_Toolbar_PrimarySurface;
 			global::Xamarin.Forms.Platform.Android.Resource.Style.Widget_MaterialComponents_Toolbar_Surface = global::LagoVista.Droid.Simulator.Resource.Style.Widget_MaterialComponents_Toolbar_Surface;
+			global::Xamarin.Forms.Platform.Android.Resource.Style.Widget_MaterialComponents_Tooltip = global::LagoVista.Droid.Simulator.Resource.Style.Widget_MaterialComponents_Tooltip;
 			global::Xamarin.Forms.Platform.Android.Resource.Style.Widget_Support_CoordinatorLayout = global::LagoVista.Droid.Simulator.Resource.Style.Widget_Support_CoordinatorLayout;
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.ActionBar = global::LagoVista.Droid.Simulator.Resource.Styleable.ActionBar;
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.ActionBarLayout = global::LagoVista.Droid.Simulator.Resource.Styleable.ActionBarLayout;
@@ -2994,8 +3111,10 @@ namespace LagoVista.Droid.Simulator
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.Badge_backgroundColor = global::LagoVista.Droid.Simulator.Resource.Styleable.Badge_backgroundColor;
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.Badge_badgeGravity = global::LagoVista.Droid.Simulator.Resource.Styleable.Badge_badgeGravity;
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.Badge_badgeTextColor = global::LagoVista.Droid.Simulator.Resource.Styleable.Badge_badgeTextColor;
+			global::Xamarin.Forms.Platform.Android.Resource.Styleable.Badge_horizontalOffset = global::LagoVista.Droid.Simulator.Resource.Styleable.Badge_horizontalOffset;
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.Badge_maxCharacterCount = global::LagoVista.Droid.Simulator.Resource.Styleable.Badge_maxCharacterCount;
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.Badge_number = global::LagoVista.Droid.Simulator.Resource.Styleable.Badge_number;
+			global::Xamarin.Forms.Platform.Android.Resource.Styleable.Badge_verticalOffset = global::LagoVista.Droid.Simulator.Resource.Styleable.Badge_verticalOffset;
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.BottomAppBar = global::LagoVista.Droid.Simulator.Resource.Styleable.BottomAppBar;
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.BottomAppBar_backgroundTint = global::LagoVista.Droid.Simulator.Resource.Styleable.BottomAppBar_backgroundTint;
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.BottomAppBar_elevation = global::LagoVista.Droid.Simulator.Resource.Styleable.BottomAppBar_elevation;
@@ -3005,6 +3124,9 @@ namespace LagoVista.Droid.Simulator
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.BottomAppBar_fabCradleRoundedCornerRadius = global::LagoVista.Droid.Simulator.Resource.Styleable.BottomAppBar_fabCradleRoundedCornerRadius;
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.BottomAppBar_fabCradleVerticalOffset = global::LagoVista.Droid.Simulator.Resource.Styleable.BottomAppBar_fabCradleVerticalOffset;
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.BottomAppBar_hideOnScroll = global::LagoVista.Droid.Simulator.Resource.Styleable.BottomAppBar_hideOnScroll;
+			global::Xamarin.Forms.Platform.Android.Resource.Styleable.BottomAppBar_paddingBottomSystemWindowInsets = global::LagoVista.Droid.Simulator.Resource.Styleable.BottomAppBar_paddingBottomSystemWindowInsets;
+			global::Xamarin.Forms.Platform.Android.Resource.Styleable.BottomAppBar_paddingLeftSystemWindowInsets = global::LagoVista.Droid.Simulator.Resource.Styleable.BottomAppBar_paddingLeftSystemWindowInsets;
+			global::Xamarin.Forms.Platform.Android.Resource.Styleable.BottomAppBar_paddingRightSystemWindowInsets = global::LagoVista.Droid.Simulator.Resource.Styleable.BottomAppBar_paddingRightSystemWindowInsets;
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.BottomNavigationView = global::LagoVista.Droid.Simulator.Resource.Styleable.BottomNavigationView;
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.BottomNavigationView_backgroundTint = global::LagoVista.Droid.Simulator.Resource.Styleable.BottomNavigationView_backgroundTint;
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.BottomNavigationView_elevation = global::LagoVista.Droid.Simulator.Resource.Styleable.BottomNavigationView_elevation;
@@ -3021,6 +3143,7 @@ namespace LagoVista.Droid.Simulator
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.BottomSheetBehavior_Layout = global::LagoVista.Droid.Simulator.Resource.Styleable.BottomSheetBehavior_Layout;
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.BottomSheetBehavior_Layout_android_elevation = global::LagoVista.Droid.Simulator.Resource.Styleable.BottomSheetBehavior_Layout_android_elevation;
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.BottomSheetBehavior_Layout_backgroundTint = global::LagoVista.Droid.Simulator.Resource.Styleable.BottomSheetBehavior_Layout_backgroundTint;
+			global::Xamarin.Forms.Platform.Android.Resource.Styleable.BottomSheetBehavior_Layout_behavior_draggable = global::LagoVista.Droid.Simulator.Resource.Styleable.BottomSheetBehavior_Layout_behavior_draggable;
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.BottomSheetBehavior_Layout_behavior_expandedOffset = global::LagoVista.Droid.Simulator.Resource.Styleable.BottomSheetBehavior_Layout_behavior_expandedOffset;
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.BottomSheetBehavior_Layout_behavior_fitToContents = global::LagoVista.Droid.Simulator.Resource.Styleable.BottomSheetBehavior_Layout_behavior_fitToContents;
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.BottomSheetBehavior_Layout_behavior_halfExpandedRatio = global::LagoVista.Droid.Simulator.Resource.Styleable.BottomSheetBehavior_Layout_behavior_halfExpandedRatio;
@@ -3028,6 +3151,7 @@ namespace LagoVista.Droid.Simulator
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.BottomSheetBehavior_Layout_behavior_peekHeight = global::LagoVista.Droid.Simulator.Resource.Styleable.BottomSheetBehavior_Layout_behavior_peekHeight;
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.BottomSheetBehavior_Layout_behavior_saveFlags = global::LagoVista.Droid.Simulator.Resource.Styleable.BottomSheetBehavior_Layout_behavior_saveFlags;
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.BottomSheetBehavior_Layout_behavior_skipCollapsed = global::LagoVista.Droid.Simulator.Resource.Styleable.BottomSheetBehavior_Layout_behavior_skipCollapsed;
+			global::Xamarin.Forms.Platform.Android.Resource.Styleable.BottomSheetBehavior_Layout_gestureInsetBottomIgnored = global::LagoVista.Droid.Simulator.Resource.Styleable.BottomSheetBehavior_Layout_gestureInsetBottomIgnored;
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.BottomSheetBehavior_Layout_shapeAppearance = global::LagoVista.Droid.Simulator.Resource.Styleable.BottomSheetBehavior_Layout_shapeAppearance;
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.BottomSheetBehavior_Layout_shapeAppearanceOverlay = global::LagoVista.Droid.Simulator.Resource.Styleable.BottomSheetBehavior_Layout_shapeAppearanceOverlay;
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.ButtonBarLayout = global::LagoVista.Droid.Simulator.Resource.Styleable.ButtonBarLayout;
@@ -3052,6 +3176,7 @@ namespace LagoVista.Droid.Simulator
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.ChipGroup_chipSpacing = global::LagoVista.Droid.Simulator.Resource.Styleable.ChipGroup_chipSpacing;
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.ChipGroup_chipSpacingHorizontal = global::LagoVista.Droid.Simulator.Resource.Styleable.ChipGroup_chipSpacingHorizontal;
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.ChipGroup_chipSpacingVertical = global::LagoVista.Droid.Simulator.Resource.Styleable.ChipGroup_chipSpacingVertical;
+			global::Xamarin.Forms.Platform.Android.Resource.Styleable.ChipGroup_selectionRequired = global::LagoVista.Droid.Simulator.Resource.Styleable.ChipGroup_selectionRequired;
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.ChipGroup_singleLine = global::LagoVista.Droid.Simulator.Resource.Styleable.ChipGroup_singleLine;
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.ChipGroup_singleSelection = global::LagoVista.Droid.Simulator.Resource.Styleable.ChipGroup_singleSelection;
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.Chip_android_checkable = global::LagoVista.Droid.Simulator.Resource.Styleable.Chip_android_checkable;
@@ -3062,6 +3187,7 @@ namespace LagoVista.Droid.Simulator
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.Chip_android_textColor = global::LagoVista.Droid.Simulator.Resource.Styleable.Chip_android_textColor;
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.Chip_checkedIcon = global::LagoVista.Droid.Simulator.Resource.Styleable.Chip_checkedIcon;
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.Chip_checkedIconEnabled = global::LagoVista.Droid.Simulator.Resource.Styleable.Chip_checkedIconEnabled;
+			global::Xamarin.Forms.Platform.Android.Resource.Styleable.Chip_checkedIconTint = global::LagoVista.Droid.Simulator.Resource.Styleable.Chip_checkedIconTint;
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.Chip_checkedIconVisible = global::LagoVista.Droid.Simulator.Resource.Styleable.Chip_checkedIconVisible;
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.Chip_chipBackgroundColor = global::LagoVista.Droid.Simulator.Resource.Styleable.Chip_chipBackgroundColor;
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.Chip_chipCornerRadius = global::LagoVista.Droid.Simulator.Resource.Styleable.Chip_chipCornerRadius;
@@ -3108,6 +3234,7 @@ namespace LagoVista.Droid.Simulator
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.CollapsingToolbarLayout_Layout = global::LagoVista.Droid.Simulator.Resource.Styleable.CollapsingToolbarLayout_Layout;
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.CollapsingToolbarLayout_Layout_layout_collapseMode = global::LagoVista.Droid.Simulator.Resource.Styleable.CollapsingToolbarLayout_Layout_layout_collapseMode;
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.CollapsingToolbarLayout_Layout_layout_collapseParallaxMultiplier = global::LagoVista.Droid.Simulator.Resource.Styleable.CollapsingToolbarLayout_Layout_layout_collapseParallaxMultiplier;
+			global::Xamarin.Forms.Platform.Android.Resource.Styleable.CollapsingToolbarLayout_maxLines = global::LagoVista.Droid.Simulator.Resource.Styleable.CollapsingToolbarLayout_maxLines;
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.CollapsingToolbarLayout_scrimAnimationDuration = global::LagoVista.Droid.Simulator.Resource.Styleable.CollapsingToolbarLayout_scrimAnimationDuration;
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.CollapsingToolbarLayout_scrimVisibleHeightTrigger = global::LagoVista.Droid.Simulator.Resource.Styleable.CollapsingToolbarLayout_scrimVisibleHeightTrigger;
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.CollapsingToolbarLayout_statusBarScrim = global::LagoVista.Droid.Simulator.Resource.Styleable.CollapsingToolbarLayout_statusBarScrim;
@@ -3155,6 +3282,7 @@ namespace LagoVista.Droid.Simulator
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.ExtendedFloatingActionButton_showMotionSpec = global::LagoVista.Droid.Simulator.Resource.Styleable.ExtendedFloatingActionButton_showMotionSpec;
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.ExtendedFloatingActionButton_shrinkMotionSpec = global::LagoVista.Droid.Simulator.Resource.Styleable.ExtendedFloatingActionButton_shrinkMotionSpec;
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.FloatingActionButton = global::LagoVista.Droid.Simulator.Resource.Styleable.FloatingActionButton;
+			global::Xamarin.Forms.Platform.Android.Resource.Styleable.FloatingActionButton_android_enabled = global::LagoVista.Droid.Simulator.Resource.Styleable.FloatingActionButton_android_enabled;
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.FloatingActionButton_backgroundTint = global::LagoVista.Droid.Simulator.Resource.Styleable.FloatingActionButton_backgroundTint;
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.FloatingActionButton_backgroundTintMode = global::LagoVista.Droid.Simulator.Resource.Styleable.FloatingActionButton_backgroundTintMode;
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.FloatingActionButton_Behavior_Layout = global::LagoVista.Droid.Simulator.Resource.Styleable.FloatingActionButton_Behavior_Layout;
@@ -3221,6 +3349,10 @@ namespace LagoVista.Droid.Simulator
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.GradientColor_android_startY = global::LagoVista.Droid.Simulator.Resource.Styleable.GradientColor_android_startY;
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.GradientColor_android_tileMode = global::LagoVista.Droid.Simulator.Resource.Styleable.GradientColor_android_tileMode;
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.GradientColor_android_type = global::LagoVista.Droid.Simulator.Resource.Styleable.GradientColor_android_type;
+			global::Xamarin.Forms.Platform.Android.Resource.Styleable.Insets = global::LagoVista.Droid.Simulator.Resource.Styleable.Insets;
+			global::Xamarin.Forms.Platform.Android.Resource.Styleable.Insets_paddingBottomSystemWindowInsets = global::LagoVista.Droid.Simulator.Resource.Styleable.Insets_paddingBottomSystemWindowInsets;
+			global::Xamarin.Forms.Platform.Android.Resource.Styleable.Insets_paddingLeftSystemWindowInsets = global::LagoVista.Droid.Simulator.Resource.Styleable.Insets_paddingLeftSystemWindowInsets;
+			global::Xamarin.Forms.Platform.Android.Resource.Styleable.Insets_paddingRightSystemWindowInsets = global::LagoVista.Droid.Simulator.Resource.Styleable.Insets_paddingRightSystemWindowInsets;
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.ItemsViewRendererTheme = global::LagoVista.Droid.Simulator.Resource.Styleable.ItemsViewRendererTheme;
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.ItemsViewRendererTheme_collectionViewStyle = global::LagoVista.Droid.Simulator.Resource.Styleable.ItemsViewRendererTheme_collectionViewStyle;
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.LinearLayoutCompat = global::LagoVista.Droid.Simulator.Resource.Styleable.LinearLayoutCompat;
@@ -3252,10 +3384,14 @@ namespace LagoVista.Droid.Simulator
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.MaterialAlertDialog_backgroundInsetEnd = global::LagoVista.Droid.Simulator.Resource.Styleable.MaterialAlertDialog_backgroundInsetEnd;
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.MaterialAlertDialog_backgroundInsetStart = global::LagoVista.Droid.Simulator.Resource.Styleable.MaterialAlertDialog_backgroundInsetStart;
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.MaterialAlertDialog_backgroundInsetTop = global::LagoVista.Droid.Simulator.Resource.Styleable.MaterialAlertDialog_backgroundInsetTop;
+			global::Xamarin.Forms.Platform.Android.Resource.Styleable.MaterialAutoCompleteTextView = global::LagoVista.Droid.Simulator.Resource.Styleable.MaterialAutoCompleteTextView;
+			global::Xamarin.Forms.Platform.Android.Resource.Styleable.MaterialAutoCompleteTextView_android_inputType = global::LagoVista.Droid.Simulator.Resource.Styleable.MaterialAutoCompleteTextView_android_inputType;
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.MaterialButton = global::LagoVista.Droid.Simulator.Resource.Styleable.MaterialButton;
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.MaterialButtonToggleGroup = global::LagoVista.Droid.Simulator.Resource.Styleable.MaterialButtonToggleGroup;
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.MaterialButtonToggleGroup_checkedButton = global::LagoVista.Droid.Simulator.Resource.Styleable.MaterialButtonToggleGroup_checkedButton;
+			global::Xamarin.Forms.Platform.Android.Resource.Styleable.MaterialButtonToggleGroup_selectionRequired = global::LagoVista.Droid.Simulator.Resource.Styleable.MaterialButtonToggleGroup_selectionRequired;
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.MaterialButtonToggleGroup_singleSelection = global::LagoVista.Droid.Simulator.Resource.Styleable.MaterialButtonToggleGroup_singleSelection;
+			global::Xamarin.Forms.Platform.Android.Resource.Styleable.MaterialButton_android_background = global::LagoVista.Droid.Simulator.Resource.Styleable.MaterialButton_android_background;
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.MaterialButton_android_checkable = global::LagoVista.Droid.Simulator.Resource.Styleable.MaterialButton_android_checkable;
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.MaterialButton_android_insetBottom = global::LagoVista.Droid.Simulator.Resource.Styleable.MaterialButton_android_insetBottom;
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.MaterialButton_android_insetLeft = global::LagoVista.Droid.Simulator.Resource.Styleable.MaterialButton_android_insetLeft;
@@ -3312,6 +3448,7 @@ namespace LagoVista.Droid.Simulator
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.MaterialCheckBox_buttonTint = global::LagoVista.Droid.Simulator.Resource.Styleable.MaterialCheckBox_buttonTint;
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.MaterialCheckBox_useMaterialThemeColors = global::LagoVista.Droid.Simulator.Resource.Styleable.MaterialCheckBox_useMaterialThemeColors;
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.MaterialRadioButton = global::LagoVista.Droid.Simulator.Resource.Styleable.MaterialRadioButton;
+			global::Xamarin.Forms.Platform.Android.Resource.Styleable.MaterialRadioButton_buttonTint = global::LagoVista.Droid.Simulator.Resource.Styleable.MaterialRadioButton_buttonTint;
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.MaterialRadioButton_useMaterialThemeColors = global::LagoVista.Droid.Simulator.Resource.Styleable.MaterialRadioButton_useMaterialThemeColors;
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.MaterialShape = global::LagoVista.Droid.Simulator.Resource.Styleable.MaterialShape;
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.MaterialShape_shapeAppearance = global::LagoVista.Droid.Simulator.Resource.Styleable.MaterialShape_shapeAppearance;
@@ -3392,6 +3529,8 @@ namespace LagoVista.Droid.Simulator
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.PopupWindow_android_popupAnimationStyle = global::LagoVista.Droid.Simulator.Resource.Styleable.PopupWindow_android_popupAnimationStyle;
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.PopupWindow_android_popupBackground = global::LagoVista.Droid.Simulator.Resource.Styleable.PopupWindow_android_popupBackground;
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.PopupWindow_overlapAnchor = global::LagoVista.Droid.Simulator.Resource.Styleable.PopupWindow_overlapAnchor;
+			global::Xamarin.Forms.Platform.Android.Resource.Styleable.RangeSlider = global::LagoVista.Droid.Simulator.Resource.Styleable.RangeSlider;
+			global::Xamarin.Forms.Platform.Android.Resource.Styleable.RangeSlider_values = global::LagoVista.Droid.Simulator.Resource.Styleable.RangeSlider_values;
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.RecycleListView = global::LagoVista.Droid.Simulator.Resource.Styleable.RecycleListView;
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.RecycleListView_paddingBottomNoButtons = global::LagoVista.Droid.Simulator.Resource.Styleable.RecycleListView_paddingBottomNoButtons;
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.RecycleListView_paddingTopNoTitle = global::LagoVista.Droid.Simulator.Resource.Styleable.RecycleListView_paddingTopNoTitle;
@@ -3432,6 +3571,11 @@ namespace LagoVista.Droid.Simulator
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.SearchView_submitBackground = global::LagoVista.Droid.Simulator.Resource.Styleable.SearchView_submitBackground;
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.SearchView_suggestionRowLayout = global::LagoVista.Droid.Simulator.Resource.Styleable.SearchView_suggestionRowLayout;
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.SearchView_voiceIcon = global::LagoVista.Droid.Simulator.Resource.Styleable.SearchView_voiceIcon;
+			global::Xamarin.Forms.Platform.Android.Resource.Styleable.ShapeableImageView = global::LagoVista.Droid.Simulator.Resource.Styleable.ShapeableImageView;
+			global::Xamarin.Forms.Platform.Android.Resource.Styleable.ShapeableImageView_shapeAppearance = global::LagoVista.Droid.Simulator.Resource.Styleable.ShapeableImageView_shapeAppearance;
+			global::Xamarin.Forms.Platform.Android.Resource.Styleable.ShapeableImageView_shapeAppearanceOverlay = global::LagoVista.Droid.Simulator.Resource.Styleable.ShapeableImageView_shapeAppearanceOverlay;
+			global::Xamarin.Forms.Platform.Android.Resource.Styleable.ShapeableImageView_strokeColor = global::LagoVista.Droid.Simulator.Resource.Styleable.ShapeableImageView_strokeColor;
+			global::Xamarin.Forms.Platform.Android.Resource.Styleable.ShapeableImageView_strokeWidth = global::LagoVista.Droid.Simulator.Resource.Styleable.ShapeableImageView_strokeWidth;
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.ShapeAppearance = global::LagoVista.Droid.Simulator.Resource.Styleable.ShapeAppearance;
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.ShapeAppearance_cornerFamily = global::LagoVista.Droid.Simulator.Resource.Styleable.ShapeAppearance_cornerFamily;
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.ShapeAppearance_cornerFamilyBottomLeft = global::LagoVista.Droid.Simulator.Resource.Styleable.ShapeAppearance_cornerFamilyBottomLeft;
@@ -3443,16 +3587,39 @@ namespace LagoVista.Droid.Simulator
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.ShapeAppearance_cornerSizeBottomRight = global::LagoVista.Droid.Simulator.Resource.Styleable.ShapeAppearance_cornerSizeBottomRight;
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.ShapeAppearance_cornerSizeTopLeft = global::LagoVista.Droid.Simulator.Resource.Styleable.ShapeAppearance_cornerSizeTopLeft;
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.ShapeAppearance_cornerSizeTopRight = global::LagoVista.Droid.Simulator.Resource.Styleable.ShapeAppearance_cornerSizeTopRight;
+			global::Xamarin.Forms.Platform.Android.Resource.Styleable.Slider = global::LagoVista.Droid.Simulator.Resource.Styleable.Slider;
+			global::Xamarin.Forms.Platform.Android.Resource.Styleable.Slider_android_enabled = global::LagoVista.Droid.Simulator.Resource.Styleable.Slider_android_enabled;
+			global::Xamarin.Forms.Platform.Android.Resource.Styleable.Slider_android_stepSize = global::LagoVista.Droid.Simulator.Resource.Styleable.Slider_android_stepSize;
+			global::Xamarin.Forms.Platform.Android.Resource.Styleable.Slider_android_value = global::LagoVista.Droid.Simulator.Resource.Styleable.Slider_android_value;
+			global::Xamarin.Forms.Platform.Android.Resource.Styleable.Slider_android_valueFrom = global::LagoVista.Droid.Simulator.Resource.Styleable.Slider_android_valueFrom;
+			global::Xamarin.Forms.Platform.Android.Resource.Styleable.Slider_android_valueTo = global::LagoVista.Droid.Simulator.Resource.Styleable.Slider_android_valueTo;
+			global::Xamarin.Forms.Platform.Android.Resource.Styleable.Slider_haloColor = global::LagoVista.Droid.Simulator.Resource.Styleable.Slider_haloColor;
+			global::Xamarin.Forms.Platform.Android.Resource.Styleable.Slider_haloRadius = global::LagoVista.Droid.Simulator.Resource.Styleable.Slider_haloRadius;
+			global::Xamarin.Forms.Platform.Android.Resource.Styleable.Slider_labelBehavior = global::LagoVista.Droid.Simulator.Resource.Styleable.Slider_labelBehavior;
+			global::Xamarin.Forms.Platform.Android.Resource.Styleable.Slider_labelStyle = global::LagoVista.Droid.Simulator.Resource.Styleable.Slider_labelStyle;
+			global::Xamarin.Forms.Platform.Android.Resource.Styleable.Slider_thumbColor = global::LagoVista.Droid.Simulator.Resource.Styleable.Slider_thumbColor;
+			global::Xamarin.Forms.Platform.Android.Resource.Styleable.Slider_thumbElevation = global::LagoVista.Droid.Simulator.Resource.Styleable.Slider_thumbElevation;
+			global::Xamarin.Forms.Platform.Android.Resource.Styleable.Slider_thumbRadius = global::LagoVista.Droid.Simulator.Resource.Styleable.Slider_thumbRadius;
+			global::Xamarin.Forms.Platform.Android.Resource.Styleable.Slider_tickColor = global::LagoVista.Droid.Simulator.Resource.Styleable.Slider_tickColor;
+			global::Xamarin.Forms.Platform.Android.Resource.Styleable.Slider_tickColorActive = global::LagoVista.Droid.Simulator.Resource.Styleable.Slider_tickColorActive;
+			global::Xamarin.Forms.Platform.Android.Resource.Styleable.Slider_tickColorInactive = global::LagoVista.Droid.Simulator.Resource.Styleable.Slider_tickColorInactive;
+			global::Xamarin.Forms.Platform.Android.Resource.Styleable.Slider_trackColor = global::LagoVista.Droid.Simulator.Resource.Styleable.Slider_trackColor;
+			global::Xamarin.Forms.Platform.Android.Resource.Styleable.Slider_trackColorActive = global::LagoVista.Droid.Simulator.Resource.Styleable.Slider_trackColorActive;
+			global::Xamarin.Forms.Platform.Android.Resource.Styleable.Slider_trackColorInactive = global::LagoVista.Droid.Simulator.Resource.Styleable.Slider_trackColorInactive;
+			global::Xamarin.Forms.Platform.Android.Resource.Styleable.Slider_trackHeight = global::LagoVista.Droid.Simulator.Resource.Styleable.Slider_trackHeight;
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.Snackbar = global::LagoVista.Droid.Simulator.Resource.Styleable.Snackbar;
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.SnackbarLayout = global::LagoVista.Droid.Simulator.Resource.Styleable.SnackbarLayout;
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.SnackbarLayout_actionTextColorAlpha = global::LagoVista.Droid.Simulator.Resource.Styleable.SnackbarLayout_actionTextColorAlpha;
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.SnackbarLayout_android_maxWidth = global::LagoVista.Droid.Simulator.Resource.Styleable.SnackbarLayout_android_maxWidth;
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.SnackbarLayout_animationMode = global::LagoVista.Droid.Simulator.Resource.Styleable.SnackbarLayout_animationMode;
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.SnackbarLayout_backgroundOverlayColorAlpha = global::LagoVista.Droid.Simulator.Resource.Styleable.SnackbarLayout_backgroundOverlayColorAlpha;
+			global::Xamarin.Forms.Platform.Android.Resource.Styleable.SnackbarLayout_backgroundTint = global::LagoVista.Droid.Simulator.Resource.Styleable.SnackbarLayout_backgroundTint;
+			global::Xamarin.Forms.Platform.Android.Resource.Styleable.SnackbarLayout_backgroundTintMode = global::LagoVista.Droid.Simulator.Resource.Styleable.SnackbarLayout_backgroundTintMode;
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.SnackbarLayout_elevation = global::LagoVista.Droid.Simulator.Resource.Styleable.SnackbarLayout_elevation;
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.SnackbarLayout_maxActionInlineWidth = global::LagoVista.Droid.Simulator.Resource.Styleable.SnackbarLayout_maxActionInlineWidth;
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.Snackbar_snackbarButtonStyle = global::LagoVista.Droid.Simulator.Resource.Styleable.Snackbar_snackbarButtonStyle;
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.Snackbar_snackbarStyle = global::LagoVista.Droid.Simulator.Resource.Styleable.Snackbar_snackbarStyle;
+			global::Xamarin.Forms.Platform.Android.Resource.Styleable.Snackbar_snackbarTextViewStyle = global::LagoVista.Droid.Simulator.Resource.Styleable.Snackbar_snackbarTextViewStyle;
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.Spinner = global::LagoVista.Droid.Simulator.Resource.Styleable.Spinner;
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.Spinner_android_dropDownWidth = global::LagoVista.Droid.Simulator.Resource.Styleable.Spinner_android_dropDownWidth;
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.Spinner_android_entries = global::LagoVista.Droid.Simulator.Resource.Styleable.Spinner_android_entries;
@@ -3532,7 +3699,10 @@ namespace LagoVista.Droid.Simulator
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.TextAppearance_fontVariationSettings = global::LagoVista.Droid.Simulator.Resource.Styleable.TextAppearance_fontVariationSettings;
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.TextAppearance_textAllCaps = global::LagoVista.Droid.Simulator.Resource.Styleable.TextAppearance_textAllCaps;
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.TextAppearance_textLocale = global::LagoVista.Droid.Simulator.Resource.Styleable.TextAppearance_textLocale;
+			global::Xamarin.Forms.Platform.Android.Resource.Styleable.TextInputEditText = global::LagoVista.Droid.Simulator.Resource.Styleable.TextInputEditText;
+			global::Xamarin.Forms.Platform.Android.Resource.Styleable.TextInputEditText_textInputLayoutFocusedRectEnabled = global::LagoVista.Droid.Simulator.Resource.Styleable.TextInputEditText_textInputLayoutFocusedRectEnabled;
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.TextInputLayout = global::LagoVista.Droid.Simulator.Resource.Styleable.TextInputLayout;
+			global::Xamarin.Forms.Platform.Android.Resource.Styleable.TextInputLayout_android_enabled = global::LagoVista.Droid.Simulator.Resource.Styleable.TextInputLayout_android_enabled;
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.TextInputLayout_android_hint = global::LagoVista.Droid.Simulator.Resource.Styleable.TextInputLayout_android_hint;
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.TextInputLayout_android_textColorHint = global::LagoVista.Droid.Simulator.Resource.Styleable.TextInputLayout_android_textColorHint;
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.TextInputLayout_boxBackgroundColor = global::LagoVista.Droid.Simulator.Resource.Styleable.TextInputLayout_boxBackgroundColor;
@@ -3543,6 +3713,7 @@ namespace LagoVista.Droid.Simulator
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.TextInputLayout_boxCornerRadiusTopEnd = global::LagoVista.Droid.Simulator.Resource.Styleable.TextInputLayout_boxCornerRadiusTopEnd;
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.TextInputLayout_boxCornerRadiusTopStart = global::LagoVista.Droid.Simulator.Resource.Styleable.TextInputLayout_boxCornerRadiusTopStart;
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.TextInputLayout_boxStrokeColor = global::LagoVista.Droid.Simulator.Resource.Styleable.TextInputLayout_boxStrokeColor;
+			global::Xamarin.Forms.Platform.Android.Resource.Styleable.TextInputLayout_boxStrokeErrorColor = global::LagoVista.Droid.Simulator.Resource.Styleable.TextInputLayout_boxStrokeErrorColor;
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.TextInputLayout_boxStrokeWidth = global::LagoVista.Droid.Simulator.Resource.Styleable.TextInputLayout_boxStrokeWidth;
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.TextInputLayout_boxStrokeWidthFocused = global::LagoVista.Droid.Simulator.Resource.Styleable.TextInputLayout_boxStrokeWidthFocused;
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.TextInputLayout_counterEnabled = global::LagoVista.Droid.Simulator.Resource.Styleable.TextInputLayout_counterEnabled;
@@ -3557,6 +3728,7 @@ namespace LagoVista.Droid.Simulator
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.TextInputLayout_endIconMode = global::LagoVista.Droid.Simulator.Resource.Styleable.TextInputLayout_endIconMode;
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.TextInputLayout_endIconTint = global::LagoVista.Droid.Simulator.Resource.Styleable.TextInputLayout_endIconTint;
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.TextInputLayout_endIconTintMode = global::LagoVista.Droid.Simulator.Resource.Styleable.TextInputLayout_endIconTintMode;
+			global::Xamarin.Forms.Platform.Android.Resource.Styleable.TextInputLayout_errorContentDescription = global::LagoVista.Droid.Simulator.Resource.Styleable.TextInputLayout_errorContentDescription;
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.TextInputLayout_errorEnabled = global::LagoVista.Droid.Simulator.Resource.Styleable.TextInputLayout_errorEnabled;
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.TextInputLayout_errorIconDrawable = global::LagoVista.Droid.Simulator.Resource.Styleable.TextInputLayout_errorIconDrawable;
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.TextInputLayout_errorIconTint = global::LagoVista.Droid.Simulator.Resource.Styleable.TextInputLayout_errorIconTint;
@@ -3576,6 +3748,12 @@ namespace LagoVista.Droid.Simulator
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.TextInputLayout_passwordToggleEnabled = global::LagoVista.Droid.Simulator.Resource.Styleable.TextInputLayout_passwordToggleEnabled;
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.TextInputLayout_passwordToggleTint = global::LagoVista.Droid.Simulator.Resource.Styleable.TextInputLayout_passwordToggleTint;
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.TextInputLayout_passwordToggleTintMode = global::LagoVista.Droid.Simulator.Resource.Styleable.TextInputLayout_passwordToggleTintMode;
+			global::Xamarin.Forms.Platform.Android.Resource.Styleable.TextInputLayout_placeholderText = global::LagoVista.Droid.Simulator.Resource.Styleable.TextInputLayout_placeholderText;
+			global::Xamarin.Forms.Platform.Android.Resource.Styleable.TextInputLayout_placeholderTextAppearance = global::LagoVista.Droid.Simulator.Resource.Styleable.TextInputLayout_placeholderTextAppearance;
+			global::Xamarin.Forms.Platform.Android.Resource.Styleable.TextInputLayout_placeholderTextColor = global::LagoVista.Droid.Simulator.Resource.Styleable.TextInputLayout_placeholderTextColor;
+			global::Xamarin.Forms.Platform.Android.Resource.Styleable.TextInputLayout_prefixText = global::LagoVista.Droid.Simulator.Resource.Styleable.TextInputLayout_prefixText;
+			global::Xamarin.Forms.Platform.Android.Resource.Styleable.TextInputLayout_prefixTextAppearance = global::LagoVista.Droid.Simulator.Resource.Styleable.TextInputLayout_prefixTextAppearance;
+			global::Xamarin.Forms.Platform.Android.Resource.Styleable.TextInputLayout_prefixTextColor = global::LagoVista.Droid.Simulator.Resource.Styleable.TextInputLayout_prefixTextColor;
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.TextInputLayout_shapeAppearance = global::LagoVista.Droid.Simulator.Resource.Styleable.TextInputLayout_shapeAppearance;
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.TextInputLayout_shapeAppearanceOverlay = global::LagoVista.Droid.Simulator.Resource.Styleable.TextInputLayout_shapeAppearanceOverlay;
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.TextInputLayout_startIconCheckable = global::LagoVista.Droid.Simulator.Resource.Styleable.TextInputLayout_startIconCheckable;
@@ -3583,6 +3761,9 @@ namespace LagoVista.Droid.Simulator
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.TextInputLayout_startIconDrawable = global::LagoVista.Droid.Simulator.Resource.Styleable.TextInputLayout_startIconDrawable;
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.TextInputLayout_startIconTint = global::LagoVista.Droid.Simulator.Resource.Styleable.TextInputLayout_startIconTint;
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.TextInputLayout_startIconTintMode = global::LagoVista.Droid.Simulator.Resource.Styleable.TextInputLayout_startIconTintMode;
+			global::Xamarin.Forms.Platform.Android.Resource.Styleable.TextInputLayout_suffixText = global::LagoVista.Droid.Simulator.Resource.Styleable.TextInputLayout_suffixText;
+			global::Xamarin.Forms.Platform.Android.Resource.Styleable.TextInputLayout_suffixTextAppearance = global::LagoVista.Droid.Simulator.Resource.Styleable.TextInputLayout_suffixTextAppearance;
+			global::Xamarin.Forms.Platform.Android.Resource.Styleable.TextInputLayout_suffixTextColor = global::LagoVista.Droid.Simulator.Resource.Styleable.TextInputLayout_suffixTextColor;
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.ThemeEnforcement = global::LagoVista.Droid.Simulator.Resource.Styleable.ThemeEnforcement;
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.ThemeEnforcement_android_textAppearance = global::LagoVista.Droid.Simulator.Resource.Styleable.ThemeEnforcement_android_textAppearance;
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.ThemeEnforcement_enforceMaterialTheme = global::LagoVista.Droid.Simulator.Resource.Styleable.ThemeEnforcement_enforceMaterialTheme;
@@ -3618,6 +3799,14 @@ namespace LagoVista.Droid.Simulator
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.Toolbar_titleMarginTop = global::LagoVista.Droid.Simulator.Resource.Styleable.Toolbar_titleMarginTop;
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.Toolbar_titleTextAppearance = global::LagoVista.Droid.Simulator.Resource.Styleable.Toolbar_titleTextAppearance;
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.Toolbar_titleTextColor = global::LagoVista.Droid.Simulator.Resource.Styleable.Toolbar_titleTextColor;
+			global::Xamarin.Forms.Platform.Android.Resource.Styleable.Tooltip = global::LagoVista.Droid.Simulator.Resource.Styleable.Tooltip;
+			global::Xamarin.Forms.Platform.Android.Resource.Styleable.Tooltip_android_layout_margin = global::LagoVista.Droid.Simulator.Resource.Styleable.Tooltip_android_layout_margin;
+			global::Xamarin.Forms.Platform.Android.Resource.Styleable.Tooltip_android_minHeight = global::LagoVista.Droid.Simulator.Resource.Styleable.Tooltip_android_minHeight;
+			global::Xamarin.Forms.Platform.Android.Resource.Styleable.Tooltip_android_minWidth = global::LagoVista.Droid.Simulator.Resource.Styleable.Tooltip_android_minWidth;
+			global::Xamarin.Forms.Platform.Android.Resource.Styleable.Tooltip_android_padding = global::LagoVista.Droid.Simulator.Resource.Styleable.Tooltip_android_padding;
+			global::Xamarin.Forms.Platform.Android.Resource.Styleable.Tooltip_android_text = global::LagoVista.Droid.Simulator.Resource.Styleable.Tooltip_android_text;
+			global::Xamarin.Forms.Platform.Android.Resource.Styleable.Tooltip_android_textAppearance = global::LagoVista.Droid.Simulator.Resource.Styleable.Tooltip_android_textAppearance;
+			global::Xamarin.Forms.Platform.Android.Resource.Styleable.Tooltip_backgroundTint = global::LagoVista.Droid.Simulator.Resource.Styleable.Tooltip_backgroundTint;
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.View = global::LagoVista.Droid.Simulator.Resource.Styleable.View;
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.ViewBackgroundHelper = global::LagoVista.Droid.Simulator.Resource.Styleable.ViewBackgroundHelper;
 			global::Xamarin.Forms.Platform.Android.Resource.Styleable.ViewBackgroundHelper_android_background = global::LagoVista.Droid.Simulator.Resource.Styleable.ViewBackgroundHelper_android_background;
@@ -3638,6 +3827,7 @@ namespace LagoVista.Droid.Simulator
 			global::Xamarin.Forms.Platform.Android.Resource.Xml.standalone_badge_gravity_bottom_end = global::LagoVista.Droid.Simulator.Resource.Xml.standalone_badge_gravity_bottom_end;
 			global::Xamarin.Forms.Platform.Android.Resource.Xml.standalone_badge_gravity_bottom_start = global::LagoVista.Droid.Simulator.Resource.Xml.standalone_badge_gravity_bottom_start;
 			global::Xamarin.Forms.Platform.Android.Resource.Xml.standalone_badge_gravity_top_start = global::LagoVista.Droid.Simulator.Resource.Xml.standalone_badge_gravity_top_start;
+			global::Xamarin.Forms.Platform.Android.Resource.Xml.standalone_badge_offset = global::LagoVista.Droid.Simulator.Resource.Xml.standalone_badge_offset;
 			global::Xamarin.Forms.Platform.Resource.Animation.abc_fade_in = global::LagoVista.Droid.Simulator.Resource.Animation.abc_fade_in;
 			global::Xamarin.Forms.Platform.Resource.Animation.abc_fade_out = global::LagoVista.Droid.Simulator.Resource.Animation.abc_fade_out;
 			global::Xamarin.Forms.Platform.Resource.Animation.abc_grow_fade_in_from_bottom = global::LagoVista.Droid.Simulator.Resource.Animation.abc_grow_fade_in_from_bottom;
@@ -3764,6 +3954,7 @@ namespace LagoVista.Droid.Simulator
 			global::Xamarin.Forms.Platform.Resource.Attribute.barLength = global::LagoVista.Droid.Simulator.Resource.Attribute.barLength;
 			global::Xamarin.Forms.Platform.Resource.Attribute.behavior_autoHide = global::LagoVista.Droid.Simulator.Resource.Attribute.behavior_autoHide;
 			global::Xamarin.Forms.Platform.Resource.Attribute.behavior_autoShrink = global::LagoVista.Droid.Simulator.Resource.Attribute.behavior_autoShrink;
+			global::Xamarin.Forms.Platform.Resource.Attribute.behavior_draggable = global::LagoVista.Droid.Simulator.Resource.Attribute.behavior_draggable;
 			global::Xamarin.Forms.Platform.Resource.Attribute.behavior_expandedOffset = global::LagoVista.Droid.Simulator.Resource.Attribute.behavior_expandedOffset;
 			global::Xamarin.Forms.Platform.Resource.Attribute.behavior_fitToContents = global::LagoVista.Droid.Simulator.Resource.Attribute.behavior_fitToContents;
 			global::Xamarin.Forms.Platform.Resource.Attribute.behavior_halfExpandedRatio = global::LagoVista.Droid.Simulator.Resource.Attribute.behavior_halfExpandedRatio;
@@ -3786,6 +3977,7 @@ namespace LagoVista.Droid.Simulator
 			global::Xamarin.Forms.Platform.Resource.Attribute.boxCornerRadiusTopEnd = global::LagoVista.Droid.Simulator.Resource.Attribute.boxCornerRadiusTopEnd;
 			global::Xamarin.Forms.Platform.Resource.Attribute.boxCornerRadiusTopStart = global::LagoVista.Droid.Simulator.Resource.Attribute.boxCornerRadiusTopStart;
 			global::Xamarin.Forms.Platform.Resource.Attribute.boxStrokeColor = global::LagoVista.Droid.Simulator.Resource.Attribute.boxStrokeColor;
+			global::Xamarin.Forms.Platform.Resource.Attribute.boxStrokeErrorColor = global::LagoVista.Droid.Simulator.Resource.Attribute.boxStrokeErrorColor;
 			global::Xamarin.Forms.Platform.Resource.Attribute.boxStrokeWidth = global::LagoVista.Droid.Simulator.Resource.Attribute.boxStrokeWidth;
 			global::Xamarin.Forms.Platform.Resource.Attribute.boxStrokeWidthFocused = global::LagoVista.Droid.Simulator.Resource.Attribute.boxStrokeWidthFocused;
 			global::Xamarin.Forms.Platform.Resource.Attribute.buttonBarButtonStyle = global::LagoVista.Droid.Simulator.Resource.Attribute.buttonBarButtonStyle;
@@ -3947,6 +4139,7 @@ namespace LagoVista.Droid.Simulator
 			global::Xamarin.Forms.Platform.Resource.Attribute.enforceMaterialTheme = global::LagoVista.Droid.Simulator.Resource.Attribute.enforceMaterialTheme;
 			global::Xamarin.Forms.Platform.Resource.Attribute.enforceTextAppearance = global::LagoVista.Droid.Simulator.Resource.Attribute.enforceTextAppearance;
 			global::Xamarin.Forms.Platform.Resource.Attribute.ensureMinTouchTargetSize = global::LagoVista.Droid.Simulator.Resource.Attribute.ensureMinTouchTargetSize;
+			global::Xamarin.Forms.Platform.Resource.Attribute.errorContentDescription = global::LagoVista.Droid.Simulator.Resource.Attribute.errorContentDescription;
 			global::Xamarin.Forms.Platform.Resource.Attribute.errorEnabled = global::LagoVista.Droid.Simulator.Resource.Attribute.errorEnabled;
 			global::Xamarin.Forms.Platform.Resource.Attribute.errorIconDrawable = global::LagoVista.Droid.Simulator.Resource.Attribute.errorIconDrawable;
 			global::Xamarin.Forms.Platform.Resource.Attribute.errorIconTint = global::LagoVista.Droid.Simulator.Resource.Attribute.errorIconTint;
@@ -3991,7 +4184,10 @@ namespace LagoVista.Droid.Simulator
 			global::Xamarin.Forms.Platform.Resource.Attribute.fontWeight = global::LagoVista.Droid.Simulator.Resource.Attribute.fontWeight;
 			global::Xamarin.Forms.Platform.Resource.Attribute.foregroundInsidePadding = global::LagoVista.Droid.Simulator.Resource.Attribute.foregroundInsidePadding;
 			global::Xamarin.Forms.Platform.Resource.Attribute.gapBetweenBars = global::LagoVista.Droid.Simulator.Resource.Attribute.gapBetweenBars;
+			global::Xamarin.Forms.Platform.Resource.Attribute.gestureInsetBottomIgnored = global::LagoVista.Droid.Simulator.Resource.Attribute.gestureInsetBottomIgnored;
 			global::Xamarin.Forms.Platform.Resource.Attribute.goIcon = global::LagoVista.Droid.Simulator.Resource.Attribute.goIcon;
+			global::Xamarin.Forms.Platform.Resource.Attribute.haloColor = global::LagoVista.Droid.Simulator.Resource.Attribute.haloColor;
+			global::Xamarin.Forms.Platform.Resource.Attribute.haloRadius = global::LagoVista.Droid.Simulator.Resource.Attribute.haloRadius;
 			global::Xamarin.Forms.Platform.Resource.Attribute.headerLayout = global::LagoVista.Droid.Simulator.Resource.Attribute.headerLayout;
 			global::Xamarin.Forms.Platform.Resource.Attribute.height = global::LagoVista.Droid.Simulator.Resource.Attribute.height;
 			global::Xamarin.Forms.Platform.Resource.Attribute.helperText = global::LagoVista.Droid.Simulator.Resource.Attribute.helperText;
@@ -4007,6 +4203,7 @@ namespace LagoVista.Droid.Simulator
 			global::Xamarin.Forms.Platform.Resource.Attribute.hintTextColor = global::LagoVista.Droid.Simulator.Resource.Attribute.hintTextColor;
 			global::Xamarin.Forms.Platform.Resource.Attribute.homeAsUpIndicator = global::LagoVista.Droid.Simulator.Resource.Attribute.homeAsUpIndicator;
 			global::Xamarin.Forms.Platform.Resource.Attribute.homeLayout = global::LagoVista.Droid.Simulator.Resource.Attribute.homeLayout;
+			global::Xamarin.Forms.Platform.Resource.Attribute.horizontalOffset = global::LagoVista.Droid.Simulator.Resource.Attribute.horizontalOffset;
 			global::Xamarin.Forms.Platform.Resource.Attribute.hoveredFocusedTranslationZ = global::LagoVista.Droid.Simulator.Resource.Attribute.hoveredFocusedTranslationZ;
 			global::Xamarin.Forms.Platform.Resource.Attribute.icon = global::LagoVista.Droid.Simulator.Resource.Attribute.icon;
 			global::Xamarin.Forms.Platform.Resource.Attribute.iconEndPadding = global::LagoVista.Droid.Simulator.Resource.Attribute.iconEndPadding;
@@ -4048,6 +4245,8 @@ namespace LagoVista.Droid.Simulator
 			global::Xamarin.Forms.Platform.Resource.Attribute.itemTextAppearanceInactive = global::LagoVista.Droid.Simulator.Resource.Attribute.itemTextAppearanceInactive;
 			global::Xamarin.Forms.Platform.Resource.Attribute.itemTextColor = global::LagoVista.Droid.Simulator.Resource.Attribute.itemTextColor;
 			global::Xamarin.Forms.Platform.Resource.Attribute.keylines = global::LagoVista.Droid.Simulator.Resource.Attribute.keylines;
+			global::Xamarin.Forms.Platform.Resource.Attribute.labelBehavior = global::LagoVista.Droid.Simulator.Resource.Attribute.labelBehavior;
+			global::Xamarin.Forms.Platform.Resource.Attribute.labelStyle = global::LagoVista.Droid.Simulator.Resource.Attribute.labelStyle;
 			global::Xamarin.Forms.Platform.Resource.Attribute.labelVisibilityMode = global::LagoVista.Droid.Simulator.Resource.Attribute.labelVisibilityMode;
 			global::Xamarin.Forms.Platform.Resource.Attribute.lastBaselineToBottomHeight = global::LagoVista.Droid.Simulator.Resource.Attribute.lastBaselineToBottomHeight;
 			global::Xamarin.Forms.Platform.Resource.Attribute.layout = global::LagoVista.Droid.Simulator.Resource.Attribute.layout;
@@ -4107,6 +4306,7 @@ namespace LagoVista.Droid.Simulator
 			global::Xamarin.Forms.Platform.Resource.Attribute.maxButtonHeight = global::LagoVista.Droid.Simulator.Resource.Attribute.maxButtonHeight;
 			global::Xamarin.Forms.Platform.Resource.Attribute.maxCharacterCount = global::LagoVista.Droid.Simulator.Resource.Attribute.maxCharacterCount;
 			global::Xamarin.Forms.Platform.Resource.Attribute.maxImageSize = global::LagoVista.Droid.Simulator.Resource.Attribute.maxImageSize;
+			global::Xamarin.Forms.Platform.Resource.Attribute.maxLines = global::LagoVista.Droid.Simulator.Resource.Attribute.maxLines;
 			global::Xamarin.Forms.Platform.Resource.Attribute.measureWithLargestChild = global::LagoVista.Droid.Simulator.Resource.Attribute.measureWithLargestChild;
 			global::Xamarin.Forms.Platform.Resource.Attribute.menu = global::LagoVista.Droid.Simulator.Resource.Attribute.menu;
 			global::Xamarin.Forms.Platform.Resource.Attribute.minTouchTargetSize = global::LagoVista.Droid.Simulator.Resource.Attribute.minTouchTargetSize;
@@ -4119,7 +4319,10 @@ namespace LagoVista.Droid.Simulator
 			global::Xamarin.Forms.Platform.Resource.Attribute.numericModifiers = global::LagoVista.Droid.Simulator.Resource.Attribute.numericModifiers;
 			global::Xamarin.Forms.Platform.Resource.Attribute.overlapAnchor = global::LagoVista.Droid.Simulator.Resource.Attribute.overlapAnchor;
 			global::Xamarin.Forms.Platform.Resource.Attribute.paddingBottomNoButtons = global::LagoVista.Droid.Simulator.Resource.Attribute.paddingBottomNoButtons;
+			global::Xamarin.Forms.Platform.Resource.Attribute.paddingBottomSystemWindowInsets = global::LagoVista.Droid.Simulator.Resource.Attribute.paddingBottomSystemWindowInsets;
 			global::Xamarin.Forms.Platform.Resource.Attribute.paddingEnd = global::LagoVista.Droid.Simulator.Resource.Attribute.paddingEnd;
+			global::Xamarin.Forms.Platform.Resource.Attribute.paddingLeftSystemWindowInsets = global::LagoVista.Droid.Simulator.Resource.Attribute.paddingLeftSystemWindowInsets;
+			global::Xamarin.Forms.Platform.Resource.Attribute.paddingRightSystemWindowInsets = global::LagoVista.Droid.Simulator.Resource.Attribute.paddingRightSystemWindowInsets;
 			global::Xamarin.Forms.Platform.Resource.Attribute.paddingStart = global::LagoVista.Droid.Simulator.Resource.Attribute.paddingStart;
 			global::Xamarin.Forms.Platform.Resource.Attribute.paddingTopNoTitle = global::LagoVista.Droid.Simulator.Resource.Attribute.paddingTopNoTitle;
 			global::Xamarin.Forms.Platform.Resource.Attribute.panelBackground = global::LagoVista.Droid.Simulator.Resource.Attribute.panelBackground;
@@ -4130,10 +4333,16 @@ namespace LagoVista.Droid.Simulator
 			global::Xamarin.Forms.Platform.Resource.Attribute.passwordToggleEnabled = global::LagoVista.Droid.Simulator.Resource.Attribute.passwordToggleEnabled;
 			global::Xamarin.Forms.Platform.Resource.Attribute.passwordToggleTint = global::LagoVista.Droid.Simulator.Resource.Attribute.passwordToggleTint;
 			global::Xamarin.Forms.Platform.Resource.Attribute.passwordToggleTintMode = global::LagoVista.Droid.Simulator.Resource.Attribute.passwordToggleTintMode;
+			global::Xamarin.Forms.Platform.Resource.Attribute.placeholderText = global::LagoVista.Droid.Simulator.Resource.Attribute.placeholderText;
+			global::Xamarin.Forms.Platform.Resource.Attribute.placeholderTextAppearance = global::LagoVista.Droid.Simulator.Resource.Attribute.placeholderTextAppearance;
+			global::Xamarin.Forms.Platform.Resource.Attribute.placeholderTextColor = global::LagoVista.Droid.Simulator.Resource.Attribute.placeholderTextColor;
 			global::Xamarin.Forms.Platform.Resource.Attribute.popupMenuBackground = global::LagoVista.Droid.Simulator.Resource.Attribute.popupMenuBackground;
 			global::Xamarin.Forms.Platform.Resource.Attribute.popupMenuStyle = global::LagoVista.Droid.Simulator.Resource.Attribute.popupMenuStyle;
 			global::Xamarin.Forms.Platform.Resource.Attribute.popupTheme = global::LagoVista.Droid.Simulator.Resource.Attribute.popupTheme;
 			global::Xamarin.Forms.Platform.Resource.Attribute.popupWindowStyle = global::LagoVista.Droid.Simulator.Resource.Attribute.popupWindowStyle;
+			global::Xamarin.Forms.Platform.Resource.Attribute.prefixText = global::LagoVista.Droid.Simulator.Resource.Attribute.prefixText;
+			global::Xamarin.Forms.Platform.Resource.Attribute.prefixTextAppearance = global::LagoVista.Droid.Simulator.Resource.Attribute.prefixTextAppearance;
+			global::Xamarin.Forms.Platform.Resource.Attribute.prefixTextColor = global::LagoVista.Droid.Simulator.Resource.Attribute.prefixTextColor;
 			global::Xamarin.Forms.Platform.Resource.Attribute.preserveIconSpacing = global::LagoVista.Droid.Simulator.Resource.Attribute.preserveIconSpacing;
 			global::Xamarin.Forms.Platform.Resource.Attribute.pressedTranslationZ = global::LagoVista.Droid.Simulator.Resource.Attribute.pressedTranslationZ;
 			global::Xamarin.Forms.Platform.Resource.Attribute.progressBarPadding = global::LagoVista.Droid.Simulator.Resource.Attribute.progressBarPadding;
@@ -4158,6 +4367,7 @@ namespace LagoVista.Droid.Simulator
 			global::Xamarin.Forms.Platform.Resource.Attribute.seekBarStyle = global::LagoVista.Droid.Simulator.Resource.Attribute.seekBarStyle;
 			global::Xamarin.Forms.Platform.Resource.Attribute.selectableItemBackground = global::LagoVista.Droid.Simulator.Resource.Attribute.selectableItemBackground;
 			global::Xamarin.Forms.Platform.Resource.Attribute.selectableItemBackgroundBorderless = global::LagoVista.Droid.Simulator.Resource.Attribute.selectableItemBackgroundBorderless;
+			global::Xamarin.Forms.Platform.Resource.Attribute.selectionRequired = global::LagoVista.Droid.Simulator.Resource.Attribute.selectionRequired;
 			global::Xamarin.Forms.Platform.Resource.Attribute.shapeAppearance = global::LagoVista.Droid.Simulator.Resource.Attribute.shapeAppearance;
 			global::Xamarin.Forms.Platform.Resource.Attribute.shapeAppearanceLargeComponent = global::LagoVista.Droid.Simulator.Resource.Attribute.shapeAppearanceLargeComponent;
 			global::Xamarin.Forms.Platform.Resource.Attribute.shapeAppearanceMediumComponent = global::LagoVista.Droid.Simulator.Resource.Attribute.shapeAppearanceMediumComponent;
@@ -4172,8 +4382,10 @@ namespace LagoVista.Droid.Simulator
 			global::Xamarin.Forms.Platform.Resource.Attribute.singleChoiceItemLayout = global::LagoVista.Droid.Simulator.Resource.Attribute.singleChoiceItemLayout;
 			global::Xamarin.Forms.Platform.Resource.Attribute.singleLine = global::LagoVista.Droid.Simulator.Resource.Attribute.singleLine;
 			global::Xamarin.Forms.Platform.Resource.Attribute.singleSelection = global::LagoVista.Droid.Simulator.Resource.Attribute.singleSelection;
+			global::Xamarin.Forms.Platform.Resource.Attribute.sliderStyle = global::LagoVista.Droid.Simulator.Resource.Attribute.sliderStyle;
 			global::Xamarin.Forms.Platform.Resource.Attribute.snackbarButtonStyle = global::LagoVista.Droid.Simulator.Resource.Attribute.snackbarButtonStyle;
 			global::Xamarin.Forms.Platform.Resource.Attribute.snackbarStyle = global::LagoVista.Droid.Simulator.Resource.Attribute.snackbarStyle;
+			global::Xamarin.Forms.Platform.Resource.Attribute.snackbarTextViewStyle = global::LagoVista.Droid.Simulator.Resource.Attribute.snackbarTextViewStyle;
 			global::Xamarin.Forms.Platform.Resource.Attribute.spanCount = global::LagoVista.Droid.Simulator.Resource.Attribute.spanCount;
 			global::Xamarin.Forms.Platform.Resource.Attribute.spinBars = global::LagoVista.Droid.Simulator.Resource.Attribute.spinBars;
 			global::Xamarin.Forms.Platform.Resource.Attribute.spinnerDropDownItemStyle = global::LagoVista.Droid.Simulator.Resource.Attribute.spinnerDropDownItemStyle;
@@ -4203,6 +4415,9 @@ namespace LagoVista.Droid.Simulator
 			global::Xamarin.Forms.Platform.Resource.Attribute.subtitleTextAppearance = global::LagoVista.Droid.Simulator.Resource.Attribute.subtitleTextAppearance;
 			global::Xamarin.Forms.Platform.Resource.Attribute.subtitleTextColor = global::LagoVista.Droid.Simulator.Resource.Attribute.subtitleTextColor;
 			global::Xamarin.Forms.Platform.Resource.Attribute.subtitleTextStyle = global::LagoVista.Droid.Simulator.Resource.Attribute.subtitleTextStyle;
+			global::Xamarin.Forms.Platform.Resource.Attribute.suffixText = global::LagoVista.Droid.Simulator.Resource.Attribute.suffixText;
+			global::Xamarin.Forms.Platform.Resource.Attribute.suffixTextAppearance = global::LagoVista.Droid.Simulator.Resource.Attribute.suffixTextAppearance;
+			global::Xamarin.Forms.Platform.Resource.Attribute.suffixTextColor = global::LagoVista.Droid.Simulator.Resource.Attribute.suffixTextColor;
 			global::Xamarin.Forms.Platform.Resource.Attribute.suggestionRowLayout = global::LagoVista.Droid.Simulator.Resource.Attribute.suggestionRowLayout;
 			global::Xamarin.Forms.Platform.Resource.Attribute.switchMinWidth = global::LagoVista.Droid.Simulator.Resource.Attribute.switchMinWidth;
 			global::Xamarin.Forms.Platform.Resource.Attribute.switchPadding = global::LagoVista.Droid.Simulator.Resource.Attribute.switchPadding;
@@ -4260,15 +4475,22 @@ namespace LagoVista.Droid.Simulator
 			global::Xamarin.Forms.Platform.Resource.Attribute.textColorAlertDialogListItem = global::LagoVista.Droid.Simulator.Resource.Attribute.textColorAlertDialogListItem;
 			global::Xamarin.Forms.Platform.Resource.Attribute.textColorSearchUrl = global::LagoVista.Droid.Simulator.Resource.Attribute.textColorSearchUrl;
 			global::Xamarin.Forms.Platform.Resource.Attribute.textEndPadding = global::LagoVista.Droid.Simulator.Resource.Attribute.textEndPadding;
+			global::Xamarin.Forms.Platform.Resource.Attribute.textInputLayoutFocusedRectEnabled = global::LagoVista.Droid.Simulator.Resource.Attribute.textInputLayoutFocusedRectEnabled;
 			global::Xamarin.Forms.Platform.Resource.Attribute.textInputStyle = global::LagoVista.Droid.Simulator.Resource.Attribute.textInputStyle;
 			global::Xamarin.Forms.Platform.Resource.Attribute.textLocale = global::LagoVista.Droid.Simulator.Resource.Attribute.textLocale;
 			global::Xamarin.Forms.Platform.Resource.Attribute.textStartPadding = global::LagoVista.Droid.Simulator.Resource.Attribute.textStartPadding;
 			global::Xamarin.Forms.Platform.Resource.Attribute.theme = global::LagoVista.Droid.Simulator.Resource.Attribute.theme;
 			global::Xamarin.Forms.Platform.Resource.Attribute.themeLineHeight = global::LagoVista.Droid.Simulator.Resource.Attribute.themeLineHeight;
 			global::Xamarin.Forms.Platform.Resource.Attribute.thickness = global::LagoVista.Droid.Simulator.Resource.Attribute.thickness;
+			global::Xamarin.Forms.Platform.Resource.Attribute.thumbColor = global::LagoVista.Droid.Simulator.Resource.Attribute.thumbColor;
+			global::Xamarin.Forms.Platform.Resource.Attribute.thumbElevation = global::LagoVista.Droid.Simulator.Resource.Attribute.thumbElevation;
+			global::Xamarin.Forms.Platform.Resource.Attribute.thumbRadius = global::LagoVista.Droid.Simulator.Resource.Attribute.thumbRadius;
 			global::Xamarin.Forms.Platform.Resource.Attribute.thumbTextPadding = global::LagoVista.Droid.Simulator.Resource.Attribute.thumbTextPadding;
 			global::Xamarin.Forms.Platform.Resource.Attribute.thumbTint = global::LagoVista.Droid.Simulator.Resource.Attribute.thumbTint;
 			global::Xamarin.Forms.Platform.Resource.Attribute.thumbTintMode = global::LagoVista.Droid.Simulator.Resource.Attribute.thumbTintMode;
+			global::Xamarin.Forms.Platform.Resource.Attribute.tickColor = global::LagoVista.Droid.Simulator.Resource.Attribute.tickColor;
+			global::Xamarin.Forms.Platform.Resource.Attribute.tickColorActive = global::LagoVista.Droid.Simulator.Resource.Attribute.tickColorActive;
+			global::Xamarin.Forms.Platform.Resource.Attribute.tickColorInactive = global::LagoVista.Droid.Simulator.Resource.Attribute.tickColorInactive;
 			global::Xamarin.Forms.Platform.Resource.Attribute.tickMark = global::LagoVista.Droid.Simulator.Resource.Attribute.tickMark;
 			global::Xamarin.Forms.Platform.Resource.Attribute.tickMarkTint = global::LagoVista.Droid.Simulator.Resource.Attribute.tickMarkTint;
 			global::Xamarin.Forms.Platform.Resource.Attribute.tickMarkTintMode = global::LagoVista.Droid.Simulator.Resource.Attribute.tickMarkTintMode;
@@ -4290,13 +4512,21 @@ namespace LagoVista.Droid.Simulator
 			global::Xamarin.Forms.Platform.Resource.Attribute.toolbarStyle = global::LagoVista.Droid.Simulator.Resource.Attribute.toolbarStyle;
 			global::Xamarin.Forms.Platform.Resource.Attribute.tooltipForegroundColor = global::LagoVista.Droid.Simulator.Resource.Attribute.tooltipForegroundColor;
 			global::Xamarin.Forms.Platform.Resource.Attribute.tooltipFrameBackground = global::LagoVista.Droid.Simulator.Resource.Attribute.tooltipFrameBackground;
+			global::Xamarin.Forms.Platform.Resource.Attribute.tooltipStyle = global::LagoVista.Droid.Simulator.Resource.Attribute.tooltipStyle;
 			global::Xamarin.Forms.Platform.Resource.Attribute.tooltipText = global::LagoVista.Droid.Simulator.Resource.Attribute.tooltipText;
 			global::Xamarin.Forms.Platform.Resource.Attribute.track = global::LagoVista.Droid.Simulator.Resource.Attribute.track;
+			global::Xamarin.Forms.Platform.Resource.Attribute.trackColor = global::LagoVista.Droid.Simulator.Resource.Attribute.trackColor;
+			global::Xamarin.Forms.Platform.Resource.Attribute.trackColorActive = global::LagoVista.Droid.Simulator.Resource.Attribute.trackColorActive;
+			global::Xamarin.Forms.Platform.Resource.Attribute.trackColorInactive = global::LagoVista.Droid.Simulator.Resource.Attribute.trackColorInactive;
+			global::Xamarin.Forms.Platform.Resource.Attribute.trackHeight = global::LagoVista.Droid.Simulator.Resource.Attribute.trackHeight;
 			global::Xamarin.Forms.Platform.Resource.Attribute.trackTint = global::LagoVista.Droid.Simulator.Resource.Attribute.trackTint;
 			global::Xamarin.Forms.Platform.Resource.Attribute.trackTintMode = global::LagoVista.Droid.Simulator.Resource.Attribute.trackTintMode;
+			global::Xamarin.Forms.Platform.Resource.Attribute.transitionShapeAppearance = global::LagoVista.Droid.Simulator.Resource.Attribute.transitionShapeAppearance;
 			global::Xamarin.Forms.Platform.Resource.Attribute.ttcIndex = global::LagoVista.Droid.Simulator.Resource.Attribute.ttcIndex;
 			global::Xamarin.Forms.Platform.Resource.Attribute.useCompatPadding = global::LagoVista.Droid.Simulator.Resource.Attribute.useCompatPadding;
 			global::Xamarin.Forms.Platform.Resource.Attribute.useMaterialThemeColors = global::LagoVista.Droid.Simulator.Resource.Attribute.useMaterialThemeColors;
+			global::Xamarin.Forms.Platform.Resource.Attribute.values = global::LagoVista.Droid.Simulator.Resource.Attribute.values;
+			global::Xamarin.Forms.Platform.Resource.Attribute.verticalOffset = global::LagoVista.Droid.Simulator.Resource.Attribute.verticalOffset;
 			global::Xamarin.Forms.Platform.Resource.Attribute.viewInflaterClass = global::LagoVista.Droid.Simulator.Resource.Attribute.viewInflaterClass;
 			global::Xamarin.Forms.Platform.Resource.Attribute.voiceIcon = global::LagoVista.Droid.Simulator.Resource.Attribute.voiceIcon;
 			global::Xamarin.Forms.Platform.Resource.Attribute.windowActionBar = global::LagoVista.Droid.Simulator.Resource.Attribute.windowActionBar;
@@ -4431,6 +4661,13 @@ namespace LagoVista.Droid.Simulator
 			global::Xamarin.Forms.Platform.Resource.Color.material_on_surface_disabled = global::LagoVista.Droid.Simulator.Resource.Color.material_on_surface_disabled;
 			global::Xamarin.Forms.Platform.Resource.Color.material_on_surface_emphasis_high_type = global::LagoVista.Droid.Simulator.Resource.Color.material_on_surface_emphasis_high_type;
 			global::Xamarin.Forms.Platform.Resource.Color.material_on_surface_emphasis_medium = global::LagoVista.Droid.Simulator.Resource.Color.material_on_surface_emphasis_medium;
+			global::Xamarin.Forms.Platform.Resource.Color.material_on_surface_stroke = global::LagoVista.Droid.Simulator.Resource.Color.material_on_surface_stroke;
+			global::Xamarin.Forms.Platform.Resource.Color.material_slider_active_tick_marks_color = global::LagoVista.Droid.Simulator.Resource.Color.material_slider_active_tick_marks_color;
+			global::Xamarin.Forms.Platform.Resource.Color.material_slider_active_track_color = global::LagoVista.Droid.Simulator.Resource.Color.material_slider_active_track_color;
+			global::Xamarin.Forms.Platform.Resource.Color.material_slider_halo_color = global::LagoVista.Droid.Simulator.Resource.Color.material_slider_halo_color;
+			global::Xamarin.Forms.Platform.Resource.Color.material_slider_inactive_tick_marks_color = global::LagoVista.Droid.Simulator.Resource.Color.material_slider_inactive_tick_marks_color;
+			global::Xamarin.Forms.Platform.Resource.Color.material_slider_inactive_track_color = global::LagoVista.Droid.Simulator.Resource.Color.material_slider_inactive_track_color;
+			global::Xamarin.Forms.Platform.Resource.Color.material_slider_thumb_color = global::LagoVista.Droid.Simulator.Resource.Color.material_slider_thumb_color;
 			global::Xamarin.Forms.Platform.Resource.Color.mtrl_bottom_nav_colored_item_tint = global::LagoVista.Droid.Simulator.Resource.Color.mtrl_bottom_nav_colored_item_tint;
 			global::Xamarin.Forms.Platform.Resource.Color.mtrl_bottom_nav_colored_ripple_color = global::LagoVista.Droid.Simulator.Resource.Color.mtrl_bottom_nav_colored_ripple_color;
 			global::Xamarin.Forms.Platform.Resource.Color.mtrl_bottom_nav_item_tint = global::LagoVista.Droid.Simulator.Resource.Color.mtrl_bottom_nav_item_tint;
@@ -4456,6 +4693,8 @@ namespace LagoVista.Droid.Simulator
 			global::Xamarin.Forms.Platform.Resource.Color.mtrl_choice_chip_ripple_color = global::LagoVista.Droid.Simulator.Resource.Color.mtrl_choice_chip_ripple_color;
 			global::Xamarin.Forms.Platform.Resource.Color.mtrl_choice_chip_text_color = global::LagoVista.Droid.Simulator.Resource.Color.mtrl_choice_chip_text_color;
 			global::Xamarin.Forms.Platform.Resource.Color.mtrl_error = global::LagoVista.Droid.Simulator.Resource.Color.mtrl_error;
+			global::Xamarin.Forms.Platform.Resource.Color.mtrl_fab_bg_color_selector = global::LagoVista.Droid.Simulator.Resource.Color.mtrl_fab_bg_color_selector;
+			global::Xamarin.Forms.Platform.Resource.Color.mtrl_fab_icon_text_color_selector = global::LagoVista.Droid.Simulator.Resource.Color.mtrl_fab_icon_text_color_selector;
 			global::Xamarin.Forms.Platform.Resource.Color.mtrl_fab_ripple_color = global::LagoVista.Droid.Simulator.Resource.Color.mtrl_fab_ripple_color;
 			global::Xamarin.Forms.Platform.Resource.Color.mtrl_filled_background_color = global::LagoVista.Droid.Simulator.Resource.Color.mtrl_filled_background_color;
 			global::Xamarin.Forms.Platform.Resource.Color.mtrl_filled_icon_tint = global::LagoVista.Droid.Simulator.Resource.Color.mtrl_filled_icon_tint;
@@ -4491,6 +4730,7 @@ namespace LagoVista.Droid.Simulator
 			global::Xamarin.Forms.Platform.Resource.Color.primary_text_default_material_light = global::LagoVista.Droid.Simulator.Resource.Color.primary_text_default_material_light;
 			global::Xamarin.Forms.Platform.Resource.Color.primary_text_disabled_material_dark = global::LagoVista.Droid.Simulator.Resource.Color.primary_text_disabled_material_dark;
 			global::Xamarin.Forms.Platform.Resource.Color.primary_text_disabled_material_light = global::LagoVista.Droid.Simulator.Resource.Color.primary_text_disabled_material_light;
+			global::Xamarin.Forms.Platform.Resource.Color.radiobutton_themeable_attribute_color = global::LagoVista.Droid.Simulator.Resource.Color.radiobutton_themeable_attribute_color;
 			global::Xamarin.Forms.Platform.Resource.Color.ripple_material_dark = global::LagoVista.Droid.Simulator.Resource.Color.ripple_material_dark;
 			global::Xamarin.Forms.Platform.Resource.Color.ripple_material_light = global::LagoVista.Droid.Simulator.Resource.Color.ripple_material_light;
 			global::Xamarin.Forms.Platform.Resource.Color.secondary_text_default_material_dark = global::LagoVista.Droid.Simulator.Resource.Color.secondary_text_default_material_dark;
@@ -4753,6 +4993,7 @@ namespace LagoVista.Droid.Simulator
 			global::Xamarin.Forms.Platform.Resource.Dimension.mtrl_card_spacing = global::LagoVista.Droid.Simulator.Resource.Dimension.mtrl_card_spacing;
 			global::Xamarin.Forms.Platform.Resource.Dimension.mtrl_chip_pressed_translation_z = global::LagoVista.Droid.Simulator.Resource.Dimension.mtrl_chip_pressed_translation_z;
 			global::Xamarin.Forms.Platform.Resource.Dimension.mtrl_chip_text_size = global::LagoVista.Droid.Simulator.Resource.Dimension.mtrl_chip_text_size;
+			global::Xamarin.Forms.Platform.Resource.Dimension.mtrl_edittext_rectangle_top_offset = global::LagoVista.Droid.Simulator.Resource.Dimension.mtrl_edittext_rectangle_top_offset;
 			global::Xamarin.Forms.Platform.Resource.Dimension.mtrl_exposed_dropdown_menu_popup_elevation = global::LagoVista.Droid.Simulator.Resource.Dimension.mtrl_exposed_dropdown_menu_popup_elevation;
 			global::Xamarin.Forms.Platform.Resource.Dimension.mtrl_exposed_dropdown_menu_popup_vertical_offset = global::LagoVista.Droid.Simulator.Resource.Dimension.mtrl_exposed_dropdown_menu_popup_vertical_offset;
 			global::Xamarin.Forms.Platform.Resource.Dimension.mtrl_exposed_dropdown_menu_popup_vertical_padding = global::LagoVista.Droid.Simulator.Resource.Dimension.mtrl_exposed_dropdown_menu_popup_vertical_padding;
@@ -4796,6 +5037,16 @@ namespace LagoVista.Droid.Simulator
 			global::Xamarin.Forms.Platform.Resource.Dimension.mtrl_shape_corner_size_large_component = global::LagoVista.Droid.Simulator.Resource.Dimension.mtrl_shape_corner_size_large_component;
 			global::Xamarin.Forms.Platform.Resource.Dimension.mtrl_shape_corner_size_medium_component = global::LagoVista.Droid.Simulator.Resource.Dimension.mtrl_shape_corner_size_medium_component;
 			global::Xamarin.Forms.Platform.Resource.Dimension.mtrl_shape_corner_size_small_component = global::LagoVista.Droid.Simulator.Resource.Dimension.mtrl_shape_corner_size_small_component;
+			global::Xamarin.Forms.Platform.Resource.Dimension.mtrl_slider_halo_radius = global::LagoVista.Droid.Simulator.Resource.Dimension.mtrl_slider_halo_radius;
+			global::Xamarin.Forms.Platform.Resource.Dimension.mtrl_slider_label_padding = global::LagoVista.Droid.Simulator.Resource.Dimension.mtrl_slider_label_padding;
+			global::Xamarin.Forms.Platform.Resource.Dimension.mtrl_slider_label_radius = global::LagoVista.Droid.Simulator.Resource.Dimension.mtrl_slider_label_radius;
+			global::Xamarin.Forms.Platform.Resource.Dimension.mtrl_slider_label_square_side = global::LagoVista.Droid.Simulator.Resource.Dimension.mtrl_slider_label_square_side;
+			global::Xamarin.Forms.Platform.Resource.Dimension.mtrl_slider_thumb_elevation = global::LagoVista.Droid.Simulator.Resource.Dimension.mtrl_slider_thumb_elevation;
+			global::Xamarin.Forms.Platform.Resource.Dimension.mtrl_slider_thumb_radius = global::LagoVista.Droid.Simulator.Resource.Dimension.mtrl_slider_thumb_radius;
+			global::Xamarin.Forms.Platform.Resource.Dimension.mtrl_slider_track_height = global::LagoVista.Droid.Simulator.Resource.Dimension.mtrl_slider_track_height;
+			global::Xamarin.Forms.Platform.Resource.Dimension.mtrl_slider_track_side_padding = global::LagoVista.Droid.Simulator.Resource.Dimension.mtrl_slider_track_side_padding;
+			global::Xamarin.Forms.Platform.Resource.Dimension.mtrl_slider_track_top = global::LagoVista.Droid.Simulator.Resource.Dimension.mtrl_slider_track_top;
+			global::Xamarin.Forms.Platform.Resource.Dimension.mtrl_slider_widget_height = global::LagoVista.Droid.Simulator.Resource.Dimension.mtrl_slider_widget_height;
 			global::Xamarin.Forms.Platform.Resource.Dimension.mtrl_snackbar_action_text_color_alpha = global::LagoVista.Droid.Simulator.Resource.Dimension.mtrl_snackbar_action_text_color_alpha;
 			global::Xamarin.Forms.Platform.Resource.Dimension.mtrl_snackbar_background_corner_radius = global::LagoVista.Droid.Simulator.Resource.Dimension.mtrl_snackbar_background_corner_radius;
 			global::Xamarin.Forms.Platform.Resource.Dimension.mtrl_snackbar_background_overlay_color_alpha = global::LagoVista.Droid.Simulator.Resource.Dimension.mtrl_snackbar_background_overlay_color_alpha;
@@ -4806,10 +5057,17 @@ namespace LagoVista.Droid.Simulator
 			global::Xamarin.Forms.Platform.Resource.Dimension.mtrl_textinput_box_label_cutout_padding = global::LagoVista.Droid.Simulator.Resource.Dimension.mtrl_textinput_box_label_cutout_padding;
 			global::Xamarin.Forms.Platform.Resource.Dimension.mtrl_textinput_box_stroke_width_default = global::LagoVista.Droid.Simulator.Resource.Dimension.mtrl_textinput_box_stroke_width_default;
 			global::Xamarin.Forms.Platform.Resource.Dimension.mtrl_textinput_box_stroke_width_focused = global::LagoVista.Droid.Simulator.Resource.Dimension.mtrl_textinput_box_stroke_width_focused;
+			global::Xamarin.Forms.Platform.Resource.Dimension.mtrl_textinput_counter_margin_start = global::LagoVista.Droid.Simulator.Resource.Dimension.mtrl_textinput_counter_margin_start;
 			global::Xamarin.Forms.Platform.Resource.Dimension.mtrl_textinput_end_icon_margin_start = global::LagoVista.Droid.Simulator.Resource.Dimension.mtrl_textinput_end_icon_margin_start;
 			global::Xamarin.Forms.Platform.Resource.Dimension.mtrl_textinput_outline_box_expanded_padding = global::LagoVista.Droid.Simulator.Resource.Dimension.mtrl_textinput_outline_box_expanded_padding;
 			global::Xamarin.Forms.Platform.Resource.Dimension.mtrl_textinput_start_icon_margin_end = global::LagoVista.Droid.Simulator.Resource.Dimension.mtrl_textinput_start_icon_margin_end;
 			global::Xamarin.Forms.Platform.Resource.Dimension.mtrl_toolbar_default_height = global::LagoVista.Droid.Simulator.Resource.Dimension.mtrl_toolbar_default_height;
+			global::Xamarin.Forms.Platform.Resource.Dimension.mtrl_tooltip_arrowSize = global::LagoVista.Droid.Simulator.Resource.Dimension.mtrl_tooltip_arrowSize;
+			global::Xamarin.Forms.Platform.Resource.Dimension.mtrl_tooltip_cornerSize = global::LagoVista.Droid.Simulator.Resource.Dimension.mtrl_tooltip_cornerSize;
+			global::Xamarin.Forms.Platform.Resource.Dimension.mtrl_tooltip_minHeight = global::LagoVista.Droid.Simulator.Resource.Dimension.mtrl_tooltip_minHeight;
+			global::Xamarin.Forms.Platform.Resource.Dimension.mtrl_tooltip_minWidth = global::LagoVista.Droid.Simulator.Resource.Dimension.mtrl_tooltip_minWidth;
+			global::Xamarin.Forms.Platform.Resource.Dimension.mtrl_tooltip_padding = global::LagoVista.Droid.Simulator.Resource.Dimension.mtrl_tooltip_padding;
+			global::Xamarin.Forms.Platform.Resource.Dimension.mtrl_transition_shared_axis_slide_distance = global::LagoVista.Droid.Simulator.Resource.Dimension.mtrl_transition_shared_axis_slide_distance;
 			global::Xamarin.Forms.Platform.Resource.Dimension.notification_action_icon_size = global::LagoVista.Droid.Simulator.Resource.Dimension.notification_action_icon_size;
 			global::Xamarin.Forms.Platform.Resource.Dimension.notification_action_text_size = global::LagoVista.Droid.Simulator.Resource.Dimension.notification_action_text_size;
 			global::Xamarin.Forms.Platform.Resource.Dimension.notification_big_circle_margin = global::LagoVista.Droid.Simulator.Resource.Dimension.notification_big_circle_margin;
@@ -4940,6 +5198,13 @@ namespace LagoVista.Droid.Simulator
 			global::Xamarin.Forms.Platform.Resource.Drawable.ic_mtrl_chip_checked_black = global::LagoVista.Droid.Simulator.Resource.Drawable.ic_mtrl_chip_checked_black;
 			global::Xamarin.Forms.Platform.Resource.Drawable.ic_mtrl_chip_checked_circle = global::LagoVista.Droid.Simulator.Resource.Drawable.ic_mtrl_chip_checked_circle;
 			global::Xamarin.Forms.Platform.Resource.Drawable.ic_mtrl_chip_close_circle = global::LagoVista.Droid.Simulator.Resource.Drawable.ic_mtrl_chip_close_circle;
+			global::Xamarin.Forms.Platform.Resource.Drawable.material_ic_calendar_black_24dp = global::LagoVista.Droid.Simulator.Resource.Drawable.material_ic_calendar_black_24dp;
+			global::Xamarin.Forms.Platform.Resource.Drawable.material_ic_clear_black_24dp = global::LagoVista.Droid.Simulator.Resource.Drawable.material_ic_clear_black_24dp;
+			global::Xamarin.Forms.Platform.Resource.Drawable.material_ic_edit_black_24dp = global::LagoVista.Droid.Simulator.Resource.Drawable.material_ic_edit_black_24dp;
+			global::Xamarin.Forms.Platform.Resource.Drawable.material_ic_keyboard_arrow_left_black_24dp = global::LagoVista.Droid.Simulator.Resource.Drawable.material_ic_keyboard_arrow_left_black_24dp;
+			global::Xamarin.Forms.Platform.Resource.Drawable.material_ic_keyboard_arrow_right_black_24dp = global::LagoVista.Droid.Simulator.Resource.Drawable.material_ic_keyboard_arrow_right_black_24dp;
+			global::Xamarin.Forms.Platform.Resource.Drawable.material_ic_menu_arrow_down_black_24dp = global::LagoVista.Droid.Simulator.Resource.Drawable.material_ic_menu_arrow_down_black_24dp;
+			global::Xamarin.Forms.Platform.Resource.Drawable.material_ic_menu_arrow_up_black_24dp = global::LagoVista.Droid.Simulator.Resource.Drawable.material_ic_menu_arrow_up_black_24dp;
 			global::Xamarin.Forms.Platform.Resource.Drawable.mtrl_dialog_background = global::LagoVista.Droid.Simulator.Resource.Drawable.mtrl_dialog_background;
 			global::Xamarin.Forms.Platform.Resource.Drawable.mtrl_dropdown_arrow = global::LagoVista.Droid.Simulator.Resource.Drawable.mtrl_dropdown_arrow;
 			global::Xamarin.Forms.Platform.Resource.Drawable.mtrl_ic_arrow_drop_down = global::LagoVista.Droid.Simulator.Resource.Drawable.mtrl_ic_arrow_drop_down;
@@ -5041,6 +5306,9 @@ namespace LagoVista.Droid.Simulator
 			global::Xamarin.Forms.Platform.Resource.Id.checkbox = global::LagoVista.Droid.Simulator.Resource.Id.checkbox;
 			global::Xamarin.Forms.Platform.Resource.Id.@checked = global::LagoVista.Droid.Simulator.Resource.Id.@checked;
 			global::Xamarin.Forms.Platform.Resource.Id.chip = global::LagoVista.Droid.Simulator.Resource.Id.chip;
+			global::Xamarin.Forms.Platform.Resource.Id.chip1 = global::LagoVista.Droid.Simulator.Resource.Id.chip1;
+			global::Xamarin.Forms.Platform.Resource.Id.chip2 = global::LagoVista.Droid.Simulator.Resource.Id.chip2;
+			global::Xamarin.Forms.Platform.Resource.Id.chip3 = global::LagoVista.Droid.Simulator.Resource.Id.chip3;
 			global::Xamarin.Forms.Platform.Resource.Id.chip_group = global::LagoVista.Droid.Simulator.Resource.Id.chip_group;
 			global::Xamarin.Forms.Platform.Resource.Id.chronometer = global::LagoVista.Droid.Simulator.Resource.Id.chronometer;
 			global::Xamarin.Forms.Platform.Resource.Id.clear_text = global::LagoVista.Droid.Simulator.Resource.Id.clear_text;
@@ -5082,12 +5350,14 @@ namespace LagoVista.Droid.Simulator
 			global::Xamarin.Forms.Platform.Resource.Id.fill_vertical = global::LagoVista.Droid.Simulator.Resource.Id.fill_vertical;
 			global::Xamarin.Forms.Platform.Resource.Id.fitToContents = global::LagoVista.Droid.Simulator.Resource.Id.fitToContents;
 			global::Xamarin.Forms.Platform.Resource.Id.@fixed = global::LagoVista.Droid.Simulator.Resource.Id.@fixed;
+			global::Xamarin.Forms.Platform.Resource.Id.floating = global::LagoVista.Droid.Simulator.Resource.Id.floating;
 			global::Xamarin.Forms.Platform.Resource.Id.flyoutcontent_appbar = global::LagoVista.Droid.Simulator.Resource.Id.flyoutcontent_appbar;
 			global::Xamarin.Forms.Platform.Resource.Id.forever = global::LagoVista.Droid.Simulator.Resource.Id.forever;
 			global::Xamarin.Forms.Platform.Resource.Id.fragment_container_view_tag = global::LagoVista.Droid.Simulator.Resource.Id.fragment_container_view_tag;
 			global::Xamarin.Forms.Platform.Resource.Id.FUNCTION = global::LagoVista.Droid.Simulator.Resource.Id.FUNCTION;
 			global::Xamarin.Forms.Platform.Resource.Id.ghost_view = global::LagoVista.Droid.Simulator.Resource.Id.ghost_view;
 			global::Xamarin.Forms.Platform.Resource.Id.ghost_view_holder = global::LagoVista.Droid.Simulator.Resource.Id.ghost_view_holder;
+			global::Xamarin.Forms.Platform.Resource.Id.gone = global::LagoVista.Droid.Simulator.Resource.Id.gone;
 			global::Xamarin.Forms.Platform.Resource.Id.group_divider = global::LagoVista.Droid.Simulator.Resource.Id.group_divider;
 			global::Xamarin.Forms.Platform.Resource.Id.hideable = global::LagoVista.Droid.Simulator.Resource.Id.hideable;
 			global::Xamarin.Forms.Platform.Resource.Id.home = global::LagoVista.Droid.Simulator.Resource.Id.home;
@@ -5134,6 +5404,7 @@ namespace LagoVista.Droid.Simulator
 			global::Xamarin.Forms.Platform.Resource.Id.mtrl_card_checked_layer_id = global::LagoVista.Droid.Simulator.Resource.Id.mtrl_card_checked_layer_id;
 			global::Xamarin.Forms.Platform.Resource.Id.mtrl_child_content_container = global::LagoVista.Droid.Simulator.Resource.Id.mtrl_child_content_container;
 			global::Xamarin.Forms.Platform.Resource.Id.mtrl_internal_children_alpha_tag = global::LagoVista.Droid.Simulator.Resource.Id.mtrl_internal_children_alpha_tag;
+			global::Xamarin.Forms.Platform.Resource.Id.mtrl_motion_snapshot_view = global::LagoVista.Droid.Simulator.Resource.Id.mtrl_motion_snapshot_view;
 			global::Xamarin.Forms.Platform.Resource.Id.mtrl_picker_fullscreen = global::LagoVista.Droid.Simulator.Resource.Id.mtrl_picker_fullscreen;
 			global::Xamarin.Forms.Platform.Resource.Id.mtrl_picker_header = global::LagoVista.Droid.Simulator.Resource.Id.mtrl_picker_header;
 			global::Xamarin.Forms.Platform.Resource.Id.mtrl_picker_header_selection_text = global::LagoVista.Droid.Simulator.Resource.Id.mtrl_picker_header_selection_text;
@@ -5168,6 +5439,7 @@ namespace LagoVista.Droid.Simulator
 			global::Xamarin.Forms.Platform.Resource.Id.right_icon = global::LagoVista.Droid.Simulator.Resource.Id.right_icon;
 			global::Xamarin.Forms.Platform.Resource.Id.right_side = global::LagoVista.Droid.Simulator.Resource.Id.right_side;
 			global::Xamarin.Forms.Platform.Resource.Id.rounded = global::LagoVista.Droid.Simulator.Resource.Id.rounded;
+			global::Xamarin.Forms.Platform.Resource.Id.row_index_key = global::LagoVista.Droid.Simulator.Resource.Id.row_index_key;
 			global::Xamarin.Forms.Platform.Resource.Id.save_non_transition_alpha = global::LagoVista.Droid.Simulator.Resource.Id.save_non_transition_alpha;
 			global::Xamarin.Forms.Platform.Resource.Id.save_overlay_view = global::LagoVista.Droid.Simulator.Resource.Id.save_overlay_view;
 			global::Xamarin.Forms.Platform.Resource.Id.scale = global::LagoVista.Droid.Simulator.Resource.Id.scale;
@@ -5226,12 +5498,17 @@ namespace LagoVista.Droid.Simulator
 			global::Xamarin.Forms.Platform.Resource.Id.tag_unhandled_key_listeners = global::LagoVista.Droid.Simulator.Resource.Id.tag_unhandled_key_listeners;
 			global::Xamarin.Forms.Platform.Resource.Id.test_checkbox_android_button_tint = global::LagoVista.Droid.Simulator.Resource.Id.test_checkbox_android_button_tint;
 			global::Xamarin.Forms.Platform.Resource.Id.test_checkbox_app_button_tint = global::LagoVista.Droid.Simulator.Resource.Id.test_checkbox_app_button_tint;
+			global::Xamarin.Forms.Platform.Resource.Id.test_radiobutton_android_button_tint = global::LagoVista.Droid.Simulator.Resource.Id.test_radiobutton_android_button_tint;
+			global::Xamarin.Forms.Platform.Resource.Id.test_radiobutton_app_button_tint = global::LagoVista.Droid.Simulator.Resource.Id.test_radiobutton_app_button_tint;
 			global::Xamarin.Forms.Platform.Resource.Id.text = global::LagoVista.Droid.Simulator.Resource.Id.text;
 			global::Xamarin.Forms.Platform.Resource.Id.text2 = global::LagoVista.Droid.Simulator.Resource.Id.text2;
 			global::Xamarin.Forms.Platform.Resource.Id.textEnd = global::LagoVista.Droid.Simulator.Resource.Id.textEnd;
 			global::Xamarin.Forms.Platform.Resource.Id.textinput_counter = global::LagoVista.Droid.Simulator.Resource.Id.textinput_counter;
 			global::Xamarin.Forms.Platform.Resource.Id.textinput_error = global::LagoVista.Droid.Simulator.Resource.Id.textinput_error;
 			global::Xamarin.Forms.Platform.Resource.Id.textinput_helper_text = global::LagoVista.Droid.Simulator.Resource.Id.textinput_helper_text;
+			global::Xamarin.Forms.Platform.Resource.Id.textinput_placeholder = global::LagoVista.Droid.Simulator.Resource.Id.textinput_placeholder;
+			global::Xamarin.Forms.Platform.Resource.Id.textinput_prefix_text = global::LagoVista.Droid.Simulator.Resource.Id.textinput_prefix_text;
+			global::Xamarin.Forms.Platform.Resource.Id.textinput_suffix_text = global::LagoVista.Droid.Simulator.Resource.Id.textinput_suffix_text;
 			global::Xamarin.Forms.Platform.Resource.Id.textSpacerNoButtons = global::LagoVista.Droid.Simulator.Resource.Id.textSpacerNoButtons;
 			global::Xamarin.Forms.Platform.Resource.Id.textSpacerNoTitle = global::LagoVista.Droid.Simulator.Resource.Id.textSpacerNoTitle;
 			global::Xamarin.Forms.Platform.Resource.Id.textStart = global::LagoVista.Droid.Simulator.Resource.Id.textStart;
@@ -5261,8 +5538,10 @@ namespace LagoVista.Droid.Simulator
 			global::Xamarin.Forms.Platform.Resource.Id.view_tree_saved_state_registry_owner = global::LagoVista.Droid.Simulator.Resource.Id.view_tree_saved_state_registry_owner;
 			global::Xamarin.Forms.Platform.Resource.Id.visible = global::LagoVista.Droid.Simulator.Resource.Id.visible;
 			global::Xamarin.Forms.Platform.Resource.Id.visible_removing_fragment_view_tag = global::LagoVista.Droid.Simulator.Resource.Id.visible_removing_fragment_view_tag;
+			global::Xamarin.Forms.Platform.Resource.Id.withinBounds = global::LagoVista.Droid.Simulator.Resource.Id.withinBounds;
 			global::Xamarin.Forms.Platform.Resource.Id.withText = global::LagoVista.Droid.Simulator.Resource.Id.withText;
 			global::Xamarin.Forms.Platform.Resource.Id.wrap_content = global::LagoVista.Droid.Simulator.Resource.Id.wrap_content;
+			global::Xamarin.Forms.Platform.Resource.Id.zero_corner_chip = global::LagoVista.Droid.Simulator.Resource.Id.zero_corner_chip;
 			global::Xamarin.Forms.Platform.Resource.Integer.abc_config_activityDefaultDur = global::LagoVista.Droid.Simulator.Resource.Integer.abc_config_activityDefaultDur;
 			global::Xamarin.Forms.Platform.Resource.Integer.abc_config_activityShortDur = global::LagoVista.Droid.Simulator.Resource.Integer.abc_config_activityShortDur;
 			global::Xamarin.Forms.Platform.Resource.Integer.app_bar_elevation_anim_duration = global::LagoVista.Droid.Simulator.Resource.Integer.app_bar_elevation_anim_duration;
@@ -5394,7 +5673,9 @@ namespace LagoVista.Droid.Simulator
 			global::Xamarin.Forms.Platform.Resource.Layout.support_simple_spinner_dropdown_item = global::LagoVista.Droid.Simulator.Resource.Layout.support_simple_spinner_dropdown_item;
 			global::Xamarin.Forms.Platform.Resource.Layout.Tabbar = global::LagoVista.Droid.Simulator.Resource.Layout.Tabbar;
 			global::Xamarin.Forms.Platform.Resource.Layout.test_action_chip = global::LagoVista.Droid.Simulator.Resource.Layout.test_action_chip;
+			global::Xamarin.Forms.Platform.Resource.Layout.test_chip_zero_corner_radius = global::LagoVista.Droid.Simulator.Resource.Layout.test_chip_zero_corner_radius;
 			global::Xamarin.Forms.Platform.Resource.Layout.test_design_checkbox = global::LagoVista.Droid.Simulator.Resource.Layout.test_design_checkbox;
+			global::Xamarin.Forms.Platform.Resource.Layout.test_design_radiobutton = global::LagoVista.Droid.Simulator.Resource.Layout.test_design_radiobutton;
 			global::Xamarin.Forms.Platform.Resource.Layout.test_reflow_chipgroup = global::LagoVista.Droid.Simulator.Resource.Layout.test_reflow_chipgroup;
 			global::Xamarin.Forms.Platform.Resource.Layout.test_toolbar = global::LagoVista.Droid.Simulator.Resource.Layout.test_toolbar;
 			global::Xamarin.Forms.Platform.Resource.Layout.test_toolbar_custom_background = global::LagoVista.Droid.Simulator.Resource.Layout.test_toolbar_custom_background;
@@ -5447,8 +5728,12 @@ namespace LagoVista.Droid.Simulator
 			global::Xamarin.Forms.Platform.Resource.String.fab_transformation_sheet_behavior = global::LagoVista.Droid.Simulator.Resource.String.fab_transformation_sheet_behavior;
 			global::Xamarin.Forms.Platform.Resource.String.hide_bottom_view_on_scroll_behavior = global::LagoVista.Droid.Simulator.Resource.String.hide_bottom_view_on_scroll_behavior;
 			global::Xamarin.Forms.Platform.Resource.String.icon_content_description = global::LagoVista.Droid.Simulator.Resource.String.icon_content_description;
+			global::Xamarin.Forms.Platform.Resource.String.item_view_role_description = global::LagoVista.Droid.Simulator.Resource.String.item_view_role_description;
+			global::Xamarin.Forms.Platform.Resource.String.material_slider_range_end = global::LagoVista.Droid.Simulator.Resource.String.material_slider_range_end;
+			global::Xamarin.Forms.Platform.Resource.String.material_slider_range_start = global::LagoVista.Droid.Simulator.Resource.String.material_slider_range_start;
 			global::Xamarin.Forms.Platform.Resource.String.mtrl_badge_numberless_content_description = global::LagoVista.Droid.Simulator.Resource.String.mtrl_badge_numberless_content_description;
 			global::Xamarin.Forms.Platform.Resource.String.mtrl_chip_close_icon_content_description = global::LagoVista.Droid.Simulator.Resource.String.mtrl_chip_close_icon_content_description;
+			global::Xamarin.Forms.Platform.Resource.String.mtrl_exceed_max_badge_number_content_description = global::LagoVista.Droid.Simulator.Resource.String.mtrl_exceed_max_badge_number_content_description;
 			global::Xamarin.Forms.Platform.Resource.String.mtrl_exceed_max_badge_number_suffix = global::LagoVista.Droid.Simulator.Resource.String.mtrl_exceed_max_badge_number_suffix;
 			global::Xamarin.Forms.Platform.Resource.String.mtrl_picker_a11y_next_month = global::LagoVista.Droid.Simulator.Resource.String.mtrl_picker_a11y_next_month;
 			global::Xamarin.Forms.Platform.Resource.String.mtrl_picker_a11y_prev_month = global::LagoVista.Droid.Simulator.Resource.String.mtrl_picker_a11y_prev_month;
@@ -5491,6 +5776,7 @@ namespace LagoVista.Droid.Simulator
 			global::Xamarin.Forms.Platform.Resource.String.status_bar_notification_info_overflow = global::LagoVista.Droid.Simulator.Resource.String.status_bar_notification_info_overflow;
 			global::Xamarin.Forms.Platform.Resource.Style.AlertDialog_AppCompat = global::LagoVista.Droid.Simulator.Resource.Style.AlertDialog_AppCompat;
 			global::Xamarin.Forms.Platform.Resource.Style.AlertDialog_AppCompat_Light = global::LagoVista.Droid.Simulator.Resource.Style.AlertDialog_AppCompat_Light;
+			global::Xamarin.Forms.Platform.Resource.Style.AndroidThemeColorAccentYellow = global::LagoVista.Droid.Simulator.Resource.Style.AndroidThemeColorAccentYellow;
 			global::Xamarin.Forms.Platform.Resource.Style.Animation_AppCompat_Dialog = global::LagoVista.Droid.Simulator.Resource.Style.Animation_AppCompat_Dialog;
 			global::Xamarin.Forms.Platform.Resource.Style.Animation_AppCompat_DropDownUp = global::LagoVista.Droid.Simulator.Resource.Style.Animation_AppCompat_DropDownUp;
 			global::Xamarin.Forms.Platform.Resource.Style.Animation_AppCompat_Tooltip = global::LagoVista.Droid.Simulator.Resource.Style.Animation_AppCompat_Tooltip;
@@ -5569,6 +5855,8 @@ namespace LagoVista.Droid.Simulator
 			global::Xamarin.Forms.Platform.Resource.Style.Base_ThemeOverlay_AppCompat_Light = global::LagoVista.Droid.Simulator.Resource.Style.Base_ThemeOverlay_AppCompat_Light;
 			global::Xamarin.Forms.Platform.Resource.Style.Base_ThemeOverlay_MaterialComponents_Dialog = global::LagoVista.Droid.Simulator.Resource.Style.Base_ThemeOverlay_MaterialComponents_Dialog;
 			global::Xamarin.Forms.Platform.Resource.Style.Base_ThemeOverlay_MaterialComponents_Dialog_Alert = global::LagoVista.Droid.Simulator.Resource.Style.Base_ThemeOverlay_MaterialComponents_Dialog_Alert;
+			global::Xamarin.Forms.Platform.Resource.Style.Base_ThemeOverlay_MaterialComponents_Dialog_Alert_Framework = global::LagoVista.Droid.Simulator.Resource.Style.Base_ThemeOverlay_MaterialComponents_Dialog_Alert_Framework;
+			global::Xamarin.Forms.Platform.Resource.Style.Base_ThemeOverlay_MaterialComponents_Light_Dialog_Alert_Framework = global::LagoVista.Droid.Simulator.Resource.Style.Base_ThemeOverlay_MaterialComponents_Light_Dialog_Alert_Framework;
 			global::Xamarin.Forms.Platform.Resource.Style.Base_ThemeOverlay_MaterialComponents_MaterialAlertDialog = global::LagoVista.Droid.Simulator.Resource.Style.Base_ThemeOverlay_MaterialComponents_MaterialAlertDialog;
 			global::Xamarin.Forms.Platform.Resource.Style.Base_Theme_AppCompat = global::LagoVista.Droid.Simulator.Resource.Style.Base_Theme_AppCompat;
 			global::Xamarin.Forms.Platform.Resource.Style.Base_Theme_AppCompat_CompactMenu = global::LagoVista.Droid.Simulator.Resource.Style.Base_Theme_AppCompat_CompactMenu;
@@ -5620,6 +5908,10 @@ namespace LagoVista.Droid.Simulator
 			global::Xamarin.Forms.Platform.Resource.Style.Base_V21_Theme_AppCompat_Dialog = global::LagoVista.Droid.Simulator.Resource.Style.Base_V21_Theme_AppCompat_Dialog;
 			global::Xamarin.Forms.Platform.Resource.Style.Base_V21_Theme_AppCompat_Light = global::LagoVista.Droid.Simulator.Resource.Style.Base_V21_Theme_AppCompat_Light;
 			global::Xamarin.Forms.Platform.Resource.Style.Base_V21_Theme_AppCompat_Light_Dialog = global::LagoVista.Droid.Simulator.Resource.Style.Base_V21_Theme_AppCompat_Light_Dialog;
+			global::Xamarin.Forms.Platform.Resource.Style.Base_V21_Theme_MaterialComponents = global::LagoVista.Droid.Simulator.Resource.Style.Base_V21_Theme_MaterialComponents;
+			global::Xamarin.Forms.Platform.Resource.Style.Base_V21_Theme_MaterialComponents_Dialog = global::LagoVista.Droid.Simulator.Resource.Style.Base_V21_Theme_MaterialComponents_Dialog;
+			global::Xamarin.Forms.Platform.Resource.Style.Base_V21_Theme_MaterialComponents_Light = global::LagoVista.Droid.Simulator.Resource.Style.Base_V21_Theme_MaterialComponents_Light;
+			global::Xamarin.Forms.Platform.Resource.Style.Base_V21_Theme_MaterialComponents_Light_Dialog = global::LagoVista.Droid.Simulator.Resource.Style.Base_V21_Theme_MaterialComponents_Light_Dialog;
 			global::Xamarin.Forms.Platform.Resource.Style.Base_V22_Theme_AppCompat = global::LagoVista.Droid.Simulator.Resource.Style.Base_V22_Theme_AppCompat;
 			global::Xamarin.Forms.Platform.Resource.Style.Base_V22_Theme_AppCompat_Light = global::LagoVista.Droid.Simulator.Resource.Style.Base_V22_Theme_AppCompat_Light;
 			global::Xamarin.Forms.Platform.Resource.Style.Base_V23_Theme_AppCompat = global::LagoVista.Droid.Simulator.Resource.Style.Base_V23_Theme_AppCompat;
@@ -5703,6 +5995,7 @@ namespace LagoVista.Droid.Simulator
 			global::Xamarin.Forms.Platform.Resource.Style.Base_Widget_MaterialComponents_PopupMenu_ContextMenu = global::LagoVista.Droid.Simulator.Resource.Style.Base_Widget_MaterialComponents_PopupMenu_ContextMenu;
 			global::Xamarin.Forms.Platform.Resource.Style.Base_Widget_MaterialComponents_PopupMenu_ListPopupWindow = global::LagoVista.Droid.Simulator.Resource.Style.Base_Widget_MaterialComponents_PopupMenu_ListPopupWindow;
 			global::Xamarin.Forms.Platform.Resource.Style.Base_Widget_MaterialComponents_PopupMenu_Overflow = global::LagoVista.Droid.Simulator.Resource.Style.Base_Widget_MaterialComponents_PopupMenu_Overflow;
+			global::Xamarin.Forms.Platform.Resource.Style.Base_Widget_MaterialComponents_Slider = global::LagoVista.Droid.Simulator.Resource.Style.Base_Widget_MaterialComponents_Slider;
 			global::Xamarin.Forms.Platform.Resource.Style.Base_Widget_MaterialComponents_TextInputEditText = global::LagoVista.Droid.Simulator.Resource.Style.Base_Widget_MaterialComponents_TextInputEditText;
 			global::Xamarin.Forms.Platform.Resource.Style.Base_Widget_MaterialComponents_TextInputLayout = global::LagoVista.Droid.Simulator.Resource.Style.Base_Widget_MaterialComponents_TextInputLayout;
 			global::Xamarin.Forms.Platform.Resource.Style.Base_Widget_MaterialComponents_TextView = global::LagoVista.Droid.Simulator.Resource.Style.Base_Widget_MaterialComponents_TextView;
@@ -5776,6 +6069,7 @@ namespace LagoVista.Droid.Simulator
 			global::Xamarin.Forms.Platform.Resource.Style.ShapeAppearance_MaterialComponents_MediumComponent = global::LagoVista.Droid.Simulator.Resource.Style.ShapeAppearance_MaterialComponents_MediumComponent;
 			global::Xamarin.Forms.Platform.Resource.Style.ShapeAppearance_MaterialComponents_SmallComponent = global::LagoVista.Droid.Simulator.Resource.Style.ShapeAppearance_MaterialComponents_SmallComponent;
 			global::Xamarin.Forms.Platform.Resource.Style.ShapeAppearance_MaterialComponents_Test = global::LagoVista.Droid.Simulator.Resource.Style.ShapeAppearance_MaterialComponents_Test;
+			global::Xamarin.Forms.Platform.Resource.Style.ShapeAppearance_MaterialComponents_Tooltip = global::LagoVista.Droid.Simulator.Resource.Style.ShapeAppearance_MaterialComponents_Tooltip;
 			global::Xamarin.Forms.Platform.Resource.Style.TestStyleWithLineHeight = global::LagoVista.Droid.Simulator.Resource.Style.TestStyleWithLineHeight;
 			global::Xamarin.Forms.Platform.Resource.Style.TestStyleWithLineHeightAppearance = global::LagoVista.Droid.Simulator.Resource.Style.TestStyleWithLineHeightAppearance;
 			global::Xamarin.Forms.Platform.Resource.Style.TestStyleWithoutLineHeight = global::LagoVista.Droid.Simulator.Resource.Style.TestStyleWithoutLineHeight;
@@ -5851,7 +6145,10 @@ namespace LagoVista.Droid.Simulator
 			global::Xamarin.Forms.Platform.Resource.Style.TextAppearance_Design_Error = global::LagoVista.Droid.Simulator.Resource.Style.TextAppearance_Design_Error;
 			global::Xamarin.Forms.Platform.Resource.Style.TextAppearance_Design_HelperText = global::LagoVista.Droid.Simulator.Resource.Style.TextAppearance_Design_HelperText;
 			global::Xamarin.Forms.Platform.Resource.Style.TextAppearance_Design_Hint = global::LagoVista.Droid.Simulator.Resource.Style.TextAppearance_Design_Hint;
+			global::Xamarin.Forms.Platform.Resource.Style.TextAppearance_Design_Placeholder = global::LagoVista.Droid.Simulator.Resource.Style.TextAppearance_Design_Placeholder;
+			global::Xamarin.Forms.Platform.Resource.Style.TextAppearance_Design_Prefix = global::LagoVista.Droid.Simulator.Resource.Style.TextAppearance_Design_Prefix;
 			global::Xamarin.Forms.Platform.Resource.Style.TextAppearance_Design_Snackbar_Message = global::LagoVista.Droid.Simulator.Resource.Style.TextAppearance_Design_Snackbar_Message;
+			global::Xamarin.Forms.Platform.Resource.Style.TextAppearance_Design_Suffix = global::LagoVista.Droid.Simulator.Resource.Style.TextAppearance_Design_Suffix;
 			global::Xamarin.Forms.Platform.Resource.Style.TextAppearance_Design_Tab = global::LagoVista.Droid.Simulator.Resource.Style.TextAppearance_Design_Tab;
 			global::Xamarin.Forms.Platform.Resource.Style.TextAppearance_MaterialComponents_Badge = global::LagoVista.Droid.Simulator.Resource.Style.TextAppearance_MaterialComponents_Badge;
 			global::Xamarin.Forms.Platform.Resource.Style.TextAppearance_MaterialComponents_Body1 = global::LagoVista.Droid.Simulator.Resource.Style.TextAppearance_MaterialComponents_Body1;
@@ -5868,9 +6165,11 @@ namespace LagoVista.Droid.Simulator
 			global::Xamarin.Forms.Platform.Resource.Style.TextAppearance_MaterialComponents_Overline = global::LagoVista.Droid.Simulator.Resource.Style.TextAppearance_MaterialComponents_Overline;
 			global::Xamarin.Forms.Platform.Resource.Style.TextAppearance_MaterialComponents_Subtitle1 = global::LagoVista.Droid.Simulator.Resource.Style.TextAppearance_MaterialComponents_Subtitle1;
 			global::Xamarin.Forms.Platform.Resource.Style.TextAppearance_MaterialComponents_Subtitle2 = global::LagoVista.Droid.Simulator.Resource.Style.TextAppearance_MaterialComponents_Subtitle2;
+			global::Xamarin.Forms.Platform.Resource.Style.TextAppearance_MaterialComponents_Tooltip = global::LagoVista.Droid.Simulator.Resource.Style.TextAppearance_MaterialComponents_Tooltip;
 			global::Xamarin.Forms.Platform.Resource.Style.TextAppearance_Widget_AppCompat_ExpandedMenu_Item = global::LagoVista.Droid.Simulator.Resource.Style.TextAppearance_Widget_AppCompat_ExpandedMenu_Item;
 			global::Xamarin.Forms.Platform.Resource.Style.TextAppearance_Widget_AppCompat_Toolbar_Subtitle = global::LagoVista.Droid.Simulator.Resource.Style.TextAppearance_Widget_AppCompat_Toolbar_Subtitle;
 			global::Xamarin.Forms.Platform.Resource.Style.TextAppearance_Widget_AppCompat_Toolbar_Title = global::LagoVista.Droid.Simulator.Resource.Style.TextAppearance_Widget_AppCompat_Toolbar_Title;
+			global::Xamarin.Forms.Platform.Resource.Style.ThemeOverlayColorAccentRed = global::LagoVista.Droid.Simulator.Resource.Style.ThemeOverlayColorAccentRed;
 			global::Xamarin.Forms.Platform.Resource.Style.ThemeOverlay_AppCompat = global::LagoVista.Droid.Simulator.Resource.Style.ThemeOverlay_AppCompat;
 			global::Xamarin.Forms.Platform.Resource.Style.ThemeOverlay_AppCompat_ActionBar = global::LagoVista.Droid.Simulator.Resource.Style.ThemeOverlay_AppCompat_ActionBar;
 			global::Xamarin.Forms.Platform.Resource.Style.ThemeOverlay_AppCompat_Dark = global::LagoVista.Droid.Simulator.Resource.Style.ThemeOverlay_AppCompat_Dark;
@@ -5898,8 +6197,10 @@ namespace LagoVista.Droid.Simulator
 			global::Xamarin.Forms.Platform.Resource.Style.ThemeOverlay_MaterialComponents_DayNight_BottomSheetDialog = global::LagoVista.Droid.Simulator.Resource.Style.ThemeOverlay_MaterialComponents_DayNight_BottomSheetDialog;
 			global::Xamarin.Forms.Platform.Resource.Style.ThemeOverlay_MaterialComponents_Dialog = global::LagoVista.Droid.Simulator.Resource.Style.ThemeOverlay_MaterialComponents_Dialog;
 			global::Xamarin.Forms.Platform.Resource.Style.ThemeOverlay_MaterialComponents_Dialog_Alert = global::LagoVista.Droid.Simulator.Resource.Style.ThemeOverlay_MaterialComponents_Dialog_Alert;
+			global::Xamarin.Forms.Platform.Resource.Style.ThemeOverlay_MaterialComponents_Dialog_Alert_Framework = global::LagoVista.Droid.Simulator.Resource.Style.ThemeOverlay_MaterialComponents_Dialog_Alert_Framework;
 			global::Xamarin.Forms.Platform.Resource.Style.ThemeOverlay_MaterialComponents_Light = global::LagoVista.Droid.Simulator.Resource.Style.ThemeOverlay_MaterialComponents_Light;
 			global::Xamarin.Forms.Platform.Resource.Style.ThemeOverlay_MaterialComponents_Light_BottomSheetDialog = global::LagoVista.Droid.Simulator.Resource.Style.ThemeOverlay_MaterialComponents_Light_BottomSheetDialog;
+			global::Xamarin.Forms.Platform.Resource.Style.ThemeOverlay_MaterialComponents_Light_Dialog_Alert_Framework = global::LagoVista.Droid.Simulator.Resource.Style.ThemeOverlay_MaterialComponents_Light_Dialog_Alert_Framework;
 			global::Xamarin.Forms.Platform.Resource.Style.ThemeOverlay_MaterialComponents_MaterialAlertDialog = global::LagoVista.Droid.Simulator.Resource.Style.ThemeOverlay_MaterialComponents_MaterialAlertDialog;
 			global::Xamarin.Forms.Platform.Resource.Style.ThemeOverlay_MaterialComponents_MaterialAlertDialog_Centered = global::LagoVista.Droid.Simulator.Resource.Style.ThemeOverlay_MaterialComponents_MaterialAlertDialog_Centered;
 			global::Xamarin.Forms.Platform.Resource.Style.ThemeOverlay_MaterialComponents_MaterialAlertDialog_Picker_Date = global::LagoVista.Droid.Simulator.Resource.Style.ThemeOverlay_MaterialComponents_MaterialAlertDialog_Picker_Date;
@@ -6077,6 +6378,7 @@ namespace LagoVista.Droid.Simulator
 			global::Xamarin.Forms.Platform.Resource.Style.Widget_Design_ScrimInsetsFrameLayout = global::LagoVista.Droid.Simulator.Resource.Style.Widget_Design_ScrimInsetsFrameLayout;
 			global::Xamarin.Forms.Platform.Resource.Style.Widget_Design_Snackbar = global::LagoVista.Droid.Simulator.Resource.Style.Widget_Design_Snackbar;
 			global::Xamarin.Forms.Platform.Resource.Style.Widget_Design_TabLayout = global::LagoVista.Droid.Simulator.Resource.Style.Widget_Design_TabLayout;
+			global::Xamarin.Forms.Platform.Resource.Style.Widget_Design_TextInputEditText = global::LagoVista.Droid.Simulator.Resource.Style.Widget_Design_TextInputEditText;
 			global::Xamarin.Forms.Platform.Resource.Style.Widget_Design_TextInputLayout = global::LagoVista.Droid.Simulator.Resource.Style.Widget_Design_TextInputLayout;
 			global::Xamarin.Forms.Platform.Resource.Style.Widget_MaterialComponents_ActionBar_Primary = global::LagoVista.Droid.Simulator.Resource.Style.Widget_MaterialComponents_ActionBar_Primary;
 			global::Xamarin.Forms.Platform.Resource.Style.Widget_MaterialComponents_ActionBar_PrimarySurface = global::LagoVista.Droid.Simulator.Resource.Style.Widget_MaterialComponents_ActionBar_PrimarySurface;
@@ -6148,8 +6450,11 @@ namespace LagoVista.Droid.Simulator
 			global::Xamarin.Forms.Platform.Resource.Style.Widget_MaterialComponents_PopupMenu_ContextMenu = global::LagoVista.Droid.Simulator.Resource.Style.Widget_MaterialComponents_PopupMenu_ContextMenu;
 			global::Xamarin.Forms.Platform.Resource.Style.Widget_MaterialComponents_PopupMenu_ListPopupWindow = global::LagoVista.Droid.Simulator.Resource.Style.Widget_MaterialComponents_PopupMenu_ListPopupWindow;
 			global::Xamarin.Forms.Platform.Resource.Style.Widget_MaterialComponents_PopupMenu_Overflow = global::LagoVista.Droid.Simulator.Resource.Style.Widget_MaterialComponents_PopupMenu_Overflow;
+			global::Xamarin.Forms.Platform.Resource.Style.Widget_MaterialComponents_ShapeableImageView = global::LagoVista.Droid.Simulator.Resource.Style.Widget_MaterialComponents_ShapeableImageView;
+			global::Xamarin.Forms.Platform.Resource.Style.Widget_MaterialComponents_Slider = global::LagoVista.Droid.Simulator.Resource.Style.Widget_MaterialComponents_Slider;
 			global::Xamarin.Forms.Platform.Resource.Style.Widget_MaterialComponents_Snackbar = global::LagoVista.Droid.Simulator.Resource.Style.Widget_MaterialComponents_Snackbar;
 			global::Xamarin.Forms.Platform.Resource.Style.Widget_MaterialComponents_Snackbar_FullWidth = global::LagoVista.Droid.Simulator.Resource.Style.Widget_MaterialComponents_Snackbar_FullWidth;
+			global::Xamarin.Forms.Platform.Resource.Style.Widget_MaterialComponents_Snackbar_TextView = global::LagoVista.Droid.Simulator.Resource.Style.Widget_MaterialComponents_Snackbar_TextView;
 			global::Xamarin.Forms.Platform.Resource.Style.Widget_MaterialComponents_TabLayout = global::LagoVista.Droid.Simulator.Resource.Style.Widget_MaterialComponents_TabLayout;
 			global::Xamarin.Forms.Platform.Resource.Style.Widget_MaterialComponents_TabLayout_Colored = global::LagoVista.Droid.Simulator.Resource.Style.Widget_MaterialComponents_TabLayout_Colored;
 			global::Xamarin.Forms.Platform.Resource.Style.Widget_MaterialComponents_TabLayout_PrimarySurface = global::LagoVista.Droid.Simulator.Resource.Style.Widget_MaterialComponents_TabLayout_PrimarySurface;
@@ -6170,6 +6475,7 @@ namespace LagoVista.Droid.Simulator
 			global::Xamarin.Forms.Platform.Resource.Style.Widget_MaterialComponents_Toolbar_Primary = global::LagoVista.Droid.Simulator.Resource.Style.Widget_MaterialComponents_Toolbar_Primary;
 			global::Xamarin.Forms.Platform.Resource.Style.Widget_MaterialComponents_Toolbar_PrimarySurface = global::LagoVista.Droid.Simulator.Resource.Style.Widget_MaterialComponents_Toolbar_PrimarySurface;
 			global::Xamarin.Forms.Platform.Resource.Style.Widget_MaterialComponents_Toolbar_Surface = global::LagoVista.Droid.Simulator.Resource.Style.Widget_MaterialComponents_Toolbar_Surface;
+			global::Xamarin.Forms.Platform.Resource.Style.Widget_MaterialComponents_Tooltip = global::LagoVista.Droid.Simulator.Resource.Style.Widget_MaterialComponents_Tooltip;
 			global::Xamarin.Forms.Platform.Resource.Style.Widget_Support_CoordinatorLayout = global::LagoVista.Droid.Simulator.Resource.Style.Widget_Support_CoordinatorLayout;
 			global::Xamarin.Forms.Platform.Resource.Styleable.ActionBar = global::LagoVista.Droid.Simulator.Resource.Styleable.ActionBar;
 			global::Xamarin.Forms.Platform.Resource.Styleable.ActionBarLayout = global::LagoVista.Droid.Simulator.Resource.Styleable.ActionBarLayout;
@@ -6427,8 +6733,10 @@ namespace LagoVista.Droid.Simulator
 			global::Xamarin.Forms.Platform.Resource.Styleable.Badge_backgroundColor = global::LagoVista.Droid.Simulator.Resource.Styleable.Badge_backgroundColor;
 			global::Xamarin.Forms.Platform.Resource.Styleable.Badge_badgeGravity = global::LagoVista.Droid.Simulator.Resource.Styleable.Badge_badgeGravity;
 			global::Xamarin.Forms.Platform.Resource.Styleable.Badge_badgeTextColor = global::LagoVista.Droid.Simulator.Resource.Styleable.Badge_badgeTextColor;
+			global::Xamarin.Forms.Platform.Resource.Styleable.Badge_horizontalOffset = global::LagoVista.Droid.Simulator.Resource.Styleable.Badge_horizontalOffset;
 			global::Xamarin.Forms.Platform.Resource.Styleable.Badge_maxCharacterCount = global::LagoVista.Droid.Simulator.Resource.Styleable.Badge_maxCharacterCount;
 			global::Xamarin.Forms.Platform.Resource.Styleable.Badge_number = global::LagoVista.Droid.Simulator.Resource.Styleable.Badge_number;
+			global::Xamarin.Forms.Platform.Resource.Styleable.Badge_verticalOffset = global::LagoVista.Droid.Simulator.Resource.Styleable.Badge_verticalOffset;
 			global::Xamarin.Forms.Platform.Resource.Styleable.BottomAppBar = global::LagoVista.Droid.Simulator.Resource.Styleable.BottomAppBar;
 			global::Xamarin.Forms.Platform.Resource.Styleable.BottomAppBar_backgroundTint = global::LagoVista.Droid.Simulator.Resource.Styleable.BottomAppBar_backgroundTint;
 			global::Xamarin.Forms.Platform.Resource.Styleable.BottomAppBar_elevation = global::LagoVista.Droid.Simulator.Resource.Styleable.BottomAppBar_elevation;
@@ -6438,6 +6746,9 @@ namespace LagoVista.Droid.Simulator
 			global::Xamarin.Forms.Platform.Resource.Styleable.BottomAppBar_fabCradleRoundedCornerRadius = global::LagoVista.Droid.Simulator.Resource.Styleable.BottomAppBar_fabCradleRoundedCornerRadius;
 			global::Xamarin.Forms.Platform.Resource.Styleable.BottomAppBar_fabCradleVerticalOffset = global::LagoVista.Droid.Simulator.Resource.Styleable.BottomAppBar_fabCradleVerticalOffset;
 			global::Xamarin.Forms.Platform.Resource.Styleable.BottomAppBar_hideOnScroll = global::LagoVista.Droid.Simulator.Resource.Styleable.BottomAppBar_hideOnScroll;
+			global::Xamarin.Forms.Platform.Resource.Styleable.BottomAppBar_paddingBottomSystemWindowInsets = global::LagoVista.Droid.Simulator.Resource.Styleable.BottomAppBar_paddingBottomSystemWindowInsets;
+			global::Xamarin.Forms.Platform.Resource.Styleable.BottomAppBar_paddingLeftSystemWindowInsets = global::LagoVista.Droid.Simulator.Resource.Styleable.BottomAppBar_paddingLeftSystemWindowInsets;
+			global::Xamarin.Forms.Platform.Resource.Styleable.BottomAppBar_paddingRightSystemWindowInsets = global::LagoVista.Droid.Simulator.Resource.Styleable.BottomAppBar_paddingRightSystemWindowInsets;
 			global::Xamarin.Forms.Platform.Resource.Styleable.BottomNavigationView = global::LagoVista.Droid.Simulator.Resource.Styleable.BottomNavigationView;
 			global::Xamarin.Forms.Platform.Resource.Styleable.BottomNavigationView_backgroundTint = global::LagoVista.Droid.Simulator.Resource.Styleable.BottomNavigationView_backgroundTint;
 			global::Xamarin.Forms.Platform.Resource.Styleable.BottomNavigationView_elevation = global::LagoVista.Droid.Simulator.Resource.Styleable.BottomNavigationView_elevation;
@@ -6454,6 +6765,7 @@ namespace LagoVista.Droid.Simulator
 			global::Xamarin.Forms.Platform.Resource.Styleable.BottomSheetBehavior_Layout = global::LagoVista.Droid.Simulator.Resource.Styleable.BottomSheetBehavior_Layout;
 			global::Xamarin.Forms.Platform.Resource.Styleable.BottomSheetBehavior_Layout_android_elevation = global::LagoVista.Droid.Simulator.Resource.Styleable.BottomSheetBehavior_Layout_android_elevation;
 			global::Xamarin.Forms.Platform.Resource.Styleable.BottomSheetBehavior_Layout_backgroundTint = global::LagoVista.Droid.Simulator.Resource.Styleable.BottomSheetBehavior_Layout_backgroundTint;
+			global::Xamarin.Forms.Platform.Resource.Styleable.BottomSheetBehavior_Layout_behavior_draggable = global::LagoVista.Droid.Simulator.Resource.Styleable.BottomSheetBehavior_Layout_behavior_draggable;
 			global::Xamarin.Forms.Platform.Resource.Styleable.BottomSheetBehavior_Layout_behavior_expandedOffset = global::LagoVista.Droid.Simulator.Resource.Styleable.BottomSheetBehavior_Layout_behavior_expandedOffset;
 			global::Xamarin.Forms.Platform.Resource.Styleable.BottomSheetBehavior_Layout_behavior_fitToContents = global::LagoVista.Droid.Simulator.Resource.Styleable.BottomSheetBehavior_Layout_behavior_fitToContents;
 			global::Xamarin.Forms.Platform.Resource.Styleable.BottomSheetBehavior_Layout_behavior_halfExpandedRatio = global::LagoVista.Droid.Simulator.Resource.Styleable.BottomSheetBehavior_Layout_behavior_halfExpandedRatio;
@@ -6461,6 +6773,7 @@ namespace LagoVista.Droid.Simulator
 			global::Xamarin.Forms.Platform.Resource.Styleable.BottomSheetBehavior_Layout_behavior_peekHeight = global::LagoVista.Droid.Simulator.Resource.Styleable.BottomSheetBehavior_Layout_behavior_peekHeight;
 			global::Xamarin.Forms.Platform.Resource.Styleable.BottomSheetBehavior_Layout_behavior_saveFlags = global::LagoVista.Droid.Simulator.Resource.Styleable.BottomSheetBehavior_Layout_behavior_saveFlags;
 			global::Xamarin.Forms.Platform.Resource.Styleable.BottomSheetBehavior_Layout_behavior_skipCollapsed = global::LagoVista.Droid.Simulator.Resource.Styleable.BottomSheetBehavior_Layout_behavior_skipCollapsed;
+			global::Xamarin.Forms.Platform.Resource.Styleable.BottomSheetBehavior_Layout_gestureInsetBottomIgnored = global::LagoVista.Droid.Simulator.Resource.Styleable.BottomSheetBehavior_Layout_gestureInsetBottomIgnored;
 			global::Xamarin.Forms.Platform.Resource.Styleable.BottomSheetBehavior_Layout_shapeAppearance = global::LagoVista.Droid.Simulator.Resource.Styleable.BottomSheetBehavior_Layout_shapeAppearance;
 			global::Xamarin.Forms.Platform.Resource.Styleable.BottomSheetBehavior_Layout_shapeAppearanceOverlay = global::LagoVista.Droid.Simulator.Resource.Styleable.BottomSheetBehavior_Layout_shapeAppearanceOverlay;
 			global::Xamarin.Forms.Platform.Resource.Styleable.ButtonBarLayout = global::LagoVista.Droid.Simulator.Resource.Styleable.ButtonBarLayout;
@@ -6485,6 +6798,7 @@ namespace LagoVista.Droid.Simulator
 			global::Xamarin.Forms.Platform.Resource.Styleable.ChipGroup_chipSpacing = global::LagoVista.Droid.Simulator.Resource.Styleable.ChipGroup_chipSpacing;
 			global::Xamarin.Forms.Platform.Resource.Styleable.ChipGroup_chipSpacingHorizontal = global::LagoVista.Droid.Simulator.Resource.Styleable.ChipGroup_chipSpacingHorizontal;
 			global::Xamarin.Forms.Platform.Resource.Styleable.ChipGroup_chipSpacingVertical = global::LagoVista.Droid.Simulator.Resource.Styleable.ChipGroup_chipSpacingVertical;
+			global::Xamarin.Forms.Platform.Resource.Styleable.ChipGroup_selectionRequired = global::LagoVista.Droid.Simulator.Resource.Styleable.ChipGroup_selectionRequired;
 			global::Xamarin.Forms.Platform.Resource.Styleable.ChipGroup_singleLine = global::LagoVista.Droid.Simulator.Resource.Styleable.ChipGroup_singleLine;
 			global::Xamarin.Forms.Platform.Resource.Styleable.ChipGroup_singleSelection = global::LagoVista.Droid.Simulator.Resource.Styleable.ChipGroup_singleSelection;
 			global::Xamarin.Forms.Platform.Resource.Styleable.Chip_android_checkable = global::LagoVista.Droid.Simulator.Resource.Styleable.Chip_android_checkable;
@@ -6495,6 +6809,7 @@ namespace LagoVista.Droid.Simulator
 			global::Xamarin.Forms.Platform.Resource.Styleable.Chip_android_textColor = global::LagoVista.Droid.Simulator.Resource.Styleable.Chip_android_textColor;
 			global::Xamarin.Forms.Platform.Resource.Styleable.Chip_checkedIcon = global::LagoVista.Droid.Simulator.Resource.Styleable.Chip_checkedIcon;
 			global::Xamarin.Forms.Platform.Resource.Styleable.Chip_checkedIconEnabled = global::LagoVista.Droid.Simulator.Resource.Styleable.Chip_checkedIconEnabled;
+			global::Xamarin.Forms.Platform.Resource.Styleable.Chip_checkedIconTint = global::LagoVista.Droid.Simulator.Resource.Styleable.Chip_checkedIconTint;
 			global::Xamarin.Forms.Platform.Resource.Styleable.Chip_checkedIconVisible = global::LagoVista.Droid.Simulator.Resource.Styleable.Chip_checkedIconVisible;
 			global::Xamarin.Forms.Platform.Resource.Styleable.Chip_chipBackgroundColor = global::LagoVista.Droid.Simulator.Resource.Styleable.Chip_chipBackgroundColor;
 			global::Xamarin.Forms.Platform.Resource.Styleable.Chip_chipCornerRadius = global::LagoVista.Droid.Simulator.Resource.Styleable.Chip_chipCornerRadius;
@@ -6541,6 +6856,7 @@ namespace LagoVista.Droid.Simulator
 			global::Xamarin.Forms.Platform.Resource.Styleable.CollapsingToolbarLayout_Layout = global::LagoVista.Droid.Simulator.Resource.Styleable.CollapsingToolbarLayout_Layout;
 			global::Xamarin.Forms.Platform.Resource.Styleable.CollapsingToolbarLayout_Layout_layout_collapseMode = global::LagoVista.Droid.Simulator.Resource.Styleable.CollapsingToolbarLayout_Layout_layout_collapseMode;
 			global::Xamarin.Forms.Platform.Resource.Styleable.CollapsingToolbarLayout_Layout_layout_collapseParallaxMultiplier = global::LagoVista.Droid.Simulator.Resource.Styleable.CollapsingToolbarLayout_Layout_layout_collapseParallaxMultiplier;
+			global::Xamarin.Forms.Platform.Resource.Styleable.CollapsingToolbarLayout_maxLines = global::LagoVista.Droid.Simulator.Resource.Styleable.CollapsingToolbarLayout_maxLines;
 			global::Xamarin.Forms.Platform.Resource.Styleable.CollapsingToolbarLayout_scrimAnimationDuration = global::LagoVista.Droid.Simulator.Resource.Styleable.CollapsingToolbarLayout_scrimAnimationDuration;
 			global::Xamarin.Forms.Platform.Resource.Styleable.CollapsingToolbarLayout_scrimVisibleHeightTrigger = global::LagoVista.Droid.Simulator.Resource.Styleable.CollapsingToolbarLayout_scrimVisibleHeightTrigger;
 			global::Xamarin.Forms.Platform.Resource.Styleable.CollapsingToolbarLayout_statusBarScrim = global::LagoVista.Droid.Simulator.Resource.Styleable.CollapsingToolbarLayout_statusBarScrim;
@@ -6588,6 +6904,7 @@ namespace LagoVista.Droid.Simulator
 			global::Xamarin.Forms.Platform.Resource.Styleable.ExtendedFloatingActionButton_showMotionSpec = global::LagoVista.Droid.Simulator.Resource.Styleable.ExtendedFloatingActionButton_showMotionSpec;
 			global::Xamarin.Forms.Platform.Resource.Styleable.ExtendedFloatingActionButton_shrinkMotionSpec = global::LagoVista.Droid.Simulator.Resource.Styleable.ExtendedFloatingActionButton_shrinkMotionSpec;
 			global::Xamarin.Forms.Platform.Resource.Styleable.FloatingActionButton = global::LagoVista.Droid.Simulator.Resource.Styleable.FloatingActionButton;
+			global::Xamarin.Forms.Platform.Resource.Styleable.FloatingActionButton_android_enabled = global::LagoVista.Droid.Simulator.Resource.Styleable.FloatingActionButton_android_enabled;
 			global::Xamarin.Forms.Platform.Resource.Styleable.FloatingActionButton_backgroundTint = global::LagoVista.Droid.Simulator.Resource.Styleable.FloatingActionButton_backgroundTint;
 			global::Xamarin.Forms.Platform.Resource.Styleable.FloatingActionButton_backgroundTintMode = global::LagoVista.Droid.Simulator.Resource.Styleable.FloatingActionButton_backgroundTintMode;
 			global::Xamarin.Forms.Platform.Resource.Styleable.FloatingActionButton_Behavior_Layout = global::LagoVista.Droid.Simulator.Resource.Styleable.FloatingActionButton_Behavior_Layout;
@@ -6654,6 +6971,10 @@ namespace LagoVista.Droid.Simulator
 			global::Xamarin.Forms.Platform.Resource.Styleable.GradientColor_android_startY = global::LagoVista.Droid.Simulator.Resource.Styleable.GradientColor_android_startY;
 			global::Xamarin.Forms.Platform.Resource.Styleable.GradientColor_android_tileMode = global::LagoVista.Droid.Simulator.Resource.Styleable.GradientColor_android_tileMode;
 			global::Xamarin.Forms.Platform.Resource.Styleable.GradientColor_android_type = global::LagoVista.Droid.Simulator.Resource.Styleable.GradientColor_android_type;
+			global::Xamarin.Forms.Platform.Resource.Styleable.Insets = global::LagoVista.Droid.Simulator.Resource.Styleable.Insets;
+			global::Xamarin.Forms.Platform.Resource.Styleable.Insets_paddingBottomSystemWindowInsets = global::LagoVista.Droid.Simulator.Resource.Styleable.Insets_paddingBottomSystemWindowInsets;
+			global::Xamarin.Forms.Platform.Resource.Styleable.Insets_paddingLeftSystemWindowInsets = global::LagoVista.Droid.Simulator.Resource.Styleable.Insets_paddingLeftSystemWindowInsets;
+			global::Xamarin.Forms.Platform.Resource.Styleable.Insets_paddingRightSystemWindowInsets = global::LagoVista.Droid.Simulator.Resource.Styleable.Insets_paddingRightSystemWindowInsets;
 			global::Xamarin.Forms.Platform.Resource.Styleable.ItemsViewRendererTheme = global::LagoVista.Droid.Simulator.Resource.Styleable.ItemsViewRendererTheme;
 			global::Xamarin.Forms.Platform.Resource.Styleable.ItemsViewRendererTheme_collectionViewStyle = global::LagoVista.Droid.Simulator.Resource.Styleable.ItemsViewRendererTheme_collectionViewStyle;
 			global::Xamarin.Forms.Platform.Resource.Styleable.LinearLayoutCompat = global::LagoVista.Droid.Simulator.Resource.Styleable.LinearLayoutCompat;
@@ -6685,10 +7006,14 @@ namespace LagoVista.Droid.Simulator
 			global::Xamarin.Forms.Platform.Resource.Styleable.MaterialAlertDialog_backgroundInsetEnd = global::LagoVista.Droid.Simulator.Resource.Styleable.MaterialAlertDialog_backgroundInsetEnd;
 			global::Xamarin.Forms.Platform.Resource.Styleable.MaterialAlertDialog_backgroundInsetStart = global::LagoVista.Droid.Simulator.Resource.Styleable.MaterialAlertDialog_backgroundInsetStart;
 			global::Xamarin.Forms.Platform.Resource.Styleable.MaterialAlertDialog_backgroundInsetTop = global::LagoVista.Droid.Simulator.Resource.Styleable.MaterialAlertDialog_backgroundInsetTop;
+			global::Xamarin.Forms.Platform.Resource.Styleable.MaterialAutoCompleteTextView = global::LagoVista.Droid.Simulator.Resource.Styleable.MaterialAutoCompleteTextView;
+			global::Xamarin.Forms.Platform.Resource.Styleable.MaterialAutoCompleteTextView_android_inputType = global::LagoVista.Droid.Simulator.Resource.Styleable.MaterialAutoCompleteTextView_android_inputType;
 			global::Xamarin.Forms.Platform.Resource.Styleable.MaterialButton = global::LagoVista.Droid.Simulator.Resource.Styleable.MaterialButton;
 			global::Xamarin.Forms.Platform.Resource.Styleable.MaterialButtonToggleGroup = global::LagoVista.Droid.Simulator.Resource.Styleable.MaterialButtonToggleGroup;
 			global::Xamarin.Forms.Platform.Resource.Styleable.MaterialButtonToggleGroup_checkedButton = global::LagoVista.Droid.Simulator.Resource.Styleable.MaterialButtonToggleGroup_checkedButton;
+			global::Xamarin.Forms.Platform.Resource.Styleable.MaterialButtonToggleGroup_selectionRequired = global::LagoVista.Droid.Simulator.Resource.Styleable.MaterialButtonToggleGroup_selectionRequired;
 			global::Xamarin.Forms.Platform.Resource.Styleable.MaterialButtonToggleGroup_singleSelection = global::LagoVista.Droid.Simulator.Resource.Styleable.MaterialButtonToggleGroup_singleSelection;
+			global::Xamarin.Forms.Platform.Resource.Styleable.MaterialButton_android_background = global::LagoVista.Droid.Simulator.Resource.Styleable.MaterialButton_android_background;
 			global::Xamarin.Forms.Platform.Resource.Styleable.MaterialButton_android_checkable = global::LagoVista.Droid.Simulator.Resource.Styleable.MaterialButton_android_checkable;
 			global::Xamarin.Forms.Platform.Resource.Styleable.MaterialButton_android_insetBottom = global::LagoVista.Droid.Simulator.Resource.Styleable.MaterialButton_android_insetBottom;
 			global::Xamarin.Forms.Platform.Resource.Styleable.MaterialButton_android_insetLeft = global::LagoVista.Droid.Simulator.Resource.Styleable.MaterialButton_android_insetLeft;
@@ -6745,6 +7070,7 @@ namespace LagoVista.Droid.Simulator
 			global::Xamarin.Forms.Platform.Resource.Styleable.MaterialCheckBox_buttonTint = global::LagoVista.Droid.Simulator.Resource.Styleable.MaterialCheckBox_buttonTint;
 			global::Xamarin.Forms.Platform.Resource.Styleable.MaterialCheckBox_useMaterialThemeColors = global::LagoVista.Droid.Simulator.Resource.Styleable.MaterialCheckBox_useMaterialThemeColors;
 			global::Xamarin.Forms.Platform.Resource.Styleable.MaterialRadioButton = global::LagoVista.Droid.Simulator.Resource.Styleable.MaterialRadioButton;
+			global::Xamarin.Forms.Platform.Resource.Styleable.MaterialRadioButton_buttonTint = global::LagoVista.Droid.Simulator.Resource.Styleable.MaterialRadioButton_buttonTint;
 			global::Xamarin.Forms.Platform.Resource.Styleable.MaterialRadioButton_useMaterialThemeColors = global::LagoVista.Droid.Simulator.Resource.Styleable.MaterialRadioButton_useMaterialThemeColors;
 			global::Xamarin.Forms.Platform.Resource.Styleable.MaterialShape = global::LagoVista.Droid.Simulator.Resource.Styleable.MaterialShape;
 			global::Xamarin.Forms.Platform.Resource.Styleable.MaterialShape_shapeAppearance = global::LagoVista.Droid.Simulator.Resource.Styleable.MaterialShape_shapeAppearance;
@@ -6825,6 +7151,8 @@ namespace LagoVista.Droid.Simulator
 			global::Xamarin.Forms.Platform.Resource.Styleable.PopupWindow_android_popupAnimationStyle = global::LagoVista.Droid.Simulator.Resource.Styleable.PopupWindow_android_popupAnimationStyle;
 			global::Xamarin.Forms.Platform.Resource.Styleable.PopupWindow_android_popupBackground = global::LagoVista.Droid.Simulator.Resource.Styleable.PopupWindow_android_popupBackground;
 			global::Xamarin.Forms.Platform.Resource.Styleable.PopupWindow_overlapAnchor = global::LagoVista.Droid.Simulator.Resource.Styleable.PopupWindow_overlapAnchor;
+			global::Xamarin.Forms.Platform.Resource.Styleable.RangeSlider = global::LagoVista.Droid.Simulator.Resource.Styleable.RangeSlider;
+			global::Xamarin.Forms.Platform.Resource.Styleable.RangeSlider_values = global::LagoVista.Droid.Simulator.Resource.Styleable.RangeSlider_values;
 			global::Xamarin.Forms.Platform.Resource.Styleable.RecycleListView = global::LagoVista.Droid.Simulator.Resource.Styleable.RecycleListView;
 			global::Xamarin.Forms.Platform.Resource.Styleable.RecycleListView_paddingBottomNoButtons = global::LagoVista.Droid.Simulator.Resource.Styleable.RecycleListView_paddingBottomNoButtons;
 			global::Xamarin.Forms.Platform.Resource.Styleable.RecycleListView_paddingTopNoTitle = global::LagoVista.Droid.Simulator.Resource.Styleable.RecycleListView_paddingTopNoTitle;
@@ -6865,6 +7193,11 @@ namespace LagoVista.Droid.Simulator
 			global::Xamarin.Forms.Platform.Resource.Styleable.SearchView_submitBackground = global::LagoVista.Droid.Simulator.Resource.Styleable.SearchView_submitBackground;
 			global::Xamarin.Forms.Platform.Resource.Styleable.SearchView_suggestionRowLayout = global::LagoVista.Droid.Simulator.Resource.Styleable.SearchView_suggestionRowLayout;
 			global::Xamarin.Forms.Platform.Resource.Styleable.SearchView_voiceIcon = global::LagoVista.Droid.Simulator.Resource.Styleable.SearchView_voiceIcon;
+			global::Xamarin.Forms.Platform.Resource.Styleable.ShapeableImageView = global::LagoVista.Droid.Simulator.Resource.Styleable.ShapeableImageView;
+			global::Xamarin.Forms.Platform.Resource.Styleable.ShapeableImageView_shapeAppearance = global::LagoVista.Droid.Simulator.Resource.Styleable.ShapeableImageView_shapeAppearance;
+			global::Xamarin.Forms.Platform.Resource.Styleable.ShapeableImageView_shapeAppearanceOverlay = global::LagoVista.Droid.Simulator.Resource.Styleable.ShapeableImageView_shapeAppearanceOverlay;
+			global::Xamarin.Forms.Platform.Resource.Styleable.ShapeableImageView_strokeColor = global::LagoVista.Droid.Simulator.Resource.Styleable.ShapeableImageView_strokeColor;
+			global::Xamarin.Forms.Platform.Resource.Styleable.ShapeableImageView_strokeWidth = global::LagoVista.Droid.Simulator.Resource.Styleable.ShapeableImageView_strokeWidth;
 			global::Xamarin.Forms.Platform.Resource.Styleable.ShapeAppearance = global::LagoVista.Droid.Simulator.Resource.Styleable.ShapeAppearance;
 			global::Xamarin.Forms.Platform.Resource.Styleable.ShapeAppearance_cornerFamily = global::LagoVista.Droid.Simulator.Resource.Styleable.ShapeAppearance_cornerFamily;
 			global::Xamarin.Forms.Platform.Resource.Styleable.ShapeAppearance_cornerFamilyBottomLeft = global::LagoVista.Droid.Simulator.Resource.Styleable.ShapeAppearance_cornerFamilyBottomLeft;
@@ -6876,16 +7209,39 @@ namespace LagoVista.Droid.Simulator
 			global::Xamarin.Forms.Platform.Resource.Styleable.ShapeAppearance_cornerSizeBottomRight = global::LagoVista.Droid.Simulator.Resource.Styleable.ShapeAppearance_cornerSizeBottomRight;
 			global::Xamarin.Forms.Platform.Resource.Styleable.ShapeAppearance_cornerSizeTopLeft = global::LagoVista.Droid.Simulator.Resource.Styleable.ShapeAppearance_cornerSizeTopLeft;
 			global::Xamarin.Forms.Platform.Resource.Styleable.ShapeAppearance_cornerSizeTopRight = global::LagoVista.Droid.Simulator.Resource.Styleable.ShapeAppearance_cornerSizeTopRight;
+			global::Xamarin.Forms.Platform.Resource.Styleable.Slider = global::LagoVista.Droid.Simulator.Resource.Styleable.Slider;
+			global::Xamarin.Forms.Platform.Resource.Styleable.Slider_android_enabled = global::LagoVista.Droid.Simulator.Resource.Styleable.Slider_android_enabled;
+			global::Xamarin.Forms.Platform.Resource.Styleable.Slider_android_stepSize = global::LagoVista.Droid.Simulator.Resource.Styleable.Slider_android_stepSize;
+			global::Xamarin.Forms.Platform.Resource.Styleable.Slider_android_value = global::LagoVista.Droid.Simulator.Resource.Styleable.Slider_android_value;
+			global::Xamarin.Forms.Platform.Resource.Styleable.Slider_android_valueFrom = global::LagoVista.Droid.Simulator.Resource.Styleable.Slider_android_valueFrom;
+			global::Xamarin.Forms.Platform.Resource.Styleable.Slider_android_valueTo = global::LagoVista.Droid.Simulator.Resource.Styleable.Slider_android_valueTo;
+			global::Xamarin.Forms.Platform.Resource.Styleable.Slider_haloColor = global::LagoVista.Droid.Simulator.Resource.Styleable.Slider_haloColor;
+			global::Xamarin.Forms.Platform.Resource.Styleable.Slider_haloRadius = global::LagoVista.Droid.Simulator.Resource.Styleable.Slider_haloRadius;
+			global::Xamarin.Forms.Platform.Resource.Styleable.Slider_labelBehavior = global::LagoVista.Droid.Simulator.Resource.Styleable.Slider_labelBehavior;
+			global::Xamarin.Forms.Platform.Resource.Styleable.Slider_labelStyle = global::LagoVista.Droid.Simulator.Resource.Styleable.Slider_labelStyle;
+			global::Xamarin.Forms.Platform.Resource.Styleable.Slider_thumbColor = global::LagoVista.Droid.Simulator.Resource.Styleable.Slider_thumbColor;
+			global::Xamarin.Forms.Platform.Resource.Styleable.Slider_thumbElevation = global::LagoVista.Droid.Simulator.Resource.Styleable.Slider_thumbElevation;
+			global::Xamarin.Forms.Platform.Resource.Styleable.Slider_thumbRadius = global::LagoVista.Droid.Simulator.Resource.Styleable.Slider_thumbRadius;
+			global::Xamarin.Forms.Platform.Resource.Styleable.Slider_tickColor = global::LagoVista.Droid.Simulator.Resource.Styleable.Slider_tickColor;
+			global::Xamarin.Forms.Platform.Resource.Styleable.Slider_tickColorActive = global::LagoVista.Droid.Simulator.Resource.Styleable.Slider_tickColorActive;
+			global::Xamarin.Forms.Platform.Resource.Styleable.Slider_tickColorInactive = global::LagoVista.Droid.Simulator.Resource.Styleable.Slider_tickColorInactive;
+			global::Xamarin.Forms.Platform.Resource.Styleable.Slider_trackColor = global::LagoVista.Droid.Simulator.Resource.Styleable.Slider_trackColor;
+			global::Xamarin.Forms.Platform.Resource.Styleable.Slider_trackColorActive = global::LagoVista.Droid.Simulator.Resource.Styleable.Slider_trackColorActive;
+			global::Xamarin.Forms.Platform.Resource.Styleable.Slider_trackColorInactive = global::LagoVista.Droid.Simulator.Resource.Styleable.Slider_trackColorInactive;
+			global::Xamarin.Forms.Platform.Resource.Styleable.Slider_trackHeight = global::LagoVista.Droid.Simulator.Resource.Styleable.Slider_trackHeight;
 			global::Xamarin.Forms.Platform.Resource.Styleable.Snackbar = global::LagoVista.Droid.Simulator.Resource.Styleable.Snackbar;
 			global::Xamarin.Forms.Platform.Resource.Styleable.SnackbarLayout = global::LagoVista.Droid.Simulator.Resource.Styleable.SnackbarLayout;
 			global::Xamarin.Forms.Platform.Resource.Styleable.SnackbarLayout_actionTextColorAlpha = global::LagoVista.Droid.Simulator.Resource.Styleable.SnackbarLayout_actionTextColorAlpha;
 			global::Xamarin.Forms.Platform.Resource.Styleable.SnackbarLayout_android_maxWidth = global::LagoVista.Droid.Simulator.Resource.Styleable.SnackbarLayout_android_maxWidth;
 			global::Xamarin.Forms.Platform.Resource.Styleable.SnackbarLayout_animationMode = global::LagoVista.Droid.Simulator.Resource.Styleable.SnackbarLayout_animationMode;
 			global::Xamarin.Forms.Platform.Resource.Styleable.SnackbarLayout_backgroundOverlayColorAlpha = global::LagoVista.Droid.Simulator.Resource.Styleable.SnackbarLayout_backgroundOverlayColorAlpha;
+			global::Xamarin.Forms.Platform.Resource.Styleable.SnackbarLayout_backgroundTint = global::LagoVista.Droid.Simulator.Resource.Styleable.SnackbarLayout_backgroundTint;
+			global::Xamarin.Forms.Platform.Resource.Styleable.SnackbarLayout_backgroundTintMode = global::LagoVista.Droid.Simulator.Resource.Styleable.SnackbarLayout_backgroundTintMode;
 			global::Xamarin.Forms.Platform.Resource.Styleable.SnackbarLayout_elevation = global::LagoVista.Droid.Simulator.Resource.Styleable.SnackbarLayout_elevation;
 			global::Xamarin.Forms.Platform.Resource.Styleable.SnackbarLayout_maxActionInlineWidth = global::LagoVista.Droid.Simulator.Resource.Styleable.SnackbarLayout_maxActionInlineWidth;
 			global::Xamarin.Forms.Platform.Resource.Styleable.Snackbar_snackbarButtonStyle = global::LagoVista.Droid.Simulator.Resource.Styleable.Snackbar_snackbarButtonStyle;
 			global::Xamarin.Forms.Platform.Resource.Styleable.Snackbar_snackbarStyle = global::LagoVista.Droid.Simulator.Resource.Styleable.Snackbar_snackbarStyle;
+			global::Xamarin.Forms.Platform.Resource.Styleable.Snackbar_snackbarTextViewStyle = global::LagoVista.Droid.Simulator.Resource.Styleable.Snackbar_snackbarTextViewStyle;
 			global::Xamarin.Forms.Platform.Resource.Styleable.Spinner = global::LagoVista.Droid.Simulator.Resource.Styleable.Spinner;
 			global::Xamarin.Forms.Platform.Resource.Styleable.Spinner_android_dropDownWidth = global::LagoVista.Droid.Simulator.Resource.Styleable.Spinner_android_dropDownWidth;
 			global::Xamarin.Forms.Platform.Resource.Styleable.Spinner_android_entries = global::LagoVista.Droid.Simulator.Resource.Styleable.Spinner_android_entries;
@@ -6965,7 +7321,10 @@ namespace LagoVista.Droid.Simulator
 			global::Xamarin.Forms.Platform.Resource.Styleable.TextAppearance_fontVariationSettings = global::LagoVista.Droid.Simulator.Resource.Styleable.TextAppearance_fontVariationSettings;
 			global::Xamarin.Forms.Platform.Resource.Styleable.TextAppearance_textAllCaps = global::LagoVista.Droid.Simulator.Resource.Styleable.TextAppearance_textAllCaps;
 			global::Xamarin.Forms.Platform.Resource.Styleable.TextAppearance_textLocale = global::LagoVista.Droid.Simulator.Resource.Styleable.TextAppearance_textLocale;
+			global::Xamarin.Forms.Platform.Resource.Styleable.TextInputEditText = global::LagoVista.Droid.Simulator.Resource.Styleable.TextInputEditText;
+			global::Xamarin.Forms.Platform.Resource.Styleable.TextInputEditText_textInputLayoutFocusedRectEnabled = global::LagoVista.Droid.Simulator.Resource.Styleable.TextInputEditText_textInputLayoutFocusedRectEnabled;
 			global::Xamarin.Forms.Platform.Resource.Styleable.TextInputLayout = global::LagoVista.Droid.Simulator.Resource.Styleable.TextInputLayout;
+			global::Xamarin.Forms.Platform.Resource.Styleable.TextInputLayout_android_enabled = global::LagoVista.Droid.Simulator.Resource.Styleable.TextInputLayout_android_enabled;
 			global::Xamarin.Forms.Platform.Resource.Styleable.TextInputLayout_android_hint = global::LagoVista.Droid.Simulator.Resource.Styleable.TextInputLayout_android_hint;
 			global::Xamarin.Forms.Platform.Resource.Styleable.TextInputLayout_android_textColorHint = global::LagoVista.Droid.Simulator.Resource.Styleable.TextInputLayout_android_textColorHint;
 			global::Xamarin.Forms.Platform.Resource.Styleable.TextInputLayout_boxBackgroundColor = global::LagoVista.Droid.Simulator.Resource.Styleable.TextInputLayout_boxBackgroundColor;
@@ -6976,6 +7335,7 @@ namespace LagoVista.Droid.Simulator
 			global::Xamarin.Forms.Platform.Resource.Styleable.TextInputLayout_boxCornerRadiusTopEnd = global::LagoVista.Droid.Simulator.Resource.Styleable.TextInputLayout_boxCornerRadiusTopEnd;
 			global::Xamarin.Forms.Platform.Resource.Styleable.TextInputLayout_boxCornerRadiusTopStart = global::LagoVista.Droid.Simulator.Resource.Styleable.TextInputLayout_boxCornerRadiusTopStart;
 			global::Xamarin.Forms.Platform.Resource.Styleable.TextInputLayout_boxStrokeColor = global::LagoVista.Droid.Simulator.Resource.Styleable.TextInputLayout_boxStrokeColor;
+			global::Xamarin.Forms.Platform.Resource.Styleable.TextInputLayout_boxStrokeErrorColor = global::LagoVista.Droid.Simulator.Resource.Styleable.TextInputLayout_boxStrokeErrorColor;
 			global::Xamarin.Forms.Platform.Resource.Styleable.TextInputLayout_boxStrokeWidth = global::LagoVista.Droid.Simulator.Resource.Styleable.TextInputLayout_boxStrokeWidth;
 			global::Xamarin.Forms.Platform.Resource.Styleable.TextInputLayout_boxStrokeWidthFocused = global::LagoVista.Droid.Simulator.Resource.Styleable.TextInputLayout_boxStrokeWidthFocused;
 			global::Xamarin.Forms.Platform.Resource.Styleable.TextInputLayout_counterEnabled = global::LagoVista.Droid.Simulator.Resource.Styleable.TextInputLayout_counterEnabled;
@@ -6990,6 +7350,7 @@ namespace LagoVista.Droid.Simulator
 			global::Xamarin.Forms.Platform.Resource.Styleable.TextInputLayout_endIconMode = global::LagoVista.Droid.Simulator.Resource.Styleable.TextInputLayout_endIconMode;
 			global::Xamarin.Forms.Platform.Resource.Styleable.TextInputLayout_endIconTint = global::LagoVista.Droid.Simulator.Resource.Styleable.TextInputLayout_endIconTint;
 			global::Xamarin.Forms.Platform.Resource.Styleable.TextInputLayout_endIconTintMode = global::LagoVista.Droid.Simulator.Resource.Styleable.TextInputLayout_endIconTintMode;
+			global::Xamarin.Forms.Platform.Resource.Styleable.TextInputLayout_errorContentDescription = global::LagoVista.Droid.Simulator.Resource.Styleable.TextInputLayout_errorContentDescription;
 			global::Xamarin.Forms.Platform.Resource.Styleable.TextInputLayout_errorEnabled = global::LagoVista.Droid.Simulator.Resource.Styleable.TextInputLayout_errorEnabled;
 			global::Xamarin.Forms.Platform.Resource.Styleable.TextInputLayout_errorIconDrawable = global::LagoVista.Droid.Simulator.Resource.Styleable.TextInputLayout_errorIconDrawable;
 			global::Xamarin.Forms.Platform.Resource.Styleable.TextInputLayout_errorIconTint = global::LagoVista.Droid.Simulator.Resource.Styleable.TextInputLayout_errorIconTint;
@@ -7009,6 +7370,12 @@ namespace LagoVista.Droid.Simulator
 			global::Xamarin.Forms.Platform.Resource.Styleable.TextInputLayout_passwordToggleEnabled = global::LagoVista.Droid.Simulator.Resource.Styleable.TextInputLayout_passwordToggleEnabled;
 			global::Xamarin.Forms.Platform.Resource.Styleable.TextInputLayout_passwordToggleTint = global::LagoVista.Droid.Simulator.Resource.Styleable.TextInputLayout_passwordToggleTint;
 			global::Xamarin.Forms.Platform.Resource.Styleable.TextInputLayout_passwordToggleTintMode = global::LagoVista.Droid.Simulator.Resource.Styleable.TextInputLayout_passwordToggleTintMode;
+			global::Xamarin.Forms.Platform.Resource.Styleable.TextInputLayout_placeholderText = global::LagoVista.Droid.Simulator.Resource.Styleable.TextInputLayout_placeholderText;
+			global::Xamarin.Forms.Platform.Resource.Styleable.TextInputLayout_placeholderTextAppearance = global::LagoVista.Droid.Simulator.Resource.Styleable.TextInputLayout_placeholderTextAppearance;
+			global::Xamarin.Forms.Platform.Resource.Styleable.TextInputLayout_placeholderTextColor = global::LagoVista.Droid.Simulator.Resource.Styleable.TextInputLayout_placeholderTextColor;
+			global::Xamarin.Forms.Platform.Resource.Styleable.TextInputLayout_prefixText = global::LagoVista.Droid.Simulator.Resource.Styleable.TextInputLayout_prefixText;
+			global::Xamarin.Forms.Platform.Resource.Styleable.TextInputLayout_prefixTextAppearance = global::LagoVista.Droid.Simulator.Resource.Styleable.TextInputLayout_prefixTextAppearance;
+			global::Xamarin.Forms.Platform.Resource.Styleable.TextInputLayout_prefixTextColor = global::LagoVista.Droid.Simulator.Resource.Styleable.TextInputLayout_prefixTextColor;
 			global::Xamarin.Forms.Platform.Resource.Styleable.TextInputLayout_shapeAppearance = global::LagoVista.Droid.Simulator.Resource.Styleable.TextInputLayout_shapeAppearance;
 			global::Xamarin.Forms.Platform.Resource.Styleable.TextInputLayout_shapeAppearanceOverlay = global::LagoVista.Droid.Simulator.Resource.Styleable.TextInputLayout_shapeAppearanceOverlay;
 			global::Xamarin.Forms.Platform.Resource.Styleable.TextInputLayout_startIconCheckable = global::LagoVista.Droid.Simulator.Resource.Styleable.TextInputLayout_startIconCheckable;
@@ -7016,6 +7383,9 @@ namespace LagoVista.Droid.Simulator
 			global::Xamarin.Forms.Platform.Resource.Styleable.TextInputLayout_startIconDrawable = global::LagoVista.Droid.Simulator.Resource.Styleable.TextInputLayout_startIconDrawable;
 			global::Xamarin.Forms.Platform.Resource.Styleable.TextInputLayout_startIconTint = global::LagoVista.Droid.Simulator.Resource.Styleable.TextInputLayout_startIconTint;
 			global::Xamarin.Forms.Platform.Resource.Styleable.TextInputLayout_startIconTintMode = global::LagoVista.Droid.Simulator.Resource.Styleable.TextInputLayout_startIconTintMode;
+			global::Xamarin.Forms.Platform.Resource.Styleable.TextInputLayout_suffixText = global::LagoVista.Droid.Simulator.Resource.Styleable.TextInputLayout_suffixText;
+			global::Xamarin.Forms.Platform.Resource.Styleable.TextInputLayout_suffixTextAppearance = global::LagoVista.Droid.Simulator.Resource.Styleable.TextInputLayout_suffixTextAppearance;
+			global::Xamarin.Forms.Platform.Resource.Styleable.TextInputLayout_suffixTextColor = global::LagoVista.Droid.Simulator.Resource.Styleable.TextInputLayout_suffixTextColor;
 			global::Xamarin.Forms.Platform.Resource.Styleable.ThemeEnforcement = global::LagoVista.Droid.Simulator.Resource.Styleable.ThemeEnforcement;
 			global::Xamarin.Forms.Platform.Resource.Styleable.ThemeEnforcement_android_textAppearance = global::LagoVista.Droid.Simulator.Resource.Styleable.ThemeEnforcement_android_textAppearance;
 			global::Xamarin.Forms.Platform.Resource.Styleable.ThemeEnforcement_enforceMaterialTheme = global::LagoVista.Droid.Simulator.Resource.Styleable.ThemeEnforcement_enforceMaterialTheme;
@@ -7051,6 +7421,14 @@ namespace LagoVista.Droid.Simulator
 			global::Xamarin.Forms.Platform.Resource.Styleable.Toolbar_titleMarginTop = global::LagoVista.Droid.Simulator.Resource.Styleable.Toolbar_titleMarginTop;
 			global::Xamarin.Forms.Platform.Resource.Styleable.Toolbar_titleTextAppearance = global::LagoVista.Droid.Simulator.Resource.Styleable.Toolbar_titleTextAppearance;
 			global::Xamarin.Forms.Platform.Resource.Styleable.Toolbar_titleTextColor = global::LagoVista.Droid.Simulator.Resource.Styleable.Toolbar_titleTextColor;
+			global::Xamarin.Forms.Platform.Resource.Styleable.Tooltip = global::LagoVista.Droid.Simulator.Resource.Styleable.Tooltip;
+			global::Xamarin.Forms.Platform.Resource.Styleable.Tooltip_android_layout_margin = global::LagoVista.Droid.Simulator.Resource.Styleable.Tooltip_android_layout_margin;
+			global::Xamarin.Forms.Platform.Resource.Styleable.Tooltip_android_minHeight = global::LagoVista.Droid.Simulator.Resource.Styleable.Tooltip_android_minHeight;
+			global::Xamarin.Forms.Platform.Resource.Styleable.Tooltip_android_minWidth = global::LagoVista.Droid.Simulator.Resource.Styleable.Tooltip_android_minWidth;
+			global::Xamarin.Forms.Platform.Resource.Styleable.Tooltip_android_padding = global::LagoVista.Droid.Simulator.Resource.Styleable.Tooltip_android_padding;
+			global::Xamarin.Forms.Platform.Resource.Styleable.Tooltip_android_text = global::LagoVista.Droid.Simulator.Resource.Styleable.Tooltip_android_text;
+			global::Xamarin.Forms.Platform.Resource.Styleable.Tooltip_android_textAppearance = global::LagoVista.Droid.Simulator.Resource.Styleable.Tooltip_android_textAppearance;
+			global::Xamarin.Forms.Platform.Resource.Styleable.Tooltip_backgroundTint = global::LagoVista.Droid.Simulator.Resource.Styleable.Tooltip_backgroundTint;
 			global::Xamarin.Forms.Platform.Resource.Styleable.View = global::LagoVista.Droid.Simulator.Resource.Styleable.View;
 			global::Xamarin.Forms.Platform.Resource.Styleable.ViewBackgroundHelper = global::LagoVista.Droid.Simulator.Resource.Styleable.ViewBackgroundHelper;
 			global::Xamarin.Forms.Platform.Resource.Styleable.ViewBackgroundHelper_android_background = global::LagoVista.Droid.Simulator.Resource.Styleable.ViewBackgroundHelper_android_background;
@@ -7071,6 +7449,7 @@ namespace LagoVista.Droid.Simulator
 			global::Xamarin.Forms.Platform.Resource.Xml.standalone_badge_gravity_bottom_end = global::LagoVista.Droid.Simulator.Resource.Xml.standalone_badge_gravity_bottom_end;
 			global::Xamarin.Forms.Platform.Resource.Xml.standalone_badge_gravity_bottom_start = global::LagoVista.Droid.Simulator.Resource.Xml.standalone_badge_gravity_bottom_start;
 			global::Xamarin.Forms.Platform.Resource.Xml.standalone_badge_gravity_top_start = global::LagoVista.Droid.Simulator.Resource.Xml.standalone_badge_gravity_top_start;
+			global::Xamarin.Forms.Platform.Resource.Xml.standalone_badge_offset = global::LagoVista.Droid.Simulator.Resource.Xml.standalone_badge_offset;
 		}
 		
 		public partial class Animation
@@ -14117,380 +14496,383 @@ namespace LagoVista.Droid.Simulator
 			// aapt resource value: 0x7F0D0021
 			public const int appcenter_distribute_downloading_update = 2131558433;
 			
+			// aapt resource value: 0x7F0D0022
+			public const int appcenter_distribute_downloading_version = 2131558434;
+			
 			// aapt resource value: 0x7F0D001E
 			public const int appcenter_distribute_download_progress_number_format = 2131558430;
 			
-			// aapt resource value: 0x7F0D0022
-			public const int appcenter_distribute_install = 2131558434;
-			
 			// aapt resource value: 0x7F0D0023
-			public const int appcenter_distribute_install_ready_message = 2131558435;
+			public const int appcenter_distribute_install = 2131558435;
 			
 			// aapt resource value: 0x7F0D0024
-			public const int appcenter_distribute_install_ready_title = 2131558436;
+			public const int appcenter_distribute_install_ready_message = 2131558436;
 			
 			// aapt resource value: 0x7F0D0025
-			public const int appcenter_distribute_notification_category = 2131558437;
+			public const int appcenter_distribute_install_ready_title = 2131558437;
 			
 			// aapt resource value: 0x7F0D0026
-			public const int appcenter_distribute_unknown_sources_dialog_message = 2131558438;
+			public const int appcenter_distribute_notification_category = 2131558438;
 			
 			// aapt resource value: 0x7F0D0027
-			public const int appcenter_distribute_unknown_sources_dialog_settings = 2131558439;
+			public const int appcenter_distribute_unknown_sources_dialog_message = 2131558439;
 			
 			// aapt resource value: 0x7F0D0028
-			public const int appcenter_distribute_update_dialog_download = 2131558440;
+			public const int appcenter_distribute_unknown_sources_dialog_settings = 2131558440;
 			
 			// aapt resource value: 0x7F0D0029
-			public const int appcenter_distribute_update_dialog_message_mandatory = 2131558441;
+			public const int appcenter_distribute_update_dialog_download = 2131558441;
 			
 			// aapt resource value: 0x7F0D002A
-			public const int appcenter_distribute_update_dialog_message_optional = 2131558442;
+			public const int appcenter_distribute_update_dialog_message_mandatory = 2131558442;
 			
 			// aapt resource value: 0x7F0D002B
-			public const int appcenter_distribute_update_dialog_postpone = 2131558443;
+			public const int appcenter_distribute_update_dialog_message_optional = 2131558443;
 			
 			// aapt resource value: 0x7F0D002C
-			public const int appcenter_distribute_update_dialog_title = 2131558444;
+			public const int appcenter_distribute_update_dialog_postpone = 2131558444;
 			
 			// aapt resource value: 0x7F0D002D
-			public const int appcenter_distribute_update_dialog_view_release_notes = 2131558445;
+			public const int appcenter_distribute_update_dialog_title = 2131558445;
 			
 			// aapt resource value: 0x7F0D002E
-			public const int appcenter_distribute_update_failed_dialog_ignore = 2131558446;
+			public const int appcenter_distribute_update_dialog_view_release_notes = 2131558446;
 			
 			// aapt resource value: 0x7F0D002F
-			public const int appcenter_distribute_update_failed_dialog_message = 2131558447;
+			public const int appcenter_distribute_update_failed_dialog_ignore = 2131558447;
 			
 			// aapt resource value: 0x7F0D0030
-			public const int appcenter_distribute_update_failed_dialog_reinstall = 2131558448;
+			public const int appcenter_distribute_update_failed_dialog_message = 2131558448;
 			
 			// aapt resource value: 0x7F0D0031
-			public const int appcenter_distribute_update_failed_dialog_title = 2131558449;
+			public const int appcenter_distribute_update_failed_dialog_reinstall = 2131558449;
+			
+			// aapt resource value: 0x7F0D0032
+			public const int appcenter_distribute_update_failed_dialog_title = 2131558450;
 			
 			// aapt resource value: 0x7F0D001B
 			public const int app_name = 2131558427;
 			
-			// aapt resource value: 0x7F0D0032
-			public const int bottom_sheet_behavior = 2131558450;
-			
 			// aapt resource value: 0x7F0D0033
-			public const int character_counter_content_description = 2131558451;
+			public const int bottom_sheet_behavior = 2131558451;
 			
 			// aapt resource value: 0x7F0D0034
-			public const int character_counter_overflowed_content_description = 2131558452;
+			public const int character_counter_content_description = 2131558452;
 			
 			// aapt resource value: 0x7F0D0035
-			public const int character_counter_pattern = 2131558453;
+			public const int character_counter_overflowed_content_description = 2131558453;
 			
 			// aapt resource value: 0x7F0D0036
-			public const int chip_text = 2131558454;
+			public const int character_counter_pattern = 2131558454;
 			
 			// aapt resource value: 0x7F0D0037
-			public const int clear_text_end_icon_content_description = 2131558455;
+			public const int chip_text = 2131558455;
 			
 			// aapt resource value: 0x7F0D0038
-			public const int common_google_play_services_enable_button = 2131558456;
+			public const int clear_text_end_icon_content_description = 2131558456;
 			
 			// aapt resource value: 0x7F0D0039
-			public const int common_google_play_services_enable_text = 2131558457;
+			public const int common_google_play_services_enable_button = 2131558457;
 			
 			// aapt resource value: 0x7F0D003A
-			public const int common_google_play_services_enable_title = 2131558458;
+			public const int common_google_play_services_enable_text = 2131558458;
 			
 			// aapt resource value: 0x7F0D003B
-			public const int common_google_play_services_install_button = 2131558459;
+			public const int common_google_play_services_enable_title = 2131558459;
 			
 			// aapt resource value: 0x7F0D003C
-			public const int common_google_play_services_install_text = 2131558460;
+			public const int common_google_play_services_install_button = 2131558460;
 			
 			// aapt resource value: 0x7F0D003D
-			public const int common_google_play_services_install_title = 2131558461;
+			public const int common_google_play_services_install_text = 2131558461;
 			
 			// aapt resource value: 0x7F0D003E
-			public const int common_google_play_services_notification_channel_name = 2131558462;
+			public const int common_google_play_services_install_title = 2131558462;
 			
 			// aapt resource value: 0x7F0D003F
-			public const int common_google_play_services_notification_ticker = 2131558463;
+			public const int common_google_play_services_notification_channel_name = 2131558463;
 			
 			// aapt resource value: 0x7F0D0040
-			public const int common_google_play_services_unknown_issue = 2131558464;
+			public const int common_google_play_services_notification_ticker = 2131558464;
 			
 			// aapt resource value: 0x7F0D0041
-			public const int common_google_play_services_unsupported_text = 2131558465;
+			public const int common_google_play_services_unknown_issue = 2131558465;
 			
 			// aapt resource value: 0x7F0D0042
-			public const int common_google_play_services_update_button = 2131558466;
+			public const int common_google_play_services_unsupported_text = 2131558466;
 			
 			// aapt resource value: 0x7F0D0043
-			public const int common_google_play_services_update_text = 2131558467;
+			public const int common_google_play_services_update_button = 2131558467;
 			
 			// aapt resource value: 0x7F0D0044
-			public const int common_google_play_services_update_title = 2131558468;
+			public const int common_google_play_services_update_text = 2131558468;
 			
 			// aapt resource value: 0x7F0D0045
-			public const int common_google_play_services_updating_text = 2131558469;
+			public const int common_google_play_services_update_title = 2131558469;
 			
 			// aapt resource value: 0x7F0D0046
-			public const int common_google_play_services_wear_update_text = 2131558470;
+			public const int common_google_play_services_updating_text = 2131558470;
 			
 			// aapt resource value: 0x7F0D0047
-			public const int common_open_on_phone = 2131558471;
+			public const int common_google_play_services_wear_update_text = 2131558471;
 			
 			// aapt resource value: 0x7F0D0048
-			public const int common_signin_button_text = 2131558472;
+			public const int common_open_on_phone = 2131558472;
 			
 			// aapt resource value: 0x7F0D0049
-			public const int common_signin_button_text_long = 2131558473;
+			public const int common_signin_button_text = 2131558473;
 			
 			// aapt resource value: 0x7F0D004A
-			public const int copy_toast_msg = 2131558474;
+			public const int common_signin_button_text_long = 2131558474;
 			
 			// aapt resource value: 0x7F0D004B
-			public const int error_icon_content_description = 2131558475;
+			public const int copy_toast_msg = 2131558475;
 			
 			// aapt resource value: 0x7F0D004C
-			public const int exposed_dropdown_menu_content_description = 2131558476;
+			public const int error_icon_content_description = 2131558476;
 			
 			// aapt resource value: 0x7F0D004D
-			public const int fab_transformation_scrim_behavior = 2131558477;
+			public const int exposed_dropdown_menu_content_description = 2131558477;
 			
 			// aapt resource value: 0x7F0D004E
-			public const int fab_transformation_sheet_behavior = 2131558478;
+			public const int fab_transformation_scrim_behavior = 2131558478;
 			
 			// aapt resource value: 0x7F0D004F
-			public const int fallback_menu_item_copy_link = 2131558479;
+			public const int fab_transformation_sheet_behavior = 2131558479;
 			
 			// aapt resource value: 0x7F0D0050
-			public const int fallback_menu_item_open_in_browser = 2131558480;
+			public const int fallback_menu_item_copy_link = 2131558480;
 			
 			// aapt resource value: 0x7F0D0051
-			public const int fallback_menu_item_share_link = 2131558481;
+			public const int fallback_menu_item_open_in_browser = 2131558481;
 			
 			// aapt resource value: 0x7F0D0052
-			public const int fcm_fallback_notification_channel_label = 2131558482;
+			public const int fallback_menu_item_share_link = 2131558482;
 			
 			// aapt resource value: 0x7F0D0053
-			public const int hide_bottom_view_on_scroll_behavior = 2131558483;
+			public const int fcm_fallback_notification_channel_label = 2131558483;
 			
 			// aapt resource value: 0x7F0D0054
-			public const int icon_content_description = 2131558484;
+			public const int hide_bottom_view_on_scroll_behavior = 2131558484;
 			
 			// aapt resource value: 0x7F0D0055
-			public const int item_view_role_description = 2131558485;
+			public const int icon_content_description = 2131558485;
 			
 			// aapt resource value: 0x7F0D0056
-			public const int library_name = 2131558486;
+			public const int item_view_role_description = 2131558486;
 			
 			// aapt resource value: 0x7F0D0057
-			public const int material_slider_range_end = 2131558487;
+			public const int library_name = 2131558487;
 			
 			// aapt resource value: 0x7F0D0058
-			public const int material_slider_range_start = 2131558488;
+			public const int material_slider_range_end = 2131558488;
 			
 			// aapt resource value: 0x7F0D0059
-			public const int mr_button_content_description = 2131558489;
+			public const int material_slider_range_start = 2131558489;
 			
 			// aapt resource value: 0x7F0D005A
-			public const int mr_cast_button_connected = 2131558490;
+			public const int mr_button_content_description = 2131558490;
 			
 			// aapt resource value: 0x7F0D005B
-			public const int mr_cast_button_connecting = 2131558491;
+			public const int mr_cast_button_connected = 2131558491;
 			
 			// aapt resource value: 0x7F0D005C
-			public const int mr_cast_button_disconnected = 2131558492;
+			public const int mr_cast_button_connecting = 2131558492;
 			
 			// aapt resource value: 0x7F0D005D
-			public const int mr_cast_dialog_title_view_placeholder = 2131558493;
+			public const int mr_cast_button_disconnected = 2131558493;
 			
 			// aapt resource value: 0x7F0D005E
-			public const int mr_chooser_searching = 2131558494;
+			public const int mr_cast_dialog_title_view_placeholder = 2131558494;
 			
 			// aapt resource value: 0x7F0D005F
-			public const int mr_chooser_title = 2131558495;
+			public const int mr_chooser_searching = 2131558495;
 			
 			// aapt resource value: 0x7F0D0060
-			public const int mr_controller_album_art = 2131558496;
+			public const int mr_chooser_title = 2131558496;
 			
 			// aapt resource value: 0x7F0D0061
-			public const int mr_controller_casting_screen = 2131558497;
+			public const int mr_controller_album_art = 2131558497;
 			
 			// aapt resource value: 0x7F0D0062
-			public const int mr_controller_close_description = 2131558498;
+			public const int mr_controller_casting_screen = 2131558498;
 			
 			// aapt resource value: 0x7F0D0063
-			public const int mr_controller_collapse_group = 2131558499;
+			public const int mr_controller_close_description = 2131558499;
 			
 			// aapt resource value: 0x7F0D0064
-			public const int mr_controller_disconnect = 2131558500;
+			public const int mr_controller_collapse_group = 2131558500;
 			
 			// aapt resource value: 0x7F0D0065
-			public const int mr_controller_expand_group = 2131558501;
+			public const int mr_controller_disconnect = 2131558501;
 			
 			// aapt resource value: 0x7F0D0066
-			public const int mr_controller_no_info_available = 2131558502;
+			public const int mr_controller_expand_group = 2131558502;
 			
 			// aapt resource value: 0x7F0D0067
-			public const int mr_controller_no_media_selected = 2131558503;
+			public const int mr_controller_no_info_available = 2131558503;
 			
 			// aapt resource value: 0x7F0D0068
-			public const int mr_controller_pause = 2131558504;
+			public const int mr_controller_no_media_selected = 2131558504;
 			
 			// aapt resource value: 0x7F0D0069
-			public const int mr_controller_play = 2131558505;
+			public const int mr_controller_pause = 2131558505;
 			
 			// aapt resource value: 0x7F0D006A
-			public const int mr_controller_stop = 2131558506;
+			public const int mr_controller_play = 2131558506;
 			
 			// aapt resource value: 0x7F0D006B
-			public const int mr_controller_stop_casting = 2131558507;
+			public const int mr_controller_stop = 2131558507;
 			
 			// aapt resource value: 0x7F0D006C
-			public const int mr_controller_volume_slider = 2131558508;
+			public const int mr_controller_stop_casting = 2131558508;
 			
 			// aapt resource value: 0x7F0D006D
-			public const int mr_dialog_default_group_name = 2131558509;
+			public const int mr_controller_volume_slider = 2131558509;
 			
 			// aapt resource value: 0x7F0D006E
-			public const int mr_dialog_groupable_header = 2131558510;
+			public const int mr_dialog_default_group_name = 2131558510;
 			
 			// aapt resource value: 0x7F0D006F
-			public const int mr_dialog_transferable_header = 2131558511;
+			public const int mr_dialog_groupable_header = 2131558511;
 			
 			// aapt resource value: 0x7F0D0070
-			public const int mr_system_route_name = 2131558512;
+			public const int mr_dialog_transferable_header = 2131558512;
 			
 			// aapt resource value: 0x7F0D0071
-			public const int mr_user_route_category_name = 2131558513;
+			public const int mr_system_route_name = 2131558513;
 			
 			// aapt resource value: 0x7F0D0072
-			public const int mtrl_badge_numberless_content_description = 2131558514;
+			public const int mr_user_route_category_name = 2131558514;
 			
 			// aapt resource value: 0x7F0D0073
-			public const int mtrl_chip_close_icon_content_description = 2131558515;
+			public const int mtrl_badge_numberless_content_description = 2131558515;
 			
 			// aapt resource value: 0x7F0D0074
-			public const int mtrl_exceed_max_badge_number_content_description = 2131558516;
+			public const int mtrl_chip_close_icon_content_description = 2131558516;
 			
 			// aapt resource value: 0x7F0D0075
-			public const int mtrl_exceed_max_badge_number_suffix = 2131558517;
+			public const int mtrl_exceed_max_badge_number_content_description = 2131558517;
 			
 			// aapt resource value: 0x7F0D0076
-			public const int mtrl_picker_a11y_next_month = 2131558518;
+			public const int mtrl_exceed_max_badge_number_suffix = 2131558518;
 			
 			// aapt resource value: 0x7F0D0077
-			public const int mtrl_picker_a11y_prev_month = 2131558519;
+			public const int mtrl_picker_a11y_next_month = 2131558519;
 			
 			// aapt resource value: 0x7F0D0078
-			public const int mtrl_picker_announce_current_selection = 2131558520;
+			public const int mtrl_picker_a11y_prev_month = 2131558520;
 			
 			// aapt resource value: 0x7F0D0079
-			public const int mtrl_picker_cancel = 2131558521;
+			public const int mtrl_picker_announce_current_selection = 2131558521;
 			
 			// aapt resource value: 0x7F0D007A
-			public const int mtrl_picker_confirm = 2131558522;
+			public const int mtrl_picker_cancel = 2131558522;
 			
 			// aapt resource value: 0x7F0D007B
-			public const int mtrl_picker_date_header_selected = 2131558523;
+			public const int mtrl_picker_confirm = 2131558523;
 			
 			// aapt resource value: 0x7F0D007C
-			public const int mtrl_picker_date_header_title = 2131558524;
+			public const int mtrl_picker_date_header_selected = 2131558524;
 			
 			// aapt resource value: 0x7F0D007D
-			public const int mtrl_picker_date_header_unselected = 2131558525;
+			public const int mtrl_picker_date_header_title = 2131558525;
 			
 			// aapt resource value: 0x7F0D007E
-			public const int mtrl_picker_day_of_week_column_header = 2131558526;
+			public const int mtrl_picker_date_header_unselected = 2131558526;
 			
 			// aapt resource value: 0x7F0D007F
-			public const int mtrl_picker_invalid_format = 2131558527;
+			public const int mtrl_picker_day_of_week_column_header = 2131558527;
 			
 			// aapt resource value: 0x7F0D0080
-			public const int mtrl_picker_invalid_format_example = 2131558528;
+			public const int mtrl_picker_invalid_format = 2131558528;
 			
 			// aapt resource value: 0x7F0D0081
-			public const int mtrl_picker_invalid_format_use = 2131558529;
+			public const int mtrl_picker_invalid_format_example = 2131558529;
 			
 			// aapt resource value: 0x7F0D0082
-			public const int mtrl_picker_invalid_range = 2131558530;
+			public const int mtrl_picker_invalid_format_use = 2131558530;
 			
 			// aapt resource value: 0x7F0D0083
-			public const int mtrl_picker_navigate_to_year_description = 2131558531;
+			public const int mtrl_picker_invalid_range = 2131558531;
 			
 			// aapt resource value: 0x7F0D0084
-			public const int mtrl_picker_out_of_range = 2131558532;
+			public const int mtrl_picker_navigate_to_year_description = 2131558532;
 			
 			// aapt resource value: 0x7F0D0085
-			public const int mtrl_picker_range_header_only_end_selected = 2131558533;
+			public const int mtrl_picker_out_of_range = 2131558533;
 			
 			// aapt resource value: 0x7F0D0086
-			public const int mtrl_picker_range_header_only_start_selected = 2131558534;
+			public const int mtrl_picker_range_header_only_end_selected = 2131558534;
 			
 			// aapt resource value: 0x7F0D0087
-			public const int mtrl_picker_range_header_selected = 2131558535;
+			public const int mtrl_picker_range_header_only_start_selected = 2131558535;
 			
 			// aapt resource value: 0x7F0D0088
-			public const int mtrl_picker_range_header_title = 2131558536;
+			public const int mtrl_picker_range_header_selected = 2131558536;
 			
 			// aapt resource value: 0x7F0D0089
-			public const int mtrl_picker_range_header_unselected = 2131558537;
+			public const int mtrl_picker_range_header_title = 2131558537;
 			
 			// aapt resource value: 0x7F0D008A
-			public const int mtrl_picker_save = 2131558538;
+			public const int mtrl_picker_range_header_unselected = 2131558538;
 			
 			// aapt resource value: 0x7F0D008B
-			public const int mtrl_picker_text_input_date_hint = 2131558539;
+			public const int mtrl_picker_save = 2131558539;
 			
 			// aapt resource value: 0x7F0D008C
-			public const int mtrl_picker_text_input_date_range_end_hint = 2131558540;
+			public const int mtrl_picker_text_input_date_hint = 2131558540;
 			
 			// aapt resource value: 0x7F0D008D
-			public const int mtrl_picker_text_input_date_range_start_hint = 2131558541;
+			public const int mtrl_picker_text_input_date_range_end_hint = 2131558541;
 			
 			// aapt resource value: 0x7F0D008E
-			public const int mtrl_picker_text_input_day_abbr = 2131558542;
+			public const int mtrl_picker_text_input_date_range_start_hint = 2131558542;
 			
 			// aapt resource value: 0x7F0D008F
-			public const int mtrl_picker_text_input_month_abbr = 2131558543;
+			public const int mtrl_picker_text_input_day_abbr = 2131558543;
 			
 			// aapt resource value: 0x7F0D0090
-			public const int mtrl_picker_text_input_year_abbr = 2131558544;
+			public const int mtrl_picker_text_input_month_abbr = 2131558544;
 			
 			// aapt resource value: 0x7F0D0091
-			public const int mtrl_picker_toggle_to_calendar_input_mode = 2131558545;
+			public const int mtrl_picker_text_input_year_abbr = 2131558545;
 			
 			// aapt resource value: 0x7F0D0092
-			public const int mtrl_picker_toggle_to_day_selection = 2131558546;
+			public const int mtrl_picker_toggle_to_calendar_input_mode = 2131558546;
 			
 			// aapt resource value: 0x7F0D0093
-			public const int mtrl_picker_toggle_to_text_input_mode = 2131558547;
+			public const int mtrl_picker_toggle_to_day_selection = 2131558547;
 			
 			// aapt resource value: 0x7F0D0094
-			public const int mtrl_picker_toggle_to_year_selection = 2131558548;
+			public const int mtrl_picker_toggle_to_text_input_mode = 2131558548;
 			
 			// aapt resource value: 0x7F0D0095
-			public const int overflow_tab_title = 2131558549;
+			public const int mtrl_picker_toggle_to_year_selection = 2131558549;
 			
 			// aapt resource value: 0x7F0D0096
-			public const int password_toggle_content_description = 2131558550;
+			public const int overflow_tab_title = 2131558550;
 			
 			// aapt resource value: 0x7F0D0097
-			public const int path_password_eye = 2131558551;
+			public const int password_toggle_content_description = 2131558551;
 			
 			// aapt resource value: 0x7F0D0098
-			public const int path_password_eye_mask_strike_through = 2131558552;
+			public const int path_password_eye = 2131558552;
 			
 			// aapt resource value: 0x7F0D0099
-			public const int path_password_eye_mask_visible = 2131558553;
+			public const int path_password_eye_mask_strike_through = 2131558553;
 			
 			// aapt resource value: 0x7F0D009A
-			public const int path_password_strike_through = 2131558554;
+			public const int path_password_eye_mask_visible = 2131558554;
 			
 			// aapt resource value: 0x7F0D009B
-			public const int search_menu_title = 2131558555;
+			public const int path_password_strike_through = 2131558555;
 			
 			// aapt resource value: 0x7F0D009C
-			public const int status_bar_notification_info_overflow = 2131558556;
+			public const int search_menu_title = 2131558556;
+			
+			// aapt resource value: 0x7F0D009D
+			public const int status_bar_notification_info_overflow = 2131558557;
 			
 			static String()
 			{

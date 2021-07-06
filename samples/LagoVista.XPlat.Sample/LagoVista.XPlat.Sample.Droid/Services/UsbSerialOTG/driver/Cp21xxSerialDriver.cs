@@ -96,7 +96,7 @@ namespace LagoVista.XPlat.Droid.Services.UsbSerialOTG.Driver
             private UsbEndpoint mReadEndpoint;
             private UsbEndpoint mWriteEndpoint;
 
-            private IUsbSerialDriver Driver;
+            private new IUsbSerialDriver Driver;
             private string TAG => (Driver as Cp21xxSerialDriver)?.TAG;
 
 
@@ -174,6 +174,7 @@ namespace LagoVista.XPlat.Droid.Services.UsbSerialOTG.Driver
                         }
                         catch (IOException e)
                         {
+                            System.Diagnostics.Debug.WriteLine(e.Message);
                             // Ignore IOExceptions during close()
                         }
                     }

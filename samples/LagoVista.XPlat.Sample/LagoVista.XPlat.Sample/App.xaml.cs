@@ -114,6 +114,7 @@ namespace LagoVista.XPlat.Sample
             var navigation = new ViewModelNavigation(this);
             navigation.Add<HomeViewModel, HomeView>();
             navigation.Add<TabViewModel, TabView>();
+            navigation.Add<GATTConnectionViewModel, GATTConnectionView>();
             navigation.Add<FormControlsViewModel, FormControlsView>();
             navigation.Add<ServicesViewModel, ServicesView>();
             navigation.Add<SecureStorageViewModel, SecureStorageView>();

@@ -33,11 +33,17 @@
     <Compile Update="Views\DeviceAccess\DFUView.xaml.cs">
       <DependentUpon>DFUView.xaml</DependentUpon>
     </Compile>
+    <Compile Update="Views\DeviceAccess\Settings\IOConfigChannelView.xaml.cs">
+      <DependentUpon>IOConfigChannelView.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Update="Resources\XPlatResources.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>XPlatResources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\DeviceAccess\BTDeviceScanView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\DeviceAccess\ConsoleView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
@@ -82,6 +88,24 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\DeviceAccess\ProvisionDevicewView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\DeviceAccess\Settings\DeviceSettingsView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\DeviceAccess\Settings\DeviceView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\DeviceAccess\Settings\IOConfigChannelView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\DeviceAccess\Settings\IOConfigView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\DeviceAccess\Settings\ServerView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\DeviceAccess\Settings\WiFiView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>

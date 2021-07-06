@@ -60,11 +60,11 @@ namespace LagoVista.XPlat.Droid.Services.UsbSerialOTG.Driver
             private static int USB_RT_ACM = UsbConstants.UsbTypeClass | USB_RECIP_INTERFACE;
 
             private static int SET_LINE_CODING = 0x20;  // USB CDC 1.1 section 6.2
-            private static int GET_LINE_CODING = 0x21;
+            //private static int GET_LINE_CODING = 0x21;
             private static int SET_CONTROL_LINE_STATE = 0x22;
-            private static int SEND_BREAK = 0x23;
+            //private static int SEND_BREAK = 0x23;
 
-            private IUsbSerialDriver Driver;
+            private new IUsbSerialDriver Driver;
 
             //public CdcAcmSerialPort(UsbDevice device, int portNumber) : base(device, portNumber)
             //{

@@ -29,9 +29,8 @@ namespace LagoVista.Client.Core.ViewModels.DeviceAccess
 
         }
 
-        protected override void OnBTSerial_DeviceDisconnected()
+        protected override void OnBLEDevice_Disconnected(BLEDevice device)
         {
-            base.OnBTSerial_DeviceDisconnected();
             WriteConfigurationCommand.RaiseCanExecuteChanged();
             ResetConfigurationCommand.RaiseCanExecuteChanged();
             RebootCommand.RaiseCanExecuteChanged();
@@ -176,6 +175,7 @@ namespace LagoVista.Client.Core.ViewModels.DeviceAccess
             }
             catch (Exception ex)
             {
+                Debug.WriteLine(ex.Message);
                 IsBusy = false;
             }
         }

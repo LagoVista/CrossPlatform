@@ -1,11 +1,13 @@
 ﻿using LagoVista.Client.Core.ViewModels.Auth;
 using LagoVista.Client.Core.ViewModels.DeviceAccess;
+using LagoVista.Client.Core.ViewModels.DeviceAccess.Settings;
 using LagoVista.Client.Core.ViewModels.Orgs;
 using LagoVista.Client.Core.ViewModels.Other;
 using LagoVista.Client.Core.ViewModels.Users;
 using LagoVista.XPlat.Core.Services;
 using LagoVista.XPlat.Core.Views.Auth;
 using LagoVista.XPlat.Core.Views.DeviceAccess;
+using LagoVista.XPlat.Core.Views.DeviceAccess.Settings;
 using LagoVista.XPlat.Core.Views.Orgs;
 using LagoVista.XPlat.Core.Views.Other;
 using LagoVista.XPlat.Core.Views.Users;
@@ -23,14 +25,22 @@ namespace LagoVista.XPlat.Core
             nav.Add<ResetPasswordViewModel, ResetPasswordView>();
             nav.Add<InviteUserViewModel, InviteUserView>();
 
+            nav.Add<BTDeviceScanViewModel, BTDeviceScanView>();
+            nav.Add<DeviceSettingsViewModel, DeviceSettingsView>();
+            nav.Add<WiFiViewModel, WiFiView>();
+            nav.Add<ServerViewModel, ServerView>();
+            nav.Add<Client.Core.ViewModels.DeviceAccess.Settings.IOConfigViewModel, Views.DeviceAccess.Settings.IOConfigView>();
+            nav.Add<IOConfigChannelViewModel, IOConfigChannelView>();
+
             nav.Add<ConsoleViewModel, ConsoleView>();
             nav.Add<DeviceReposViewModel, DeviceReposView>();
-            nav.Add<DeviceViewModel, DeviceView>();
+            nav.Add<Client.Core.ViewModels.DeviceAccess.DeviceViewModel, Views.DeviceAccess.DeviceView>();
+            nav.Add<Client.Core.ViewModels.DeviceAccess.Settings.DeviceViewModel, Views.DeviceAccess.Settings.DeviceView>();
             nav.Add<DevicesViewModel, DevicesView>();
             nav.Add<DeviceSerialPortAccessViewModel, DeviceSerialPortAccessView>();
             nav.Add<DFUViewModel, DFUView>();
             nav.Add<EditDeviceViewModel, EditDeviceView>();
-            nav.Add<IOConfigViewModel, IOConfigView>();
+            nav.Add<Client.Core.ViewModels.DeviceAccess.IOConfigViewModel, Views.DeviceAccess.IOConfigView>();
             nav.Add<LiveDataStreamViewModel, LiveDataView>();
             nav.Add<LiveDataViewModel, LiveDataView>();
             nav.Add<LiveMessagesViewModel, LiveMessagesView>();

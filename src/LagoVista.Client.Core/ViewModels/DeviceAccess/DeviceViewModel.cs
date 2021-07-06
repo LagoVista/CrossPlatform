@@ -99,7 +99,7 @@ namespace LagoVista.Client.Core.ViewModels.DeviceAccess
                     }
                     catch (Exception ex)
                     {
-
+                        Debug.WriteLine(ex.Message);
                     }
                 }
             }

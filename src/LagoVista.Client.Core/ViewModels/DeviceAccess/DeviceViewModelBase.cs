@@ -1,7 +1,9 @@
 ﻿using LagoVista.Client.Core.Interfaces;
+using LagoVista.Client.Core.Models;
 using LagoVista.Core.IOC;
 using LagoVista.Core.ViewModels;
 using System;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace LagoVista.Client.Core.ViewModels.DeviceAccess
@@ -11,36 +13,45 @@ namespace LagoVista.Client.Core.ViewModels.DeviceAccess
         private String _deviceRepoId;
         private String _deviceId;
 
-        private IBluetoothSerial _btSerial;
+        private IGATTConnection _gattConnection;
+
+        private BLEDevice _currentDevice;
 
         public const string DEVICE_ID = "DEVICE_ID";
         public const string DEVICE_REPO_ID = "DEVICE_REPO_ID";
+        public const string BT_DEVICE_ADDRESS = "BT_ADDRESS";
 
         public DeviceViewModelBase()
         {
-            _btSerial = SLWIOC.Get<IBluetoothSerial>();
+            _gattConnection = SLWIOC.Get<IGATTConnection>();
         }
 
         public async override Task InitAsync()
         {
-            _btSerial.DeviceConnected += _btSerial_DeviceConnected;
-            _btSerial.DeviceDisconnected += _btSerial_DeviceDisconnected;
-            _btSerial.ReceivedLine += _btSerial_ReceivedLine;
-            _btSerial.DFUProgress += _btSerial_DFUProgress;
-            _btSerial.DFUFailed += _btSerial_DFUFailed;
-            _btSerial.DFUCompleted += _btSerial_DFUCompleted;
+            _gattConnection.DeviceConnected += _btSerial_DeviceConnected;
+            _gattConnection.DeviceDisconnected += _btSerial_DeviceDisconnected;
+            _gattConnection.ReceiveConsoleOut += _btSerial_ReceivedLine;
+            _gattConnection.DFUProgress += _btSerial_DFUProgress;
+            _gattConnection.DFUFailed += _btSerial_DFUFailed;
+            _gattConnection.DFUCompleted += _btSerial_DFUCompleted;
+
+            if(this.LaunchArgs.Parameters.ContainsKey(BT_DEVICE_ADDRESS))
+            {
+                var btAddress = this.LaunchArgs.Parameters[BT_DEVICE_ADDRESS] as String;
+                CurrentDevice = _gattConnection.DiscoveredDevices.Where(dvc => dvc.DeviceAddress == btAddress).FirstOrDefault();
+            }            
 
             await base.InitAsync();
         }
 
         public override Task ReloadedAsync()
         {
-            _btSerial.DeviceConnected += _btSerial_DeviceConnected;
-            _btSerial.DeviceDisconnected += _btSerial_DeviceDisconnected;
-            _btSerial.ReceivedLine += _btSerial_ReceivedLine;
-            _btSerial.DFUProgress += _btSerial_DFUProgress;
-            _btSerial.DFUFailed += _btSerial_DFUFailed;
-            _btSerial.DFUCompleted += _btSerial_DFUCompleted;
+            _gattConnection.DeviceConnected += _btSerial_DeviceConnected;
+            _gattConnection.DeviceDisconnected += _btSerial_DeviceDisconnected;
+            _gattConnection.ReceiveConsoleOut += _btSerial_ReceivedLine;
+            _gattConnection.DFUProgress += _btSerial_DFUProgress;
+            _gattConnection.DFUFailed += _btSerial_DFUFailed;
+            _gattConnection.DFUCompleted += _btSerial_DFUCompleted;
 
             return base.ReloadedAsync();
         }
@@ -77,15 +88,15 @@ namespace LagoVista.Client.Core.ViewModels.DeviceAccess
             }
         }
 
-        private void _btSerial_DeviceDisconnected(object sender, Models.BTDevice e)
+        private void _btSerial_DeviceDisconnected(object sender, Models.BLEDevice e)
         {
-            OnBTSerial_DeviceDisconnected();
+            OnBLEDevice_Disconnected(e);
             RaisePropertyChanged(nameof(DeviceConnected));
         }
 
-        private void _btSerial_DeviceConnected(object sender, Models.BTDevice e)
+        private void _btSerial_DeviceConnected(object sender, Models.BLEDevice e)
         {
-            OnBTSerial_DeviceConnected();
+            OnBLEDevice_Connected(e);
             RaisePropertyChanged(nameof(DeviceConnected));
         }
 
@@ -102,30 +113,36 @@ namespace LagoVista.Client.Core.ViewModels.DeviceAccess
             }
         }
 
+        public BLEDevice CurrentDevice
+        {
+            get => _currentDevice;
+            set => Set(ref _currentDevice, value);
+        }
+
         protected Task SendAsync(String msg)
         {
-            return _btSerial.SendAsync(msg);
+            return Task.CompletedTask;   
         }
 
         protected Task DisconnectAsync()
         {
-            return _btSerial.DisconnectAsync();
+            return _gattConnection.DisconnectAsync(_currentDevice);
         }
 
         protected bool DeviceConnected
         {
-            get { return _btSerial.IsConnected;  }
+            get { return _currentDevice.Connected;  }
         }
 
         protected virtual void OnBTSerail_MsgReceived(string msg) { }
 
         protected virtual void OnBTSerail_LineReceived(string line) { }
-        protected virtual void OnBTSerial_DeviceConnected(){ }
-        protected virtual void OnBTSerial_DeviceDisconnected(){ }
+        protected virtual void OnBLEDevice_Connected(BLEDevice device){ }
+        protected virtual void OnBLEDevice_Disconnected(BLEDevice device){ }
 
         protected virtual void SendDFU(byte[] buffer)
         {
-            _btSerial.SendDFUAsync(buffer);
+            //_gattConnection.SendDFUAsync(buffer);
         }
 
         // Bit of a hack, if we are going from a device view to a child view
@@ -135,9 +152,9 @@ namespace LagoVista.Client.Core.ViewModels.DeviceAccess
 
         public async void DisconnectBTDevice()
         {
-            if(!_isShowingNewView && _btSerial.IsConnected)
+            if(!_isShowingNewView && _currentDevice.Connected)
             {
-                await _btSerial.DisconnectAsync();
+                await _gattConnection.DisconnectAsync(_currentDevice);
             }
 
             _isShowingNewView = false;
@@ -174,15 +191,16 @@ namespace LagoVista.Client.Core.ViewModels.DeviceAccess
 
         public override Task IsClosingAsync()
         {
-            _btSerial.DeviceConnected -= _btSerial_DeviceConnected;
-            _btSerial.DeviceDisconnected -= _btSerial_DeviceDisconnected;
-            _btSerial.ReceivedLine -= _btSerial_ReceivedLine;
-            _btSerial.DFUProgress -= _btSerial_DFUProgress;
-            _btSerial.DFUFailed -= _btSerial_DFUFailed;
-            _btSerial.DFUCompleted -= _btSerial_DFUCompleted;
+            _gattConnection.DeviceConnected -= _btSerial_DeviceConnected;
+            _gattConnection.DeviceDisconnected -= _btSerial_DeviceDisconnected;
+            _gattConnection.ReceiveConsoleOut -= _btSerial_ReceivedLine;
+            _gattConnection.DFUProgress -= _btSerial_DFUProgress;
+            _gattConnection.DFUFailed -= _btSerial_DFUFailed;
+            _gattConnection.DFUCompleted -= _btSerial_DFUCompleted;
 
             return base.IsClosingAsync();
         }
 
+        public IGATTConnection GattConnection => _gattConnection;
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using LagoVista.Client.Core.Models;
+using System;
 using System.Collections.ObjectModel;
 using System.Threading.Tasks;
 
@@ -12,7 +13,7 @@ namespace LagoVista.Client.Core.ViewModels.DeviceAccess
 
         }
 
-        protected override void OnBTSerial_DeviceDisconnected()
+        protected override void OnBLEDevice_Disconnected(BLEDevice device)
         {
             Lines.Insert(0, "Device Disconnected");
         }

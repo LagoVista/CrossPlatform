@@ -80,6 +80,7 @@
     <Compile Include="Services\BluetoothSerial.cs" />
     <Compile Include="Services\ClipBoard.cs" />
     <Compile Include="Services\DispatcherServices.cs" />
+    <Compile Include="Services\GATTConnection.cs" />
     <Compile Include="Services\NetworkService.cs" />
     <Compile Include="Services\ProcessWriter.cs" />
     <Compile Include="Services\SecureStorage.cs" />
@@ -193,7 +194,7 @@
       <Version>1.0.0.6</Version>
     </PackageReference>
     <PackageReference Include="Xamarin.Forms">
-      <Version>5.0.0.1931</Version>
+      <Version>5.0.0.2012</Version>
     </PackageReference>
     <PackageReference Include="Xamarin.Google.Android.Material">
       <Version>1.2.1.1</Version>

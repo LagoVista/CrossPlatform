@@ -30,6 +30,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>T4ResourceGenerator.tt</DependentUpon>
     </Compile>
+    <Compile Update="Views\GATTConnectionView.xaml.cs">
+      <DependentUpon>GATTConnectionView.xaml</DependentUpon>
+    </Compile>
     <Compile Update="Views\FormControlsView.xaml.cs">
       <DependentUpon>FormControlsView.xaml</DependentUpon>
     </Compile>

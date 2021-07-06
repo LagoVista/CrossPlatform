@@ -150,7 +150,6 @@ namespace LagoVista.XPlat.Droid.Services.UsbSerialOTG.Driver
 
             private IUsbSerialDriver Driver;
 
-
             public FtdiSerialPort(UsbDevice device, int portNumber) : base(device, portNumber)
             {
             }

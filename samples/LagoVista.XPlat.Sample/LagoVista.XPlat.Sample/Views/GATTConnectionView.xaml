@@ -1,0 +1,95 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<pge:LagoVistaContentPage
+        xmlns:pge="clr-namespace:LagoVista.XPlat.Core;assembly=LagoVista.XPlat.Core"
+        xmlns="http://xamarin.com/schemas/2014/forms" 
+        xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+        xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+        xmlns:viewmodels="clr-namespace:LagoVista.XPlat.Sample.ViewModels" 
+        mc:Ignorable="d"
+        LeftMenu="Back"
+        x:Class="LagoVista.XPlat.Sample.Views.GATTConnectionView">
+        <pge:LagoVistaContentPage.MainContent >
+        <Grid x:Name="RootContext">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="50*" />
+                <ColumnDefinition Width="50*" />
+            </Grid.ColumnDefinitions>
+            
+            <StackLayout Orientation="Horizontal" Grid.Row="0" Grid.ColumnSpan="2">
+                <Button Command="{Binding ScanCommand}" Text="Scan Now" />
+                <Button Command="{Binding ConnectCommand}" Text="Connect" />
+                <Button Command="{Binding DisconnectCommand}" Text="Disconnect" />
+            </StackLayout>
+
+            <StackLayout Grid.Row="1" Grid.ColumnSpan="2">
+                <Label Text="{Binding SelectedDevice.DeviceName}" />
+                <Label Text="{Binding SelectedDevice.Connected}" />
+                <Label Text="{Binding SelectedDevice.LastSeen}" />
+            </StackLayout>
+
+            <ListView IsVisible="{Binding SelectedDevice, Converter={StaticResource NullVisibilityConverter}}" ItemsSource="{Binding DiscoveredDevices}" Grid.Row="1" SelectedItem="{Binding SelectedDevice, Mode=TwoWay}" Grid.ColumnSpan="2">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Label Text="{Binding DeviceName}"  FontSize="Large" />
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
+            <ListView IsVisible="{Binding SelectedDevice, Converter={StaticResource NotNullVisibilityConverter}}" ItemsSource="{Binding SelectedDevice.Services}" Grid.Row="2" SelectedItem="{Binding SelectedService, Mode=TwoWay}" Grid.Column="0">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Label Text="{Binding Name}" />
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
+            <ListView IsVisible="{Binding SelectedDevice, Converter={StaticResource NotNullVisibilityConverter}}" ItemsSource="{Binding SelectedService.Characteristics}" Grid.Row="2" Grid.Column="1" SelectedItem="{Binding SelectedCharacteristic, Mode=TwoWay}" >
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Label Text="{Binding Name}" />
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
+            <StackLayout Grid.ColumnSpan="2" Grid.Row="3" IsVisible="{Binding SelectedCharacteristic, Converter={StaticResource NotNullVisibilityConverter}}">
+                <Label Text="{Binding SelectedCharacteristic.Name}" />
+                <Label Text="{Binding SelectedProperty}" Grid.Column="1" Grid.Row="6" />
+
+                <StackLayout Orientation="Horizontal">
+                    <Button Text="Subscribe" Command="{Binding SubscribeCommand}" />
+                    <Button Text="Unsubscribe" Command="{Binding UnsubscribeCommand}" />
+                    <Button Text="Read" Command="{Binding ReadCommand}" />
+                    <Button Text="Write" Command="{Binding WriteCommand}" />
+                </StackLayout>
+
+                <Entry Text="{Binding WriteText, Mode=TwoWay}" />
+            </StackLayout>
+            
+            <ListView ItemsSource="{Binding Log}" Grid.Row="4">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Label Text="{Binding .}" />
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>                
+            </ListView>
+            
+        </Grid>
+    </pge:LagoVistaContentPage.MainContent >
+</pge:LagoVistaContentPage
+>

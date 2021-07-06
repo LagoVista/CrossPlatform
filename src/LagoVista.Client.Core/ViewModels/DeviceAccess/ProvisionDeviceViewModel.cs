@@ -33,7 +33,7 @@ namespace LagoVista.Client.Core.ViewModels.DeviceAccess
             RebootCommand = new RelayCommand(async () => await RebootAsync(), () => DeviceConnected);
         }
 
-        protected override void OnBTSerial_DeviceDisconnected()
+        protected override void OnBLEDevice_Disconnected(BLEDevice device)
         {
             WriteConfigurationCommand.RaiseCanExecuteChanged();
             ResetConfigurationCommand.RaiseCanExecuteChanged();

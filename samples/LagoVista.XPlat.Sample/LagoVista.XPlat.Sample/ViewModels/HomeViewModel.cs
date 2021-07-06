@@ -22,6 +22,8 @@ namespace LagoVista.XPlat.Sample.ViewModels
                 new MenuItem<DeviceSerialPortAccessViewModel>(ViewModelNavigation, this) {FontIconKey = "fa-gear", Name = "Serial Port" },
                 new MenuItem<DFUViewModel>(ViewModelNavigation, this) {FontIconKey = "fa-gear", Name = "DFU View Model" },
                 new MenuItem<ControlSampleViewModel>(ViewModelNavigation, this) {FontIconKey = "fa-gear", Name = "Control Examples" },
+                new MenuItem() {FontIconKey = "fa-gear", Name = "Device Settings", Command =  new RelayCommand(() => ViewModelNavigation.NavigateAsync<BTDeviceScanViewModel>(this)) },
+                new MenuItem() {FontIconKey = "fa-gear", Name = "GATT Connection", Command =  new RelayCommand(() => ViewModelNavigation.NavigateAsync<GATTConnectionViewModel>(this)) },
                 new MenuItem() {FontIconKey = "fa-gear", Name ="Logout", Command = new RelayCommand(() => Logout())},
                 new MenuItem() {FontIconKey = "fa-gear", Name = "Device Repos", Command =  new RelayCommand(() => ViewModelNavigation.NavigateAsync<DeviceReposViewModel>(this)) },
                 new MenuItem<TabViewModel>(ViewModelNavigation, this) {FontIconKey = "fa-gear", Name= "Tabs"},

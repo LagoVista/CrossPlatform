@@ -6,6 +6,7 @@ using System.Diagnostics;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using Windows.Devices.Bluetooth.GenericAttributeProfile;
 using Windows.Devices.Bluetooth.Rfcomm;
 using Windows.Devices.Enumeration;
 using Windows.Networking.Sockets;
@@ -101,6 +102,10 @@ namespace LagoVista.Core.UWP.Services
                     DeviceId = device.Id
                 });
             }
+
+            var moreDevices = await Windows.Devices.Enumeration.DeviceInformation.FindAllAsync(
+                GattDeviceService.GetDeviceSelectorFromUuid(GattServiceUuids.)
+            );
 
             return pairedDevices;
         }

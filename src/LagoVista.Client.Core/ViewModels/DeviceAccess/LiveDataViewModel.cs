@@ -10,7 +10,7 @@ namespace LagoVista.Client.Core.ViewModels.DeviceAccess
         
         IOConfig _config;
 
-        protected async override void OnBTSerial_DeviceDisconnected()
+        protected async override void OnBLEDevice_Disconnected(BLEDevice device)
         {
             await Popups.ShowAsync("Device Disconnected.");
         }

@@ -8,5 +8,6 @@ namespace LagoVista.Client.Core.Models
     {
         public string DeviceName { get; set; }
         public string DeviceId { get; set; }
+        public DateTime LastSeen { get; set; }
     }
 }
