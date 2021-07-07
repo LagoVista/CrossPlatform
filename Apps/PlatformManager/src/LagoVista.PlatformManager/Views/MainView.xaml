@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<pge:LagoVistaContentPage 
+    xmlns:pge="clr-namespace:LagoVista.XPlat.Core;assembly=LagoVista.XPlat.Core"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+        xmlns:ctls="clr-namespace:LagoVista.XPlat.Core.Controls.Common;assembly=LagoVista.XPlat.Core"
+    xmlns:trs="clr-namespace:LagoVista.PlatformManager;assembly=LagoVista.PlatformManager"
+    x:Class="LagoVista.PlatformManager.Views.MainView"
+    LeftMenu="Menu" 
+    Title="{trs:Translate AppName}">
+
+    <pge:LagoVistaContentPage.MainContent >
+        <Grid>
+            <ListView ItemsSource="{Binding ListItems}" SelectedItem="{Binding SelectedItem, Mode=TwoWay}" RowHeight="64" IsVisible="{Binding HasPlatforms}" >
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ctls:NavigationViewCell Command="{Binding Command}" Text="{Binding Name}" 
+                                             Detail="{Binding Status.Text}" Icon="md-developer-board" />
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            <StackLayout IsVisible="{Binding EmptyPlatforms}" Margin="20,50,20,0" >
+                <Label Text="{trs:Translate MainView_NoPlatforms}" Margin="0,0,0,10" />
+                <pge:HyperLinkLabel NavigateCommand="{Binding ShowIoTAppStudioCommand}" Text="https://www.IoTAppStudio.com" />
+            </StackLayout>
+        </Grid>
+    </pge:LagoVistaContentPage.MainContent>
+</pge:LagoVistaContentPage >

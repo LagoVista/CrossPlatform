@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<pge:LagoVistaContentPage     
+    xmlns:pge="clr-namespace:LagoVista.XPlat.Core;assembly=LagoVista.XPlat.Core"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="LagoVista.PlatformManager.Views.InstanceView"
+    xmlns:ctl="clr-namespace:LagoVista.PlatformManager.Controls;assembly=LagoVista.PlatformManager"
+    xmlns:trs="clr-namespace:LagoVista.PlatformManager;assembly=LagoVista.PlatformManager"
+    LeftMenu="Cancel"
+    SettingsCommand="{Binding ManageCommand}"
+    RightMenu="Settings"
+    Title="{trs:Translate InstanceView_Title}">
+    <pge:LagoVistaContentPage.MainContent>
+        <ScrollView>
+            <ctl:InstanceRuntimeTreeControl
+                InstanceTapCommand="{Binding InstanceTapCommand}"
+                ListenerTapCommand="{Binding ListenerTapCommand}"
+                PlannerTapCommand="{Binding PlannerTapCommand}"
+                MessageTypeTapCommand="{Binding MessageTypeTapCommand}"
+                PipelineModuleTapCommand="{Binding PipelineModuleTapCommand}"
+                Margin="10,0,0,0" RuntimeDetails="{Binding RuntimeDetails}" />
+        </ScrollView>
+    </pge:LagoVistaContentPage.MainContent>
+</pge:LagoVistaContentPage>

@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<pge:LagoVistaContentPage     
+    xmlns:pge="clr-namespace:LagoVista.XPlat.Core;assembly=LagoVista.XPlat.Core"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:trs="clr-namespace:LagoVista.PlatformManager;assembly=LagoVista.PlatformManager"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="LagoVista.PlatformManager.Views.TelemetryView"
+    LeftMenu="Back"
+    Title="{Binding ViewTitle}">
+    <pge:LagoVistaContentPage.MainContent>
+        <Grid>
+            <ListView ItemsSource="{Binding ReportData}" >
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="25*" />
+                                    <ColumnDefinition Width="25*" />
+                                    <ColumnDefinition Width="25*" />
+                                    <ColumnDefinition Width="25*" />
+                                </Grid.ColumnDefinitions>
+                                <Label Text="{Binding TimeStamp, Converter={StaticResource DatePrinterConverter}}" />
+                                <Label Text="{Binding Version}" Grid.Column="1" />
+                                <Label Text="{Binding Message}" Grid.Column="2" />
+                                <Label Text="{Binding Tag}" Grid.Column="3" />
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
+            <ListView ItemsSource="{Binding StatusData}" >
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*" />
+                                    <RowDefinition Height="*" />
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="20*" />
+                                    <ColumnDefinition Width="20*" />
+                                    <ColumnDefinition Width="20*" />
+                                    <ColumnDefinition Width="20*" />
+                                </Grid.ColumnDefinitions>
+                                <Label Text="{Binding TimeStamp, Converter={StaticResource DatePrinterConverter}}" />
+                                <Label Text="{Binding Version}" Grid.Column="1" />
+                                <Label Text="{Binding OldState}" Grid.Column="2" />
+                                <Label Text="{Binding NewState}" Grid.Column="3" />
+                                <Label Text="{Binding Detils}" Grid.ColumnSpan="4" Grid.Row="1" />
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </Grid>
+    </pge:LagoVistaContentPage.MainContent>
+</pge:LagoVistaContentPage>

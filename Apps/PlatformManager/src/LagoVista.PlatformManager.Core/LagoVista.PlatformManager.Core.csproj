@@ -1,0 +1,37 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <DebugType>Full</DebugType>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="LagoVista.Core" Version="2.1.1434.1859" />
+    <PackageReference Include="LagoVista.Core.Authentication" Version="2.1.1434.1859" />
+    <PackageReference Include="LagoVista.Core.Networking" Version="2.1.1434.1859" />
+    <PackageReference Include="LagoVista.IoT.Deployment.Models" Version="2.1.1434.1859" />
+    <PackageReference Include="LagoVista.IoT.DeviceAdmin.Models" Version="2.1.1434.1859" />
+    <PackageReference Include="LagoVista.IoT.DeviceManagement.Models" Version="2.1.1434.1859" />
+    <PackageReference Include="LagoVista.IoT.DeviceMessaging.Models" Version="2.1.1434.1859" />
+    <PackageReference Include="LagoVista.IoT.Logging" Version="2.1.1434.1859" />
+    <PackageReference Include="LagoVista.IoT.Pipeline.Models" Version="2.1.1434.1859" />
+    <PackageReference Include="LagoVista.IoT.Runtime.Core" Version="1.2.224-alpha1826" />
+    <PackageReference Include="LagoVista.UserAdmin.Models" Version="2.1.1434.1859" />
+    <PackageReference Include="Microsoft.CSharp" Version="4.7.0" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\..\src\LagoVista.Client.Core\LagoVista.Client.Core.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Update="Resources\PlatformManagerResources.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>PlatformManagerResources.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Update="Resources\PlatformManagerResources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>PlatformManagerResources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+</Project>

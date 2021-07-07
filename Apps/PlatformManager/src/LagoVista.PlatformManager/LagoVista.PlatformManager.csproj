@@ -1,0 +1,42 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <DebugType>Full</DebugType>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="LagoVista.Core.Authentication" Version="2.1.1434.1859" />
+    <PackageReference Include="LagoVista.Core.Networking" Version="2.1.1434.1859" />
+    <PackageReference Include="LagoVista.IoT.Deployment.Models" Version="2.1.1434.1859" />
+    <PackageReference Include="LagoVista.IoT.DeviceAdmin.Models" Version="2.1.1434.1859" />
+    <PackageReference Include="LagoVista.IoT.DeviceManagement.Models" Version="2.1.1434.1859" />
+    <PackageReference Include="LagoVista.IoT.DeviceMessaging.Models" Version="2.1.1434.1859" />
+    <PackageReference Include="LagoVista.IoT.Logging" Version="2.1.1434.1859" />
+    <PackageReference Include="LagoVista.IoT.Pipeline.Models" Version="2.1.1434.1859" />
+    <PackageReference Include="LagoVista.UserAdmin.Models" Version="2.1.1434.1859" />
+    <PackageReference Include="Microsoft.CSharp" Version="4.7.0" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+    <PackageReference Include="Xamarin.Forms" Version="5.0.0.2012" />
+    <PackageReference Include="LagoVista.Core" Version="2.1.1434.1859" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\..\src\LagoVista.Client.Core\LagoVista.Client.Core.csproj" />
+    <ProjectReference Include="..\..\..\..\src\LagoVista.XPlat.Core\LagoVista.XPlat.Core.csproj" />
+    <ProjectReference Include="..\LagoVista.PlatformManager.Core\LagoVista.PlatformManager.Core.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Update="Views\TelemetryView.xaml.cs">
+      <DependentUpon>TelemetryView.xaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Update="Resources\CommonResources.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\Fonts.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\ThemeResources.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+</Project>
