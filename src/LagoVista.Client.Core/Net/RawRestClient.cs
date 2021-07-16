@@ -16,6 +16,7 @@ using Newtonsoft.Json.Serialization;
 using LagoVista.Client.Core.Resources;
 using LagoVista.Core.Models.UIMetaData;
 using System.Collections.Generic;
+using LagoVista.Core.Models;
 
 namespace LagoVista.Client.Core.Net
 {
@@ -61,6 +62,11 @@ namespace LagoVista.Client.Core.Net
             authRequest.UserName = _authManager.User.Email;
             authRequest.Email = _authManager.User.Email;
             authRequest.RefreshToken = _authManager.RefreshToken;
+            if(!EntityHeader.IsNullOrEmpty(_appConfig.SystemOwnerOrg))
+            {
+                authRequest.OrgId = _appConfig.SystemOwnerOrg.Id;
+                authRequest.OrgName = _appConfig.SystemOwnerOrg.Text;
+            }
 
             var response = await _authClient.LoginAsync(authRequest);
             if (response.Successful)
@@ -253,7 +259,10 @@ namespace LagoVista.Client.Core.Net
                 return result;
             }, cancellationTokenSource);
 
-            await AddCachedResponseAsync(path, response);
+            if (response.Success)
+            {
+                await AddCachedResponseAsync(path, response);
+            }
             return response;
         }
 

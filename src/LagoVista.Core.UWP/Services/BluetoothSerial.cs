@@ -23,7 +23,7 @@ namespace LagoVista.Core.UWP.Services
 
         private CancellationTokenSource _listenCancelTokenSource = new CancellationTokenSource();
 
-        private SemaphoreSlim _msgReceivedFlag = new SemaphoreSlim(0);
+        private readonly SemaphoreSlim _msgReceivedFlag = new SemaphoreSlim(0);
 
         public event EventHandler<string> ReceivedLine;
         public event EventHandler<DFUProgress> DFUProgress;
@@ -37,12 +37,9 @@ namespace LagoVista.Core.UWP.Services
         BTDevice _currentDevice = null;
 
         private string _lastMessage = null;
-
-        private static int _btSerialIdx = 0;
-
+    
         public BluetoothSerial()
         {
-            _btSerialIdx++;
         }
 
         public async Task ConnectAsync(BTDevice device)
@@ -103,9 +100,6 @@ namespace LagoVista.Core.UWP.Services
                 });
             }
 
-            var moreDevices = await Windows.Devices.Enumeration.DeviceInformation.FindAllAsync(
-                GattDeviceService.GetDeviceSelectorFromUuid(GattServiceUuids.)
-            );
 
             return pairedDevices;
         }

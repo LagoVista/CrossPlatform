@@ -1,7 +1,6 @@
 ﻿using LagoVista.Client.Core.Auth;
 using LagoVista.Client.Core.Models;
 using LagoVista.Client.Core.Net;
-using LagoVista.Client.Core.Resources;
 using LagoVista.Core.Authentication.Interfaces;
 using LagoVista.Core.Interfaces;
 using LagoVista.Core.IOC;

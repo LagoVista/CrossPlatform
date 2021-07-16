@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>UIDeviceFamily</key>
+	<array>
+		<integer>1</integer>
+		<integer>2</integer>
+	</array>
+	<key>UISupportedInterfaceOrientations</key>
+	<array>
+		<string>UIInterfaceOrientationPortrait</string>
+	</array>
+	<key>UISupportedInterfaceOrientations~ipad</key>
+	<array>
+		<string>UIInterfaceOrientationPortrait</string>
+		<string>UIInterfaceOrientationPortraitUpsideDown</string>
+		<string>UIInterfaceOrientationLandscapeLeft</string>
+		<string>UIInterfaceOrientationLandscapeRight</string>
+	</array>
+	<key>UIAppFonts</key>
+	<array>
+		<string>Fonts/iconize-entypoplus.ttf</string>
+		<string>Fonts/iconize-fontawesome.ttf</string>
+		<string>Fonts/iconize-ionicons.ttf</string>
+		<string>Fonts/iconize-material.ttf</string>
+		<string>Fonts/iconize-meteocons.ttf</string>
+		<string>Fonts/iconize-simplelineicons.ttf</string>
+		<string>Fonts/iconize-typicons.ttf</string>
+		<string>Fonts/iconize-weathericons.ttf</string>
+		<string>Fonts/Roboto-Black.ttf</string>
+		<string>Fonts/Roboto-BlackItalic.ttf</string>
+		<string>Fonts/Roboto-Bold.ttf</string>
+		<string>Fonts/Roboto-BoldItalic.ttf</string>
+		<string>Fonts/Roboto-Italic.ttf</string>
+		<string>Fonts/Roboto-Light.ttf</string>
+		<string>Fonts/Roboto-LightItalic.ttf</string>
+		<string>Fonts/Roboto-Medium.ttf</string>
+		<string>Fonts/Roboto-MediumItalic.ttf</string>
+		<string>Fonts/Roboto-Regular.ttf</string>
+		<string>Fonts/Roboto-Thin.ttf</string>
+		<string>Fonts/Roboto-ThinItalic.ttf</string>
+		<string>Fonts/RobotoCondensed-Bold.ttf</string>
+		<string>Fonts/RobotoCondensed-BoldItalic.ttf</string>
+		<string>Fonts/RobotoCondensed-Italic.ttf</string>
+		<string>Fonts/RobotoCondensed-Light.ttf</string>
+		<string>Fonts/RobotoCondensed-LightItalic.ttf</string>
+		<string>Fonts/RobotoCondensed-Regular.ttf</string>
+	</array>
+	<key>UIBackgroundModes</key>
+	<array>
+		<string>remote-notification</string>
+	</array>
+	<key>UILaunchStoryboardName</key>
+	<string>LaunchScreen</string>
+	<key>XSLaunchImageAssets</key>
+	<string>Resources/Media.xcassets/LaunchImages.launchimage</string>
+	<key>MinimumOSVersion</key>
+	<string>8.0</string>
+	<key>CFBundleDisplayName</key>
+	<string>SeaWolf Marine</string>
+	<key>CFBundleIdentifier</key>
+	<string>com.softwarelogistics.seawolf.dev</string>
+	<key>CFBundleVersion</key>
+	<string>1.0.0.0</string>
+	<key>CFBundleName</key>
+	<string>SeaWolf</string>
+	<key>XSAppIconAssets</key>
+	<string>Assets.xcassets/AppIcons.appiconset</string>
+  <key>NSLocationAlwaysUsageDescription</key>
+  <string>SeaWolf Marine wants to use your location to set geo-zones for your vessel</string>
+  <key>NSLocationWhenInUseUsageDescription</key>
+  <string>SeaWolf Marine is using your location.</string>
+</dict>
+</plist>

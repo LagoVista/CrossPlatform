@@ -1,0 +1,68 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<Package
+  xmlns="http://schemas.microsoft.com/appx/manifest/foundation/windows10"
+  xmlns:mp="http://schemas.microsoft.com/appx/2014/phone/manifest"
+  xmlns:uap="http://schemas.microsoft.com/appx/manifest/uap/windows10"
+  xmlns:uap4="http://schemas.microsoft.com/appx/manifest/uap/windows10/4"
+  IgnorableNamespaces="uap mp uap4">
+
+  <Identity
+    Name="SoftwareLogisticsLLC.SeaWolfMarine"
+    Publisher="CN=kevin"
+    Version="0.5.9.0" />
+
+  <mp:PhoneIdentity PhoneProductId="1ea8fd65-1dde-4abf-8e49-32971ee96324" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
+
+  <Properties>
+    <DisplayName>SeaWolf Marine</DisplayName>
+    <PublisherDisplayName>Software Logistics LLC</PublisherDisplayName>
+    <Logo>Assets\StoreLogo.png</Logo>
+  </Properties>
+
+  <Dependencies>
+    <TargetDeviceFamily Name="Windows.Universal" MinVersion="10.0.0.0" MaxVersionTested="10.0.0.0" />
+  </Dependencies>
+
+  <Resources>
+    <Resource Language="x-generate"/>
+  </Resources>
+
+  <Applications>
+    <Application Id="App"
+      Executable="$targetnametoken$.exe"
+      EntryPoint="SeaWolf.UWP.App">
+      <uap:VisualElements
+        DisplayName="SeaWolf Marine"
+        Square150x150Logo="Assets\Square150x150Logo.png"
+        Square44x44Logo="Assets\Square44x44Logo.png"
+        Description="SeaWolf Marine Windows Application"
+        BackgroundColor="transparent">
+        <uap:DefaultTile Wide310x150Logo="Assets\Wide310x150Logo.png" Square310x310Logo="Assets\LargeTile.png" Square71x71Logo="Assets\SmallTile.png" ShortName="SeaWolf Marine">
+          <uap:ShowNameOnTiles>
+            <uap:ShowOn Tile="square150x150Logo" />
+            <uap:ShowOn Tile="wide310x150Logo" />
+            <uap:ShowOn Tile="square310x310Logo" />
+          </uap:ShowNameOnTiles>
+        </uap:DefaultTile>
+        <uap:SplashScreen Image="Assets\SplashScreen.png"  BackgroundColor="white"/>
+        <uap:InitialRotationPreference>
+          <uap:Rotation Preference="landscape"/>
+          <uap:Rotation Preference="portrait"/>
+          <uap:Rotation Preference="landscapeFlipped"/></uap:InitialRotationPreference>
+      </uap:VisualElements>
+    </Application>
+  </Applications>
+
+  <Capabilities>
+    <Capability Name="internetClient" />
+    <uap4:Capability Name="offlineMapsManagement"/>
+    <DeviceCapability Name="bluetooth.rfcomm">
+      <Device Id="any">
+        <Function Type="name:serialPort"/>
+      </Device>
+    </DeviceCapability>
+    <DeviceCapability Name="location"/>
+    <DeviceCapability Name="bluetooth"/>
+  </Capabilities>
+</Package>

@@ -47,6 +47,12 @@ namespace LagoVista.Client.Core.ViewModels.Auth
                 GrantType = "password"
             };
 
+            if (!EntityHeader.IsNullOrEmpty(AppConfig.SystemOwnerOrg))
+            {
+                loginInfo.OrgId = AppConfig.SystemOwnerOrg.Id;
+                loginInfo.OrgName = AppConfig.SystemOwnerOrg.Text;
+            }
+
             var loginResult = await _authClient.LoginAsync(loginInfo);
             if (!loginResult.Successful) return loginResult.ToInvokeResult();
 

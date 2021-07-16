@@ -13,7 +13,7 @@ namespace LagoVista.Client.Core.ViewModels.DeviceAccess
         private String _deviceRepoId;
         private String _deviceId;
 
-        private IGATTConnection _gattConnection;
+        private readonly IGATTConnection _gattConnection;
 
         private BLEDevice _currentDevice;
 
@@ -28,12 +28,12 @@ namespace LagoVista.Client.Core.ViewModels.DeviceAccess
 
         public async override Task InitAsync()
         {
-            _gattConnection.DeviceConnected += _btSerial_DeviceConnected;
-            _gattConnection.DeviceDisconnected += _btSerial_DeviceDisconnected;
-            _gattConnection.ReceiveConsoleOut += _btSerial_ReceivedLine;
-            _gattConnection.DFUProgress += _btSerial_DFUProgress;
-            _gattConnection.DFUFailed += _btSerial_DFUFailed;
-            _gattConnection.DFUCompleted += _btSerial_DFUCompleted;
+            _gattConnection.DeviceConnected += BtSerial_DeviceConnected;
+            _gattConnection.DeviceDisconnected += BtSerial_DeviceDisconnected;
+            _gattConnection.ReceiveConsoleOut += BtSerial_ReceivedLine;
+            _gattConnection.DFUProgress += BtSerial_DFUProgres;
+            _gattConnection.DFUFailed += BtSerial_DFUFailed;
+            _gattConnection.DFUCompleted += BtSerial_DFUCompleted;
 
             if(this.LaunchArgs.Parameters.ContainsKey(BT_DEVICE_ADDRESS))
             {
@@ -46,12 +46,12 @@ namespace LagoVista.Client.Core.ViewModels.DeviceAccess
 
         public override Task ReloadedAsync()
         {
-            _gattConnection.DeviceConnected += _btSerial_DeviceConnected;
-            _gattConnection.DeviceDisconnected += _btSerial_DeviceDisconnected;
-            _gattConnection.ReceiveConsoleOut += _btSerial_ReceivedLine;
-            _gattConnection.DFUProgress += _btSerial_DFUProgress;
-            _gattConnection.DFUFailed += _btSerial_DFUFailed;
-            _gattConnection.DFUCompleted += _btSerial_DFUCompleted;
+            _gattConnection.DeviceConnected += BtSerial_DeviceConnected;
+            _gattConnection.DeviceDisconnected += BtSerial_DeviceDisconnected;
+            _gattConnection.ReceiveConsoleOut += BtSerial_ReceivedLine;
+            _gattConnection.DFUProgress += BtSerial_DFUProgres;
+            _gattConnection.DFUFailed += BtSerial_DFUFailed;
+            _gattConnection.DFUCompleted += BtSerial_DFUCompleted;
 
             return base.ReloadedAsync();
         }
@@ -62,22 +62,22 @@ namespace LagoVista.Client.Core.ViewModels.DeviceAccess
         protected virtual void OnDFUProgress(Models.DFUProgress e) { }
 
 
-        private void _btSerial_DFUCompleted(object sender, EventArgs e)
+        private void BtSerial_DFUCompleted(object sender, EventArgs e)
         {
             OnDFUCompleted();
         }
 
-        private void _btSerial_DFUFailed(object sender, string e)
+        private void BtSerial_DFUFailed(object sender, string e)
         {
             OnDFUFailed(e);
         }
 
-        private void _btSerial_DFUProgress(object sender, Models.DFUProgress e)
+        private void BtSerial_DFUProgres(object sender, Models.DFUProgress e)
         {
             OnDFUProgress(e);    
         }
 
-        private void _btSerial_ReceivedLine(object sender, string e)
+        private void BtSerial_ReceivedLine(object sender, string e)
         {
             OnBTSerail_MsgReceived(e);
 
@@ -88,13 +88,13 @@ namespace LagoVista.Client.Core.ViewModels.DeviceAccess
             }
         }
 
-        private void _btSerial_DeviceDisconnected(object sender, Models.BLEDevice e)
+        private void BtSerial_DeviceDisconnected(object sender, Models.BLEDevice e)
         {
             OnBLEDevice_Disconnected(e);
             RaisePropertyChanged(nameof(DeviceConnected));
         }
 
-        private void _btSerial_DeviceConnected(object sender, Models.BLEDevice e)
+        private void BtSerial_DeviceConnected(object sender, Models.BLEDevice e)
         {
             OnBLEDevice_Connected(e);
             RaisePropertyChanged(nameof(DeviceConnected));
@@ -191,12 +191,12 @@ namespace LagoVista.Client.Core.ViewModels.DeviceAccess
 
         public override Task IsClosingAsync()
         {
-            _gattConnection.DeviceConnected -= _btSerial_DeviceConnected;
-            _gattConnection.DeviceDisconnected -= _btSerial_DeviceDisconnected;
-            _gattConnection.ReceiveConsoleOut -= _btSerial_ReceivedLine;
-            _gattConnection.DFUProgress -= _btSerial_DFUProgress;
-            _gattConnection.DFUFailed -= _btSerial_DFUFailed;
-            _gattConnection.DFUCompleted -= _btSerial_DFUCompleted;
+            _gattConnection.DeviceConnected -= BtSerial_DeviceConnected;
+            _gattConnection.DeviceDisconnected -= BtSerial_DeviceDisconnected;
+            _gattConnection.ReceiveConsoleOut -= BtSerial_ReceivedLine;
+            _gattConnection.DFUProgress -= BtSerial_DFUProgres;
+            _gattConnection.DFUFailed -= BtSerial_DFUFailed;
+            _gattConnection.DFUCompleted -= BtSerial_DFUCompleted;
 
             return base.IsClosingAsync();
         }

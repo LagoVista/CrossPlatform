@@ -1,0 +1,213 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<pge:LagoVistaContentPage  xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:pge="clr-namespace:LagoVista.XPlat.Core;assembly=LagoVista.XPlat.Core"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:controls="clr-namespace:SeaWolf.Controls"
+             xmlns:trs="clr-namespace:SeaWolf;assembly=SeaWolf"
+             xmlns:maps="clr-namespace:Xamarin.Forms.Maps;assembly=Xamarin.Forms.Maps"
+             xmlns:flv="clr-namespace:DLToolkit.Forms.Controls;assembly=DLToolkit.Forms.Controls.FlowListView"
+		     mc:Ignorable="d"
+             LeftMenu="Menu" 
+             BackgroundColor="LightCyan"
+             x:Class="SeaWolf.Views.MainView"
+             Title="{trs:Translate AppName}">
+
+    <pge:LagoVistaContentPage.TabbedContent>
+        <pge:TabContentHolder>
+            <pge:TabContent BackgroundColor="White">
+                <ScrollView>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="300" />
+                            <RowDefinition Height="4" />
+                            <RowDefinition Height="300" />
+                            <RowDefinition Height="4" />
+                            <RowDefinition Height="300" />
+                            <RowDefinition Height="4" />
+                            <RowDefinition Height="300" />
+                            <RowDefinition Height="4" />
+                            <RowDefinition Height="300" />
+                            <RowDefinition Height="4" />
+                           </Grid.RowDefinitions>
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="48"/>
+                                <RowDefinition Height="*" />
+                            </Grid.RowDefinitions>
+                            <Label Text="Current Location" FontAttributes="Bold"  HorizontalOptions="Center" FontSize="32"/>
+                            <maps:Map Grid.Row="1" MapType="Street" />
+                        </Grid>
+                        <Line Grid.Row="1" BackgroundColor="Black" />
+
+                        <Grid Grid.Row="2">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="48"/>
+                                <RowDefinition Height="*" />
+                            </Grid.RowDefinitions>
+                            <Label Text="Voltage Monitoring" FontAttributes="Bold"  HorizontalOptions="Center" FontSize="32"/>
+                        </Grid>
+                    
+                        <Line Grid.Row="3" BackgroundColor="Black" />
+
+                        <Grid Grid.Row="4">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="48"/>
+                                <RowDefinition Height="*" />
+                            </Grid.RowDefinitions>
+                            <Label Text="Battery Switch" FontAttributes="Bold"  HorizontalOptions="Center" FontSize="32"/>
+                        </Grid>
+
+                        <Line Grid.Row="5" BackgroundColor="Black" />
+
+                        <Grid Grid.Row="6">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="48"/>
+                                <RowDefinition Height="*" />
+                            </Grid.RowDefinitions>
+                            <Label Text="Temperature Monitoring" FontAttributes="Bold"  HorizontalOptions="Center" FontSize="32"/>
+                        </Grid>
+
+                        <Line Grid.Row="7" BackgroundColor="Black" />
+
+                        <Grid Grid.Row="8">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="48"/>
+                                <RowDefinition Height="*" />
+                            </Grid.RowDefinitions>
+                            <Label Text="Level Monitoring" FontAttributes="Bold"  HorizontalOptions="Center" FontSize="32"/>
+                        </Grid>
+
+
+                    </Grid>
+                </ScrollView>
+            </pge:TabContent>
+            <pge:TabContent BackgroundColor="White">
+
+            </pge:TabContent>
+            <pge:TabContent BackgroundColor="White">
+                <ScrollView>
+                    <Grid >
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="300" />
+                            <RowDefinition Height="4" />
+                            <RowDefinition Height="300" />
+                            <RowDefinition Height="4" />
+                            <RowDefinition Height="300" />
+                            <RowDefinition Height="4" />
+                        </Grid.RowDefinitions>
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="48"/>
+                                <RowDefinition Height="*" />
+                            </Grid.RowDefinitions>
+                            <Label Text="Geo Fence" FontAttributes="Bold"  HorizontalOptions="Center" FontSize="32"/>
+                            <maps:Map Grid.Row="1" MapType="Street" />
+                        </Grid>
+
+                        <Line Grid.Row="1" BackgroundColor="Black" />
+
+                        <Grid Grid.Row="2">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="64" />
+                                <RowDefinition Height="*" />
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="300" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <Label Text="Voltage Monitoring" FontAttributes="Bold" Grid.ColumnSpan="2"  HorizontalOptions="Center" FontSize="32"/>
+                            <ListView ItemsSource="{Binding BatterySensors}" SelectedItem="{Binding BatterySensor, Mode=TwoWay}" Grid.Row="1"  >
+                                <ListView.ItemTemplate>
+                                    <DataTemplate>
+                                        <ViewCell>
+                                            <Label FontSize="24" HorizontalOptions="Fill" VerticalOptions="Fill"  HorizontalTextAlignment="Center" XAlign="Center" YAlign="Center" Text="{Binding Text}"/>
+                                        </ViewCell>
+                                    </DataTemplate>
+                                </ListView.ItemTemplate>
+                            </ListView>
+                            <Grid Grid.Column="1" Grid.Row="1" IsVisible="{Binding BatterySensor, Converter={StaticResource NotNullVisibilityConverter}}">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="48" />
+                                    <RowDefinition Height="*" />
+                                    <RowDefinition Height="*" />
+                                </Grid.RowDefinitions>
+
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="48" />
+                                    <ColumnDefinition Width="92" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="92" />
+                                    <ColumnDefinition Width="48" />
+                                    <ColumnDefinition Width="64" />
+                                </Grid.ColumnDefinitions>
+                                <Label Text="{Binding BatterySensor.Text}" HorizontalOptions="Center"  FontSize="24" TextColor="Black" Grid.ColumnSpan="5" />
+                                <pge:IconButton IconKey="fa-arrow-up" Grid.Row="1" FontSize="32" Grid.Column="0" Command="{Binding IncrementLowBatteryThresholdCommand}"/>
+                                <pge:IconButton IconKey="fa-arrow-down" Grid.Row="2"  FontSize="32" Grid.Column="0" Command="{Binding DecrementLowBatteryThresholdCommand}"/>
+                                <Label Text="{Binding LowBatteryTolerance, StringFormat='{0:F1}'}"  VerticalOptions="Center" HorizontalOptions="Center" Grid.Column="1" FontSize="32" TextColor="Blue" Grid.RowSpan="2" Grid.Row="1" />
+                                <Label Text="{Binding HighBatteryTolerance, StringFormat='{0:F1}'}" VerticalOptions="Center" HorizontalOptions="Center" Grid.Column="3" FontSize="32" TextColor="Red" Grid.RowSpan="2" Grid.Row="1" />
+                                <pge:IconButton HorizontalOptions="Center" IconKey="fa-arrow-up" Grid.Row="1" Grid.Column="4" FontSize="32" Command="{Binding IncrementHighBatteryThresholdCommand}"/>
+                                <pge:IconButton HorizontalOptions="Center" IconKey="fa-arrow-down"  Grid.Row="2" Grid.Column="4" FontSize="32" Command="{Binding DecrementHighBatteryThresholdCommand}"/>
+                            </Grid>
+                        </Grid>
+
+                        <Line Grid.Row="3" BackgroundColor="Black" />
+
+                        <Grid Grid.Row="4">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="64" />
+                                <RowDefinition Height="*" />
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="300" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <Label Text="Temperature Monitoring" FontAttributes="Bold" Grid.ColumnSpan="2"  HorizontalOptions="Center" FontSize="32"/>
+                            <ListView ItemsSource="{Binding TemperatureSensors}" SelectedItem="{Binding TemperatureSensor, Mode=TwoWay}" Grid.Row="1"  >
+                                <ListView.ItemTemplate>
+                                    <DataTemplate>
+                                        <ViewCell>
+                                            <Label FontSize="24" HorizontalOptions="Fill" VerticalOptions="Fill"  HorizontalTextAlignment="Center" XAlign="Center" YAlign="Center" Text="{Binding Text}"/>
+                                        </ViewCell>
+                                    </DataTemplate>
+                                </ListView.ItemTemplate>
+                            </ListView>
+                            <Grid Grid.Column="1" Grid.Row="1" IsVisible="{Binding TemperatureSensor, Converter={StaticResource NotNullVisibilityConverter}}">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="48" />
+                                    <RowDefinition Height="*" />
+                                    <RowDefinition Height="*" />
+                                </Grid.RowDefinitions>
+
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="48" />
+                                    <ColumnDefinition Width="92" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="92" />
+                                    <ColumnDefinition Width="48" />
+                                    <ColumnDefinition Width="64" />
+                                </Grid.ColumnDefinitions>
+                                <Label Text="{Binding TemperatureSensor.Text}" HorizontalOptions="Center"  FontSize="24" TextColor="Black" Grid.ColumnSpan="5" />
+                                <pge:IconButton IconKey="fa-arrow-up" Grid.Row="1" FontSize="32" Grid.Column="0" Command="{Binding IncrementLowTemperatureThresholdCommand}"/>
+                                <pge:IconButton IconKey="fa-arrow-down" Grid.Row="2"  FontSize="32" Grid.Column="0" Command="{Binding DecrementLowTemperatureThresholdCommand}"/>
+                                <Label Text="{Binding LowTemperatureTolerance, StringFormat='{0:F1}'}"  VerticalOptions="Center" HorizontalOptions="Center" Grid.Column="1" FontSize="32" TextColor="Blue" Grid.RowSpan="2" Grid.Row="1" />
+                                <Label Text="{Binding HighTemperatureTolerance, StringFormat='{0:F1}'}" VerticalOptions="Center" HorizontalOptions="Center" Grid.Column="3" FontSize="32" TextColor="Red" Grid.RowSpan="2" Grid.Row="1" />
+                                <pge:IconButton HorizontalOptions="Center" IconKey="fa-arrow-up" Grid.Row="1" Grid.Column="4" FontSize="32" Command="{Binding IncrementHighTemperatureThresholdCommand}"/>
+                                <pge:IconButton HorizontalOptions="Center" IconKey="fa-arrow-down"  Grid.Row="2" Grid.Column="4" FontSize="32" Command="{Binding DecrementHighTemperatureThresholdCommand}"/>
+                            </Grid>
+                        </Grid>
+                        <Line Grid.Row="5" BackgroundColor="Black" ></Line>
+                    </Grid>
+                </ScrollView>
+            </pge:TabContent>
+        </pge:TabContentHolder>
+    </pge:LagoVistaContentPage.TabbedContent>
+    <pge:LagoVistaContentPage.TabBar>
+        <pge:TabBar>
+            <pge:Tab Label="Home" Icon="fa-home" />
+            <pge:Tab Label="Alerts" Icon="fa-bell" />
+            <pge:Tab Label="Settings" Icon="fa-gear" />
+        </pge:TabBar>
+    </pge:LagoVistaContentPage.TabBar>
+</pge:LagoVistaContentPage >

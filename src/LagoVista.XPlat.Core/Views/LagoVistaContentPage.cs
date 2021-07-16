@@ -31,7 +31,7 @@ namespace LagoVista.XPlat.Core
         ActivityIndicator _activityIndicator;
         View _mainContent;
         TabContentHolder _tabbedContent;
-
+       
         IconButton _leftMenuButton;
         IconButton _rightMenuButton;
         IconButton _helpButton;
@@ -47,7 +47,7 @@ namespace LagoVista.XPlat.Core
             Xamarin.Forms.NavigationPage.SetHasNavigationBar(this, false);
 
             /*
-             * The Page top level consists of a grid, to add additional faeture on top fo the grid such as loading window
+             * The Page top level consists of a grid, to add additional feature on top of the grid such as loading window
              * and a slide out menu, we attach the actual content to the property MainContent, rather than just to the page.
              * Within the XAML it will look like:
              *     <pge:LagoVistaContentPage.MainContent>
@@ -408,7 +408,6 @@ namespace LagoVista.XPlat.Core
                 _contentGrid.Children.Add(_loadingContainer);
             }
         }
-
 
         public TabContentHolder TabbedContent
         {

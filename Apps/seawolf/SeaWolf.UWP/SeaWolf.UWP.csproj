@@ -1,0 +1,376 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProjectGuid>{60C90AB9-43D5-4A0C-954D-C8F50BDEEF14}</ProjectGuid>
+    <TemplateGuid>{98C37F10-6541-44BE-B1E6-7EB3EB8C08F1}</TemplateGuid>
+    <OutputType>AppContainerExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SeaWolf.UWP</RootNamespace>
+    <AssemblyName>SeaWolf.UWP</AssemblyName>
+    <DefaultLanguage>en-US</DefaultLanguage>
+    <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>
+    <TargetPlatformVersion>10.0.18362.0</TargetPlatformVersion>
+    <TargetPlatformMinVersion>10.0.17763.0</TargetPlatformMinVersion>
+    <MinimumVisualStudioVersion>14</MinimumVisualStudioVersion>
+    <EnableDotNetNativeCompatibleProfile>true</EnableDotNetNativeCompatibleProfile>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{A5A43C5B-DE2A-4C0C-9213-0A381AF9435A};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <AppxPackageSigningEnabled>True</AppxPackageSigningEnabled>
+    <PackageCertificateThumbprint>69553BA2CE637444FA8DFEB5EF2D5389B8D15DB0</PackageCertificateThumbprint>
+    <PackageCertificateKeyFile>SeaWolf.UWP_TemporaryKey.pfx</PackageCertificateKeyFile>
+    <GenerateAppInstallerFile>False</GenerateAppInstallerFile>
+    <AppxPackageSigningTimestampDigestAlgorithm>SHA256</AppxPackageSigningTimestampDigestAlgorithm>
+    <AppxAutoIncrementPackageRevision>True</AppxAutoIncrementPackageRevision>
+    <GenerateTestArtifacts>True</GenerateTestArtifacts>
+    <AppxBundle>Always</AppxBundle>
+    <AppxBundlePlatforms>x86|x64|arm</AppxBundlePlatforms>
+    <HoursBetweenUpdateChecks>0</HoursBetweenUpdateChecks>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|ARM'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\ARM\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>full</DebugType>
+    <PlatformTarget>ARM</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|ARM'">
+    <OutputPath>bin\ARM\Release\</OutputPath>
+    <DefineConstants>TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <Optimize>true</Optimize>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>ARM</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+    <UseDotNetNativeToolchain>true</UseDotNetNativeToolchain>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <OutputPath>bin\x64\Release\</OutputPath>
+    <DefineConstants>TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <Optimize>true</Optimize>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+    <UseDotNetNativeToolchain>true</UseDotNetNativeToolchain>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;NETFX_CORE;WINDOWS_UWP;CODE_ANALYSIS;DISABLE_XAML_GENERATED_BREAK_ON_UNHANDLED_EXCEPTION</DefineConstants>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DefineConstants>TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <Optimize>true</Optimize>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+    <UseDotNetNativeToolchain>true</UseDotNetNativeToolchain>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ChartingTileProvider.cs" />
+    <Compile Include="MainPage.xaml.cs">
+      <DependentUpon>MainPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <AppxManifest Include="Package.appxmanifest">
+      <SubType>Designer</SubType>
+    </AppxManifest>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Assets\companylogo.png" />
+    <Content Include="Assets\Icons\AV Receiver_100px.png" />
+    <Content Include="Assets\Icons\Checkmark_100px.png" />
+    <Content Include="Assets\Icons\Delete_100px.png" />
+    <Content Include="Assets\Icons\Design_100px.png" />
+    <Content Include="Assets\Icons\Edit Property_100px.png" />
+    <Content Include="Assets\Icons\Edit_100px.png" />
+    <Content Include="Assets\Icons\Electrical Threshold_100px.png" />
+    <Content Include="Assets\Icons\Exit_100px.png" />
+    <Content Include="Assets\Icons\Feed In_100px.png" />
+    <Content Include="Assets\Icons\Fog Lamp_100px.png" />
+    <Content Include="Assets\Icons\Forward Arrow_100px.png" />
+    <Content Include="Assets\Icons\Full Battery_100px.png" />
+    <Content Include="Assets\Icons\Half-Charged Battery_100px.png" />
+    <Content Include="Assets\Icons\Hub_100px.png" />
+    <Content Include="Assets\Icons\Idea_100px.png" />
+    <Content Include="Assets\Icons\Infrared Beam Sending_100px.png" />
+    <Content Include="Assets\Icons\LED Diode_100px.png" />
+    <Content Include="Assets\Icons\Low Battery_100px.png" />
+    <Content Include="Assets\Icons\Medium Volume_100px.png" />
+    <Content Include="Assets\Icons\Mirrored Reflector Bulb_100px.png" />
+    <Content Include="Assets\Icons\No Battery_100px.png" />
+    <Content Include="Assets\Icons\Nuclear Power Plant_100px.png" />
+    <Content Include="Assets\Icons\Play_100px.png" />
+    <Content Include="Assets\Icons\Plug 4_100px.png" />
+    <Content Include="Assets\Icons\Pressure Vessel_100px.png" />
+    <Content Include="Assets\Icons\Relay_100px.png" />
+    <Content Include="Assets\Icons\Right_100px.png" />
+    <Content Include="Assets\Icons\Robot_100px.png" />
+    <Content Include="Assets\Icons\Satellite Sending Signal_100px.png" />
+    <Content Include="Assets\Icons\Satellite_100px.png" />
+    <Content Include="Assets\Icons\Save_100px.png" />
+    <Content Include="Assets\Icons\Screenshot_100px.png" />
+    <Content Include="Assets\Icons\Settings_100px.png" />
+    <Content Include="Assets\Icons\Share_100px.png" />
+    <Content Include="Assets\Icons\Transistor_100px.png" />
+    <Content Include="Assets\Icons\Turbocharger_100px.png" />
+    <Content Include="Assets\Icons\Upload_100px.png" />
+    <Content Include="Assets\LargeTile.scale-125.png" />
+    <Content Include="Assets\LargeTile.scale-150.png" />
+    <Content Include="Assets\SmallTile.scale-125.png" />
+    <Content Include="Assets\SmallTile.scale-150.png" />
+    <Content Include="Assets\SplashScreen.scale-125.png" />
+    <Content Include="Assets\SplashScreen.scale-150.png" />
+    <Content Include="Assets\Square150x150Logo.scale-125.png" />
+    <Content Include="Assets\Square150x150Logo.scale-150.png" />
+    <Content Include="Assets\Square44x44Logo.altform-lightunplated_targetsize-16.png" />
+    <Content Include="Assets\Square44x44Logo.altform-lightunplated_targetsize-24.png" />
+    <Content Include="Assets\Square44x44Logo.altform-lightunplated_targetsize-256.png" />
+    <Content Include="Assets\Square44x44Logo.altform-lightunplated_targetsize-32.png" />
+    <Content Include="Assets\Square44x44Logo.altform-lightunplated_targetsize-48.png" />
+    <Content Include="Assets\Square44x44Logo.altform-unplated_targetsize-24.png" />
+    <Content Include="Assets\Square44x44Logo.altform-unplated_targetsize-32.png" />
+    <Content Include="Assets\Square44x44Logo.scale-125.png" />
+    <Content Include="Assets\Square44x44Logo.scale-150.png" />
+    <Content Include="Assets\Square44x44Logo.targetsize-24.png" />
+    <Content Include="Assets\Square44x44Logo.targetsize-32.png" />
+    <Content Include="Assets\StoreLogo.scale-125.png" />
+    <Content Include="Assets\StoreLogo.scale-150.png" />
+    <Content Include="Assets\Wide310x150Logo.scale-125.png" />
+    <Content Include="Assets\Wide310x150Logo.scale-150.png" />
+    <Content Include="battery.png" />
+    <Content Include="everglades.png" />
+    <None Include="Package.StoreAssociation.xml" />
+    <Content Include="Properties\Default.rd.xml" />
+    <Content Include="Assets\LargeTile.scale-100.png" />
+    <Content Include="Assets\LargeTile.scale-200.png" />
+    <Content Include="Assets\LargeTile.scale-400.png" />
+    <Content Include="Assets\SmallTile.scale-100.png" />
+    <Content Include="Assets\SmallTile.scale-200.png" />
+    <Content Include="Assets\SmallTile.scale-400.png" />
+    <Content Include="Assets\SplashScreen.scale-100.png" />
+    <Content Include="Assets\SplashScreen.scale-200.png" />
+    <Content Include="Assets\SplashScreen.scale-400.png" />
+    <Content Include="Assets\Square150x150Logo.scale-100.png" />
+    <Content Include="Assets\Square150x150Logo.scale-200.png" />
+    <Content Include="Assets\Square150x150Logo.scale-400.png" />
+    <Content Include="Assets\Square44x44Logo.altform-unplated_targetsize-16.png" />
+    <Content Include="Assets\Square44x44Logo.altform-unplated_targetsize-256.png" />
+    <Content Include="Assets\Square44x44Logo.altform-unplated_targetsize-48.png" />
+    <Content Include="Assets\Square44x44Logo.scale-100.png" />
+    <Content Include="Assets\Square44x44Logo.scale-200.png" />
+    <Content Include="Assets\Square44x44Logo.scale-400.png" />
+    <Content Include="Assets\Square44x44Logo.targetsize-16.png" />
+    <Content Include="Assets\Square44x44Logo.targetsize-256.png" />
+    <Content Include="Assets\Square44x44Logo.targetsize-48.png" />
+    <Content Include="Assets\StoreLogo.scale-100.png" />
+    <Content Include="Assets\StoreLogo.scale-200.png" />
+    <Content Include="Assets\StoreLogo.scale-400.png" />
+    <Content Include="Assets\Wide310x150Logo.scale-100.png" />
+    <Content Include="Assets\Wide310x150Logo.scale-200.png" />
+    <Content Include="Assets\Wide310x150Logo.scale-400.png" />
+    <Content Include="Assets\SeaWolf.png" />
+    <Content Include="thermo.png" />
+    <Content Include="xamarin_logo.png" />
+    <Content Include="add.png" />
+    <Content Include="save.png" />
+    <Content Include="cancel.png" />
+    <None Include="SeaWolf.UWP_TemporaryKey.pfx" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Page Include="MainPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="DLToolkit.Forms.Controls.FlowListView">
+      <Version>2.0.11</Version>
+    </PackageReference>
+    <PackageReference Include="LagoVista.Core">
+      <Version>2.1.1520-beta0637</Version>
+    </PackageReference>
+    <PackageReference Include="LagoVista.Core.Authentication">
+      <Version>2.1.1520-beta0637</Version>
+    </PackageReference>
+    <PackageReference Include="LagoVista.Core.Networking">
+      <Version>2.1.1520-beta0637</Version>
+    </PackageReference>
+    <PackageReference Include="LagoVista.IoT.Deployment.Models">
+      <Version>2.1.1520-beta0637</Version>
+    </PackageReference>
+    <PackageReference Include="LagoVista.IoT.DeviceManagement.Models">
+      <Version>2.1.1520-beta0637</Version>
+    </PackageReference>
+    <PackageReference Include="LagoVista.IoT.DeviceMessaging.Models">
+      <Version>2.1.1520-beta0637</Version>
+    </PackageReference>
+    <PackageReference Include="LagoVista.IoT.Logging">
+      <Version>2.1.1520-beta0637</Version>
+    </PackageReference>
+    <PackageReference Include="LagoVista.IoT.Pipeline.Models">
+      <Version>2.1.1520-beta0637</Version>
+    </PackageReference>
+    <PackageReference Include="LagoVista.MediaServices.Models">
+      <Version>2.1.1520-beta0637</Version>
+    </PackageReference>
+    <PackageReference Include="LagoVista.UserAdmin.Models">
+      <Version>2.1.1520-beta0637</Version>
+    </PackageReference>
+    <PackageReference Include="Xamarin.Forms" Version="5.0.0.2083" />
+    <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform" Version="6.2.12" />
+    <PackageReference Include="Xamarin.Essentials" Version="1.7.0" />
+    <PackageReference Include="Xamarin.Forms.Maps">
+      <Version>5.0.0.2083</Version>
+    </PackageReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\src\LagoVista.Client.Core\LagoVista.Client.Core.csproj">
+      <Project>{c48aba1c-9c0b-4c9c-80c9-6eee8a010ac9}</Project>
+      <Name>LagoVista.Client.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\src\LagoVista.Client.Devices\LagoVista.Client.Devices.csproj">
+      <Project>{9098ce23-0b03-45bb-ab36-9748d2b21d51}</Project>
+      <Name>LagoVista.Client.Devices</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\src\LagoVista.Core.UWP\LagoVista.Core.UWP.csproj">
+      <Project>{12f1d893-a53b-44d6-9a9a-2922d9e7e38a}</Project>
+      <Name>LagoVista.Core.UWP</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\src\LagoVista.XPlat.Core\LagoVista.XPlat.Core.csproj">
+      <Project>{b46b2b34-6314-4ef7-a41f-80158102b92c}</Project>
+      <Name>LagoVista.XPlat.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\src\LagoVista.XPlat.UWP\LagoVista.XPlat.UWP.csproj">
+      <Project>{9ed662b0-40c9-4899-b11e-f10c3c9d6aeb}</Project>
+      <Name>LagoVista.XPlat.UWP</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SeaWolf\SeaWolf.csproj">
+      <Project>{D89BCBD4-1DD4-4798-87BA-1073448B8A10}</Project>
+      <Name>SeaWolf</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Assets\Fonts\iconize-entypoplus.ttf" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Assets\Fonts\iconize-fontawesome.ttf" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Assets\Fonts\iconize-ionicons.ttf" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Assets\Fonts\iconize-material.ttf" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Assets\Fonts\iconize-meteocons.ttf" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Assets\Fonts\iconize-simplelineicons.ttf" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Assets\Fonts\iconize-typicons.ttf" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Assets\Fonts\iconize-weathericons.ttf" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Assets\Fonts\Roboto-Black.ttf" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Assets\Fonts\Roboto-BlackItalic.ttf" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Assets\Fonts\Roboto-Bold.ttf" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Assets\Fonts\Roboto-BoldItalic.ttf" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Assets\Fonts\Roboto-Italic.ttf" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Assets\Fonts\Roboto-Light.ttf" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Assets\Fonts\Roboto-LightItalic.ttf" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Assets\Fonts\Roboto-Medium.ttf" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Assets\Fonts\Roboto-MediumItalic.ttf" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Assets\Fonts\Roboto-Regular.ttf" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Assets\Fonts\Roboto-Thin.ttf" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Assets\Fonts\Roboto-ThinItalic.ttf" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Assets\Fonts\RobotoCondensed-Bold.ttf" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Assets\Fonts\RobotoCondensed-BoldItalic.ttf" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Assets\Fonts\RobotoCondensed-Italic.ttf" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Assets\Fonts\RobotoCondensed-Light.ttf" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Assets\Fonts\RobotoCondensed-LightItalic.ttf" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Assets\Fonts\RobotoCondensed-Regular.ttf" />
+  </ItemGroup>
+  <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
+    <VisualStudioVersion>14.0</VisualStudioVersion>
+  </PropertyGroup>
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\WindowsXaml\v$(VisualStudioVersion)\Microsoft.Windows.UI.Xaml.CSharp.targets" />
+</Project>

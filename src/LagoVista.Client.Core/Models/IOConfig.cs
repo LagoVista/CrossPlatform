@@ -3,6 +3,8 @@ using System;
 
 namespace LagoVista.Client.Core.Models
 {
+    /* This version maps to what is stored on the server,
+     * there is a slightly different structure when used with BLE */
     public class IOConfig
     {
         [JsonProperty("adc1c")]

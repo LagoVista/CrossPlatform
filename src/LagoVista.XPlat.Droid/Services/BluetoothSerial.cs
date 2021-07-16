@@ -19,13 +19,9 @@ namespace LagoVista.XPlat.Droid.Services
         public event EventHandler<BTDevice> DeviceConnected;
         public event EventHandler<BTDevice> DeviceConnecting;
         public event EventHandler<BTDevice> DeviceDisconnected;
+        public event EventHandler<BTDevice> DeviceDiscovered;
 
         public Task ConnectAsync(BTDevice device)
-        {
-            return Task.CompletedTask;
-        }
-
-        public Task DisconnectAsync(BTDevice deviceId)
         {
             return Task.CompletedTask;
         }
@@ -46,12 +42,12 @@ namespace LagoVista.XPlat.Droid.Services
             return Task.CompletedTask;
         }
 
-        public Task SendDFUAsync(BTDevice device, byte[] firmware)
+        public Task SendDFUAsync(byte[] firmware)
         {
-            return Task.CompletedTask;
+            throw new NotImplementedException();
         }
 
-        public Task SendDFUAsync(byte[] firmware)
+        public Task StopSearchingAsync()
         {
             throw new NotImplementedException();
         }
