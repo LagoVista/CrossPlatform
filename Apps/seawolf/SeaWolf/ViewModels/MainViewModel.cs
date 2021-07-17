@@ -1,23 +1,31 @@
-﻿using LagoVista.Client.Core.Resources;
+﻿using LagoVista.Client.Core.Models;
+using LagoVista.Client.Core.Net;
+using LagoVista.Client.Core.Resources;
 using LagoVista.Client.Core.ViewModels;
 using LagoVista.Client.Core.ViewModels.Orgs;
 using LagoVista.Client.Core.ViewModels.Other;
+using LagoVista.Client.Devices;
 using LagoVista.Core.Commanding;
+using LagoVista.Core.Interfaces;
 using LagoVista.Core.Models;
-using LagoVista.Core.ViewModels;
+using LagoVista.Core.Models.Geo;
+using LagoVista.Core.Validation;
 using LagoVista.IoT.DeviceManagement.Core.Models;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Diagnostics;
-using System.Text;
+using System.Linq;
 using System.Threading.Tasks;
+using Xamarin.Essentials;
 
 namespace SeaWolf.ViewModels
 {
-    public class MainViewModel : ListViewModelBase<DeviceSummary>
+    public class MainViewModel : MonitoringViewModelBase
     {
-        public const string REPO_ID = "7D9871D47B7F4BDCB338FAE4C1CBF947";
+        private bool _isNotFirstVessel;
+        private bool _isNotLastVessel;
+
+
         private double _lowTemperatureThreshold = 80;
         private double _highTemperatureThreshold = 120;
 
@@ -27,9 +35,20 @@ namespace SeaWolf.ViewModels
         EntityHeader _temperatureSensor;
         EntityHeader _batterySensor;
 
+        GeoLocation _currentGeoFenceCenter;
+        GeoLocation _currentVeseelLocation;
 
-        public MainViewModel()
+
+        Device _currentDevice;
+        ObservableCollection<DeviceSummary> _userDevices;
+        private readonly IDeviceManagementClient _deviceManagementClient;
+        private readonly IAppConfig _appConfig;
+
+        public MainViewModel(IDeviceManagementClient deviceManagementClient, IAppConfig appConfig)
         {
+            _deviceManagementClient = deviceManagementClient ?? throw new ArgumentNullException(nameof(deviceManagementClient));
+            _appConfig = appConfig ?? throw new ArgumentNullException(nameof(appConfig));
+
             MenuItems = new List<MenuItem>()
             {
                 new MenuItem()
@@ -56,11 +75,14 @@ namespace SeaWolf.ViewModels
             IncrementLowBatteryThresholdCommand = new RelayCommand(IncrementLowBatteryThreshold, CanIncrementLowBatteryThreshold);
             DecrementHighBatteryThresholdCommand = new RelayCommand(DecrementHighBatteryThreshold, CanDecrementHighBatteryThreshold);
             DecrementLowBatteryThresholdCommand = new RelayCommand(DecrementLowBatteryThreshold, CanDecrementLowBatteryThreshold);
-      
+
             IncrementHighTemperatureThresholdCommand = new RelayCommand(IncrementHighTemperatureThreshold, CanIncrementHighTemperatureThreshold);
             IncrementLowTemperatureThresholdCommand = new RelayCommand(IncrementLowTemperatureThreshold, CanIncrementLowTemperatureThreshold);
             DecrementHighTemperatureThresholdCommand = new RelayCommand(DecrementHighTemperatureThreshold, CanDecrementHighTemperatureThreshold);
             DecrementLowTemperatureThresholdCommand = new RelayCommand(DecrementLowTemperatureThreshold, CanDecrementLowTemperatureThreshold);
+
+            NextVesselCommand = new RelayCommand(NextVessel);
+            PreviousVesselCommand = new RelayCommand(PreviousVessel);
 
             TemperatureSensors.Add(new EntityHeader() { Id = "1", Text = "Live Well 1" });
             TemperatureSensors.Add(new EntityHeader() { Id = "2", Text = "Live Well 2" });
@@ -72,26 +94,100 @@ namespace SeaWolf.ViewModels
             BatterySensors.Add(new EntityHeader() { Id = "3", Text = "Aux 1" });
         }
 
-        public override Task InitAsync()
+        public override async Task InitAsync()
         {
-            return base.InitAsync();
+            await PerformNetworkOperation(async () =>
+            {
+                var path = $"/api/devices/{_appConfig.DeviceRepoId}/{this.AuthManager.User.Id}";
+
+                ListRestClient<DeviceSummary> _formRestClient = new ListRestClient<DeviceSummary>(RestClient);
+                var result = await _formRestClient.GetForOrgAsync(path);
+                if(!result.Successful)
+                {
+                    return result.ToInvokeResult();
+                }
+
+                UserDevices = new ObservableCollection<DeviceSummary>(result.Model);
+
+                if (UserDevices.Count > 0)
+                {
+                    HasDevices = true;
+                    NoDevices = !HasDevices;
+                    DeviceId = await Storage.GetKVPAsync<string>(ComponentViewModel.DeviceId);
+
+                    if (String.IsNullOrEmpty(DeviceId))
+                    {
+                        DeviceId = UserDevices.First().Id;                     
+                    }
+
+                    return await LoadDevice();
+
+                }
+                else
+                {
+                    HasDevices = false;
+                    NoDevices = !HasDevices;
+                    return InvokeResult.Success;
+                }
+            });
+
+            await base.InitAsync();
         }
 
-        protected override void ItemSelected(DeviceSummary model)
+        private async Task<InvokeResult> LoadDevice()
         {
-            base.ItemSelected(model);
-            var launchArgs = new ViewModelLaunchArgs()
+            return await PerformNetworkOperation( async () =>
             {
-                ViewModelType = typeof(ComponentViewModel),
-                LaunchType = LaunchTypes.View
-            };
+                CurrentDevice = null;
+                var deviceResponse = await _deviceManagementClient.GetDeviceAsync(_appConfig.DeviceRepoId, DeviceId);
+                if (deviceResponse.Successful)
+                {
+                    CurrentDevice = deviceResponse.Model;
+                    var deviceIdx = UserDevices.IndexOf(UserDevices.FirstOrDefault(dev => dev.Id == CurrentDevice.Id));
 
-            launchArgs.Parameters.Add(ComponentViewModel.DeviceRepoId, REPO_ID);
-            launchArgs.Parameters.Add(ComponentViewModel.DeviceId, model.Id);
+                    IsNotLastVessel = deviceIdx < UserDevices.Count - 1;
+                    IsNotFirstVessel = deviceIdx > 0;
 
-            SelectedItem = null;
+                    if (CurrentDevice.GeoLocation != null)
+                    {
+                        CurrentVeseelLocation = CurrentDevice.GeoLocation;
+                    }
+                    else
+                    {
+                        var lastKnownLocation = await Geolocation.GetLastKnownLocationAsync();
+                        if (lastKnownLocation != null)
+                        {
+                            CurrentVeseelLocation = new GeoLocation(lastKnownLocation.Latitude, lastKnownLocation.Longitude);
+                        }
+                    }
+                }
 
-            ViewModelNavigation.NavigateAsync(launchArgs);
+                return deviceResponse.ToInvokeResult();
+            });
+        }
+
+        public async void NextVessel()
+        {
+            var deviceIdx = UserDevices.IndexOf(UserDevices.FirstOrDefault(dev => dev.Id == CurrentDevice.Id));
+            deviceIdx++;
+
+            if (deviceIdx < UserDevices.Count)
+            {
+                DeviceId = UserDevices[deviceIdx].Id;
+                await LoadDevice();
+            }
+        }
+
+        public async void PreviousVessel()
+        {
+            var deviceIdx = UserDevices.IndexOf(UserDevices.FirstOrDefault(dev => dev.Id == CurrentDevice.Id));
+            deviceIdx--;
+
+            if (deviceIdx > -1)
+            {
+                DeviceId = UserDevices[deviceIdx].Id;
+                await LoadDevice();
+            }
         }
 
         private bool _hasDevices;
@@ -135,6 +231,18 @@ namespace SeaWolf.ViewModels
                 DecrementHighBatteryThresholdCommand.RaiseCanExecuteChanged();
                 DecrementLowBatteryThresholdCommand.RaiseCanExecuteChanged();
             }
+        }
+
+        public Device CurrentDevice
+        {
+            get => _currentDevice;
+            set => Set(ref _currentDevice, value);
+        }
+
+        public ObservableCollection<DeviceSummary> UserDevices
+        {
+            get => _userDevices;
+            set => Set(ref _userDevices, value);
         }
 
         public bool CanIncrementHighBatteryThreshold(Object obj)
@@ -232,13 +340,40 @@ namespace SeaWolf.ViewModels
         public double HighTemperatureTolerance
         {
             get => _highTemperatureThreshold;
-            set=> Set(ref _highTemperatureThreshold, value);
+            set => Set(ref _highTemperatureThreshold, value);
         }
         public double LowTemperatureTolerance
         {
             get => _lowTemperatureThreshold;
             set => Set(ref _lowTemperatureThreshold, value);
         }
+
+        public bool IsNotFirstVessel
+        {
+            get => _isNotFirstVessel;
+            set => Set(ref _isNotFirstVessel, value);
+        }
+        
+        public bool IsNotLastVessel
+        {
+            get => _isNotLastVessel;
+            set => Set(ref _isNotLastVessel, value);
+        }
+
+        public GeoLocation CurrentGeoFenceCenter
+        {
+            get => _currentGeoFenceCenter;
+            set => Set(ref _currentGeoFenceCenter, value);
+        }
+
+        public GeoLocation CurrentVeseelLocation
+        {
+            get => _currentVeseelLocation;
+            set => Set(ref _currentVeseelLocation, value);
+        }
+
+        public RelayCommand PreviousVesselCommand { get; }
+        public RelayCommand NextVesselCommand { get; }
 
         public RelayCommand IncrementHighTemperatureThresholdCommand { get; }
         public RelayCommand IncrementLowTemperatureThresholdCommand { get; }
@@ -253,9 +388,14 @@ namespace SeaWolf.ViewModels
         public RelayCommand DecrementLowBatteryThresholdCommand { get; }
 
 
-        protected override string GetListURI()
+        public override void HandleMessage(Notification notification)
         {
-            return $"/api/devices/{REPO_ID}";
+            throw new NotImplementedException();
+        }
+
+        public override string GetChannelURI()
+        {
+            return $"/api/wsuri/device/{DeviceId}/normal";
         }
     }
 }

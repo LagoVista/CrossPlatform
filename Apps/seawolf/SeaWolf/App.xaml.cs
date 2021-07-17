@@ -43,36 +43,44 @@ namespace SeaWolf
 
         private void InitServices()
         {
+            _appConfig = new AppConfig();
+
 #if ENV_STAGE
             var serverInfo = new ServerInfo()
             {
                 SSL = true,
                 RootUrl = "api.nuviot.com",
             };
+
+            make sure it doesn't compile....add in a device repo id
 #elif ENV_DEV
             var serverInfo = new ServerInfo()
             {
                 SSL = true,
                 RootUrl = "dev-api.nuviot.com",
             };
+
+            make sure it doesn't compile....add in a device repo id
 #elif ENV_LOCALDEV
             var serverInfo = new ServerInfo()
             {
                 SSL = false,
                 RootUrl = "localhost:5001",
             };
+
+            make sure it doesn't compile....add in a device repo id
 #elif ENV_MASTER
             var serverInfo = new ServerInfo()
             {
                 SSL = true,
                 RootUrl = "api.nuviot.com",
             };
+
+            _appConfig.DeviceRepoId = "7D9871D47B7F4BDCB338FAE4C1CBF947";
 #endif
 
             var clientAppInfo = new ClientAppInfo();            
-            SLWIOC.RegisterSingleton<IClientAppInfo>(clientAppInfo);
-
-            _appConfig = new AppConfig();
+            SLWIOC.RegisterSingleton<IClientAppInfo>(clientAppInfo);            
             SLWIOC.RegisterSingleton<IAppConfig>(_appConfig);
 
             var navigation = new ViewModelNavigation(this);

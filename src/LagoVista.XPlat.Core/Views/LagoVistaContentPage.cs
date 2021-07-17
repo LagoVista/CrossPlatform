@@ -31,7 +31,8 @@ namespace LagoVista.XPlat.Core
         ActivityIndicator _activityIndicator;
         View _mainContent;
         TabContentHolder _tabbedContent;
-       
+        TabHeaderHolder _tabHeader;
+
         IconButton _leftMenuButton;
         IconButton _rightMenuButton;
         IconButton _helpButton;
@@ -164,7 +165,7 @@ namespace LagoVista.XPlat.Core
             _menu.SetValue(Grid.RowProperty, 1);
 
 
-            _pageMenuMask = new Grid() {};
+            _pageMenuMask = new Grid() { };
             _pageMenuMask.SetOnAppTheme(Grid.BackgroundColorProperty, ResourceSupport.GetColor("PageMaskLight"), ResourceSupport.GetColor("PageMaskDark"));
             _pageMenuMask.SetValue(Grid.RowProperty, 1);
             _pageMenuMask.IsVisible = false;
@@ -374,7 +375,7 @@ namespace LagoVista.XPlat.Core
                 }
 
                 _contentGrid.RowDefinitions.Add(new RowDefinition() { Height = new GridLength(1, GridUnitType.Star) });
-          
+
                 Content = _contentGrid;
 
                 _mainContent = value;
@@ -409,6 +410,15 @@ namespace LagoVista.XPlat.Core
             }
         }
 
+        public TabHeaderHolder TabHeader
+        {
+            get => _tabHeader;
+            set
+            {
+                _tabHeader = value;        
+            }
+        }
+
         public TabContentHolder TabbedContent
         {
             get { return _tabbedContent; }
@@ -433,10 +443,15 @@ namespace LagoVista.XPlat.Core
                     _contentGrid.RowDefinitions.Add(new RowDefinition() { Height = new GridLength(0) });
                 }
 
+                if (_tabHeader != null)
+                {
+                    _contentGrid.RowDefinitions.Add(new RowDefinition() { Height = new GridLength(1, GridUnitType.Auto) });
+                }
+
                 _contentGrid.RowDefinitions.Add(new RowDefinition() { Height = new GridLength(1, GridUnitType.Star) });
                 _contentGrid.RowDefinitions.Add(new RowDefinition() { Height = new GridLength(1, GridUnitType.Auto) });
 
-               
+
                 Content = _contentGrid;
 
                 _tabbedContent = value;
@@ -458,13 +473,22 @@ namespace LagoVista.XPlat.Core
                     _contentGrid.BackgroundColor = _tabbedContent.BackgroundColor;
                 }
 
-                _tabbedContent.SetValue(Grid.RowProperty, 1);
+                
 
+                
+
+                if (TabHeader != null)
+                {
+                    TabHeader.SetValue(Grid.RowProperty, 1);
+                    _contentGrid.Children.Add(TabHeader);
+                }
+
+                _tabbedContent.SetValue(Grid.RowProperty, _tabHeader == null ? 1 : 2);
                 _contentGrid.Children.Add(_tabbedContent);
 
-                _pageMenuMask.SetValue(Grid.RowSpanProperty, 2);
-                _menu.SetValue(Grid.RowSpanProperty, 2);
-                _loadingContainer.SetValue(Grid.RowSpanProperty, 2);
+                _pageMenuMask.SetValue(Grid.RowSpanProperty, _tabHeader == null ? 2 : 3);
+                _menu.SetValue(Grid.RowSpanProperty, _tabHeader == null ? 2 : 3);
+                _loadingContainer.SetValue(Grid.RowSpanProperty, _tabHeader == null ? 2 : 3);
 
                 if (HasToolBar)
                 {
@@ -487,7 +511,7 @@ namespace LagoVista.XPlat.Core
                 {
                     _tabBar = value;
                     _tabBar.SelectedTabChanged += _tabBar_SelectedTabChanged;
-                    _tabBar.SetValue(Grid.RowProperty, 2);
+                    _tabBar.SetValue(Grid.RowProperty, _tabHeader == null ? 2 : 3);
                     _contentGrid.Children.Add(_tabBar);
                     SelectedTabIndex = 0;
                 }

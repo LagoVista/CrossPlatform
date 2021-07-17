@@ -23,35 +23,46 @@ namespace LagoVista.Client.Core.ViewModels.DeviceAccess
 
         public DeviceViewModelBase()
         {
-            _gattConnection = SLWIOC.Get<IGATTConnection>();
+            if(SLWIOC.Contains(typeof(IGATTConnection)))
+            {
+                _gattConnection = SLWIOC.Get<IGATTConnection>();
+            }
+
+            
         }
 
         public async override Task InitAsync()
         {
-            _gattConnection.DeviceConnected += BtSerial_DeviceConnected;
-            _gattConnection.DeviceDisconnected += BtSerial_DeviceDisconnected;
-            _gattConnection.ReceiveConsoleOut += BtSerial_ReceivedLine;
-            _gattConnection.DFUProgress += BtSerial_DFUProgres;
-            _gattConnection.DFUFailed += BtSerial_DFUFailed;
-            _gattConnection.DFUCompleted += BtSerial_DFUCompleted;
-
-            if(this.LaunchArgs.Parameters.ContainsKey(BT_DEVICE_ADDRESS))
+            if (_gattConnection != null)
             {
-                var btAddress = this.LaunchArgs.Parameters[BT_DEVICE_ADDRESS] as String;
-                CurrentDevice = _gattConnection.DiscoveredDevices.Where(dvc => dvc.DeviceAddress == btAddress).FirstOrDefault();
-            }            
+                _gattConnection.DeviceConnected += BtSerial_DeviceConnected;
+                _gattConnection.DeviceDisconnected += BtSerial_DeviceDisconnected;
+                _gattConnection.ReceiveConsoleOut += BtSerial_ReceivedLine;
+                _gattConnection.DFUProgress += BtSerial_DFUProgres;
+                _gattConnection.DFUFailed += BtSerial_DFUFailed;
+                _gattConnection.DFUCompleted += BtSerial_DFUCompleted;
+
+                if (this.LaunchArgs.Parameters.ContainsKey(BT_DEVICE_ADDRESS))
+                {
+                    var btAddress = this.LaunchArgs.Parameters[BT_DEVICE_ADDRESS] as String;
+                    CurrentDevice = _gattConnection.DiscoveredDevices.Where(dvc => dvc.DeviceAddress == btAddress).FirstOrDefault();
+                }
+            }
 
             await base.InitAsync();
         }
 
         public override Task ReloadedAsync()
         {
-            _gattConnection.DeviceConnected += BtSerial_DeviceConnected;
-            _gattConnection.DeviceDisconnected += BtSerial_DeviceDisconnected;
-            _gattConnection.ReceiveConsoleOut += BtSerial_ReceivedLine;
-            _gattConnection.DFUProgress += BtSerial_DFUProgres;
-            _gattConnection.DFUFailed += BtSerial_DFUFailed;
-            _gattConnection.DFUCompleted += BtSerial_DFUCompleted;
+            if (_gattConnection != null)
+            {
+                _gattConnection.DeviceConnected += BtSerial_DeviceConnected;
+                _gattConnection.DeviceDisconnected += BtSerial_DeviceDisconnected;
+                _gattConnection.ReceiveConsoleOut += BtSerial_ReceivedLine;
+                _gattConnection.DFUProgress += BtSerial_DFUProgres;
+                _gattConnection.DFUFailed += BtSerial_DFUFailed;
+                _gattConnection.DFUCompleted += BtSerial_DFUCompleted;
+            }
 
             return base.ReloadedAsync();
         }
@@ -104,12 +115,17 @@ namespace LagoVista.Client.Core.ViewModels.DeviceAccess
         {
             get
             {
-                if (String.IsNullOrEmpty(_deviceId))
+                if (String.IsNullOrEmpty(_deviceId) && LaunchArgs.Parameters.ContainsKey(DEVICE_ID))
                 {
+
                     _deviceId = LaunchArgs.Parameters[DEVICE_ID].ToString() ?? throw new ArgumentNullException(nameof(DeviceViewModel.DeviceId));
                 }
 
                 return _deviceId;
+            }
+            set
+            {
+                _deviceId = value;
             }
         }
 

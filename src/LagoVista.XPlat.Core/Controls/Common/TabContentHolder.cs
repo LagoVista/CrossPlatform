@@ -36,6 +36,12 @@ namespace LagoVista.XPlat.Core
             {
                 _tabContentCollection[idx].IsVisible = idx == visibleTab;
             }
-        }
+        }      
     }
+
+    public class TabHeaderHolder : Grid
+    {
+
+    }
+
 }

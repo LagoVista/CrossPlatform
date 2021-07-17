@@ -14,8 +14,27 @@
              x:Class="SeaWolf.Views.MainView"
              Title="{trs:Translate AppName}">
 
+    <pge:LagoVistaContentPage.TabHeader >
+        <pge:TabHeaderHolder IsVisible="{Binding CurrentDevice, Converter={StaticResource NotNullVisibilityConverter}}" >
+            <Grid >
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="60" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="60" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="4" />
+                </Grid.RowDefinitions>
+                <pge:IconButton IconKey="fa-arrow-left" FontSize="24" IsVisible="{Binding IsNotFirstVessel}" Command="{Binding PreviousVesselCommand}"/>
+                <Label Text="{Binding CurrentDevice.Name}" HorizontalOptions="Center" Grid.Column="1" FontSize="24" />
+                <pge:IconButton IconKey="fa-arrow-right" Grid.Column="2" FontSize="24" IsVisible="{Binding IsNotLastVessel}" Command="{Binding NextVesselCommand}" />
+                <Line Grid.Row="1" Grid.ColumnSpan="3" BackgroundColor="Black" />
+            </Grid>
+        </pge:TabHeaderHolder>
+    </pge:LagoVistaContentPage.TabHeader>
     <pge:LagoVistaContentPage.TabbedContent>
-        <pge:TabContentHolder>
+        <pge:TabContentHolder IsVisible="{Binding CurrentDevice, Converter={StaticResource NotNullVisibilityConverter}}">
             <pge:TabContent BackgroundColor="White">
                 <ScrollView>
                     <Grid>
@@ -30,15 +49,16 @@
                             <RowDefinition Height="4" />
                             <RowDefinition Height="300" />
                             <RowDefinition Height="4" />
-                           </Grid.RowDefinitions>
+                        </Grid.RowDefinitions>
                         <Grid>
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="48"/>
                                 <RowDefinition Height="*" />
                             </Grid.RowDefinitions>
                             <Label Text="Current Location" FontAttributes="Bold"  HorizontalOptions="Center" FontSize="32"/>
-                            <maps:Map Grid.Row="1" MapType="Street" />
+                            <pge:BindableMap Grid.Row="1" MapType="Street" MapCenter="{Binding CurrentVeseelLocation}" />
                         </Grid>
+                        
                         <Line Grid.Row="1" BackgroundColor="Black" />
 
                         <Grid Grid.Row="2">
@@ -47,8 +67,17 @@
                                 <RowDefinition Height="*" />
                             </Grid.RowDefinitions>
                             <Label Text="Voltage Monitoring" FontAttributes="Bold"  HorizontalOptions="Center" FontSize="32"/>
+                            <flv:FlowListView FlowItemsSource="{Binding BatterySensors}" Grid.Row="1" FlowColumnCount="4">
+                                <flv:FlowListView.FlowColumnTemplate>
+                                    <DataTemplate>
+                                        <Grid WidthRequest="130" HeightRequest="130" BackgroundColor="Green" Margin="4">
+                                            <Label Text="{Binding Text}" />
+                                        </Grid>
+                                    </DataTemplate>
+                                </flv:FlowListView.FlowColumnTemplate>
+                            </flv:FlowListView>
                         </Grid>
-                    
+
                         <Line Grid.Row="3" BackgroundColor="Black" />
 
                         <Grid Grid.Row="4">
@@ -102,8 +131,12 @@
                                 <RowDefinition Height="48"/>
                                 <RowDefinition Height="*" />
                             </Grid.RowDefinitions>
-                            <Label Text="Geo Fence" FontAttributes="Bold"  HorizontalOptions="Center" FontSize="32"/>
-                            <maps:Map Grid.Row="1" MapType="Street" />
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="200" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <Label Text="Geo Fence" FontAttributes="Bold"  HorizontalOptions="Center" FontSize="32" Grid.ColumnSpan="2"/>
+                            <pge:BindableMap Grid.Row="1" MapType="Street" MapCenter="{Binding CurrentGeoFenceCenter}" Grid.Column="1" />
                         </Grid>
 
                         <Line Grid.Row="1" BackgroundColor="Black" />
@@ -203,8 +236,8 @@
             </pge:TabContent>
         </pge:TabContentHolder>
     </pge:LagoVistaContentPage.TabbedContent>
-    <pge:LagoVistaContentPage.TabBar>
-        <pge:TabBar>
+    <pge:LagoVistaContentPage.TabBar  >
+        <pge:TabBar IsVisible="{Binding CurrentDevice, Converter={StaticResource NotNullVisibilityConverter}}">
             <pge:Tab Label="Home" Icon="fa-home" />
             <pge:Tab Label="Alerts" Icon="fa-bell" />
             <pge:Tab Label="Settings" Icon="fa-gear" />

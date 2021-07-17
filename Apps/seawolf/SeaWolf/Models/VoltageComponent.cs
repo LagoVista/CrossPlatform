@@ -18,8 +18,6 @@ namespace SeaWolf.Models
         private string _value;
         public string Value { get { return _value; } set { Set(ref _value, value); } }
 
-
-
         public string Image => "battery.png";
     }
 }
