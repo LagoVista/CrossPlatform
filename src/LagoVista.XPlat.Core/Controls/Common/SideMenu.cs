@@ -1,6 +1,5 @@
 ﻿using LagoVista.Client.Core.Resources;
 using LagoVista.Core.Interfaces;
-using LagoVista.Core.IOC;
 using LagoVista.XPlat.Core.Services;
 using System;
 using System.Collections.Generic;
@@ -13,17 +12,25 @@ namespace LagoVista.XPlat.Core.Controls.Common
         StackLayout _container;
         public event EventHandler<Client.Core.ViewModels.MenuItem> MenuItemTapped;
         Label _orgLabel;
-        IAuthManager _autoManager;
-
+        IAuthManager _authManager;
 
         public SideMenu(IAuthManager authManager)
         {
             _container = new StackLayout();
             authManager.OrgChanged += AuthManager_OrgChanged;
             Content = _container;
-            _autoManager = authManager;
-            this.BackgroundColor = Color.FromRgb(0x3f, 0x3F, 0x3f);
-            this.SetOnAppTheme<Color>(SideMenu.BackgroundColorProperty, ResourceSupport.GetColor("MenuBarBackgroundLight"), ResourceSupport.GetColor("MenuBarBackgroundDark"));
+            _authManager = authManager;
+
+            if (ResourceSupport.UseCustomColors)
+            {
+                this.BackgroundColor = ResourceSupport.GetColor(nameof(IAppStyle.MenuBarBackground));
+            }
+            else
+            {
+                this.BackgroundColor = Color.FromRgb(0x3f, 0x3F, 0x3f);
+            }
+     
+            //      this.SetOnAppTheme<Color>(SideMenu.BackgroundColorProperty, ResourceSupport.GetColor("MenuBarBackgroundLight"), ResourceSupport.GetColor("MenuBarBackgroundDark"));
         }
 
         private void AuthManager_OrgChanged(object sender, LagoVista.Core.Models.EntityHeader e)
@@ -53,10 +60,10 @@ namespace LagoVista.XPlat.Core.Controls.Common
                     FontSize = ResourceSupport.GetNumber("HeaderFontSize"),
                 };
 
-                if (_autoManager.IsAuthenticated)
+                if (_authManager.IsAuthenticated)
                 {
                     this.IsVisible = true;
-                    _orgLabel.Text = (_autoManager.User.CurrentOrganization != null) ? _autoManager.User.CurrentOrganization.Text : ClientResources.MainMenu_NoOrganization;
+                    _orgLabel.Text = (_authManager.User.CurrentOrganization != null) ? _authManager.User.CurrentOrganization.Text : ClientResources.MainMenu_NoOrganization;
                 }
                 else
                 {

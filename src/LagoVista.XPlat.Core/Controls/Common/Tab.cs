@@ -1,4 +1,5 @@
 ﻿using LagoVista.Core.Commanding;
+using LagoVista.Core.Interfaces;
 using LagoVista.XPlat.Core.Services;
 using System;
 using System.Windows.Input;
@@ -55,8 +56,8 @@ namespace LagoVista.XPlat.Core
 
             if (ResourceSupport.UseCustomColors)
             {
-                _label.TextColor = ResourceSupport.GetColor("TabBarForground");
-                _icon.TextColor = ResourceSupport.GetColor("TabBarForground");
+                _label.TextColor = ResourceSupport.GetColor(nameof(IAppStyle.TabForground));
+                _icon.TextColor = ResourceSupport.GetColor(nameof(IAppStyle.TabForground));
             }
 
             if (ResourceSupport.UseCustomfonts)
@@ -111,14 +112,15 @@ namespace LagoVista.XPlat.Core
             {
                 SetValue(SelectedProperty, value);
 
-                _label.TextColor = value ? ResourceSupport.AccentColor : Color.Default;
-                _icon.TextColor = _label.TextColor;
                 _label.FontAttributes = value ? FontAttributes.Bold : FontAttributes.None;
                 _icon.FontAttributes = value ? FontAttributes.Bold : FontAttributes.None;
 
                 if (ResourceSupport.UseCustomColors)
                 {
-                    _background.BackgroundColor = value ? ResourceSupport.GetColor("TabBarBackgroundActive") : ResourceSupport.GetColor("TabBarBackground");
+                    _background.BackgroundColor = value ? ResourceSupport.GetColor(nameof(IAppStyle.TabBackgroundActive)) : ResourceSupport.GetColor(nameof(IAppStyle.TabBackground));
+                    _background.BackgroundColor = value ? ResourceSupport.GetColor(nameof(IAppStyle.TabBackgroundActive)) : ResourceSupport.GetColor(nameof(IAppStyle.TabBackground));
+                    _label.TextColor = value ? ResourceSupport.GetColor(nameof(IAppStyle.TabForgroundActive)) : ResourceSupport.GetColor(nameof(IAppStyle.TabForground));
+                    _icon.TextColor = _label.TextColor;
                 }
             }
         }

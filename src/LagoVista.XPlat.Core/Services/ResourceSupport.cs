@@ -10,18 +10,13 @@ namespace LagoVista.XPlat.Core.Services
             {
                 return (Color)resource;
             }
+
             return default;
         }
 
-        public static bool UseCustomColors
-        {
-            get { return false; }
-        }
+        public static bool UseCustomColors { get; set; } = false;
 
-        public static bool UseCustomfonts
-        {
-            get { return false; }
-        }
+        public static bool UseCustomfonts { get; set; } = false;
 
         public static Color AccentColor
         {

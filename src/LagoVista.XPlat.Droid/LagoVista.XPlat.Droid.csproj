@@ -71,19 +71,19 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="LagoVista.Core">
-      <Version>2.1.1520-beta0637</Version>
+      <Version>3.0.1522.906</Version>
     </PackageReference>
     <PackageReference Include="LagoVista.Core.Authentication">
-      <Version>2.1.1520-beta0637</Version>
+      <Version>3.0.1522.906</Version>
     </PackageReference>
     <PackageReference Include="LagoVista.Core.Networking">
-      <Version>2.1.1520-beta0637</Version>
+      <Version>3.0.1522.906</Version>
     </PackageReference>
     <PackageReference Include="LagoVista.IoT.Logging">
-      <Version>2.1.1520-beta0637</Version>
+      <Version>3.0.1522.906</Version>
     </PackageReference>
     <PackageReference Include="LagoVista.UserAdmin.Models">
-      <Version>2.1.1520-beta0637</Version>
+      <Version>3.0.1522.906</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.AppCenter">
       <Version>4.3.0</Version>

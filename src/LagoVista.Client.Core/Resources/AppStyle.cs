@@ -85,5 +85,21 @@ namespace LagoVista.Client.Core.Resources
         public double MenuFontSize => 14;
 
         public double ListItemFontSize => 36;
+
+        public Color TabForground => NamedColors.White;
+
+        public Color TabForgroundActive => NamedColors.NuvIoTContrast;
+
+        public Color TabBackgroundActive => NamedColors.NuvIoTDark;
+
+        public Color TabBackground => NamedColors.NuvIoTLight;
+
+        public Color TabBarBackground => NamedColors.LightGray;
+
+        public string TabBarFont => "Roboto";
+
+        public double TabBarIconFontSize => 32;
+
+        public double TabBarFontSize => 18;
     }
 }

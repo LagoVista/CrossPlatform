@@ -14,7 +14,7 @@ namespace LagoVista
             return Xamarin.Forms.Color.FromRgba(color.R, color.G, color.B, color.A);
         }
 
-        public static void RegiterStyle(this Xamarin.Forms.Application app, LagoVista.Core.Interfaces.IAppStyle style)
+        public static void RegisterStyle(this Xamarin.Forms.Application app, LagoVista.Core.Interfaces.IAppStyle style)
         {
             var properties = style.GetType().GetProperties();
             foreach (var prop in properties)

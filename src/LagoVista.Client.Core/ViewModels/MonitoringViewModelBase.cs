@@ -20,29 +20,28 @@ namespace LagoVista.Client.Core.ViewModels
             if (IsNetworkConnected)
             {
                 var callResult = await PerformNetworkOperation(async () =>
-              {
-                  var channelId = GetChannelURI();
-                  Debug.WriteLine("Asing for end URI: " + channelId);
-                  var wsResult = await RestClient.GetAsync<InvokeResult<string>>(channelId);
-                  if (wsResult.Successful)
-                  {
-                      var url = wsResult.Result.Result;
-                      Debug.WriteLine(url);
-                      _wsUri = new Uri(url);
-                      _webSocket = SLWIOC.Create<IWebSocket>();
-                      _webSocket.MessageReceived += _webSocket_MessageReceived;
-                      var wsOpenResult = await _webSocket.OpenAsync(_wsUri);
-                      if (wsOpenResult.Successful)
-                      {
-                          Debug.WriteLine("OPENED CHANNEL");
-                      }
-                      return wsOpenResult;
-                  }
-                  else
-                  {
-                      return wsResult.ToInvokeResult();
-                  }
-              });
+                {
+                    var channelId = GetChannelURI();
+                    var wsResult = await RestClient.GetAsync<InvokeResult<string>>(channelId);
+                    if (wsResult.Successful)
+                    {
+                        var url = wsResult.Result.Result;
+                        Debug.WriteLine(url);
+                        _wsUri = new Uri(url);
+                        _webSocket = SLWIOC.Create<IWebSocket>();
+                        _webSocket.MessageReceived += _webSocket_MessageReceived;
+                        var wsOpenResult = await _webSocket.OpenAsync(_wsUri);
+                        if (wsOpenResult.Successful)
+                        {
+                            Debug.WriteLine("OPENED CHANNEL");
+                        }
+                        return wsOpenResult;
+                    }
+                    else
+                    {
+                        return wsResult.ToInvokeResult();
+                    }
+                });
             }
         }
 

@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<pge:LagoVistaContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:pge="clr-namespace:LagoVista.XPlat.Core;assembly=LagoVista.XPlat.Core"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             Title="Sensors"
+             LeftMenu="Back"
+             HasToolBar="true"
+             RightMenu="Add"
+             AddCommand="{Binding AddSensorCommand}"
+             x:Class="SeaWolf.Views.SensorsView">
+    <pge:LagoVistaContentPage.MainContent>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="50*" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="50*" />
+            </Grid.RowDefinitions>
+            <Label Text="Analog Sensors" />
+            <ListView ItemsSource="{Binding AdcConfigs}" SelectedItem="{Binding SelectedAnalogConfig, Mode=TwoWay}" Grid.Row="1">
+                <ListView.ItemTemplate> 
+                    <DataTemplate>
+                        <ViewCell>
+                            <Label FontSize="24" Text="{Binding Name}" />
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            <Label Text="Digital Sensors" Grid.Row="2" />
+            <ListView ItemsSource="{Binding IoConfigs}" Grid.Row="3" SelectedItem="{Binding SelectedDigitalConfig, Mode=TwoWay}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Label FontSize="24" Text="{Binding Name}" />
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </Grid>
+    </pge:LagoVistaContentPage.MainContent>
+</pge:LagoVistaContentPage>

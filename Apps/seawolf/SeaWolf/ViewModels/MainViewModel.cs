@@ -53,8 +53,8 @@ namespace SeaWolf.ViewModels
             {
                 new MenuItem()
                 {
-                    Command = new RelayCommand(() => ViewModelNavigation.NavigateAsync<UserOrgsViewModel>(this)),
-                    Name = ClientResources.MainMenu_SwitchOrgs,
+                    Command = new RelayCommand(() => ViewModelNavigation.NavigateAsync<SensorsViewModel>(this, new KeyValuePair<string, object>(nameof(Device), CurrentDevice))),
+                    Name = "Sensors",
                     FontIconKey = "fa-users"
                 },
                 new MenuItem()
@@ -81,6 +81,10 @@ namespace SeaWolf.ViewModels
             DecrementHighTemperatureThresholdCommand = new RelayCommand(DecrementHighTemperatureThreshold, CanDecrementHighTemperatureThreshold);
             DecrementLowTemperatureThresholdCommand = new RelayCommand(DecrementLowTemperatureThreshold, CanDecrementLowTemperatureThreshold);
 
+            MapTappedCommand = RelayCommand<GeoLocation>.Create(MapTapped);
+                
+            AddGeoFenceCommand = new RelayCommand(AddGeoFence);
+
             NextVesselCommand = new RelayCommand(NextVessel);
             PreviousVesselCommand = new RelayCommand(PreviousVessel);
 
@@ -102,7 +106,7 @@ namespace SeaWolf.ViewModels
 
                 ListRestClient<DeviceSummary> _formRestClient = new ListRestClient<DeviceSummary>(RestClient);
                 var result = await _formRestClient.GetForOrgAsync(path);
-                if(!result.Successful)
+                if (!result.Successful)
                 {
                     return result.ToInvokeResult();
                 }
@@ -117,7 +121,7 @@ namespace SeaWolf.ViewModels
 
                     if (String.IsNullOrEmpty(DeviceId))
                     {
-                        DeviceId = UserDevices.First().Id;                     
+                        DeviceId = UserDevices.First().Id;
                     }
 
                     return await LoadDevice();
@@ -136,34 +140,53 @@ namespace SeaWolf.ViewModels
 
         private async Task<InvokeResult> LoadDevice()
         {
-            return await PerformNetworkOperation( async () =>
-            {
-                CurrentDevice = null;
-                var deviceResponse = await _deviceManagementClient.GetDeviceAsync(_appConfig.DeviceRepoId, DeviceId);
-                if (deviceResponse.Successful)
-                {
-                    CurrentDevice = deviceResponse.Model;
-                    var deviceIdx = UserDevices.IndexOf(UserDevices.FirstOrDefault(dev => dev.Id == CurrentDevice.Id));
+            return await PerformNetworkOperation(async () =>
+           {
+               CurrentDevice = null;
+               var deviceResponse = await _deviceManagementClient.GetDeviceAsync(_appConfig.DeviceRepoId, DeviceId);
+               if (deviceResponse.Successful)
+               {
+                   CurrentDevice = deviceResponse.Model;
+                   var deviceIdx = UserDevices.IndexOf(UserDevices.FirstOrDefault(dev => dev.Id == CurrentDevice.Id));
 
-                    IsNotLastVessel = deviceIdx < UserDevices.Count - 1;
-                    IsNotFirstVessel = deviceIdx > 0;
+                   IsNotLastVessel = deviceIdx < UserDevices.Count - 1;
+                   IsNotFirstVessel = deviceIdx > 0;
 
-                    if (CurrentDevice.GeoLocation != null)
-                    {
-                        CurrentVeseelLocation = CurrentDevice.GeoLocation;
-                    }
-                    else
-                    {
-                        var lastKnownLocation = await Geolocation.GetLastKnownLocationAsync();
-                        if (lastKnownLocation != null)
-                        {
-                            CurrentVeseelLocation = new GeoLocation(lastKnownLocation.Latitude, lastKnownLocation.Longitude);
-                        }
-                    }
-                }
+                   if (CurrentDevice.GeoLocation != null)
+                   {
+                       CurrentVeseelLocation = CurrentDevice.GeoLocation;
+                   }
+                   else
+                   {
+                       var lastKnownLocation = await Geolocation.GetLastKnownLocationAsync();
+                       if (lastKnownLocation != null)
+                       {
+                           CurrentVeseelLocation = new GeoLocation(lastKnownLocation.Latitude, lastKnownLocation.Longitude);
+                       }
+                   }
 
-                return deviceResponse.ToInvokeResult();
-            });
+                   if(CurrentDevice.GeoFences.Any())
+                   {
+                       CurrentGeoFenceCenter = CurrentDevice.GeoFences.First().Center;
+                   }
+                   else
+                   {
+                       CurrentGeoFenceCenter = CurrentVeseelLocation;
+                   }
+               }
+
+               return deviceResponse.ToInvokeResult();
+           });
+        }
+
+        public void AddGeoFence()
+        {
+          
+        }
+
+        public void MapTapped(GeoLocation geoLocation)
+        {
+            CurrentGeoFenceCenter = geoLocation;
         }
 
         public async void NextVessel()
@@ -353,7 +376,7 @@ namespace SeaWolf.ViewModels
             get => _isNotFirstVessel;
             set => Set(ref _isNotFirstVessel, value);
         }
-        
+
         public bool IsNotLastVessel
         {
             get => _isNotLastVessel;
@@ -387,6 +410,10 @@ namespace SeaWolf.ViewModels
         public RelayCommand DecrementHighBatteryThresholdCommand { get; }
         public RelayCommand DecrementLowBatteryThresholdCommand { get; }
 
+        public RelayCommand AddGeoFenceCommand { get; }
+
+
+        public RelayCommand<GeoLocation> MapTappedCommand { get; }
 
         public override void HandleMessage(Notification notification)
         {

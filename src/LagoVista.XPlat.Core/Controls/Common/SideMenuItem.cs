@@ -63,7 +63,7 @@ namespace LagoVista.XPlat.Core.Controls.Common
 
             if (ResourceSupport.UseCustomColors)
             {
-                _icon.TextColor = ResourceSupport.GetColor("MenuIconColor");
+                _icon.TextColor = ResourceSupport.GetColor("MenuBarForeground");
                 _menuText.TextColor = ResourceSupport.GetColor("MenuBarForeground");
             }
         }

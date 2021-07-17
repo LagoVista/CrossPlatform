@@ -17,10 +17,7 @@ using LagoVista.Client.Core.ViewModels;
 using LagoVista.Core.PlatformSupport;
 using LagoVista.XPlat.Core.Views;
 using LagoVista.Core.Models;
-using LagoVista.Client.Core.ViewModels.Other;
-using LagoVista.XPlat.Core.Views.Other;
-using LagoVista.XPlat.Core.Views.Orgs;
-using LagoVista.Client.Core.ViewModels.Orgs;
+using LagoVista;
 
 namespace SeaWolf
 {
@@ -79,6 +76,11 @@ namespace SeaWolf
             _appConfig.DeviceRepoId = "7D9871D47B7F4BDCB338FAE4C1CBF947";
 #endif
 
+            ResourceSupport.UseCustomColors = true;
+            ResourceSupport.UseCustomfonts = true;
+
+            this.RegisterStyle(new AppStyle());
+
             var clientAppInfo = new ClientAppInfo();            
             SLWIOC.RegisterSingleton<IClientAppInfo>(clientAppInfo);            
             SLWIOC.RegisterSingleton<IAppConfig>(_appConfig);
@@ -91,6 +93,8 @@ namespace SeaWolf
             navigation.Add<MainViewModel, Views.MainView>();
             navigation.Add<ComponentViewModel, Views.ComponentView>();
             navigation.Add<ConfigurationViewModel, Views.ConfigurationView>();
+            navigation.Add<SensorsViewModel, Views.SensorsView>();
+            navigation.Add<SensorViewModel, Views.SensorView>();
             navigation.Add<LiveDataViewModel, Views.LiveDataView>();
           
             navigation.Add<SplashViewModel, Views.SplashView>();

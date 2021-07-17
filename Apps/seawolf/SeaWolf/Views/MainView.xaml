@@ -4,13 +4,10 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             xmlns:controls="clr-namespace:SeaWolf.Controls"
              xmlns:trs="clr-namespace:SeaWolf;assembly=SeaWolf"
-             xmlns:maps="clr-namespace:Xamarin.Forms.Maps;assembly=Xamarin.Forms.Maps"
              xmlns:flv="clr-namespace:DLToolkit.Forms.Controls;assembly=DLToolkit.Forms.Controls.FlowListView"
 		     mc:Ignorable="d"
              LeftMenu="Menu" 
-             BackgroundColor="LightCyan"
              x:Class="SeaWolf.Views.MainView"
              Title="{trs:Translate AppName}">
 
@@ -26,9 +23,9 @@
                     <RowDefinition Height="auto" />
                     <RowDefinition Height="4" />
                 </Grid.RowDefinitions>
-                <pge:IconButton IconKey="fa-arrow-left" FontSize="24" IsVisible="{Binding IsNotFirstVessel}" Command="{Binding PreviousVesselCommand}"/>
-                <Label Text="{Binding CurrentDevice.Name}" HorizontalOptions="Center" Grid.Column="1" FontSize="24" />
-                <pge:IconButton IconKey="fa-arrow-right" Grid.Column="2" FontSize="24" IsVisible="{Binding IsNotLastVessel}" Command="{Binding NextVesselCommand}" />
+                <pge:IconButton IconKey="fa-arrow-left" FontSize="24" IsVisible="{Binding IsNotFirstVessel}" Command="{Binding PreviousVesselCommand}" TextColor="Black" />
+                <Label Text="{Binding CurrentDevice.Name}" HorizontalOptions="Center" Grid.Column="1" FontSize="24" TextColor="Black" />
+                <pge:IconButton IconKey="fa-arrow-right" Grid.Column="2" FontSize="24" IsVisible="{Binding IsNotLastVessel}" Command="{Binding NextVesselCommand}" TextColor="Black" />
                 <Line Grid.Row="1" Grid.ColumnSpan="3" BackgroundColor="Black" />
             </Grid>
         </pge:TabHeaderHolder>
@@ -136,7 +133,9 @@
                                 <ColumnDefinition Width="*" />
                             </Grid.ColumnDefinitions>
                             <Label Text="Geo Fence" FontAttributes="Bold"  HorizontalOptions="Center" FontSize="32" Grid.ColumnSpan="2"/>
-                            <pge:BindableMap Grid.Row="1" MapType="Street" MapCenter="{Binding CurrentGeoFenceCenter}" Grid.Column="1" />
+                            <pge:BindableMap Grid.Row="1" MapType="Street" MapCenter="{Binding CurrentGeoFenceCenter}" 
+                                             MapTappedCommand="{Binding MapTappedCommand}"
+                                             Grid.Column="1" />
                         </Grid>
 
                         <Line Grid.Row="1" BackgroundColor="Black" />
@@ -176,7 +175,7 @@
                                     <ColumnDefinition Width="64" />
                                 </Grid.ColumnDefinitions>
                                 <Label Text="{Binding BatterySensor.Text}" HorizontalOptions="Center"  FontSize="24" TextColor="Black" Grid.ColumnSpan="5" />
-                                <pge:IconButton IconKey="fa-arrow-up" Grid.Row="1" FontSize="32" Grid.Column="0" Command="{Binding IncrementLowBatteryThresholdCommand}"/>
+                                <pge:IconButton IconKey="fa-arrow-up" Grid.Row="1" FontSize="32" Grid.Column="0" Command="{Binding IncrementHighBatteryThresholdCommand}"/>
                                 <pge:IconButton IconKey="fa-arrow-down" Grid.Row="2"  FontSize="32" Grid.Column="0" Command="{Binding DecrementLowBatteryThresholdCommand}"/>
                                 <Label Text="{Binding LowBatteryTolerance, StringFormat='{0:F1}'}"  VerticalOptions="Center" HorizontalOptions="Center" Grid.Column="1" FontSize="32" TextColor="Blue" Grid.RowSpan="2" Grid.Row="1" />
                                 <Label Text="{Binding HighBatteryTolerance, StringFormat='{0:F1}'}" VerticalOptions="Center" HorizontalOptions="Center" Grid.Column="3" FontSize="32" TextColor="Red" Grid.RowSpan="2" Grid.Row="1" />
