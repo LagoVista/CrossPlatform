@@ -1,5 +1,7 @@
 ﻿using LagoVista.Client.Core.ViewModels;
 using LagoVista.Client.Devices;
+using LagoVista.Core.Interfaces;
+using LagoVista.Core.Models;
 using LagoVista.IoT.DeviceManagement.Core.Models;
 using LagoVista.IoT.DeviceManagement.Models;
 using System;
@@ -12,39 +14,28 @@ namespace SeaWolf.ViewModels
 {
     public class SensorViewModel : AppViewModelBase
     {
-        public const string BATTERY = "battery";
-        public const string MOTION = "motion";
-        public const string MOISTURE = "moisture";
-        public const string HIGHWATERLEVEL = "highwaterlevel";
-        public const string BATTERYSWITCH = "batteryswitch";
-        public const string AMBIENTTEMP = "ambienttemperature";
-        public const string WATERTEMP = "watertemperature";
-
         private bool _isEditing;
         private bool _isADC;
         private int _originalSensorIndex = -1;
 
         private readonly IDeviceManagementClient _deviceManagementClient;
+        private readonly IAppConfig _appConfig;
 
-        public SensorViewModel(IDeviceManagementClient deviceManagementClient)
+        public SensorViewModel(IDeviceManagementClient deviceManagementClient, IAppConfig appConfig)
         {
             _deviceManagementClient = deviceManagementClient ?? throw new ArgumentNullException(nameof(deviceManagementClient));
+            _appConfig = appConfig ?? throw new ArgumentNullException(nameof(appConfig));
 
-            SensorIndexes.Add(new KeyValuePair<int, string>(-1, "-selected sensor slot-"));
+            SensorIndexes.Add(new KeyValuePair<int, string>(-1, "-select sensor slot-"));
 
             for (var idx = 1; idx <= 8; ++idx)
             {
                 SensorIndexes.Add(new KeyValuePair<int, string>(idx, idx.ToString()));
             }
 
-            SensorTypes.Add(new KeyValuePair<string, string>("-1", "-selected sensor type-"));
-            SensorTypes.Add(new KeyValuePair<string, string>(BATTERY, "Battery"));
-            SensorTypes.Add(new KeyValuePair<string, string>(MOTION, "Motion"));
-            SensorTypes.Add(new KeyValuePair<string, string>(MOISTURE, "Moisture"));
-            SensorTypes.Add(new KeyValuePair<string, string>(HIGHWATERLEVEL, "High Water Level"));
-            SensorTypes.Add(new KeyValuePair<string, string>(BATTERYSWITCH, "Battery Switch"));
-            SensorTypes.Add(new KeyValuePair<string, string>(AMBIENTTEMP, "Water Temperature"));
-            SensorTypes.Add(new KeyValuePair<string, string>(WATERTEMP, "Water Temperature"));
+            SensorTypes.Add(new AppSpecificSensorTypes() { Key = "-1", Name = "-select sensor type-" });
+            foreach (var snsr in _appConfig.AppSpecificSensorTypes)
+                SensorTypes.Add(snsr);            
         }
 
         private Device _currentDevice;
@@ -89,8 +80,7 @@ namespace SeaWolf.ViewModels
                 _isADC = (string)LaunchArgs.Parameters["IOType"] == "adc";
                 _originalSensorIndex = int.Parse(LaunchArgs.Parameters["Index"].ToString());
 
-
-                var portConfig = _isADC ? CurrentDevice.Sensors.AdcConfigs[_originalSensorIndex] : CurrentDevice.Sensors.IoConfigs[_originalSensorIndex];
+                var portConfig = _isADC ? CurrentDevice.Sensors.AdcConfigs[_originalSensorIndex - 1] : CurrentDevice.Sensors.IoConfigs[_originalSensorIndex - 1];
                 SensorName = portConfig.Name;
                 SelectedSensorType = SensorTypes.FirstOrDefault(snsr => snsr.Key == portConfig.Key);
                 SelectedSensorIndex = SensorIndexes.FirstOrDefault(snsr => snsr.Key == portConfig.SensorIndex);
@@ -100,8 +90,8 @@ namespace SeaWolf.ViewModels
             return base.InitAsync();
         }
 
-        ObservableCollection<KeyValuePair<string, string>> _sensorTypes = new ObservableCollection<KeyValuePair<string, string>>();
-        public ObservableCollection<KeyValuePair<string, string>> SensorTypes
+        ObservableCollection<AppSpecificSensorTypes> _sensorTypes = new ObservableCollection<AppSpecificSensorTypes>();
+        public ObservableCollection<AppSpecificSensorTypes> SensorTypes
         {
             get => _sensorTypes;
         }
@@ -112,8 +102,8 @@ namespace SeaWolf.ViewModels
             get => _sensorIndexes;
         }
 
-        KeyValuePair<string, string> _selectedSensorType;
-        public KeyValuePair<string, string> SelectedSensorType
+        AppSpecificSensorTypes _selectedSensorType;
+        public AppSpecificSensorTypes SelectedSensorType
         {
             get => _selectedSensorType;
             set => Set(ref _selectedSensorType, value);
@@ -162,42 +152,20 @@ namespace SeaWolf.ViewModels
 
             var portConfig = new PortConfig()
             {
-                SensorIndex = SelectedSensorIndex.Key - 1,
+                SensorIndex = SelectedSensorIndex.Key,
                 Name = SensorName,
                 Key = SelectedSensorType.Key,
                 Description = Description,
+                Config = (byte)SelectedSensorType.SensorConfigId
             };
 
-            switch (SelectedSensorType.Key)
+            if(SelectedSensorType.Technology == SensorTechnology.ADC)
             {
-                case BATTERY:
-                    portConfig.Config = 1;
-                    CurrentDevice.Sensors.AdcConfigs[portConfig.SensorIndex] = portConfig;
-                    break;
-                case MOTION:
-                    portConfig.Config = 1;
-                    CurrentDevice.Sensors.IoConfigs[portConfig.SensorIndex] = portConfig;
-                    break;
-                case HIGHWATERLEVEL:
-                    portConfig.Config = 1;
-                    CurrentDevice.Sensors.IoConfigs[portConfig.SensorIndex] = portConfig;
-                    break;
-                case BATTERYSWITCH:
-                    portConfig.Config = 1;
-                    CurrentDevice.Sensors.AdcConfigs[portConfig.SensorIndex] = portConfig;
-                    break;
-                case MOISTURE:
-                    portConfig.Config = 1;
-                    CurrentDevice.Sensors.IoConfigs[portConfig.SensorIndex] = portConfig;
-                    break;
-                case WATERTEMP:
-                    portConfig.Config = 4;
-                    CurrentDevice.Sensors.IoConfigs[portConfig.SensorIndex] = portConfig;
-                    break;
-                case AMBIENTTEMP:
-                    portConfig.Config = 5;
-                    CurrentDevice.Sensors.IoConfigs[portConfig.SensorIndex] = portConfig;
-                    break;
+                CurrentDevice.Sensors.AdcConfigs[portConfig.SensorIndex - 1] = portConfig;
+            }
+            else
+            {
+                CurrentDevice.Sensors.IoConfigs[portConfig.SensorIndex - 1] = portConfig;
             }
 
             var result = await PerformNetworkOperation(async () =>

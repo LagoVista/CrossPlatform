@@ -101,5 +101,9 @@ namespace LagoVista.Client.Core.Resources
         public double TabBarIconFontSize => 32;
 
         public double TabBarFontSize => 18;
+
+        public Color SectionHeaderColor => NamedColors.Black;
+
+        public Color ListItemDetailColor => NamedColors.Black;
     }
 }

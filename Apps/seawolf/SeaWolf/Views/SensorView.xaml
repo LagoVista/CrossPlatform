@@ -12,7 +12,7 @@
             <Label Text="Sensor Name" />
             <Entry Text="{Binding SensorName,Mode=TwoWay}" />
 
-            <Picker Title="Sensor Type" SelectedItem="{Binding SelectedSensorType, Mode=TwoWay}" ItemsSource="{Binding SensorTypes}" ItemDisplayBinding="{Binding Value}">
+            <Picker Title="Sensor Type" SelectedItem="{Binding SelectedSensorType, Mode=TwoWay}" ItemsSource="{Binding SensorTypes}" ItemDisplayBinding="{Binding Name}">
             </Picker>
 
             <Picker Title="Sensor Slot" SelectedItem="{Binding SelectedSensorIndex, Mode=TwoWay}" ItemsSource="{Binding SensorIndexes}" ItemDisplayBinding="{Binding Value}">
@@ -20,6 +20,8 @@
 
             <Label Text="Description"/>
             <pge:TextArea Text="{Binding Description, Mode=TwoWay}" HeightRequest="64"></pge:TextArea>
+
+            <Label Text="{Binding SelectedSensorType.Description}" />
 
         </StackLayout>
     </pge:LagoVistaContentPage.MainContent>

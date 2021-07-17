@@ -8,30 +8,57 @@
              RightMenu="Add"
              AddCommand="{Binding AddSensorCommand}"
              x:Class="SeaWolf.Views.SensorsView">
-    <pge:LagoVistaContentPage.MainContent>
-        <Grid>
+    <pge:LagoVistaContentPage.MainContent  >
+        <Grid x:Name="rootElement">
             <Grid.RowDefinitions>
                 <RowDefinition Height="auto" />
                 <RowDefinition Height="50*" />
                 <RowDefinition Height="auto" />
                 <RowDefinition Height="50*" />
             </Grid.RowDefinitions>
-            <Label Text="Analog Sensors" />
-            <ListView ItemsSource="{Binding AdcConfigs}" SelectedItem="{Binding SelectedAnalogConfig, Mode=TwoWay}" Grid.Row="1">
+            <Label Text="Analog Sensors" FontSize="24" />
+            <ListView ItemsSource="{Binding AdcConfigs}" SelectedItem="{Binding SelectedAnalogConfig, Mode=TwoWay}" Grid.Row="1" HasUnevenRows="True">
                 <ListView.ItemTemplate> 
                     <DataTemplate>
                         <ViewCell>
-                            <Label FontSize="24" Text="{Binding Name}" />
+                            <Grid HeightRequest="64">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="auto" />
+                                    <RowDefinition Height="auto" />
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="64" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="64" />
+                                </Grid.ColumnDefinitions>
+                                <Label FontSize="16" Text="{Binding SensorIndex, StringFormat='{0}' }" Margin="0,0,12,0" />
+                                <Label FontSize="16" Text="{Binding Name}" Grid.Column="1" />
+                                <pge:IconButton IconKey="fa-trash" Grid.Column="2" Grid.RowSpan="2" FontSize="24" TextColor="Red" Command="{Binding BindingContext.RemoveAdcConfigCommand, Source={x:Reference rootElement}}"  CommandParameter="{Binding .}"/>
+                                <Label Grid.ColumnSpan="3" Text="{Binding Description}" Grid.Row="1" />
+                            </Grid>
                         </ViewCell>
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
-            <Label Text="Digital Sensors" Grid.Row="2" />
-            <ListView ItemsSource="{Binding IoConfigs}" Grid.Row="3" SelectedItem="{Binding SelectedDigitalConfig, Mode=TwoWay}">
+            <Label Text="Digital Sensors" Grid.Row="2" FontSize="32" />
+            <ListView ItemsSource="{Binding IoConfigs}" Grid.Row="3" SelectedItem="{Binding SelectedDigitalConfig, Mode=TwoWay}" HasUnevenRows="True">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
-                            <Label FontSize="24" Text="{Binding Name}" />
+                            <Grid HeightRequest="64">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="auto" />
+                                    <RowDefinition Height="auto" />
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="64" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="64" />
+                                </Grid.ColumnDefinitions>
+                                <Label FontSize="16" Text="{Binding SensorIndex, StringFormat='{0}' }" Margin="0,0,12,0" />
+                                <Label FontSize="16" Text="{Binding Name}" Grid.Column="1" />
+                                <pge:IconButton IconKey="fa-trash" Grid.Column="2" Grid.RowSpan="2" FontSize="24" TextColor="Red" Command="{Binding BindingContext.RemoveIoConfigCommand, Source={x:Reference rootElement}}"  CommandParameter="{Binding .}"/>
+                            </Grid>
                         </ViewCell>
                     </DataTemplate>
                 </ListView.ItemTemplate>

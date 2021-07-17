@@ -23,7 +23,6 @@ namespace SeaWolf
 {
     public partial class App : Application
     {
-
         AppConfig _appConfig;
 
         public static App Instance { get; private set; }

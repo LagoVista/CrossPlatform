@@ -1,9 +1,5 @@
 ﻿using LagoVista.Core.Interfaces;
 using LagoVista.Core.Models.Drawing;
-using System;
-using System.Collections.Generic;
-using System.Runtime.CompilerServices;
-using System.Text;
 
 namespace SeaWolf
 {
@@ -21,6 +17,9 @@ namespace SeaWolf
 
         public Color TitleBarText => NamedColors.NuvIoTWhite;
 
+        public Color HighlightColor => NamedColors.NuvIoTContrast;
+
+
         public Color PageBackground => NamedColors.NuvIoTWhite;
 
         public Color PageText => _darkGray;
@@ -37,6 +36,7 @@ namespace SeaWolf
 
         public Color EditControlFrameInvalid => _black;
 
+
         public Color MenuBarBackground => _medGray;
 
         public Color MenuBarForeground => NamedColors.NuvIoTContrast;
@@ -44,6 +44,7 @@ namespace SeaWolf
         public Color MenuBarBackgroundActive => _darkGray;
 
         public Color MenuBarForegroundActive => NamedColors.NuvIoTContrast;
+
 
         public Color ButtonBackground => NamedColors.NuvIoTDark;
 
@@ -57,11 +58,16 @@ namespace SeaWolf
 
         public Color ButtonForegroundActive => NamedColors.NuvIoTWhite;
 
-        public Color HighlightColor => NamedColors.NuvIoTContrast;
-
         public Color RowSeperatorColor => NamedColors.NuvIoTDark;
 
         public Color ListItemColor => NamedColors.NuvIoTDark;
+
+        public Color TabForground => NamedColors.White;
+        public Color TabForgroundActive => NamedColors.NuvIoTContrast;
+        public Color TabBackgroundActive => NamedColors.NuvIoTDark;
+        public Color TabBackground => NamedColors.NuvIoTLight;
+        public Color TabBarBackground => NamedColors.LightGray;
+
 
         public string HeaderFont => DefaultFont;
 
@@ -71,7 +77,7 @@ namespace SeaWolf
 
         public string EntryFont => DefaultFont;
 
-        public string MenuFont => "Verdana";
+        public string MenuFont => DefaultFont;
 
         public string ListItemFont => DefaultFont;
 
@@ -87,21 +93,14 @@ namespace SeaWolf
 
         public double ListItemFontSize => 28;
 
-
         public string TabBarFont => DefaultFont;
 
         public double TabBarIconFontSize => 32;
 
         public double TabBarFontSize => 18;
 
-        public Color TabForground => NamedColors.White;
+        public Color SectionHeaderColor => NamedColors.Black;
 
-        public Color TabForgroundActive => NamedColors.NuvIoTContrast;
-
-        public Color TabBackgroundActive => NamedColors.NuvIoTDark;
-
-        public Color TabBackground => NamedColors.NuvIoTLight;
-
-        public Color TabBarBackground => NamedColors.LightGray;
+        public Color ListItemDetailColor => NamedColors.Black;
     }
 }

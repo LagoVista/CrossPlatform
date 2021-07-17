@@ -7,8 +7,18 @@ using Xamarin.Forms;
 
 namespace SeaWolf
 {
+
+
     public class AppConfig : IAppConfig
     {
+        public const string BATTERY = "battery";
+        public const string MOTION = "motion";
+        public const string MOISTURE = "moisture";
+        public const string HIGHWATERLEVEL = "highwaterlevel";
+        public const string BATTERYSWITCH = "batteryswitch";
+        public const string AMBIENTTEMP = "ambienttemperature";
+        public const string WATERTEMP = "watertemperature";
+        
         public AppConfig()
         {
             switch (Device.RuntimePlatform)
@@ -25,6 +35,17 @@ namespace SeaWolf
             };
 
             WebAddress = "https://www.NuvIoT.com";
+
+            AppSpecificSensorTypes = new List<AppSpecificSensorTypes>()
+            {
+                new AppSpecificSensorTypes() { IconKey="fa-user", Name="Battery", Key=BATTERY, Technology = SensorTechnology.ADC, SensorConfigId = 1 },
+                new AppSpecificSensorTypes() { IconKey="fa-user", Name="Motion Detector", Key=MOTION, Technology = SensorTechnology.IO, SensorConfigId = 1 },
+                new AppSpecificSensorTypes() { IconKey="fa-user", Name="Moisture", Key=MOISTURE, Technology = SensorTechnology.ADC, SensorConfigId = 1 },
+                new AppSpecificSensorTypes() { IconKey="fa-user", Name="High Water Alarm", Key=HIGHWATERLEVEL, Technology = SensorTechnology.IO, SensorConfigId = 1 },
+                new AppSpecificSensorTypes() { IconKey="fa-user", Name="Battery Switch", Key=BATTERYSWITCH, Technology = SensorTechnology.ADC, SensorConfigId = 1 },
+                new AppSpecificSensorTypes() { IconKey="fa-user", Name="Ambient Temperature", Key=AMBIENTTEMP, Technology = SensorTechnology.IO, SensorConfigId = 6 },
+                new AppSpecificSensorTypes() { IconKey="fa-user", Name="Water Temperature", Key=WATERTEMP, Technology = SensorTechnology.IO, SensorConfigId = 4 },
+            };
         }
 
         public PlatformTypes PlatformType { get; private set; }
@@ -69,5 +90,7 @@ namespace SeaWolf
         public string DeviceRepoId { get; set; }
 
         public EntityHeader SystemOwnerOrg { get; set; }
+
+        public IEnumerable<AppSpecificSensorTypes> AppSpecificSensorTypes { get; }
     }
 }
