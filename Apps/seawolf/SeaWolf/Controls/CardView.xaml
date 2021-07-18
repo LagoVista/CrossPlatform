@@ -1,5 +1,6 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:pge="clr-namespace:LagoVista.XPlat.Core;assembly=LagoVista.XPlat.Core"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
@@ -14,7 +15,7 @@
            HasShadow="True"
            Padding="8"
            VerticalOptions="Center"
-           HorizontalOptions="Center">
+           HorizontalOptions="FillAndExpand">
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="75" />
@@ -23,30 +24,35 @@
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="75" />
-                <ColumnDefinition Width="200" />
+                <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
             <Frame BorderColor="Gray"
                    IsClippedToBounds="True"
-                   BackgroundColor="White"
+                   BackgroundColor="Green"
                    HeightRequest="60"
                    WidthRequest="60"
                    HorizontalOptions="Center"
                    HasShadow="False"
                    VerticalOptions="Center">
-                
+                <Grid>
                     <Image Source="{Binding IconImageSource}"
+                           IsVisible="{Binding IconImageSource, Converter={StaticResource NotNullVisibilityConverter}}"
                            Margin="-20"
                            WidthRequest="100"
                            HeightRequest="100"
                            Aspect="AspectFill" />
+
+                    <pge:Icon IconKey="{Binding IconKey}" TextColor="White" FontSize="24" HorizontalOptions="Center" VerticalOptions="Center"
+                              IsVisible="{Binding IconKey, Converter={StaticResource NotNullVisibilityConverter}}"  />
+                </Grid>
             </Frame>
             <Label Grid.Column="1"
-                   Text="{Binding CardTitle, FallbackValue='Card Title'}"
+                   Text="{Binding CardValue, FallbackValue='xx'}"
                    FontAttributes="Bold"
-                   FontSize="64"
+                   FontSize="48"
                    TextColor="DarkGray"
                    VerticalTextAlignment="Center"
-                   HorizontalTextAlignment="End" />
+                   HorizontalOptions="End" />
             <BoxView Grid.Row="1"
                      Grid.ColumnSpan="2"
                      BackgroundColor="{Binding BorderColor, FallbackValue='Black'}"
@@ -54,7 +60,7 @@
                      HorizontalOptions="Fill" />
             <Label Grid.Row="2"
                    Grid.ColumnSpan="2"
-                   TextColor="Black"
+                   TextColor="{Binding BorderColor, FallbackValue='Black'}"
                    Text="{Binding CardDescription, FallbackValue='Card description text.'}"
                    VerticalTextAlignment="Start"
                    VerticalOptions="Fill"

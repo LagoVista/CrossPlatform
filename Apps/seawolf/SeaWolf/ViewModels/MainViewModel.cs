@@ -11,6 +11,8 @@ using LagoVista.Core.Models;
 using LagoVista.Core.Models.Geo;
 using LagoVista.Core.Validation;
 using LagoVista.IoT.DeviceManagement.Core.Models;
+using LagoVista.IoT.DeviceManagement.Models;
+using SeaWolf.Models;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -82,20 +84,11 @@ namespace SeaWolf.ViewModels
             DecrementLowTemperatureThresholdCommand = new RelayCommand(DecrementLowTemperatureThreshold, CanDecrementLowTemperatureThreshold);
 
             MapTappedCommand = RelayCommand<GeoLocation>.Create(MapTapped);
-                
+
             AddGeoFenceCommand = new RelayCommand(AddGeoFence);
 
             NextVesselCommand = new RelayCommand(NextVessel);
             PreviousVesselCommand = new RelayCommand(PreviousVessel);
-
-            TemperatureSensors.Add(new EntityHeader() { Id = "1", Text = "Live Well 1" });
-            TemperatureSensors.Add(new EntityHeader() { Id = "2", Text = "Live Well 2" });
-            TemperatureSensors.Add(new EntityHeader() { Id = "3", Text = "Trailer Hub - Driver" });
-            TemperatureSensors.Add(new EntityHeader() { Id = "4", Text = "Trailer Hub - Passenger" });
-
-            BatterySensors.Add(new EntityHeader() { Id = "1", Text = "Trolling Motor 1" });
-            BatterySensors.Add(new EntityHeader() { Id = "2", Text = "Cranking" });
-            BatterySensors.Add(new EntityHeader() { Id = "3", Text = "Aux 1" });
         }
 
         public override async Task InitAsync()
@@ -125,7 +118,6 @@ namespace SeaWolf.ViewModels
                     }
 
                     return await LoadDevice();
-
                 }
                 else
                 {
@@ -136,6 +128,19 @@ namespace SeaWolf.ViewModels
             });
 
             await base.InitAsync();
+        }
+
+        private void AddSensors(IEnumerable<PortConfig> configs, double[] values)
+        {
+            foreach (var config in configs)
+            {
+                Sensors.Add(new SensorSummary()
+                {
+                    Config = config,
+                    SensorType = _appConfig.AppSpecificSensorTypes.FirstOrDefault(sns => sns.Key == config.Key),
+                    Value = values[config.SensorIndex - 1].ToString(),
+                });
+            }
         }
 
         private async Task<InvokeResult> LoadDevice()
@@ -165,7 +170,7 @@ namespace SeaWolf.ViewModels
                        }
                    }
 
-                   if(CurrentDevice.GeoFences.Any())
+                   if (CurrentDevice.GeoFences.Any())
                    {
                        CurrentGeoFenceCenter = CurrentDevice.GeoFences.First().Center;
                    }
@@ -173,6 +178,16 @@ namespace SeaWolf.ViewModels
                    {
                        CurrentGeoFenceCenter = CurrentVeseelLocation;
                    }
+
+                   Sensors.Clear();
+
+                   var configs = CurrentDevice.Sensors.AdcConfigs.Where(adc => adc.Config > 0);
+                   AddSensors(configs, CurrentDevice.Sensors.AdcValues);
+                 
+                   configs = CurrentDevice.Sensors.IoConfigs.Where(io => io.Config > 0);
+                   AddSensors(configs, CurrentDevice.Sensors.IoValues);
+                   
+      //             CurrentDevice.Sensors.BluetoothConfigs.Where(io => io.Config > 0);
                }
 
                return deviceResponse.ToInvokeResult();
@@ -181,7 +196,7 @@ namespace SeaWolf.ViewModels
 
         public void AddGeoFence()
         {
-          
+
         }
 
         public void MapTapped(GeoLocation geoLocation)
@@ -227,8 +242,7 @@ namespace SeaWolf.ViewModels
             set { Set(ref _noDevices, value); }
         }
 
-        public ObservableCollection<EntityHeader> TemperatureSensors { get; } = new ObservableCollection<EntityHeader>();
-        public ObservableCollection<EntityHeader> BatterySensors { get; } = new ObservableCollection<EntityHeader>();
+        public ObservableCollection<SensorSummary> Sensors { get; } = new ObservableCollection<SensorSummary>();
 
         public EntityHeader TemperatureSensor
         {

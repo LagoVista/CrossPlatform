@@ -5,6 +5,7 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:trs="clr-namespace:SeaWolf;assembly=SeaWolf"
+             xmlns:ctl="clr-namespace:SeaWolf.Controls"
              xmlns:flv="clr-namespace:DLToolkit.Forms.Controls;assembly=DLToolkit.Forms.Controls.FlowListView"
 		     mc:Ignorable="d"
              LeftMenu="Menu" 
@@ -38,14 +39,7 @@
                         <Grid.RowDefinitions>
                             <RowDefinition Height="300" />
                             <RowDefinition Height="4" />
-                            <RowDefinition Height="300" />
-                            <RowDefinition Height="4" />
-                            <RowDefinition Height="300" />
-                            <RowDefinition Height="4" />
-                            <RowDefinition Height="300" />
-                            <RowDefinition Height="4" />
-                            <RowDefinition Height="300" />
-                            <RowDefinition Height="4" />
+                            <RowDefinition Height="*" />
                         </Grid.RowDefinitions>
                         <Grid>
                             <Grid.RowDefinitions>
@@ -64,48 +58,14 @@
                                 <RowDefinition Height="*" />
                             </Grid.RowDefinitions>
                             <Label Text="Voltage Monitoring" FontAttributes="Bold"  HorizontalOptions="Center" FontSize="32"/>
-                            <flv:FlowListView FlowItemsSource="{Binding BatterySensors}" Grid.Row="1" FlowColumnCount="4">
+                            <flv:FlowListView FlowItemsSource="{Binding Sensors}" Grid.Row="1" FlowColumnCount="3">
                                 <flv:FlowListView.FlowColumnTemplate>
                                     <DataTemplate>
-                                        <Grid WidthRequest="130" HeightRequest="130" BackgroundColor="Green" Margin="4">
-                                            <Label Text="{Binding Text}" />
-                                        </Grid>
+                                        <ctl:CardView CardDescription="{Binding Config.Name}" IconKey="{Binding SensorType.IconKey}" CardValue="{Binding Value}" />
                                     </DataTemplate>
                                 </flv:FlowListView.FlowColumnTemplate>
                             </flv:FlowListView>
                         </Grid>
-
-                        <Line Grid.Row="3" BackgroundColor="Black" />
-
-                        <Grid Grid.Row="4">
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="48"/>
-                                <RowDefinition Height="*" />
-                            </Grid.RowDefinitions>
-                            <Label Text="Battery Switch" FontAttributes="Bold"  HorizontalOptions="Center" FontSize="32"/>
-                        </Grid>
-
-                        <Line Grid.Row="5" BackgroundColor="Black" />
-
-                        <Grid Grid.Row="6">
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="48"/>
-                                <RowDefinition Height="*" />
-                            </Grid.RowDefinitions>
-                            <Label Text="Temperature Monitoring" FontAttributes="Bold"  HorizontalOptions="Center" FontSize="32"/>
-                        </Grid>
-
-                        <Line Grid.Row="7" BackgroundColor="Black" />
-
-                        <Grid Grid.Row="8">
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="48"/>
-                                <RowDefinition Height="*" />
-                            </Grid.RowDefinitions>
-                            <Label Text="Level Monitoring" FontAttributes="Bold"  HorizontalOptions="Center" FontSize="32"/>
-                        </Grid>
-
-
                     </Grid>
                 </ScrollView>
             </pge:TabContent>

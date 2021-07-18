@@ -70,7 +70,6 @@
                     <DataTemplate>
                         <ViewCell>
                             <controls:CardView
-                                CardTitle="{Binding Value}"
                                 IconBackgroundColor="SlateGray"
                                 IconImageSource="{Binding Image}"
                                 CardDescription="{Binding Label}"/>
