@@ -19,12 +19,13 @@ namespace LagoVista.Client.Core.Resources
 
         public Color TitleBarBackground => NamedColors.NuvIoTDark;
 
-        public Color TitleBarText => NamedColors.NuvIoTWhite;
+        public Color TitleBarForeground => NamedColors.NuvIoTWhite;
 
         public Color HighlightColor => NamedColors.NuvIoTContrast;
 
 
         public Color PageBackground => NamedColors.NuvIoTWhite;
+        public Color PageForeground => _black;
 
 
         public Color LabelText => _lightGray;
@@ -135,8 +136,6 @@ namespace LagoVista.Client.Core.Resources
 
         public double ListItemDetailFontSize => 16;
 
-        public Color ListItemDetailForegroundColor => _darkGray;
-
-        public Color PageText => _black;
+        public Color ListItemDetailForegroundColor => _darkGray;        
     }
 }

@@ -16,7 +16,7 @@ namespace SeaWolf
 
         public Color TitleBarBackground => NamedColors.NuvIoTDark;
 
-        public Color TitleBarText => NamedColors.NuvIoTWhite;
+        public Color TitleBarForeground => NamedColors.NuvIoTWhite;
 
         public Color HighlightColor => NamedColors.NuvIoTContrast;
 
@@ -134,6 +134,6 @@ namespace SeaWolf
 
         public Color ListItemDetailForegroundColor => _darkGray;
 
-        public Color PageText => _black;
+        public Color PageForeground => _black;
     }
 }

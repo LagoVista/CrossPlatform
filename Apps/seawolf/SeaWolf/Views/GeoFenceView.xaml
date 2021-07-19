@@ -22,9 +22,9 @@
             <pge:Entry Text="{Binding GeoFenceName, Mode=TwoWay}" Grid.Row="1" Placeholder="enter a name"/>
             <StackLayout Grid.Row="2" Orientation="Horizontal">
                 <Label Text="Is Enabled" />
-                <CheckBox  />
+                <CheckBox IsChecked="{Binding IsGeoFenceEnabled, Mode=TwoWay}" />
             </StackLayout>
-            <pge:TextArea HeightRequest="64" Grid.Row="3"> </pge:TextArea>
+            <pge:TextArea HeightRequest="64" Grid.Row="3" Text="{Binding GeoFenceDescription, Mode=TwoWay}"> </pge:TextArea>
             <pge:BindableMap MapType="Street" MapCenter="{Binding MapCenter}" MapTappedCommand="{Binding MapTappedCommand}"
                              GeoFenceCenter="{Binding GeoFenceCenter}" GeoFenceRadiusMeter="{Binding GeoFenceRadiusMeters}"
                              Grid.Row="4" />

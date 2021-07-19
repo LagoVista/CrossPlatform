@@ -91,7 +91,7 @@ namespace SeaWolf.ViewModels
                     if (String.IsNullOrEmpty(DeviceId))
                     {
                         DeviceId = UserDevices.First().Id;
-                    }
+                    }                    
 
                     return await LoadDevice();
                 }
@@ -133,13 +133,24 @@ namespace SeaWolf.ViewModels
                        }
                    }
 
+                   GeoFences.Clear();
+                   foreach(var geoFence in CurrentDevice.GeoFences)
+                   {
+                       GeoFences.Add(geoFence);
+                   }
+
                    Sensors.AddValidSensors(_appConfig, CurrentDevice);
                }
 
                return deviceResponse.ToInvokeResult();
            });
         }
-       
+
+        public override Task ReloadedAsync()
+        {
+            return LoadDevice();
+        }
+
         public async void NextVessel()
         {
             var deviceIdx = UserDevices.IndexOf(UserDevices.FirstOrDefault(dev => dev.Id == CurrentDevice.Id));
@@ -165,6 +176,8 @@ namespace SeaWolf.ViewModels
         }
 
         #region Properties
+        public ObservableCollection<GeoFence> GeoFences { get; } = new ObservableCollection<GeoFence>();
+
         private bool _hasDevices;
         public bool HasDevices
         {

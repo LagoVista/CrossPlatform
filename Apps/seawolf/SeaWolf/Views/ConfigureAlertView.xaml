@@ -35,8 +35,8 @@
             <pge:IconButton IconKey="fa-arrow-up" Grid.Row="3" FontSize="32" Grid.Column="1" Command="{Binding IncrementLowThresholdCommand}" TextColor="Black"/>
             <pge:IconButton IconKey="fa-arrow-down" Grid.Row="5"  FontSize="32" Grid.Column="1" Command="{Binding DecrementLowThresholdCommand}" TextColor="Black" />
        
-            <Label Text="{Binding LowTolerance, StringFormat='{0:F1}'}"  VerticalOptions="Center" HorizontalOptions="Center" Grid.Column="1" FontSize="32" TextColor="Blue" Grid.Row="4" />
-            <Label Text="{Binding HighTolerance, StringFormat='{0:F1}'}" VerticalOptions="Center" HorizontalOptions="Center" Grid.Column="3" FontSize="32" TextColor="Red" Grid.Row="4" />
+            <Label Text="{Binding LowThreshold, StringFormat='{0:F1}'}"  VerticalOptions="Center" HorizontalOptions="Center" Grid.Column="1" FontSize="32" TextColor="Blue" Grid.Row="4" />
+            <Label Text="{Binding HighThreshold, StringFormat='{0:F1}'}" VerticalOptions="Center" HorizontalOptions="Center" Grid.Column="3" FontSize="32" TextColor="Red" Grid.Row="4" />
 
             <pge:IconButton HorizontalOptions="Center" IconKey="fa-arrow-up" Grid.Row="3" Grid.Column="3" FontSize="32" Command="{Binding IncrementHighThresholdCommand}" TextColor="Black"/>
             <pge:IconButton HorizontalOptions="Center" IconKey="fa-arrow-down"  Grid.Row="5" Grid.Column="3" FontSize="32" Command="{Binding DecrementHighThresholdCommand}" TextColor="Black"/>

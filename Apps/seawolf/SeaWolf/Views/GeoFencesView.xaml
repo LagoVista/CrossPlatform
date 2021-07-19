@@ -9,11 +9,11 @@
              AddCommand="{Binding AddCommand}"
              x:Class="SeaWolf.Views.GeoFencesView">
     <pge:LagoVistaContentPage.MainContent>
-        <ListView ItemsSource="{Binding GeoFences}" HasUnevenRows="true" SelectedItem="{Binding SelectedGeoFence, Mode=TwoWay}" BackgroundColor="Yellow">
+        <ListView ItemsSource="{Binding GeoFences}" HasUnevenRows="true" SelectedItem="{Binding SelectedGeoFence, Mode=TwoWay}" >
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    <ctls:NavigationViewCell Command="{Binding Command}" Text="{Binding Name}" 
-                                             Detail="{Binding Help}" Icon="{Binding FontIconKey}" />
+                    <ctls:NavigationViewCell Text="{Binding Name}"  
+                                             Detail="{Binding Description}" Icon="fa-map" />
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>

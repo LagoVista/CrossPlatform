@@ -16,6 +16,7 @@ namespace SeaWolf.ViewModels
         private readonly IAppConfig _appConfig;
         private SensorSummary _sensorSummary;
 
+        private bool _isEnabled;
         private double _lowThreshold = 80;
         private double _highThreshold = 120;
 
@@ -35,6 +36,10 @@ namespace SeaWolf.ViewModels
             CurrentDevice = GetLaunchArg<Device>(nameof(Device));
             Sensor = GetLaunchArg<SensorSummary>(nameof(SensorSummary));
 
+            HighThreshold = Sensor.Config.HighTheshold;
+            LowThreshold = Sensor.Config.LowThreshold;
+            IsEnabled = Sensor.Config.AlertsEnabled;
+
             return base.InitAsync();
         }
 
@@ -47,22 +52,22 @@ namespace SeaWolf.ViewModels
 
         public void IncrementHighThreshold(object obj)
         {
-            HighTolerance += .1;
+            HighThreshold += .25;
         }
 
         public void IncrementLowThreshold(object obj)
         {
-            LowTolerance += .1;
+            LowThreshold += .25;
         }
 
         public void DecrementHighThreshold(object obj)
         {
-            HighTolerance -= .1;
+            HighThreshold -= .25;
         }
 
         public void DecrementLowThreshold(object obj)
         {
-            LowTolerance -= .1;
+            LowThreshold -= .25;
         }
 
         public bool CanIncrementHighThreshold(Object obj)
@@ -72,12 +77,12 @@ namespace SeaWolf.ViewModels
 
         public bool CanIncrementLowThreshold(Object obj)
         {
-            return HighTolerance > LowTolerance;
+            return HighThreshold > LowThreshold;
         }
 
         public bool CanDecrementHighThreshold(Object obj)
         {
-            return HighTolerance > LowTolerance;
+            return HighThreshold > LowThreshold;
         }
 
         public bool CanDecrementLowThreshold(Object obj)
@@ -85,13 +90,19 @@ namespace SeaWolf.ViewModels
             return true;
         }
 
-        public double LowTolerance
+        public bool IsEnabled
+        {
+            get => _isEnabled;
+            set => Set(ref _isEnabled, value);
+        }
+
+        public double LowThreshold
         {
             get => _lowThreshold;
             set => Set(ref _lowThreshold, value);
         }
 
-        public double HighTolerance
+        public double HighThreshold
         {
             get => _highThreshold;
             set => Set(ref _highThreshold, value);
@@ -109,10 +120,21 @@ namespace SeaWolf.ViewModels
         public RelayCommand DecrementHighThresholdCommand { get; }
         public RelayCommand DecrementLowThresholdCommand { get; }
 
-        public override void Save()
-        {
-            base.Save();
-        }
+        public async override void Save()
+        {            
+            Sensor.Config.HighTheshold = HighThreshold;
+            Sensor.Config.LowThreshold = LowThreshold;
+            Sensor.Config.AlertsEnabled = IsEnabled;
 
+            var result = await PerformNetworkOperation(async () =>
+            {
+                return await _deviceManagementClient.UpdateDeviceAsync(CurrentDevice.DeviceRepository.Id, CurrentDevice);
+            });
+
+            if (result.Successful)
+            {
+                await ViewModelNavigation.GoBackAsync();
+            }
+        }
     }
 }

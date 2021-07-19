@@ -248,7 +248,7 @@ namespace LagoVista.XPlat.Core
             if (ResourceSupport.UseCustomColors)
             {
                 _toolBar.BackgroundColor = ResourceSupport.GetColor(nameof(IAppStyle.TitleBarBackground));
-                _title.TextColor = ResourceSupport.GetColor(nameof(IAppStyle.TitleBarText));
+                _title.TextColor = ResourceSupport.GetColor(nameof(IAppStyle.TitleBarForeground));
                 _leftMenuButton.TextColor = _title.TextColor;
                 _rightMenuButton.TextColor = _title.TextColor;
                 _helpButton.TextColor = _title.TextColor;

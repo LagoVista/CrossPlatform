@@ -1,5 +1,6 @@
 ﻿using LagoVista.Client.Core.ViewModels;
 using LagoVista.Client.Devices;
+using LagoVista.Core.Commanding;
 using LagoVista.Core.Interfaces;
 using LagoVista.Core.Models;
 using LagoVista.IoT.DeviceManagement.Core.Models;
@@ -15,9 +16,6 @@ namespace SeaWolf.ViewModels
 {
     public class SensorViewModel : AppViewModelBase
     {
-        private bool _isADC;
-        private int _originalSensorIndex = -1;
-
         private readonly IDeviceManagementClient _deviceManagementClient;
         private readonly IAppConfig _appConfig;
 
@@ -35,7 +33,9 @@ namespace SeaWolf.ViewModels
 
             SensorTypes.Add(new AppSpecificSensorTypes() { Key = "-1", Name = "-select sensor type-" });
             foreach (var snsr in _appConfig.AppSpecificSensorTypes)
-                SensorTypes.Add(snsr);         
+                SensorTypes.Add(snsr);
+
+            RemoveSensorCommand = new RelayCommand(RemoveSensor);
         }
 
         private Device _currentDevice;
@@ -48,13 +48,13 @@ namespace SeaWolf.ViewModels
         public override Task InitAsync()
         {
             CurrentDevice = GetLaunchArg<Device>(nameof(Device));
-       
+
             if (IsAdding)
             {
                 SelectedSensorIndex = SensorIndexes[0];
                 SelectedSensorType = SensorTypes[0];
             }
-            else
+            else if (IsEditing)
             {
                 var existingSummary = GetLaunchArg<SensorSummary>(nameof(SensorSummary));
                 SensorName = existingSummary.Config.Name;
@@ -62,8 +62,37 @@ namespace SeaWolf.ViewModels
                 SelectedSensorIndex = SensorIndexes.FirstOrDefault(snsr => snsr.Key == existingSummary.Config.SensorIndex);
                 Description = existingSummary.Config.Description;
             }
+            else
+            {
+                throw new InvalidOperationException($"Invalid launch type {LaunchArgs.LaunchType}.");
+            }
 
             return base.InitAsync();
+        }
+
+        public async void RemoveSensor(Object job)
+        {
+            if ((await this.Popups.ConfirmAsync("Remove Sensor", "Are you sure?  This can not be undone.")))
+            {
+                var existingSummary = GetLaunchArg<SensorSummary>(nameof(SensorSummary));
+                existingSummary.Config.Config = 0;
+                existingSummary.Config.Description = null;
+                existingSummary.Config.Name = null;
+                existingSummary.Config.Key = null;
+                existingSummary.Config.Zero = 0;
+                existingSummary.Config.DeviceScaler = 1;
+                existingSummary.Config.Calibration = 1;
+
+                var result = await PerformNetworkOperation(async () =>
+                {
+                    return await _deviceManagementClient.UpdateDeviceAsync(CurrentDevice.DeviceRepository.Id, CurrentDevice);
+                });
+
+                if (result.Successful)
+                {
+                    await this.ViewModelNavigation.GoBackAsync();
+                }
+            }
         }
 
         public async override void Save()
@@ -95,6 +124,13 @@ namespace SeaWolf.ViewModels
                 Config = (byte)SelectedSensorType.SensorConfigId
             };
 
+            if (IsAdding)
+            {
+                portConfig.HighTheshold = SelectedSensorType.DefaultHighTolerance;
+                portConfig.LowThreshold = SelectedSensorType.DefaultLowTolerance;
+                portConfig.AlertsEnabled = true;
+            }
+
             if (SelectedSensorType.Technology == SensorTechnology.ADC)
             {
                 CurrentDevice.Sensors.AdcConfigs[portConfig.SensorIndex - 1] = portConfig;
@@ -118,7 +154,7 @@ namespace SeaWolf.ViewModels
         #region Properties
         public ObservableCollection<AppSpecificSensorTypes> SensorTypes { get; } = new ObservableCollection<AppSpecificSensorTypes>();
         public ObservableCollection<KeyValuePair<int, string>> SensorIndexes { get; } = new ObservableCollection<KeyValuePair<int, string>>();
-       
+
 
         AppSpecificSensorTypes _selectedSensorType;
         public AppSpecificSensorTypes SelectedSensorType
@@ -147,6 +183,8 @@ namespace SeaWolf.ViewModels
             get => _description;
             set => Set(ref _description, value);
         }
+
+        public RelayCommand RemoveSensorCommand { get; }
         #endregion
     }
 }

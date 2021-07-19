@@ -23,9 +23,8 @@ namespace SeaWolf.ViewModels
             _deviceManagementClient = deviceManagementClient ?? throw new ArgumentNullException(nameof(deviceManagementClient));
             _appConfig = appConfig ?? throw new ArgumentNullException(nameof(appConfig));
 
-            AddSensorCommand = new RelayCommand(() => ViewModelNavigation.NavigateAsync<SensorViewModel>(this,
-                new KeyValuePair<string, object>("Device", CurrentDevice),
-                new KeyValuePair<string, object>("Action", "add")));
+            AddSensorCommand = new RelayCommand(() => ViewModelNavigation.NavigateAndCreateAsync<SensorViewModel>(this,
+                new KeyValuePair<string, object>("Device", CurrentDevice)));
 
             RemoveSensorCommand = RelayCommand<SensorSummary>.Create(RemoveSensor);
         }

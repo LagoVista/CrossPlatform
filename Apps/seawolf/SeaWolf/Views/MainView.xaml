@@ -40,7 +40,7 @@
                             <RowDefinition Height="48"/>
                             <RowDefinition Height="*" />
                         </Grid.RowDefinitions>
-                        <Label Text="Voltage Monitoring" FontAttributes="Bold"  HorizontalOptions="Center" FontSize="32"/>
+                        <Label Text="Monitoring" FontAttributes="Bold"  HorizontalOptions="Center" FontSize="32"/>
                         <flv:FlowListView FlowItemsSource="{Binding Sensors}" Grid.Row="1" FlowColumnCount="2">
                             <flv:FlowListView.FlowColumnTemplate>
                                 <DataTemplate>
@@ -57,11 +57,10 @@
                         <Grid.RowDefinitions>
                             <RowDefinition Height="*" />
                         </Grid.RowDefinitions>
-                        <pge:BindableMap MapType="Street" MapCenter="{Binding CurrentVeseelLocation}" />
+                        <pge:BindableMap MapType="Street" MapCenter="{Binding CurrentVeseelLocation}" GeoFences="{Binding GeoFences}" />
                     </Grid>
                 </ScrollView>
             </pge:TabContent>
-
 
             <pge:TabContent BackgroundColor="White">
 

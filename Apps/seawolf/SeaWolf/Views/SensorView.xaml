@@ -8,21 +8,27 @@
              RightMenu="Save"
              x:Class="SeaWolf.Views.SensorView">
     <pge:LagoVistaContentPage.MainContent>
-        <StackLayout Padding="20">
-            <Label Text="Sensor Name" />
-            <Entry Text="{Binding SensorName,Mode=TwoWay}" />
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="auto" />
+            </Grid.RowDefinitions>
+            <StackLayout Padding="20">
+                <Label Text="Sensor Name" />
+                <Entry Text="{Binding SensorName,Mode=TwoWay}" />
 
-            <Picker Title="Sensor Type" SelectedItem="{Binding SelectedSensorType, Mode=TwoWay}" ItemsSource="{Binding SensorTypes}" ItemDisplayBinding="{Binding Name}">
-            </Picker>
+                <Picker Title="Sensor Type" SelectedItem="{Binding SelectedSensorType, Mode=TwoWay}" ItemsSource="{Binding SensorTypes}" ItemDisplayBinding="{Binding Name}">
+                </Picker>
 
-            <Picker Title="Sensor Slot" SelectedItem="{Binding SelectedSensorIndex, Mode=TwoWay}" ItemsSource="{Binding SensorIndexes}" ItemDisplayBinding="{Binding Value}">
-            </Picker>
+                <Picker Title="Sensor Slot" SelectedItem="{Binding SelectedSensorIndex, Mode=TwoWay}" ItemsSource="{Binding SensorIndexes}" ItemDisplayBinding="{Binding Value}">
+                </Picker>
 
-            <Label Text="Description"/>
-            <pge:TextArea Text="{Binding Description, Mode=TwoWay}" HeightRequest="64"></pge:TextArea>
+                <Label Text="Description"/>
+                <pge:TextArea Text="{Binding Description, Mode=TwoWay}" HeightRequest="64"></pge:TextArea>
 
-            <Label Text="{Binding SelectedSensorType.Description}" />
-
-        </StackLayout>
+                <Label Text="{Binding SelectedSensorType.Description}" />
+            </StackLayout>
+            <pge:Button Command="{Binding RemoveSensorCommand}" IsVisible="{Binding IsEditing}" Text="Remove Sensor" Grid.Row="1" />
+        </Grid>
     </pge:LagoVistaContentPage.MainContent>
 </pge:LagoVistaContentPage>

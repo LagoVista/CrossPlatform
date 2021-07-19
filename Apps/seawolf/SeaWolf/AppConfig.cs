@@ -18,7 +18,7 @@ namespace SeaWolf
         public const string BATTERYSWITCH = "batteryswitch";
         public const string AMBIENTTEMP = "ambienttemperature";
         public const string WATERTEMP = "watertemperature";
-        
+
         public AppConfig()
         {
             switch (Device.RuntimePlatform)
@@ -38,13 +38,13 @@ namespace SeaWolf
 
             AppSpecificSensorTypes = new List<AppSpecificSensorTypes>()
             {
-                new AppSpecificSensorTypes() { IconKey="fa-battery-full", Name="Battery", Key=BATTERY, Technology = SensorTechnology.ADC, SensorConfigId = 1 },
-                new AppSpecificSensorTypes() { IconKey="fa-warning", Name="Motion Detector", Key=MOTION, Technology = SensorTechnology.IO, SensorConfigId = 1,  },
-                new AppSpecificSensorTypes() { IconKey="fa-tint", Name="Moisture", Key=MOISTURE, Technology = SensorTechnology.ADC, SensorConfigId = 1 },
-                new AppSpecificSensorTypes() { IconKey="fa-tint", Name="High Water Alarm", Key=HIGHWATERLEVEL, Technology = SensorTechnology.IO, SensorConfigId = 1 },
-                new AppSpecificSensorTypes() { IconKey="fa-power-off", Name="Battery Switch", Key=BATTERYSWITCH, Technology = SensorTechnology.ADC, SensorConfigId = 1 },
-                new AppSpecificSensorTypes() { IconKey="fa-thermometer-full", Name="Ambient Temperature", Key=AMBIENTTEMP, Technology = SensorTechnology.IO, SensorConfigId = 6 },
-                new AppSpecificSensorTypes() { IconKey="fa-thermometer-full", Name="Water Temperature", Key=WATERTEMP, Technology = SensorTechnology.IO, SensorConfigId = 4 },
+                new AppSpecificSensorTypes() { IconKey="fa-battery-full", Name="Battery", Key=BATTERY, Technology = SensorTechnology.ADC, SensorConfigId = 1, DefaultLowTolerance = 12, DefaultHighTolerance=15 },
+                new AppSpecificSensorTypes() { IconKey="fa-warning", Name="Motion Detector", Key=MOTION, Technology = SensorTechnology.IO, SensorConfigId = 1, DefaultHighTolerance =1  },
+                new AppSpecificSensorTypes() { IconKey="fa-tint", Name="Moisture", Key=MOISTURE, Technology = SensorTechnology.ADC, SensorConfigId = 1, DefaultLowTolerance=1 },
+                new AppSpecificSensorTypes() { IconKey="fa-tint", Name="High Water Alarm", Key=HIGHWATERLEVEL, Technology = SensorTechnology.IO, SensorConfigId = 1, DefaultLowTolerance=1 },
+                new AppSpecificSensorTypes() { IconKey="fa-power-off", Name="Battery Switch", Key=BATTERYSWITCH, Technology = SensorTechnology.ADC, SensorConfigId = 1, DefaultLowTolerance=12, DefaultHighTolerance=15 },
+                new AppSpecificSensorTypes() { IconKey="fa-thermometer-full", Name="Ambient Temperature", Key=AMBIENTTEMP, Technology = SensorTechnology.IO, SensorConfigId = 6, DefaultLowTolerance=60, DefaultHighTolerance=90 },
+                new AppSpecificSensorTypes() { IconKey="fa-thermometer-full", Name="Water Temperature", Key=WATERTEMP, Technology = SensorTechnology.IO, SensorConfigId = 4, DefaultLowTolerance=60, DefaultHighTolerance=90 },
             };
         }
 

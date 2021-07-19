@@ -85,6 +85,7 @@ namespace SeaWolf.ViewModels
             GeoFence.RadiusMeters = GeoFenceRadiusMeters;
             GeoFence.Enabled = IsGeoFenceEnabled;
             GeoFence.Center = GeoFenceCenter;
+            GeoFence.Description = GeoFenceDescription;
 
             if(IsAdding)
             {
