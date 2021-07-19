@@ -46,19 +46,15 @@ namespace LagoVista.XPlat.Core.Controls.Common
             {
                 _container.Children.Clear();
 
-                var lbl = new Label
-                {
-                    Text = ClientResources.CurrentOrganization_Label,
-                    FontSize = ResourceSupport.GetNumber("MenuFontSize"),
-                    Margin = new Thickness(44, 10, 0, 0)
-                };
-
-                _container.Children.Add(lbl);
-
                 _orgLabel = new Label
                 {
                     FontSize = ResourceSupport.GetNumber("HeaderFontSize"),
                 };
+
+                if(ResourceSupport.UseCustomColors)
+                {
+                    _orgLabel.TextColor = ResourceSupport.GetColor(nameof(IAppStyle.MenuBarForeground));
+                }
 
                 if (_authManager.IsAuthenticated)
                 {
@@ -87,12 +83,6 @@ namespace LagoVista.XPlat.Core.Controls.Common
                 if(ResourceSupport.UseCustomfonts)
                 {
                     _orgLabel.FontFamily = ResourceSupport.GetString("HeaderFont");
-                    lbl.FontFamily = ResourceSupport.GetString("MenuFont");
-                }
-
-                if (ResourceSupport.UseCustomColors)
-                {
-                    lbl.TextColor = ResourceSupport.GetColor("MenuBarTitle");
                 }
             }
         }

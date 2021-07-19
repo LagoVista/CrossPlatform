@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<pge:LagoVistaContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:pge="clr-namespace:LagoVista.XPlat.Core;assembly=LagoVista.XPlat.Core"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SeaWolf.Views.ConfigureAlertView">
+    <pge:LagoVistaContentPage.MainContent>
+        <Grid >
+            <Grid.RowDefinitions>
+                <RowDefinition Height="64" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="300" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Label Text="Voltage Monitoring" FontAttributes="Bold" Grid.ColumnSpan="2"  HorizontalOptions="Center" FontSize="32"/>
+            <ListView ItemsSource="{Binding BatterySensors}" SelectedItem="{Binding BatterySensor, Mode=TwoWay}" Grid.Row="1"  >
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Label FontSize="24" HorizontalOptions="Fill" VerticalOptions="Fill"  HorizontalTextAlignment="Center" XAlign="Center" YAlign="Center" Text="{Binding Text}"/>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            <Grid Grid.Column="1" Grid.Row="1" IsVisible="{Binding BatterySensor, Converter={StaticResource NotNullVisibilityConverter}}">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="48" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="48" />
+                    <ColumnDefinition Width="92" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="92" />
+                    <ColumnDefinition Width="48" />
+                    <ColumnDefinition Width="64" />
+                </Grid.ColumnDefinitions>
+                <Label Text="{Binding BatterySensor.Text}" HorizontalOptions="Center"  FontSize="24" TextColor="Black" Grid.ColumnSpan="5" />
+                <pge:IconButton IconKey="fa-arrow-up" Grid.Row="1" FontSize="32" Grid.Column="0" Command="{Binding IncrementHighBatteryThresholdCommand}"/>
+                <pge:IconButton IconKey="fa-arrow-down" Grid.Row="2"  FontSize="32" Grid.Column="0" Command="{Binding DecrementLowBatteryThresholdCommand}"/>
+                <Label Text="{Binding LowBatteryTolerance, StringFormat='{0:F1}'}"  VerticalOptions="Center" HorizontalOptions="Center" Grid.Column="1" FontSize="32" TextColor="Blue" Grid.RowSpan="2" Grid.Row="1" />
+                <Label Text="{Binding HighBatteryTolerance, StringFormat='{0:F1}'}" VerticalOptions="Center" HorizontalOptions="Center" Grid.Column="3" FontSize="32" TextColor="Red" Grid.RowSpan="2" Grid.Row="1" />
+                <pge:IconButton HorizontalOptions="Center" IconKey="fa-arrow-up" Grid.Row="1" Grid.Column="4" FontSize="32" Command="{Binding IncrementHighBatteryThresholdCommand}"/>
+                <pge:IconButton HorizontalOptions="Center" IconKey="fa-arrow-down"  Grid.Row="2" Grid.Column="4" FontSize="32" Command="{Binding DecrementHighBatteryThresholdCommand}"/>
+            </Grid>
+        </Grid>
+    </pge:LagoVistaContentPage.MainContent>
+</pge:LagoVistaContentPage>

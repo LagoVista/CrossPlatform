@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<pge:LagoVistaContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:pge="clr-namespace:LagoVista.XPlat.Core;assembly=LagoVista.XPlat.Core"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             Title="Geo Fence"
+             LeftMenu="Cancel"
+             RightMenu="Save"
+             x:Class="SeaWolf.Views.GeoFenceView">
+    <pge:LagoVistaContentPage.MainContent>
+        <Grid Padding="20">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+            </Grid.RowDefinitions>
+
+            <Label Text="Name" />
+            <pge:Entry Text="{Binding GeoFenceName, Mode=TwoWay}" Grid.Row="1" Placeholder="enter a name"/>
+            <StackLayout Grid.Row="2" Orientation="Horizontal">
+                <Label Text="Is Enabled" />
+                <CheckBox  />
+            </StackLayout>
+            <pge:TextArea HeightRequest="64" Grid.Row="3"> </pge:TextArea>
+            <pge:BindableMap MapType="Street" MapCenter="{Binding MapCenter}" MapTappedCommand="{Binding MapTappedCommand}"
+                             GeoFenceCenter="{Binding GeoFenceCenter}" GeoFenceRadiusMeter="{Binding GeoFenceRadiusMeters}"
+                             Grid.Row="4" />
+
+            <StackLayout Grid.Row="5" Orientation="Horizontal">
+                <Label Text="Radius (meters)"  />
+                <Label Text="{Binding GeoFenceRadiusMeters}" />
+            </StackLayout>
+            <Slider Value="{Binding GeoFenceRadiusMeters, Mode=TwoWay}" Maximum="10000" Grid.Row="6"/>
+        </Grid>
+    </pge:LagoVistaContentPage.MainContent>
+</pge:LagoVistaContentPage>

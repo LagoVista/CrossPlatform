@@ -37,13 +37,13 @@ namespace SeaWolf
         public Color EditControlFrameInvalid => _black;
 
 
-        public Color MenuBarBackground => _medGray;
+        public Color MenuBarBackground => NamedColors.NuvIoTMedium;
 
-        public Color MenuBarForeground => NamedColors.NuvIoTContrast;
+        public Color MenuBarForeground => NamedColors.NuvIoTLight;
 
-        public Color MenuBarBackgroundActive => _darkGray;
+        public Color MenuBarBackgroundActive => NamedColors.NuvIoTDark;
 
-        public Color MenuBarForegroundActive => NamedColors.NuvIoTContrast;
+        public Color MenuBarForegroundActive => NamedColors.NuvIoTLight;
 
 
         public Color ButtonBackground => NamedColors.NuvIoTDark;
@@ -62,11 +62,11 @@ namespace SeaWolf
 
         public Color ListItemColor => NamedColors.NuvIoTDark;
 
-        public Color TabForground => NamedColors.White;
-        public Color TabForgroundActive => NamedColors.NuvIoTContrast;
+        public Color TabForground => NamedColors.NuvIoTDark;
+        public Color TabForgroundActive => NamedColors.NuvIoTLight;
         public Color TabBackgroundActive => NamedColors.NuvIoTDark;
         public Color TabBackground => NamedColors.NuvIoTLight;
-        public Color TabBarBackground => NamedColors.LightGray;
+        public Color TabBarBackground => NamedColors.NuvIoTMedium;
 
 
         public string HeaderFont => DefaultFont;

@@ -90,10 +90,19 @@ namespace SeaWolf
             LagoVista.Client.Core.Startup.Init(serverInfo);
 
             navigation.Add<MainViewModel, Views.MainView>();
-            navigation.Add<ComponentViewModel, Views.ComponentView>();
-            navigation.Add<ConfigurationViewModel, Views.ConfigurationView>();
             navigation.Add<SensorsViewModel, Views.SensorsView>();
             navigation.Add<SensorViewModel, Views.SensorView>();
+
+            navigation.Add<SettingsViewModel, Views.SettingsView>();
+
+            navigation.Add<GeoFencesViewModel, Views.GeoFencesView>();
+            navigation.Add<GeoFenceViewModel, Views.GeoFenceView>();
+
+            navigation.Add<ConfigureAlertsViewModel, Views.ConfigureAlertsView>();
+            navigation.Add<ConfigureAlertViewModel, Views.ConfigureAlertView>();
+
+            navigation.Add<ComponentViewModel, Views.ComponentView>();
+            navigation.Add<ConfigurationViewModel, Views.ConfigurationView>();
             navigation.Add<LiveDataViewModel, Views.LiveDataView>();
           
             navigation.Add<SplashViewModel, Views.SplashView>();

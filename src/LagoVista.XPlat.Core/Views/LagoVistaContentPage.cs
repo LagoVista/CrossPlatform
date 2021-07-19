@@ -125,9 +125,12 @@ namespace LagoVista.XPlat.Core
 
         private void CreateActivityIndicator()
         {
-            _activityIndicator = new ActivityIndicator() { IsRunning = false };
-
-            _activityIndicator.VerticalOptions = new LayoutOptions(LayoutAlignment.Center, false);
+            _activityIndicator = new ActivityIndicator()
+            {
+                IsRunning = false,
+                VerticalOptions = new LayoutOptions(LayoutAlignment.Center, false),
+                Color = Color.White
+            };
 
             switch (Device.RuntimePlatform)
             {
@@ -141,12 +144,12 @@ namespace LagoVista.XPlat.Core
                     break;
             }
 
-            _activityIndicator.SetOnAppTheme(ActivityIndicator.ColorProperty, ResourceSupport.GetColor("AccentColorLight"), ResourceSupport.GetColor("AccentColorDark"));
-
             _loadingContainer = new Grid() { IsVisible = false };
-            _loadingMask = new Grid();
+            _loadingMask = new Grid()
+            {
+                BackgroundColor = Color.FromRgba(0.2, 0.2, 0.2, 0.5)
+            };
 
-            _loadingMask.SetOnAppTheme(Grid.BackgroundColorProperty, ResourceSupport.GetColor("PageMaskLight"), ResourceSupport.GetColor("PageMaskDark"));
             _loadingContainer.Children.Add(_loadingMask);
             _loadingContainer.Children.Add(_activityIndicator);
         }
@@ -413,7 +416,7 @@ namespace LagoVista.XPlat.Core
             get => _tabHeader;
             set
             {
-                _tabHeader = value;        
+                _tabHeader = value;
             }
         }
 
@@ -471,10 +474,6 @@ namespace LagoVista.XPlat.Core
                     _contentGrid.BackgroundColor = _tabbedContent.BackgroundColor;
                 }
 
-                
-
-                
-
                 if (TabHeader != null)
                 {
                     TabHeader.SetValue(Grid.RowProperty, 1);
@@ -511,6 +510,25 @@ namespace LagoVista.XPlat.Core
                     _tabBar.SelectedTabChanged += _tabBar_SelectedTabChanged;
                     _tabBar.SetValue(Grid.RowProperty, _tabHeader == null ? 2 : 3);
                     _contentGrid.Children.Add(_tabBar);
+                    
+                    if (_contentGrid.Children.Contains(_pageMenuMask))
+                    {
+                        _contentGrid.Children.Remove(_pageMenuMask);
+                        _contentGrid.Children.Add(_pageMenuMask);
+                    }
+
+                    if (_contentGrid.Children.Contains(_menu))
+                    {
+                        // Make sure this is on top
+                        _contentGrid.Children.Remove(_menu);
+                        _contentGrid.Children.Add(_menu);
+                    }
+
+                    if (_contentGrid.Children.Contains(_loadingContainer))
+                    {
+                        _contentGrid.Children.Remove(_loadingContainer);
+                        _contentGrid.Children.Add(_loadingContainer);
+                    }
                     SelectedTabIndex = 0;
                 }
                 else
@@ -861,7 +879,7 @@ namespace LagoVista.XPlat.Core
                         break;
                     case LeftMenuIcon.Cancel: _leftMenuButton.IconKey = "ep-chevron-left"; break;
                     case LeftMenuIcon.Back:
-                            _leftMenuButton.IconKey = "ep-chevron-left";
+                        _leftMenuButton.IconKey = "ep-chevron-left";
                         break;
                     case LeftMenuIcon.CustomIcon:
                         if (string.IsNullOrEmpty(LeftMenuCustomIcon))

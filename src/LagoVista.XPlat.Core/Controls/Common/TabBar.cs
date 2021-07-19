@@ -1,4 +1,6 @@
-﻿using LagoVista.XPlat.Core.Services;
+﻿using LagoVista.Client.Core.Resources;
+using LagoVista.Core.Interfaces;
+using LagoVista.XPlat.Core.Services;
 using System;
 using System.Collections.ObjectModel;
 using System.Linq;
@@ -18,7 +20,7 @@ namespace LagoVista.XPlat.Core
 
             if (ResourceSupport.UseCustomColors)
             {
-                BackgroundColor = ResourceSupport.GetColor("MenuBarBackground");
+                BackgroundColor = ResourceSupport.GetColor(nameof(IAppStyle.TabBackground));
             }
         }
         private void TabBar_ChildAdded(object sender, ElementEventArgs e)

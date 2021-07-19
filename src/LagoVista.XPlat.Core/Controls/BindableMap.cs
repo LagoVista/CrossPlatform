@@ -1,6 +1,7 @@
 ﻿using LagoVista.Core.Commanding;
 using LagoVista.Core.Models.Geo;
 using LagoVista.IoT.DeviceManagement.Models;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
@@ -18,9 +19,12 @@ namespace LagoVista.XPlat.Core
             base.MapClicked += BindableMap_MapClicked;
         }
 
+        Pin _mapCenterPin = null;
+        Circle _currentGeoFence = null;
+
         private void BindableMap_MapClicked(object sender, MapClickedEventArgs e)
         {
-            if(_mapTappedCommand != null)
+            if (_mapTappedCommand != null)
             {
                 _mapTappedCommand.Execute(new GeoLocation(e.Position.Latitude, e.Position.Longitude));
             }
@@ -92,6 +96,32 @@ namespace LagoVista.XPlat.Core
         }
         #endregion
 
+        #region MapSpan Property
+        public string VesselName
+        {
+            get { return (string)GetValue(VesselNameProperty); }
+            set { SetValue(VesselNameProperty, value); }
+        }
+
+        public static readonly BindableProperty VesselNameProperty = BindableProperty.Create(
+                                                         propertyName: nameof(VesselName),
+                                                         returnType: typeof(string),
+                                                         declaringType: typeof(BindableMap),
+                                                         defaultValue: "vessel",
+                                                         defaultBindingMode: BindingMode.TwoWay,
+                                                         validateValue: null,
+                                                         propertyChanged: VesselNamePropertyChanged);
+
+        private static void VesselNamePropertyChanged(BindableObject bindable, object oldValue, object newValue)
+        {
+            var thisInstance = bindable as BindableMap;
+            if (newValue != null && thisInstance._mapCenterPin != null)
+            {
+                thisInstance._mapCenterPin.Label = newValue.ToString();
+            }
+        }
+        #endregion
+
         #region MapCenter Property
         public GeoLocation MapCenter
         {
@@ -114,7 +144,26 @@ namespace LagoVista.XPlat.Core
             var newCenter = newValue as GeoLocation;
             if (newCenter != null && newCenter.HasLocation)
             {
-                thisInstance.MapSpan = new MapSpan(new Position(newCenter.Latitude.Value, newCenter.Longitude.Value), 0.5, 0.5);
+                if (thisInstance._mapCenterPin == null)
+                {
+                    thisInstance._mapCenterPin = new Pin();
+                    thisInstance._mapCenterPin.Position = new Position(newCenter.Latitude.Value, newCenter.Longitude.Value);
+                    thisInstance._mapCenterPin.Label = thisInstance.VesselName;
+                    thisInstance.Pins.Add(thisInstance._mapCenterPin);
+                }
+                else
+                {
+                    thisInstance._mapCenterPin.Position = new Position(newCenter.Latitude.Value, newCenter.Longitude.Value);
+                }
+
+                if (thisInstance.VisibleRegion == null || thisInstance.VisibleRegion.LatitudeDegrees < 0.001)
+                {
+                    thisInstance.MapSpan = new MapSpan(new Position(newCenter.Latitude.Value, newCenter.Longitude.Value), 0.1, 0.1);
+                }
+                else
+                {
+                    thisInstance.MapSpan = new MapSpan(new Position(newCenter.Latitude.Value, newCenter.Longitude.Value), thisInstance.VisibleRegion.LatitudeDegrees, thisInstance.VisibleRegion.LongitudeDegrees);
+                }
             }
         }
         #endregion
@@ -172,7 +221,11 @@ namespace LagoVista.XPlat.Core
                 var circle = new Circle()
                 {
                     Center = new Position(fence.Center.Latitude.Value, fence.Center.Longitude.Value),
+                    StrokeWidth = 1f,
+                    StrokeColor = Color.LightGray,
+                    FillColor = Color.FromRgba(0, 0, 1, 0.25),
                     Radius = new Distance(fence.RadiusMeters)
+
                 };
                 _circles.Add(circle);
                 MapElements.Add(circle);
@@ -187,33 +240,61 @@ namespace LagoVista.XPlat.Core
         #endregion
 
         #region Current GeoFence Property
-        public GeoFence CurrentGeoFences
+        public void RenderGeoFence()
         {
-            get => (GeoFence)GetValue(CurrentGeoFenceProperty);
-            set => SetValue(CurrentGeoFenceProperty, value);
+            if (_currentGeoFence == null)
+            {
+                _currentGeoFence = new Circle()
+                {
+                    StrokeWidth = 1f,
+                    StrokeColor = Color.LightGray,
+                    FillColor = Color.FromRgba(0, 0, 1, 0.25)
+                };
+                MapElements.Add(_currentGeoFence);
+            }
+
+            _currentGeoFence.Radius = new Distance(GeoFenceRadiusMeter);
+            if (GeoFenceCenter != null)
+            {
+                _currentGeoFence.Center = new Position(GeoFenceCenter.Latitude.Value, GeoFenceCenter.Longitude.Value); ;
+            }
         }
 
-        public static readonly BindableProperty CurrentGeoFenceProperty = BindableProperty.Create(
-                                                         propertyName: nameof(GeoFences),
-                                                         returnType: typeof(GeoFence),
+        public GeoLocation GeoFenceCenter
+        {
+            get => (GeoLocation)GetValue(GeoFenceCenterProperty);
+            set => SetValue(GeoFenceCenterProperty, value);
+        }
+
+        public static readonly BindableProperty GeoFenceCenterProperty = BindableProperty.Create(
+                                                         propertyName: nameof(GeoFenceCenter),
+                                                         returnType: typeof(GeoLocation),
                                                          declaringType: typeof(BindableMap),
                                                          defaultValue: null,
                                                          defaultBindingMode: BindingMode.TwoWay,
                                                          validateValue: null,
-                                                         propertyChanged: CurrentGeoFencePropertyChanged);
+                                                         propertyChanged: GeoFencePropertyChanged);
 
-        Circle _currentGeoFence;
-
-        public static void CurrentGeoFencePropertyChanged(BindableObject bindable, object oldValue, object newValue)
+        public static void GeoFencePropertyChanged(BindableObject bindable, object oldValue, object newValue)
         {
             var thisInstance = bindable as BindableMap;
-            var geoFence = newValue as GeoFence;
-
-            if (thisInstance._currentGeoFence != null)
-            {
-                thisInstance.MapElements.Remove(thisInstance._currentGeoFence);
-            }
+            thisInstance.RenderGeoFence();
         }
+
+        public double GeoFenceRadiusMeter
+        {
+            get => (double)GetValue(GeoFenceRadiusMeterProperty);
+            set => SetValue(GeoFenceRadiusMeterProperty, value);
+        }
+
+        public static readonly BindableProperty GeoFenceRadiusMeterProperty = BindableProperty.Create(
+                                                         propertyName: nameof(GeoFenceRadiusMeter),
+                                                         returnType: typeof(double),
+                                                         declaringType: typeof(BindableMap),
+                                                         defaultValue: null,
+                                                         defaultBindingMode: BindingMode.TwoWay,
+                                                         validateValue: null,
+                                                         propertyChanged: GeoFencePropertyChanged);
         #endregion  
 
         #region Map Tapped Command

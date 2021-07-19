@@ -32,7 +32,7 @@ namespace LagoVista.XPlat.Sample.ViewModels
             MenuItems = new ObservableCollection<MenuItem>()
             {
                  new MenuItem<TabViewModel>(ViewModelNavigation, this) {FontIconKey = "fa-gear", Name= "Tabs"},
-                 new MenuItem() {FontIconKey = "fa-gear", Name= "Diabled", Command = new RelayCommand(() => AuthManager.LogoutAsync()) {Enabled = false } },
+                 new MenuItem() {FontIconKey = "fa-gear", Name= "Disabled", Command = new RelayCommand(() => AuthManager.LogoutAsync()) {Enabled = false } },
                  new MenuItem() {FontIconKey = "fa-gear", Name= "Logout", Command = new RelayCommand(() => AuthManager.LogoutAsync()) },
             };
         }

@@ -121,5 +121,33 @@ namespace LagoVista.Client.Core.ViewModels
 
             return result;
         }
+
+        public TArg GetLaunchArg<TArg>(string name) where TArg : class
+        {
+            if (LaunchArgs.Parameters.ContainsKey(name))
+            {
+                var response = LaunchArgs.Parameters[name] as TArg;
+                if (response == null)
+                {
+                    throw new ArgumentNullException($"Expecting {name} of type {typeof(TArg)} as a launch argument.");
+                }
+
+                return response;
+            }
+            else
+            {
+                throw new ArgumentNullException($"Expecting {name} of type {typeof(TArg)} as a launch argument.");
+            }
+        }
+
+        public bool IsEditing
+        {
+            get => LaunchArgs.LaunchType == LagoVista.Core.ViewModels.LaunchTypes.Edit;
+        }
+
+        public bool IsAdding
+        {
+            get => LaunchArgs.LaunchType == LagoVista.Core.ViewModels.LaunchTypes.Create;
+        }
     }
 }
