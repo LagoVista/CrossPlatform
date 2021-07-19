@@ -1,8 +1,10 @@
 ﻿using LagoVista.Client.Core.ViewModels;
 using LagoVista.Client.Devices;
 using LagoVista.Core.Commanding;
+using LagoVista.Core.Interfaces;
 using LagoVista.IoT.DeviceManagement.Core.Models;
 using LagoVista.IoT.DeviceManagement.Models;
+using SeaWolf.Models;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -14,54 +16,48 @@ namespace SeaWolf.ViewModels
     public class SensorsViewModel : AppViewModelBase
     {
         private readonly IDeviceManagementClient _deviceManagementClient;
+        private readonly IAppConfig _appConfig;
 
-        public SensorsViewModel(IDeviceManagementClient deviceManagementClient)
+        public SensorsViewModel(IDeviceManagementClient deviceManagementClient, IAppConfig appConfig)
         {
             _deviceManagementClient = deviceManagementClient ?? throw new ArgumentNullException(nameof(deviceManagementClient));
+            _appConfig = appConfig ?? throw new ArgumentNullException(nameof(appConfig));
 
             AddSensorCommand = new RelayCommand(() => ViewModelNavigation.NavigateAsync<SensorViewModel>(this,
                 new KeyValuePair<string, object>("Device", CurrentDevice),
                 new KeyValuePair<string, object>("Action", "add")));
 
-            RemoveAdcConfigCommand = new RelayCommand(RemoveAdcConfig);
-            RemoveIoConfigCommand = new RelayCommand(RemoveIoConfig);
+            RemoveSensorCommand = RelayCommand<SensorSummary>.Create(RemoveSensor);
         }
 
         public RelayCommand AddSensorCommand { get; }
 
         public override Task InitAsync()
         {
-            CurrentDevice = (Device)LaunchArgs.Parameters[nameof(Device)];
-            if (CurrentDevice == null)
-            {
-                throw new ArgumentNullException(nameof(CurrentDevice));
-            }
-
-            AdcConfigs = new ObservableCollection<PortConfig>(CurrentDevice.Sensors.AdcConfigs.Where(adc => adc.Config > 0));
-            IoConfigs = new ObservableCollection<PortConfig>(CurrentDevice.Sensors.IoConfigs.Where(io => io.Config > 0));
+            CurrentDevice = GetLaunchArg<Device>(nameof(Device));
+            Sensors.AddValidSensors(_appConfig, CurrentDevice);
 
             return base.InitAsync();
         }
 
         public override Task ReloadedAsync()
         {
-            AdcConfigs = new ObservableCollection<PortConfig>(CurrentDevice.Sensors.AdcConfigs.Where(adc => adc.Config > 0));
-            IoConfigs = new ObservableCollection<PortConfig>(CurrentDevice.Sensors.IoConfigs.Where(io => io.Config > 0));
+            Sensors.AddValidSensors(_appConfig, CurrentDevice);
 
             return base.ReloadedAsync();
         }
 
-        public async void RemoveAdcConfig(object obj)
+        public async  void RemoveSensor(object obj)
         {
-            var cfg = obj as PortConfig;
-            AdcConfigs.Remove(cfg);
-            CurrentDevice.Sensors.AdcConfigs[cfg.SensorIndex].Config = 0;
-            CurrentDevice.Sensors.AdcConfigs[cfg.SensorIndex].Description = null;
-            CurrentDevice.Sensors.AdcConfigs[cfg.SensorIndex].Name = null;
-            CurrentDevice.Sensors.AdcConfigs[cfg.SensorIndex].Key = null;
-            CurrentDevice.Sensors.AdcConfigs[cfg.SensorIndex].Zero = 0;
-            CurrentDevice.Sensors.AdcConfigs[cfg.SensorIndex].DeviceScaler = 1;
-            CurrentDevice.Sensors.AdcConfigs[cfg.SensorIndex].Calibration = 1;
+            var cfg = obj as SensorSummary;
+            Sensors.Remove(cfg);
+            cfg.Config.Config = 0;
+            cfg.Config.Description = null;
+            cfg.Config.Name = null;
+            cfg.Config.Key = null;
+            cfg.Config.Zero = 0;
+            cfg.Config.DeviceScaler = 1;
+            cfg.Config.Calibration = 1;
 
             var result = await PerformNetworkOperation(async () =>
             {
@@ -69,68 +65,18 @@ namespace SeaWolf.ViewModels
             });
         }
 
-        public async  void RemoveIoConfig(object obj)
-        {
-            var cfg = obj as PortConfig;
-            IoConfigs.Remove(cfg);
-            CurrentDevice.Sensors.IoConfigs[cfg.SensorIndex].Config = 0;
-            CurrentDevice.Sensors.IoConfigs[cfg.SensorIndex].Description = null;
-            CurrentDevice.Sensors.IoConfigs[cfg.SensorIndex].Name = null;
-            CurrentDevice.Sensors.IoConfigs[cfg.SensorIndex].Key = null;
-            CurrentDevice.Sensors.IoConfigs[cfg.SensorIndex].Zero = 0;
-            CurrentDevice.Sensors.IoConfigs[cfg.SensorIndex].DeviceScaler = 1;
-            CurrentDevice.Sensors.IoConfigs[cfg.SensorIndex].Calibration = 1;
+        public ObservableCollection<SensorSummary> Sensors { get; } = new ObservableCollection<SensorSummary>();
 
-            var result = await PerformNetworkOperation(async () =>
-            {
-                return await _deviceManagementClient.UpdateDeviceAsync(CurrentDevice.DeviceRepository.Id, CurrentDevice);
-            });         
-        }
-
-        ObservableCollection<PortConfig> _adcConfigs;
-        public ObservableCollection<PortConfig> AdcConfigs
-        {
-            get => _adcConfigs;
-            set => Set(ref _adcConfigs, value);
-        }
-
-        ObservableCollection<PortConfig> _ioConfigs;
-        public ObservableCollection<PortConfig> IoConfigs
-        {
-            get => _ioConfigs;
-            set => Set(ref _ioConfigs, value);
-        }
-
-        public PortConfig SelectedAnalogConfig
+        public SensorSummary SelectedSensor
         {
             get => null;
             set
             {
                 if (value != null)
                 {
-                    ViewModelNavigation.NavigateAsync<SensorViewModel>(this,
+                    ViewModelNavigation.NavigateAndEditAsync<SensorViewModel>(this,
                         new KeyValuePair<string, object>("Device", CurrentDevice),
-                        new KeyValuePair<string, object>("IOType", "adc"),
-                        new KeyValuePair<string, object>("Index", value.SensorIndex),
-                        new KeyValuePair<string, object>("Action", "edit"));
-                }
-
-                RaisePropertyChanged();
-            }
-        }
-
-        public PortConfig SelectedDigitalConfig
-        {
-            get => null;
-            set
-            {
-                if (value != null)
-                {
-                    ViewModelNavigation.NavigateAsync<SensorViewModel>(this,
-                        new KeyValuePair<string, object>("Device", CurrentDevice),
-                        new KeyValuePair<string, object>("IOType", "gpio"),
-                        new KeyValuePair<string, object>("Index", value.SensorIndex),
-                        new KeyValuePair<string, object>("Action", "edit"));
+                        new KeyValuePair<string, object>(nameof(SensorSummary), value));
                 }
 
                 RaisePropertyChanged();
@@ -144,7 +90,6 @@ namespace SeaWolf.ViewModels
             set => Set(ref _currentDevice, value);
         }
 
-        public RelayCommand RemoveIoConfigCommand { get; }
-        public RelayCommand RemoveAdcConfigCommand { get; }
+        public RelayCommand<SensorSummary> RemoveSensorCommand { get; }
     }
 }

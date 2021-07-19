@@ -22,6 +22,7 @@ namespace SeaWolf.ViewModels
         GeoLocation _mapCenter;
         string _geoFenceName;
         bool _isGeoFenceEnabled;
+        string _geoFenceDescription;
 
         public GeoFenceViewModel(IDeviceManagementClient deviceManagementClient, IAppConfig appConfig)
         {
@@ -48,10 +49,10 @@ namespace SeaWolf.ViewModels
                 else
                 {
                     await Popups.ShowAsync("Could not find current location, please allow location services.");
-                    await this.ViewModelNavigation.GoBackAsync();
+                    await ViewModelNavigation.GoBackAsync();
                 }
 
-                    
+                GeoFenceDescription = string.Empty;
             }
             else if(IsEditing)
             {
@@ -61,6 +62,7 @@ namespace SeaWolf.ViewModels
                 GeoFenceRadiusMeters = GeoFence.RadiusMeters;
                 GeoFenceCenter = GeoFence.Center;
                 MapCenter = GeoFence.Center;
+                GeoFenceDescription = GeoFence.Description;
 
             }
             else
@@ -77,7 +79,7 @@ namespace SeaWolf.ViewModels
             GeoFenceCenter = geoLocation;
         }
 
-        public async override void Save()
+        public override async void Save()
         {
             GeoFence.Name = GeoFenceName;
             GeoFence.RadiusMeters = GeoFenceRadiusMeters;
@@ -96,7 +98,7 @@ namespace SeaWolf.ViewModels
 
             if (result.Successful)
             {
-                await this.ViewModelNavigation.GoBackAsync();
+                await ViewModelNavigation.GoBackAsync();
             }
         }
 
@@ -134,6 +136,12 @@ namespace SeaWolf.ViewModels
         {
             get => _geoFenceCenter;
             set => Set(ref _geoFenceCenter, value);
+        }
+
+        public string GeoFenceDescription
+        {
+            get => _geoFenceDescription;
+            set => Set(ref _geoFenceDescription, value);
         }
 
         private Device _currentDevice;

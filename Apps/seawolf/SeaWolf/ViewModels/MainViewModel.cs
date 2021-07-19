@@ -30,7 +30,6 @@ namespace SeaWolf.ViewModels
         private bool _isNotLastVessel;
         GeoLocation _currentVeseelLocation;
 
-
         Device _currentDevice;
         ObservableCollection<DeviceSummary> _userDevices;
         private readonly IDeviceManagementClient _deviceManagementClient;

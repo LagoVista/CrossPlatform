@@ -25,7 +25,7 @@ namespace LagoVista.XPlat.Core.Controls.Common
             {
                 HorizontalOptions = new LayoutOptions(LayoutAlignment.Center, false),
                 VerticalOptions = new LayoutOptions(LayoutAlignment.Center, true),
-                FontSize = ResourceSupport.GetNumber("ListItemFontSize"),
+                FontSize = ResourceSupport.GetNumber(nameof(IAppStyle.ListItemFontSize)),
             };
 
             _icon.SetValue(Grid.ColumnProperty, 0);
@@ -34,7 +34,7 @@ namespace LagoVista.XPlat.Core.Controls.Common
             _text = new Label()
             {
                 VerticalOptions = new LayoutOptions(LayoutAlignment.Center, true),
-                FontSize = ResourceSupport.GetNumber("ListItemFontSize"),
+                FontSize = ResourceSupport.GetNumber(nameof(IAppStyle.ListItemFontSize)),
             };
             _text.SetValue(Grid.ColumnProperty, 1);
             _text.SetValue(Grid.RowSpanProperty, 2);
@@ -51,9 +51,10 @@ namespace LagoVista.XPlat.Core.Controls.Common
             {
                 HorizontalOptions = new LayoutOptions(LayoutAlignment.Center, false),
                 VerticalOptions = new LayoutOptions(LayoutAlignment.Center, true),
-                FontSize = ResourceSupport.GetNumber("ListItemFontSize"),
+                FontSize = ResourceSupport.GetNumber(nameof(IAppStyle.ListItemFontSize)),
                 IconKey = "fa-chevron-right",
             };
+
             _chevron.SetValue(Grid.ColumnProperty, 2);
             _chevron.SetValue(Grid.RowSpanProperty, 2);
 
@@ -70,21 +71,20 @@ namespace LagoVista.XPlat.Core.Controls.Common
             _layout.Children.Add(_detail);
             _layout.Children.Add(_chevron);
 
-            _detail.SetOnAppTheme<Color>(Label.TextColorProperty, ResourceSupport.GetColor("TextLowLight"), ResourceSupport.GetColor("TextLowDark"));
-
             if (ResourceSupport.UseCustomColors)
             {
                 _layout.BackgroundColor = ResourceSupport.GetColor("ListItemBackgroundColor");
-                _text.TextColor = ResourceSupport.GetColor("ListItemLabelColor");
-                _text.FontFamily = ResourceSupport.GetString("ListItemFont");
-                _detail.TextColor = ResourceSupport.GetColor("ListItemDetailColor");
-                _chevron.TextColor = ResourceSupport.GetColor("NavIconColor");
-                _icon.TextColor = ResourceSupport.GetColor("ListItemIconColor");
+                _detail.TextColor = ResourceSupport.GetColor(nameof(IAppStyle.ListItemDetailColor));
+                _chevron.TextColor = ResourceSupport.GetColor(nameof(IAppStyle.HighlightColor));
+                _text.TextColor = ResourceSupport.GetColor(nameof(IAppStyle.ListItemColor));
+                _icon.TextColor = ResourceSupport.GetColor(nameof(IAppStyle.ListItemColor));
+
+                _text.FontFamily = ResourceSupport.GetString(nameof(IAppStyle.ListItemFont));
             }
 
             if(ResourceSupport.UseCustomfonts)
             {
-                _detail.FontFamily = ResourceSupport.GetString("ListItemDetailFont");
+                _detail.FontFamily = ResourceSupport.GetString(nameof(IAppStyle.ListItemFont));
             }
 
             _chevron.TextColor = ResourceSupport.AccentColor;
