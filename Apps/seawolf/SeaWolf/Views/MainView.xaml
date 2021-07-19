@@ -40,8 +40,8 @@
                             <RowDefinition Height="48"/>
                             <RowDefinition Height="*" />
                         </Grid.RowDefinitions>
-                        <Label Text="Monitoring" FontAttributes="Bold"  HorizontalOptions="Center" FontSize="32"/>
-                        <flv:FlowListView FlowItemsSource="{Binding Sensors}" Grid.Row="1" FlowColumnCount="2">
+                        <Label Text="Monitoring of Sensors" FontAttributes="Bold"  HorizontalOptions="Center" FontSize="32"/>
+                        <flv:FlowListView FlowItemsSource="{Binding Sensors}" Grid.Row="1" HasUnevenRows="True" FlowColumnCount="2">
                             <flv:FlowListView.FlowColumnTemplate>
                                 <DataTemplate>
                                     <ctl:CardView CardDescription="{Binding Config.Name}" IconKey="{Binding SensorType.IconKey}" CardValue="{Binding Value}" />

@@ -163,11 +163,11 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\LagoVista.Client.Core\LagoVista.Client.Core.csproj">
-      <Project>{A2324CCF-5F77-4487-A61B-1A14805BDBC3}</Project>
+      <Project>{C48ABA1C-9C0B-4C9C-80C9-6EEE8A010AC9}</Project>
       <Name>LagoVista.Client.Core</Name>
     </ProjectReference>
     <ProjectReference Include="..\LagoVista.XPlat.Core\LagoVista.XPlat.Core.csproj">
-      <Project>{8FA51876-7923-4046-A5CE-77057C82675E}</Project>
+      <Project>{B46B2B34-6314-4EF7-A41F-80158102B92C}</Project>
       <Name>LagoVista.XPlat.Core</Name>
     </ProjectReference>
   </ItemGroup>
@@ -213,6 +213,9 @@
     </PackageReference>
     <PackageReference Include="Xamarin.Forms">
       <Version>5.0.0.2083</Version>
+    </PackageReference>
+    <PackageReference Include="LagoVista.AI.Models">
+      <Version>3.0.1524.953</Version>
     </PackageReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />

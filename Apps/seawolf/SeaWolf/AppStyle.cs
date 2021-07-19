@@ -12,7 +12,7 @@ namespace SeaWolf
         private readonly Color _medGray = Color.CreateColor(0x60, 0x60, 0x60);
         private readonly Color _lightGray = Color.CreateColor(0xA0, 0xA0, 0xA0);
 
-        private const string DefaultFont = "Roboto";
+        private const string DefaultFont = "Helvetica";
 
         public Color TitleBarBackground => NamedColors.NuvIoTDark;
 
