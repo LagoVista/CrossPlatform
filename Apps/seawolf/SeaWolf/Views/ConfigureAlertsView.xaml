@@ -10,7 +10,7 @@
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
-                        <Grid>
+                        <Grid HeightRequest="80">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="auto"/>
                                 <ColumnDefinition Width="*"/>
@@ -20,9 +20,10 @@
                                 <RowDefinition Height="auto" />
                                 <RowDefinition Height="auto" />
                             </Grid.RowDefinitions>
-                            <pge:Icon IconKey="fa-gear" Grid.RowSpan="2" FontSize="{StaticResource ListItemFontSize}" />
+                            <pge:Icon IconKey="fa-gear" Grid.RowSpan="2" FontSize="{StaticResource ListItemFontSize}" VerticalOptions="Center" />
                             <Label Text="{Binding Config.Name}" FontSize="{StaticResource ListItemFontSize}" Grid.Column="1" />
-                            <Label Text="{Binding Config.Description}" FontSize="{StaticResource ListItemDetailFontSize}" />
+                            <Label Text="{Binding Config.Description}" Grid.Row="1" Grid.Column="1" FontSize="{StaticResource ListItemDetailFontSize}" />
+                            <pge:Icon IconKey="fa-chevron-right" Grid.RowSpan="2" Grid.Column="2" FontSize="16" VerticalOptions="Center" />
                         </Grid>
                     </ViewCell>
                 </DataTemplate>
