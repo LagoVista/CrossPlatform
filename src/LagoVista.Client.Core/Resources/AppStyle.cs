@@ -15,36 +15,32 @@ namespace LagoVista.Client.Core.Resources
         private readonly Color _red = Color.CreateColor(0xFF, 0x0, 0x0);
         private readonly Color _blue = Color.CreateColor(0x0, 0x0, 0xFF);
 
+        private const string DefaultFont = "Roboto";
 
         public Color TitleBarBackground => NamedColors.NuvIoTDark;
 
         public Color TitleBarText => NamedColors.NuvIoTWhite;
 
+        public Color HighlightColor => NamedColors.NuvIoTContrast;
+
+
         public Color PageBackground => NamedColors.NuvIoTWhite;
 
-        public Color PageText => _darkGray;
 
         public Color LabelText => _lightGray;
 
-        public Color EditControlBackground => _white;
 
-        public Color EditControlText => _black;
 
-        public Color EditControlFrame => _black;
+        public Color MenuBarBackground => NamedColors.NuvIoTMedium;
 
-        public Color EditControlFrameFocus => _darkGray;
+        public Color MenuBarForeground => NamedColors.NuvIoTLight;
 
-        public Color EditControlFrameInvalid => _black;
+        public Color MenuBarBackgroundActive => NamedColors.NuvIoTDark;
 
-        public Color MenuBarBackground => _darkGray;
+        public Color MenuBarForegroundActive => NamedColors.NuvIoTLight;
 
-        public Color MenuBarForeground => _white;
 
-        public Color MenuBarBackgroundActive => _darkGray;
-
-        public Color MenuBarForegroundActive => _lightGray;
-
-        public Color ButtonBackground => NamedColors.NuvIoTMedium;
+        public Color ButtonBackground => NamedColors.NuvIoTDark;
 
         public Color ButtonBorder => _black;
 
@@ -56,47 +52,42 @@ namespace LagoVista.Client.Core.Resources
 
         public Color ButtonForegroundActive => NamedColors.NuvIoTWhite;
 
-        public Color HighlightColor => NamedColors.NuvIoTContrast;
+        public Color RowSeperatorColor => NamedColors.NuvIoTDark;
 
-        public Color RowSeperatorColor => _blue;
+        public Color ListItemColor => NamedColors.NuvIoTDark;
 
-        public Color ListItemColor => NamedColors.NuvIoTBlack;
+        public Color TabForground => NamedColors.NuvIoTDark;
+        public Color TabForgroundActive => NamedColors.NuvIoTLight;
+        public Color TabBackgroundActive => NamedColors.NuvIoTDark;
+        public Color TabBackground => NamedColors.NuvIoTLight;
+        public Color TabBarBackground => NamedColors.NuvIoTMedium;
 
-        public string HeaderFont => "Roboto";
 
-        public string ContentFont => "Roboto";
+        public string HeaderFont => DefaultFont;
 
-        public string LabelFont => "Roboto";
+        public string ContentFont => DefaultFont;
 
-        public string EntryFont => "Roboto";
+        public string LabelFont => DefaultFont;
 
-        public string MenuFont => "Roboto";
+        public string EntryFont => DefaultFont;
 
-        public string ListItemFont => "Roboto";
+        public string MenuFont => DefaultFont;
+
+        public string ListItemFont => DefaultFont;
 
         public double HeaderFontSize => 24;
 
-        public double LabelFontSize => 14;
+        public double LabelFontSize => 12;
 
-        public double EntryFontSize => 14;
+        public double EntryFontSize => 12;
 
-        public double ContentFontSize => 14;
+        public double ContentFontSize => 12;
 
-        public double MenuFontSize => 14;
+        public double MenuFontSize => 18;
 
-        public double ListItemFontSize => 36;
+        public double ListItemFontSize => 28;
 
-        public Color TabForground => NamedColors.White;
-
-        public Color TabForgroundActive => NamedColors.NuvIoTContrast;
-
-        public Color TabBackgroundActive => NamedColors.NuvIoTDark;
-
-        public Color TabBackground => NamedColors.NuvIoTLight;
-
-        public Color TabBarBackground => NamedColors.LightGray;
-
-        public string TabBarFont => "Roboto";
+        public string TabBarFont => DefaultFont;
 
         public double TabBarIconFontSize => 32;
 
@@ -105,5 +96,47 @@ namespace LagoVista.Client.Core.Resources
         public Color SectionHeaderColor => NamedColors.Black;
 
         public Color ListItemDetailColor => NamedColors.Black;
+
+        public string PageTextFont => DefaultFont;
+
+        public double PageTextFontSize => 12;
+
+        public Color HeaderColor => NamedColors.NuvIoTBlack;
+
+        public Color SubHeaderColor => NamedColors.DarkGray;
+
+        public double SubHeaderFontSize => 24;
+
+        public string SubHeaderFont => DefaultFont;
+
+        public Color EntryBackground => _white;
+
+        public Color EntryForeground => _black;
+
+        public Color EntryFrameColor => _darkGray;
+
+        public Color EntryFrameColorFocus => _black;
+
+        public Color EntryFrameColorFrameInvalid => throw new System.NotImplementedException();
+
+        public double EntryMargin => 2;
+
+        public Color IconButtonForeground => _darkGray;
+
+        public Color IconButtonForegroundAcive => _black;
+
+        public double IconButtonFontSize => 14;
+
+        public string ListItemDetailFont => DefaultFont;
+
+        public Color ListItemBackgroundColor => PageBackground;
+
+        public Color ListItemForegroundColor => _black;
+
+        public double ListItemDetailFontSize => 16;
+
+        public Color ListItemDetailForegroundColor => _darkGray;
+
+        public Color PageText => _black;
     }
 }

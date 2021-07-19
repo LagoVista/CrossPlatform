@@ -4,9 +4,8 @@ using LagoVista.Core.Commanding;
 using LagoVista.Core.Interfaces;
 using LagoVista.IoT.DeviceManagement.Core.Models;
 using LagoVista.IoT.DeviceManagement.Models;
+using SeaWolf.Models;
 using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace SeaWolf.ViewModels
@@ -15,7 +14,7 @@ namespace SeaWolf.ViewModels
     {
         private readonly IDeviceManagementClient _deviceManagementClient;
         private readonly IAppConfig _appConfig;
-        private PortConfig _config;
+        private SensorSummary _sensorSummary;
 
         private double _lowThreshold = 80;
         private double _highThreshold = 120;
@@ -34,7 +33,7 @@ namespace SeaWolf.ViewModels
         public override Task InitAsync()
         {
             CurrentDevice = GetLaunchArg<Device>(nameof(Device));
-            Config = GetLaunchArg<PortConfig>(nameof(PortConfig));
+            Sensor = GetLaunchArg<SensorSummary>(nameof(SensorSummary));
 
             return base.InitAsync();
         }
@@ -46,7 +45,6 @@ namespace SeaWolf.ViewModels
             set => Set(ref _currentDevice, value);
         }
 
-
         public void IncrementHighThreshold(object obj)
         {
             HighTolerance += .1;
@@ -54,7 +52,7 @@ namespace SeaWolf.ViewModels
 
         public void IncrementLowThreshold(object obj)
         {
-            LowTolerance -= .1;
+            LowTolerance += .1;
         }
 
         public void DecrementHighThreshold(object obj)
@@ -99,10 +97,10 @@ namespace SeaWolf.ViewModels
             set => Set(ref _highThreshold, value);
         }
 
-        public PortConfig Config
+        public SensorSummary Sensor
         {
-            get => _config;
-            set => Set(ref _config, value);
+            get => _sensorSummary;
+            set => Set(ref _sensorSummary, value);
         }
 
         public RelayCommand IncrementHighThresholdCommand { get; }
@@ -110,6 +108,11 @@ namespace SeaWolf.ViewModels
 
         public RelayCommand DecrementHighThresholdCommand { get; }
         public RelayCommand DecrementLowThresholdCommand { get; }
+
+        public override void Save()
+        {
+            base.Save();
+        }
 
     }
 }

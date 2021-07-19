@@ -49,7 +49,7 @@ namespace SeaWolf.ViewModels
         {
             CurrentDevice = GetLaunchArg<Device>(nameof(Device));
        
-            if (IsEditing)
+            if (IsAdding)
             {
                 SelectedSensorIndex = SensorIndexes[0];
                 SelectedSensorType = SensorTypes[0];

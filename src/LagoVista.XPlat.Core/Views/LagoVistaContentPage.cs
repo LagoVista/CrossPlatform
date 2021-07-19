@@ -204,8 +204,8 @@ namespace LagoVista.XPlat.Core
 
             _title = new Label();
             _title.SetValue(Grid.ColumnSpanProperty, 4);
-            _title.FontSize = ResourceSupport.GetNumber("HeaderFontSize");
-            _title.FontFamily = ResourceSupport.GetString("HeaderFont");
+            _title.FontSize = ResourceSupport.GetNumber(nameof(IAppStyle.HeaderFontSize));
+            _title.FontFamily = ResourceSupport.GetString(nameof(IAppStyle.HeaderFont));
             _title.FontAttributes = FontAttributes.Bold;
 
             _title.VerticalOptions = new LayoutOptions(LayoutAlignment.Center, false);
@@ -247,8 +247,8 @@ namespace LagoVista.XPlat.Core
 
             if (ResourceSupport.UseCustomColors)
             {
-                _toolBar.BackgroundColor = ResourceSupport.GetColor("TitleBarBackground");
-                _title.TextColor = ResourceSupport.GetColor("TitleBarText");
+                _toolBar.BackgroundColor = ResourceSupport.GetColor(nameof(IAppStyle.TitleBarBackground));
+                _title.TextColor = ResourceSupport.GetColor(nameof(IAppStyle.TitleBarText));
                 _leftMenuButton.TextColor = _title.TextColor;
                 _rightMenuButton.TextColor = _title.TextColor;
                 _helpButton.TextColor = _title.TextColor;
@@ -391,7 +391,7 @@ namespace LagoVista.XPlat.Core
                     }
                     else
                     {
-                        _mainContent.BackgroundColor = ResourceSupport.GetColor("PageBackground");
+                        _mainContent.BackgroundColor = ResourceSupport.GetColor(nameof(IAppStyle.PageBackground));
                     }
                 }
 

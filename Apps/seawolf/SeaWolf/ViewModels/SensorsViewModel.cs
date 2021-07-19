@@ -75,7 +75,8 @@ namespace SeaWolf.ViewModels
                 if (value != null)
                 {
                     ViewModelNavigation.NavigateAndEditAsync<SensorViewModel>(this,
-                        new KeyValuePair<string, object>("Device", CurrentDevice),
+                        value.Config.Id,
+                        new KeyValuePair<string, object>(nameof(Device), CurrentDevice),
                         new KeyValuePair<string, object>(nameof(SensorSummary), value));
                 }
 

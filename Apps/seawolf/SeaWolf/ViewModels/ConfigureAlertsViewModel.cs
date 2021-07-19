@@ -1,28 +1,22 @@
 ﻿using LagoVista.Client.Core.ViewModels;
 using LagoVista.Core.Interfaces;
 using LagoVista.IoT.DeviceManagement.Core.Models;
-using LagoVista.IoT.DeviceManagement.Models;
 using SeaWolf.Models;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace SeaWolf.ViewModels
 {
     public class ConfigureAlertsViewModel : AppViewModelBase
     {
-        private PortConfig _portConfig;
         private readonly IAppConfig _appConfig;
 
         public ConfigureAlertsViewModel(IAppConfig appConfig)
         {
             _appConfig = appConfig ?? throw new ArgumentNullException(nameof(appConfig));
         }
-
-
 
         public override Task InitAsync()
         {
@@ -44,13 +38,13 @@ namespace SeaWolf.ViewModels
             get => new KeyValuePair<string, object>(nameof(Device), CurrentDevice);
         }
 
-        public void EditConfig(PortConfig config)
+        public void EditConfig(SensorSummary sensorSummary)
         {
-            ViewModelNavigation.NavigateAndEditAsync<GeoFenceViewModel>(this, config.Id, _deviceParamer,
-                new KeyValuePair<string, object>(nameof(PortConfig), config));
+            ViewModelNavigation.NavigateAndEditAsync<ConfigureAlertViewModel>(this, sensorSummary.Config.Id, _deviceParamer,
+                new KeyValuePair<string, object>(nameof(SensorSummary), sensorSummary));
         }
 
-        public PortConfig Config
+        public SensorSummary SelectedSensor
         {
             get => null;
             set
@@ -64,6 +58,5 @@ namespace SeaWolf.ViewModels
         }
 
         public ObservableCollection<SensorSummary> Sensors { get; } = new ObservableCollection<SensorSummary>();
-
     }
 }

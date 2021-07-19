@@ -5,6 +5,7 @@ namespace SeaWolf
 {
     public class AppStyle : IAppStyle
     {
+        private readonly Color _red = Color.CreateColor(0xFF, 0, 0);
         private readonly Color _black = Color.CreateColor(0, 0, 0);
         private readonly Color _white = Color.CreateColor(0xFF, 0xFF, 0xFF);
         private readonly Color _darkGray = Color.CreateColor(0x20, 0x20, 0x20);
@@ -22,20 +23,10 @@ namespace SeaWolf
 
         public Color PageBackground => NamedColors.NuvIoTWhite;
 
-        public Color PageText => _darkGray;
-
+        
         public Color LabelText => _lightGray;
 
-        public Color EditControlBackground => _white;
-
-        public Color EditControlText => _black;
-
-        public Color EditControlFrame => _black;
-
-        public Color EditControlFrameFocus => _darkGray;
-
-        public Color EditControlFrameInvalid => _black;
-
+        
 
         public Color MenuBarBackground => NamedColors.NuvIoTMedium;
 
@@ -91,7 +82,7 @@ namespace SeaWolf
 
         public double MenuFontSize => 18;
 
-        public double ListItemFontSize => 28;
+        public double ListItemFontSize => 24;
 
         public string TabBarFont => DefaultFont;
 
@@ -102,5 +93,47 @@ namespace SeaWolf
         public Color SectionHeaderColor => NamedColors.Black;
 
         public Color ListItemDetailColor => NamedColors.Black;
+
+        public string PageTextFont => DefaultFont;
+
+        public double PageTextFontSize => 12;
+
+        public Color HeaderColor => NamedColors.NuvIoTBlack;
+
+        public Color SubHeaderColor => NamedColors.DarkGray;
+
+        public double SubHeaderFontSize => 24;
+
+        public string SubHeaderFont => DefaultFont;
+
+        public Color EntryBackground => _white;
+
+        public Color EntryForeground => _black;
+
+        public Color EntryFrameColor => _darkGray;
+
+        public Color EntryFrameColorFocus => _black;
+
+        public Color EntryFrameColorFrameInvalid => _red;
+
+        public double EntryMargin => 2;
+
+        public Color IconButtonForeground => _darkGray;
+
+        public Color IconButtonForegroundAcive => _black;
+
+        public double IconButtonFontSize => 14;
+
+        public string ListItemDetailFont => DefaultFont;
+
+        public Color ListItemBackgroundColor => PageBackground;
+
+        public Color ListItemForegroundColor => _black;
+
+        public double ListItemDetailFontSize => 12;
+
+        public Color ListItemDetailForegroundColor => _darkGray;
+
+        public Color PageText => _black;
     }
 }

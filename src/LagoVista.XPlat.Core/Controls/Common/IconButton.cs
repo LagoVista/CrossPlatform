@@ -1,4 +1,5 @@
 ﻿using LagoVista.Client.Core.Icons;
+using LagoVista.Core.Interfaces;
 using LagoVista.XPlat.Core.Services;
 using System;
 using Xamarin.Forms;
@@ -12,8 +13,10 @@ namespace LagoVista.XPlat.Core
             BackgroundColor = Xamarin.Forms.Color.Transparent;
             if(ResourceSupport.UseCustomColors)
             { 
-                TextColor = ResourceSupport.GetColor("TitleBarText");
+                TextColor = ResourceSupport.GetColor(nameof(IAppStyle.IconButtonForeground));
             }
+
+            FontSize = ResourceSupport.GetNumber(nameof(IAppStyle.IconButtonFontSize));
         }
 
         public static BindableProperty IconKeyProperty = BindableProperty.Create(nameof(IconKey), typeof(string), typeof(IconButton), default(string), BindingMode.Default, null,

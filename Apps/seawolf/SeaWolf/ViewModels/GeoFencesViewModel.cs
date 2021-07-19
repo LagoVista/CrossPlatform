@@ -54,7 +54,7 @@ namespace SeaWolf.ViewModels
 
         public void EditGeoFence(GeoFence geoFence)
         {
-            ViewModelNavigation.NavigateAndEditAsync<GeoFenceViewModel>(this,geoFence.Id, _deviceParamer,
+            ViewModelNavigation.NavigateAndEditAsync<GeoFenceViewModel>(this, geoFence.Id, _deviceParamer,
                 new KeyValuePair<string, object>(nameof(GeoFence), geoFence));
         }
 

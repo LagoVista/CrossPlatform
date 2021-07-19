@@ -4,10 +4,27 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="SeaWolf.Views.ConfigureAlertsView">
     <pge:LagoVistaContentPage.MainContent>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-        </StackLayout>
+        <ListView ItemsSource="{Binding Sensors}" SelectedItem="{Binding SelectedSensor, Mode=TwoWay}" Grid.Row="1" HasUnevenRows="True">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="auto"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="auto" />
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="auto" />
+                                <RowDefinition Height="auto" />
+                            </Grid.RowDefinitions>
+                            <pge:Icon IconKey="fa-gear" Grid.RowSpan="2" FontSize="{StaticResource ListItemFontSize}" />
+                            <Label Text="{Binding Config.Name}" FontSize="{StaticResource ListItemFontSize}" Grid.Column="1" />
+                            <Label Text="{Binding Config.Description}" FontSize="{StaticResource ListItemDetailFontSize}" />
+                        </Grid>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
     </pge:LagoVistaContentPage.MainContent>
 </pge:LagoVistaContentPage>

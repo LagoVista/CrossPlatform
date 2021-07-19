@@ -18,8 +18,8 @@
 
   <ItemGroup>
     <PackageReference Include="DLToolkit.Forms.Controls.FlowListView" Version="2.0.11" />
-    <PackageReference Include="LagoVista.Core.Authentication" Version="3.0.1523.1817" />
-    <PackageReference Include="LagoVista.Core.Networking" Version="3.0.1523.1817" />
+    <PackageReference Include="LagoVista.Core.Authentication" Version="3.0.1524.556" />
+    <PackageReference Include="LagoVista.Core.Networking" Version="3.0.1524.556" />
     <PackageReference Include="LagoVista.IoT.Deployment.Models" Version="3.0.1523.1817" />
     <PackageReference Include="LagoVista.IoT.DeviceMessaging.Models" Version="3.0.1523.1817" />
     <PackageReference Include="LagoVista.IoT.Logging" Version="3.0.1523.1817" />

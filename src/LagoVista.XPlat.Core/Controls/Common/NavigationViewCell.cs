@@ -19,7 +19,7 @@ namespace LagoVista.XPlat.Core.Controls.Common
         public NavigationViewCell()
         {
             _layout = new Grid();
-            _layout.HeightRequest = 72;
+            _layout.HeightRequest = 80;
 
             _icon = new Icon()
             {
@@ -41,7 +41,7 @@ namespace LagoVista.XPlat.Core.Controls.Common
 
             _detail = new Label()
             {
-                FontSize = ResourceSupport.GetNumber("LiteItemDetailSize"),
+                FontSize = ResourceSupport.GetNumber(nameof(IAppStyle.ListItemDetailFontSize)),
                 IsVisible = false,
             };
             _detail.SetValue(Grid.ColumnProperty, 1);
@@ -63,7 +63,7 @@ namespace LagoVista.XPlat.Core.Controls.Common
             _layout.ColumnDefinitions.Add(new ColumnDefinition() { Width = new GridLength(1, GridUnitType.Star) });
             _layout.ColumnDefinitions.Add(new ColumnDefinition() { Width = new GridLength(48, GridUnitType.Absolute) });
 
-            _layout.RowDefinitions.Add(new RowDefinition() { Height = new GridLength(1, GridUnitType.Star) });
+            _layout.RowDefinitions.Add(new RowDefinition() { Height = new GridLength(1, GridUnitType.Auto) });
             _layout.RowDefinitions.Add(new RowDefinition() { Height = new GridLength(1, GridUnitType.Auto) });
 
             _layout.Children.Add(_icon);
@@ -73,11 +73,11 @@ namespace LagoVista.XPlat.Core.Controls.Common
 
             if (ResourceSupport.UseCustomColors)
             {
-                _layout.BackgroundColor = ResourceSupport.GetColor("ListItemBackgroundColor");
-                _detail.TextColor = ResourceSupport.GetColor(nameof(IAppStyle.ListItemDetailColor));
+                _layout.BackgroundColor = ResourceSupport.GetColor(nameof(IAppStyle.ListItemBackgroundColor));
+                _detail.TextColor = ResourceSupport.GetColor(nameof(IAppStyle.ListItemDetailForegroundColor));
                 _chevron.TextColor = ResourceSupport.GetColor(nameof(IAppStyle.HighlightColor));
-                _text.TextColor = ResourceSupport.GetColor(nameof(IAppStyle.ListItemColor));
-                _icon.TextColor = ResourceSupport.GetColor(nameof(IAppStyle.ListItemColor));
+                _text.TextColor = ResourceSupport.GetColor(nameof(IAppStyle.ListItemForegroundColor));
+                _icon.TextColor = ResourceSupport.GetColor(nameof(IAppStyle.ListItemForegroundColor));
 
                 _text.FontFamily = ResourceSupport.GetString(nameof(IAppStyle.ListItemFont));
             }
