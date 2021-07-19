@@ -15,7 +15,7 @@ appProjectName=SeaWolf.iOS
 
 # Version is pulled from a file in the root, it contains first two digits of full version, such as 1.0
 version=$(<$APPCENTER_SOURCE_DIRECTORY/App/seawolf/version.txt)
-
+version='0.5'
 # Revision is four digit number, always zero padded HHMM
 revision=`date +"%H%M"`
 
