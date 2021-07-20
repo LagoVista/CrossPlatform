@@ -24,10 +24,13 @@ using Xamarin.Essentials;
 
 namespace SeaWolf.ViewModels
 {
-    public class MainViewModel : MonitoringViewModelBase
+    public class DesignMockViewModel : MonitoringViewModelBase
     {
         private bool _isNotFirstVessel;
         private bool _isNotLastVessel;
+        private bool _mainViewVisible = true;
+        private bool _mapViewVisible;
+        private bool _alertsViewVisible;
         GeoLocation _currentVeseelLocation;
 
         Device _currentDevice;
@@ -35,7 +38,14 @@ namespace SeaWolf.ViewModels
         private readonly IDeviceManagementClient _deviceManagementClient;
         private readonly IAppConfig _appConfig;
 
-        public MainViewModel(IDeviceManagementClient deviceManagementClient, IAppConfig appConfig)
+        public enum ViewToShow
+        { 
+            Main,
+            Map,
+            Alerts
+        }
+
+        public DesignMockViewModel(IDeviceManagementClient deviceManagementClient, IAppConfig appConfig)
         {
             _deviceManagementClient = deviceManagementClient ?? throw new ArgumentNullException(nameof(deviceManagementClient));
             _appConfig = appConfig ?? throw new ArgumentNullException(nameof(appConfig));
@@ -80,8 +90,34 @@ namespace SeaWolf.ViewModels
 
             NextVesselCommand = new RelayCommand(NextVessel);
             PreviousVesselCommand = new RelayCommand(PreviousVessel);
+
+            ViewMainCommand = new RelayCommand(() => ShowView(ViewToShow.Main));
+            ViewMapCommand = new RelayCommand(() => ShowView(ViewToShow.Map));
+            ViewAlertsCommand = new RelayCommand(() => ShowView(ViewToShow.Alerts));
+            ViewSettingsCommand = new RelayCommand(() => ViewModelNavigation.NavigateAsync<SettingsViewModel>(this, new KeyValuePair<string, object>(nameof(Device), CurrentDevice)));
         }
 
+        public void ShowView(ViewToShow view)
+        {
+            MainViewVisible = false;
+            AlertsViewVisible = false;
+            MapViewVisible = false;
+
+            switch(view)
+            {
+                case ViewToShow.Main:
+                    MainViewVisible = true;
+                    break;
+                case ViewToShow.Map:
+                    MapViewVisible = true;
+                    break;
+                case ViewToShow.Alerts:
+                    AlertsViewVisible = true;
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException(nameof(view), view, null);
+            }
+        }
 
         public override async Task InitAsync()
         {
@@ -118,14 +154,13 @@ namespace SeaWolf.ViewModels
                     return InvokeResult.Success;
                 }
             });
-
             await base.InitAsync();
         }
 
         private async Task<InvokeResult> LoadDevice()
         {
             return await PerformNetworkOperation(async () =>
-           {
+            {
                CurrentDevice = null;
                var deviceResponse = await _deviceManagementClient.GetDeviceAsync(_appConfig.DeviceRepoId, DeviceId);
                if (deviceResponse.Successful)
@@ -239,12 +274,37 @@ namespace SeaWolf.ViewModels
             get => _currentVeseelLocation;
             set => Set(ref _currentVeseelLocation, value);
         }
+        
+        public bool MainViewVisible
+        {
+            get => _mainViewVisible;
+            set => Set(ref _mainViewVisible, value);
+            
+        }
+        
+        public bool MapViewVisible
+        {
+            get => _mapViewVisible;
+            set => Set(ref _mapViewVisible, value);
+            
+        }
+
+        public bool AlertsViewVisible
+        {
+            get => _alertsViewVisible;
+            set => Set(ref _alertsViewVisible, value);
+            
+        }
         #endregion
 
         #region Commands
         public RelayCommand PreviousVesselCommand { get; }
         public RelayCommand NextVesselCommand { get; }
         public RelayCommand<GeoLocation> MapTappedCommand { get; }
+        public RelayCommand ViewMainCommand { get; }
+        public RelayCommand ViewAlertsCommand { get; }
+        public RelayCommand ViewMapCommand { get; }
+        public RelayCommand ViewSettingsCommand { get; }
         #endregion
 
         public override void HandleMessage(Notification notification)

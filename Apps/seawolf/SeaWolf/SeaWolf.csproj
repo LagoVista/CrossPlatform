@@ -49,6 +49,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="Controls\SensorHUD.xaml.cs">
+      <DependentUpon>SensorHUD.xaml</DependentUpon>
+    </Compile>
     <Compile Update="SeawolfResources.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
@@ -57,6 +60,15 @@
   </ItemGroup>
 
   <ItemGroup>
+    <EmbeddedResource Update="Controls\SiteContent.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Controls\SiteFooter.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Controls\SiteHeader.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
     <EmbeddedResource Update="SeawolfResources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>SeawolfResources.Designer.cs</LastGenOutput>
@@ -68,6 +80,9 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\ConfigureAlertView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\DesignMockView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\GeoFencesView.xaml">

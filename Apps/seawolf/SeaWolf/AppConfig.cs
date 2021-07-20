@@ -59,6 +59,7 @@ namespace SeaWolf
         public string AppLogo => "SeaWolf.png";
 
         public string CompanyLogo => "companylogo.png";
+
 #if DEBUG
         public bool EmitTestingCode => true;
 #else
