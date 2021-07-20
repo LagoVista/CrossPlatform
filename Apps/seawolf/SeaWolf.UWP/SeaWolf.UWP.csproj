@@ -114,6 +114,9 @@
     </AppxManifest>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\background-overlay-pixel-spaced-1.png" />
+    <Content Include="Assets\background-overlay-pixel-spaced-2.png" />
+    <Content Include="Assets\background-overlay-pixel-spaced-3.png" />
     <Content Include="Assets\companylogo.png" />
     <Content Include="Assets\Icons\AV Receiver_100px.png" />
     <Content Include="Assets\Icons\Checkmark_100px.png" />
@@ -154,6 +157,8 @@
     <Content Include="Assets\Icons\Upload_100px.png" />
     <Content Include="Assets\LargeTile.scale-125.png" />
     <Content Include="Assets\LargeTile.scale-150.png" />
+    <Content Include="Assets\logo-seawolf-grey.png" />
+    <Content Include="Assets\map-example.PNG" />
     <Content Include="Assets\SmallTile.scale-125.png" />
     <Content Include="Assets\SmallTile.scale-150.png" />
     <Content Include="Assets\SplashScreen.scale-125.png" />

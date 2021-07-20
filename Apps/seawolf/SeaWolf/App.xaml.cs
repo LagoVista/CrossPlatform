@@ -108,6 +108,8 @@ namespace SeaWolf
             navigation.Add<SplashViewModel, Views.SplashView>();
            
             navigation.Start<SplashViewModel>();
+            
+            navigation.Add<DesignMockViewModel, Views.DesignMockView>();
 
             SLWIOC.Register<IDeviceManagementClient, DeviceManagementClient>();
         }
