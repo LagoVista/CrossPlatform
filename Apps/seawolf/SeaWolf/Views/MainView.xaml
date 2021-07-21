@@ -33,6 +33,7 @@
     </pge:LagoVistaContentPage.TabHeader>
     <pge:LagoVistaContentPage.TabbedContent>
         <pge:TabContentHolder IsVisible="{Binding CurrentDevice, Converter={StaticResource NotNullVisibilityConverter}}">
+
             <pge:TabContent BackgroundColor="White">
                 <ScrollView>
                     <Grid>
@@ -51,6 +52,7 @@
                     </Grid>
                 </ScrollView>
             </pge:TabContent>
+
             <pge:TabContent BackgroundColor="White">
                 <ScrollView>
                     <Grid>

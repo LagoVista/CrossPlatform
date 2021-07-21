@@ -1,0 +1,166 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:pge="clr-namespace:LagoVista.XPlat.Core;assembly=LagoVista.XPlat.Core"
+    x:Class="SeaWolf.Controls.SiteContent">
+
+    <ContentView.Content>
+        <Frame CornerRadius="25" Padding="0">
+            <StackLayout BackgroundColor="White">
+
+                <Frame 
+                    HeightRequest="150"
+                    BackgroundColor="#93D7F6" 
+                    Padding="0"
+                    Margin="0"
+                    CornerRadius="0"
+                >
+                    <AbsoluteLayout>
+                        <pge:Image 
+                            AbsoluteLayout.LayoutFlags="All" 
+                            AbsoluteLayout.LayoutBounds="0,0,1,1"
+                            UWPPath="Assets" 
+                            FileName="map-example.png" 
+                            Aspect="AspectFill" 
+                        />
+                        <pge:Icon
+                            AbsoluteLayout.LayoutBounds="0.5, 0.5, AutoSize, AutoSize"
+                            AbsoluteLayout.LayoutFlags="PositionProportional"
+                            IconKey="fa-map-marker" 
+                            TextColor="#E95C5D"
+                            FontSize="36" 
+                            WidthRequest="50"
+                            HeightRequest="50"
+                            Margin="0,0,0,0"
+                            HorizontalTextAlignment="Center"
+                        />
+                    </AbsoluteLayout>
+                </Frame>
+
+                <Grid Margin="10">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="*"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+
+                    <Label Grid.Row="0" Grid.Column="0" 
+                       Text="Temperatures" 
+                       FontSize="36" 
+                       TextColor="#55A9F2"
+                    />
+                    <Label Grid.Row="0" Grid.Column="1" 
+                       Text="+" 
+                       HorizontalOptions="End" 
+                       Margin="0,-10,0,0"
+                       FontSize="48"
+                       FontAttributes="Bold"
+                       TextColor="#666666"
+                    />
+
+                    <StackLayout Orientation="Horizontal" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2">
+                        <Grid Margin="25,0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="25.0"></ColumnDefinition>
+                                <ColumnDefinition Width="*"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="30.0"></RowDefinition>
+                                <RowDefinition Height="125.0"></RowDefinition>
+                            </Grid.RowDefinitions>
+
+                            <Label Grid.Row="0" Grid.ColumnSpan="2" 
+                            Text="Livewell 1" 
+                            TextColor="#666666"
+                            FontAttributes="Bold"
+                            FontSize="26"
+                        />
+                            <pge:Icon Grid.Row="1" Grid.Column="0"
+                            IconKey="fa-thermometer-half" 
+                            TextColor="#212121"
+                            FontSize="36" 
+                            Margin="0,58,0,0"
+                        />
+                            <Label Grid.Row="1" Grid.Column="1" 
+                            Text="82" 
+                            TextColor="#212121"
+                            FontSize="126" 
+                            VerticalTextAlignment="End"
+                        />
+                        </Grid>
+
+                        <BoxView BackgroundColor="#666666" WidthRequest="2" />
+
+                        <Grid Margin="25,0" HorizontalOptions="Start">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="25.0"></ColumnDefinition>
+                                <ColumnDefinition Width="*"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="30.0"></RowDefinition>
+                                <RowDefinition Height="125.0"></RowDefinition>
+                            </Grid.RowDefinitions>
+
+                            <Label Grid.Row="0" Grid.ColumnSpan="2" 
+                            Text="Livewell 2" 
+                            TextColor="#666666"
+                            FontAttributes="Bold"
+                            FontSize="26"
+                        />
+                            <pge:Icon Grid.Row="1" Grid.Column="0"
+                            IconKey="fa-thermometer-half" 
+                            TextColor="#FFAC25"
+                            FontSize="36" 
+                            Margin="0,58,0,0"
+                        />
+                            <Label Grid.Row="1" Grid.Column="1" 
+                            Text="94" 
+                            TextColor="#FFAC25"
+                            FontSize="126" 
+                            VerticalTextAlignment="End"
+                        />
+                        </Grid>
+                    </StackLayout>
+
+                    <StackLayout Orientation="Horizontal" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2">
+                        <Grid Margin="25,0" HorizontalOptions="Start">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="25.0"></ColumnDefinition>
+                                <ColumnDefinition Width="*"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="30.0"></RowDefinition>
+                                <RowDefinition Height="125.0"></RowDefinition>
+                            </Grid.RowDefinitions>
+
+                            <Label Grid.Row="0" Grid.ColumnSpan="2" 
+                            Text="Trailer 1" 
+                            TextColor="#666666"
+                            FontAttributes="Bold"
+                            FontSize="26"
+                        />
+                            <pge:Icon Grid.Row="1" Grid.Column="0"
+                            IconKey="fa-thermometer-half" 
+                            TextColor="#E95C5D"
+                            FontSize="36" 
+                            Margin="0,58,0,0"
+                        />
+                            <Label Grid.Row="1" Grid.Column="1" 
+                            Text="112" 
+                            TextColor="#E95C5D"
+                            FontSize="126" 
+                            VerticalTextAlignment="End"
+                        />
+                        </Grid>
+                    </StackLayout>
+                </Grid>
+
+            </StackLayout>
+        </Frame>
+    </ContentView.Content>
+
+</ContentView>
