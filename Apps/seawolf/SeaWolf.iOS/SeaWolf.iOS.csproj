@@ -147,6 +147,11 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </BundleResource>
     <InterfaceDefinition Include="Resources\LaunchScreen.storyboard" />
+    <BundleResource Include="Resources\logo-seawolf-grey.png" />
+    <BundleResource Include="Resources\background-overlay-pixel-spaced-1.png" />
+    <BundleResource Include="Resources\background-overlay-pixel-spaced-2.png" />
+    <BundleResource Include="Resources\background-overlay-pixel-spaced-3.png" />
+    <BundleResource Include="Resources\map-example.PNG" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\tab_about.png" />
@@ -356,5 +361,8 @@
     <BundleResource Include="Resources\Default%402x.png" />
     <Content Include="Resources\everglades.png" />
     <Content Include="Resources\thermo.png" />
+    <Content Include="Resources\SeaWolf.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
 </Project>

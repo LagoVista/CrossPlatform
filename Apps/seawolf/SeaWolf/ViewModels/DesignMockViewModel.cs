@@ -22,6 +22,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Xamarin.Essentials;
 
+
 namespace SeaWolf.ViewModels
 {
     public class DesignMockViewModel : MonitoringViewModelBase
@@ -30,8 +31,12 @@ namespace SeaWolf.ViewModels
         private bool _isNotLastVessel;
         private bool _mainViewVisible = true;
         private bool _mapViewVisible;
+        Xamarin.Forms.Color _headerBackgroundColor = Xamarin.Forms.Color.FromRgb(0x55, 0xA9, 0xF2);
+        Xamarin.Forms.Color _headerForegroundColor = Xamarin.Forms.Color.Black;
+
         private bool _alertsViewVisible;
         GeoLocation _currentVeseelLocation;
+        String _systemStatus = "All systems nominal";
 
         Device _currentDevice;
         ObservableCollection<DeviceSummary> _userDevices;
@@ -52,9 +57,6 @@ namespace SeaWolf.ViewModels
 
             MenuItems = new List<MenuItem>()
             {
-
-                
-
                 // -------------------------------------------------------------------------------------------------------
                 // TODO: remove this when done with design & layout.
                 new MenuItem()
@@ -177,11 +179,11 @@ namespace SeaWolf.ViewModels
                    }
                    else
                    {
-                       //var lastKnownLocation = await Geolocation.GetLastKnownLocationAsync();
-                       //if (lastKnownLocation != null)
-                       //{
-                       //    CurrentVeseelLocation = new GeoLocation(lastKnownLocation.Latitude, lastKnownLocation.Longitude);
-                       //}
+                       var lastKnownLocation = await Geolocation.GetLastKnownLocationAsync();
+                       if (lastKnownLocation != null)
+                       {
+                           CurrentVeseelLocation = new GeoLocation(lastKnownLocation.Latitude, lastKnownLocation.Longitude);
+                       }
                    }
 
                    GeoFences.Clear();
@@ -191,7 +193,27 @@ namespace SeaWolf.ViewModels
                    }
 
                    Sensors.AddValidSensors(_appConfig, CurrentDevice);
-               }
+                    var outOfToleranceSensors = Sensors.Where(sns => sns.OutOfTolerance);
+                    var warningSensors = Sensors.Where(sns => sns.Warning);
+
+                    if (outOfToleranceSensors.Any())
+                    {
+                        HeaderBackgroundColor = Xamarin.Forms.Color.FromRgb(0xE9, 0x5C, 0x5D);
+                        HeaderForegroundColor = Xamarin.Forms.Color.White;
+                        SystemStatus = String.Join(" ", outOfToleranceSensors.Select(oot => oot.Config.Name + " " + oot.Value));
+                    }
+                    else if (warningSensors.Any())
+                    {
+                        HeaderBackgroundColor = Xamarin.Forms.Color.FromRgb(0xFF, 0xC8, 0x7F);
+                        HeaderForegroundColor = Xamarin.Forms.Color.White;
+                        SystemStatus = String.Join(" ",warningSensors.Select(oot => oot.Config.Name + " " + oot.Value));
+                    }
+                    else
+                    {
+                        HeaderBackgroundColor = Xamarin.Forms.Color.FromRgb(0x55, 0xA9, 0xF2);
+                        HeaderForegroundColor = Xamarin.Forms.Color.FromRgb(0x21, 0x21, 0x21);
+                    }
+                }
 
                return deviceResponse.ToInvokeResult();
            });
@@ -293,7 +315,24 @@ namespace SeaWolf.ViewModels
         {
             get => _alertsViewVisible;
             set => Set(ref _alertsViewVisible, value);
-            
+        }
+
+        public Xamarin.Forms.Color HeaderBackgroundColor
+        {
+            get => _headerBackgroundColor;
+            set => Set(ref _headerBackgroundColor, value);
+        }
+
+        public Xamarin.Forms.Color HeaderForegroundColor
+        {
+            get => _headerForegroundColor;
+            set => Set(ref _headerForegroundColor, value);
+        }
+
+        public string SystemStatus
+        {
+            get => _systemStatus;
+            set => Set(ref _systemStatus, value);
         }
         #endregion
 
@@ -309,7 +348,10 @@ namespace SeaWolf.ViewModels
 
         public override void HandleMessage(Notification notification)
         {
-            switch(notification.PayloadType)
+            var warningSensors = new List<SensorSummary>();
+            var outOfToleranceSensors = new List<SensorSummary>();
+
+            switch (notification.PayloadType)
             {
                 case nameof(Device):
                     var serializerSettings = new JsonSerializerSettings();
@@ -319,16 +361,50 @@ namespace SeaWolf.ViewModels
 
                     foreach (var sensor in Sensors)
                     {
-                        if(sensor.SensorType.Technology == SensorTechnology.ADC)
+                        if (sensor.SensorType.Technology == SensorTechnology.ADC)
                         {
-                             
+                            CurrentDevice.Sensors.AdcValues[sensor.Config.SensorIndex - 1] = device.Sensors.AdcValues[sensor.Config.SensorIndex - 1];
+                            sensor.Value = device.Sensors.AdcValues[sensor.Config.SensorIndex - 1].ToString();
+                        }
+
+                        if (sensor.SensorType.Technology == SensorTechnology.IO)
+                        {
+                            CurrentDevice.Sensors.IoValues[sensor.Config.SensorIndex - 1] = device.Sensors.IoValues[sensor.Config.SensorIndex - 1];
+                            sensor.Value = device.Sensors.IoValues[sensor.Config.SensorIndex - 1].ToString();
+                        }
+
+                        if(sensor.Warning)
+                        {
+                            warningSensors.Add(sensor);
+                        }
+
+                        if(sensor.OutOfTolerance)
+                        {
+                            outOfToleranceSensors.Add(sensor);
                         }
                     }
 
-
                     break;
             }
-            var item = notification.Channel;
+
+            if(outOfToleranceSensors.Any())
+            {
+                HeaderBackgroundColor = Xamarin.Forms.Color.FromRgb(0xE9, 0x5C, 0x5D);
+                HeaderForegroundColor = Xamarin.Forms.Color.White;
+                SystemStatus = String.Join(", ", outOfToleranceSensors.Select(oot => oot.Config.Name + " " + oot.Value));
+            }
+            else if(warningSensors.Any())
+            {
+                HeaderBackgroundColor = Xamarin.Forms.Color.FromRgb(0xFF, 0xC8, 0x7F);
+                HeaderForegroundColor = Xamarin.Forms.Color.White;
+                SystemStatus = String.Join(", ", warningSensors.Select(oot => oot.Config.Name + " " + oot.Value));
+            }
+            else
+            {
+                HeaderBackgroundColor = Xamarin.Forms.Color.FromRgb(0x55, 0xA9, 0xF2);
+                HeaderForegroundColor = Xamarin.Forms.Color.FromRgb(0x21, 0x21, 0x21);
+                SystemStatus = "All systems nonimal";
+            }
         }
 
         public override string GetChannelURI()

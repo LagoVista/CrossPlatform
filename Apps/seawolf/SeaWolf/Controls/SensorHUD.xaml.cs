@@ -10,6 +10,7 @@ namespace SeaWolf.Controls
         public static readonly BindableProperty CardDescriptionProperty = BindableProperty.Create(nameof(CardDescription), typeof(string), typeof(SensorHUD), string.Empty);
         public static readonly BindableProperty BorderColorProperty = BindableProperty.Create(nameof(BorderColor), typeof(Color), typeof(SensorHUD), Color.DarkGray);
         public static readonly BindableProperty CardColorProperty = BindableProperty.Create(nameof(CardColor), typeof(Color), typeof(SensorHUD), Color.White);
+        public static readonly BindableProperty CardForegroundColorProperty = BindableProperty.Create(nameof(CardForegroundColor), typeof(Color), typeof(SensorHUD), Color.Black);
         public static readonly BindableProperty IconImageSourceProperty = BindableProperty.Create(nameof(IconImageSource), typeof(ImageSource), typeof(SensorHUD), default(ImageSource));
         public static readonly BindableProperty IconKeyProperty = BindableProperty.Create(nameof(IconKey), typeof(string), typeof(SensorHUD), default(string));
         public static readonly BindableProperty IconBackgroundColorProperty = BindableProperty.Create(nameof(IconBackgroundColor), typeof(Color), typeof(SensorHUD), Color.LightGray);
@@ -36,6 +37,12 @@ namespace SeaWolf.Controls
         {
             get => (Color)GetValue(SensorHUD.CardColorProperty);
             set => SetValue(SensorHUD.CardColorProperty, value);
+        }
+
+        public Color CardForegroundColor
+        {
+            get => (Color)GetValue(SensorHUD.CardForegroundColorProperty);
+            set => SetValue(SensorHUD.CardForegroundColorProperty, value);
         }
 
         public ImageSource IconImageSource

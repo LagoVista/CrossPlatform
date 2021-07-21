@@ -11,6 +11,7 @@
     <Frame BindingContext="{x:Reference this}"
            HasShadow="True"
            Padding="8"
+           BackgroundColor="{Binding CardColor}"
            VerticalOptions="Center"
            HorizontalOptions="Center">
         <Grid>
@@ -24,25 +25,25 @@
             </Grid.RowDefinitions>
 
             <Label 
-                Grid.Row="0" 
+                Grid.Row="0"
                 Grid.ColumnSpan="2" 
                 Text="{Binding CardDescription, FallbackValue='Card description text.'}"
-                TextColor="#666666"
-                FontSize="18" 
-                FontAttributes="Bold" />
+                TextColor="{Binding CardForegroundColor}"
+                FontSize="14" 
+                FontAttributes="Bold" />    
             <pge:Icon 
                 Grid.Row="1" 
                 Grid.Column="0"
                 IconKey="{Binding IconKey}" 
-                TextColor="#212121"
+                TextColor="{Binding CardForegroundColor}"
                 FontSize="26" />
             <Label 
                 Grid.Row="1" 
                 Grid.Column="1" 
                 Margin="0,-20,0,0"
                 Text="{Binding CardValue, FallbackValue='xx'}"
-                TextColor="#212121"
-                FontSize="100" 
+                TextColor="{Binding CardForegroundColor}"
+                FontSize="64" 
                 CharacterSpacing="-0.5"
                 />
 
