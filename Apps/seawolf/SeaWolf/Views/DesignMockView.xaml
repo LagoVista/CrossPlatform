@@ -104,6 +104,7 @@
                                Aspect="AspectFit"
                                VerticalOptions="Center"
                                Margin="0,-5,0,0"
+                               HeightRequest="50"
                                />
                     </StackLayout>
                     <pge:IconButton Grid.Row="1" Grid.Column="5" VerticalOptions="Center" 
