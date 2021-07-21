@@ -76,41 +76,41 @@
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="0.025*"></ColumnDefinition>
-                        <ColumnDefinition Width="0.1*"></ColumnDefinition>
-                        <ColumnDefinition Width="0.1*"></ColumnDefinition>
-                        <ColumnDefinition Width="0.1*"></ColumnDefinition>
-                        <ColumnDefinition Width="0.55*"></ColumnDefinition>
-                        <ColumnDefinition Width="0.1*"></ColumnDefinition>
+                        <ColumnDefinition Width="0.125*"></ColumnDefinition>
+                        <ColumnDefinition Width="0.125*"></ColumnDefinition>
+                        <ColumnDefinition Width="0.125*"></ColumnDefinition>
+                        <ColumnDefinition Width="0.45*"></ColumnDefinition>
+                        <ColumnDefinition Width="0.125*"></ColumnDefinition>
                         <ColumnDefinition Width="0.025*"></ColumnDefinition>
                     </Grid.ColumnDefinitions>
 
                     <pge:IconButton Grid.Row="1" Grid.Column="1"
                           IconKey="fa-home" 
-                          TextColor="#212121"
+                          TextColor="#FFFFFF"
                           FontSize="28" 
                           Margin="0,-10,0,0"
                           Command="{Binding Path=ViewMainCommand}" />
                     <pge:IconButton Grid.Row="1" Grid.Column="2"
                           IconKey="fa-map" 
-                          TextColor="#212121"
+                          TextColor="#FFFFFF"
                           FontSize="28" 
                           Margin="0,-10,0,0"
                           Command="{Binding Path=ViewMapCommand}" />
                     <pge:IconButton Grid.Row="1" Grid.Column="3"
                               IconKey="fa-bell" 
-                              TextColor="#212121"
+                              TextColor="#FFFFFF"
                               FontSize="28" 
                               Margin="0,-10,0,0"
                               Command="{Binding Path=ViewAlertsCommand}" />
                     <StackLayout Grid.Row="1" Grid.Column="4">
-                        <pge:Image UWPPath="Assets" FileName="logo-seawolf-grey.png"
+                        <pge:Image UWPPath="Assets" FileName="logo-seawolf-white.png"
                                Aspect="AspectFit"
                                WidthRequest="185"
                                Margin="0,-1,0,0" />
                     </StackLayout>
                     <pge:IconButton Grid.Row="1" Grid.Column="5" 
                               IconKey="fa-bars" 
-                              TextColor="#212121"
+                              TextColor="#FFFFFF"
                               FontSize="28"
                               Margin="0,-10,0,0"
                               Command="{Binding Path=ViewSettingsCommand}" />
@@ -120,14 +120,19 @@
             <!-- SITE FOOTER -->
 
             <!-- VIEW: MAIN -->
-            <Frame CornerRadius="25" Padding="0" AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0,0,1,1" Margin="0,120,0,85" 
-                   IsVisible="{Binding Path=MainViewVisible}">
+            <Frame AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0,0,1,1"
+                Padding="0"
+                Margin="0,130,0,85" 
+                CornerRadius="25"
+                IsClippedToBounds="True"
+                IsVisible="{Binding Path=MainViewVisible}">
                 <StackLayout BackgroundColor="White">
                     <Frame HeightRequest="200"
-                           BackgroundColor="#93D7F6" 
+                           BackgroundColor="#FFFFFF" 
                            Padding="0"
                            Margin="0"
-                           CornerRadius="0">
+                           CornerRadius="0"
+                           HasShadow="False">
                         <AbsoluteLayout>
                             <pge:BindableMap 
                                 AbsoluteLayout.LayoutFlags="All" 
@@ -136,20 +141,6 @@
                                 MapCenter="{Binding CurrentVeseelLocation}" 
                                 GeoFences="{Binding GeoFences}" 
                                 />
-                            <!--<pge:Image AbsoluteLayout.LayoutFlags="All" 
-                                       AbsoluteLayout.LayoutBounds="0,0,1,1"
-                                       UWPPath="Assets" 
-                                       FileName="map-example.png" 
-                                       Aspect="AspectFill" />
-                            <pge:Icon AbsoluteLayout.LayoutBounds="0.5, 0.5, AutoSize, AutoSize"
-                                      AbsoluteLayout.LayoutFlags="PositionProportional"
-                                      IconKey="fa-map-marker" 
-                                      TextColor="#E95C5D"
-                                      FontSize="36" 
-                                      WidthRequest="50"
-                                      HeightRequest="50"
-                                      Margin="0,0,0,0"
-                                      HorizontalTextAlignment="Center" />-->
                         </AbsoluteLayout>
                     </Frame>
 
@@ -273,7 +264,12 @@
             <!-- VIEW: MAIN -->
 
             <!-- VIEW: MAIN -->
-            <Frame CornerRadius="25" Padding="0" AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0,0,1,1" Margin="0,100,0,85" IsVisible="{Binding Path=MapViewVisible}">
+            <Frame AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0,0,1,1"
+                Padding="0"
+                Margin="0,130,0,85" 
+                CornerRadius="25"
+                IsClippedToBounds="True"
+                IsVisible="{Binding Path=MapViewVisible}">
                 <StackLayout BackgroundColor="White">
                     <pge:BindableMap MapType="Street" MapCenter="{Binding CurrentVeseelLocation}" GeoFences="{Binding GeoFences}" />
                 </StackLayout>
@@ -281,7 +277,12 @@
             <!-- VIEW: MAIN -->
 
             <!-- VIEW: MAIN -->
-            <Frame CornerRadius="25" Padding="0" AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0,0,1,1" Margin="0,100,0,85" IsVisible="{Binding Path=AlertsViewVisible}">
+            <Frame AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0,0,1,1"
+                Padding="0"
+                Margin="0,130,0,85" 
+                CornerRadius="25"
+                IsClippedToBounds="True"
+                IsVisible="{Binding Path=AlertsViewVisible}">
                 <StackLayout BackgroundColor="White" Padding="25">
                     <Label Text="Alerts coming soon" FontSize="24" />
                 </StackLayout>
