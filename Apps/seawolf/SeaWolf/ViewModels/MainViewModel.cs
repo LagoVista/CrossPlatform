@@ -142,6 +142,8 @@ namespace SeaWolf.ViewModels
                    Sensors.AddValidSensors(_appConfig, CurrentDevice);
                }
 
+               await SubscribeToWebSocketAsync();
+
                return deviceResponse.ToInvokeResult();
            });
         }
@@ -245,10 +247,16 @@ namespace SeaWolf.ViewModels
                     {
                         if(sensor.SensorType.Technology == SensorTechnology.ADC)
                         {
-                             
+                            CurrentDevice.Sensors.AdcValues[sensor.Config.SensorIndex - 1] = device.Sensors.AdcValues[sensor.Config.SensorIndex - 1];
+                            sensor.Value = device.Sensors.AdcValues[sensor.Config.SensorIndex - 1].ToString();
+                        }
+                        
+                        if (sensor.SensorType.Technology == SensorTechnology.IO)
+                        {
+                            CurrentDevice.Sensors.IoValues[sensor.Config.SensorIndex - 1] = device.Sensors.IoValues[sensor.Config.SensorIndex - 1];
+                            sensor.Value = device.Sensors.IoValues[sensor.Config.SensorIndex - 1].ToString(); 
                         }
                     }
-
 
                     break;
             }

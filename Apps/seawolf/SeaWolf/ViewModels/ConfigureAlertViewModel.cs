@@ -52,22 +52,22 @@ namespace SeaWolf.ViewModels
 
         public void IncrementHighThreshold(object obj)
         {
-            HighThreshold += .25;
+            HighThreshold += 2.5;
         }
 
         public void IncrementLowThreshold(object obj)
         {
-            LowThreshold += .25;
+            LowThreshold += 2.5;
         }
 
         public void DecrementHighThreshold(object obj)
         {
-            HighThreshold -= .25;
+            HighThreshold -= 2.5;
         }
 
         public void DecrementLowThreshold(object obj)
         {
-            LowThreshold -= .25;
+            LowThreshold -= 2.5;
         }
 
         public bool CanIncrementHighThreshold(Object obj)

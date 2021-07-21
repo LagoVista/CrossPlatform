@@ -28,7 +28,7 @@
             </Grid.ColumnDefinitions>
             <Frame BorderColor="Gray"
                    IsClippedToBounds="True"
-                   BackgroundColor="Green"
+                   BackgroundColor="{Binding IconBackgroundColor}"
                    HeightRequest="60"
                    WidthRequest="60"
                    HorizontalOptions="Center"

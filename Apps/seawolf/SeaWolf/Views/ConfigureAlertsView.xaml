@@ -2,32 +2,20 @@
 <pge:LagoVistaContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:pge="clr-namespace:LagoVista.XPlat.Core;assembly=LagoVista.XPlat.Core"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:ctls="clr-namespace:LagoVista.XPlat.Core.Controls.Common;assembly=LagoVista.XPlat.Core"             
              Title="Configure Alerts"
              LeftMenu="Back"
              x:Class="SeaWolf.Views.ConfigureAlertsView">
     <pge:LagoVistaContentPage.MainContent>
-        <ListView ItemsSource="{Binding Sensors}" SelectedItem="{Binding SelectedSensor, Mode=TwoWay}" Grid.Row="1" HasUnevenRows="True">
-            <ListView.ItemTemplate>
-                <DataTemplate>
-                    <ViewCell>
-                        <Grid HeightRequest="80">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="auto"/>
-                                <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="auto" />
-                            </Grid.ColumnDefinitions>
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="auto" />
-                                <RowDefinition Height="auto" />
-                            </Grid.RowDefinitions>
-                            <pge:Icon IconKey="fa-gear" Grid.RowSpan="2" FontSize="{StaticResource ListItemFontSize}" VerticalOptions="Center" />
-                            <Label Text="{Binding Config.Name}" FontSize="{StaticResource ListItemFontSize}" Grid.Column="1" />
-                            <Label Text="{Binding Config.Description}" Grid.Row="1" Grid.Column="1" FontSize="{StaticResource ListItemDetailFontSize}" />
-                            <pge:Icon IconKey="fa-chevron-right" Grid.RowSpan="2" Grid.Column="2" FontSize="16" VerticalOptions="Center" />
-                        </Grid>
-                    </ViewCell>
-                </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>
+        <Grid Padding="10">
+            <ListView ItemsSource="{Binding Sensors}" SelectedItem="{Binding SelectedSensor, Mode=TwoWay}" Grid.Row="1" HasUnevenRows="True" >
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ctls:NavigationViewCell Text="{Binding Config.Name}"  
+                                                Detail="{Binding Config.Description}" Icon="fa-microchip" />
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </Grid>
     </pge:LagoVistaContentPage.MainContent>
 </pge:LagoVistaContentPage>

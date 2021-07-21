@@ -44,7 +44,7 @@
                         <flv:FlowListView FlowItemsSource="{Binding Sensors}" Grid.Row="1" HasUnevenRows="True" FlowColumnCount="2">
                             <flv:FlowListView.FlowColumnTemplate>
                                 <DataTemplate>
-                                    <ctl:CardView CardDescription="{Binding Config.Name}" IconKey="{Binding SensorType.IconKey}" CardValue="{Binding Value}" />
+                                    <ctl:CardView CardDescription="{Binding Config.Name}" IconBackgroundColor="{Binding SensorColor}" IconKey="{Binding SensorType.IconKey}" CardValue="{Binding Value}" />
                                 </DataTemplate>
                             </flv:FlowListView.FlowColumnTemplate>
                         </flv:FlowListView>
