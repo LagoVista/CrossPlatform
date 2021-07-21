@@ -44,7 +44,7 @@ namespace SeaWolf.ViewModels
         private readonly IAppConfig _appConfig;
 
         public enum ViewToShow
-        { 
+        {
             Main,
             Map,
             Alerts
@@ -105,7 +105,7 @@ namespace SeaWolf.ViewModels
             AlertsViewVisible = false;
             MapViewVisible = false;
 
-            switch(view)
+            switch (view)
             {
                 case ViewToShow.Main:
                     MainViewVisible = true;
@@ -145,7 +145,7 @@ namespace SeaWolf.ViewModels
                     if (String.IsNullOrEmpty(DeviceId))
                     {
                         DeviceId = UserDevices.First().Id;
-                    }                    
+                    }
 
                     return await LoadDevice();
                 }
@@ -163,36 +163,36 @@ namespace SeaWolf.ViewModels
         {
             return await PerformNetworkOperation(async () =>
             {
-               CurrentDevice = null;
-               var deviceResponse = await _deviceManagementClient.GetDeviceAsync(_appConfig.DeviceRepoId, DeviceId);
-               if (deviceResponse.Successful)
-               {
-                   CurrentDevice = deviceResponse.Model;
-                   var deviceIdx = UserDevices.IndexOf(UserDevices.FirstOrDefault(dev => dev.Id == CurrentDevice.Id));
+                CurrentDevice = null;
+                var deviceResponse = await _deviceManagementClient.GetDeviceAsync(_appConfig.DeviceRepoId, DeviceId);
+                if (deviceResponse.Successful)
+                {
+                    CurrentDevice = deviceResponse.Model;
+                    var deviceIdx = UserDevices.IndexOf(UserDevices.FirstOrDefault(dev => dev.Id == CurrentDevice.Id));
 
-                   IsNotLastVessel = deviceIdx < UserDevices.Count - 1;
-                   IsNotFirstVessel = deviceIdx > 0;
+                    IsNotLastVessel = deviceIdx < UserDevices.Count - 1;
+                    IsNotFirstVessel = deviceIdx > 0;
 
-                   if (CurrentDevice.GeoLocation != null)
-                   {
-                       CurrentVeseelLocation = CurrentDevice.GeoLocation;
-                   }
-                   else
-                   {
-                       var lastKnownLocation = await Geolocation.GetLastKnownLocationAsync();
-                       if (lastKnownLocation != null)
-                       {
-                           CurrentVeseelLocation = new GeoLocation(lastKnownLocation.Latitude, lastKnownLocation.Longitude);
-                       }
-                   }
+                    if (CurrentDevice.GeoLocation != null)
+                    {
+                        CurrentVeseelLocation = CurrentDevice.GeoLocation;
+                    }
+                    else
+                    {
+                        var lastKnownLocation = await Geolocation.GetLastKnownLocationAsync();
+                        if (lastKnownLocation != null)
+                        {
+                            CurrentVeseelLocation = new GeoLocation(lastKnownLocation.Latitude, lastKnownLocation.Longitude);
+                        }
+                    }
 
-                   GeoFences.Clear();
-                   foreach(var geoFence in CurrentDevice.GeoFences)
-                   {
-                       GeoFences.Add(geoFence);
-                   }
+                    GeoFences.Clear();
+                    foreach (var geoFence in CurrentDevice.GeoFences)
+                    {
+                        GeoFences.Add(geoFence);
+                    }
 
-                   Sensors.AddValidSensors(_appConfig, CurrentDevice);
+                    Sensors.AddValidSensors(_appConfig, CurrentDevice);
                     var outOfToleranceSensors = Sensors.Where(sns => sns.OutOfTolerance);
                     var warningSensors = Sensors.Where(sns => sns.Warning);
 
@@ -206,17 +206,21 @@ namespace SeaWolf.ViewModels
                     {
                         HeaderBackgroundColor = Xamarin.Forms.Color.FromRgb(0xFF, 0xC8, 0x7F);
                         HeaderForegroundColor = Xamarin.Forms.Color.White;
-                        SystemStatus = String.Join(" ",warningSensors.Select(oot => oot.Config.Name + " " + oot.Value));
+                        SystemStatus = String.Join(" ", warningSensors.Select(oot => oot.Config.Name + " " + oot.Value));
                     }
                     else
                     {
                         HeaderBackgroundColor = Xamarin.Forms.Color.FromRgb(0x55, 0xA9, 0xF2);
                         HeaderForegroundColor = Xamarin.Forms.Color.FromRgb(0x21, 0x21, 0x21);
+                        SystemStatus = "All systems nominal";
                     }
+
+                    await SubscribeToWebSocketAsync();
                 }
 
-               return deviceResponse.ToInvokeResult();
-           });
+
+                return deviceResponse.ToInvokeResult();
+            });
         }
 
         public override Task ReloadedAsync()
@@ -289,26 +293,26 @@ namespace SeaWolf.ViewModels
         {
             get => _isNotLastVessel;
             set => Set(ref _isNotLastVessel, value);
-        }    
+        }
 
         public GeoLocation CurrentVeseelLocation
         {
             get => _currentVeseelLocation;
             set => Set(ref _currentVeseelLocation, value);
         }
-        
+
         public bool MainViewVisible
         {
             get => _mainViewVisible;
             set => Set(ref _mainViewVisible, value);
-            
+
         }
-        
+
         public bool MapViewVisible
         {
             get => _mapViewVisible;
             set => Set(ref _mapViewVisible, value);
-            
+
         }
 
         public bool AlertsViewVisible
@@ -373,12 +377,12 @@ namespace SeaWolf.ViewModels
                             sensor.Value = device.Sensors.IoValues[sensor.Config.SensorIndex - 1].ToString();
                         }
 
-                        if(sensor.Warning)
+                        if (sensor.Warning)
                         {
                             warningSensors.Add(sensor);
                         }
 
-                        if(sensor.OutOfTolerance)
+                        if (sensor.OutOfTolerance)
                         {
                             outOfToleranceSensors.Add(sensor);
                         }
@@ -387,13 +391,13 @@ namespace SeaWolf.ViewModels
                     break;
             }
 
-            if(outOfToleranceSensors.Any())
+            if (outOfToleranceSensors.Any())
             {
                 HeaderBackgroundColor = Xamarin.Forms.Color.FromRgb(0xE9, 0x5C, 0x5D);
                 HeaderForegroundColor = Xamarin.Forms.Color.White;
                 SystemStatus = String.Join(", ", outOfToleranceSensors.Select(oot => oot.Config.Name + " " + oot.Value));
             }
-            else if(warningSensors.Any())
+            else if (warningSensors.Any())
             {
                 HeaderBackgroundColor = Xamarin.Forms.Color.FromRgb(0xFF, 0xC8, 0x7F);
                 HeaderForegroundColor = Xamarin.Forms.Color.White;
@@ -403,7 +407,7 @@ namespace SeaWolf.ViewModels
             {
                 HeaderBackgroundColor = Xamarin.Forms.Color.FromRgb(0x55, 0xA9, 0xF2);
                 HeaderForegroundColor = Xamarin.Forms.Color.FromRgb(0x21, 0x21, 0x21);
-                SystemStatus = "All systems nonimal";
+                SystemStatus = "All systems nominal";
             }
         }
 

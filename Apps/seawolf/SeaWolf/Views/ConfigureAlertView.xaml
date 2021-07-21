@@ -12,7 +12,9 @@
             <Grid.RowDefinitions>
                 <RowDefinition Height="*" />
                 <RowDefinition Height="auto" />
+                <RowDefinition Height="*" />
                 <RowDefinition Height="auto" />
+                <RowDefinition Height="48" />
                 <RowDefinition Height="48" />
                 <RowDefinition Height="48" />
                 <RowDefinition Height="48" />
@@ -27,19 +29,24 @@
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
 
-            <Label Text="{Binding Sensor.Config.Name}" HorizontalOptions="Center"  TextColor="{StaticResource HeaderColor}" FontFamily="{StaticResource HeaderFont}" Grid.ColumnSpan="5" Grid.Row="1" FontSize="{StaticResource HeaderFontSize}" />
+            <Label Text="{Binding Sensor.Config.Name}" HorizontalOptions="Center"  TextColor="{StaticResource HeaderColor}" FontSize="48"
+                   FontFamily="{StaticResource HeaderFont}" Grid.ColumnSpan="5" Grid.Row="1"  />
 
-            <Label Text="Is Enabled" Grid.Row="2" />
-            <CheckBox IsChecked="{Binding IsEnabled, Mode=TwoWay}" Grid.Column="3" Grid.Row="2" />
-
-            <pge:IconButton IconKey="fa-arrow-up" Grid.Row="3" FontSize="32" Grid.Column="1" Command="{Binding IncrementLowThresholdCommand}" TextColor="Black"/>
-            <pge:IconButton IconKey="fa-arrow-down" Grid.Row="5"  FontSize="32" Grid.Column="1" Command="{Binding DecrementLowThresholdCommand}" TextColor="Black" />
        
-            <Label Text="{Binding LowThreshold, StringFormat='{0:F1}'}"  VerticalOptions="Center" HorizontalOptions="Center" Grid.Column="1" FontSize="32" TextColor="Blue" Grid.Row="4" />
-            <Label Text="{Binding HighThreshold, StringFormat='{0:F1}'}" VerticalOptions="Center" HorizontalOptions="Center" Grid.Column="3" FontSize="32" TextColor="Red" Grid.Row="4" />
+            <pge:IconButton IconKey="fa-arrow-up" Grid.Row="4" FontSize="32" Grid.Column="1" Command="{Binding IncrementLowThresholdCommand}" TextColor="Black"/>
+            <pge:IconButton IconKey="fa-arrow-down" Grid.Row="6"  FontSize="32" Grid.Column="1" Command="{Binding DecrementLowThresholdCommand}" TextColor="Black" />
 
-            <pge:IconButton HorizontalOptions="Center" IconKey="fa-arrow-up" Grid.Row="3" Grid.Column="3" FontSize="32" Command="{Binding IncrementHighThresholdCommand}" TextColor="Black"/>
-            <pge:IconButton HorizontalOptions="Center" IconKey="fa-arrow-down"  Grid.Row="5" Grid.Column="3" FontSize="32" Command="{Binding DecrementHighThresholdCommand}" TextColor="Black"/>
+            <Label Text="{Binding LowThreshold, StringFormat='{0:F1}'}"  VerticalOptions="Center" HorizontalOptions="Center" Grid.Column="1" FontSize="32" TextColor="Blue" Grid.Row="5" />
+            <Label Text="{Binding HighThreshold, StringFormat='{0:F1}'}" VerticalOptions="Center" HorizontalOptions="Center" Grid.Column="3" FontSize="32" TextColor="Red" Grid.Row="5" />
+
+            <pge:IconButton HorizontalOptions="Center" IconKey="fa-arrow-up" Grid.Row="4" Grid.Column="3" FontSize="32" Command="{Binding IncrementHighThresholdCommand}" TextColor="Black"/>
+            <pge:IconButton HorizontalOptions="Center" IconKey="fa-arrow-down"  Grid.Row="6" Grid.Column="3" FontSize="32" Command="{Binding DecrementHighThresholdCommand}" TextColor="Black"/>
+
+            <StackLayout Grid.Row="8" Grid.ColumnSpan="5" HorizontalOptions="Center" Orientation="Horizontal">
+                <Label Text="Is Enabled" VerticalOptions="Center"  FontSize="32" />
+                <Switch VerticalOptions="Center" Margin="30,0,0,0" IsToggled="{Binding IsEnabled, Mode=TwoWay}"  />
+            </StackLayout>
+
         </Grid>
     </pge:LagoVistaContentPage.MainContent>
 </pge:LagoVistaContentPage>

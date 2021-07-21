@@ -11,7 +11,7 @@
              x:Class="SeaWolf.Views.SensorsView">
     <pge:LagoVistaContentPage.MainContent  >
         <Grid Padding="10">
-            <ListView ItemsSource="{Binding Sensors}" SelectedItem="{Binding SelectedSensor, Mode=TwoWay}" Grid.Row="1" HasUnevenRows="True">
+            <ListView ItemsSource="{Binding Sensors}" SelectedItem="{Binding SelectedSensor, Mode=TwoWay}" HasUnevenRows="True">
                 <ListView.ItemTemplate>
                 <DataTemplate>
                     <ctls:NavigationViewCell Text="{Binding Config.Name}"  
