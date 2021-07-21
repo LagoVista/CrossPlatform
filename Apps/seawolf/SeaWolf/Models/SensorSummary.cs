@@ -15,34 +15,62 @@ namespace SeaWolf.Models
         {
             set
             {
-                var dblValue = Convert.ToDouble(value);
-                var range = Config.HighTheshold - Config.LowThreshold;
-                var warningThreshold = range * 0.20;
-
-                Set(ref _value, value);
-                if (dblValue < Config.LowThreshold ||
-                    dblValue > Config.HighTheshold)
+                if (Config.LowThreshold == 0 && (Config.HighTheshold == 1 || Config.HighTheshold == 2.5))
                 {
-                    SensorBackgroundColor = Color.FromRgb(0xE9, 0x5C, 0x5D);
-                    SensorForegroundColor = Color.White;
-                    OutOfTolerance = true;
-                    Warning = false;
+                    if (value == "1")
+                    {
+                        SensorBackgroundColor = Color.FromRgb(0xE9, 0x5C, 0x5D);
+                        SensorForegroundColor = Color.White;
+                        OutOfTolerance = true;
+                        Warning = false;
+                        if (Config.Key == AppConfig.BATTERYSWITCH)
+                            Set(ref _value, "ON");
+                        else
+                            Set(ref _value, "!");
+                    }
+                    else
+                    {
+                        SensorBackgroundColor = Color.FromRgb(0x55, 0xA9, 0xF2);
+                        SensorForegroundColor = Color.FromRgb(0x21, 0x21, 0x21);
+                        OutOfTolerance = false;
+                        Warning = false;
+                        if (Config.Key == AppConfig.BATTERYSWITCH)
+                            Set(ref _value, "OFF");
+                        else
+                            Set(ref _value, "OK");
+                    }
                 }
-                else if (dblValue < (Config.LowThreshold + warningThreshold) ||
-                         dblValue > Config.HighTheshold - warningThreshold)
+                else
+                {
+                    var dblValue = Convert.ToDouble(value);
+                    var range = Config.HighTheshold - Config.LowThreshold;
+                    var warningThreshold = range * 0.20;
 
-                {
-                    SensorBackgroundColor = Color.FromRgb(0xFF, 0xC8, 0x7F);
-                    SensorForegroundColor = Color.White;
-                    OutOfTolerance = false;
-                    Warning = true;
-                }
-                else 
-                {
-                    SensorBackgroundColor = Color.FromRgb(0x55, 0xA9, 0xF2);
-                    SensorForegroundColor = Color.FromRgb(0x21, 0x21, 0x21);
-                    OutOfTolerance = false;
-                    Warning = false;
+                    Set(ref _value, value);
+                    if (dblValue < Config.LowThreshold ||
+                        dblValue > Config.HighTheshold)
+                    {
+                        SensorBackgroundColor = Color.FromRgb(0xE9, 0x5C, 0x5D);
+                        SensorForegroundColor = Color.White;
+                        OutOfTolerance = true;
+                        Warning = false;
+                    }
+                    else if (dblValue < (Config.LowThreshold + warningThreshold) ||
+                             dblValue > Config.HighTheshold - warningThreshold)
+
+                    {
+                        SensorBackgroundColor = Color.FromRgb(0xFF, 0xC8, 0x7F);
+                        SensorForegroundColor = Color.White;
+                        OutOfTolerance = false;
+                        Warning = true;
+                    }
+                    else
+                    {
+                        SensorBackgroundColor = Color.FromRgb(0x55, 0xA9, 0xF2);
+                        SensorForegroundColor = Color.FromRgb(0x21, 0x21, 0x21);
+                        OutOfTolerance = false;
+                        Warning = false;
+                    }
                 }
             }
             get => _value;
