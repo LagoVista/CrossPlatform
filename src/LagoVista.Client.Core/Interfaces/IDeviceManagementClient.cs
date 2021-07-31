@@ -5,11 +5,12 @@ using LagoVista.IoT.Deployment.Admin.Models;
 using LagoVista.IoT.DeviceAdmin.Models;
 using LagoVista.IoT.DeviceManagement;
 using LagoVista.IoT.DeviceManagement.Core.Models;
+using LagoVista.IoT.Pipeline.Admin.Models;
 using LagoVista.UserAdmin.Models.Users;
 using System;
 using System.Threading.Tasks;
 
-namespace LagoVista.Client.Devices
+namespace LagoVista.Client.Core.Interfaces
 {
     public interface IDeviceManagementClient
     {
@@ -41,5 +42,8 @@ namespace LagoVista.Client.Devices
         Task<InvokeResult<DeviceGroupEntry>> AddDeviceToGroupAsync(string devicerepoid, String groupid, string deviceid);
         Task<InvokeResult> RemoveDeviceToGroupAsync(string devicerepoid, String groupid, string deviceid);
         Task<ListResponse<DeviceGroupSummary>> GetDeviceGroupsForOrgAsync(string devicerepoid, ListRequest listRequest);
+        Task<InvokeResult<ListenerConfiguration>> GetListenerConfigurationAsync(String instanceId);
+
+        Task<ListResponse<DeviceTypeSummary>> GetDeviceTypesAsync(String instanceId);
     }
 }

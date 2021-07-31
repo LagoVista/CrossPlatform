@@ -15,14 +15,8 @@ namespace SeaWolf.ViewModels
 {
     public class SensorsViewModel : AppViewModelBase
     {
-        private readonly IDeviceManagementClient _deviceManagementClient;
-        private readonly IAppConfig _appConfig;
-
-        public SensorsViewModel(IDeviceManagementClient deviceManagementClient, IAppConfig appConfig)
+        public SensorsViewModel()
         {
-            _deviceManagementClient = deviceManagementClient ?? throw new ArgumentNullException(nameof(deviceManagementClient));
-            _appConfig = appConfig ?? throw new ArgumentNullException(nameof(appConfig));
-
             AddSensorCommand = new RelayCommand(() => ViewModelNavigation.NavigateAndCreateAsync<SensorViewModel>(this,
                 new KeyValuePair<string, object>("Device", CurrentDevice)));
 
@@ -34,14 +28,14 @@ namespace SeaWolf.ViewModels
         public override Task InitAsync()
         {
             CurrentDevice = GetLaunchArg<Device>(nameof(Device));
-            Sensors.AddValidSensors(_appConfig, CurrentDevice);
+            Sensors.AddValidSensors(AppConfig, CurrentDevice);
 
             return base.InitAsync();
         }
 
         public override Task ReloadedAsync()
         {
-            Sensors.AddValidSensors(_appConfig, CurrentDevice);
+            Sensors.AddValidSensors(AppConfig, CurrentDevice);
 
             return base.ReloadedAsync();
         }
@@ -60,7 +54,7 @@ namespace SeaWolf.ViewModels
 
             var result = await PerformNetworkOperation(async () =>
             {
-                return await _deviceManagementClient.UpdateDeviceAsync(CurrentDevice.DeviceRepository.Id, CurrentDevice);
+                return await DeviceManagementClient.UpdateDeviceAsync(CurrentDevice.DeviceRepository.Id, CurrentDevice);
             });
         }
 

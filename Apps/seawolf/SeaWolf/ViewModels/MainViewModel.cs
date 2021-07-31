@@ -30,21 +30,13 @@ namespace SeaWolf.ViewModels
         private bool _isNotLastVessel;
         GeoLocation _currentVeseelLocation;
 
-        Device _currentDevice;
         ObservableCollection<DeviceSummary> _userDevices;
-        private readonly IDeviceManagementClient _deviceManagementClient;
-        private readonly IAppConfig _appConfig;
 
-        public MainViewModel(IDeviceManagementClient deviceManagementClient, IAppConfig appConfig)
+        Device _currentDevice;
+        public MainViewModel()
         {
-            _deviceManagementClient = deviceManagementClient ?? throw new ArgumentNullException(nameof(deviceManagementClient));
-            _appConfig = appConfig ?? throw new ArgumentNullException(nameof(appConfig));
-
             MenuItems = new List<MenuItem>()
             {
-
-                
-
                 // -------------------------------------------------------------------------------------------------------
                 // TODO: remove this when done with design & layout.
                 new MenuItem()
@@ -54,9 +46,6 @@ namespace SeaWolf.ViewModels
                     FontIconKey = "fa-gear"
                 },
                 // -------------------------------------------------------------------------------------------------------
-
-
-
 
                 new MenuItem()
                 {
@@ -87,7 +76,7 @@ namespace SeaWolf.ViewModels
         {
             await PerformNetworkOperation(async () =>
             {
-                var path = $"/api/devices/{_appConfig.DeviceRepoId}/{this.AuthManager.User.Id}";
+                var path = $"/api/devices/{AppConfig.DeviceRepoId}/{this.AuthManager.User.Id}";
 
                 ListRestClient<DeviceSummary> _formRestClient = new ListRestClient<DeviceSummary>(RestClient);
                 var result = await _formRestClient.GetForOrgAsync(path);
@@ -107,7 +96,7 @@ namespace SeaWolf.ViewModels
                     if (String.IsNullOrEmpty(DeviceId))
                     {
                         DeviceId = UserDevices.First().Id;
-                    }                    
+                    }
 
                     return await LoadDevice();
                 }
@@ -127,7 +116,7 @@ namespace SeaWolf.ViewModels
             return await PerformNetworkOperation(async () =>
            {
                CurrentDevice = null;
-               var deviceResponse = await _deviceManagementClient.GetDeviceAsync(_appConfig.DeviceRepoId, DeviceId);
+               var deviceResponse = await DeviceManagementClient.GetDeviceAsync(AppConfig.DeviceRepoId, DeviceId);
                if (deviceResponse.Successful)
                {
                    CurrentDevice = deviceResponse.Model;
@@ -150,12 +139,12 @@ namespace SeaWolf.ViewModels
                    }
 
                    GeoFences.Clear();
-                   foreach(var geoFence in CurrentDevice.GeoFences)
+                   foreach (var geoFence in CurrentDevice.GeoFences)
                    {
                        GeoFences.Add(geoFence);
                    }
 
-                   Sensors.AddValidSensors(_appConfig, CurrentDevice);
+                   Sensors.AddValidSensors(AppConfig, CurrentDevice);
                }
 
                await SubscribeToWebSocketAsync();
@@ -234,7 +223,7 @@ namespace SeaWolf.ViewModels
         {
             get => _isNotLastVessel;
             set => Set(ref _isNotLastVessel, value);
-        }    
+        }
 
         public GeoLocation CurrentVeseelLocation
         {
@@ -251,7 +240,7 @@ namespace SeaWolf.ViewModels
 
         public override void HandleMessage(Notification notification)
         {
-            switch(notification.PayloadType)
+            switch (notification.PayloadType)
             {
                 case nameof(Device):
                     var serializerSettings = new JsonSerializerSettings();
@@ -261,16 +250,16 @@ namespace SeaWolf.ViewModels
 
                     foreach (var sensor in Sensors)
                     {
-                        if(sensor.SensorType.Technology == SensorTechnology.ADC)
+                        if (sensor.SensorType.Technology == SensorTechnology.ADC)
                         {
                             CurrentDevice.Sensors.AdcValues[sensor.Config.SensorIndex - 1] = device.Sensors.AdcValues[sensor.Config.SensorIndex - 1];
                             sensor.Value = device.Sensors.AdcValues[sensor.Config.SensorIndex - 1].ToString();
                         }
-                        
+
                         if (sensor.SensorType.Technology == SensorTechnology.IO)
                         {
                             CurrentDevice.Sensors.IoValues[sensor.Config.SensorIndex - 1] = device.Sensors.IoValues[sensor.Config.SensorIndex - 1];
-                            sensor.Value = device.Sensors.IoValues[sensor.Config.SensorIndex - 1].ToString(); 
+                            sensor.Value = device.Sensors.IoValues[sensor.Config.SensorIndex - 1].ToString();
                         }
                     }
 

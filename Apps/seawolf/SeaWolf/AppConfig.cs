@@ -85,7 +85,7 @@ namespace SeaWolf
 
         public string APIToken => String.Empty;
 
-        public string InstanceId { get; set; }
+        public string InstanceId { get; set; } = "68AD559A50644D5F92087E429E57D947";
         public string InstanceAuthKey { get; set; }
         public string DeviceId { get; set; }
         public string DeviceRepoId { get; set; }

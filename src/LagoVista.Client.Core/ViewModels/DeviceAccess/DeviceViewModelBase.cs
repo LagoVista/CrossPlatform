@@ -217,6 +217,7 @@ namespace LagoVista.Client.Core.ViewModels.DeviceAccess
             return base.IsClosingAsync();
         }
 
+
         public IGATTConnection GattConnection => _gattConnection;
     }
 }

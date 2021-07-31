@@ -16,7 +16,7 @@
     <MonoAndroidResourcePrefix>Resources</MonoAndroidResourcePrefix>
     <MonoAndroidAssetsPrefix>Assets</MonoAndroidAssetsPrefix>
     <AndroidUseLatestPlatformSdk>false</AndroidUseLatestPlatformSdk>
-    <TargetFrameworkVersion>v11.0.99</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v11.0</TargetFrameworkVersion>
     <AndroidEnableSGenConcurrent>true</AndroidEnableSGenConcurrent>
     <AndroidUseAapt2>true</AndroidUseAapt2>
     <AndroidHttpClientHandlerType>Xamarin.Android.Net.AndroidClientHandler</AndroidHttpClientHandlerType>
@@ -45,6 +45,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Mono.Android" />
+    <Reference Include="Mono.Android.Export" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Numerics" />
@@ -107,6 +108,32 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <AndroidAsset Include="Assets\font\iconizeentypoplus.ttf" />
+    <AndroidAsset Include="Assets\font\iconizefontawesome.ttf" />
+    <AndroidAsset Include="Assets\font\iconizeionicons.ttf" />
+    <AndroidAsset Include="Assets\font\iconizematerial.ttf" />
+    <AndroidAsset Include="Assets\font\iconizemeteocons.ttf" />
+    <AndroidAsset Include="Assets\font\iconizesimplelineicons.ttf" />
+    <AndroidAsset Include="Assets\font\iconizetypicons.ttf" />
+    <AndroidAsset Include="Assets\font\iconizeweathericons.ttf" />
+    <AndroidAsset Include="Assets\font\RobotoBlack.ttf" />
+    <AndroidAsset Include="Assets\font\RobotoBlackItalic.ttf" />
+    <AndroidAsset Include="Assets\font\RobotoBold.ttf" />
+    <AndroidAsset Include="Assets\font\RobotoBoldItalic.ttf" />
+    <AndroidAsset Include="Assets\font\RobotoCondensedBold.ttf" />
+    <AndroidAsset Include="Assets\font\RobotoCondensedBoldItalic.ttf" />
+    <AndroidAsset Include="Assets\font\RobotoCondensedItalic.ttf" />
+    <AndroidAsset Include="Assets\font\RobotoCondensedLight.ttf" />
+    <AndroidAsset Include="Assets\font\RobotoCondensedLightItalic.ttf" />
+    <AndroidAsset Include="Assets\font\RobotoCondensedRegular.ttf" />
+    <AndroidAsset Include="Assets\font\RobotoItalic.ttf" />
+    <AndroidAsset Include="Assets\font\RobotoLight.ttf" />
+    <AndroidAsset Include="Assets\font\RobotoLightItalic.ttf" />
+    <AndroidAsset Include="Assets\font\RobotoMedium.ttf" />
+    <AndroidAsset Include="Assets\font\RobotoMediumItalic.ttf" />
+    <AndroidAsset Include="Assets\font\RobotoRegular.ttf" />
+    <AndroidAsset Include="Assets\font\RobotoThin.ttf" />
+    <AndroidAsset Include="Assets\font\RobotoThinItalic.ttf" />
     <None Include="Resources\AboutResources.txt" />
     <None Include="Assets\AboutAssets.txt" />
     <None Include="Properties\AndroidManifest.xml" />
@@ -131,6 +158,18 @@
     <AndroidResource Include="Resources\drawable\xamarin_logo.png" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\..\src\LagoVista.Client.Core\LagoVista.Client.Core.csproj">
+      <Project>{C48ABA1C-9C0B-4C9C-80C9-6EEE8A010AC9}</Project>
+      <Name>LagoVista.Client.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\src\LagoVista.XPlat.Core\LagoVista.XPlat.Core.csproj">
+      <Project>{B46B2B34-6314-4EF7-A41F-80158102B92C}</Project>
+      <Name>LagoVista.XPlat.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\src\LagoVista.XPlat.Droid\LagoVista.XPlat.Droid.csproj">
+      <Project>{981e1800-122a-4204-8826-3b981b8dfea4}</Project>
+      <Name>LagoVista.XPlat.Droid</Name>
+    </ProjectReference>
     <ProjectReference Include="..\SeaWolf\SeaWolf.csproj">
       <Project>{D89BCBD4-1DD4-4798-87BA-1073448B8A10}</Project>
       <Name>SeaWolf</Name>

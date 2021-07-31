@@ -19,6 +19,7 @@ namespace LagoVista.XPlat.Droid.Services
             }
         }
 
+        [Obsolete]
         public bool IsInternetConnected
         {
             get

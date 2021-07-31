@@ -35,8 +35,6 @@ namespace SeaWolf.ViewModels
 
         Device _currentDevice;
         ObservableCollection<DeviceSummary> _userDevices;
-        private readonly IDeviceManagementClient _deviceManagementClient;
-        private readonly IAppConfig _appConfig;
 
         public enum ViewToShow
         { 
@@ -45,11 +43,8 @@ namespace SeaWolf.ViewModels
             Alerts
         }
 
-        public DesignMockViewModel(IDeviceManagementClient deviceManagementClient, IAppConfig appConfig)
+        public DesignMockViewModel()
         {
-            _deviceManagementClient = deviceManagementClient ?? throw new ArgumentNullException(nameof(deviceManagementClient));
-            _appConfig = appConfig ?? throw new ArgumentNullException(nameof(appConfig));
-
             MenuItems = new List<MenuItem>()
             {
 
@@ -123,7 +118,7 @@ namespace SeaWolf.ViewModels
         {
             await PerformNetworkOperation(async () =>
             {
-                var path = $"/api/devices/{_appConfig.DeviceRepoId}/{this.AuthManager.User.Id}";
+                var path = $"/api/devices/{AppConfig.DeviceRepoId}/{this.AuthManager.User.Id}";
 
                 ListRestClient<DeviceSummary> _formRestClient = new ListRestClient<DeviceSummary>(RestClient);
                 var result = await _formRestClient.GetForOrgAsync(path);
@@ -162,7 +157,7 @@ namespace SeaWolf.ViewModels
             return await PerformNetworkOperation(async () =>
             {
                CurrentDevice = null;
-               var deviceResponse = await _deviceManagementClient.GetDeviceAsync(_appConfig.DeviceRepoId, DeviceId);
+               var deviceResponse = await DeviceManagementClient.GetDeviceAsync(AppConfig.DeviceRepoId, DeviceId);
                if (deviceResponse.Successful)
                {
                    CurrentDevice = deviceResponse.Model;
@@ -190,7 +185,7 @@ namespace SeaWolf.ViewModels
                        GeoFences.Add(geoFence);
                    }
 
-                   Sensors.AddValidSensors(_appConfig, CurrentDevice);
+                   Sensors.AddValidSensors(AppConfig, CurrentDevice);
                }
 
                return deviceResponse.ToInvokeResult();

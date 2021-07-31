@@ -21,9 +21,15 @@ namespace LagoVista.Client.Core.ViewModels.DeviceAccess
             foreach(var connection in GattConnection.ConnectedDevices)
             {
                 await GattConnection.DisconnectAsync(connection);
-            }
+            }            
 
             await base.ReloadedAsync();
+        }
+        public override Task InitAsync()
+        {
+            StartScan();
+            
+            return base.InitAsync();
         }
 
         public async void StartScan()
@@ -63,6 +69,9 @@ namespace LagoVista.Client.Core.ViewModels.DeviceAccess
 
         public async void ConnectAsync(BLEDevice device)
         {
+            var listener = await DeviceManagementClient.GetListenerConfigurationAsync(AppConfig.InstanceId);
+            var dts = await DeviceManagementClient.GetDeviceTypesAsync(AppConfig.InstanceId);
+
             await GattConnection.ConnectAsync(device);
         }
 

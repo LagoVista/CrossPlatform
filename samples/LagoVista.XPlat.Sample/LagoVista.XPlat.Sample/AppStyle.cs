@@ -17,31 +17,27 @@ namespace LagoVista.XPlat.Sample
 
         public Color TitleBarBackground => NamedColors.NuvIoTDark;
 
-        public Color TitleBarText => NamedColors.NuvIoTWhite;
+        public Color TitleBarForeground => NamedColors.NuvIoTWhite;
+
+        public Color HighlightColor => NamedColors.NuvIoTContrast;
+
 
         public Color PageBackground => NamedColors.NuvIoTWhite;
+        public Color PageForeground => _black;
 
-        public Color PageText => _darkGray;
 
         public Color LabelText => _lightGray;
 
-        public Color EditControlBackground => _white;
 
-        public Color EditControlText => _black;
 
-        public Color EditControlFrame => _black;
+        public Color MenuBarBackground => NamedColors.NuvIoTMedium;
 
-        public Color EditControlFrameFocus => _darkGray;
+        public Color MenuBarForeground => NamedColors.NuvIoTLight;
 
-        public Color EditControlFrameInvalid => _black;
+        public Color MenuBarBackgroundActive => NamedColors.NuvIoTDark;
 
-        public Color MenuBarBackground => _medGray;
+        public Color MenuBarForegroundActive => NamedColors.NuvIoTLight;
 
-        public Color MenuBarForeground => NamedColors.NuvIoTContrast;
-
-        public Color MenuBarBackgroundActive => _darkGray;
-
-        public Color MenuBarForegroundActive => NamedColors.NuvIoTContrast;
 
         public Color ButtonBackground => NamedColors.NuvIoTDark;
 
@@ -55,11 +51,16 @@ namespace LagoVista.XPlat.Sample
 
         public Color ButtonForegroundActive => NamedColors.NuvIoTWhite;
 
-        public Color HighlightColor => NamedColors.NuvIoTContrast;
-
         public Color RowSeperatorColor => NamedColors.NuvIoTDark;
 
         public Color ListItemColor => NamedColors.NuvIoTDark;
+
+        public Color TabForground => NamedColors.NuvIoTDark;
+        public Color TabForgroundActive => NamedColors.NuvIoTLight;
+        public Color TabBackgroundActive => NamedColors.NuvIoTDark;
+        public Color TabBackground => NamedColors.NuvIoTLight;
+        public Color TabBarBackground => NamedColors.NuvIoTMedium;
+
 
         public string HeaderFont => DefaultFont;
 
@@ -69,7 +70,7 @@ namespace LagoVista.XPlat.Sample
 
         public string EntryFont => DefaultFont;
 
-        public string MenuFont => "Verdana";
+        public string MenuFont => DefaultFont;
 
         public string ListItemFont => DefaultFont;
 
@@ -84,5 +85,55 @@ namespace LagoVista.XPlat.Sample
         public double MenuFontSize => 18;
 
         public double ListItemFontSize => 28;
+
+        public string TabBarFont => DefaultFont;
+
+        public double TabBarIconFontSize => 32;
+
+        public double TabBarFontSize => 18;
+
+        public Color SectionHeaderColor => NamedColors.Black;
+
+        public Color ListItemDetailColor => NamedColors.Black;
+
+        public string PageTextFont => DefaultFont;
+
+        public double PageTextFontSize => 12;
+
+        public Color HeaderColor => NamedColors.NuvIoTBlack;
+
+        public Color SubHeaderColor => NamedColors.DarkGray;
+
+        public double SubHeaderFontSize => 24;
+
+        public string SubHeaderFont => DefaultFont;
+
+        public Color EntryBackground => _white;
+
+        public Color EntryForeground => _black;
+
+        public Color EntryFrameColor => _darkGray;
+
+        public Color EntryFrameColorFocus => _black;
+
+        public Color EntryFrameColorFrameInvalid => throw new System.NotImplementedException();
+
+        public double EntryMargin => 2;
+
+        public Color IconButtonForeground => _darkGray;
+
+        public Color IconButtonForegroundAcive => _black;
+
+        public double IconButtonFontSize => 14;
+
+        public string ListItemDetailFont => DefaultFont;
+
+        public Color ListItemBackgroundColor => PageBackground;
+
+        public Color ListItemForegroundColor => _black;
+
+        public double ListItemDetailFontSize => 16;
+
+        public Color ListItemDetailForegroundColor => _darkGray;
     }
 }

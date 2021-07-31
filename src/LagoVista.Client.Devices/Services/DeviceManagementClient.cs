@@ -1,4 +1,5 @@
 ﻿using LagoVista.Client.Core;
+using LagoVista.Client.Core.Interfaces;
 using LagoVista.Core.Models;
 using LagoVista.Core.Models.UIMetaData;
 using LagoVista.Core.Validation;
@@ -6,6 +7,7 @@ using LagoVista.IoT.Deployment.Admin.Models;
 using LagoVista.IoT.DeviceAdmin.Models;
 using LagoVista.IoT.DeviceManagement;
 using LagoVista.IoT.DeviceManagement.Core.Models;
+using LagoVista.IoT.Pipeline.Admin.Models;
 using LagoVista.UserAdmin.Models.Users;
 using System;
 using System.Collections.Generic;
@@ -43,6 +45,16 @@ namespace LagoVista.Client.Devices
         public Task<InvokeResult> AddDeviceAsync(String deviceRepoId, Device device)
         {
             return _restClient.PostAsync($"/api/device/{deviceRepoId}", device);
+        }
+
+        public Task<InvokeResult<ListenerConfiguration>> GetListenerConfigurationAsync(String instanceId)
+        {
+            return _restClient.GetAsync<ListenerConfiguration>($"/api/deployment/instance/{instanceId}/defaultlistener");
+        }
+
+        public Task<ListResponse<DeviceTypeSummary>> GetDeviceTypesAsync(String instanceId)
+        {
+            return _restClient.GetListResponseAsync<DeviceTypeSummary>($"/api/deployment/instance/{instanceId}/devicetypes", new ListRequest() { PageSize = 1024 });
         }
 
         public Task<InvokeResult> UpdateDeviceAsync(String deviceRepoId, Device device)

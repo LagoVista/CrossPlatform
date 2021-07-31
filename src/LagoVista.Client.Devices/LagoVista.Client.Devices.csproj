@@ -7,8 +7,12 @@
     <PackageReference Include="LagoVista.IoT.Deployment.Models" Version="3.0.1524.953" />
     <PackageReference Include="LagoVista.IoT.DeviceAdmin.Models" Version="3.0.1524.953" />
     <PackageReference Include="LagoVista.IoT.DeviceManagement.Models" Version="3.0.1524.953" />
+    <PackageReference Include="LagoVista.IoT.Pipeline.Models" Version="3.0.1524.953" />    
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\LagoVista.Client.Core\LagoVista.Client.Core.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Interfaces\" />
   </ItemGroup>
 </Project>

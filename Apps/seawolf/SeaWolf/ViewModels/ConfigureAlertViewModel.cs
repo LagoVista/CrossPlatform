@@ -1,9 +1,6 @@
 ﻿using LagoVista.Client.Core.ViewModels;
-using LagoVista.Client.Devices;
 using LagoVista.Core.Commanding;
-using LagoVista.Core.Interfaces;
 using LagoVista.IoT.DeviceManagement.Core.Models;
-using LagoVista.IoT.DeviceManagement.Models;
 using SeaWolf.Models;
 using System;
 using System.Threading.Tasks;
@@ -12,19 +9,14 @@ namespace SeaWolf.ViewModels
 {
     public class ConfigureAlertViewModel : AppViewModelBase
     {
-        private readonly IDeviceManagementClient _deviceManagementClient;
-        private readonly IAppConfig _appConfig;
         private SensorSummary _sensorSummary;
 
         private bool _isEnabled;
         private double _lowThreshold = 80;
         private double _highThreshold = 120;
 
-        public ConfigureAlertViewModel(IDeviceManagementClient deviceManagementClient, IAppConfig appConfig)
+        public ConfigureAlertViewModel()
         {
-            _deviceManagementClient = deviceManagementClient ?? throw new ArgumentNullException(nameof(deviceManagementClient));
-            _appConfig = appConfig ?? throw new ArgumentNullException(nameof(appConfig));
-
             IncrementHighThresholdCommand = new RelayCommand(IncrementHighThreshold, CanIncrementHighThreshold);
             IncrementLowThresholdCommand = new RelayCommand(IncrementLowThreshold, CanIncrementLowThreshold);
             DecrementHighThresholdCommand = new RelayCommand(DecrementHighThreshold, CanDecrementHighThreshold);
@@ -128,7 +120,7 @@ namespace SeaWolf.ViewModels
 
             var result = await PerformNetworkOperation(async () =>
             {
-                return await _deviceManagementClient.UpdateDeviceAsync(CurrentDevice.DeviceRepository.Id, CurrentDevice);
+                return await DeviceManagementClient.UpdateDeviceAsync(CurrentDevice.DeviceRepository.Id, CurrentDevice);
             });
 
             if (result.Successful)

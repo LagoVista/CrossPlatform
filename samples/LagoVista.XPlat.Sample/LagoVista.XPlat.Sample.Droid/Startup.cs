@@ -43,7 +43,6 @@ namespace LagoVista.XPlat.Droid
                 SLWIOC.Register<ISecureStorage>(new SecureStorage());
                 SLWIOC.Register<IClipBoard, Services.ClipBoard>();
                 
-
                 IconFonts.IconFontSupport.RegisterFonts();
                 _isInitialized = true;
             }

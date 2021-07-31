@@ -12,6 +12,7 @@ using LagoVista.Client.Core.Resources;
 using LagoVista.Core.Validation;
 using System.Threading;
 using LagoVista.Client.Core.Exceptions;
+using LagoVista.Client.Core.Interfaces;
 
 namespace LagoVista.Client.Core.ViewModels
 {
@@ -25,7 +26,6 @@ namespace LagoVista.Client.Core.ViewModels
 
         protected const string PASSWORD_REGEX = @"^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$";
         protected const string EMAIL_REGEX = @"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$";
-
 
         public async Task ShowServerErrorMessageAsync(InvokeResult result)
         {
@@ -139,6 +139,9 @@ namespace LagoVista.Client.Core.ViewModels
                 throw new ArgumentNullException($"Expecting {name} of type {typeof(TArg)} as a launch argument.");
             }
         }
+
+        public IDeviceManagementClient DeviceManagementClient => SLWIOC.Get<IDeviceManagementClient>();
+        public IAppConfig AppConfig => SLWIOC.Get<IAppConfig>();
 
         public bool IsEditing
         {

@@ -1,8 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionCode="1" android:versionName="1.0" package="com.companyname.seawolf">
-  <meta-data android:name="com.google.android.maps.v2.API_KEY"
-           android:value="AIzaSyDr85Jt_khLtim-q8LLzdBoYSoDs_-k0QI" />
+
   <uses-sdk android:minSdkVersion="21" android:targetSdkVersion="28" />
-    <application android:label="SeaWolf.Android"></application>
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+  <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+  <uses-permission android:name="android.permission.ACCESS_COURSE_LOCATION" />
+  <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+  <uses-permission android:name="android.permission.CAMERA" />
+  <uses-permission android:name="android.permission.BLUETOOTH" />
+  <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+  <uses-permission android:name="android.permission.NFC" />
+  <uses-permission android:name="android.permission.NFC_TRANSACTION_EVENT" />
+  <uses-permission android:name="android.permission.BIND_NFC_SERVICE" />
+  <uses-feature android:name="android.hardware.usb.host"></uses-feature>
+  
+  <application android:label="SeaWolf Marine">
+    <meta-data android:name="com.google.android.geo.API_KEY"
+         android:value="AIzaSyDr85Jt_khLtim-q8LLzdBoYSoDs_-k0QI" />
+  </application>
 </manifest>

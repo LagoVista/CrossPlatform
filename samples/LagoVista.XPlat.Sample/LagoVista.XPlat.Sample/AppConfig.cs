@@ -1,5 +1,6 @@
 ﻿using LagoVista.Core.Interfaces;
 using LagoVista.Core.Models;
+using System.Collections.Generic;
 
 namespace LagoVista.XPlat.Sample
 {
@@ -57,6 +58,8 @@ namespace LagoVista.XPlat.Sample
             public string DeviceRepoId { get; set; }
 
             public EntityHeader SystemOwnerOrg { get; set; }
+
+            public IEnumerable<AppSpecificSensorTypes> AppSpecificSensorTypes { get; } = new List<AppSpecificSensorTypes>();
         }
 
     }

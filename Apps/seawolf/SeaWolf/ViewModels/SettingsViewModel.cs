@@ -1,4 +1,5 @@
 ﻿using LagoVista.Client.Core.ViewModels;
+using LagoVista.Client.Core.ViewModels.DeviceAccess;
 using LagoVista.Core.Commanding;
 using LagoVista.IoT.DeviceManagement.Core.Models;
 using System;
@@ -18,6 +19,7 @@ namespace SeaWolf.ViewModels
                 new MenuItem() {FontIconKey = "fa-gear", Name = "Configure Geo Fences", Command =  new RelayCommand(() => ViewModelNavigation.NavigateAsync<GeoFencesViewModel>(this, _deviceParamer)), Help="Configure geofences for your vessel" },
                 new MenuItem() {FontIconKey = "fa-gear", Name = "Configure Alerts", Command =  new RelayCommand(() => ViewModelNavigation.NavigateAsync<ConfigureAlertsViewModel>(this,_deviceParamer)), Help="Set alerts" },
                 new MenuItem() {FontIconKey = "fa-gear", Name = "Add/Remove Sensors", Command =  new RelayCommand(() => ViewModelNavigation.NavigateAsync<SensorsViewModel>(this, _deviceParamer)), Help="Set alerts" },
+                new MenuItem() {FontIconKey = "fa-gear", Name = "WiFi Settings", Command =  new RelayCommand(() => ViewModelNavigation.NavigateAsync<BTDeviceScanViewModel>(this, _deviceParamer)), Help="Setup WiFi" },
             };
         }
 

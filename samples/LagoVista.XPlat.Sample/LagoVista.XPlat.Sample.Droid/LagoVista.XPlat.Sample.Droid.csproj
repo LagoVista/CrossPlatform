@@ -163,26 +163,29 @@
     <Folder Include="Resources\mipmap-xxxhdpi\" />
   </ItemGroup>
   <ItemGroup>
+    <PackageReference Include="LagoVista.AI.Models">
+      <Version>3.0.1524.953</Version>
+    </PackageReference>
     <PackageReference Include="LagoVista.Core.Authentication">
-      <Version>2.1.1359-beta1343</Version>
+      <Version>3.0.1524.953</Version>
     </PackageReference>
     <PackageReference Include="LagoVista.Core.Networking">
-      <Version>2.1.1359-beta1343</Version>
+      <Version>3.0.1524.953</Version>
     </PackageReference>
     <PackageReference Include="LagoVista.IoT.Deployment.Models">
-      <Version>2.1.1359-beta1343</Version>
+      <Version>3.0.1524.953</Version>
     </PackageReference>
     <PackageReference Include="LagoVista.IoT.DeviceMessaging.Models">
-      <Version>2.1.1359-beta1343</Version>
+      <Version>3.0.1524.953</Version>
     </PackageReference>
     <PackageReference Include="LagoVista.IoT.Logging">
-      <Version>2.1.1359-beta1343</Version>
+      <Version>3.0.1524.953</Version>
     </PackageReference>
     <PackageReference Include="LagoVista.IoT.Pipeline.Models">
-      <Version>2.1.1359-beta1343</Version>
+      <Version>3.0.1524.953</Version>
     </PackageReference>
     <PackageReference Include="LagoVista.UserAdmin.Models">
-      <Version>2.1.1359-beta1343</Version>
+      <Version>3.0.1524.953</Version>
     </PackageReference>
     <PackageReference Include="System.Runtime.CompilerServices.Unsafe">
       <Version>5.0.0</Version>
@@ -194,7 +197,7 @@
       <Version>1.0.0.6</Version>
     </PackageReference>
     <PackageReference Include="Xamarin.Forms">
-      <Version>5.0.0.2012</Version>
+      <Version>5.0.0.2083</Version>
     </PackageReference>
     <PackageReference Include="Xamarin.Google.Android.Material">
       <Version>1.2.1.1</Version>

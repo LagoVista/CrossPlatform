@@ -14,7 +14,6 @@ namespace SeaWolf.ViewModels
 {
     public class GeoFenceViewModel : AppViewModelBase
     {
-        private readonly IDeviceManagementClient _deviceManagementClient;
         private readonly IAppConfig _appConfig;
         private GeoFence _geoFence;
         double _geoFenceRadiusMeters = 500;
@@ -24,11 +23,8 @@ namespace SeaWolf.ViewModels
         bool _isGeoFenceEnabled;
         string _geoFenceDescription;
 
-        public GeoFenceViewModel(IDeviceManagementClient deviceManagementClient, IAppConfig appConfig)
+        public GeoFenceViewModel()
         {
-            _deviceManagementClient = deviceManagementClient ?? throw new ArgumentNullException(nameof(deviceManagementClient));
-            _appConfig = appConfig ?? throw new ArgumentNullException(nameof(appConfig));
-
             MapTappedCommand = RelayCommand<GeoLocation>.Create(MapTapped);
         }
 
@@ -94,7 +90,7 @@ namespace SeaWolf.ViewModels
 
             var result = await PerformNetworkOperation(async () =>
             {
-                return await _deviceManagementClient.UpdateDeviceAsync(CurrentDevice.DeviceRepository.Id, CurrentDevice);
+                return await DeviceManagementClient.UpdateDeviceAsync(CurrentDevice.DeviceRepository.Id, CurrentDevice);
             });
 
             if (result.Successful)

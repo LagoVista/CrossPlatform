@@ -16,14 +16,9 @@ namespace SeaWolf.ViewModels
 {
     public class SensorViewModel : AppViewModelBase
     {
-        private readonly IDeviceManagementClient _deviceManagementClient;
-        private readonly IAppConfig _appConfig;
 
-        public SensorViewModel(IDeviceManagementClient deviceManagementClient, IAppConfig appConfig)
+        public SensorViewModel()
         {
-            _deviceManagementClient = deviceManagementClient ?? throw new ArgumentNullException(nameof(deviceManagementClient));
-            _appConfig = appConfig ?? throw new ArgumentNullException(nameof(appConfig));
-
             SensorIndexes.Add(new KeyValuePair<int, string>(-1, "-select sensor slot-"));
 
             for (var idx = 1; idx <= 8; ++idx)
@@ -32,7 +27,7 @@ namespace SeaWolf.ViewModels
             }
 
             SensorTypes.Add(new AppSpecificSensorTypes() { Key = "-1", Name = "-select sensor type-" });
-            foreach (var snsr in _appConfig.AppSpecificSensorTypes)
+            foreach (var snsr in AppConfig.AppSpecificSensorTypes)
                 SensorTypes.Add(snsr);
 
             RemoveSensorCommand = new RelayCommand(RemoveSensor);
@@ -85,7 +80,7 @@ namespace SeaWolf.ViewModels
 
                 var result = await PerformNetworkOperation(async () =>
                 {
-                    return await _deviceManagementClient.UpdateDeviceAsync(CurrentDevice.DeviceRepository.Id, CurrentDevice);
+                    return await DeviceManagementClient.UpdateDeviceAsync(CurrentDevice.DeviceRepository.Id, CurrentDevice);
                 });
 
                 if (result.Successful)
@@ -142,7 +137,7 @@ namespace SeaWolf.ViewModels
 
             var result = await PerformNetworkOperation(async () =>
             {
-                return await _deviceManagementClient.UpdateDeviceAsync(CurrentDevice.DeviceRepository.Id, CurrentDevice);
+                return await DeviceManagementClient.UpdateDeviceAsync(CurrentDevice.DeviceRepository.Id, CurrentDevice);
             });
 
             if (result.Successful)

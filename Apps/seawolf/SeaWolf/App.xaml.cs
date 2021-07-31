@@ -18,6 +18,7 @@ using LagoVista.Core.PlatformSupport;
 using LagoVista.XPlat.Core.Views;
 using LagoVista.Core.Models;
 using LagoVista;
+using LagoVista.Client.Core.Interfaces;
 
 namespace SeaWolf
 {
@@ -79,10 +80,13 @@ namespace SeaWolf
             ResourceSupport.UseCustomfonts = true;
 
             this.RegisterStyle(new AppStyle());
+            
 
             var clientAppInfo = new ClientAppInfo();            
             SLWIOC.RegisterSingleton<IClientAppInfo>(clientAppInfo);            
             SLWIOC.RegisterSingleton<IAppConfig>(_appConfig);
+
+            SLWIOC.Register<IDeviceManagementClient, DeviceManagementClient>();
 
             var navigation = new ViewModelNavigation(this);
             SLWIOC.RegisterSingleton<IViewModelNavigation>(navigation);
@@ -108,10 +112,12 @@ namespace SeaWolf
             navigation.Add<SplashViewModel, Views.SplashView>();
            
             navigation.Start<SplashViewModel>();
-            
-            navigation.Add<DesignMockViewModel, Views.DesignMockView>();
 
-            SLWIOC.Register<IDeviceManagementClient, DeviceManagementClient>();
+            var dmClient = SLWIOC.Create<IDeviceManagementClient>();
+
+            SLWIOC.RegisterSingleton<IDeviceManagementClient>(dmClient);
+
+            navigation.Add<DesignMockViewModel, Views.DesignMockView>();
         }
 
         public void HandleURIActivation(Uri uri)

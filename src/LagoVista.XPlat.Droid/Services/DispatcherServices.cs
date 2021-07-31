@@ -14,9 +14,7 @@ namespace LagoVista.XPlat.Droid.Services
 
         public void Invoke(Action action)
         {
-            var context = global::Android.App.Application.Context;
-            action();
-            
+            Xamarin.Forms.Device.BeginInvokeOnMainThread(action);
         }
     }
 }
