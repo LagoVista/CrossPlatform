@@ -345,7 +345,7 @@ namespace LagoVista.Client.Core.Net
             if (cancellationTokenSource == null) cancellationTokenSource = new CancellationTokenSource(TimeSpan.FromSeconds(60));
 
             var json = JsonConvert.SerializeObject(model, new Newtonsoft.Json.JsonSerializerSettings() { ContractResolver = new CamelCasePropertyNamesContractResolver(), });
-            _logger.AddCustomEvent(LogLevel.Message, "RawRestClient_PostAsync", "Begin PUT", path.ToKVP("path"), json.ToKVP("content"));
+            _logger.AddCustomEvent(LogLevel.Message, "RawRestClient_PostAsync", "Begin POST", path.ToKVP("path"), json.ToKVP("content"));
 
             var response = await PostAsync(path, json, cancellationTokenSource);
             if (response.Success)
@@ -369,7 +369,7 @@ namespace LagoVista.Client.Core.Net
                 }
             }
 
-            _logger.AddCustomEvent(LogLevel.Message, "RawRestClient_GetAsync", "Begin PUT", path.ToKVP("path"));
+            _logger.AddCustomEvent(LogLevel.Message, "RawRestClient_GetAsync", "Begin GET", path.ToKVP("path"));
 
             if (cancellationTokenSource == null) cancellationTokenSource = new CancellationTokenSource(TimeSpan.FromSeconds(60));
 

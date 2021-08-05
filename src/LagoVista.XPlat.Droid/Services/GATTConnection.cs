@@ -18,7 +18,7 @@ namespace LagoVista.XPlat.Droid.Services
 
     public class GATTConnection : IGATTConnection
     {
-       UUID NUVIOT_SRVC_UUID =            UUID.FromString("d804b639-6ce7-4e80-9f8a-ce0f699085eb");
+        UUID NUVIOT_SRVC_UUID = UUID.FromString("d804b639-6ce7-4e80-9f8a-ce0f699085eb");
         UUID STATE_CHARACTERISTICS_UUID = UUID.FromString("d804b639-6ce7-5e81-9f8a-ce0f699085eb");
 
 
@@ -33,6 +33,8 @@ namespace LagoVista.XPlat.Droid.Services
         private CancellationTokenSource _listenCancelTokenSource = new CancellationTokenSource();
         private SemaphoreSlim _charactersiticRead = new SemaphoreSlim(0);
         private SemaphoreSlim _charactersiticWrote = new SemaphoreSlim(0);
+
+        public bool IsScanning { get; private set; } = false;
 
         public class mScanCallback : ScanCallback
         {
@@ -193,7 +195,7 @@ namespace LagoVista.XPlat.Droid.Services
                             gatService.Characteristics.Add(gatCharacteristic);
                             existingDevice.AllCharacteristics.Add(gatCharacteristic);
 
-                            if(characteristic.Uuid.ToString() == STATE_CHARACTERISTICS_UUID.ToString())
+                            if (characteristic.Uuid.ToString() == STATE_CHARACTERISTICS_UUID.ToString())
                             {
                                 device.SetCharacteristicNotification(characteristic, true);
                             }
@@ -209,8 +211,6 @@ namespace LagoVista.XPlat.Droid.Services
         {
             if (!_bleDevices.Where(dvc => dvc.Device.Address == device.Device.Address).Any())
                 _bleDevices.Add(device);
-
-            
 
             _dispatcherService.Invoke(() =>
             {
@@ -281,8 +281,9 @@ namespace LagoVista.XPlat.Droid.Services
                     {
                         device.LastSeen = DateTime.Now;
                         _discoveredDevices.Add(device);
-                        DeviceDiscovered?.Invoke(this, device);
                     }
+
+                    DeviceDiscovered?.Invoke(this, device);
                 }
             });
         }
@@ -321,13 +322,22 @@ namespace LagoVista.XPlat.Droid.Services
 
         public Task StartScanAsync()
         {
-            _bluetoothLeScanner.StartScan(_scanCallbackHanndler);
+            if (!IsScanning)
+            {
+                _bluetoothLeScanner.StartScan(_scanCallbackHanndler);
+                IsScanning = true;
+            }
+
             return Task.CompletedTask;
         }
 
         public Task StopScanAsync()
         {
-            _bluetoothLeScanner.StopScan(_scanCallbackHanndler);
+            if (IsScanning)
+            {
+                _bluetoothLeScanner.StopScan(_scanCallbackHanndler);
+                IsScanning = false;
+            }
             return Task.CompletedTask;
         }
 

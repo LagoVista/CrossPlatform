@@ -12,6 +12,7 @@ using LagoVista.UserAdmin.Models.Users;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Threading.Tasks;
 
 namespace LagoVista.Client.Devices
@@ -47,14 +48,15 @@ namespace LagoVista.Client.Devices
             return _restClient.PostAsync($"/api/device/{deviceRepoId}", device);
         }
 
-        public Task<InvokeResult<ListenerConfiguration>> GetListenerConfigurationAsync(String instanceId)
+        public async Task<InvokeResult<ListenerConfiguration>> GetListenerConfigurationAsync(String instanceId)
         {
-            return _restClient.GetAsync<ListenerConfiguration>($"/api/deployment/instance/{instanceId}/defaultlistener");
+            var result = await  _restClient.GetAsync<InvokeResult<ListenerConfiguration>>($"/api/deployment/instance/{instanceId}/defaultlistener");
+            return result.Result;
         }
 
-        public Task<ListResponse<DeviceTypeSummary>> GetDeviceTypesAsync(String instanceId)
+        public Task<ListResponse<DeviceTypeSummary>> GetDeviceTypesForInstanceAsync(String instanceId, ListRequest request = null)
         {
-            return _restClient.GetListResponseAsync<DeviceTypeSummary>($"/api/deployment/instance/{instanceId}/devicetypes", new ListRequest() { PageSize = 1024 });
+            return _restClient.GetListResponseAsync<DeviceTypeSummary>($"/api/deployment/instance/{instanceId}/devicetypes", request);
         }
 
         public Task<InvokeResult> UpdateDeviceAsync(String deviceRepoId, Device device)
@@ -319,6 +321,21 @@ namespace LagoVista.Client.Devices
             else
             {
                 throw new Exception(result.Errors.First().Message);
+            }
+        }
+
+        public async Task<InvokeResult> SetDeviceMacAddressAsync(string deviceRepoId, string id, string macAddress)
+        {
+            var url = $"/api/device/{deviceRepoId}/{id}/{WebUtility.UrlEncode(macAddress)}";
+            
+            var result = await _restClient.GetAsync<InvokeResult<InvokeResult>>(url);
+            if(result.Successful)
+            {
+                return result.Result.Result;
+            }
+            else
+            {
+                return result.ToInvokeResult();
             }
         }
     }

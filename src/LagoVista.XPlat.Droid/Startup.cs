@@ -7,6 +7,7 @@ using LagoVista.Client.Core.Auth;
 using LagoVista.Client.Core;
 using LagoVista.Client.Core.Net;
 using LagoVista.Client.Core.Interfaces;
+using LagoVista.Client.Core.Models;
 
 namespace LagoVista.XPlat.Droid
 {
@@ -32,6 +33,8 @@ namespace LagoVista.XPlat.Droid
             SLWIOC.Register<ITCPClient, Services.TCPClient>();
             SLWIOC.Register<IUDPClient, Services.UDPClient>();
             SLWIOC.Register<IGATTConnection, GATTConnection>();
+
+            SLWIOC.Get<IGATTConnection>().RegisterKnownServices(NuvIoTGATTProfile.GetNuvIoTGATT().Services);
 
             SLWIOC.Register<IAppServices, Services.AppService>();
             SLWIOC.Register<IWebSocket, Services.WebSocket>();

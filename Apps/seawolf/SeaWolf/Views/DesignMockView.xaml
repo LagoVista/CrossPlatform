@@ -56,7 +56,17 @@
                               TextColor="{Binding HeaderForegroundColor}"
                               FontSize="36"
                               Margin="0,20,0,0"
+                              IsVisible="{Binding IsBLEConnected}"
                               HorizontalTextAlignment="Center" />
+
+                    <pge:Icon Grid.Column="3" 
+                              IconKey="fa-wifi" 
+                              TextColor="DarkGray"
+                              FontSize="36"
+                              Margin="0,20,0,0"
+                              IsVisible="{Binding IsBLEDisconnected}"
+                              HorizontalTextAlignment="Center" />
+
                     <Label Grid.Row="1" Grid.ColumnSpan="4" Text="{Binding SystemStatus}" TextColor="{Binding HeaderForegroundColor}"
                            HorizontalTextAlignment="Center" />
                 </Grid>

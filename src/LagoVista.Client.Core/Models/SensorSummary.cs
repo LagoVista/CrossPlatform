@@ -1,21 +1,24 @@
 ﻿using LagoVista.Core.Models;
+using LagoVista.Core.Models.Drawing;
 using LagoVista.IoT.DeviceManagement.Models;
 using System;
-using Xamarin.Forms;
+using System.Collections.Generic;
+using System.Text;
 
-namespace SeaWolf.Models
+namespace LagoVista.Client.Core.Models
 {
-    public class SensorSummary : ModelBase
+    public class SensorSummaryColors : ModelBase
     {
-        public PortConfig Config { get; set; }
-        public AppSpecificSensorTypes SensorType { get; set; }
+        public SensorConfig Config { get; set; }
+        public SensorDefinition SensorType { get; set; }
 
         private string _value;
         public string Value
         {
             set
             {
-                if (Config.LowThreshold == 0 && (Config.HighTheshold == 1 || Config.HighTheshold == 2.5))
+                _value = value;
+               /* if (Config.LowThreshold == 0 && (Config.HighTheshold == 1 || Config.HighTheshold == 2.5))
                 {
                     if (value == "1")
                     {
@@ -71,7 +74,7 @@ namespace SeaWolf.Models
                         OutOfTolerance = false;
                         Warning = false;
                     }
-                }
+                }*/
             }
             get => _value;
         }

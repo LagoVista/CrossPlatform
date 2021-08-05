@@ -1,6 +1,7 @@
 ﻿using LagoVista.Client.Core.ViewModels;
 using LagoVista.Core.Interfaces;
 using LagoVista.IoT.DeviceManagement.Core.Models;
+using LagoVista.IoT.DeviceManagement.Models;
 using SeaWolf.Models;
 using System;
 using System.Collections.Generic;

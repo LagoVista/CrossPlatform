@@ -63,15 +63,13 @@ namespace LagoVista.Client.Core.ViewModels.DeviceAccess
         protected override void OnBLEDevice_Connected(BLEDevice device)
         {
             StopScan();
-            GattConnection.RegisterKnownServices(NuvIoTGATTProfile.GetNuvIoTGATT().Services);
+            
             this.NavigateAndViewAsync<DeviceSettingsViewModel>(device.DeviceAddress);
         }
 
-        public async void ConnectAsync(BLEDevice device)
+        public async void ConnectAsync(BLEDevice device) 
         {
-            var listener = await DeviceManagementClient.GetListenerConfigurationAsync(AppConfig.InstanceId);
-            var dts = await DeviceManagementClient.GetDeviceTypesAsync(AppConfig.InstanceId);
-
+            var wasSet = await DeviceManagementClient.SetDeviceMacAddressAsync(CurrentDevice.DeviceRepository.Id, CurrentDevice.Id, device.DeviceAddress);
             await GattConnection.ConnectAsync(device);
         }
 

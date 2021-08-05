@@ -17,7 +17,7 @@ namespace LagoVista.Client.Core.Interfaces
         event EventHandler DFUCompleted;
 
         event EventHandler<string> ReceiveConsoleOut;
-
+        bool IsScanning { get; }
         Task StartScanAsync();
 
         Task StopScanAsync();

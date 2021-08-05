@@ -54,8 +54,6 @@ namespace SeaWolf.ViewModels
             };
         }
 
-
-
         private void ShowConfigurationView()
         {
             var launchArgs = new ViewModelLaunchArgs()

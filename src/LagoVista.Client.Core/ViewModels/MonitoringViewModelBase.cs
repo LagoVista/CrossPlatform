@@ -1,6 +1,5 @@
 ﻿using LagoVista.Client.Core.Models;
 using LagoVista.Client.Core.Net;
-using LagoVista.Client.Core.ViewModels.DeviceAccess;
 using LagoVista.Core.IOC;
 using LagoVista.Core.Validation;
 using Newtonsoft.Json;
@@ -10,13 +9,15 @@ using System.Threading.Tasks;
 
 namespace LagoVista.Client.Core.ViewModels
 {
-    public abstract class MonitoringViewModelBase : DeviceViewModelBase
+    public abstract class MonitoringViewModelBase : AppViewModelBase
     {
         Uri _wsUri;
         IWebSocket _webSocket;
 
         public async override Task InitAsync()
         {
+            await base.InitAsync();
+
             if (IsNetworkConnected)
             {
                 await SubscribeToWebSocketAsync();
