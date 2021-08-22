@@ -2,25 +2,19 @@
 using LagoVista.Client.Core.Net;
 using LagoVista.Client.Core.Resources;
 using LagoVista.Client.Core.ViewModels;
-using LagoVista.Client.Core.ViewModels.Orgs;
 using LagoVista.Client.Core.ViewModels.Other;
-using LagoVista.Client.Devices;
 using LagoVista.Core.Commanding;
-using LagoVista.Core.Interfaces;
-using LagoVista.Core.Models;
 using LagoVista.Core.Models.Geo;
 using LagoVista.Core.Validation;
 using LagoVista.IoT.DeviceManagement.Core.Models;
 using LagoVista.IoT.DeviceManagement.Models;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
-using SeaWolf.Models;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
-using Xamarin.Essentials;
 
 namespace SeaWolf.ViewModels
 {
@@ -29,6 +23,9 @@ namespace SeaWolf.ViewModels
         private bool _isNotFirstVessel;
         private bool _isNotLastVessel;
         GeoLocation _currentVeseelLocation;
+
+        protected string DeviceId { get; set; }
+        protected string DeviceRepoId { get; set; }
 
         ObservableCollection<DeviceSummary> _userDevices;
 
@@ -250,7 +247,7 @@ namespace SeaWolf.ViewModels
 
                     foreach (var sensor in Sensors)
                     {
-                        if (sensor.SensorType.Technology == SensorTechnology.ADC)
+                        /*if (sensor.Technology == SensorTechnology.ADC)
                         {
                             CurrentDevice.Sensors.AdcValues[sensor.Config.SensorIndex - 1] = device.Sensors.AdcValues[sensor.Config.SensorIndex - 1];
                             sensor.Value = device.Sensors.AdcValues[sensor.Config.SensorIndex - 1].ToString();
@@ -260,7 +257,7 @@ namespace SeaWolf.ViewModels
                         {
                             CurrentDevice.Sensors.IoValues[sensor.Config.SensorIndex - 1] = device.Sensors.IoValues[sensor.Config.SensorIndex - 1];
                             sensor.Value = device.Sensors.IoValues[sensor.Config.SensorIndex - 1].ToString();
-                        }
+                        }*/
                     }
 
                     break;
@@ -270,7 +267,8 @@ namespace SeaWolf.ViewModels
 
         public override string GetChannelURI()
         {
-            return $"/api/wsuri/device/{DeviceId}/normal";
+            //return $"/api/wsuri/device/{DeviceId}/normal";
+            return String.Empty;
         }
     }
 }

@@ -13,6 +13,7 @@ using LagoVista.Core.Validation;
 using System.Threading;
 using LagoVista.Client.Core.Exceptions;
 using LagoVista.Client.Core.Interfaces;
+using LagoVista.Core.ViewModels;
 
 namespace LagoVista.Client.Core.ViewModels
 {
@@ -37,6 +38,18 @@ namespace LagoVista.Client.Core.ViewModels
 
             await Popups.ShowAsync(bldr.ToString());
         }
+
+        protected void ShowView<TViewModel>()
+        {
+            var launchArgs = new ViewModelLaunchArgs()
+            {
+                ViewModelType = typeof(TViewModel),
+                LaunchType = LaunchTypes.View
+            };
+
+            ViewModelNavigation.NavigateAsync(launchArgs);
+        }
+
 
         public async Task ShowServerErrorMessage<TResponseModel>(InvokeResult<TResponseModel> result)
         {

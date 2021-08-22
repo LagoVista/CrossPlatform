@@ -1,6 +1,7 @@
 ﻿using LagoVista.Client.Core.ViewModels;
 using LagoVista.Core.Commanding;
 using LagoVista.IoT.DeviceManagement.Core.Models;
+using LagoVista.IoT.DeviceManagement.Models;
 using SeaWolf.Models;
 using System;
 using System.Threading.Tasks;
@@ -28,9 +29,9 @@ namespace SeaWolf.ViewModels
             CurrentDevice = GetLaunchArg<Device>(nameof(Device));
             Sensor = GetLaunchArg<SensorSummary>(nameof(SensorSummary));
 
-            HighThreshold = Sensor.Config.HighTheshold;
+            /*HighThreshold = Sensor.Config.HighTheshold;
             LowThreshold = Sensor.Config.LowThreshold;
-            IsEnabled = Sensor.Config.AlertsEnabled;
+            IsEnabled = Sensor.Config.AlertsEnabled;*/
 
             return base.InitAsync();
         }
@@ -114,9 +115,9 @@ namespace SeaWolf.ViewModels
 
         public async override void Save()
         {            
-            Sensor.Config.HighTheshold = HighThreshold;
+            /*Sensor.Config.HighTheshold = HighThreshold;
             Sensor.Config.LowThreshold = LowThreshold;
-            Sensor.Config.AlertsEnabled = IsEnabled;
+            Sensor.Config.AlertsEnabled = IsEnabled;*/
 
             var result = await PerformNetworkOperation(async () =>
             {

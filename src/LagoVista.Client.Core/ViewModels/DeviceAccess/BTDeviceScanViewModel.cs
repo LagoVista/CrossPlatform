@@ -1,9 +1,6 @@
 ﻿using LagoVista.Client.Core.Models;
 using LagoVista.Client.Core.ViewModels.DeviceAccess.Settings;
 using LagoVista.Core.Commanding;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace LagoVista.Client.Core.ViewModels.DeviceAccess

@@ -16,6 +16,7 @@ namespace SeaWolf.ViewModels
         {
             MenuOptions = new List<MenuItem>()
             {
+                new MenuItem() {FontIconKey = "fa-gear", Name = "Provision Device", Command =  new RelayCommand(() => ViewModelNavigation.NavigateAsync<ProvisionDeviceViewModel>(this, _deviceParamer)), Help="Setup your device" },
                 new MenuItem() {FontIconKey = "fa-gear", Name = "Configure Geo Fences", Command =  new RelayCommand(() => ViewModelNavigation.NavigateAsync<GeoFencesViewModel>(this, _deviceParamer)), Help="Configure geofences for your vessel" },
                 new MenuItem() {FontIconKey = "fa-gear", Name = "Configure Alerts", Command =  new RelayCommand(() => ViewModelNavigation.NavigateAsync<ConfigureAlertsViewModel>(this,_deviceParamer)), Help="Set alerts" },
                 new MenuItem() {FontIconKey = "fa-gear", Name = "Add/Remove Sensors", Command =  new RelayCommand(() => ViewModelNavigation.NavigateAsync<SensorsViewModel>(this, _deviceParamer)), Help="Set alerts" },

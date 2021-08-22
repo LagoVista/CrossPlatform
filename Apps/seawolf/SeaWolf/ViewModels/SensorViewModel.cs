@@ -26,9 +26,9 @@ namespace SeaWolf.ViewModels
                 SensorIndexes.Add(new KeyValuePair<int, string>(idx, idx.ToString()));
             }
 
-            SensorTypes.Add(new AppSpecificSensorTypes() { Key = "-1", Name = "-select sensor type-" });
+            /*SensorTypes.Add(new AppSpecificSensorTypes() { Key = "-1", Name = "-select sensor type-" });
             foreach (var snsr in AppConfig.AppSpecificSensorTypes)
-                SensorTypes.Add(snsr);
+                SensorTypes.Add(snsr);*/
 
             RemoveSensorCommand = new RelayCommand(RemoveSensor);
         }
@@ -44,10 +44,11 @@ namespace SeaWolf.ViewModels
         {
             CurrentDevice = GetLaunchArg<Device>(nameof(Device));
 
+            /*
             if (IsAdding)
             {
                 SelectedSensorIndex = SensorIndexes[0];
-                SelectedSensorType = SensorTypes[0];
+                //SelectedSensorType = SensorTypes[0];
             }
             else if (IsEditing)
             {
@@ -60,7 +61,7 @@ namespace SeaWolf.ViewModels
             else
             {
                 throw new InvalidOperationException($"Invalid launch type {LaunchArgs.LaunchType}.");
-            }
+            }*/
 
             return base.InitAsync();
         }
@@ -69,7 +70,7 @@ namespace SeaWolf.ViewModels
         {
             if ((await this.Popups.ConfirmAsync("Remove Sensor", "Are you sure?  This can not be undone.")))
             {
-                var existingSummary = GetLaunchArg<SensorSummary>(nameof(SensorSummary));
+                /*var existingSummary = GetLaunchArg<SensorSummary>(nameof(SensorSummary));
                 existingSummary.Config.Config = 0;
                 existingSummary.Config.Description = null;
                 existingSummary.Config.Name = null;
@@ -86,7 +87,7 @@ namespace SeaWolf.ViewModels
                 if (result.Successful)
                 {
                     await this.ViewModelNavigation.GoBackAsync();
-                }
+                }*/
             }
         }
 
@@ -104,7 +105,7 @@ namespace SeaWolf.ViewModels
                 return;
             }
 
-            if (SelectedSensorType.Key == "-1")
+            /*if (SelectedSensorType.Key == "-1")
             {
                 await Popups.ShowAsync("Please specify the type of sensor.");
                 return;
@@ -133,7 +134,7 @@ namespace SeaWolf.ViewModels
             else
             {
                 CurrentDevice.Sensors.IoConfigs[portConfig.SensorIndex - 1] = portConfig;
-            }
+            }*/
 
             var result = await PerformNetworkOperation(async () =>
             {
@@ -147,16 +148,9 @@ namespace SeaWolf.ViewModels
         }
 
         #region Properties
-        public ObservableCollection<AppSpecificSensorTypes> SensorTypes { get; } = new ObservableCollection<AppSpecificSensorTypes>();
         public ObservableCollection<KeyValuePair<int, string>> SensorIndexes { get; } = new ObservableCollection<KeyValuePair<int, string>>();
 
 
-        AppSpecificSensorTypes _selectedSensorType;
-        public AppSpecificSensorTypes SelectedSensorType
-        {
-            get => _selectedSensorType;
-            set => Set(ref _selectedSensorType, value);
-        }
 
         KeyValuePair<int, string> _selectedSensorIndex;
         public KeyValuePair<int, string> SelectedSensorIndex

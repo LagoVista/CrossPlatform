@@ -44,7 +44,7 @@ namespace SeaWolf.ViewModels
         {
             var cfg = obj as SensorSummary;
             Sensors.Remove(cfg);
-            cfg.Config.Config = 0;
+            cfg.Config.PortIndex = 0;
             cfg.Config.Description = null;
             cfg.Config.Name = null;
             cfg.Config.Key = null;

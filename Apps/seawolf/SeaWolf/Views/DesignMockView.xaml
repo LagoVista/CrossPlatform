@@ -24,10 +24,11 @@
                         RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height}"
                         >
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="0.25*"></ColumnDefinition>
-                        <ColumnDefinition Width="0.25*"></ColumnDefinition>
-                        <ColumnDefinition Width="0.25*"></ColumnDefinition>
-                        <ColumnDefinition Width="0.25*"></ColumnDefinition>
+                        <ColumnDefinition Width="0.20*"></ColumnDefinition>
+                        <ColumnDefinition Width="0.20*"></ColumnDefinition>
+                        <ColumnDefinition Width="0.20*"></ColumnDefinition>
+                        <ColumnDefinition Width="0.20*"></ColumnDefinition>
+                        <ColumnDefinition Width="0.20*"></ColumnDefinition>
                     </Grid.ColumnDefinitions>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="auto" />
@@ -51,23 +52,40 @@
                               FontSize="36" 
                               Margin="0,20,0,0"
                               HorizontalTextAlignment="Center" />
+                    
                     <pge:Icon Grid.Column="3" 
-                              IconKey="fa-wifi" 
-                              TextColor="{Binding HeaderForegroundColor}"
-                              FontSize="36"
-                              Margin="0,20,0,0"
-                              IsVisible="{Binding IsBLEConnected}"
-                              HorizontalTextAlignment="Center" />
-
-                    <pge:Icon Grid.Column="3" 
-                              IconKey="fa-wifi" 
+                              IconKey="fa-bluetooth" 
                               TextColor="DarkGray"
                               FontSize="36"
                               Margin="0,20,0,0"
                               IsVisible="{Binding IsBLEDisconnected}"
                               HorizontalTextAlignment="Center" />
+                    
+                    <pge:Icon Grid.Column="3" 
+                              IconKey="fa-bluetooth" 
+                              FontSize="36"
+                              TextColor="{Binding HeaderForegroundColor}"
+                              Margin="0,20,0,0"
+                              IsVisible="{Binding IsBLEConnected}"
+                              HorizontalTextAlignment="Center" />
 
-                    <Label Grid.Row="1" Grid.ColumnSpan="4" Text="{Binding SystemStatus}" TextColor="{Binding HeaderForegroundColor}"
+                    <pge:Icon Grid.Column="4" 
+                              IconKey="fa-wifi" 
+                              FontSize="36"
+                              TextColor="DarkGray"                              
+                              Margin="0,20,0,0"
+                              IsVisible="{Binding IsDeviceDisconnectedToServer}"
+                              HorizontalTextAlignment="Center" />
+
+                    <pge:Icon Grid.Column="4" 
+                              IconKey="fa-wifi" 
+                              TextColor="{Binding HeaderForegroundColor}"
+                              FontSize="36"
+                              Margin="0,20,0,0"
+                              IsVisible="{Binding IsDeviceConnectedToServer}"
+                              HorizontalTextAlignment="Center" />
+
+                    <Label Grid.Row="1" Grid.ColumnSpan="5" Text="{Binding SystemStatus}" TextColor="{Binding HeaderForegroundColor}"
                            HorizontalTextAlignment="Center" />
                 </Grid>
 

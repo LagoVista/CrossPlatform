@@ -225,7 +225,7 @@ namespace LagoVista.Client.Core.ViewModels.DeviceAccess
 
         private void BtSerial_DeviceConnected(object sender, Models.BLEDevice e)
         {
-             _isConnecting = false;
+            _isConnecting = false;
 
             if (e.DeviceAddress == CurrentDevice.MacAddress)
             {
@@ -294,6 +294,22 @@ namespace LagoVista.Client.Core.ViewModels.DeviceAccess
             get => !_isBLEConnected;
         }
 
+        bool _isDeviceConnectedToServer = false;
+        public bool IsDeviceConnectedToServer
+        {
+            get => _isDeviceConnectedToServer;
+            set
+            {
+                Set(ref _isDeviceConnectedToServer, value);
+                RaisePropertyChanged(nameof(IsDeviceDisconnectedToServer));
+            }
+        }
+
+        public bool IsDeviceDisconnectedToServer
+        {
+            get => !_isDeviceConnectedToServer;
+        }
+
         public BLEDevice BLEDevice
         {
             get => _bleDevice;
@@ -311,7 +327,7 @@ namespace LagoVista.Client.Core.ViewModels.DeviceAccess
                 await _gattConnection.DisconnectAsync(BLEDevice);
             }
 
-            if(CurrentDevice != null)
+            if (CurrentDevice != null)
             {
                 await _gattConnection.StartScanAsync();
             }
@@ -345,7 +361,7 @@ namespace LagoVista.Client.Core.ViewModels.DeviceAccess
 
         protected bool DeviceConnected
         {
-            get { return _bleDevice.Connected; }
+            get { return _bleDevice != null && _bleDevice.Connected; }
         }
 
         protected virtual void OnBTSerail_MsgReceived(string msg) { }
@@ -408,20 +424,36 @@ namespace LagoVista.Client.Core.ViewModels.DeviceAccess
                     }
                     else
                     {
-/*                        var lastKnownLocation = await Geolocation.GetLastKnownLocationAsync();
-                        if (lastKnownLocation != null)
-                        {
-                            CurrentVeseelLocation = new GeoLocation(lastKnownLocation.Latitude, lastKnownLocation.Longitude);
-                        }*/
+                        /*                        var lastKnownLocation = await Geolocation.GetLastKnownLocationAsync();
+                                                if (lastKnownLocation != null)
+                                                {
+                                                    CurrentVeseelLocation = new GeoLocation(lastKnownLocation.Latitude, lastKnownLocation.Longitude);
+                                                }*/
                     }
 
                     GeoFences.Clear();
                     foreach (var geoFence in CurrentDevice.GeoFences)
                     {
                         GeoFences.Add(geoFence);
-                    }                  
+                    }
                 }
 
+                if (!String.IsNullOrEmpty(CurrentDevice.MacAddress))
+                {
+                    var bleDevice = _gattConnection.DiscoveredDevices.FirstOrDefault(ble => ble.DeviceAddress == CurrentDevice.MacAddress);
+                    if (bleDevice != null)
+                    {
+                        await _gattConnection.ConnectAsync(bleDevice);
+                    }
+                    else
+                    {
+                        await _gattConnection.StartScanAsync();
+                    }
+                }
+                else
+                {
+                    await _gattConnection.StartScanAsync();
+                }
 
                 return deviceResponse.ToInvokeResult();
             });
@@ -446,7 +478,7 @@ namespace LagoVista.Client.Core.ViewModels.DeviceAccess
                 {
                     HasDevices = true;
                     NoDevices = !HasDevices;
-                    DeviceId = await Storage.GetKVPAsync<string>(DeviceId);
+                    DeviceId = await Storage.GetKVPAsync<string>(DEVICE_ID);
 
                     if (String.IsNullOrEmpty(DeviceId))
                     {
@@ -464,21 +496,6 @@ namespace LagoVista.Client.Core.ViewModels.DeviceAccess
             });
         }
 
-        protected void ShowView<TViewModel>()
-        {
-            _isShowingNewView = true;
-
-            var launchArgs = new ViewModelLaunchArgs()
-            {
-                ViewModelType = typeof(TViewModel),
-                LaunchType = LaunchTypes.View
-            };
-
-            launchArgs.Parameters.Add(DEVICE_ID, DeviceId);
-            launchArgs.Parameters.Add(DEVICE_REPO_ID, DeviceRepoId);
-
-            ViewModelNavigation.NavigateAsync(launchArgs);
-        }
 
         public ObservableCollection<GeoFence> GeoFences { get; } = new ObservableCollection<GeoFence>();
 
@@ -547,21 +564,23 @@ namespace LagoVista.Client.Core.ViewModels.DeviceAccess
                     var device = JsonConvert.DeserializeObject<Device>(notification.Payload, serializerSettings);
                     CurrentVeseelLocation = device.GeoLocation;
 
+
+                    /*
                     foreach (var sensor in Sensors)
                     {
-                        if (sensor. == SensorTechnology.ADC)
+                        if (sensor.Technology.Value == SensorTechnology.ADC)
                         {
-                            CurrentDevice.Sensors.AdcValues[sensor.Config.SensorIndex - 1] = device.Sensors.AdcValues[sensor.Config.SensorIndex - 1];
+                            CurrentDevice.SensorCollection.AdcValues[sensor.Config.SensorIndex - 1] = device.Sensors.AdcValues[sensor.Config.SensorIndex - 1];
                             sensor.Value = device.Sensors.AdcValues[sensor.Config.SensorIndex - 1].ToString();
                         }
 
-                        if (sensor.ConfigConfig.Technology == SensorTechnology.IO)
+                        if (sensor.Technology == SensorTechnology.IO)
                         {
                             CurrentDevice.Sensors.IoValues[sensor.Config.SensorIndex - 1] = device.Sensors.IoValues[sensor.Config.SensorIndex - 1];
                             sensor.Value = device.Sensors.IoValues[sensor.Config.SensorIndex - 1].ToString();
                         }
 
-                        if (sensor.Warning)
+                        /*if (sensor.Warning)
                         {
                             warningSensors.Add(sensor);
                         }
@@ -570,7 +589,7 @@ namespace LagoVista.Client.Core.ViewModels.DeviceAccess
                         {
                             outOfToleranceSensors.Add(sensor);
                         }
-                    }
+                    }*/
 
                     break;
             }

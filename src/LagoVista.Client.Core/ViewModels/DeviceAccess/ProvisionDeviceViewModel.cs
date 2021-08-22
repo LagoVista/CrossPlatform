@@ -16,6 +16,7 @@ namespace LagoVista.Client.Core.ViewModels.DeviceAccess
     {
         private int _sendIndex;
 
+        
 
         System.Threading.SemaphoreSlim _recvSemephor;
 
@@ -162,13 +163,20 @@ namespace LagoVista.Client.Core.ViewModels.DeviceAccess
         {
             await base.InitAsync();
 
-            //await _btSerial.ConnectAsync(btDevice);
-            await SendAsync("HELLO\n");
-            await Task.Delay(250);
-            await SendAsync("PAUSE\n");
-            await Task.Delay(250);
+            var listenerConfig = await DeviceManagementClient.GetListenerConfigurationAsync(AppConfig.InstanceId);
+            if (listenerConfig.Successful)
+            {
+                if(IsBLEConnected)
+                {
+                    var sysConfigServices = BLEDevice.Services.First(chr => chr.Id == NuvIoTGATTProfile.SVC_UUID_NUVIOT);
+                    var sysConfigCharacteristic = BLEDevice.AllCharacteristics.First(chr => chr.Id == NuvIoTGATTProfile.CHAR_UUID_SYS_CONFIG);
 
-            await SendAsync("SYSCONFIG-SEND\n");
+                    await GattConnection.WriteCharacteristic(BLEDevice, sysConfigServices, sysConfigCharacteristic, $"host={listenerConfig.Result.HostName},uid={listenerConfig.Result.UserName},pwd={listenerConfig.Result.Password};");
+                }
+                Console.WriteLine(listenerConfig.Result.HostName);
+                Console.WriteLine(listenerConfig.Result.UserName);
+                Console.WriteLine(listenerConfig.Result.Password);
+            }
         }
 
         public async void Commission()

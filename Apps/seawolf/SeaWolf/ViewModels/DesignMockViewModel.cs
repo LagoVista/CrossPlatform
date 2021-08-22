@@ -101,8 +101,8 @@ namespace SeaWolf.ViewModels
         private async void SensorDetection()
         {
             Sensors.AddValidSensors(AppConfig, CurrentDevice);
-            var outOfToleranceSensors = Sensors.Where(sns => sns.OutOfTolerance);
-            var warningSensors = Sensors.Where(sns => sns.Warning);
+            /*var outOfToleranceSensors = Sensors.Where(sns => sns.State == LagoVista.IoT.DeviceManagement.Models.SensorStates.Error);
+            var warningSensors = Sensors.Where(sns => sns.State == LagoVista.IoT.DeviceManagement.Models.SensorStates.Warning);
 
             if (outOfToleranceSensors.Any())
             {
@@ -122,7 +122,7 @@ namespace SeaWolf.ViewModels
                 HeaderForegroundColor = Xamarin.Forms.Color.FromRgb(0x21, 0x21, 0x21);
                 SystemStatus = "All systems nominal";
             }
-
+            */
             await GattConnection.StartScanAsync();
 
             await SubscribeToWebSocketAsync();

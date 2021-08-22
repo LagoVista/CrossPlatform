@@ -30,6 +30,9 @@ namespace LagoVista.Client.Core.ViewModels.DeviceAccess
         private BTDevice _currentDevice;
         private IBluetoothSerial _btSerial;
 
+        protected string DeviceId { get; set; }
+        protected string DeviceRepoId { get; set; }
+
         List<InputCommandEndPoint> _inputCommandEndPoints;
 
         public DeviceViewModel()
@@ -50,7 +53,7 @@ namespace LagoVista.Client.Core.ViewModels.DeviceAccess
                 new MenuItem() { Command = new RelayCommand(() => ShowView<PairBTDeviceViewModel>()), FontIconKey = "fa-bluetooth", Name = ClientResources.DeviceMore_PairDevice, Help="Associate this application using  BlueTooth" },
                 new MenuItem() { Command = new RelayCommand(() => ShowView<DeviceSerialPortAccessViewModel>()), FontIconKey = "fa-wrench", Name = ClientResources.DeviceSerialPort_View, Help="Hard-wired serial port" },
                 new MenuItem() { Command = new RelayCommand(() => ShowView<ConsoleViewModel>()), FontIconKey = "fa-terminal", Name = ClientResources.DeviceMore_Console, Help="Communicate using terminal" },
-                new MenuItem() { Command = new RelayCommand(() => ShowView<IOConfigViewModel>()), FontIconKey = "fa-bolt", Name = ClientResources.DeviceMore_IOConfig, Help="Confiugration the IO Ports" },
+                new MenuItem() { Command = new RelayCommand(() => ShowView<IOConfigViewModel>()), FontIconKey = "fa-bolt", Name = ClientResources.DeviceMore_IOConfig, Help="Configuration the IO Ports" },
                 new MenuItem() { Command = new RelayCommand(() => ShowView<ProvisionDeviceViewModel>()), FontIconKey = "fa-wrench", Name = ClientResources.DeviceMore_Provision, Help="Configure primary device settings" },
                 new MenuItem() { Command = new RelayCommand(() => ShowView<DFUViewModel>()),FontIconKey = "fa-microchip", Name = ClientResources.DeviceMore_FirmwareUpdate,Help= "Update firmware" },
                 new MenuItem() { Command = new RelayCommand(() => ShowView<LiveDataViewModel>()),FontIconKey = "fa-table", Name = ClientResources.DeviceMore_LiveData, Help="View live data" },
@@ -77,7 +80,7 @@ namespace LagoVista.Client.Core.ViewModels.DeviceAccess
 
         private async void TryConnectBluetooth()
         {
-            var btDeviceKey = PairBTDeviceViewModel.ResolveBTDeviceIdKey(DeviceRepoId, DeviceId);
+/*            var btDeviceKey = PairBTDeviceViewModel.ResolveBTDeviceIdKey(DeviceRepoId, DeviceId);
             ConnectedViaBluetooth = false;
 
             if (await Storage.HasKVPAsync(btDeviceKey))
@@ -106,7 +109,7 @@ namespace LagoVista.Client.Core.ViewModels.DeviceAccess
             else
             {
                 ConnectionStatus = "No device pairing";
-            }
+            }*/
         }
 
         private void btSerial_DeviceDisconnected(object sender, BTDevice e)
@@ -127,7 +130,7 @@ namespace LagoVista.Client.Core.ViewModels.DeviceAccess
         {
             await base.InitAsync();
 
-            await PerformNetworkOperation(async () =>
+            /*await PerformNetworkOperation(async () =>
             {
                 var path = $"/api/device/{DeviceRepoId}/{DeviceId}/metadata";
 
@@ -145,7 +148,7 @@ namespace LagoVista.Client.Core.ViewModels.DeviceAccess
                 }
 
                 return response.ToInvokeResult();
-            });
+            });*/
         }
 
         public override string GetChannelURI()
@@ -530,7 +533,7 @@ namespace LagoVista.Client.Core.ViewModels.DeviceAccess
         {
             if (_btSerial.IsConnected)
             {
-                DisconnectBTDevice();
+                //DisconnectBTDevice();
             }
 
             await base.IsClosingAsync();

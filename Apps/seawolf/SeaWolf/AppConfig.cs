@@ -37,7 +37,7 @@ namespace SeaWolf
 
             WebAddress = "https://www.NuvIoT.com";
 
-            AppSpecificSensorTypes = new List<AppSpecificSensorTypes>()
+            /*AppSpecificSensorTypes = new List<AppSpecificSensorTypes>()
             {
                 new AppSpecificSensorTypes() { IconKey="fa-battery-full", Name="Battery", Key=BATTERY, Technology = SensorTechnology.ADC, SensorConfigId = 1, DefaultLowTolerance = 12, DefaultHighTolerance=15 },
                 new AppSpecificSensorTypes() { IconKey="fa-warning", Name="Motion Detector", Key=MOTION, Technology = SensorTechnology.IO, SensorConfigId = 1, DefaultHighTolerance = 1  },
@@ -47,7 +47,7 @@ namespace SeaWolf
                 new AppSpecificSensorTypes() { IconKey="fa-power-off", Name="Battery Switch", Key=BATTERYSWITCH, Technology = SensorTechnology.ADC, SensorConfigId = 1, DefaultLowTolerance=0, DefaultHighTolerance=1 },
                 new AppSpecificSensorTypes() { IconKey="fa-thermometer-full", Name="Ambient Temperature", Key=AMBIENTTEMP, Technology = SensorTechnology.IO, SensorConfigId = 6, DefaultLowTolerance=60, DefaultHighTolerance=90 },
                 new AppSpecificSensorTypes() { IconKey="fa-thermometer-full", Name="Water Temperature", Key=WATERTEMP, Technology = SensorTechnology.IO, SensorConfigId = 4, DefaultLowTolerance=60, DefaultHighTolerance=90 },
-            };
+            };*/
         }
 
         public PlatformTypes PlatformType { get; private set; }
@@ -93,7 +93,5 @@ namespace SeaWolf
         public string DeviceRepoId { get; set; }
 
         public EntityHeader SystemOwnerOrg { get; set; }
-
-        public IEnumerable<AppSpecificSensorTypes> AppSpecificSensorTypes { get; }
     }
 }

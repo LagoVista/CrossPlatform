@@ -12,11 +12,11 @@ namespace SeaWolf
         public static void AddValidSensors(this ObservableCollection<SensorSummary> sensors, IAppConfig appConfig, Device device)
         {
             sensors.Clear();
-            var configs = device.Sensors.AdcConfigs;
+            /*var configs = device.Sensors.AdcConfigs;
             var values = device.Sensors.AdcValues;
             var validConfigs = configs.Where(adc => adc.Config > 0);
 
-            /*
+            
             foreach (var config in validConfigs)
             {
                 sensors.Add(new SensorSummary()

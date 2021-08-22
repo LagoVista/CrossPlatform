@@ -21,7 +21,7 @@ namespace LagoVista.Client.Core.ViewModels.DeviceAccess
 
         public override string GetChannelURI()
         {
-            return $"/api/wsuri/device/{DeviceId}/normal";
+            return $"/api/wsuri/device//normal";
         }
 
         public override void HandleMessage(Notification notification)
