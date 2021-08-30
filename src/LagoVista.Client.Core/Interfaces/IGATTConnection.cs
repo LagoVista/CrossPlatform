@@ -11,6 +11,7 @@ namespace LagoVista.Client.Core.Interfaces
         event EventHandler<BLEDevice> DeviceDiscovered;
         event EventHandler<BLEDevice> DeviceConnected;
         event EventHandler<BLEDevice> DeviceDisconnected;
+        event EventHandler<BLECharacteristicsValue> CharacteristicChanged;
 
         event EventHandler<Models.DFUProgress> DFUProgress;
         event EventHandler<string> DFUFailed;        

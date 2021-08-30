@@ -78,40 +78,6 @@ namespace LagoVista.Client.Core.ViewModels.DeviceAccess
             }
         }
 
-        private async void TryConnectBluetooth()
-        {
-/*            var btDeviceKey = PairBTDeviceViewModel.ResolveBTDeviceIdKey(DeviceRepoId, DeviceId);
-            ConnectedViaBluetooth = false;
-
-            if (await Storage.HasKVPAsync(btDeviceKey))
-            {
-                _btDeviceId = await Storage.GetKVPAsync<string>(btDeviceKey);
-
-                ConnectionStatus = "Connecting via Bluetooth";
-
-                var pairedDevices = await _btSerial.SearchAsync();
-                var pairedDevice = pairedDevices.Where(pd => pd.DeviceId == _btDeviceId).FirstOrDefault();
-                if (pairedDevice != null)
-                {
-                    try
-                    {
-                        await _btSerial.ConnectAsync(pairedDevice);
-                        _currentDevice = pairedDevice;
-                        ConnectionStatus = "Connected";
-                        ConnectedViaBluetooth = true;
-                    }
-                    catch (Exception ex)
-                    {
-                        Debug.WriteLine(ex.Message);
-                    }
-                }
-            }
-            else
-            {
-                ConnectionStatus = "No device pairing";
-            }*/
-        }
-
         private void btSerial_DeviceDisconnected(object sender, BTDevice e)
         {
             ConnectedViaBluetooth = false;

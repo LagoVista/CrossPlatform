@@ -98,6 +98,7 @@ namespace LagoVista.Client.Core.ViewModels.DeviceAccess
                 _gattConnection.ReceiveConsoleOut += BtSerial_ReceivedLine;
                 _gattConnection.DFUProgress += BtSerial_DFUProgres;
                 _gattConnection.DFUFailed += BtSerial_DFUFailed;
+                _gattConnection.CharacteristicChanged += _gattConnection_CharacteristicChanged;
                 _gattConnection.DFUCompleted += BtSerial_DFUCompleted;
 
                 if (CurrentDevice != null)
@@ -165,6 +166,7 @@ namespace LagoVista.Client.Core.ViewModels.DeviceAccess
             _gattConnection.DeviceDisconnected -= BtSerial_DeviceDisconnected;
             _gattConnection.DeviceDiscovered -= _gattConnection_DeviceDiscovered;
             _gattConnection.ReceiveConsoleOut -= BtSerial_ReceivedLine;
+            _gattConnection.CharacteristicChanged -= _gattConnection_CharacteristicChanged;
             _gattConnection.DFUProgress -= BtSerial_DFUProgres;
             _gattConnection.DFUFailed -= BtSerial_DFUFailed;
             _gattConnection.DFUCompleted -= BtSerial_DFUCompleted;
@@ -176,6 +178,11 @@ namespace LagoVista.Client.Core.ViewModels.DeviceAccess
                 Debug.WriteLine("Web Socket is Closed.");
                 _webSocket = null;
             }
+        }
+
+        private void _gattConnection_CharacteristicChanged(object sender, BLECharacteristicsValue e)
+        {
+            Debug.WriteLine(e.Uid + " " + e.Value);
         }
 
         #region DFU
@@ -223,7 +230,7 @@ namespace LagoVista.Client.Core.ViewModels.DeviceAccess
             }
         }
 
-        private void BtSerial_DeviceConnected(object sender, Models.BLEDevice e)
+        private async void BtSerial_DeviceConnected(object sender, Models.BLEDevice e)
         {
             _isConnecting = false;
 
@@ -232,6 +239,12 @@ namespace LagoVista.Client.Core.ViewModels.DeviceAccess
                 BLEDevice = e;
                 OnBLEDevice_Connected(e);
                 RaisePropertyChanged(nameof(DeviceConnected));
+
+                var service = NuvIoTGATTProfile.GetNuvIoTGATT().Services.Find(srvc => srvc.Id == NuvIoTGATTProfile.SVC_UUID_NUVIOT);
+                var characteristics = service.Characteristics.Find(chr => chr.Id == NuvIoTGATTProfile.CHAR_UUID_STATE);
+
+
+                await GattConnection.SubscribeAsync(e, service, characteristics);
             }
         }
         #endregion

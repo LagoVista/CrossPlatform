@@ -22,6 +22,7 @@ namespace LagoVista.XPlat.Droid.Services
         UUID STATE_CHARACTERISTICS_UUID = UUID.FromString("d804b639-6ce7-5e81-9f8a-ce0f699085eb");
 
 
+        public event EventHandler<BLECharacteristicsValue> CharacteristicChanged;
         public event EventHandler<BLEDevice> DeviceDiscovered;
         public event EventHandler<BLEDevice> DeviceConnected;
         public event EventHandler<BLEDevice> DeviceDisconnected;
@@ -123,10 +124,9 @@ namespace LagoVista.XPlat.Droid.Services
             public override void OnCharacteristicChanged(BluetoothGatt gatt, BluetoothGattCharacteristic characteristic)
             {
                 var value = characteristic.GetValue();
-
-                var msg = System.Text.ASCIIEncoding.ASCII.GetString(value);
-
-                Debug.WriteLine($"Characteristic Changed {characteristic.Uuid.ToString()} - {msg}");
+                var msg = System.Text.ASCIIEncoding.ASCII.GetString(value); 
+                                
+                _connection.HandleDeviceCharacteristicChanged(characteristic.Uuid.ToString(), msg);
 
                 base.OnCharacteristicChanged(gatt, characteristic);
             }
@@ -204,6 +204,18 @@ namespace LagoVista.XPlat.Droid.Services
                     existingDevice.Services.Add(gatService);
                 }
             }
+        }
+
+        public void HandleDeviceCharacteristicChanged(string uid, string contents)
+        {
+            _dispatcherService.Invoke(() =>
+            {
+                CharacteristicChanged?.Invoke(this, new BLECharacteristicsValue()
+                {
+                    Uid = uid,
+                    Value = contents
+                }); 
+            });
         }
 
 

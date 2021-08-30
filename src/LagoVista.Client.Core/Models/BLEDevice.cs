@@ -27,4 +27,12 @@ namespace LagoVista.Client.Core.Models
 
         public ObservableCollection<BLECharacteristic> AllCharacteristics { get; } = new ObservableCollection<BLECharacteristic>();
     }
+
+    public class BLECharacteristicsValue
+    {
+        public string Uid { get; set; }
+        public string Value { get; set; }
+    }
+
+
 }
