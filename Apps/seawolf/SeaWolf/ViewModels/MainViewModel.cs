@@ -1,15 +1,12 @@
-﻿using LagoVista.Client.Core.Models;
-using LagoVista.Client.Core.Net;
+﻿using LagoVista.Client.Core.Net;
 using LagoVista.Client.Core.Resources;
 using LagoVista.Client.Core.ViewModels;
+using LagoVista.Client.Core.ViewModels.DeviceAccess;
 using LagoVista.Client.Core.ViewModels.Other;
 using LagoVista.Core.Commanding;
 using LagoVista.Core.Models.Geo;
 using LagoVista.Core.Validation;
 using LagoVista.IoT.DeviceManagement.Core.Models;
-using LagoVista.IoT.DeviceManagement.Models;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Serialization;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -18,18 +15,29 @@ using System.Threading.Tasks;
 
 namespace SeaWolf.ViewModels
 {
-    public class MainViewModel : MonitoringViewModelBase
+    public class MainViewModel : DeviceViewModelBase
     {
+        private bool _mainViewVisible = true;
+        private bool _mapViewVisible;
         private bool _isNotFirstVessel;
         private bool _isNotLastVessel;
-        GeoLocation _currentVeseelLocation;
+        string _systemStatus = "All systems nominal";
+        private ObservableCollection<DeviceSummary> _userDevices;
 
-        protected string DeviceId { get; set; }
-        protected string DeviceRepoId { get; set; }
 
-        ObservableCollection<DeviceSummary> _userDevices;
+        Xamarin.Forms.Color _headerBackgroundColor = Xamarin.Forms.Color.FromRgb(0x55, 0xA9, 0xF2);
+        Xamarin.Forms.Color _headerForegroundColor = Xamarin.Forms.Color.Black;
 
-        Device _currentDevice;
+        private bool _alertsViewVisible;
+
+
+        public enum ViewToShow
+        {
+            Main,
+            Map,
+            Alerts
+        }
+
         public MainViewModel()
         {
             MenuItems = new List<MenuItem>()
@@ -42,8 +50,8 @@ namespace SeaWolf.ViewModels
                     Name = "Design Mock",
                     FontIconKey = "fa-gear"
                 },
-                // -------------------------------------------------------------------------------------------------------
 
+                // -------------------------------------------------------------------------------------------------------
                 new MenuItem()
                 {
                     Command = new RelayCommand(() => ViewModelNavigation.NavigateAsync<SettingsViewModel>(this, new KeyValuePair<string, object>(nameof(Device), CurrentDevice))),
@@ -66,16 +74,59 @@ namespace SeaWolf.ViewModels
 
             NextVesselCommand = new RelayCommand(NextVessel);
             PreviousVesselCommand = new RelayCommand(PreviousVessel);
+
+            ViewMainCommand = new RelayCommand(() => ShowView(ViewToShow.Main));
+            ViewMapCommand = new RelayCommand(() => ShowView(ViewToShow.Map));
+            ViewAlertsCommand = new RelayCommand(() => ShowView(ViewToShow.Alerts));
+            ViewSettingsCommand = new RelayCommand(() => ViewModelNavigation.NavigateAsync<SettingsViewModel>(this, new KeyValuePair<string, object>(nameof(Device), CurrentDevice)));
+        }
+
+        public override async Task InitAsync()
+        {
+            await base.InitAsync();
+            await LoadUserDevices();
+        }
+
+        public void ShowView(ViewToShow view)
+        {
+            MainViewVisible = false;
+            AlertsViewVisible = false;
+            MapViewVisible = false;
+
+            switch (view)
+            {
+                case ViewToShow.Main:
+                    MainViewVisible = true;
+                    break;
+                case ViewToShow.Map:
+                    MapViewVisible = true;
+                    break;
+                case ViewToShow.Alerts:
+                    AlertsViewVisible = true;
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException(nameof(view), view, null);
+            }
+        }
+
+        protected override Task DeviceLoadedAsync(Device device)
+        {
+            var deviceIdx = UserDevices.IndexOf(UserDevices.FirstOrDefault(dev => dev.Id == device.Id));
+
+            IsNotLastVessel = deviceIdx < UserDevices.Count - 1;
+            IsNotFirstVessel = deviceIdx > 0;
+
+            return base.DeviceLoadedAsync(device);
         }
 
 
-        public override async Task InitAsync()
+        protected async Task LoadUserDevices()
         {
             await PerformNetworkOperation(async () =>
             {
                 var path = $"/api/devices/{AppConfig.DeviceRepoId}/{this.AuthManager.User.Id}";
 
-                ListRestClient<DeviceSummary> _formRestClient = new ListRestClient<DeviceSummary>(RestClient);
+                var _formRestClient = new ListRestClient<DeviceSummary>(RestClient);
                 var result = await _formRestClient.GetForOrgAsync(path);
                 if (!result.Successful)
                 {
@@ -88,7 +139,7 @@ namespace SeaWolf.ViewModels
                 {
                     HasDevices = true;
                     NoDevices = !HasDevices;
-                    DeviceId = await Storage.GetKVPAsync<string>(ComponentViewModel.DeviceId);
+                    DeviceId = await Storage.GetKVPAsync<string>(DEVICE_ID);
 
                     if (String.IsNullOrEmpty(DeviceId))
                     {
@@ -104,55 +155,6 @@ namespace SeaWolf.ViewModels
                     return InvokeResult.Success;
                 }
             });
-
-            await base.InitAsync();
-        }
-
-        private async Task<InvokeResult> LoadDevice()
-        {
-            return await PerformNetworkOperation(async () =>
-           {
-               CurrentDevice = null;
-               var deviceResponse = await DeviceManagementClient.GetDeviceAsync(AppConfig.DeviceRepoId, DeviceId);
-               if (deviceResponse.Successful)
-               {
-                   CurrentDevice = deviceResponse.Model;
-                   var deviceIdx = UserDevices.IndexOf(UserDevices.FirstOrDefault(dev => dev.Id == CurrentDevice.Id));
-
-                   IsNotLastVessel = deviceIdx < UserDevices.Count - 1;
-                   IsNotFirstVessel = deviceIdx > 0;
-
-                   if (CurrentDevice.GeoLocation != null)
-                   {
-                       CurrentVeseelLocation = CurrentDevice.GeoLocation;
-                   }
-                   else
-                   {
-                       //var lastKnownLocation = await Geolocation.GetLastKnownLocationAsync();
-                       //if (lastKnownLocation != null)
-                       //{
-                       //    CurrentVeseelLocation = new GeoLocation(lastKnownLocation.Latitude, lastKnownLocation.Longitude);
-                       //}
-                   }
-
-                   GeoFences.Clear();
-                   foreach (var geoFence in CurrentDevice.GeoFences)
-                   {
-                       GeoFences.Add(geoFence);
-                   }
-
-                   Sensors.AddValidSensors(AppConfig, CurrentDevice);
-               }
-
-               await SubscribeToWebSocketAsync();
-
-               return deviceResponse.ToInvokeResult();
-           });
-        }
-
-        public override Task ReloadedAsync()
-        {
-            return LoadDevice();
         }
 
         public async void NextVessel()
@@ -180,8 +182,6 @@ namespace SeaWolf.ViewModels
         }
 
         #region Properties
-        public ObservableCollection<GeoFence> GeoFences { get; } = new ObservableCollection<GeoFence>();
-
         private bool _hasDevices;
         public bool HasDevices
         {
@@ -196,12 +196,10 @@ namespace SeaWolf.ViewModels
             set { Set(ref _noDevices, value); }
         }
 
-        public ObservableCollection<SensorSummary> Sensors { get; } = new ObservableCollection<SensorSummary>();
-
-        public Device CurrentDevice
+        public string SystemStatus
         {
-            get => _currentDevice;
-            set => Set(ref _currentDevice, value);
+            get => _systemStatus;
+            set => Set(ref _systemStatus, value);
         }
 
         public ObservableCollection<DeviceSummary> UserDevices
@@ -222,53 +220,46 @@ namespace SeaWolf.ViewModels
             set => Set(ref _isNotLastVessel, value);
         }
 
-        public GeoLocation CurrentVeseelLocation
+        public bool MainViewVisible
         {
-            get => _currentVeseelLocation;
-            set => Set(ref _currentVeseelLocation, value);
+            get => _mainViewVisible;
+            set => Set(ref _mainViewVisible, value);
+        }
+
+        public bool MapViewVisible
+        {
+            get => _mapViewVisible;
+            set => Set(ref _mapViewVisible, value);
+        }
+
+        public bool AlertsViewVisible
+        {
+            get => _alertsViewVisible;
+            set => Set(ref _alertsViewVisible, value);
+        }
+
+        public Xamarin.Forms.Color HeaderBackgroundColor
+        {
+            get => _headerBackgroundColor;
+            set => Set(ref _headerBackgroundColor, value);
+        }
+
+        public Xamarin.Forms.Color HeaderForegroundColor
+        {
+            get => _headerForegroundColor;
+            set => Set(ref _headerForegroundColor, value);
         }
         #endregion
 
         #region Commands
+        public RelayCommand<GeoLocation> MapTappedCommand { get; }
+        public RelayCommand ViewMainCommand { get; }
+        public RelayCommand ViewAlertsCommand { get; }
+        public RelayCommand ViewMapCommand { get; }
+        public RelayCommand ViewSettingsCommand { get; }
         public RelayCommand PreviousVesselCommand { get; }
         public RelayCommand NextVesselCommand { get; }
-        public RelayCommand<GeoLocation> MapTappedCommand { get; }
+
         #endregion
-
-        public override void HandleMessage(Notification notification)
-        {
-            switch (notification.PayloadType)
-            {
-                case nameof(Device):
-                    var serializerSettings = new JsonSerializerSettings();
-                    serializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
-                    var device = JsonConvert.DeserializeObject<Device>(notification.Payload, serializerSettings);
-                    CurrentVeseelLocation = device.GeoLocation;
-
-                    foreach (var sensor in Sensors)
-                    {
-                        /*if (sensor.Technology == SensorTechnology.ADC)
-                        {
-                            CurrentDevice.Sensors.AdcValues[sensor.Config.SensorIndex - 1] = device.Sensors.AdcValues[sensor.Config.SensorIndex - 1];
-                            sensor.Value = device.Sensors.AdcValues[sensor.Config.SensorIndex - 1].ToString();
-                        }
-
-                        if (sensor.SensorType.Technology == SensorTechnology.IO)
-                        {
-                            CurrentDevice.Sensors.IoValues[sensor.Config.SensorIndex - 1] = device.Sensors.IoValues[sensor.Config.SensorIndex - 1];
-                            sensor.Value = device.Sensors.IoValues[sensor.Config.SensorIndex - 1].ToString();
-                        }*/
-                    }
-
-                    break;
-            }
-            var item = notification.Channel;
-        }
-
-        public override string GetChannelURI()
-        {
-            //return $"/api/wsuri/device/{DeviceId}/normal";
-            return String.Empty;
-        }
     }
 }

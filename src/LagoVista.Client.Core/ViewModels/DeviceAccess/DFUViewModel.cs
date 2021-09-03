@@ -34,6 +34,7 @@ namespace LagoVista.Client.Core.ViewModels.DeviceAccess
             StartSerialUpdateCommand = new RelayCommand(StartSerialUpdate);
         }
 
+        /*
         protected override void OnDFUProgress(DFUProgress progress)
         {
             DispatcherServices.Invoke(() =>
@@ -66,7 +67,7 @@ namespace LagoVista.Client.Core.ViewModels.DeviceAccess
                     Debug.WriteLine($"{key}-{value}");
                 }
             }
-        }
+        }*/
 
         private List<string> GetFlashingArgs()
         {
@@ -238,7 +239,7 @@ namespace LagoVista.Client.Core.ViewModels.DeviceAccess
             var buffer = await responseMessage.Content.ReadAsByteArrayAsync();
             StatusMessage = "Firmware Downloaded, starting device firmware update.";
             await SendAsync("READFIRMWARE\n");
-            SendDFU(buffer);
+        //    SendDFU(buffer);
         }
 
         public RelayCommand UpdateDeviceFirmwareCommand { get; private set; }

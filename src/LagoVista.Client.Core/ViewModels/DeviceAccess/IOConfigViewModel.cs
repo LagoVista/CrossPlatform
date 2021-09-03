@@ -37,62 +37,6 @@ namespace LagoVista.Client.Core.ViewModels.DeviceAccess
         }
 
         StringBuilder _builder = new StringBuilder();
-        //private async void _btSerial_ReceivedLine(object sender, string line)
-        protected override async void OnBTSerail_LineReceived(string line)
-        {
-            Debug.WriteLine(line);
-            if (line == IOCONFIGRECVENDOK)
-            {
-                await Popups.ShowAsync("SUCCESS", "Wrote configuration file.");
-                await Storage.StoreAsync(Config, $"{DeviceId}.ioconfig.json");
-            }
-            else if (line == IOCONFIGRECVENDFAIL)
-            {
-                await Popups.ShowAsync("ERROR", "Could not write configuration file.");
-            }
-            else if (line.StartsWith(CRC_OK_MSG_HDR))
-            {
-                if (int.TryParse(line.Substring(CRC_OK_MSG_HDR.Length), out int lineNumber))
-
-                    if (_recvSemephor != null && lineNumber == _sendIndex)
-                    {
-                        _recvSemephor.Release();
-                    }
-                _builder.Clear();
-
-                Debug.WriteLine("CRC OK: " + lineNumber);
-            }
-            else if (line.StartsWith(CRC_ERR_MSG_HDR))
-            {
-                // if we get an error, we will automatically timeout.
-                if (int.TryParse(line.Substring(CRC_ERR_MSG_HDR.Length), out int lineNumber))
-                {
-                    Debug.WriteLine("CRC Error Line: " + lineNumber);
-                }
-            }
-            else
-                foreach (var ch in line.ToCharArray())
-                {
-                    if (ch == '{')
-                    {
-                        _builder = new StringBuilder();
-                        _builder.Append(ch);
-                    }
-                    else if (ch == '}')
-                    {
-                        Debug.WriteLine(_builder.ToString());
-                        _builder.Append(ch);
-                        Config = JsonConvert.DeserializeObject<IOConfig>(_builder.ToString());
-                        BusyMessage = "Reading configuration";
-                        IsBusy = false;
-                        _builder.Clear();
-                    }
-                    else
-                    {
-                        _builder.Append(ch);
-                    }
-                }
-        }
 
         public override async Task InitAsync()
         {

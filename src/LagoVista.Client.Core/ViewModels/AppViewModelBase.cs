@@ -14,6 +14,7 @@ using System.Threading;
 using LagoVista.Client.Core.Exceptions;
 using LagoVista.Client.Core.Interfaces;
 using LagoVista.Core.ViewModels;
+using System.Collections.Generic;
 
 namespace LagoVista.Client.Core.ViewModels
 {
@@ -151,6 +152,11 @@ namespace LagoVista.Client.Core.ViewModels
             {
                 throw new ArgumentNullException($"Expecting {name} of type {typeof(TArg)} as a launch argument.");
             }
+        }
+
+        protected KeyValuePair<string, object> CreateKVP(string key, object value)
+        {
+            return new KeyValuePair<string, object>(key, value);
         }
 
         public IDeviceManagementClient DeviceManagementClient => SLWIOC.Get<IDeviceManagementClient>();

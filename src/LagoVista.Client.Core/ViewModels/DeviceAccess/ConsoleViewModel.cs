@@ -18,13 +18,7 @@ namespace LagoVista.Client.Core.ViewModels.DeviceAccess
             Lines.Insert(0, "Device Disconnected");
         }
 
-        protected override void OnBTSerail_LineReceived(string line)
-        {
-            var cleanLine = line.Trim();
-            if (!String.IsNullOrEmpty(cleanLine))
-                Lines.Insert(0, cleanLine);
-        }
-
+        
         public override async Task InitAsync()
         {
             await base.InitAsync();

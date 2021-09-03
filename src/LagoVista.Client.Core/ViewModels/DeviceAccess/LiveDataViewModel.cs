@@ -14,7 +14,7 @@ namespace LagoVista.Client.Core.ViewModels.DeviceAccess
         {
             await Popups.ShowAsync("Device Disconnected.");
         }
-
+        /*
         protected override void OnBTSerail_MsgReceived(string e)
         {
             DispatcherServices.Invoke(() =>
@@ -46,7 +46,7 @@ namespace LagoVista.Client.Core.ViewModels.DeviceAccess
                     }
                 }
             });
-        }
+        }*/
 
         public override async Task InitAsync()
         {

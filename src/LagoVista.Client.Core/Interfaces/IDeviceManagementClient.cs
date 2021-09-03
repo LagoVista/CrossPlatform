@@ -17,7 +17,7 @@ namespace LagoVista.Client.Core.Interfaces
         Task<InvokeResult> AddDeviceAsync(string deviceRepoId, Device device);
         Task<InvokeResult> SetDeviceMacAddressAsync(string deviceRepoId, string id, string macAddress);
         Task<DetailResponse<Device>> GetDeviceAsync(string deviceRepoId, string deviceId);
-        Task<DetailResponse<Device>> CreateNewDevice(string deviceRepoId);
+        Task<DetailResponse<Device>> CreateNewDeviceAsync(string deviceRepoId);
         Task<ListResponse<DeviceConfigurationSummary>> GetDeviceConfigsAsync(ListRequest listRequest = null);
         Task<ListResponse<DeviceRepositorySummary>> GetDeviceReposAsync(ListRequest listRequest = null);
         Task<DeviceConfiguration> GetDeviceConfigurationAsync(string deviceConfig);
@@ -33,6 +33,8 @@ namespace LagoVista.Client.Core.Interfaces
         Task<ListResponse<DeviceSummary>> GetChildDevicesAsync(string deviceRepoId, string deviceId, ListRequest request = null);
         Task<InvokeResult> AttachChildDeviceAsync(string deviceRepoId, string parentDeviceId, string chidlDeviceId);
         Task<InvokeResult> RemoveChildDevice(string deviceRepoId, string parentDeviceId, string chidlDeviceId);
+
+        Task<DetailResponse<Device>> CreateNewDeviceAsync(string deviceRepoId, string deviceTypeId);
 
         Task<ListResponse<DeviceTypeSummary>> GetDeviceTypesAsync(ListRequest listRequest = null);
         Task<InvokeResult> UpdateDeviceAsync(string deviceRepoId, Device device);

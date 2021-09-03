@@ -206,9 +206,23 @@ namespace LagoVista.Client.Devices
             return result.Successful ? result.Result : result.ToInvokeResult();
         }
 
-        public async Task<DetailResponse<Device>> CreateNewDevice(string deviceRepoId)
+        public async Task<DetailResponse<Device>> CreateNewDeviceAsync(string deviceRepoId)
         {
             var uri = $"/api/device/{deviceRepoId}/factory";
+            var result = await _restClient.GetAsync<DetailResponse<Device>>(uri);
+            if (result.Successful)
+            {
+                return result.Result;
+            }
+            else
+            {
+                throw new Exception(result.Errors.First().Message);
+            }
+        }
+
+        public async Task<DetailResponse<Device>> CreateNewDeviceAsync(string deviceRepoId, string deviceTypeId)
+        {
+            var uri = $"/api/device/{deviceRepoId}/{deviceTypeId}/create";
             var result = await _restClient.GetAsync<DetailResponse<Device>>(uri);
             if (result.Successful)
             {

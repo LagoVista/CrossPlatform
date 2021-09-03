@@ -9,7 +9,7 @@ namespace LagoVista.Client.Core.Models
 {
     public class SensorSummaryColors : ModelBase
     {
-        public SensorConfig Config { get; set; }
+        public SensorDefinition Config { get; set; }
         public SensorDefinition SensorType { get; set; }
 
         private string _value;
