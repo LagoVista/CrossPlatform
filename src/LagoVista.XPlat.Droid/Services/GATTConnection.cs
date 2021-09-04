@@ -449,7 +449,7 @@ namespace LagoVista.XPlat.Droid.Services
             }
         }
 
-        public async Task<byte[]> ReadCharacteristic(BLEDevice device, BLEService service, BLECharacteristic characteristic)
+        public async Task<byte[]> ReadCharacteristicAsync(BLEDevice device, BLEService service, BLECharacteristic characteristic)
         {
             var androidDevice = _bleDevices.Where(dev => dev.Device.Address == device.DeviceAddress).FirstOrDefault();
 

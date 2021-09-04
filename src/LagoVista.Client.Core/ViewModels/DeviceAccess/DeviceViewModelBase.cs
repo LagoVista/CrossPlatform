@@ -22,7 +22,7 @@ namespace LagoVista.Client.Core.ViewModels.DeviceAccess
         private String _deviceRepoId;
         private String _deviceId;
         GeoLocation _currentVeseelLocation;
-      
+
         Uri _wsUri;
         IWebSocket _webSocket;
 
@@ -37,10 +37,7 @@ namespace LagoVista.Client.Core.ViewModels.DeviceAccess
 
         public DeviceViewModelBase()
         {
-            if (SLWIOC.Contains(typeof(IGATTConnection)))
-            {
-                _gattConnection = SLWIOC.Get<IGATTConnection>();
-            }
+            _gattConnection = SLWIOC.Get<IGATTConnection>();
         }
 
         public async Task SubscribeToWebSocketAsync()
@@ -86,7 +83,7 @@ namespace LagoVista.Client.Core.ViewModels.DeviceAccess
                 _gattConnection.DeviceDiscovered += GattConnection_DeviceDiscovered;
                 _gattConnection.DeviceDisconnected += BtSerial_DeviceDisconnected;
                 _gattConnection.CharacteristicChanged += GattConnection_CharacteristicRead;
-               
+
                 if (CurrentDevice != null)
                 {
                     BLEDevice = _gattConnection.ConnectedDevices.Where(dvc => dvc.DeviceAddress == CurrentDevice.MacAddress).FirstOrDefault();
@@ -148,13 +145,10 @@ namespace LagoVista.Client.Core.ViewModels.DeviceAccess
             await base.IsClosingAsync();
             if (_gattConnection != null)
             {
-
                 _gattConnection.DeviceConnected -= BtSerial_DeviceConnected;
                 _gattConnection.DeviceDisconnected -= BtSerial_DeviceDisconnected;
                 _gattConnection.DeviceDiscovered -= GattConnection_DeviceDiscovered;
                 _gattConnection.CharacteristicChanged -= GattConnection_CharacteristicRead;
-
-                await _gattConnection.StopScanAsync();
             }
 
             if (_webSocket != null)
@@ -174,29 +168,33 @@ namespace LagoVista.Client.Core.ViewModels.DeviceAccess
         private bool _isConnecting = false;
 
         private async void BtSerial_DeviceDisconnected(object sender, Models.BLEDevice e)
-        {
-            if (e.DeviceAddress == CurrentDevice.MacAddress)
+        {           
+            if (CurrentDevice != null && e.DeviceAddress == CurrentDevice.MacAddress)
             {
                 BLEDevice = null;
-                OnBLEDevice_Disconnected(e);
                 RaisePropertyChanged(nameof(DeviceConnected));
                 await GattConnection.StartScanAsync();
             }
+
+            OnBLEDevice_Disconnected(e);
         }
 
         private async void BtSerial_DeviceConnected(object sender, Models.BLEDevice e)
         {
             _isConnecting = false;
 
-            if (e.DeviceAddress == CurrentDevice.MacAddress)
+            if (CurrentDevice != null)
             {
-                BLEDevice = e;
-                OnBLEDevice_Connected(e);
-                RaisePropertyChanged(nameof(DeviceConnected));
+                if (e.DeviceAddress == CurrentDevice.MacAddress)
+                {
+                    BLEDevice = e;
+                    OnBLEDevice_Connected(e);
+                    RaisePropertyChanged(nameof(DeviceConnected));
 
-                var service = NuvIoTGATTProfile.GetNuvIoTGATT().Services.Find(srvc => srvc.Id == NuvIoTGATTProfile.SVC_UUID_NUVIOT);
-                var characteristics = service.Characteristics.Find(chr => chr.Id == NuvIoTGATTProfile.CHAR_UUID_STATE);
-                await GattConnection.SubscribeAsync(e, service, characteristics);
+                    var service = NuvIoTGATTProfile.GetNuvIoTGATT().Services.Find(srvc => srvc.Id == NuvIoTGATTProfile.SVC_UUID_NUVIOT);
+                    var characteristics = service.Characteristics.Find(chr => chr.Id == NuvIoTGATTProfile.CHAR_UUID_STATE);
+                    await GattConnection.SubscribeAsync(e, service, characteristics);
+                }
             }
         }
 
@@ -303,11 +301,11 @@ namespace LagoVista.Client.Core.ViewModels.DeviceAccess
             get { return _bleDevice != null && _bleDevice.Connected; }
         }
 
-        protected virtual void BLECharacteristicRead(BLECharacteristicsValue characteristic){ }
+        protected virtual void BLECharacteristicRead(BLECharacteristicsValue characteristic) { }
         protected virtual void OnBLEDevice_Connected(BLEDevice device) { }
         protected virtual void OnBLEDevice_Disconnected(BLEDevice device) { }
 
- 
+
         // Bit of a hack, if we are going from a device view to a child view
         // we don't want to disconnect so we keep the BT connection alive.
         // set a nasty flag to determine if this is the case.
@@ -341,8 +339,8 @@ namespace LagoVista.Client.Core.ViewModels.DeviceAccess
             return await PerformNetworkOperation(async () =>
             {
 
-                if(GattConnection != null)
-                await GattConnection.StopScanAsync();
+                if (GattConnection != null)
+                    await GattConnection.StopScanAsync();
 
                 CurrentDevice = null;
                 var deviceResponse = await DeviceManagementClient.GetDeviceAsync(AppConfig.DeviceRepoId, DeviceId);
@@ -432,19 +430,19 @@ namespace LagoVista.Client.Core.ViewModels.DeviceAccess
                     CurrentDeviceLocation = device.GeoLocation;
 
                     var sensor1 = device.SensorCollection.First();
-                
+
                     foreach (var sensor in Sensors)
                     {
                         if (sensor.Config.Technology.Value == SensorTechnology.ADC)
                         {
-//                            CurrentDevice.SensorCollection.AdcValues[sensor.Config.SensorIndex - 1] = device.Sensors.AdcValues[sensor.Config.SensorIndex - 1];
-      //                      sensor.Value = device.Sensors.AdcValues[sensor.Config.SensorIndex - 1].ToString();
+                            //                            CurrentDevice.SensorCollection.AdcValues[sensor.Config.SensorIndex - 1] = device.Sensors.AdcValues[sensor.Config.SensorIndex - 1];
+                            //                      sensor.Value = device.Sensors.AdcValues[sensor.Config.SensorIndex - 1].ToString();
                         }
 
                         if (sensor.Config.Technology.Value == SensorTechnology.IO)
                         {
-  //                          CurrentDevice.Sensors.IoValues[sensor.Config.SensorIndex - 1] = device.Sensors.IoValues[sensor.Config.SensorIndex - 1];
-    //                        sensor.Value = device.Sensors.IoValues[sensor.Config.SensorIndex - 1].ToString();
+                            //                          CurrentDevice.Sensors.IoValues[sensor.Config.SensorIndex - 1] = device.Sensors.IoValues[sensor.Config.SensorIndex - 1];
+                            //                        sensor.Value = device.Sensors.IoValues[sensor.Config.SensorIndex - 1].ToString();
                         }
 
                         /*if (sensor.Warning)
@@ -481,7 +479,7 @@ namespace LagoVista.Client.Core.ViewModels.DeviceAccess
             }*/
         }
 
-        
+
         private string GetChannelURI()
         {
             return $"/api/wsuri/device/{CurrentDevice.Id}/normal";

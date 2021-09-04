@@ -215,6 +215,7 @@
     <Compile Include="Services\BindingHelper.cs" />
     <Compile Include="Services\BluetoothSerial.cs" />
     <Compile Include="Services\ClipBoard.cs" />
+    <Compile Include="Services\GattConnection.cs" />
     <Compile Include="Services\ProcessOutputWriter.cs" />
     <Compile Include="Services\DeviceManager.cs" />
     <Compile Include="Services\DirectoryServices.cs" />

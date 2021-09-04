@@ -16,6 +16,7 @@ namespace LagoVista.Client.Core.Interfaces
     {
         Task<InvokeResult> AddDeviceAsync(string deviceRepoId, Device device);
         Task<InvokeResult> SetDeviceMacAddressAsync(string deviceRepoId, string id, string macAddress);
+        Task<InvokeResult<Device>> GetDeviceByMacAddressAsync(string deviceRepoId, string macAddress);
         Task<DetailResponse<Device>> GetDeviceAsync(string deviceRepoId, string deviceId);
         Task<DetailResponse<Device>> CreateNewDeviceAsync(string deviceRepoId);
         Task<ListResponse<DeviceConfigurationSummary>> GetDeviceConfigsAsync(ListRequest listRequest = null);

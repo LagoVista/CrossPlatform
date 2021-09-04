@@ -34,7 +34,7 @@ namespace LagoVista.Client.Core.Interfaces
         Task<bool> UnsubscribeAsync(BLEDevice device, BLEService service, BLECharacteristic characteristic);
         Task<bool> WriteCharacteristic(BLEDevice device, BLEService service, BLECharacteristic characteristic, string str);
         Task<bool> UpdateCharacteristic(BLEDevice device, BLEService service, BLECharacteristic characteristic);
-        Task<byte[]> ReadCharacteristic(BLEDevice device, BLEService service, BLECharacteristic characteristic);
+        Task<byte[]> ReadCharacteristicAsync(BLEDevice device, BLEService service, BLECharacteristic characteristic);
         Task<bool> WriteCharacteristic(BLEDevice device, BLEService service, BLECharacteristic characteristic, byte[] str);
     }
 }

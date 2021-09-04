@@ -57,6 +57,7 @@
   <Capabilities>
     <Capability Name="internetClient" />
     <uap4:Capability Name="offlineMapsManagement"/>
+    <Capability Name="privateNetworkClientServer"/>
     <DeviceCapability Name="bluetooth.rfcomm">
       <Device Id="any">
         <Function Type="name:serialPort"/>
@@ -64,5 +65,6 @@
     </DeviceCapability>
     <DeviceCapability Name="location"/>
     <DeviceCapability Name="bluetooth"/>
+    <DeviceCapability Name="proximity"/>
   </Capabilities>
 </Package>

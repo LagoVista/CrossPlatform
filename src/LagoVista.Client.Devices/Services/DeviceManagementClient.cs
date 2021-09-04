@@ -77,6 +77,14 @@ namespace LagoVista.Client.Devices
             }
         }
 
+        public async Task<InvokeResult<Device>> GetDeviceByMacAddressAsync(string deviceRepoId, string macAddress)
+        {
+            var url = $"/api/device/{deviceRepoId}/macaddress/{WebUtility.UrlEncode(macAddress)}";
+
+            var result = await _restClient.GetAsync<InvokeResult<Device>>(url);
+            return result.Result;
+        }
+
         public async Task<DetailResponse<Device>> GetDeviceAsync(String deviceId)
         {
             var result = await _restClient.GetAsync<DetailResponse<Device>>($"/clientapi/device/{deviceId}");
@@ -219,7 +227,7 @@ namespace LagoVista.Client.Devices
                 throw new Exception(result.Errors.First().Message);
             }
         }
-
+        
         public async Task<DetailResponse<Device>> CreateNewDeviceAsync(string deviceRepoId, string deviceTypeId)
         {
             var uri = $"/api/device/{deviceRepoId}/{deviceTypeId}/create";
@@ -337,10 +345,11 @@ namespace LagoVista.Client.Devices
                 throw new Exception(result.Errors.First().Message);
             }
         }
+      
 
         public async Task<InvokeResult> SetDeviceMacAddressAsync(string deviceRepoId, string id, string macAddress)
         {
-            var url = $"/api/device/{deviceRepoId}/{id}/{WebUtility.UrlEncode(macAddress)}";
+            var url = $"/api/device/{deviceRepoId}/{id}/macaddress/{WebUtility.UrlEncode(macAddress)}/set";
             
             var result = await _restClient.GetAsync<InvokeResult<InvokeResult>>(url);
             if(result.Successful)

@@ -62,7 +62,7 @@ namespace LagoVista.Client.Core.ViewModels.DeviceAccess.Settings
 
                 foreach(var characteristics in Characteristics)
                 {
-                    await GattConnection.ReadCharacteristic(Device, characteristics.Service, characteristics);                    
+                    await GattConnection.ReadCharacteristicAsync(Device, characteristics.Service, characteristics);                    
                 }
             }
 

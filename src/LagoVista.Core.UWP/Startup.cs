@@ -15,8 +15,10 @@ namespace LagoVista.Core.UWP
     {
         public static void Init(Windows.UI.Xaml.Application app, CoreDispatcher dispatcher, string key)
         {
+
+            var dispatcherService = new DispatcherServices(dispatcher);
             SLWIOC.RegisterSingleton<ILogger>(new Loggers.AppCenterLogger(key));
-            SLWIOC.RegisterSingleton<IDispatcherServices>(new DispatcherServices(dispatcher));
+            SLWIOC.RegisterSingleton<IDispatcherServices>(dispatcherService);
             SLWIOC.RegisterSingleton<IStorageService>(new StorageService());
             SLWIOC.RegisterSingleton<IPopupServices>(new PopupsService());
 
@@ -39,6 +41,7 @@ namespace LagoVista.Core.UWP
             SLWIOC.Register<IWebServer>(typeof(WebServer));
             SLWIOC.Register<ISecureStorage>(new SecureStorage());
             SLWIOC.Register<ISSDPServer>(new SSDPServer());
+            SLWIOC.RegisterSingleton<IGATTConnection>(new  GattConnection(dispatcherService));
 
             SLWIOC.Register<IAppServices>(typeof(AppServices));
 

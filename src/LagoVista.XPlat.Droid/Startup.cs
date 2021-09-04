@@ -32,7 +32,6 @@ namespace LagoVista.XPlat.Droid
             SLWIOC.Register<INetworkService>(new NetworkService());
             SLWIOC.Register<ITCPClient, Services.TCPClient>();
             SLWIOC.Register<IUDPClient, Services.UDPClient>();
-            SLWIOC.Register<IGATTConnection, GATTConnection>();
 
             SLWIOC.Get<IGATTConnection>().RegisterKnownServices(NuvIoTGATTProfile.GetNuvIoTGATT().Services);
 
