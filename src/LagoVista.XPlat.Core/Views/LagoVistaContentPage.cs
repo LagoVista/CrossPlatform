@@ -157,7 +157,7 @@ namespace LagoVista.XPlat.Core
         private void CreateMenu()
         {
             _menu = new SideMenu(SLWIOC.Get<IAuthManager>());
-            _menu.MenuItemTapped += _menu_MenuItemTapped;
+            _menu.MenuItemTapped += Menu_MenuItemTapped;
             _menu.IsVisible = false;
             _menu.TranslationX = -MENU_WIDTH;
 
@@ -175,7 +175,7 @@ namespace LagoVista.XPlat.Core
             _pageMenuMask.GestureRecognizers.Add(tapGestureRecognizer);
         }
 
-        private void _menu_MenuItemTapped(object sender, Client.Core.ViewModels.MenuItem e)
+        private void Menu_MenuItemTapped(object sender, Client.Core.ViewModels.MenuItem e)
         {
             MenuVisible = false;
         }
@@ -219,7 +219,7 @@ namespace LagoVista.XPlat.Core
                 HeightRequest = 48,
                 FontSize = Device.RuntimePlatform == Device.Android ? 20 : 28
             };
-            _leftMenuButton.Clicked += _leftMenuButton_Clicked;
+            _leftMenuButton.Clicked += LeftMenuButton_Clicked;
 
             _rightMenuButton = new IconButton
             {
@@ -230,7 +230,7 @@ namespace LagoVista.XPlat.Core
                 FontSize = Device.RuntimePlatform == Device.Android ? 20 : 28
             };
             _rightMenuButton.SetValue(Grid.ColumnProperty, 2);
-            _rightMenuButton.Clicked += _rightMenuButton_Clicked;
+            _rightMenuButton.Clicked += RightMenuButton_Clicked;
 
             _helpButton = new IconButton
             {
@@ -242,7 +242,7 @@ namespace LagoVista.XPlat.Core
                 FontSize = Device.RuntimePlatform == Device.Android ? 20 : 24
             };
 
-            _helpButton.Clicked += _helpButton_Clicked;
+            _helpButton.Clicked += HelpButton_Clicked;
             _helpButton.SetValue(Grid.ColumnProperty, 3);
 
             if (ResourceSupport.UseCustomColors)
@@ -260,12 +260,12 @@ namespace LagoVista.XPlat.Core
             _toolBar.Children.Add(_helpButton);
         }
 
-        private void _helpButton_Clicked(object sender, EventArgs e)
+        private void HelpButton_Clicked(object sender, EventArgs e)
         {
             HelpCommand?.Execute(null);
         }
 
-        private async void _leftMenuButton_Clicked(object sender, System.EventArgs e)
+        private async void LeftMenuButton_Clicked(object sender, System.EventArgs e)
         {
             switch (LeftMenu)
             {
@@ -314,7 +314,7 @@ namespace LagoVista.XPlat.Core
             return true;
         }
 
-        private void _rightMenuButton_Clicked(object sender, System.EventArgs e)
+        private void RightMenuButton_Clicked(object sender, System.EventArgs e)
         {
             switch (RightMenu)
             {
@@ -323,6 +323,7 @@ namespace LagoVista.XPlat.Core
                     break;
                 case RightMenuIcon.CustomText:
                 case RightMenuIcon.CustomIcon:
+                case RightMenuIcon.Next:
                     RightMenuCommand?.Execute(null);
                     break;
                 case RightMenuIcon.Delete:
@@ -507,7 +508,7 @@ namespace LagoVista.XPlat.Core
                 if (value != null && value.Children.Count > 0)
                 {
                     _tabBar = value;
-                    _tabBar.SelectedTabChanged += _tabBar_SelectedTabChanged;
+                    _tabBar.SelectedTabChanged += TabBar_SelectedTabChanged;
                     _tabBar.SetValue(Grid.RowProperty, _tabHeader == null ? 2 : 3);
                     _contentGrid.Children.Add(_tabBar);
                     
@@ -538,7 +539,7 @@ namespace LagoVista.XPlat.Core
             }
         }
 
-        private void _tabBar_SelectedTabChanged(object sender, Tab e)
+        private void TabBar_SelectedTabChanged(object sender, Tab e)
         {
             SelectedTabIndex = _tabBar.Tabs.IndexOf(e);
         }
@@ -913,6 +914,9 @@ namespace LagoVista.XPlat.Core
                         break;
                     case RightMenuIcon.Delete: _rightMenuButton.IconKey = "fa-trash"; break;
                     case RightMenuIcon.Save: _rightMenuButton.IconKey = "fa-floppy-o"; break;
+                    case RightMenuIcon.Next: 
+                        _rightMenuButton.IconKey = "fa-arrow-right";
+                        break;
                     case RightMenuIcon.Edit: _rightMenuButton.IconKey = "fa-pencil"; break;
                     case RightMenuIcon.Settings: _rightMenuButton.IconKey = "fa-cog"; break;
                     case RightMenuIcon.CustomIcon:

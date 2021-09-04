@@ -28,7 +28,7 @@ namespace LagoVista.Client.Core.ViewModels.DeviceAccess
 
         private string _btDeviceId;
         private BTDevice _currentDevice;
-        private IBluetoothSerial _btSerial;
+        private readonly IBluetoothSerial _btSerial;
 
         protected string DeviceId { get; set; }
         protected string DeviceRepoId { get; set; }
@@ -38,10 +38,10 @@ namespace LagoVista.Client.Core.ViewModels.DeviceAccess
         public DeviceViewModel()
         {
             _btSerial = SLWIOC.Get<IBluetoothSerial>();
-            _btSerial.DeviceConnected += _btSerial_DeviceConnected;
-            _btSerial.DeviceDiscovered += _btSerial_DeviceDiscovered;
-            _btSerial.DeviceDisconnected += btSerial_DeviceDisconnected;
-            _btSerial.ReceivedLine += _btSerial_ReceivedLine;
+            _btSerial.DeviceConnected += BtSerial_DeviceConnected;
+            _btSerial.DeviceDiscovered += BtSerial_DeviceDiscovered;
+            _btSerial.DeviceDisconnected += BtSerial_DeviceDisconnected;
+            _btSerial.ReceivedLine += BtSerial_ReceivedLine;
 
             EditDeviceCommand = new RelayCommand(EditDevice);
             DeviceMessages = new ObservableCollection<DeviceArchive>();
@@ -60,7 +60,7 @@ namespace LagoVista.Client.Core.ViewModels.DeviceAccess
             };
         }
 
-        private async void _btSerial_DeviceDiscovered(object sender, BTDevice e)
+        private async void BtSerial_DeviceDiscovered(object sender, BTDevice e)
         {
             try
             {
@@ -78,16 +78,16 @@ namespace LagoVista.Client.Core.ViewModels.DeviceAccess
             }
         }
 
-        private void btSerial_DeviceDisconnected(object sender, BTDevice e)
+        private void BtSerial_DeviceDisconnected(object sender, BTDevice e)
         {
             ConnectedViaBluetooth = false;
         }
 
-        private void _btSerial_DeviceConnected(object sender, BTDevice e)
+        private void BtSerial_DeviceConnected(object sender, BTDevice e)
         {
         }
 
-        private void _btSerial_ReceivedLine(object sender, string e)
+        private void BtSerial_ReceivedLine(object sender, string e)
         {
 
         }

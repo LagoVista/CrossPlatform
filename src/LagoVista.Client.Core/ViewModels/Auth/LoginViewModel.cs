@@ -13,11 +13,11 @@ namespace LagoVista.Client.Core.ViewModels.Auth
 {
     public class LoginViewModel : AppViewModelBase
     {
-        IAuthClient _authClient;
-        IClientAppInfo _clientAppInfo;
-        IDeviceInfo _deviceInfo;
+        private readonly IAuthClient _authClient;
+        private readonly IClientAppInfo _clientAppInfo;
+        private readonly IDeviceInfo _deviceInfo;
 
-        public LoginViewModel(IAuthClient authClient, IClientAppInfo clientAppInfo, IAppConfig appConfig, IDeviceInfo deviceInfo)
+        public LoginViewModel(IAuthClient authClient, IClientAppInfo clientAppInfo, IDeviceInfo deviceInfo)
         {
             LoginCommand = new RelayCommand(LoginAsync);
             RegisterCommand = new RelayCommand(Register);
@@ -25,11 +25,8 @@ namespace LagoVista.Client.Core.ViewModels.Auth
 
             _authClient = authClient;
             _clientAppInfo = clientAppInfo;
-            AppConfig = appConfig;
             _deviceInfo = deviceInfo;
         }
-
-        public IAppConfig AppConfig { get; }
 
         public async Task<InvokeResult> PerformLoginAsync()
         {

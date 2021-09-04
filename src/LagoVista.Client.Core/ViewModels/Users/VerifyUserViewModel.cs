@@ -16,21 +16,16 @@ namespace LagoVista.Client.Core.ViewModels.Users
 {
     public class VerifyUserViewModel : AppViewModelBase
     {
-        IClientAppInfo _clientAppInfo;
-        IAuthClient _authClient;
-
-        public VerifyUserViewModel(IClientAppInfo clientAppInfo, IAuthClient authClient, IAppConfig appConfig)
+        private readonly IClientAppInfo _clientAppInfo;
+     
+        public VerifyUserViewModel(IClientAppInfo clientAppInfo)
         {
-            _authClient = authClient;
             _clientAppInfo = clientAppInfo;
             SendEmailConfirmationCommand = new RelayCommand(SendEmailConfirmation);
             SendSMSConfirmationCommand = new RelayCommand(SendSMSConfirmation, ValidPhoneNumber);
             ConfirmEnteredSMSCommand = new RelayCommand(ConfirmSMSCode, () => !String.IsNullOrEmpty(SMSCode));
             LogoutCommand = new RelayCommand(Logout);
-            AppConfig = appConfig;
         }
-
-        public IAppConfig AppConfig { get; }
 
         public void SendEmailConfirmation()
         {
@@ -98,9 +93,11 @@ namespace LagoVista.Client.Core.ViewModels.Users
         {
             var result = await PerformNetworkOperation(async () =>
             {
-                var vm = new VerfiyPhoneNumber();
-                vm.PhoneNumber = PhoneNumber;
-                vm.SMSCode = SMSCode;
+                var vm = new VerfiyPhoneNumber
+                {
+                    PhoneNumber = PhoneNumber,
+                    SMSCode = SMSCode
+                };
                 var confirmSMSResult = await RestClient.PostAsync("/api/verify/sms", vm, new CancellationTokenSource());
                 if (!confirmSMSResult.Successful) return confirmSMSResult;
 
@@ -149,8 +146,10 @@ namespace LagoVista.Client.Core.ViewModels.Users
 
             var result = await PerformNetworkOperation(async () =>
             {
-                var vm = new ConfirmEmail();
-                vm.ReceivedCode = System.Net.WebUtility.UrlDecode(code);
+                var vm = new ConfirmEmail
+                {
+                    ReceivedCode = System.Net.WebUtility.UrlDecode(code)
+                };
                 var json = JsonConvert.SerializeObject(vm);
                 var confirmEmailResult = await RestClient.PostAsync("/api/verify/email", vm, new CancellationTokenSource());
                 if (!confirmEmailResult.Successful) return confirmEmailResult;
@@ -176,8 +175,10 @@ namespace LagoVista.Client.Core.ViewModels.Users
         {
             var result = await PerformNetworkOperation(async () =>
             {
-                var vm = new VerfiyPhoneNumber();
-                vm.PhoneNumber = PhoneNumber;
+                var vm = new VerfiyPhoneNumber
+                {
+                    PhoneNumber = PhoneNumber
+                };
                 var sendMSM = await RestClient.PostAsync("/api/verify/sendsmscode", vm, new CancellationTokenSource());
                 return sendMSM;
             });

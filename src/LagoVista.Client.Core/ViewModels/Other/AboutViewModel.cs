@@ -8,17 +8,13 @@ namespace LagoVista.Client.Core.ViewModels.Other
 {
     public class AboutViewModel : AppViewModelBase
     {
-        public AboutViewModel(IAppConfig appConfig)
+        public AboutViewModel()
         {
-            AppConfig = appConfig;
-
             ShowCompanySiteCommand = new RelayCommand(() => LagoVista.Core.PlatformSupport.Services.Network.OpenURI(new Uri(AppConfig.CompanySiteLink)));
             ShowWebAddressCommand = new RelayCommand(() => LagoVista.Core.PlatformSupport.Services.Network.OpenURI(new Uri(AppConfig.WebAddress)));
             ShowTermsAndConditionCommand = new RelayCommand(() => LagoVista.Core.PlatformSupport.Services.Network.OpenURI(new Uri(AppConfig.TermsAndConditionsLink)));
             ShowPrivacyStatementCommand = new RelayCommand(() => LagoVista.Core.PlatformSupport.Services.Network.OpenURI(new Uri(AppConfig.PrivacyStatementLink)));
         }
-
-        public IAppConfig AppConfig { get; private set; }
 
         public RelayCommand ShowCompanySiteCommand { get; private set; }
         public RelayCommand ShowWebAddressCommand { get; private set; }

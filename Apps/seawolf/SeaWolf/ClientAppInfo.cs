@@ -8,7 +8,6 @@ namespace SeaWolf
 {
     public class ClientAppInfo : IClientAppInfo
     {
-        //public Type MainViewModel => typeof(MainViewModel);
-        public Type MainViewModel => typeof(DesignMockViewModel);
+        public Type MainViewModel => typeof(MainViewModel);
     }
 }

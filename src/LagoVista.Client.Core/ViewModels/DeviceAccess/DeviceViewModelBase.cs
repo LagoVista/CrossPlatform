@@ -424,8 +424,10 @@ namespace LagoVista.Client.Core.ViewModels.DeviceAccess
             switch (notification.PayloadType)
             {
                 case nameof(Device):
-                    var serializerSettings = new JsonSerializerSettings();
-                    serializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
+                    var serializerSettings = new JsonSerializerSettings
+                    {
+                        ContractResolver = new CamelCasePropertyNamesContractResolver()
+                    };
                     var device = JsonConvert.DeserializeObject<Device>(notification.Payload, serializerSettings);
                     CurrentDeviceLocation = device.GeoLocation;
 

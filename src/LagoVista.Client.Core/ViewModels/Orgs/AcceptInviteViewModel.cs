@@ -13,17 +13,12 @@ namespace LagoVista.Client.Core.ViewModels.Orgs
     {
         private string _inviteid;
 
-        public AcceptInviteViewModel(IAppConfig appConfig)
+        public AcceptInviteViewModel()
         {
             AcceptInviteCommnad = new RelayCommand(AcceptInvite);
             AcceptAndRegisterCommand = new RelayCommand(AcceptInvite);
             AcceptAndLoginCommand = new RelayCommand(AcceptInvite);
-
-            AppConfig = appConfig;
         }
-
-        public IAppConfig AppConfig { get; }
-
         private async Task<InvokeResult> SendAcceptInvite()
         {
             return (await RestClient.GetAsync<InvokeResult>($"/api/org/inviteuser/accept/{_inviteid}")).Result;

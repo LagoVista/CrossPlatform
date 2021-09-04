@@ -12,68 +12,319 @@
              x:Class="SeaWolf.Views.MainView"
              Title="{trs:Translate AppName}">
 
-    <pge:LagoVistaContentPage.TabHeader >
-        <pge:TabHeaderHolder IsVisible="{Binding CurrentDevice, Converter={StaticResource NotNullVisibilityConverter}}" >
-            <Grid >
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="60" />
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="60" />
-                </Grid.ColumnDefinitions>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="auto" />
-                    <RowDefinition Height="4" />
-                </Grid.RowDefinitions>
-                <pge:IconButton IconKey="fa-arrow-left" FontSize="24" IsVisible="{Binding IsNotFirstVessel}" Command="{Binding PreviousVesselCommand}" TextColor="Black" />
-                <Label Text="{Binding CurrentDevice.Name}" HorizontalOptions="Center" Grid.Column="1" FontSize="24" TextColor="Black" />
-                <pge:IconButton IconKey="fa-arrow-right" Grid.Column="2" FontSize="24" IsVisible="{Binding IsNotLastVessel}" Command="{Binding NextVesselCommand}" TextColor="Black" />
-                <Line Grid.Row="1" Grid.ColumnSpan="3" BackgroundColor="Black" />
-            </Grid>
-        </pge:TabHeaderHolder>
-    </pge:LagoVistaContentPage.TabHeader>
-    <pge:LagoVistaContentPage.TabbedContent>
-        <pge:TabContentHolder IsVisible="{Binding CurrentDevice, Converter={StaticResource NotNullVisibilityConverter}}">
+    <pge:LagoVistaContentPage.MainContent>
+        <AbsoluteLayout>
 
-            <pge:TabContent BackgroundColor="White">
-                <ScrollView>
-                    <Grid>
+            <!-- SITE HEADER -->
+            <!--Blue <StackLayout BackgroundColor="#55A9F2">-->
+            <!--Orange <StackLayout BackgroundColor="#FFC87F">-->
+            <!--Red <StackLayout BackgroundColor="#E95C5D">-->
+            <RelativeLayout AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0,0,1,0.5">
+                <Frame HeightRequest="2048" WidthRequest="2048" BackgroundColor="{Binding HeaderBackgroundColor}" VerticalOptions="End" Padding="0" HasShadow="False">
+                    <pge:Image UWPPath="Assets" 
+                               FileName="background-overlay-pixel-spaced-3.png" 
+                               Opacity="0.25" 
+                               Aspect="AspectFit" />
+                </Frame>
+                <Grid Margin="0,25,0,0" RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width}"
+                        RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height}"
+                        >
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="0.20*"></ColumnDefinition>
+                        <ColumnDefinition Width="0.20*"></ColumnDefinition>
+                        <ColumnDefinition Width="0.20*"></ColumnDefinition>
+                        <ColumnDefinition Width="0.20*"></ColumnDefinition>
+                        <ColumnDefinition Width="0.20*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto" />
+                        <RowDefinition Height="auto" />
+                    </Grid.RowDefinitions>
+                    <pge:Icon Grid.Column="0" 
+                              IconKey="fa-map-marker" 
+                              TextColor="{Binding HeaderForegroundColor}"
+                              FontSize="36" 
+                              Margin="0,20,0,0"
+                              HorizontalTextAlignment="Center" />
+                    <pge:Icon Grid.Column="1"
+                              IconKey="fa-thermometer-half" 
+                              TextColor="{Binding HeaderForegroundColor}"
+                              FontSize="36" 
+                              Margin="0,20,0,0"
+                              HorizontalTextAlignment="Center" />
+                    <pge:Icon Grid.Column="2" 
+                              IconKey="fa-battery-half" 
+                              TextColor="{Binding HeaderForegroundColor}"
+                              FontSize="36" 
+                              Margin="0,20,0,0"
+                              HorizontalTextAlignment="Center" />
+
+                    <pge:Icon Grid.Column="3" 
+                              IconKey="fa-bluetooth" 
+                              TextColor="DarkGray"
+                              FontSize="36"
+                              Margin="0,20,0,0"
+                              IsVisible="{Binding IsBLEDisconnected}"
+                              HorizontalTextAlignment="Center" />
+
+                    <pge:Icon Grid.Column="3" 
+                              IconKey="fa-bluetooth" 
+                              FontSize="36"
+                              TextColor="{Binding HeaderForegroundColor}"
+                              Margin="0,20,0,0"
+                              IsVisible="{Binding IsBLEConnected}"
+                              HorizontalTextAlignment="Center" />
+
+                    <pge:Icon Grid.Column="4" 
+                              IconKey="fa-wifi" 
+                              FontSize="36"
+                              TextColor="DarkGray"                              
+                              Margin="0,20,0,0"
+                              IsVisible="{Binding IsDeviceDisconnectedToServer}"
+                              HorizontalTextAlignment="Center" />
+
+                    <pge:Icon Grid.Column="4" 
+                              IconKey="fa-wifi" 
+                              TextColor="{Binding HeaderForegroundColor}"
+                              FontSize="36"
+                              Margin="0,20,0,0"
+                              IsVisible="{Binding IsDeviceConnectedToServer}"
+                              HorizontalTextAlignment="Center" />
+
+                    <Label Grid.Row="1" Grid.ColumnSpan="5" Text="{Binding SystemStatus}" TextColor="{Binding HeaderForegroundColor}"
+                           HorizontalTextAlignment="Center" />
+                </Grid>
+
+            </RelativeLayout>
+            <!-- SITE HEADER -->
+
+            <!-- SITE FOOTER -->
+            <RelativeLayout AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0,1,1,0.75">
+                <Frame HeightRequest="2048" WidthRequest="2048" BackgroundColor="#93D7F6" VerticalOptions="End" Padding="0" HasShadow="False">
+                    <pge:Image UWPPath="Assets" FileName="background-overlay-pixel-spaced-3.png" Opacity="0.25" Aspect="AspectFit" />
+                </Frame>
+                <Grid Margin="0,0,0,10" RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width}" RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height}">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"></RowDefinition>
+                        <RowDefinition Height="70"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="0.025*"></ColumnDefinition>
+                        <ColumnDefinition Width="0.125*"></ColumnDefinition>
+                        <ColumnDefinition Width="0.125*"></ColumnDefinition>
+                        <ColumnDefinition Width="0.125*"></ColumnDefinition>
+                        <ColumnDefinition Width="0.45*"></ColumnDefinition>
+                        <ColumnDefinition Width="0.125*"></ColumnDefinition>
+                        <ColumnDefinition Width="0.025*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+
+                    <pge:IconButton Grid.Row="1" Grid.Column="1" VerticalOptions="Center"
+                          IconKey="fa-home" 
+                          TextColor="#FFFFFF"
+                          FontSize="28" 
+                          Command="{Binding Path=ViewMainCommand}" />
+                    <pge:IconButton Grid.Row="1" Grid.Column="2" VerticalOptions="Center"
+                          IconKey="fa-map" 
+                          TextColor="#FFFFFF"
+                          FontSize="28" 
+                          Command="{Binding Path=ViewMapCommand}" />
+                    <pge:IconButton Grid.Row="1" Grid.Column="3" VerticalOptions="Center"
+                              IconKey="fa-bell" 
+                              TextColor="#FFFFFF"
+                              FontSize="28" 
+                              Command="{Binding Path=ViewAlertsCommand}" />
+                    <StackLayout Grid.Row="1" Grid.Column="4" VerticalOptions="Center">
+                        <pge:Image UWPPath="Assets" FileName="logo-seawolf-white.png"
+                               Aspect="AspectFit"
+                               VerticalOptions="Center"
+                               Margin="0,-5,0,0"
+                               HeightRequest="50"
+                               />
+                    </StackLayout>
+                    <pge:IconButton Grid.Row="1" Grid.Column="5" VerticalOptions="Center" 
+                              IconKey="fa-bars" 
+                              TextColor="#FFFFFF"
+                              FontSize="28"
+                              Command="{Binding Path=ViewSettingsCommand}" />
+                </Grid>
+
+            </RelativeLayout>
+            <!-- SITE FOOTER -->
+
+            <!-- VIEW: MAIN -->
+            <Frame AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0,0,1,1"
+                Padding="0"
+                Margin="0,130,0,85" 
+                CornerRadius="25"
+                IsClippedToBounds="True"
+                IsVisible="{Binding Path=MainViewVisible}">
+                <StackLayout BackgroundColor="White">
+                    <Frame HeightRequest="300"
+                           BackgroundColor="#FFFFFF" 
+                           Padding="0"
+                           Margin="0"
+                           CornerRadius="0"
+                           HasShadow="False">
+                        <AbsoluteLayout Margin="0" Padding="0">
+                            <pge:BindableMap 
+                                AbsoluteLayout.LayoutFlags="All" 
+                                AbsoluteLayout.LayoutBounds="0,0,1,1"
+                                MapType="Street" 
+                                MapCenter="{Binding CurrentVeseelLocation}" 
+                                GeoFences="{Binding GeoFences}"
+                                Margin="0"
+                                />
+                        </AbsoluteLayout>
+                    </Frame>
+
+
+
+                    <Grid BackgroundColor="#F0F0F0" Margin="0" Padding="0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="60" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="60" />
+                        </Grid.ColumnDefinitions>
                         <Grid.RowDefinitions>
-                            <RowDefinition Height="48"/>
-                            <RowDefinition Height="*" />
+                            <RowDefinition Height="50" />
                         </Grid.RowDefinitions>
-                        <Label Text="Monitoring of Sensors" FontAttributes="Bold"  HorizontalOptions="Center" FontSize="32"/>
-                        <flv:FlowListView FlowItemsSource="{Binding Sensors}" Grid.Row="1" HasUnevenRows="True" FlowColumnCount="2">
-                            <flv:FlowListView.FlowColumnTemplate>
-                                <DataTemplate>
-                                    <ctl:CardView CardDescription="{Binding Config.Name}" IconBackgroundColor="{Binding SensorColor}" IconKey="{Binding SensorType.IconKey}" CardValue="{Binding Value}" />
-                                </DataTemplate>
-                            </flv:FlowListView.FlowColumnTemplate>
-                        </flv:FlowListView>
+                        <pge:IconButton IconKey="fa-arrow-left" IsVisible="{Binding IsNotFirstVessel}" VerticalOptions="Center"
+                                        Command="{Binding PreviousVesselCommand}" FontSize="24" TextColor="#55A9F2" />
+                        <Label Text="{Binding CurrentDevice.Name}" VerticalOptions="Center" HorizontalOptions="Center" Grid.Column="1" FontSize="24"
+                                TextColor="#55A9F2" />
+                        <pge:IconButton IconKey="fa-arrow-right" Grid.Column="2" VerticalOptions="Center"  IsVisible="{Binding IsNotLastVessel}"
+                                        Command="{Binding NextVesselCommand}"
+                                        FontSize="24" TextColor="#55A9F2" />
                     </Grid>
-                </ScrollView>
-            </pge:TabContent>
 
-            <pge:TabContent BackgroundColor="White">
-                <ScrollView>
-                    <Grid>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="*" />
-                        </Grid.RowDefinitions>
-                        <pge:BindableMap MapType="Street" MapCenter="{Binding CurrentVeseelLocation}" GeoFences="{Binding GeoFences}" />
-                    </Grid>
-                </ScrollView>
-            </pge:TabContent>
+                    <flv:FlowListView FlowItemsSource="{Binding Sensors}" HasUnevenRows="True" FlowColumnCount="1" Margin="0">
+                        <flv:FlowListView.FlowColumnTemplate>
+                            <DataTemplate>
+                                <ctl:SensorHUD CardColor="{Binding SensorBackgroundColor}"
+                                               CardForegroundColor="{Binding SensorForegroundColor}"
+                                               CardDescription="{Binding Config.Name}"
+                                               IconKey="{Binding SensorType.IconKey}"
+                                               CardValue="{Binding Value}" />
+                            </DataTemplate>
+                        </flv:FlowListView.FlowColumnTemplate>
+                    </flv:FlowListView>
 
-            <pge:TabContent BackgroundColor="White">
+                    <!--<StackLayout Orientation="Horizontal" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2">
+                            <Grid Margin="25,0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="25.0"></ColumnDefinition>
+                                    <ColumnDefinition Width="*"></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="30.0"></RowDefinition>
+                                    <RowDefinition Height="125.0"></RowDefinition>
+                                </Grid.RowDefinitions>
 
-            </pge:TabContent>
-        </pge:TabContentHolder>
-    </pge:LagoVistaContentPage.TabbedContent>
-    <pge:LagoVistaContentPage.TabBar  >
-        <pge:TabBar IsVisible="{Binding CurrentDevice, Converter={StaticResource NotNullVisibilityConverter}}">
-            <pge:Tab Label="Home" Icon="fa-home" />
-            <pge:Tab Label="Map" Icon="fa-home" />
-            <pge:Tab Label="Alerts" Icon="fa-bell" />
-        </pge:TabBar>
-    </pge:LagoVistaContentPage.TabBar>
-</pge:LagoVistaContentPage >
+                                <Label Grid.Row="0" Grid.ColumnSpan="2" 
+                                       Text="Livewell 1" 
+                                       TextColor="#666666"
+                                       FontAttributes="Bold"
+                                       FontSize="26" />
+                                <pge:Icon Grid.Row="1" Grid.Column="0"
+                                          IconKey="fa-thermometer-half" 
+                                          TextColor="#212121"
+                                          FontSize="36" 
+                                          Margin="0,58,0,0" />
+                                <Label Grid.Row="1" Grid.Column="1" 
+                                       Text="82" 
+                                       TextColor="#212121"
+                                       FontSize="126" 
+                                       VerticalTextAlignment="End" />
+                            </Grid>
+
+                            <BoxView BackgroundColor="#666666" WidthRequest="2" />
+
+                            <Grid Margin="25,0" HorizontalOptions="Start">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="25.0"></ColumnDefinition>
+                                    <ColumnDefinition Width="*"></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="30.0"></RowDefinition>
+                                    <RowDefinition Height="125.0"></RowDefinition>
+                                </Grid.RowDefinitions>
+
+                                <Label Grid.Row="0" Grid.ColumnSpan="2" 
+                                       Text="Livewell 2" 
+                                       TextColor="#666666"
+                                       FontAttributes="Bold"
+                                       FontSize="26" />
+                                <pge:Icon Grid.Row="1" Grid.Column="0"
+                                          IconKey="fa-thermometer-half" 
+                                          TextColor="#FFAC25"
+                                          FontSize="36" 
+                                          Margin="0,58,0,0" />
+                                <Label Grid.Row="1" Grid.Column="1" 
+                                       Text="94" 
+                                       TextColor="#FFAC25"
+                                       FontSize="126" 
+                                       VerticalTextAlignment="End" />
+                            </Grid>
+                        </StackLayout>
+
+                        <StackLayout Orientation="Horizontal" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2">
+                            <Grid Margin="25,0" HorizontalOptions="Start">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="25.0"></ColumnDefinition>
+                                    <ColumnDefinition Width="*"></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="30.0"></RowDefinition>
+                                    <RowDefinition Height="125.0"></RowDefinition>
+                                </Grid.RowDefinitions>
+
+                                <Label Grid.Row="0" Grid.ColumnSpan="2" 
+                                       Text="Trailer 1" 
+                                       TextColor="#666666"
+                                       FontAttributes="Bold"
+                                       FontSize="26" />
+                                <pge:Icon Grid.Row="1" Grid.Column="0"
+                                          IconKey="fa-thermometer-half" 
+                                          TextColor="#E95C5D"
+                                          FontSize="36" 
+                                          Margin="0,58,0,0" />
+                                <Label Grid.Row="1" Grid.Column="1" 
+                                       Text="112" 
+                                       TextColor="#E95C5D"
+                                       FontSize="126" 
+                                       VerticalTextAlignment="End" />
+                            </Grid>
+                        </StackLayout>-->
+                </StackLayout>
+            </Frame>
+            <!-- VIEW: MAIN -->
+
+            <!-- VIEW: MAIN -->
+            <Frame AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0,0,1,1"
+                Padding="0"
+                Margin="0,130,0,85" 
+                CornerRadius="25"
+                IsClippedToBounds="True"
+                IsVisible="{Binding Path=MapViewVisible}">
+                <StackLayout BackgroundColor="White">
+                    <pge:BindableMap MapType="Street" MapCenter="{Binding CurrentVeseelLocation}" GeoFences="{Binding GeoFences}" />
+                </StackLayout>
+            </Frame>
+            <!-- VIEW: MAIN -->
+
+            <!-- VIEW: MAIN -->
+            <Frame AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0,0,1,1"
+                Padding="0"
+                Margin="0,130,0,85" 
+                CornerRadius="25"
+                IsClippedToBounds="True"
+                IsVisible="{Binding Path=AlertsViewVisible}">
+                <StackLayout BackgroundColor="White" Padding="25">
+                    <Label Text="Alerts coming soon" FontSize="24" />
+                </StackLayout>
+            </Frame>
+            <!-- VIEW: MAIN -->
+
+        </AbsoluteLayout>
+    </pge:LagoVistaContentPage.MainContent>
+</pge:LagoVistaContentPage>

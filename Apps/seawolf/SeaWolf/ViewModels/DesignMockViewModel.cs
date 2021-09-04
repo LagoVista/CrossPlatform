@@ -95,7 +95,7 @@ namespace SeaWolf.ViewModels
         public override async Task InitAsync()
         {
             await base.InitAsync();
-            await LoadUserDevices();
+   //         await LoadUserDevices();
         }
 
         private async void SensorDetection()

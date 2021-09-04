@@ -1,6 +1,7 @@
 ﻿using LagoVista.Client.Core.ViewModels.Auth;
 using LagoVista.Client.Core.ViewModels.DeviceAccess;
 using LagoVista.Client.Core.ViewModels.DeviceAccess.Settings;
+using LagoVista.Client.Core.ViewModels.DeviceSetup;
 using LagoVista.Client.Core.ViewModels.Orgs;
 using LagoVista.Client.Core.ViewModels.Other;
 using LagoVista.Client.Core.ViewModels.Users;
@@ -8,6 +9,7 @@ using LagoVista.XPlat.Core.Services;
 using LagoVista.XPlat.Core.Views.Auth;
 using LagoVista.XPlat.Core.Views.DeviceAccess;
 using LagoVista.XPlat.Core.Views.DeviceAccess.Settings;
+using LagoVista.XPlat.Core.Views.DeviceSetup;
 using LagoVista.XPlat.Core.Views.Orgs;
 using LagoVista.XPlat.Core.Views.Other;
 using LagoVista.XPlat.Core.Views.Users;
@@ -53,6 +55,16 @@ namespace LagoVista.XPlat.Core
             nav.Add<UserOrgsViewModel, UserOrgsView>();
             nav.Add<AboutViewModel, AboutView>();
             nav.Add<AcceptInviteViewModel, AcceptInviteView>();
+
+            nav.Add<ConnectHardwareViewModel, ConnectHardwareView>();
+            nav.Add<ConnectivityViewModel, ConnectivityView>();
+            nav.Add<DiagnosticsViewModel, DiagnosticsView>();
+            nav.Add<MyDevicesViewModel, MyDevicesView>();
+            nav.Add<MyDeviceViewModel, MyDeviceView>();
+            nav.Add<MyDeviceMenuViewModel, MyDeviceMenuView>();
+            nav.Add<PairHardwareViewModel, PairHardwareView>();
+            nav.Add<SensorDetailViewModel, SensorDetailView>();
+            nav.Add<SensorsViewModel, SensorsView>();
         }
     }
 }

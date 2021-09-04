@@ -22,8 +22,10 @@ namespace LagoVista.Client.Core
             SLWIOC.RegisterSingleton<ITokenManager, TokenManager>();
             SLWIOC.RegisterSingleton<IAuthManager, AuthManager>();
 
-            var client = new HttpClient();
-            client.BaseAddress = serverInfo.BaseAddress;
+            var client = new HttpClient
+            {
+                BaseAddress = serverInfo.BaseAddress
+            };
             client.DefaultRequestHeaders.Accept.Clear();
             client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 

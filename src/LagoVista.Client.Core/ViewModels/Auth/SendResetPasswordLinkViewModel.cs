@@ -1,6 +1,5 @@
 ﻿using LagoVista.Client.Core.Resources;
 using LagoVista.Core.Commanding;
-using LagoVista.Core.Interfaces;
 using LagoVista.Core.Validation;
 using LagoVista.UserAdmin.Models.DTOs;
 using System;
@@ -11,22 +10,18 @@ namespace LagoVista.Client.Core.ViewModels.Auth
 {
     public class SendResetPasswordLinkViewModel : AppViewModelBase
     {
-        public SendResetPasswordLinkViewModel(IAppConfig appConfig)
+        public SendResetPasswordLinkViewModel()
         {
             SendResetPasswordLinkCommand = new RelayCommand(SendResetPasswordLink);
             CancelCommand = new RelayCommand(() => ViewModelNavigation.GoBackAsync());
-
-            AppConfig = appConfig;
         }
-
-
-        public IAppConfig AppConfig { get; }
-         
 
         public async Task<InvokeResult> CallSendInvite()
         {
-            var sendPwdResetLink = new SendResetPasswordLink();
-            sendPwdResetLink.Email = EmailAddress;
+            var sendPwdResetLink = new SendResetPasswordLink
+            {
+                Email = EmailAddress
+            };
             return (await RestClient.PostAsync("/api/auth/resetpassword/sendlink",sendPwdResetLink));
         }
 

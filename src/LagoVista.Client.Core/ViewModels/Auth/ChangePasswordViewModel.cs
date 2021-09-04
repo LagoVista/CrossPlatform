@@ -11,16 +11,14 @@ namespace LagoVista.Client.Core.ViewModels.Auth
 {
     public class ChangePasswordViewModel : AppViewModelBase
     {
-        public ChangePasswordViewModel(IRestClient rawRestClient, IAppConfig appConfig)
+        public ChangePasswordViewModel(IRestClient rawRestClient)
         {
             ChangePasswordCommand = new RelayCommand(ChangePassword);
             CancelCommand = new RelayCommand(() => ViewModelNavigation.GoBackAsync());
             Model = new UserAdmin.Models.DTOs.ChangePassword();
-            AppConfig = appConfig;
         }
 
-        public IAppConfig AppConfig { get; private set; }
-
+    
         public async Task<InvokeResult> SendResetPassword()
         {
             return await RestClient.PostAsync("/api/auth/changepassword", Model, new System.Threading.CancellationTokenSource());

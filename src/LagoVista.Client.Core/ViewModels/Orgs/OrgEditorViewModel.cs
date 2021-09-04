@@ -12,9 +12,9 @@ namespace LagoVista.Client.Core.ViewModels.Orgs
 {
     public class OrgEditorViewModel : FormViewModelBase<CreateOrganizationViewModel>
     {
-        IClientAppInfo _clientAppInfo;
+        private readonly IClientAppInfo _clientAppInfo;
 
-        public OrgEditorViewModel(IClientAppInfo clientAppInfo, IAppConfig apppConfig)
+        public OrgEditorViewModel(IClientAppInfo clientAppInfo)
         {
             _clientAppInfo = clientAppInfo;
 
@@ -29,11 +29,8 @@ namespace LagoVista.Client.Core.ViewModels.Orgs
                     FontIconKey = "fa-sign-out"
                 }
             };
-
-            AppConfig = AppConfig;
         }
 
-        public IAppConfig AppConfig { get;  }
 
         public override Task PostSaveAsync()
         {

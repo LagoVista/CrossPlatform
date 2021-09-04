@@ -1,7 +1,4 @@
 ﻿using LagoVista.Client.Core.Resources;
-using LagoVista.Core.Authentication.Models;
-using LagoVista.Core.Interfaces;
-using LagoVista.Core.PlatformSupport;
 using LagoVista.UserAdmin.Models.Orgs;
 using LagoVista.UserAdmin.Models.Users;
 using System.Collections.Generic;
@@ -10,13 +7,8 @@ namespace LagoVista.Client.Core.ViewModels.Orgs
 {
     public class UserOrgsViewModel : ListViewModelBase<OrgUser>
     {
-
-        IDeviceInfo _deviceInfo;
-        public IAppConfig AppConfig { get; }
-        public UserOrgsViewModel(IDeviceInfo deviceInfo, IAppConfig appConfig)
+        public UserOrgsViewModel()
         {
-            _deviceInfo = deviceInfo;
-            AppConfig = appConfig;
         }
 
         protected override string GetListURI()

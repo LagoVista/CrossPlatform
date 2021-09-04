@@ -14,20 +14,18 @@ namespace LagoVista.Client.Core.ViewModels.Users
 {
     public class RegisterUserViewModel : AppViewModelBase
     {
-        public RegisterUserViewModel(IAppConfig appConfig, IDeviceInfo deviceInfo, IClientAppInfo clientAppInfo)
+        public RegisterUserViewModel(IDeviceInfo deviceInfo)
         {
-            RegisterModel = new RegisterUser();
-            RegisterModel.AppId = appConfig.AppName;
-            RegisterModel.DeviceId = deviceInfo.DeviceUniqueId;
-            RegisterModel.ClientType = "mobileapp";
+            RegisterModel = new RegisterUser
+            {
+                AppId = AppConfig.AppName,
+                DeviceId = deviceInfo.DeviceUniqueId,
+                ClientType = "mobileapp"
+            };
             RegisterCommand = new RelayCommand(Register);
 
             CancelCommand = new RelayCommand(() => ViewModelNavigation.GoBackAsync());
-
-            AppConfig = appConfig;
         }
-
-        public IAppConfig AppConfig { get; }
 
         public async Task<InvokeResult> SendRegistrationAsync()
         {
