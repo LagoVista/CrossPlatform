@@ -21,6 +21,8 @@ namespace LagoVista.Client.Core.Interfaces
         Task<DetailResponse<Device>> CreateNewDeviceAsync(string deviceRepoId);
         Task<ListResponse<DeviceConfigurationSummary>> GetDeviceConfigsAsync(ListRequest listRequest = null);
         Task<ListResponse<DeviceRepositorySummary>> GetDeviceReposAsync(ListRequest listRequest = null);
+        Task<ListResponse<DeviceSummary>> GetDevicesForUserAsync(string orgId, string userId, ListRequest request = null);
+
         Task<DeviceConfiguration> GetDeviceConfigurationAsync(string deviceConfig);
         Task<ListResponse<DeploymentInstanceSummary>> GetDeploymentInstancesAsync(ListRequest listRequest = null);
         Task<ListResponse<ClientAppSummary>> GetClientAppsAsync(ListRequest request = null);

@@ -8,7 +8,7 @@ namespace LagoVista.Client.Core.ViewModels
 {
     public abstract class ListViewModelBase<TSummaryModel> : AppViewModelBase, IListViewModel where TSummaryModel : class
     {
-        ListRestClient<TSummaryModel> _formRestClient;
+        private readonly ListRestClient<TSummaryModel> _formRestClient;
         private bool _shouldRefresh = false;
 
         public ListViewModelBase()

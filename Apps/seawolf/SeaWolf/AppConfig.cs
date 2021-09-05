@@ -1,14 +1,10 @@
 ﻿using LagoVista.Core.Interfaces;
 using LagoVista.Core.Models;
 using System;
-using System.Collections.Generic;
-using System.Text;
 using Xamarin.Forms;
 
 namespace SeaWolf
 {
-
-
     public class AppConfig : IAppConfig
     {
         public const string BATTERY = "battery";

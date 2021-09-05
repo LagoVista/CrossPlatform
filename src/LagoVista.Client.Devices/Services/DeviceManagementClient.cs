@@ -20,11 +20,9 @@ namespace LagoVista.Client.Devices
     public class DeviceManagementClient : IDeviceManagementClient
     {
 
-        LagoVista.Core.PlatformSupport.IStorageService _storageService;
-        IRestClient _restClient;
+        private readonly IRestClient _restClient;
         public DeviceManagementClient(IRestClient restClient, LagoVista.Core.PlatformSupport.IStorageService storageService)
         {
-            _storageService = storageService;
             _restClient = restClient;
         }
 
@@ -50,7 +48,7 @@ namespace LagoVista.Client.Devices
 
         public async Task<InvokeResult<ListenerConfiguration>> GetListenerConfigurationAsync(String instanceId)
         {
-            var result = await  _restClient.GetAsync<InvokeResult<ListenerConfiguration>>($"/api/deployment/instance/{instanceId}/defaultlistener");
+            var result = await _restClient.GetAsync<InvokeResult<ListenerConfiguration>>($"/api/deployment/instance/{instanceId}/defaultlistener");
             return result.Result;
         }
 
@@ -227,7 +225,7 @@ namespace LagoVista.Client.Devices
                 throw new Exception(result.Errors.First().Message);
             }
         }
-        
+
         public async Task<DetailResponse<Device>> CreateNewDeviceAsync(string deviceRepoId, string deviceTypeId)
         {
             var uri = $"/api/device/{deviceRepoId}/{deviceTypeId}/create";
@@ -255,6 +253,12 @@ namespace LagoVista.Client.Devices
                 throw new Exception(result.Errors.First().Message);
             }
 
+        }
+
+        public Task<ListResponse<DeviceSummary>> GetDevicesForUserAsync(string repoId, string userId, ListRequest request = null )
+        { 
+            var uri = $"/api/devices/{repoId}/{userId}";
+            return _restClient.GetListResponseAsync<DeviceSummary>(uri, request);
         }
 
         public async Task<DeviceConfiguration> GetDeviceConfigurationAsync(string deviceConfigId)

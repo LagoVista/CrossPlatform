@@ -273,7 +273,19 @@ namespace LagoVista.Client.Core.ViewModels.DeviceAccess
         private Device _currentDevice;
         public Device CurrentDevice
         {
-            get => _currentDevice;
+            get
+            {
+                if (_currentDevice == null)
+                {
+                    if (LaunchArgs.Parameters.ContainsKey(nameof(Device)))
+                    {
+                        _currentDevice = GetLaunchArg<Device>(nameof(Device));
+                        RaisePropertyChanged();
+                    }
+                }
+
+                return _currentDevice;
+            }
             set
             {
                 if (value != _currentDevice)

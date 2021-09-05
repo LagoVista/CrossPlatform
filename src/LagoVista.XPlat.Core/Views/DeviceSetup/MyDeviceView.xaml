@@ -5,9 +5,10 @@
              x:Class="LagoVista.XPlat.Core.Views.DeviceSetup.MyDeviceView">
     <pge:LagoVistaContentPage.MainContent>
         <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
+            <Label Text="{Binding DeviceNameLabel}"
                 VerticalOptions="CenterAndExpand" 
                 HorizontalOptions="CenterAndExpand" />
+            <pge:Entry Text="{Binding DeviceName}"  />
         </StackLayout>
     </pge:LagoVistaContentPage.MainContent>
     </pge:LagoVistaContentPage>
