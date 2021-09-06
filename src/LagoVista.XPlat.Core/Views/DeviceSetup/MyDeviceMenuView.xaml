@@ -1,13 +1,18 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<pge:LagoVistaContentPage    xmlns="http://xamarin.com/schemas/2014/forms"
+<pge:LagoVistaContentPage  xmlns="http://xamarin.com/schemas/2014/forms"
                xmlns:pge="clr-namespace:LagoVista.XPlat.Core;assembly=LagoVista.XPlat.Core"
-                xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="LagoVista.XPlat.Core.Views.DeviceSetup.MyDeviceMenuView">
+               xmlns:ctls="clr-namespace:LagoVista.XPlat.Core.Controls.Common;assembly=LagoVista.XPlat.Core"
+               xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+               LeftMenu="Back"
+               x:Class="LagoVista.XPlat.Core.Views.DeviceSetup.MyDeviceMenuView">
     <pge:LagoVistaContentPage.MainContent>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-        </StackLayout>
+        <ListView ItemsSource="{Binding MenuOptions}" HasUnevenRows="true" SelectedItem="{Binding SelectedMenuOption}">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ctls:NavigationViewCell Command="{Binding Command}" Text="{Binding Name}" 
+                                             Detail="{Binding Help}" Icon="{Binding FontIconKey}" />
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
     </pge:LagoVistaContentPage.MainContent>
-    </pge:LagoVistaContentPage>
+</pge:LagoVistaContentPage>

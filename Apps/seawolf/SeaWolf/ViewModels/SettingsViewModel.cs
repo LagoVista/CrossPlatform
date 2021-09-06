@@ -31,6 +31,5 @@ namespace SeaWolf.ViewModels
         }
 
         public List<MenuItem> MenuOptions { get; }
-
     }
 }

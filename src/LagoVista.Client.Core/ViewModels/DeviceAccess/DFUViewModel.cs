@@ -21,9 +21,8 @@ namespace LagoVista.Client.Core.ViewModels.DeviceAccess
     public class DFUViewModel : DeviceViewModelBase
     {
         private string _firmwareUrl;
-        IAppServices _appServices;
-        IProcessOutputWriter _processsOutputWriter;
-
+        private readonly IAppServices _appServices;
+        private readonly IProcessOutputWriter _processsOutputWriter;
 
         public DFUViewModel(IProcessOutputWriter processOutputWriter, IAppServices appServices)
         {
@@ -73,21 +72,23 @@ namespace LagoVista.Client.Core.ViewModels.DeviceAccess
         {
             var fwPath = @"X:\ESP32\";
 
-            var args = new List<string>();
-            args.Add("--chip esp32");
-            args.Add(@"--port COM8");
-            args.Add("--baud 460800");
-            args.Add("--before default_reset");
-            args.Add("--after hard_reset");
-            args.Add("write_flash");
-            args.Add("-z");
-            args.Add("--flash_mode dio");
-            args.Add("--flash_freq 40m");
-            args.Add("--flash_size detect");
-            args.Add($"0x1000 {fwPath}bootloader_dio_40m.bin");
-            args.Add($"0x8000 {fwPath}partitions.bin");
-            args.Add($"0xe000 {fwPath}boot_app0.bin");
-            args.Add($"0x10000 {fwPath}firmware.bin");
+            var args = new List<string>
+            {
+                "--chip esp32",
+                @"--port COM8",
+                "--baud 460800",
+                "--before default_reset",
+                "--after hard_reset",
+                "write_flash",
+                "-z",
+                "--flash_mode dio",
+                "--flash_freq 40m",
+                "--flash_size detect",
+                $"0x1000 {fwPath}bootloader_dio_40m.bin",
+                $"0x8000 {fwPath}partitions.bin",
+                $"0xe000 {fwPath}boot_app0.bin",
+                $"0x10000 {fwPath}firmware.bin"
+            };
 
             return args;
         }

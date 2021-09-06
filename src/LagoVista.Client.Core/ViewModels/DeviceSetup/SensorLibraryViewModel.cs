@@ -1,4 +1,5 @@
 ﻿using LagoVista.Client.Core.ViewModels.DeviceAccess;
+using LagoVista.Core.Models;
 using LagoVista.IoT.DeviceManagement.Models;
 using System.Collections.ObjectModel;
 using System.Threading.Tasks;
@@ -18,17 +19,19 @@ namespace LagoVista.Client.Core.ViewModels.DeviceSetup
             await base.InitAsync();
         }
 
-        private async void AddSensorAsync(SensorDefinition defintiion)
+        private async void AddSensorAsync(SensorDefinition definition)
         {
-            var newSensor = new Sensor(defintiion);
+            var newSensor = new Sensor(definition);
+
             CurrentDevice.SensorCollection.Add(newSensor);
 
-            var result = await PerformNetworkOperation(async () => {
+            var result = await PerformNetworkOperation(async () =>
+            {
                 return await DeviceManagementClient.UpdateDeviceAsync(AppConfig.DeviceRepoId, CurrentDevice);
             });
 
-           
-            if(result.Successful)
+
+            if (result.Successful)
             {
                 await ViewModelNavigation.NavigateAsync<SensorsViewModel>(this, DeviceLaunchArgsParam, CreateKVP(SensorDetailViewModel.SENSOR_ID, newSensor.Id));
             }
@@ -42,11 +45,18 @@ namespace LagoVista.Client.Core.ViewModels.DeviceSetup
             set
             {
                 Set(ref _selectedSensor, value);
-                AddSensorAsync(value);    
+                AddSensorAsync(value);
             }
         }
 
-        public ObservableCollection<SensorDefinition> SensorTypes { get; private set; }
-
+        private ObservableCollection<SensorDefinition> _sensorTypes;
+        public ObservableCollection<SensorDefinition> SensorTypes
+        {
+            get => _sensorTypes;
+            private set
+            {
+                Set(ref _sensorTypes, value);
+            }
+        }
     }
 }

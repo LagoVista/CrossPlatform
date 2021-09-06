@@ -1,16 +1,14 @@
 ﻿using LagoVista.Client.Core.ViewModels.DeviceAccess;
 using LagoVista.Core.Commanding;
+using System;
 using System.Collections.Generic;
+using System.Text;
 using System.Threading.Tasks;
 
 namespace LagoVista.Client.Core.ViewModels.DeviceSetup
 {
-    public class MyDeviceViewModel : DeviceViewModelBase
+    public class DeviceDetailViewModel : DeviceViewModelBase
     {
-        public MyDeviceViewModel()
-        {
-        }
-
         public override Task InitAsync()
         {
             DeviceNameLabel = CurrentDevice.DeviceNameLabel;
@@ -33,9 +31,8 @@ namespace LagoVista.Client.Core.ViewModels.DeviceSetup
             set { Set(ref _deviceName, value); }
         }
 
-        public async override void Save()
+        public async void NextView()
         {
-            base.Save();
             if (DeviceName.Length < 5)
             {
                 await Popups.ShowAsync($"{DeviceNameLabel} must be at least 5 characters.");
@@ -52,7 +49,9 @@ namespace LagoVista.Client.Core.ViewModels.DeviceSetup
             {
                 await ViewModelNavigation.NavigateAsync<SensorsViewModel>(this, DeviceLaunchArgsParam);
             }
-
         }
+
+
+        public RelayCommand NextCommand { get; }
     }
 }

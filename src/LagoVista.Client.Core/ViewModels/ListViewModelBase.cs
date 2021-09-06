@@ -25,7 +25,7 @@ namespace LagoVista.Client.Core.ViewModels
             protected set
             {
                 Set(ref _listItems, value);
-                IsListEmpty = value == null || !value.Any();
+                IsListEmpty = value != null && !value.Any();
             }
         }
 

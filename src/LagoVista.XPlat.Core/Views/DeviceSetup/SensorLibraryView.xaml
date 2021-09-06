@@ -4,10 +4,12 @@
                 xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="LagoVista.XPlat.Core.Views.DeviceSetup.SensorLibraryView">
     <pge:LagoVistaContentPage.MainContent>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-        </StackLayout>
+        <ListView ItemsSource="{Binding SensorTypes}" SelectedItem="{Binding SelectedSensor, Mode=TwoWay}">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <TextCell Text="{Binding Name}" />
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
     </pge:LagoVistaContentPage.MainContent>
-    </pge:LagoVistaContentPage>
+</pge:LagoVistaContentPage>

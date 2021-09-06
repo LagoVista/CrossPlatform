@@ -64,7 +64,11 @@ namespace LagoVista.XPlat.Core
             nav.Add<MyDeviceMenuViewModel, MyDeviceMenuView>();
             nav.Add<PairHardwareViewModel, PairHardwareView>();
             nav.Add<SensorDetailViewModel, SensorDetailView>();
+            nav.Add<SensorLibraryViewModel, SensorLibraryView>();
             nav.Add<SensorsViewModel, SensorsView>();
+            nav.Add<BillingViewModel, BillingView>();
+            nav.Add<DeviceDetailViewModel, DeviceDetailView>();
+            nav.Add<OTADFUViewModel, OTADFUView>();
         }
     }
 }

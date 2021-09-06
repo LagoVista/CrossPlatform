@@ -20,11 +20,19 @@ namespace LagoVista.Client.Core.ViewModels.DeviceSetup
 
         public override Task InitAsync()
         {
-            DeviceSensors = new ObservableCollection<Sensor>(CurrentDevice.SensorCollection);
             return base.InitAsync();
         }
 
-        public ObservableCollection<Sensor> DeviceSensors { get; private set; }
+
+        Sensor _selectedSensor;
+        public Sensor SelectedSensor
+        {
+            get => _selectedSensor;
+            set
+            {
+                
+            }
+        }
 
         public RelayCommand AddSensorCommand{ get; }
     }

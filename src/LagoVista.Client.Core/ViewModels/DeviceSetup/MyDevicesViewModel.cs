@@ -55,7 +55,7 @@ namespace LagoVista.Client.Core.ViewModels.DeviceSetup
                 var response = await DeviceManagementClient.GetDeviceAsync(AppConfig.DeviceRepoId, summary.Id);
                 var launchArgs = new ViewModelLaunchArgs()
                 {
-                    ViewModelType = typeof(MyDeviceViewModel),
+                    ViewModelType = typeof(MyDeviceMenuViewModel),
                     LaunchType = LaunchTypes.View
                 };
 
