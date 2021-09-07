@@ -30,7 +30,6 @@ namespace SeaWolf.ViewModels
         Device _currentDevice;
         ObservableCollection<DeviceSummary> _userDevices;
 
-
         public enum ViewToShow
         {
             Main,
@@ -75,6 +74,8 @@ namespace SeaWolf.ViewModels
             ViewMainCommand = new RelayCommand(() => ShowView(ViewToShow.Main));
             ViewMapCommand = new RelayCommand(() => ShowView(ViewToShow.Map));
             ViewAlertsCommand = new RelayCommand(() => ShowView(ViewToShow.Alerts));
+            NextVesselCommand = new RelayCommand(NextVessel);
+            PreviousVesselCommand = new RelayCommand(PreviousVessel);
             ViewSettingsCommand = new RelayCommand(() => ViewModelNavigation.NavigateAsync<SettingsViewModel>(this, new KeyValuePair<string, object>(nameof(Device), CurrentDevice)));
         }
 
@@ -109,6 +110,7 @@ namespace SeaWolf.ViewModels
             if (deviceIdx < UserDevices.Count)
             {
                 DeviceId = UserDevices[deviceIdx].Id;
+                await Storage.StoreKVP<string>(ComponentViewModel.DeviceId, DeviceId);
                 await LoadDevice();
             }
         }
@@ -121,6 +123,7 @@ namespace SeaWolf.ViewModels
             if (deviceIdx > -1)
             {
                 DeviceId = UserDevices[deviceIdx].Id;
+                await Storage.StoreKVP<string>(ComponentViewModel.DeviceId, DeviceId);
                 await LoadDevice();
             }
         }

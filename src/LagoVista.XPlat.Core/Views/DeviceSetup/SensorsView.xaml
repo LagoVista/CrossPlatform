@@ -8,12 +8,68 @@
                AddCommand="{Binding AddSensorCommand}"
                x:Class="LagoVista.XPlat.Core.Views.DeviceSetup.SensorsView">
     <pge:LagoVistaContentPage.MainContent>
-        <ListView ItemsSource="{Binding CurrentDevice.SensorCollection}" SelectedItem="{Binding SelectedSensor}">
-            <ListView.ItemTemplate>
-                <DataTemplate>
-                    <TextCell Text="{Binding Name}" />
-                </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+            </Grid.RowDefinitions>
+            <Grid Margin="0,25,0,0" RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width}"
+                        RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height}"
+                        >
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="0.20*"></ColumnDefinition>
+                    <ColumnDefinition Width="0.20*"></ColumnDefinition>
+                    <ColumnDefinition Width="0.20*"></ColumnDefinition>
+                    <ColumnDefinition Width="0.20*"></ColumnDefinition>
+                    <ColumnDefinition Width="0.20*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="auto" />
+                </Grid.RowDefinitions>
+                <pge:Icon Grid.Column="3" 
+                              IconKey="fa-bluetooth" 
+                              TextColor="DarkGray"
+                              FontSize="36"
+                              Margin="0,20,0,0"
+                              IsVisible="{Binding IsBLEDisconnected}"
+                              HorizontalTextAlignment="Center" />
+
+                <pge:Icon Grid.Column="3" 
+                              IconKey="fa-bluetooth" 
+                              FontSize="36"
+                              TextColor="{Binding HeaderForegroundColor}"
+                              Margin="0,20,0,0"
+                              IsVisible="{Binding IsBLEConnected}"
+                              HorizontalTextAlignment="Center" />
+
+                <pge:Icon Grid.Column="4" 
+                              IconKey="fa-wifi" 
+                              FontSize="36"
+                              TextColor="DarkGray"                              
+                              Margin="0,20,0,0"
+                              IsVisible="{Binding IsDeviceDisconnectedToServer}"
+                              HorizontalTextAlignment="Center" />
+
+                <pge:Icon Grid.Column="4" 
+                              IconKey="fa-wifi" 
+                              TextColor="{Binding HeaderForegroundColor}"
+                              FontSize="36"
+                              Margin="0,20,0,0"
+                              IsVisible="{Binding IsDeviceConnectedToServer}"
+                              HorizontalTextAlignment="Center" />
+
+                <Label Grid.Row="1" Grid.ColumnSpan="5" Text="{Binding SystemStatus}" TextColor="{Binding HeaderForegroundColor}"
+                           HorizontalTextAlignment="Center" />
+            </Grid>
+            <ListView Grid.Row="1" ItemsSource="{Binding CurrentDevice.SensorCollection}" SelectedItem="{Binding SelectedSensor}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <TextCell Text="{Binding Name}" />
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </Grid>
     </pge:LagoVistaContentPage.MainContent>
 </pge:LagoVistaContentPage>

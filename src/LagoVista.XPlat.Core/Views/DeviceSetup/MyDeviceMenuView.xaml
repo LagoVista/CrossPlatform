@@ -26,24 +26,6 @@
                     <RowDefinition Height="auto" />
                     <RowDefinition Height="auto" />
                 </Grid.RowDefinitions>
-                <pge:Icon Grid.Column="0" 
-                              IconKey="fa-map-marker" 
-                              TextColor="{Binding HeaderForegroundColor}"
-                              FontSize="36" 
-                              Margin="0,20,0,0"
-                              HorizontalTextAlignment="Center" />
-                <pge:Icon Grid.Column="1"
-                              IconKey="fa-thermometer-half" 
-                              TextColor="{Binding HeaderForegroundColor}"
-                              FontSize="36" 
-                              Margin="0,20,0,0"
-                              HorizontalTextAlignment="Center" />
-                <pge:Icon Grid.Column="2" 
-                              IconKey="fa-battery-half" 
-                              TextColor="{Binding HeaderForegroundColor}"
-                              FontSize="36" 
-                              Margin="0,20,0,0"
-                              HorizontalTextAlignment="Center" />
 
                 <pge:Icon Grid.Column="3" 
                               IconKey="fa-bluetooth" 

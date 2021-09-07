@@ -117,7 +117,7 @@ namespace LagoVista.Client.Core.ViewModels.DeviceAccess
 
         private async void GattConnection_DeviceDiscovered(object sender, BLEDevice e)
         {
-            `1if (CurrentDevice != null && e.DeviceAddress == CurrentDevice.MacAddress)
+            if (CurrentDevice != null && e.DeviceAddress == CurrentDevice.MacAddress)
             {
                 await GattConnection.StopScanAsync();
                 await _gattConnection.ConnectAsync(e);
@@ -157,7 +157,7 @@ namespace LagoVista.Client.Core.ViewModels.DeviceAccess
 
 
         private async void BtSerial_DeviceDisconnected(object sender, Models.BLEDevice e)
-        {           
+        {
             if (CurrentDevice != null && e.DeviceAddress == CurrentDevice.MacAddress)
             {
                 BLEDevice = null;
@@ -354,11 +354,16 @@ namespace LagoVista.Client.Core.ViewModels.DeviceAccess
                     }
                     else
                     {
-                        /*                        var lastKnownLocation = await Geolocation.GetLastKnownLocationAsync();
-                                                if (lastKnownLocation != null)
-                                                {
-                                                    CurrentVeseelLocation = new GeoLocation(lastKnownLocation.Latitude, lastKnownLocation.Longitude);
-                                                }*/
+                    /*    var lastKnownLocation = await Geolocation.GetLastKnownLocationAsync();
+                        if (lastKnownLocation != null)
+                        {
+                            CurrentVeseelLocation = new GeoLocation(lastKnownLocation.Latitude, lastKnownLocation.Longitude);
+                        }*/
+                    }
+
+                    foreach (var summary in CurrentDevice.SensorCollection)
+                    {
+                        Sensors.Add(new SensorSummary(summary, summary.Technology.Value));
                     }
 
                     GeoFences.Clear();

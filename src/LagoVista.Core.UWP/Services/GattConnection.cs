@@ -20,13 +20,12 @@ namespace LagoVista.Core.UWP.Services
         private readonly IDispatcherServices _dispatcherService;
         private readonly List<BLEService> _knownServices = new List<BLEService>();
         private readonly BluetoothLEAdvertisementWatcher _watcher;
+        private readonly ObservableCollection<BLEDevice> _connectingDevices = new ObservableCollection<BLEDevice>();
         private readonly List<GattCharacteristic> _subscribedCharacteristics = new List<GattCharacteristic>();
         private readonly List<BluetoothLEDevice> _windowsBLEDevices = new List<BluetoothLEDevice>();
         private readonly Timer _watchdogTimer;
 
         private static int _instanceCount = 0;
-
-
 
         public GattConnection(IDispatcherServices dispatcherServices)
         {
@@ -35,9 +34,12 @@ namespace LagoVista.Core.UWP.Services
                 ScanningMode = BluetoothLEScanningMode.Active
             };
 
-            _watchdogTimer = new Timer();
-            _watchdogTimer.Interval = TimeSpan.FromSeconds(2);
-            _watchdogTimer.Tick += _watchdogTimer_Tick;
+            _watchdogTimer = new Timer
+            {
+                Interval = TimeSpan.FromSeconds(2)
+            };
+
+            _watchdogTimer.Tick += WatchdogTimer_Tick;
             _watchdogTimer.Start();
 
             _watcher.Received += Watcher_Received;
@@ -47,9 +49,11 @@ namespace LagoVista.Core.UWP.Services
             {
                 throw new InvalidOperationException("Attempt to create more then one GattConnection.");
             }
+
+            _instanceCount++;
         }
 
-        private async void _watchdogTimer_Tick(object sender, EventArgs e)
+        private async void WatchdogTimer_Tick(object sender, EventArgs e)
         {
             var devicesToRemove = new List<BLEDevice>();
 
@@ -94,7 +98,7 @@ namespace LagoVista.Core.UWP.Services
                     _connectingDevices.Remove(device);
                 }
 
-                if(devicesToRemove.Any())
+                if (devicesToRemove.Any())
                 {
                     _watcher.Start();
                 }
@@ -139,8 +143,6 @@ namespace LagoVista.Core.UWP.Services
         public ObservableCollection<BLEDevice> DiscoveredDevices { get; } = new ObservableCollection<BLEDevice>();
 
         public ObservableCollection<BLEDevice> ConnectedDevices { get; } = new ObservableCollection<BLEDevice>();
-
-        private ObservableCollection<BLEDevice> _connectingDevices { get; } = new ObservableCollection<BLEDevice>();
 
         public event EventHandler<BLEDevice> DeviceDiscovered;
         public event EventHandler<BLEDevice> DeviceConnected;
@@ -254,7 +256,7 @@ namespace LagoVista.Core.UWP.Services
                         srvc.Dispose();
                     }
                 }
-                catch(Exception ex)
+                catch (Exception ex)
                 {
                     Debug.WriteLine($"!! Exception in GetGattServicesAsync to disconnect: {ex.Message} !!");
                 }
@@ -287,7 +289,7 @@ namespace LagoVista.Core.UWP.Services
                     _watcher.Start();
                     Debug.WriteLine($"No connected devices to disconnect: {device.DeviceName}");
                 }
-            }        
+            }
         }
 
         public async Task<byte[]> ReadCharacteristicAsync(BLEDevice device, BLEService service, BLECharacteristic characteristic)
@@ -452,7 +454,7 @@ namespace LagoVista.Core.UWP.Services
             {
                 var ch = addr & 0xFF;
                 bldr.Insert(0, $"{ch:x2}:");
-                addr = addr >> 8;
+                addr >>= 8;
             }
 
             return bldr.ToString().TrimEnd(':').ToUpper();
@@ -469,7 +471,7 @@ namespace LagoVista.Core.UWP.Services
                 addr += hex;
                 if (idx < 5)
                 {
-                    addr = addr << 8;
+                    addr <<= 8;
                 }
             }
 

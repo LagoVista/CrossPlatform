@@ -30,10 +30,13 @@ namespace LagoVista.Client.Core.ViewModels.DeviceSetup
                 Sensor = LaunchArgs.GetParam<Sensor>(SENSOR);
             }
 
-            var service = NuvIoTGATTProfile.GetNuvIoTGATT().Services.Find(srvc => srvc.Id == NuvIoTGATTProfile.SVC_UUID_NUVIOT);
-            var characteristics = service.Characteristics.First(chr => chr.Id == NuvIoTGATTProfile.CHAR_UUID_IO_VALUE);
+            if (BLEDevice != null)
+            {
+                var service = NuvIoTGATTProfile.GetNuvIoTGATT().Services.Find(srvc => srvc.Id == NuvIoTGATTProfile.SVC_UUID_NUVIOT);
+                var characteristics = service.Characteristics.First(chr => chr.Id == NuvIoTGATTProfile.CHAR_UUID_IO_VALUE);
 
-            await GattConnection.SubscribeAsync(BLEDevice, service, characteristics);
+                await GattConnection.SubscribeAsync(BLEDevice, service, characteristics);
+            }
         }
 
         public override async Task IsClosingAsync()
