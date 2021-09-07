@@ -117,18 +117,8 @@ namespace LagoVista.Client.Core.ViewModels.DeviceAccess
 
         private async void GattConnection_DeviceDiscovered(object sender, BLEDevice e)
         {
-            if (CurrentDevice != null && e.DeviceAddress == CurrentDevice.MacAddress)
+            `1if (CurrentDevice != null && e.DeviceAddress == CurrentDevice.MacAddress)
             {
-                lock (this)
-                {
-                    if (_isConnecting)
-                    {
-                        return;
-                    }
-
-                    _isConnecting = true;
-                }
-
                 await GattConnection.StopScanAsync();
                 await _gattConnection.ConnectAsync(e);
             }
@@ -165,7 +155,6 @@ namespace LagoVista.Client.Core.ViewModels.DeviceAccess
             BLECharacteristicRead(e);
         }
 
-        private bool _isConnecting = false;
 
         private async void BtSerial_DeviceDisconnected(object sender, Models.BLEDevice e)
         {           
@@ -181,8 +170,6 @@ namespace LagoVista.Client.Core.ViewModels.DeviceAccess
 
         private async void BtSerial_DeviceConnected(object sender, Models.BLEDevice e)
         {
-            _isConnecting = false;
-
             if (CurrentDevice != null)
             {
                 if (e.DeviceAddress == CurrentDevice.MacAddress)

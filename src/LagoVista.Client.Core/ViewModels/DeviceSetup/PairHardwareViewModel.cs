@@ -1,6 +1,7 @@
 ﻿using LagoVista.Client.Core.Models;
 using LagoVista.Client.Core.ViewModels.DeviceAccess;
 using LagoVista.Core.Commanding;
+using LagoVista.Core.Validation;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -35,20 +36,36 @@ namespace LagoVista.Client.Core.ViewModels.DeviceSetup
             var str = System.Text.ASCIIEncoding.ASCII.GetString(result);
             var parts = str.Split(',');
             var deviceModelId = parts[1];
-            if(deviceModelId.Length == 32)
+            if (deviceModelId.Length == 32)
             {
                 await PerformNetworkOperation(async () =>
                 {
                     var existingDevice = await DeviceManagementClient.GetDeviceByMacAddressAsync(AppConfig.DeviceRepoId, device.DeviceAddress);
-                    var nuvIoTDevice = await DeviceManagementClient.CreateNewDeviceAsync(AppConfig.DeviceRepoId, deviceModelId);
+                    if (existingDevice.Successful)
+                    {
+                        return InvokeResult.FromError($"This device is already registered as {existingDevice.Result.Name}");
+                    }
+                    else
+                    {
+                        var nuvIoTDevice = await DeviceManagementClient.CreateNewDeviceAsync(AppConfig.DeviceRepoId, deviceModelId);
+                        if (nuvIoTDevice.Successful)
+                        {
+                            var setMacAddressResul = await DeviceManagementClient.SetDeviceMacAddressAsync(AppConfig.DeviceRepoId, nuvIoTDevice.Result.Id, device.DeviceAddress);
+                            return setMacAddressResul.ToInvokeResult();
+                        }
+                        else
+                        {
+                            return nuvIoTDevice.ToInvokeResult();
+                        }
+                    }
                 });
             }
-            
+
         }
 
         protected override void OnBLEDevice_Connected(BLEDevice device)
         {
-            
+
         }
 
         public async override Task IsClosingAsync()
@@ -58,32 +75,14 @@ namespace LagoVista.Client.Core.ViewModels.DeviceSetup
             await base.IsClosingAsync();
         }
 
-        /* Step 2 Create the new Device, set the Mac Address, update it, and then update the device name */
-        protected override async void BLECharacteristicRead(BLECharacteristicsValue characteristic)
-        {
-            if (characteristic.Uid == NuvIoTGATTProfile.CHAR_UUID_SYS_CONFIG)
-            {
-                var parts = characteristic.Value.Split(',');
-                var deviceTypeId = parts[3];
-                var result = await DeviceManagementClient.CreateNewDeviceAsync(AppConfig.DeviceRepoId, deviceTypeId);
-                if (result.Successful)
-                {
-                    CurrentDevice = result.Model;
-                    CurrentDevice.MacAddress = SelecctedDevice.DeviceAddress;
-                    await DeviceManagementClient.UpdateDeviceAsync(AppConfig.DeviceRepoId, result.Model);
-                    await ViewModelNavigation.NavigateAsync<MyDeviceMenuViewModel>(this, DeviceLaunchArgsParam);
-                }
-            }
-        }
-
         public async void ConnectAsync(BLEDevice device)
         {
             await GattConnection.ConnectAsync(device);
         }
 
         BLEDevice _selecctedDevice;
-        public BLEDevice SelecctedDevice 
-        { 
+        public BLEDevice SelecctedDevice
+        {
             get { return _selecctedDevice; }
             set
             {

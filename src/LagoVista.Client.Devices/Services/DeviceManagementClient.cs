@@ -226,10 +226,10 @@ namespace LagoVista.Client.Devices
             }
         }
 
-        public async Task<DetailResponse<Device>> CreateNewDeviceAsync(string deviceRepoId, string deviceTypeId)
+        public async Task<InvokeResult<Device>> CreateNewDeviceAsync(string deviceRepoId, string deviceTypeId)
         {
             var uri = $"/api/device/{deviceRepoId}/{deviceTypeId}/create";
-            var result = await _restClient.GetAsync<DetailResponse<Device>>(uri);
+            var result = await _restClient.GetAsync<InvokeResult<Device>>(uri);
             if (result.Successful)
             {
                 return result.Result;
@@ -355,10 +355,10 @@ namespace LagoVista.Client.Devices
         {
             var url = $"/api/device/{deviceRepoId}/{id}/macaddress/{WebUtility.UrlEncode(macAddress)}/set";
             
-            var result = await _restClient.GetAsync<InvokeResult<InvokeResult>>(url);
+            var result = await _restClient.GetAsync<InvokeResult>(url);
             if(result.Successful)
             {
-                return result.Result.Result;
+                return result.Result;
             }
             else
             {

@@ -1,6 +1,7 @@
 ﻿using LagoVista.Client.Core.ViewModels.DeviceAccess;
 using LagoVista.Core.Commanding;
 using LagoVista.IoT.DeviceManagement.Models;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Threading.Tasks;
 
@@ -23,17 +24,21 @@ namespace LagoVista.Client.Core.ViewModels.DeviceSetup
             return base.InitAsync();
         }
 
+        public async void ShowSensorView(Sensor sensor)
+        {
+            await ViewModelNavigation.NavigateAsync<SensorDetailViewModel>(this, DeviceLaunchArgsParam, new KeyValuePair<string, object>(SensorDetailViewModel.SENSOR, sensor));
+        }
 
-        Sensor _selectedSensor;
         public Sensor SelectedSensor
         {
-            get => _selectedSensor;
+            get => null;
             set
             {
-                
+                ShowSensorView(value);
+                RaisePropertyChanged();
             }
         }
 
-        public RelayCommand AddSensorCommand{ get; }
+        public RelayCommand AddSensorCommand { get; }
     }
 }

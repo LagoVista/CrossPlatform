@@ -37,7 +37,7 @@ namespace LagoVista.Client.Core.Interfaces
         Task<InvokeResult> AttachChildDeviceAsync(string deviceRepoId, string parentDeviceId, string chidlDeviceId);
         Task<InvokeResult> RemoveChildDevice(string deviceRepoId, string parentDeviceId, string chidlDeviceId);
 
-        Task<DetailResponse<Device>> CreateNewDeviceAsync(string deviceRepoId, string deviceTypeId);
+        Task<InvokeResult<Device>> CreateNewDeviceAsync(string deviceRepoId, string deviceTypeId);
 
         Task<ListResponse<DeviceTypeSummary>> GetDeviceTypesAsync(ListRequest listRequest = null);
         Task<InvokeResult> UpdateDeviceAsync(string deviceRepoId, Device device);
