@@ -2,10 +2,16 @@
 <pge:LagoVistaContentPage    xmlns="http://xamarin.com/schemas/2014/forms"
                xmlns:pge="clr-namespace:LagoVista.XPlat.Core;assembly=LagoVista.XPlat.Core"
                 xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                             LeftMenu="Cancel"
+                             RightMenu="Save"
+                             SaveCommand="{Binding SaveCommand}"
              x:Class="LagoVista.XPlat.Core.Views.DeviceSetup.SensorDetailView">
     <pge:LagoVistaContentPage.MainContent>
         <Grid>
             <Grid.RowDefinitions>
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
                 <RowDefinition Height="auto" />
                 <RowDefinition Height="auto" />
                 <RowDefinition Height="auto" />
@@ -59,9 +65,31 @@
                 <Label Grid.Row="1" Grid.ColumnSpan="5" Text="{Binding SystemStatus}" TextColor="{Binding HeaderForegroundColor}"
                            HorizontalTextAlignment="Center" />
             </Grid>
-            
+
             <Button Text="Read" Grid.Row="1" Command="{Binding ReadCommand}" />
             <Button Text="Write" Grid.Row="2" Command="{Binding WriteCommand}" />
+            
+            <StackLayout Grid.Row="3">
+                <pge:Label Text="Port" />
+                <pge:Picker ItemsSource="{Binding Ports}" ItemDisplayBinding="{Binding Text}" Grid.Row="3" SelectedItem="{Binding Port, Mode=TwoWay}"/>
+                <pge:Label Text="Calibration" />
+                <pge:Entry Text="{Binding Sensor.Calibration, Mode=TwoWay}"  />
+                <pge:Label Text="Zero" />
+                <pge:Entry Text="{Binding Sensor.Zero, Mode=TwoWay}" />
+                <pge:Label Text="Scaler" />
+                <pge:Entry Text="{Binding Sensor.DeviceScaler, Mode=TwoWay}" />
+                <pge:Label Text="Units Label" />
+                <pge:Entry Text="{Binding Sensor.UnitsLabel, Mode=TwoWay}" />
+                <pge:Label Text="Low Threshold" />
+                <pge:Entry Text="{Binding Sensor.LowThreshold, Mode=TwoWay}" />
+                <pge:Label Text="Low Value Error Code" />
+                <pge:Entry Text="{Binding Sensor.LowValueErrorCode, Mode=TwoWay}" />
+                <pge:Label Text="High Threshold" />
+                <pge:Entry Text="{Binding Sensor.HighThreshold, Mode=TwoWay}" />
+                <pge:Label Text="High Value Error Code" />
+                <pge:Entry Text="{Binding Sensor.HighValueErrorCode, Mode=TwoWay}" />
+            </StackLayout>
+            <Label Grid.Row="4" Text="{Binding Value}" />
         </Grid>
     </pge:LagoVistaContentPage.MainContent>
 </pge:LagoVistaContentPage>
