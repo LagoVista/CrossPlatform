@@ -2,10 +2,12 @@
 using LagoVista.Client.Core.Resources;
 using LagoVista.Client.Core.ViewModels;
 using LagoVista.Client.Core.ViewModels.DeviceAccess;
+using LagoVista.Client.Core.ViewModels.DeviceSetup;
 using LagoVista.Client.Core.ViewModels.Other;
 using LagoVista.Core.Commanding;
 using LagoVista.Core.Models.Geo;
 using LagoVista.Core.Validation;
+using LagoVista.Core.ViewModels;
 using LagoVista.IoT.DeviceManagement.Core.Models;
 using System;
 using System.Collections.Generic;
@@ -126,6 +128,18 @@ namespace SeaWolf.ViewModels
                 await Storage.StoreKVP<string>(ComponentViewModel.DeviceId, DeviceId);
                 await LoadDevice();
             }
+        }
+
+        public async override void Edit()
+        {
+            var launchArgs = new ViewModelLaunchArgs()
+            {
+                ViewModelType = typeof(MyDeviceMenuViewModel),
+                LaunchType = LaunchTypes.View
+            };
+
+            launchArgs.Parameters.Add(nameof(Device), CurrentDevice);
+            await ViewModelNavigation.NavigateAsync(launchArgs);
         }
 
         public override async Task InitAsync()

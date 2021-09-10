@@ -1,6 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <pge:LagoVistaContentPage    xmlns="http://xamarin.com/schemas/2014/forms"
                xmlns:pge="clr-namespace:LagoVista.XPlat.Core;assembly=LagoVista.XPlat.Core"
+               xmlns:ctls="clr-namespace:LagoVista.XPlat.Core.Controls.Common;assembly=LagoVista.XPlat.Core" 
                xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
                Title="Sensors"
                LeftMenu="Back"
@@ -8,7 +9,7 @@
                AddCommand="{Binding AddSensorCommand}"
                x:Class="LagoVista.XPlat.Core.Views.DeviceSetup.SensorsView">
     <pge:LagoVistaContentPage.MainContent>
-        <Grid>
+        <Grid x:Name="root"  >
             <Grid.RowDefinitions>
                 <RowDefinition Height="auto" />
                 <RowDefinition Height="auto" />
@@ -66,7 +67,7 @@
             <ListView Grid.Row="1" ItemsSource="{Binding CurrentDevice.SensorCollection}" SelectedItem="{Binding SelectedSensor}">
                 <ListView.ItemTemplate>
                     <DataTemplate>
-                        <TextCell Text="{Binding Name}" />
+                        <ctls:NavigationViewCell Text="{Binding Name}" />
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>

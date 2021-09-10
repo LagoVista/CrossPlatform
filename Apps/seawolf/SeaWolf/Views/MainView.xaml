@@ -9,6 +9,8 @@
              xmlns:flv="clr-namespace:DLToolkit.Forms.Controls;assembly=DLToolkit.Forms.Controls.FlowListView"
 		     mc:Ignorable="d"
              LeftMenu="Menu" 
+             RightMenu="Edit"
+             RightMenuCommand="{Binding EditVesselCommand}"
              x:Class="SeaWolf.Views.MainView"
              Title="{trs:Translate AppName}">
 

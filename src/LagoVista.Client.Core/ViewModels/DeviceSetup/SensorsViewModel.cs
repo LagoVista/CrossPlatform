@@ -23,10 +23,11 @@ namespace LagoVista.Client.Core.ViewModels.DeviceSetup
         {
             return base.InitAsync();
         }
-
+        
         public async void ShowSensorView(Sensor sensor)
         {
-            await ViewModelNavigation.NavigateAsync<SensorDetailViewModel>(this, DeviceLaunchArgsParam, new KeyValuePair<string, object>(SensorDetailViewModel.SENSOR, sensor));
+            await ViewModelNavigation.NavigateAsync<SensorDetailViewModel>(this, DeviceLaunchArgsParam,
+                new KeyValuePair<string, object>(SensorDetailViewModel.SENSOR, sensor));
         }
 
         public Sensor SelectedSensor
@@ -34,11 +35,14 @@ namespace LagoVista.Client.Core.ViewModels.DeviceSetup
             get => null;
             set
             {
-                ShowSensorView(value);
                 RaisePropertyChanged();
+     
+                if (value != null)
+                {
+                    ShowSensorView(value);
+                }
             }
         }
-
         public RelayCommand AddSensorCommand { get; }
     }
 }

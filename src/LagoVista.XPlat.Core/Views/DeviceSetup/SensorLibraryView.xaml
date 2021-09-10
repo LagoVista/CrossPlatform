@@ -7,7 +7,9 @@
         <ListView ItemsSource="{Binding SensorTypes}" SelectedItem="{Binding SelectedSensor, Mode=TwoWay}">
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    <TextCell Text="{Binding Name}" />
+                    
+                    <TextCell  Text="{Binding Name}" />
+                    
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>

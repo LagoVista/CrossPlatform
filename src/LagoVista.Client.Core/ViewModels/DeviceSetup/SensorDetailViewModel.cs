@@ -35,6 +35,7 @@ namespace LagoVista.Client.Core.ViewModels.DeviceSetup
         {
             ReadCommand = new RelayCommand(Read);
             WriteCommand = new RelayCommand(Write);
+            RemoveSensorCommand = new RelayCommand(RemoveSensor);
         }
 
         public override async Task InitAsync()
@@ -72,6 +73,12 @@ namespace LagoVista.Client.Core.ViewModels.DeviceSetup
                 await GattConnection.UnsubscribeAsync(BLEDevice, service, characteristics);
                 await base.IsClosingAsync();
             }
+        }
+
+        public void RemoveSensor()
+        {
+            CurrentDevice.SensorCollection.Remove(Sensor);
+            Save();
         }
 
         protected override void BLECharacteristicRead(BLECharacteristicsValue characteristic)
@@ -142,5 +149,7 @@ namespace LagoVista.Client.Core.ViewModels.DeviceSetup
 
         public RelayCommand ReadCommand { get; }
         public RelayCommand WriteCommand { get; }
+
+        public RelayCommand RemoveSensorCommand { get;  }
     }
 }

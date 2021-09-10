@@ -90,6 +90,7 @@
                 <pge:Entry Text="{Binding Sensor.HighValueErrorCode, Mode=TwoWay}" />
             </StackLayout>
             <Label Grid.Row="4" Text="{Binding Value}" />
+            <Button Text="Remove Sensor" Command="{Binding RemoveSensorCommand}" Grid.Row="5" />
         </Grid>
     </pge:LagoVistaContentPage.MainContent>
 </pge:LagoVistaContentPage>
