@@ -14,16 +14,16 @@ namespace LagoVista.XPlat.Core.Services
 {
     public class ViewModelNavigation : IViewModelNavigation
     {
-        Dictionary<Type, Type> _viewModelLookup = new Dictionary<Type, Type>();
+        private readonly Dictionary<Type, Type> _viewModelLookup = new Dictionary<Type, Type>();
 
         public Stack<ViewModelBase> ViewModelBackStack { get; private set; }
 
-        global::Xamarin.Forms.Application _app;
+        private readonly global::Xamarin.Forms.Application _app;
         global::Xamarin.Forms.INavigation _navigation;
 
         public ViewModelNavigation(global::Xamarin.Forms.Application app)
         {
-            _app = app;
+            _app = app ?? throw new ArgumentNullException(nameof(app));
             ViewModelBackStack = new Stack<ViewModelBase>();
         }
 
@@ -70,10 +70,12 @@ namespace LagoVista.XPlat.Core.Services
 
         public Task NavigateAsync<TViewModel>(ViewModelBase parentVM, params KeyValuePair<string, object>[] args) where TViewModel : ViewModelBase
         {
-            var launchArgs = new ViewModelLaunchArgs();
-            launchArgs.ParentViewModel = parentVM;
-            launchArgs.LaunchType = LaunchTypes.Other;
-            launchArgs.ViewModelType = typeof(TViewModel);
+            var launchArgs = new ViewModelLaunchArgs
+            {
+                ParentViewModel = parentVM,
+                LaunchType = LaunchTypes.Other,
+                ViewModelType = typeof(TViewModel)
+            };
 
             foreach (var arg in args)
             {
@@ -115,10 +117,12 @@ namespace LagoVista.XPlat.Core.Services
 
         public Task NavigateAndCreateAsync<TViewModel>(ViewModelBase parentVM, params KeyValuePair<string, object>[] args) where TViewModel : ViewModelBase
         {
-            var launchArgs = new ViewModelLaunchArgs();
-            launchArgs.ParentViewModel = parentVM;
-            launchArgs.LaunchType = LaunchTypes.Create;
-            launchArgs.ViewModelType = typeof(TViewModel);
+            var launchArgs = new ViewModelLaunchArgs
+            {
+                ParentViewModel = parentVM,
+                LaunchType = LaunchTypes.Create,
+                ViewModelType = typeof(TViewModel)
+            };
 
             foreach (var arg in args)
             {

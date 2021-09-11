@@ -22,7 +22,7 @@ namespace SeaWolf.ViewModels
         public override Task InitAsync()
         {
             CurrentDevice = GetLaunchArg<Device>(nameof(Device));
-            Sensors.AddValidSensors(_appConfig, CurrentDevice);
+           // Sensors.AddValidSensors(_appConfig, CurrentDevice);
 
             return base.InitAsync();
         }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using LagoVista.IoT.DeviceManagement.Models;
+using System;
 using System.Globalization;
 using Xamarin.Forms;
 
@@ -51,5 +52,57 @@ namespace LagoVista.XPlat.Core.ValueConverter
         }
     }
 
+    public class SensorStateForegroundColorConverter : IValueConverter
+    {
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            var state = (SensorStates)value;
+            switch (state)
+            {
+                case SensorStates.Error:
+                    return Xamarin.Forms.Color.FromRgb(0xE9, 0x5C, 0x5D);
+                case SensorStates.Warning:
+                    return Xamarin.Forms.Color.FromRgb(0xFF, 0xC8, 0x7F);
+                case SensorStates.Nominal:
+                    return Xamarin.Forms.Color.FromRgb(0x55, 0xA9, 0xF2);
+                    break;
+                case SensorStates.Offline:
+                    return Xamarin.Forms.Color.FromRgb(0x55, 0xA9, 0xF2);
+                default:
+                    return Xamarin.Forms.Color.FromRgb(0x55, 0xA9, 0xF2);
+            }
+        }
 
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            throw new NotImplementedException();
+        }
+    }
+
+    public class SensorStateBackgroundColorConverter : IValueConverter
+    {
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            var state = (SensorStates)value;
+            switch (state)
+            {
+                case SensorStates.Error:
+                    return Xamarin.Forms.Color.White;
+                case SensorStates.Warning:
+                    return Xamarin.Forms.Color.White;
+                case SensorStates.Nominal:
+                    return Xamarin.Forms.Color.FromRgb(0x21, 0x21, 0x21);
+                    break;
+                case SensorStates.Offline:
+                    return Xamarin.Forms.Color.FromRgb(0x21, 0x21, 0x21);
+                default:
+                    return Xamarin.Forms.Color.FromRgb(0x21, 0x21, 0x21);
+            }
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            throw new NotImplementedException();
+        }
+    }
 }

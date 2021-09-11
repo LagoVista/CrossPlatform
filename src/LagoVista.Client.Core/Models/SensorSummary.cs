@@ -7,8 +7,13 @@ using System.Text;
 
 namespace LagoVista.Client.Core.Models
 {
-    public class SensorSummaryColors : ModelBase
+    public class SensorSummary : ModelBase
     {
+        public SensorSummary(Sensor sensor)
+        {
+
+        }
+
         public SensorDefinition Config { get; set; }
         public SensorDefinition SensorType { get; set; }
 

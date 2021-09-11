@@ -354,16 +354,18 @@ namespace LagoVista.Client.Core.ViewModels.DeviceAccess
                     }
                     else
                     {
-                    /*    var lastKnownLocation = await Geolocation.GetLastKnownLocationAsync();
-                        if (lastKnownLocation != null)
-                        {
-                            CurrentVeseelLocation = new GeoLocation(lastKnownLocation.Latitude, lastKnownLocation.Longitude);
-                        }*/
+                        /*    var lastKnownLocation = await Geolocation.GetLastKnownLocationAsync();
+                            if (lastKnownLocation != null)
+                            {
+                                CurrentVeseelLocation = new GeoLocation(lastKnownLocation.Latitude, lastKnownLocation.Longitude);
+                            }*/
                     }
+
+                    Sensors.Clear();
 
                     foreach (var summary in CurrentDevice.SensorCollection)
                     {
-                        Sensors.Add(new SensorSummary(summary, summary.Technology.Value));
+                        Sensors.Add(new Models.SensorSummary(summary));
                     }
 
                     GeoFences.Clear();
@@ -371,6 +373,9 @@ namespace LagoVista.Client.Core.ViewModels.DeviceAccess
                     {
                         GeoFences.Add(geoFence);
                     }
+
+                    await SubscribeToWebSocketAsync();
+                    SetState(CurrentDevice);
                 }
 
                 if (GattConnection != null)
@@ -404,7 +409,7 @@ namespace LagoVista.Client.Core.ViewModels.DeviceAccess
 
         public ObservableCollection<GeoFence> GeoFences { get; } = new ObservableCollection<GeoFence>();
 
-        public ObservableCollection<SensorSummary> Sensors { get; } = new ObservableCollection<SensorSummary>();
+        public ObservableCollection<Models.SensorSummary> Sensors { get; } = new ObservableCollection<Models.SensorSummary>();
 
         public GeoLocation CurrentDeviceLocation
         {
@@ -418,10 +423,47 @@ namespace LagoVista.Client.Core.ViewModels.DeviceAccess
             HandleMessage(notification);
         }
 
+        private void SetState(Device device)
+        {
+            var warningSensors = new List<Sensor>();
+            var outOfToleranceSensors = new List<Sensor>();
+
+            var sensor1 = device.SensorCollection.First();
+
+            foreach (var sensor in device.SensorCollection)
+            {
+                if (sensor.State.Value == SensorStates.Error)
+                {
+                    outOfToleranceSensors.Add(sensor);
+                }
+                if (sensor.State.Value == SensorStates.Warning)
+                {
+                    warningSensors.Add(sensor);
+                }
+            }
+
+
+            if (outOfToleranceSensors.Any())
+            {
+                SystemStatusMessage = String.Join(", ", outOfToleranceSensors.Select(oot => oot.Name + " " + oot.Value));
+                SystemState = SensorStates.Error;
+            }
+            else if (warningSensors.Any())
+            {
+                SystemStatusMessage = String.Join(", ", warningSensors.Select(oot => oot.Name + " " + oot.Value));
+                SystemState = SensorStates.Warning;
+            }
+            else
+            {
+                SystemStatusMessage = "All systems nominal";
+                SystemState = SensorStates.Nominal;
+            }
+        }
+
         protected virtual void HandleMessage(Notification notification)
         {
-            var warningSensors = new List<SensorSummary>();
-            var outOfToleranceSensors = new List<SensorSummary>();
+            var warningSensors = new List<Sensor>();
+            var outOfToleranceSensors = new List<Sensor>();
 
             switch (notification.PayloadType)
             {
@@ -430,59 +472,31 @@ namespace LagoVista.Client.Core.ViewModels.DeviceAccess
                     {
                         ContractResolver = new CamelCasePropertyNamesContractResolver()
                     };
+
                     var device = JsonConvert.DeserializeObject<Device>(notification.Payload, serializerSettings);
                     CurrentDeviceLocation = device.GeoLocation;
+                    CurrentDevice.SensorCollection = device.SensorCollection;
+                    CurrentDevice.GeoLocation = device.GeoLocation;
 
-                    var sensor1 = device.SensorCollection.First();
-
-                    foreach (var sensor in Sensors)
-                    {
-                        if (sensor.Config.Technology.Value == SensorTechnology.ADC)
-                        {
-                            //                            CurrentDevice.SensorCollection.AdcValues[sensor.Config.SensorIndex - 1] = device.Sensors.AdcValues[sensor.Config.SensorIndex - 1];
-                            //                      sensor.Value = device.Sensors.AdcValues[sensor.Config.SensorIndex - 1].ToString();
-                        }
-
-                        if (sensor.Config.Technology.Value == SensorTechnology.IO)
-                        {
-                            //                          CurrentDevice.Sensors.IoValues[sensor.Config.SensorIndex - 1] = device.Sensors.IoValues[sensor.Config.SensorIndex - 1];
-                            //                        sensor.Value = device.Sensors.IoValues[sensor.Config.SensorIndex - 1].ToString();
-                        }
-
-                        /*if (sensor.Warning)
-                        {
-                            warningSensors.Add(sensor);
-                        }
-
-                        if (sensor.OutOfTolerance)
-                        {
-                            outOfToleranceSensors.Add(sensor);
-                        }*/
-                    }
+                    SetState(CurrentDevice);
 
                     break;
             }
-
-            /*if (outOfToleranceSensors.Any())
-            {
-                HeaderBackgroundColor = Xamarin.Forms.Color.FromRgb(0xE9, 0x5C, 0x5D);
-                HeaderForegroundColor = Xamarin.Forms.Color.White;
-                SystemStatus = String.Join(", ", outOfToleranceSensors.Select(oot => oot.Config.Name + " " + oot.Value));
-            }
-            else if (warningSensors.Any())
-            {
-                HeaderBackgroundColor = Xamarin.Forms.Color.FromRgb(0xFF, 0xC8, 0x7F);
-                HeaderForegroundColor = Xamarin.Forms.Color.White;
-                SystemStatus = String.Join(", ", warningSensors.Select(oot => oot.Config.Name + " " + oot.Value));
-            }
-            else
-            {
-                HeaderBackgroundColor = Xamarin.Forms.Color.FromRgb(0x55, 0xA9, 0xF2);
-                HeaderForegroundColor = Xamarin.Forms.Color.FromRgb(0x21, 0x21, 0x21);
-                SystemStatus = "All systems nominal";
-            }*/
         }
 
+        private SensorStates _state = SensorStates.Nominal;
+        public SensorStates SystemState
+        {
+            get => _state;
+            set => Set(ref _state, value);
+        }
+
+        private string _systemStatusMesssage;
+        public string SystemStatusMessage
+        {
+            get => _systemStatusMesssage;
+            set { Set(ref _systemStatusMesssage, value); }
+        }
 
         private string GetChannelURI()
         {

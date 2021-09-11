@@ -94,9 +94,7 @@ namespace SeaWolf
             LagoVista.Client.Core.Startup.Init(serverInfo);
 
             navigation.Add<MainViewModel, Views.MainView>();
-            navigation.Add<SensorsViewModel, Views.SensorsView>();
-            navigation.Add<SensorViewModel, Views.SensorView>();
-
+            
             navigation.Add<SettingsViewModel, Views.SettingsView>();
 
             navigation.Add<GeoFencesViewModel, Views.GeoFencesView>();
@@ -116,8 +114,6 @@ namespace SeaWolf
             var dmClient = SLWIOC.Create<IDeviceManagementClient>();
 
             SLWIOC.RegisterSingleton<IDeviceManagementClient>(dmClient);
-
-            navigation.Add<DesignMockViewModel, Views.DesignMockView>();
         }
 
         public void HandleURIActivation(Uri uri)

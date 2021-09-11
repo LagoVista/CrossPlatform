@@ -8,18 +8,20 @@ namespace LagoVista.XPlat.Core.Controls.Common
 {
     public class NavigationViewCell : ViewCell
     {
-        Label _text;
-        Label _detail;
-        Grid _layout;
-        Icon _icon;
-        Icon _chevron;
+        private readonly Label  _text;
+        private readonly Label _detail;
+        private readonly Grid _layout;
+        private readonly Icon _icon;
+        private readonly Icon _chevron;
 
         private TapGestureRecognizer _tapGestureRecognizer;
 
         public NavigationViewCell()
         {
-            _layout = new Grid();
-            _layout.HeightRequest = 80;
+            _layout = new Grid
+            {
+                HeightRequest = 80
+            };
 
             _icon = new Icon()
             {
@@ -103,8 +105,10 @@ namespace LagoVista.XPlat.Core.Controls.Common
             typeof(NavigationViewCell), null, BindingMode.OneWay, null, (view, oldValue, newValue) =>
             {
                 var viewCell = view as NavigationViewCell;
-                viewCell._tapGestureRecognizer = new TapGestureRecognizer();
-                viewCell._tapGestureRecognizer.Command = (ICommand)newValue;
+                viewCell._tapGestureRecognizer = new TapGestureRecognizer
+                {
+                    Command = (ICommand)newValue
+                };
                 viewCell._layout.GestureRecognizers.Add(viewCell._tapGestureRecognizer);
             });
 

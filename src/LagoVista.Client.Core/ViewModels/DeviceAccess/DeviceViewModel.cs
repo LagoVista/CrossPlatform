@@ -6,7 +6,6 @@ using LagoVista.Core.Commanding;
 using LagoVista.Core.IOC;
 using LagoVista.Core.Models.UIMetaData;
 using LagoVista.Core.ViewModels;
-using LagoVista.IoT.Deployment.Admin.Models;
 using LagoVista.IoT.DeviceAdmin.Models;
 using LagoVista.IoT.DeviceManagement.Core.Models;
 using Newtonsoft.Json;
@@ -16,7 +15,6 @@ using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Linq;
 using System.Net.Http;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace LagoVista.Client.Core.ViewModels.DeviceAccess
@@ -24,8 +22,7 @@ namespace LagoVista.Client.Core.ViewModels.DeviceAccess
     public class DeviceViewModel : MonitoringViewModelBase
     {
         Device _device;
-        DeviceConfiguration _deviceConfiguration;
-
+        
         private string _btDeviceId;
         private BTDevice _currentDevice;
         private readonly IBluetoothSerial _btSerial;

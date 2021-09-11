@@ -12,6 +12,9 @@
         <ResourceDictionary>
             <cvts:VisibilityConverter x:Key="VisibilityConverter" />
             <cvts:ColorConverter  x:Key="ColorConverter" />
+            <cvts:RedGreenConverter  x:Key="RedGreenConverter" />
+            <cvts:SensorStateBackgroundColorConverter  x:Key="SensorStateBackgroundColorConverter" />
+            <cvts:SensorStateForegroundColorConverter  x:Key="SensorStateForegroundColorConverter" />
             <cvts:DatePrinterConverter x:Key="DatePrinterConverter" />
             <lclcvt:NotNullVisibilityConverter x:Key="NotNullVisibilityConverter" />
             <lclcvt:NullVisibilityConverter x:Key="NullVisibilityConverter" />

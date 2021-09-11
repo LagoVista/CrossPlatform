@@ -22,7 +22,8 @@
             <!--Orange <StackLayout BackgroundColor="#FFC87F">-->
             <!--Red <StackLayout BackgroundColor="#E95C5D">-->
             <RelativeLayout AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0,0,1,0.5">
-                <Frame HeightRequest="2048" WidthRequest="2048" BackgroundColor="{Binding HeaderBackgroundColor}" VerticalOptions="End" Padding="0" HasShadow="False">
+                <Frame HeightRequest="2048" WidthRequest="2048" BackgroundColor="{Binding SystemState, Converter={StaticResource SensorStateBackgroundColorConverter}}" 
+                                        VerticalOptions="End" Padding="0" HasShadow="False">
                     <pge:Image UWPPath="Assets" 
                                FileName="background-overlay-pixel-spaced-3.png" 
                                Opacity="0.25" 
@@ -44,19 +45,21 @@
                     </Grid.RowDefinitions>
                     <pge:Icon Grid.Column="0" 
                               IconKey="fa-map-marker" 
-                              TextColor="{Binding HeaderForegroundColor}"
+                              TextColor="{Binding SystemState, Converter={StaticResource SensorStateForegroundColorConverter}}"
                               FontSize="36" 
                               Margin="0,20,0,0"
                               HorizontalTextAlignment="Center" />
+                    
                     <pge:Icon Grid.Column="1"
                               IconKey="fa-thermometer-half" 
-                              TextColor="{Binding HeaderForegroundColor}"
+                              TextColor="{Binding SystemState, Converter={StaticResource SensorStateForegroundColorConverter}}"
                               FontSize="36" 
                               Margin="0,20,0,0"
                               HorizontalTextAlignment="Center" />
+                    
                     <pge:Icon Grid.Column="2" 
                               IconKey="fa-battery-half" 
-                              TextColor="{Binding HeaderForegroundColor}"
+                              TextColor="{Binding SystemState, Converter={StaticResource SensorStateForegroundColorConverter}}"
                               FontSize="36" 
                               Margin="0,20,0,0"
                               HorizontalTextAlignment="Center" />
@@ -72,7 +75,7 @@
                     <pge:Icon Grid.Column="3" 
                               IconKey="fa-bluetooth" 
                               FontSize="36"
-                              TextColor="{Binding HeaderForegroundColor}"
+                              TextColor="{Binding SystemState, Converter={StaticResource SensorStateForegroundColorConverter}}"
                               Margin="0,20,0,0"
                               IsVisible="{Binding IsBLEConnected}"
                               HorizontalTextAlignment="Center" />
@@ -87,14 +90,15 @@
 
                     <pge:Icon Grid.Column="4" 
                               IconKey="fa-wifi" 
-                              TextColor="{Binding HeaderForegroundColor}"
+                              TextColor="{Binding SystemState, Converter={StaticResource SensorStateForegroundColorConverter}}"
                               FontSize="36"
                               Margin="0,20,0,0"
                               IsVisible="{Binding IsDeviceConnectedToServer}"
                               HorizontalTextAlignment="Center" />
 
-                    <Label Grid.Row="1" Grid.ColumnSpan="5" Text="{Binding SystemStatus}" TextColor="{Binding HeaderForegroundColor}"
-                           HorizontalTextAlignment="Center" />
+                    <Label Grid.Row="1" Grid.ColumnSpan="5" Text="{Binding SystemStatus}" 
+                              TextColor="{Binding SystemState, Converter={StaticResource SensorStateForegroundColorConverter}}"
+                              HorizontalTextAlignment="Center" />
                 </Grid>
 
             </RelativeLayout>

@@ -43,16 +43,6 @@ namespace SeaWolf.ViewModels
         {
             MenuItems = new List<MenuItem>()
             {
-                // -------------------------------------------------------------------------------------------------------
-                // TODO: remove this when done with design & layout.
-                new MenuItem()
-                {
-                    Command = new RelayCommand(() => ViewModelNavigation.NavigateAsync<DesignMockViewModel>(this)),
-                    Name = "Design Mock",
-                    FontIconKey = "fa-gear"
-                },
-
-                // -------------------------------------------------------------------------------------------------------
                 new MenuItem()
                 {
                     Command = new RelayCommand(() => ViewModelNavigation.NavigateAsync<SettingsViewModel>(this, new KeyValuePair<string, object>(nameof(Device), CurrentDevice))),
@@ -186,38 +176,6 @@ namespace SeaWolf.ViewModels
 
             return base.DeviceLoadedAsync(device);
         }
-
-        private async void SensorDetection()
-        {
-            Sensors.AddValidSensors(AppConfig, CurrentDevice);
-            /*var outOfToleranceSensors = Sensors.Where(sns => sns.State == LagoVista.IoT.DeviceManagement.Models.SensorStates.Error);
-            var warningSensors = Sensors.Where(sns => sns.State == LagoVista.IoT.DeviceManagement.Models.SensorStates.Warning);
-
-            if (outOfToleranceSensors.Any())
-            {
-                HeaderBackgroundColor = Xamarin.Forms.Color.FromRgb(0xE9, 0x5C, 0x5D);
-                HeaderForegroundColor = Xamarin.Forms.Color.White;
-                SystemStatus = String.Join(" ", outOfToleranceSensors.Select(oot => oot.Config.Name + " " + oot.Value));
-            }
-            else if (warningSensors.Any())
-            {
-                HeaderBackgroundColor = Xamarin.Forms.Color.FromRgb(0xFF, 0xC8, 0x7F);
-                HeaderForegroundColor = Xamarin.Forms.Color.White;
-                SystemStatus = String.Join(" ", warningSensors.Select(oot => oot.Config.Name + " " + oot.Value));
-            }
-            else
-            {
-                HeaderBackgroundColor = Xamarin.Forms.Color.FromRgb(0x55, 0xA9, 0xF2);
-                HeaderForegroundColor = Xamarin.Forms.Color.FromRgb(0x21, 0x21, 0x21);
-                SystemStatus = "All systems nominal";
-            }
-            */
-            await GattConnection.StartScanAsync();
-
-            await SubscribeToWebSocketAsync();
-        }
-
-
 
         public override Task ReloadedAsync()
         {
