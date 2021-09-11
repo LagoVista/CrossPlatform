@@ -11,105 +11,30 @@ namespace LagoVista.Client.Core.Models
     {
         public SensorSummary(Sensor sensor)
         {
-
+            State = sensor.State.Value;
+            Display = $"{sensor.Value} {sensor.UnitsLabel}";
+            Name = sensor.Name;
         }
 
-        public SensorDefinition Config { get; set; }
-        public SensorDefinition SensorType { get; set; }
-
-        private string _value;
-        public string Value
+        SensorStates _sensorState;
+        public SensorStates State
         {
-            set
-            {
-                _value = value;
-               /* if (Config.LowThreshold == 0 && (Config.HighTheshold == 1 || Config.HighTheshold == 2.5))
-                {
-                    if (value == "1")
-                    {
-                        SensorBackgroundColor = Color.FromRgb(0xE9, 0x5C, 0x5D);
-                        SensorForegroundColor = Color.White;
-                        OutOfTolerance = true;
-                        Warning = false;
-                        if (Config.Key == AppConfig.BATTERYSWITCH)
-                            Set(ref _value, "ON");
-                        else
-                            Set(ref _value, "!");
-                    }
-                    else
-                    {
-                        SensorBackgroundColor = Color.FromRgb(0x55, 0xA9, 0xF2);
-                        SensorForegroundColor = Color.FromRgb(0x21, 0x21, 0x21);
-                        OutOfTolerance = false;
-                        Warning = false;
-                        if (Config.Key == AppConfig.BATTERYSWITCH)
-                            Set(ref _value, "OFF");
-                        else
-                            Set(ref _value, "OK");
-                    }
-                }
-                else
-                {
-                    var dblValue = Convert.ToDouble(value);
-                    var range = Config.HighTheshold - Config.LowThreshold;
-                    var warningThreshold = range * 0.20;
-
-                    Set(ref _value, value);
-                    if (dblValue < Config.LowThreshold ||
-                        dblValue > Config.HighTheshold)
-                    {
-                        SensorBackgroundColor = Color.FromRgb(0xE9, 0x5C, 0x5D);
-                        SensorForegroundColor = Color.White;
-                        OutOfTolerance = true;
-                        Warning = false;
-                    }
-                    else if (dblValue < (Config.LowThreshold + warningThreshold) ||
-                             dblValue > Config.HighTheshold - warningThreshold)
-
-                    {
-                        SensorBackgroundColor = Color.FromRgb(0xFF, 0xC8, 0x7F);
-                        SensorForegroundColor = Color.White;
-                        OutOfTolerance = false;
-                        Warning = true;
-                    }
-                    else
-                    {
-                        SensorBackgroundColor = Color.FromRgb(0x55, 0xA9, 0xF2);
-                        SensorForegroundColor = Color.FromRgb(0x21, 0x21, 0x21);
-                        OutOfTolerance = false;
-                        Warning = false;
-                    }
-                }*/
-            }
-            get => _value;
+            set { Set(ref _sensorState, value); }
+            get => _sensorState;
         }
 
-        Color _sensorBackgroundColor;
-        public Color SensorBackgroundColor
+        private string _display;
+        public string Display
         {
-            set { Set(ref _sensorBackgroundColor, value); }
-            get => _sensorBackgroundColor;
+            get => _display;
+            set => Set(ref _display, value);
         }
 
-        Color _sensorForegroundColor;
-        public Color SensorForegroundColor
+        private string _name;
+        public string Name
         {
-            set { Set(ref _sensorForegroundColor, value); }
-            get => _sensorForegroundColor;
-        }
-
-        bool _outOfTolerance;
-        public bool OutOfTolerance
-        {
-            get => _outOfTolerance;
-            set => Set(ref _outOfTolerance, value);
-        }
-
-        bool _warning;
-        public bool Warning
-        {
-            get => _warning;
-            set => Set(ref _warning, value);
+            get => _name;
+            set => Set(ref _name, value);
         }
     }
 }

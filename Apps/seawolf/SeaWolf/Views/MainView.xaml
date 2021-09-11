@@ -96,7 +96,7 @@
                               IsVisible="{Binding IsDeviceConnectedToServer}"
                               HorizontalTextAlignment="Center" />
 
-                    <Label Grid.Row="1" Grid.ColumnSpan="5" Text="{Binding SystemStatus}" 
+                    <Label Grid.Row="1" Grid.ColumnSpan="5" Text="{Binding SystemStatusMessage}" 
                               TextColor="{Binding SystemState, Converter={StaticResource SensorStateForegroundColorConverter}}"
                               HorizontalTextAlignment="Center" />
                 </Grid>
@@ -206,101 +206,16 @@
                     <flv:FlowListView FlowItemsSource="{Binding Sensors}" HasUnevenRows="True" FlowColumnCount="1" Margin="0">
                         <flv:FlowListView.FlowColumnTemplate>
                             <DataTemplate>
-                                <ctl:SensorHUD CardColor="{Binding SensorBackgroundColor}"
-                                               CardForegroundColor="{Binding SensorForegroundColor}"
-                                               CardDescription="{Binding Config.Name}"
+                                <ctl:SensorHUD CardColor="{Binding State}"
+                                               BackgroundColor="{Binding State, Converter={StaticResource SensorStateBackgroundColorConverter}}"
+                                               CardForegroundColor="{Binding State, Converter={StaticResource SensorStateForegroundColorConverter}}"
+                                               CardDescription="{Binding Name}"
                                                IconKey="{Binding SensorType.IconKey}"
-                                               CardValue="{Binding Value}" />
+                                               CardValue="{Binding Display}" />
                             </DataTemplate>
                         </flv:FlowListView.FlowColumnTemplate>
                     </flv:FlowListView>
 
-                    <!--<StackLayout Orientation="Horizontal" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2">
-                            <Grid Margin="25,0">
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="25.0"></ColumnDefinition>
-                                    <ColumnDefinition Width="*"></ColumnDefinition>
-                                </Grid.ColumnDefinitions>
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="30.0"></RowDefinition>
-                                    <RowDefinition Height="125.0"></RowDefinition>
-                                </Grid.RowDefinitions>
-
-                                <Label Grid.Row="0" Grid.ColumnSpan="2" 
-                                       Text="Livewell 1" 
-                                       TextColor="#666666"
-                                       FontAttributes="Bold"
-                                       FontSize="26" />
-                                <pge:Icon Grid.Row="1" Grid.Column="0"
-                                          IconKey="fa-thermometer-half" 
-                                          TextColor="#212121"
-                                          FontSize="36" 
-                                          Margin="0,58,0,0" />
-                                <Label Grid.Row="1" Grid.Column="1" 
-                                       Text="82" 
-                                       TextColor="#212121"
-                                       FontSize="126" 
-                                       VerticalTextAlignment="End" />
-                            </Grid>
-
-                            <BoxView BackgroundColor="#666666" WidthRequest="2" />
-
-                            <Grid Margin="25,0" HorizontalOptions="Start">
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="25.0"></ColumnDefinition>
-                                    <ColumnDefinition Width="*"></ColumnDefinition>
-                                </Grid.ColumnDefinitions>
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="30.0"></RowDefinition>
-                                    <RowDefinition Height="125.0"></RowDefinition>
-                                </Grid.RowDefinitions>
-
-                                <Label Grid.Row="0" Grid.ColumnSpan="2" 
-                                       Text="Livewell 2" 
-                                       TextColor="#666666"
-                                       FontAttributes="Bold"
-                                       FontSize="26" />
-                                <pge:Icon Grid.Row="1" Grid.Column="0"
-                                          IconKey="fa-thermometer-half" 
-                                          TextColor="#FFAC25"
-                                          FontSize="36" 
-                                          Margin="0,58,0,0" />
-                                <Label Grid.Row="1" Grid.Column="1" 
-                                       Text="94" 
-                                       TextColor="#FFAC25"
-                                       FontSize="126" 
-                                       VerticalTextAlignment="End" />
-                            </Grid>
-                        </StackLayout>
-
-                        <StackLayout Orientation="Horizontal" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2">
-                            <Grid Margin="25,0" HorizontalOptions="Start">
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="25.0"></ColumnDefinition>
-                                    <ColumnDefinition Width="*"></ColumnDefinition>
-                                </Grid.ColumnDefinitions>
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="30.0"></RowDefinition>
-                                    <RowDefinition Height="125.0"></RowDefinition>
-                                </Grid.RowDefinitions>
-
-                                <Label Grid.Row="0" Grid.ColumnSpan="2" 
-                                       Text="Trailer 1" 
-                                       TextColor="#666666"
-                                       FontAttributes="Bold"
-                                       FontSize="26" />
-                                <pge:Icon Grid.Row="1" Grid.Column="0"
-                                          IconKey="fa-thermometer-half" 
-                                          TextColor="#E95C5D"
-                                          FontSize="36" 
-                                          Margin="0,58,0,0" />
-                                <Label Grid.Row="1" Grid.Column="1" 
-                                       Text="112" 
-                                       TextColor="#E95C5D"
-                                       FontSize="126" 
-                                       VerticalTextAlignment="End" />
-                            </Grid>
-                        </StackLayout>-->
                 </StackLayout>
             </Frame>
             <!-- VIEW: MAIN -->

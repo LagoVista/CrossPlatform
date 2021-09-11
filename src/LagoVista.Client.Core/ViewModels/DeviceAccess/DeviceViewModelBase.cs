@@ -473,16 +473,27 @@ namespace LagoVista.Client.Core.ViewModels.DeviceAccess
                         ContractResolver = new CamelCasePropertyNamesContractResolver()
                     };
 
-                    var device = JsonConvert.DeserializeObject<Device>(notification.Payload, serializerSettings);
-                    CurrentDeviceLocation = device.GeoLocation;
-                    CurrentDevice.SensorCollection = device.SensorCollection;
-                    CurrentDevice.GeoLocation = device.GeoLocation;
+                    DispatcherServices.Invoke(() =>
+                    {
+                        var device = JsonConvert.DeserializeObject<Device>(notification.Payload, serializerSettings);
+                        CurrentDeviceLocation = device.GeoLocation;
+                        CurrentDevice.SensorCollection = device.SensorCollection;
+                        CurrentDevice.GeoLocation = device.GeoLocation;
 
-                    SetState(CurrentDevice);
+                        Sensors.Clear();
+
+                        foreach (var summary in CurrentDevice.SensorCollection)
+                        {
+                            Sensors.Add(new Models.SensorSummary(summary));
+                        }
+
+                        SetState(CurrentDevice);
+                    });
 
                     break;
             }
         }
+
 
         private SensorStates _state = SensorStates.Nominal;
         public SensorStates SystemState
