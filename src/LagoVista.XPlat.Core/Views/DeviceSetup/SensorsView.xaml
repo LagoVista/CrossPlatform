@@ -3,7 +3,7 @@
                xmlns:pge="clr-namespace:LagoVista.XPlat.Core;assembly=LagoVista.XPlat.Core"
                xmlns:ctls="clr-namespace:LagoVista.XPlat.Core.Controls.Common;assembly=LagoVista.XPlat.Core" 
                xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-               Title="Sensors"
+               Title="My Sensors"
                LeftMenu="Back"
                RightMenu="Add"
                AddCommand="{Binding AddSensorCommand}"
@@ -64,7 +64,7 @@
                 <Label Grid.Row="1" Grid.ColumnSpan="5" Text="{Binding SystemStatus}" TextColor="{Binding HeaderForegroundColor}"
                            HorizontalTextAlignment="Center" />
             </Grid>
-            <ListView Grid.Row="1" ItemsSource="{Binding CurrentDevice.SensorCollection}" SelectedItem="{Binding SelectedSensor}">
+            <ListView Grid.Row="1" ItemsSource="{Binding CurrentDevice.SensorCollection}" SelectedItem="{Binding SelectedSensor}" HasUnevenRows="True">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ctls:NavigationViewCell Text="{Binding Name}" />

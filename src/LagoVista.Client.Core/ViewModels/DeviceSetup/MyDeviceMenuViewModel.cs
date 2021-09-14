@@ -20,6 +20,10 @@ namespace LagoVista.Client.Core.ViewModels.DeviceSetup
                             ViewModelNavigation.NavigateAsync<SensorsViewModel>(this, DeviceLaunchArgsParam)), 
                             Help = "My Boats" },
 
+                new MenuItem() { FontIconKey = "fa-gear", Name = "Claim Brain", Command = new RelayCommand(() =>
+                            ViewModelNavigation.NavigateAsync<ClaimHardwareViewModel>(this, DeviceLaunchArgsParam)),
+                            Help = "If you can't connect to your device, you can repair it here." },
+
                 new MenuItem() { FontIconKey = "fa-gear", Name = "Connectivity", Command = new RelayCommand(() => 
                             ViewModelNavigation.NavigateAsync<ConnectivityViewModel>(this, DeviceLaunchArgsParam)), 
                             Help = "My Boats" },

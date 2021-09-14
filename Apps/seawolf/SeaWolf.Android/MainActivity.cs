@@ -112,7 +112,6 @@ namespace SeaWolf.Droid
             }
         }
 
-
         protected override void OnCreate(Bundle savedInstanceState)
         {
             TabLayoutResource = Resource.Layout.Tabbar;
@@ -128,7 +127,6 @@ namespace SeaWolf.Droid
             LoadApplication(new App());
 
             verifyAppPermissions();
-        }
-  
+        }  
     }
 }

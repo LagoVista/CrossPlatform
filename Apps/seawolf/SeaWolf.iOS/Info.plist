@@ -50,6 +50,8 @@
 	<key>UIBackgroundModes</key>
 	<array>
 		<string>remote-notification</string>
+    <string>bluetooth-central</string>
+    <string>bluetooth-peripheral</string>
 	</array>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
@@ -68,8 +70,10 @@
 	<key>XSAppIconAssets</key>
 	<string>Assets.xcassets/AppIcons.appiconset</string>
   <key>NSLocationAlwaysUsageDescription</key>
-  <string>SeaWolf Marine wants to use your location to set geo-zones for your vessel</string>
+  <string>SeaWolf Marine wants to use your location to set geo-zones for your vessel.</string>
   <key>NSLocationWhenInUseUsageDescription</key>
-  <string>SeaWolf Marine is using your location.</string>
+  <string>SeaWolf Marine is using your location to determine if you are in the proximity of your vessel.</string>
+  <key>NSBluetoothAlwaysUsageDescription</key>
+  <string>SeaWolf Marine users Bluetooth to connect to the Wolf Brain</string>
 </dict>
 </plist>

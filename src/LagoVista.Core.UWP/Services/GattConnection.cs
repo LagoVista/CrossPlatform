@@ -7,7 +7,6 @@ using System.Diagnostics;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using System.Text;
-using System.Threading;
 using System.Threading.Tasks;
 using Windows.Devices.Bluetooth;
 using Windows.Devices.Bluetooth.Advertisement;
@@ -18,21 +17,6 @@ namespace LagoVista.Core.UWP.Services
 {
     public class GattConnection : IGATTConnection
     {
-        public bool IsScanning { get; private set; }
-
-        public ObservableCollection<BLEDevice> DiscoveredDevices { get; } = new ObservableCollection<BLEDevice>();
-
-        public ObservableCollection<BLEDevice> ConnectedDevices { get; } = new ObservableCollection<BLEDevice>();
-
-        public event EventHandler<BLEDevice> DeviceDiscovered;
-        public event EventHandler<BLEDevice> DeviceConnected;
-        public event EventHandler<BLEDevice> DeviceDisconnected;
-        public event EventHandler<BLECharacteristicsValue> CharacteristicChanged;
-        public event EventHandler<DFUProgress> DFUProgress;
-        public event EventHandler<string> DFUFailed;
-        public event EventHandler DFUCompleted;
-        public event EventHandler<string> ReceiveConsoleOut;
-
         private readonly IDispatcherServices _dispatcherService;
         private readonly List<BLEService> _knownServices = new List<BLEService>();
         private readonly BluetoothLEAdvertisementWatcher _watcher;
@@ -40,8 +24,6 @@ namespace LagoVista.Core.UWP.Services
         private readonly List<GattCharacteristic> _subscribedCharacteristics = new List<GattCharacteristic>();
         private readonly List<BluetoothLEDevice> _windowsBLEDevices = new List<BluetoothLEDevice>();
         private readonly Timer _watchdogTimer;
-
-        SemaphoreSlim _deviceAccessLocker = new SemaphoreSlim(1, 1);
 
         private static int _instanceCount = 0;
 
@@ -54,7 +36,7 @@ namespace LagoVista.Core.UWP.Services
 
             _watchdogTimer = new Timer
             {
-                Interval = TimeSpan.FromSeconds(2)
+                Interval = TimeSpan.FromSeconds(1)
             };
 
             _watchdogTimer.Tick += WatchdogTimer_Tick;
@@ -73,13 +55,10 @@ namespace LagoVista.Core.UWP.Services
 
         private async void WatchdogTimer_Tick(object sender, EventArgs e)
         {
-            await _deviceAccessLocker.WaitAsync();
-            var start = DateTime.Now;
-            Debug.WriteLine("===> ENTER TIMER TICK: " + DateTime.Now);
-            try
-            {
-                var devicesToRemove = new List<BLEDevice>();
+            var devicesToRemove = new List<BLEDevice>();
 
+            lock (ConnectedDevices)
+            {
                 foreach (var connectedDevice in ConnectedDevices)
                 {
                     if ((DateTime.Now - connectedDevice.LastSeen).TotalSeconds > 3)
@@ -87,45 +66,22 @@ namespace LagoVista.Core.UWP.Services
                         devicesToRemove.Add(connectedDevice);
                     }
                 }
+            }
 
-                foreach (var device in devicesToRemove)
-                {
-                    Debug.WriteLine($"!!==> WILL DISCONNECT => {device.DeviceName}");
-                    await PrivateDisconnectAsync(device);
-                }
+            foreach (var device in devicesToRemove)
+            {
+                await DisconnectAsync(device);
+            }
 
-                devicesToRemove.Clear();
+            devicesToRemove.Clear();
 
-                var nuviotService = NuvIoTGATTProfile.GetNuvIoTGATT().Services.Find(srvc => srvc.Id == NuvIoTGATTProfile.SVC_UUID_NUVIOT);
-                var stateCharacteristics = nuviotService.Characteristics.Find(chr => chr.Id == NuvIoTGATTProfile.CHAR_UUID_STATE);
+            foreach(var connectedDevice in ConnectedDevices)
+            {
 
-                var devices = ConnectedDevices.ToList();
-                foreach (var connectedDevice in devices)
-                {
-                    if (connectedDevice.Connected)
-                    {
-                        var winDevice = _windowsBLEDevices.FirstOrDefault(dvc => dvc.BluetoothAddress.ToMacAddress() == connectedDevice.DeviceAddress);
-                        if (winDevice != null && winDevice.ConnectionStatus == BluetoothConnectionStatus.Connected)
-                        {
-                            try
-                            {
-                                var services = await winDevice.GetGattServicesAsync(BluetoothCacheMode.Cached);
-                                var gattService = services.Services.First(svc => svc.Uuid.ToString() == nuviotService.Id);
-                                var characteristics = await gattService.GetCharacteristicsAsync();
-                                var gattCharacteristic = characteristics.Characteristics.First(chr => chr.Uuid.ToString() == stateCharacteristics.Id);
-                                var buffer = System.Text.ASCIIEncoding.ASCII.GetBytes("ping");
-                                GattCommunicationStatus statusResult = await gattCharacteristic.WriteValueAsync(buffer.AsBuffer());
-                                var success = statusResult == GattCommunicationStatus.Success;
-                                Debug.WriteLine("====> PING ==> BLE DEVICE");
-                            }
-                            catch
-                            {
-                                await PrivateDisconnectAsync(connectedDevice);
-                            }
-                        }
-                    }
-                }
+            }
 
+            lock (_connectingDevices)
+            {
                 foreach (var device in _connectingDevices)
                 {
                     if (!device.ConnectingTimeStamp.HasValue)
@@ -147,34 +103,28 @@ namespace LagoVista.Core.UWP.Services
                     _connectingDevices.Remove(device);
                 }
 
-                if (!_connectingDevices.Any() && !ConnectedDevices.Any())
+                if (devicesToRemove.Any())
                 {
                     _watcher.Start();
                 }
             }
-            finally
-            {
-                _deviceAccessLocker.Release();
-                Debug.WriteLine("===> LEAVE TIMER TICK: " + (DateTime.Now - start).TotalMilliseconds);
-            }
         }
 
-        private async void Watcher_Received(BluetoothLEAdvertisementWatcher sender, BluetoothLEAdvertisementReceivedEventArgs args)
+        private void Watcher_Received(BluetoothLEAdvertisementWatcher sender, BluetoothLEAdvertisementReceivedEventArgs args)
         {
-            await _deviceAccessLocker.WaitAsync();
-            try
+            var device = new BLEDevice()
             {
-                var device = new BLEDevice()
-                {
-                    DeviceAddress = args.BluetoothAddress.ToMacAddress(),
-                    DeviceName = args.Advertisement.LocalName,
-                };
+                DeviceAddress = args.BluetoothAddress.ToMacAddress(),
+                DeviceName = args.Advertisement.LocalName,
+            };
 
-                Debug.WriteLine($"{device.DeviceAddress} - {device.DeviceName}");
+            Debug.WriteLine($"{device.DeviceAddress} - {device.DeviceName}");
 
-                if (device.DeviceName.Contains("NuvIoT"))
+            if (device.DeviceName.Contains("NuvIoT"))
+            {
+                _dispatcherService.Invoke(() =>
                 {
-                    _dispatcherService.Invoke(() =>
+                    lock (DiscoveredDevices)
                     {
                         var existingDevice = DiscoveredDevices.Where(dev => dev.DeviceAddress == device.DeviceAddress).FirstOrDefault();
                         if (existingDevice != null)
@@ -188,29 +138,41 @@ namespace LagoVista.Core.UWP.Services
                         }
 
                         DeviceDiscovered?.Invoke(this, device);
-                    });
-                }
-            }
-            finally
-            {
-                _deviceAccessLocker.Release();
+                    }
+                });
             }
         }
 
+        public bool IsScanning { get; private set; }
+
+        public ObservableCollection<BLEDevice> DiscoveredDevices { get; } = new ObservableCollection<BLEDevice>();
+
+        public ObservableCollection<BLEDevice> ConnectedDevices { get; } = new ObservableCollection<BLEDevice>();
+
+        public event EventHandler<BLEDevice> DeviceDiscovered;
+        public event EventHandler<BLEDevice> DeviceConnected;
+        public event EventHandler<BLEDevice> DeviceDisconnected;
+        public event EventHandler<BLECharacteristicsValue> CharacteristicChanged;
+        public event EventHandler<DFUProgress> DFUProgress;
+        public event EventHandler<string> DFUFailed;
+        public event EventHandler DFUCompleted;
+        public event EventHandler<string> ReceiveConsoleOut;
+
         public async Task ConnectAsync(BLEDevice device)
         {
-            await _deviceAccessLocker.WaitAsync();
-
-            try
+            _watcher.Stop();
+            lock (_connectingDevices)
             {
-                _watcher.Stop();
                 if (_connectingDevices.Contains(device))
                 {
                     return;
                 }
 
                 _connectingDevices.Add(device);
+            }
 
+            try
+            {
                 var winBleDevice = await BluetoothLEDevice.FromBluetoothAddressAsync(device.DeviceAddress.FromMacAddress());
                 _windowsBLEDevices.Add(winBleDevice);
                 winBleDevice.ConnectionStatusChanged += WinBleDevice_ConnectionStatusChanged;
@@ -228,11 +190,7 @@ namespace LagoVista.Core.UWP.Services
             catch (Exception ex)
             {
                 Debug.WriteLine($"!! Exception in Connect: {ex.Message} !!");
-                await PrivateDisconnectAsync(device);
-            }
-            finally
-            {
-                _deviceAccessLocker.Release();
+                await DisconnectAsync(device);
             }
         }
 
@@ -243,63 +201,35 @@ namespace LagoVista.Core.UWP.Services
 
         private async void WinBleDevice_ConnectionStatusChanged(BluetoothLEDevice sender, object args)
         {
-            await _deviceAccessLocker.WaitAsync();
+            var bleDevice = DiscoveredDevices.First(device => device.DeviceAddress == sender.BluetoothAddress.ToMacAddress());
 
-            try
+            Debug.WriteLine($"BLE Connection Status Changed: {bleDevice.DeviceName} - {sender.ConnectionStatus}");
+
+            if (sender.ConnectionStatus == BluetoothConnectionStatus.Connected)
             {
-                var bleDevice = DiscoveredDevices.First(device => device.DeviceAddress == sender.BluetoothAddress.ToMacAddress());
-
-                Debug.WriteLine($"BLE Connection Status Changed: {bleDevice.DeviceName} - {sender.ConnectionStatus}");
-
-                if (sender.ConnectionStatus == BluetoothConnectionStatus.Connected)
+                lock (_connectingDevices)
                 {
-                    lock (_connectingDevices)
-                    {
-                        _connectingDevices.Remove(bleDevice);
-                    }
+                    _connectingDevices.Remove(bleDevice);
+                }
 
-                    bleDevice.Connected = true;
-                    bleDevice.LastSeen = DateTime.Now;
-                    _watchdogTimer.Start();
-                    _windowsBLEDevices.Add(sender);
-                    _dispatcherService.Invoke(() =>
-                    {
-                        DeviceConnected?.Invoke(this, bleDevice);
-                        ConnectedDevices.Add(bleDevice);
-                    });
-                }
-                else
+                bleDevice.Connected = true;
+                bleDevice.LastSeen = DateTime.Now;
+                _watchdogTimer.Start();
+                _windowsBLEDevices.Add(sender);
+                _dispatcherService.Invoke(() =>
                 {
-                    await PrivateDisconnectAsync(bleDevice);
-                }
+                    DeviceConnected?.Invoke(this, bleDevice);
+                    ConnectedDevices.Add(bleDevice);
+                });
             }
-            finally
+            else
             {
-                _deviceAccessLocker.Release();
+                await DisconnectAsync(bleDevice);
             }
         }
 
         public async Task DisconnectAsync(BLEDevice device)
         {
-            await _deviceAccessLocker.WaitAsync();
-
-            try
-            {
-                await PrivateDisconnectAsync(device);
-            }
-            finally
-            {
-                _deviceAccessLocker.Release();
-            }
-        }
-
-        public async Task PrivateDisconnectAsync(BLEDevice device)
-        {
-            if (_deviceAccessLocker.CurrentCount > 0)
-            {
-                throw new InvalidOperationException("Attempt to disconnect while not in access locker.");
-            }
-
             device.Connected = true;
 
             Debug.WriteLine($"Attempting to disconnect: {device.DeviceName}");
@@ -322,18 +252,18 @@ namespace LagoVista.Core.UWP.Services
             var winDevice = _windowsBLEDevices.FirstOrDefault(dvc => dvc.BluetoothAddress.ToMacAddress() == device.DeviceAddress);
             if (winDevice != null)
             {
-                var services = await winDevice.GetGattServicesAsync();
-
-                foreach (var srvc in services.Services)
+                try
                 {
-                    try
+                    var services = await winDevice.GetGattServicesAsync();
+
+                    foreach (var srvc in services.Services)
                     {
                         srvc.Dispose();
                     }
-                    catch (Exception ex)
-                    {
-                        Debug.WriteLine($"!! Exception in GetGattServicesAsync to disconnect: {ex.Message} !!");
-                    }
+                }
+                catch (Exception ex)
+                {
+                    Debug.WriteLine($"!! Exception in GetGattServicesAsync to disconnect: {ex.Message} !!");
                 }
 
                 winDevice.ConnectionStatusChanged -= WinBleDevice_ConnectionStatusChanged;
@@ -349,54 +279,47 @@ namespace LagoVista.Core.UWP.Services
                 Debug.WriteLine($"No win ble devices to disconnect: {device.DeviceName}");
             }
 
-            if (ConnectedDevices.Contains(device))
+            lock (ConnectedDevices)
             {
-                _dispatcherService.Invoke(() =>
+                if (ConnectedDevices.Contains(device))
                 {
-                    ConnectedDevices.Remove(device);
-                    DeviceDisconnected?.Invoke(this, device);
-                });
-            }
-            else
-            {
-                _watcher.Start();
-                Debug.WriteLine($"No connected devices to disconnect: {device.DeviceName}");
+                    _dispatcherService.Invoke(() =>
+                    {
+                        ConnectedDevices.Remove(device);
+                        DeviceDisconnected?.Invoke(this, device);
+                    });
+                }
+                else
+                {
+                    _watcher.Start();
+                    Debug.WriteLine($"No connected devices to disconnect: {device.DeviceName}");
+                }
             }
         }
 
         public async Task<byte[]> ReadCharacteristicAsync(BLEDevice device, BLEService service, BLECharacteristic characteristic)
         {
-            await _deviceAccessLocker.WaitAsync();
-
             try
             {
                 var winDevice = _windowsBLEDevices.FirstOrDefault(dvc => dvc.BluetoothAddress.ToMacAddress() == device.DeviceAddress);
-                if (winDevice != null && winDevice.ConnectionStatus == BluetoothConnectionStatus.Connected)
-                {
-                    var services = await winDevice.GetGattServicesAsync(BluetoothCacheMode.Uncached);
-                    var gattService = services.Services.First(svc => svc.Uuid.ToString() == service.Id);
-                    var characteristics = await gattService.GetCharacteristicsAsync();
-                    var gattCharacteristic = characteristics.Characteristics.First(chr => chr.Uuid.ToString() == characteristic.Id);
-                    var readResult = await gattCharacteristic.ReadValueAsync(BluetoothCacheMode.Uncached);
+                var services = await winDevice.GetGattServicesAsync(BluetoothCacheMode.Uncached);
+                var gattService = services.Services.First(svc => svc.Uuid.ToString() == service.Id);
+                var characteristics = await gattService.GetCharacteristicsAsync();
+                var gattCharacteristic = characteristics.Characteristics.First(chr => chr.Uuid.ToString() == characteristic.Id);
+                var readResult = await gattCharacteristic.ReadValueAsync(BluetoothCacheMode.Uncached);
 
-                    using (var dataReader = Windows.Storage.Streams.DataReader.FromBuffer(readResult.Value))
-                    {
-                        var buffer = dataReader.ReadBuffer(readResult.Value.Length);
-                        device.LastSeen = DateTime.Now;
-                        return buffer.ToArray();
-                    }
+                using (var dataReader = Windows.Storage.Streams.DataReader.FromBuffer(readResult.Value))
+                {
+                    var buffer = dataReader.ReadBuffer(readResult.Value.Length);
+                    device.LastSeen = DateTime.Now;
+                    return buffer.ToArray();
                 }
-                return null;
             }
             catch (Exception ex)
             {
                 Debug.WriteLine($"Exception in ReadCharacteristicAsync: {ex.Message}");
-                await PrivateDisconnectAsync(device);
+                await DisconnectAsync(device);
                 return null;
-            }
-            finally
-            {
-                _deviceAccessLocker.Release();
             }
         }
 
@@ -423,32 +346,33 @@ namespace LagoVista.Core.UWP.Services
         {
             _dispatcherService.Invoke(() =>
             {
-                var firstDevice = ConnectedDevices.FirstOrDefault();
-                if (firstDevice != null)
+                lock (ConnectedDevices)
                 {
-                    firstDevice.LastSeen = DateTime.Now;
-                }
-
-                if (args.CharacteristicValue.Length > 0)
-                {
-                    var buffer = args.CharacteristicValue.ToArray();
-                    CharacteristicChanged?.Invoke(this, new BLECharacteristicsValue()
+                    var firstDevice = ConnectedDevices.FirstOrDefault();
+                    if (firstDevice != null)
                     {
-                        Uid = sender.Uuid.ToString(),
-                        Value = System.Text.ASCIIEncoding.ASCII.GetString(args.CharacteristicValue.ToArray())
-                    });
+                        firstDevice.LastSeen = DateTime.Now;
+                    }
+
+                    if (args.CharacteristicValue.Length > 0)
+                    {
+                        var buffer = args.CharacteristicValue.ToArray();
+                        CharacteristicChanged?.Invoke(this, new BLECharacteristicsValue()
+                        {
+                            Uid = sender.Uuid.ToString(),
+                            Value = System.Text.ASCIIEncoding.ASCII.GetString(args.CharacteristicValue.ToArray())
+                        });
+                    }
                 }
             });
         }
 
         public async Task<bool> SubscribeAsync(BLEDevice device, BLEService service, BLECharacteristic characteristic)
         {
-            await _deviceAccessLocker.WaitAsync();
-
             try
             {
                 var winDevice = _windowsBLEDevices.FirstOrDefault(dvc => dvc.BluetoothAddress.ToMacAddress() == device.DeviceAddress);
-                if (winDevice != null && winDevice.ConnectionStatus == BluetoothConnectionStatus.Connected)
+                if (winDevice.ConnectionStatus == BluetoothConnectionStatus.Connected)
                 {
                     var services = await winDevice.GetGattServicesAsync(BluetoothCacheMode.Cached);
                     var gattService = services.Services.First(svc => svc.Uuid.ToString() == service.Id);
@@ -465,19 +389,13 @@ namespace LagoVista.Core.UWP.Services
             catch (Exception ex)
             {
                 Debug.WriteLine($"Exception in SubscribeAsync: {ex.Message}");
-                await PrivateDisconnectAsync(device);
+                await DisconnectAsync(device);
                 return false;
-            }
-            finally
-            {
-                _deviceAccessLocker.Release();
             }
         }
 
         public async Task<bool> UnsubscribeAsync(BLEDevice device, BLEService service, BLECharacteristic characteristic)
         {
-            await _deviceAccessLocker.WaitAsync();
-
             try
             {
                 var gattCharacteristic = _subscribedCharacteristics.Find(chr => chr.Uuid.ToString() == characteristic.Id);
@@ -490,12 +408,8 @@ namespace LagoVista.Core.UWP.Services
             catch (Exception ex)
             {
                 Debug.WriteLine($"Exception in UnsubscribeAsync: {ex.Message}");
-                await PrivateDisconnectAsync(device);
+                await DisconnectAsync(device);
                 return false;
-            }
-            finally
-            {
-                _deviceAccessLocker.Release();
             }
         }
 
@@ -509,21 +423,19 @@ namespace LagoVista.Core.UWP.Services
             return WriteCharacteristic(device, service, characteristic, System.Text.ASCIIEncoding.ASCII.GetBytes(str));
         }
 
-        public async Task<bool> WriteCharacteristic(BLEDevice device, BLEService service, BLECharacteristic characteristic, byte[] buffer)
+        public async Task<bool> WriteCharacteristic(BLEDevice device, BLEService service, BLECharacteristic characteristic, byte[] str)
         {
-            await _deviceAccessLocker.WaitAsync();
-
             try
             {
                 var winDevice = _windowsBLEDevices.FirstOrDefault(dvc => dvc.BluetoothAddress.ToMacAddress() == device.DeviceAddress);
-                if (winDevice != null && winDevice.ConnectionStatus == BluetoothConnectionStatus.Connected)
+                if (winDevice.ConnectionStatus == BluetoothConnectionStatus.Connected)
                 {
                     var services = await winDevice.GetGattServicesAsync(BluetoothCacheMode.Cached);
                     var gattService = services.Services.First(svc => svc.Uuid.ToString() == service.Id);
                     var characteristics = await gattService.GetCharacteristicsAsync();
                     var gattCharacteristic = characteristics.Characteristics.First(chr => chr.Uuid.ToString() == characteristic.Id);
 
-                    GattCommunicationStatus statusResult = await gattCharacteristic.WriteValueAsync(buffer.AsBuffer());
+                    GattCommunicationStatus statusResult = await gattCharacteristic.WriteValueAsync(str.AsBuffer());
                     return statusResult == GattCommunicationStatus.Success;
                 }
 
@@ -532,12 +444,8 @@ namespace LagoVista.Core.UWP.Services
             catch (Exception ex)
             {
                 Debug.WriteLine($"Exception in WriteCharacteristic: {ex.Message}");
-                await PrivateDisconnectAsync(device);
+                await DisconnectAsync(device);
                 return false;
-            }
-            finally
-            {
-                _deviceAccessLocker.Release();
             }
         }
     }

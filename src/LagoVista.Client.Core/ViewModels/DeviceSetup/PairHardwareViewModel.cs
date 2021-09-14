@@ -1,12 +1,7 @@
 ﻿using LagoVista.Client.Core.Models;
 using LagoVista.Client.Core.ViewModels.DeviceAccess;
-using LagoVista.Core.Commanding;
 using LagoVista.Core.Validation;
-using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Diagnostics;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace LagoVista.Client.Core.ViewModels.DeviceSetup
@@ -39,7 +34,7 @@ namespace LagoVista.Client.Core.ViewModels.DeviceSetup
             if (deviceModelId.Length == 32)
             {
                 await PerformNetworkOperation(async () =>
-                {
+                {                    
                     var existingDevice = await DeviceManagementClient.GetDeviceByMacAddressAsync(AppConfig.DeviceRepoId, device.DeviceAddress);
                     if (existingDevice.Successful)
                     {
@@ -60,17 +55,11 @@ namespace LagoVista.Client.Core.ViewModels.DeviceSetup
                     }
                 });
             }
-
-        }
-
-        protected override void OnBLEDevice_Connected(BLEDevice device)
-        {
-
         }
 
         public async override Task IsClosingAsync()
         {
-            GattConnection.DeviceConnected += GattConnection_DeviceConnected;
+            GattConnection.DeviceConnected -= GattConnection_DeviceConnected;
             await GattConnection.StopScanAsync();
             await base.IsClosingAsync();
         }
@@ -80,13 +69,13 @@ namespace LagoVista.Client.Core.ViewModels.DeviceSetup
             await GattConnection.ConnectAsync(device);
         }
 
-        BLEDevice _selecctedDevice;
-        public BLEDevice SelecctedDevice
+        BLEDevice _selectedDevice;
+        public BLEDevice SelectedDevice
         {
-            get { return _selecctedDevice; }
+            get { return _selectedDevice; }
             set
             {
-                Set(ref _selecctedDevice, value);
+                Set(ref _selectedDevice, value);
                 ConnectAsync(value);
             }
         }

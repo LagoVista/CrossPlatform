@@ -365,5 +365,28 @@ namespace LagoVista.Client.Devices
                 return result.ToInvokeResult();
             }
         }
+
+        public async Task<InvokeResult> SetDeviceiOSBLEAddressAsync(string deviceRepoId, string id, string iosBLEAddress)
+        {
+            var url = $"/api/device/{deviceRepoId}/{id}/iosbleaddess/{WebUtility.UrlEncode(iosBLEAddress)}/set";
+
+            var result = await _restClient.GetAsync<InvokeResult>(url);
+            if (result.Successful)
+            {
+                return result.Result;
+            }
+            else
+            {
+                return result.ToInvokeResult();
+            }
+        }
+
+        public async Task<InvokeResult<Device>> GetDeviceByiOSBLEAddressAsync(string deviceRepoId, string iosBLEAddress)
+        {
+            var url = $"/api/device/{deviceRepoId}/iosbleaddress/{WebUtility.UrlEncode(iosBLEAddress)}";
+
+            var result = await _restClient.GetAsync<InvokeResult<Device>>(url);
+            return result.Result;
+        }
     }
 }
