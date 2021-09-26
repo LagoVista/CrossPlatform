@@ -1,0 +1,18 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="LagoVista.SerialPortApp" GeneratedClassName="DefaultConfig">
+  <Profiles />
+  <Settings>
+    <Setting Name="DefaultPortName" Type="System.String" Scope="User">
+      <Value Profile="(Default)">-select-</Value>
+    </Setting>
+    <Setting Name="DefaultBaudRate" Type="System.String" Scope="User">
+      <Value Profile="(Default)">-select-</Value>
+    </Setting>
+    <Setting Name="DefaultSendCR" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="DefaultSendLF" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

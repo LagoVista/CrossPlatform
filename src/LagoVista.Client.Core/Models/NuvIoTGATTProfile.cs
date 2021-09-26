@@ -66,7 +66,7 @@
            *
            */
 
-        public const string CHAR_UUID_RELAY = "d804b639-6ce7-5e85-9f87-ce0f699085eb";
+        public const string CHAR_UUID_RELAY = "d804b639-6ce7-5e87-9f87-ce0f699085eb";
         /* RELAY Config
            * 
            * 16 slots
@@ -74,7 +74,7 @@
            *
            */
 
-        public const string CHAR_UUID_CONSOLE = "d804b639-6ce7-5e86-9f88-ce0f699085eb";
+        public const string CHAR_UUID_CONSOLE = "d804b639-6ce7-5e88-9f88-ce0f699085eb";
 
         public static GATTProfile GetNuvIoTGATT()
         {
@@ -88,6 +88,7 @@
             sysSerivce.Characteristics.Add(new BLECharacteristic(CHAR_UUID_IO_VALUE, "GPIO Values", BLECharacteristicType.RealArray));
             sysSerivce.Characteristics.Add(new BLECharacteristic(CHAR_UUID_ADC_VALUE, "ADC Values", BLECharacteristicType.RealArray));
             sysSerivce.Characteristics.Add(new BLECharacteristic(CHAR_UUID_RELAY, "Relay", BLECharacteristicType.IntegerArray));
+            sysSerivce.Characteristics.Add(new BLECharacteristic(CHAR_UUID_CONSOLE, "Console", BLECharacteristicType.ByteArray));
             profile.Services.Add(sysSerivce);
 
             return profile;
