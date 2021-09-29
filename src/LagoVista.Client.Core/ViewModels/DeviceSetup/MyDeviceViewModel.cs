@@ -50,7 +50,10 @@ namespace LagoVista.Client.Core.ViewModels.DeviceSetup
 
             if (result)
             {
-                await ViewModelNavigation.NavigateAsync<SensorsViewModel>(this, DeviceLaunchArgsParam);
+                if (LaunchArgs.ParentViewModel.GetType() == typeof(MyDeviceMenuViewModel))
+                    await ViewModelNavigation.GoBackAsync();
+                else
+                    await ViewModelNavigation.NavigateAsync<SensorsViewModel>(this, DeviceLaunchArgsParam);
             }
 
         }

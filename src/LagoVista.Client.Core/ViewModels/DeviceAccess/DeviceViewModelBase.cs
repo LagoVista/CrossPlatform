@@ -4,6 +4,7 @@ using LagoVista.Client.Core.Net;
 using LagoVista.Core.IOC;
 using LagoVista.Core.Models.Geo;
 using LagoVista.Core.Validation;
+using LagoVista.IoT.Deployment.Admin.Models;
 using LagoVista.IoT.DeviceManagement.Core.Models;
 using LagoVista.IoT.DeviceManagement.Models;
 using Newtonsoft.Json;
@@ -491,6 +492,24 @@ namespace LagoVista.Client.Core.ViewModels.DeviceAccess
                     });
 
                     break;
+            }
+        }
+
+        protected async Task<DeviceConfiguration> GetDeviceConfigurationAsync()
+        {
+            if (await HasLocalCacheItemAsync<DeviceConfiguration>($"DCF{CurrentDevice.DeviceConfiguration.Id}"))
+            {
+                return await GetFromLocalCacheAsync<DeviceConfiguration>($"DCF{CurrentDevice.DeviceConfiguration.Id}");
+            }
+            else
+            { 
+                DeviceConfiguration deviceConfig = null;
+                await PerformNetworkOperation(async () =>
+                {
+                    deviceConfig = await DeviceManagementClient.GetDeviceConfigurationAsync(CurrentDevice.DeviceConfiguration.Id);
+                    await AddToLocalCacheAsync<DeviceConfiguration>($"DCF{CurrentDevice.DeviceConfiguration.Id}", deviceConfig);
+                });
+                return deviceConfig;
             }
         }
 

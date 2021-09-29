@@ -24,7 +24,7 @@ namespace LagoVista.Core.UWP.Services
 
         public ObservableCollection<BLEDevice> ConnectedDevices { get; } = new ObservableCollection<BLEDevice>();
 
-        public List<BLEDevice> _internalConnectedDevices { get; } = new List<BLEDevice>();
+        private readonly List<BLEDevice> _internalConnectedDevices = new List<BLEDevice>();
 
         public event EventHandler<BLEDevice> DeviceDiscovered;
         public event EventHandler<BLEDevice> DeviceConnected;
@@ -49,7 +49,7 @@ namespace LagoVista.Core.UWP.Services
         private readonly List<BluetoothLEDevice> _windowsBLEDevices = new List<BluetoothLEDevice>();
         private readonly Timer _watchdogTimer;
 
-        SemaphoreSlim _deviceAccessLocker = new SemaphoreSlim(1, 1);
+        private readonly SemaphoreSlim _deviceAccessLocker = new SemaphoreSlim(1, 1);
 
         private static int _instanceCount = 0;
 
@@ -88,13 +88,13 @@ namespace LagoVista.Core.UWP.Services
             {
                 var devicesToRemove = new List<BLEDevice>();
 
-                /*foreach (var connectedDevice in _internalConnectedDevices)
+                foreach (var connectedDevice in _internalConnectedDevices)
                 {
                     if ((DateTime.Now - connectedDevice.LastSeen).TotalSeconds > 3)
                     {
                         devicesToRemove.Add(connectedDevice);
                     }
-                }*/
+                }
 
                 foreach (var device in devicesToRemove)
                 {

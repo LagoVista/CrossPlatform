@@ -216,6 +216,7 @@
     <Compile Include="Services\BluetoothSerial.cs" />
     <Compile Include="Services\ClipBoard.cs" />
     <Compile Include="Services\GattConnection.cs" />
+    <Compile Include="Services\GattDeviceServices.cs" />
     <Compile Include="Services\ProcessOutputWriter.cs" />
     <Compile Include="Services\DeviceManager.cs" />
     <Compile Include="Services\DirectoryServices.cs" />
@@ -253,19 +254,19 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="LagoVista.Core">
-      <Version>3.0.1579.1359</Version>
+      <Version>3.0.1596.506</Version>
     </PackageReference>
     <PackageReference Include="LagoVista.Core.Authentication">
-      <Version>3.0.1579.1359</Version>
+      <Version>3.0.1596.506</Version>
     </PackageReference>
     <PackageReference Include="LagoVista.Core.Networking">
-      <Version>3.0.1579.1359</Version>
+      <Version>3.0.1596.506</Version>
     </PackageReference>
     <PackageReference Include="LagoVista.IoT.Logging">
-      <Version>3.0.1579.1359</Version>
+      <Version>3.0.1596.506</Version>
     </PackageReference>
     <PackageReference Include="LagoVista.UserAdmin.Models">
-      <Version>3.0.1579.1359</Version>
+      <Version>3.0.1596.506</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform">
       <Version>6.2.12</Version>

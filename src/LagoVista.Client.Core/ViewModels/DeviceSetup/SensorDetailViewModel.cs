@@ -14,6 +14,7 @@ namespace LagoVista.Client.Core.ViewModels.DeviceSetup
     public class SensorDetailViewModel : DeviceViewModelBase
     {
         public const string SENSOR_ID = "sensorid";
+        public const string SENSOR_DEFINITION_ID = "sensordefinitionid";
         public const string SENSOR = "sensor";
 
         Sensor _sensor;
@@ -42,17 +43,35 @@ namespace LagoVista.Client.Core.ViewModels.DeviceSetup
         {
             await base.InitAsync();
 
-            if (LaunchArgs.Parameters.ContainsKey(SENSOR))
+            if (LaunchArgs.LaunchType == LagoVista.Core.ViewModels.LaunchTypes.Create)
             {
-                Sensor = LaunchArgs.GetParam<Sensor>(SENSOR);
-                if (Sensor.PortIndex.HasValue)
-                    Port = Ports.Where(prt=>prt.Id == Sensor.PortIndex.Value.ToString()).First();
-                else
+                if (LaunchArgs.Parameters.ContainsKey(SENSOR_DEFINITION_ID))
+                {
+                    var deviceConfig = await GetDeviceConfigurationAsync();
+                    var definition = deviceConfig.SensorDefinitions.SingleOrDefault(def => def.Id == LaunchArgs.GetParam<string>(SENSOR_DEFINITION_ID));
+
+                    Sensor = new Sensor(definition);
                     Port = Ports[0];
+                }
+                else
+                {
+                    throw new ArgumentNullException(SENSOR_DEFINITION_ID);
+                }
             }
             else
             {
-                throw new ArgumentNullException(SENSOR);
+                if (LaunchArgs.Parameters.ContainsKey(SENSOR))
+                {
+                    Sensor = LaunchArgs.GetParam<Sensor>(SENSOR);
+                    if (Sensor.PortIndex.HasValue)
+                        Port = Ports.Where(prt => prt.Id == Sensor.PortIndex.Value.ToString()).First();
+                    else
+                        Port = Ports[0];
+                }
+                else
+                {
+                    throw new ArgumentNullException(SENSOR);
+                }
             }
 
             if (BLEDevice != null)
@@ -83,19 +102,40 @@ namespace LagoVista.Client.Core.ViewModels.DeviceSetup
 
         protected override void BLECharacteristicRead(BLECharacteristicsValue characteristic)
         {
+            if (characteristic.Uid == NuvIoTGATTProfile.CHAR_UUID_IO_VALUE)
+            {
+                var parts = characteristic.Value.Split(',');
+                if (Sensor.Technology.Value == SensorTechnology.ADC)
+                {
+                    LiveValue = parts[Sensor.PortIndex.Value].ToString();
+                }
+            }
+
             base.BLECharacteristicRead(characteristic);
         }
 
         public override async void Save()
         {
+            if (this.LaunchArgs.LaunchType == LagoVista.Core.ViewModels.LaunchTypes.Create)
+            {
+                CurrentDevice.SensorCollection.Add(Sensor);
+            }
+
             var result = await PerformNetworkOperation(async () =>
             {
                 return await DeviceManagementClient.UpdateDeviceAsync(CurrentDevice.DeviceRepository.Id, CurrentDevice);
             });
 
-            if(result.Successful)
+            if (result.Successful)
             {
-                await this.ViewModelNavigation.GoBackAsync();
+                if (this.LaunchArgs.LaunchType == LagoVista.Core.ViewModels.LaunchTypes.Create)
+                {
+                    await this.ViewModelNavigation.GoBackAsync(1);
+                }
+                else
+                {
+                    await this.ViewModelNavigation.GoBackAsync();
+                }
             }
         }
 
@@ -103,7 +143,7 @@ namespace LagoVista.Client.Core.ViewModels.DeviceSetup
         {
             var service = NuvIoTGATTProfile.GetNuvIoTGATT().Services.Find(srvc => srvc.Id == NuvIoTGATTProfile.SVC_UUID_NUVIOT);
             var characteristics = service.Characteristics.First(chr => chr.Id == NuvIoTGATTProfile.CHAR_UUID_IOCONFIG);
-            await GattConnection.WriteCharacteristic(BLEDevice, service, characteristics, "readadc=1;");
+            await GattConnection.WriteCharacteristic(BLEDevice, service, characteristics, $"AT+READCONFIG," + (Sensor.Technology.Value == SensorTechnology.ADC ? "ADC" : "IO") + "," + Sensor.PortIndex);
             var result = await GattConnection.ReadCharacteristicAsync(BLEDevice, service, characteristics);
             Debug.WriteLine(System.Text.ASCIIEncoding.ASCII.GetString(result));
         }
@@ -112,8 +152,9 @@ namespace LagoVista.Client.Core.ViewModels.DeviceSetup
         {
             var service = NuvIoTGATTProfile.GetNuvIoTGATT().Services.Find(srvc => srvc.Id == NuvIoTGATTProfile.SVC_UUID_NUVIOT);
             var characteristics = service.Characteristics.First(chr => chr.Id == NuvIoTGATTProfile.CHAR_UUID_IOCONFIG);
-            await GattConnection.WriteCharacteristic(BLEDevice, service, characteristics, "writeadc=1,1,1.1,2.2,3.3;");
-        }
+            var cfgValues = $"{Sensor.PortIndex.Value},{Sensor.Calibration},{Sensor.Zero},{Sensor.DeviceScaler},{Sensor.Key}";
+            await GattConnection.WriteCharacteristic(BLEDevice, service, characteristics, $"AT+WRITECONFIG," + (Sensor.Technology.Value == SensorTechnology.ADC ? "ADC" : "IO") + "," + cfgValues);
+            }
 
         private EntityHeader _port;
         public EntityHeader Port
@@ -122,7 +163,7 @@ namespace LagoVista.Client.Core.ViewModels.DeviceSetup
             set
             {
                 Set(ref _port, value);
-                if(value != null && value.Id != "-1")
+                if (value != null && value.Id != "-1")
                 {
                     var port = int.Parse(value.Id);
                     Sensor.PortIndex = port;
@@ -140,8 +181,8 @@ namespace LagoVista.Client.Core.ViewModels.DeviceSetup
             set { Set(ref _sensor, value); }
         }
 
-        double _liveValue;
-        public double LiveValue
+        string _liveValue;
+        public string LiveValue
         {
             get { return _liveValue; }
             set { Set(ref _liveValue, value); }
@@ -150,6 +191,6 @@ namespace LagoVista.Client.Core.ViewModels.DeviceSetup
         public RelayCommand ReadCommand { get; }
         public RelayCommand WriteCommand { get; }
 
-        public RelayCommand RemoveSensorCommand { get;  }
+        public RelayCommand RemoveSensorCommand { get; }
     }
 }
