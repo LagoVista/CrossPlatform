@@ -91,8 +91,9 @@ namespace NuvIoT.HardwareClient
         }
 
         private void _gattConnection_ReceiveConsoleOut(object sender, string e)
-        { 
-            Dispatcher.Invoke(() => {
+        {
+            Dispatcher.Invoke(() =>
+            {
                 BLEOutput.Add(e);
             });
         }
@@ -102,7 +103,7 @@ namespace NuvIoT.HardwareClient
             if (e.DeviceName.StartsWith("NuvIoT"))
             {
                 await _gattConnection.StopScanAsync();
-                await _gattConnection.ConnectAsync(e);                
+                await _gattConnection.ConnectAsync(e);
             }
         }
 
@@ -111,7 +112,7 @@ namespace NuvIoT.HardwareClient
             _currentDevice = null;
         }
 
-        
+
         private void _gattConnection_DeviceConnected(object sender, BLEDevice e)
         {
             _currentDevice = e;
@@ -187,7 +188,7 @@ namespace NuvIoT.HardwareClient
             });
         }
         #endregion
-        
+
         #region Properties
         private string _selectedPortName = "-select-";
         public string SelectedPortName
@@ -280,7 +281,7 @@ namespace NuvIoT.HardwareClient
             base.OnClosing(e);
 
             if (_currentDevice != null)
-            {               
+            {
                 await _gattConnection.DisconnectAsync(_currentDevice);
                 _currentDevice = null;
             }
@@ -379,7 +380,7 @@ namespace NuvIoT.HardwareClient
 
         private async void btnBLEDisconnect_Click(object sender, RoutedEventArgs e)
         {
-            if(_currentDevice != null)
+            if (_currentDevice != null)
             {
                 await _gattConnection.DisconnectAsync(_currentDevice);
                 _currentDevice = null;
@@ -388,6 +389,18 @@ namespace NuvIoT.HardwareClient
             await _gattConnection.StopScanAsync();
             btnBLEStartWatcher.IsEnabled = true;
             btnBLEDisconnect.IsEnabled = false;
+        }
+
+        private async void txtIOConfigCommandType_KeyUp(object sender, System.Windows.Input.KeyEventArgs e)
+        {
+            if ((e.Key == System.Windows.Input.Key.Return) && _port != null && _port.IsOpen)
+            {
+                var commandText = txtIOConfigCommandType.Text;
+                var srvc = NuvIoTGATTProfile.GetNuvIoTGATT().Services.Single(svc => svc.Id == NuvIoTGATTProfile.SVC_UUID_NUVIOT);
+                var characteristicState = srvc.Characteristics.Single(chr => chr.Id == NuvIoTGATTProfile.CHAR_UUID_IOCONFIG);
+
+                await _gattConnection.WriteCharacteristic(_currentDevice, srvc, characteristicState, txtIOConfigCommandType.Text);
+            }
         }
     }
 }

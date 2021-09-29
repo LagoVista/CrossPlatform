@@ -691,12 +691,8 @@ namespace LagoVista.Core.UWP.Services
                 var winDevice = _windowsBLEDevices.FirstOrDefault(dvc => dvc.BluetoothAddress.ToMacAddress() == device.DeviceAddress);
                 if (winDevice != null && winDevice.ConnectionStatus == BluetoothConnectionStatus.Connected)
                 {
-                    var services = await winDevice.GetGattServicesAsync(BluetoothCacheMode.Cached);
-                    var gattService = services.Services.First(svc => svc.Uuid.ToString() == service.Id);
-                    var characteristics = await gattService.GetCharacteristicsAsync();
-                    var gattCharacteristic = characteristics.Characteristics.First(chr => chr.Uuid.ToString() == characteristic.Id);
-
-                    GattCommunicationStatus statusResult = await gattCharacteristic.WriteValueAsync(buffer.AsBuffer());
+                    var bleCharacteristic = _allCharacteristics[device].FirstOrDefault(chr => chr.Uuid.ToString() == characteristic.Id);                       
+                    GattCommunicationStatus statusResult = await bleCharacteristic.WriteValueAsync(buffer.AsBuffer());
                     return statusResult == GattCommunicationStatus.Success;
                 }
 
