@@ -76,7 +76,10 @@ namespace LagoVista.Client.Core.ViewModels.DeviceSetup
             set
             {
                 Set(ref _selectedDevice, value);
-                ConnectAsync(value);
+                if (value != null)
+                {
+                    ConnectAsync(value);
+                }
             }
         }
     }

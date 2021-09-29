@@ -67,7 +67,16 @@
             <ListView Grid.Row="1" ItemsSource="{Binding CurrentDevice.SensorCollection}" SelectedItem="{Binding SelectedSensor}" HasUnevenRows="True">
                 <ListView.ItemTemplate>
                     <DataTemplate>
-                        <ctls:NavigationViewCell Text="{Binding Name}" />
+                        <ViewCell>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="60" />
+                                </Grid.ColumnDefinitions>
+                                <Label Text="{Binding Name}" />
+                                <pge:Icon IconKey="fa-check-circle" TextColor="Green"/>
+                            </Grid>
+                        </ViewCell>
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>

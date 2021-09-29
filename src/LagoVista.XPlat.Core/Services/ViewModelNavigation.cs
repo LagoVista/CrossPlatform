@@ -99,6 +99,22 @@ namespace LagoVista.XPlat.Core.Services
             }
         }
 
+        public async Task GoBackAsync(int skipPages)
+        {
+            for (int idx = 0; idx < skipPages; ++idx)
+            {
+                _navigation.RemovePage(_navigation.NavigationStack[_navigation.NavigationStack.Count - 1]);
+                ViewModelBackStack.Pop();
+            }
+
+            if (ViewModelBackStack.Any())
+            {
+                ViewModelBackStack.Pop();
+                await _navigation.PopAsync();
+            }
+        }
+
+
 
         public void PopToRoot()
         {

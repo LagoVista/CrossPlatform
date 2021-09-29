@@ -36,6 +36,8 @@ namespace LagoVista.Client.Core.ViewModels
 
     public abstract class XPlatViewModel : ViewModelBase
     {
+        private readonly static Dictionary<string, object> _localCache = new Dictionary<string, object>();
+
         public XPlatViewModel()
         {
             SaveCommand = new RelayCommand(Save, CanSave);
@@ -186,6 +188,39 @@ namespace LagoVista.Client.Core.ViewModels
         public RelayCommand SaveCommand { get; private set; }
 
         public RelayCommand EditCommand { get; private set; }
+
+        protected Task AddToLocalCacheAsync<T>(String key, T item)
+        {
+            _localCache.Add(key, item);
+
+            // Running this a task in case we need to serialize the state of the app.
+            return Task.CompletedTask;
+        }
+
+        protected Task<T> GetFromLocalCacheAsync<T>(string key) where T : class
+        {
+            return Task.FromResult(_localCache[key] as T);
+        }
+
+        protected Task<bool> HasLocalCacheItemAsync<T>(string key) where T : class
+        {
+            if(!_localCache.ContainsKey(key))
+            {
+                return Task.FromResult(false);
+            }
+
+            return Task.FromResult((_localCache[key] as T) != null);
+        }
+
+        protected Task ClearLocalCacheItemAsync(string key)
+        {
+            if(_localCache.ContainsKey(key))
+            {
+                _localCache.Remove(key);
+            }
+
+            return Task.CompletedTask;
+        }
 
     }
 }

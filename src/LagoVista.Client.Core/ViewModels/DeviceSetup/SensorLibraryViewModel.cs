@@ -1,5 +1,4 @@
 ﻿using LagoVista.Client.Core.ViewModels.DeviceAccess;
-using LagoVista.Core.Models;
 using LagoVista.IoT.DeviceManagement.Models;
 using System.Collections.ObjectModel;
 using System.Threading.Tasks;
@@ -10,32 +9,16 @@ namespace LagoVista.Client.Core.ViewModels.DeviceSetup
     {
         public override async Task InitAsync()
         {
-            await PerformNetworkOperation(async () =>
-            {
-                var deviceConfig = await DeviceManagementClient.GetDeviceConfigurationAsync(CurrentDevice.DeviceConfiguration.Id);
-                SensorTypes = new ObservableCollection<SensorDefinition>(deviceConfig.SensorDefinitions);
-            });
-
+            var deviceConfig = await GetDeviceConfigurationAsync();
+            SensorTypes = new ObservableCollection<SensorDefinition>(deviceConfig.SensorDefinitions);
+            
             await base.InitAsync();
         }
 
         private async void AddSensorAsync(SensorDefinition definition)
         {
-            var newSensor = new Sensor(definition);
 
-            CurrentDevice.SensorCollection.Add(newSensor);
-
-            var result = await PerformNetworkOperation(async () =>
-            {
-                return await DeviceManagementClient.UpdateDeviceAsync(AppConfig.DeviceRepoId, CurrentDevice);
-            });
-
-
-            if (result.Successful)
-            {
-                await ViewModelNavigation.NavigateAsync<SensorsViewModel>(this, DeviceLaunchArgsParam, CreateKVP(SensorDetailViewModel.SENSOR_ID, newSensor.Id));
-            }
-
+            await ViewModelNavigation.NavigateAndCreateAsync<SensorDetailViewModel>(this, DeviceLaunchArgsParam, CreateKVP(SensorDetailViewModel.SENSOR_DEFINITION_ID, definition.Id));
         }
 
         SensorDefinition _selectedSensor;
