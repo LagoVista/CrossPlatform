@@ -19,6 +19,7 @@ namespace LagoVista.XPlat.iOS.Services
         private readonly SemaphoreSlim _deviceAccessLocker = new SemaphoreSlim(1, 1);
         private readonly IDispatcherServices _dispatcherService;
         private readonly CBCentralManager _manager = new CBCentralManager();
+        private readonly Timer _watchdogTimer;
 
         public bool IsScanning
         {
@@ -31,6 +32,8 @@ namespace LagoVista.XPlat.iOS.Services
             _manager.DiscoveredPeripheral += Manager_DiscoveredPeripheral;
             _manager.ConnectedPeripheral += Manager_ConnectedPeripheral;
             _manager.DisconnectedPeripheral += Manager_DisconnectedPeripheral;
+
+            _watchdogTimer = new System.Threading.Timer(WatchdogTimer_Tick, null, 1000, 1000);
         }
 
         public ObservableCollection<BLEDevice> DiscoveredDevices { get; } = new ObservableCollection<BLEDevice>();
@@ -62,7 +65,7 @@ namespace LagoVista.XPlat.iOS.Services
         public event EventHandler DFUCompleted;
         public event EventHandler<string> ReceiveConsoleOut;
 
-        private async void WatchdogTimer_Tick(object sender, EventArgs e)
+        private async void WatchdogTimer_Tick(object sender)
         {
             await _deviceAccessLocker.WaitAsync();
             Debug.WriteLine($"=> Tick - Start connected devices {_internalConnectedDevices.Count}, connecting Devices {_connectingDevices.Count}");
@@ -93,13 +96,22 @@ namespace LagoVista.XPlat.iOS.Services
                     {
                         try
                         {
-                            var pingCharacteristics = _allCharacteristics[connectedDevice.DeviceAddress][NuvIoTGATTProfile.CHAR_UUID_STATE];
-                            var buffer = System.Text.ASCIIEncoding.ASCII.GetBytes("ping");
-                            iosDevice.WriteValue(NSData.FromArray(buffer), pingCharacteristics, CBCharacteristicWriteType.WithResponse);
+                            if (_allCharacteristics.ContainsKey(connectedDevice.DeviceAddress) &&
+                                _allCharacteristics[connectedDevice.DeviceAddress].ContainsKey(NuvIoTGATTProfile.CHAR_UUID_STATE))
+                            {
+                                var pingCharacteristics = _allCharacteristics[connectedDevice.DeviceAddress][NuvIoTGATTProfile.CHAR_UUID_STATE];
+                                var buffer = System.Text.ASCIIEncoding.ASCII.GetBytes("ping");
+                                iosDevice.WriteValue(NSData.FromArray(buffer), pingCharacteristics, CBCharacteristicWriteType.WithResponse);
+                                Debug.WriteLine($"=====> Tick - write ping to - {connectedDevice.DeviceName}");
+                            }
+                            else
+                            {
+                                Debug.WriteLine($"!=====> Tick - warning could not find ping characteristics - {connectedDevice.DeviceName}");
+                            }
                         }
-                        catch
+                        catch (Exception ex)
                         {
-                            Debug.WriteLine($"!===> Tick - exception sending ping to - {connectedDevice.DeviceName}");
+                            Debug.WriteLine($"!=====> Tick - exception sending ping to - {connectedDevice.DeviceName} - {ex.Message}");
                             PrivateDisconnect(connectedDevice);
                         }
                     }
@@ -139,7 +151,7 @@ namespace LagoVista.XPlat.iOS.Services
         {
             try
             {
-                Debug.WriteLine($"=> ConnectAsync - Start connecting Devices {device}");
+                Debug.WriteLine($"=> ConnectAsync - Value connecting Devices {device}");
                 await _deviceAccessLocker.WaitAsync();
                 var periperal = _periperals[device.DeviceAddress];
                 _manager.ConnectPeripheral(periperal);
@@ -158,7 +170,7 @@ namespace LagoVista.XPlat.iOS.Services
                 Debug.WriteLine($"=> DisconnectAsync - Start disconnecting Devices {device}");
                 await _deviceAccessLocker.WaitAsync();
                 var periperal = _periperals[device.DeviceAddress];
-                _manager.CancelPeripheralConnection(periperal);
+                PrivateDisconnect(device);
                 Debug.WriteLine($"=> DiconnectAsync - Finish disconnecting Devices {device}");
             }
             finally
@@ -233,6 +245,7 @@ namespace LagoVista.XPlat.iOS.Services
                 }
 
                 var bleDevice = DiscoveredDevices.FirstOrDefault(devc => devc.DeviceAddress == e.Peripheral.Identifier.ToString());
+                bleDevice.LastSeen = DateTime.Now;
                 _internalConnectedDevices.Add(bleDevice);
                 if (bleDevice != null)
                 {
@@ -254,18 +267,39 @@ namespace LagoVista.XPlat.iOS.Services
 
         private async void Peripheral_DiscoveredCharacteristic(object sender, CBServiceEventArgs e)
         {
+            Debug.WriteLine($"=> Characteristic Discovered - Start");
             await _deviceAccessLocker.WaitAsync();
             try
             {
                 foreach (var characteristic in e.Service.Characteristics)
                 {
+                    Debug.WriteLine($"===> Characteristic Discovered - {characteristic.UUID}");
+
+                    if (characteristic.UUID.ToString() == NuvIoTGATTProfile.CHAR_UUID_STATE)
+                    {
+                        var peripheral = sender as CBPeripheral;
+                        peripheral.SetNotifyValue(true, characteristic);
+                        Debug.WriteLine($"=====> Characteristic Added State - {characteristic.UUID}");
+                    }                    
+
+                    if (_allCharacteristics[e.Service.Peripheral.Identifier.ToString()].ContainsKey(characteristic.UUID.ToString()))
+                    {
+                        _allCharacteristics[e.Service.Peripheral.Identifier.ToString()].Remove(characteristic.UUID.ToString());
+                        Debug.WriteLine($"=====> Characteristic Removed Existing - {characteristic.UUID}");
+                    }
+
                     _allCharacteristics[e.Service.Peripheral.Identifier.ToString()].Add(characteristic.UUID.ToString(), characteristic);
-                    Debug.WriteLine($"\t\t{characteristic.UUID}");
+                    Debug.WriteLine($"=====> Characteristic Added - {characteristic.UUID}");
                 }
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine($"===> Characteristic Discovered - Error {ex.Message}");
             }
             finally
             {
                 _deviceAccessLocker.Release();
+                Debug.WriteLine($"=> Characteristic Discovered - Finish");
             }
         }
 
@@ -298,8 +332,9 @@ namespace LagoVista.XPlat.iOS.Services
                 {
                     DeviceAddress = e.Peripheral.Identifier.ToString(),
                     DeviceName = e.AdvertisementData.ValueForKey(new NSString("kCBAdvDataLocalName")).ToString(),
+                    LastSeen = DateTime.Now,
                 };
-          
+
                 if (!_periperals.ContainsKey(e.Peripheral.Identifier.ToString()))
                 {
                     _periperals.Add(e.Peripheral.Identifier.ToString(), e.Peripheral);
@@ -345,23 +380,47 @@ namespace LagoVista.XPlat.iOS.Services
             {
                 Debug.WriteLine("===> Peripheral Disconnecting - Start");
                 var peripheral = _connectedPeriperals[device.DeviceAddress];
-                peripheral.DiscoveredService -= Peripheral_DiscoveredService;
-                peripheral.DiscoveredCharacteristic -= Peripheral_DiscoveredCharacteristic;
-                peripheral.UpdatedCharacterteristicValue -= Periperal_UpdatedCharacterteristicValue;
+                if (peripheral != null)
+                {
+                    peripheral.DiscoveredService -= Peripheral_DiscoveredService;
+                    peripheral.DiscoveredCharacteristic -= Peripheral_DiscoveredCharacteristic;
+                    peripheral.UpdatedCharacterteristicValue -= Periperal_UpdatedCharacterteristicValue;
+                }
+                else
+                {
+                    Debug.WriteLine("====> Could not find peripheral to remove");
+                }
+
                 foreach (var dvcsrvc in _allDeviceServices[device.DeviceAddress].Values)
                 {
-                    dvcsrvc.Dispose();
+                    try
+                    {
+                        dvcsrvc.Dispose();
+                    }
+                    catch (Exception ex)
+                    {
+                        Debug.WriteLine($"====> Exception disposing service {ex.Message}");
+                    }
                 }
                 _allDeviceServices.Remove(device.DeviceAddress);
 
                 foreach (var chr in _allCharacteristics[device.DeviceAddress].Values)
                 {
-                    chr.Dispose();
+                    try
+                    {
+                        chr.Dispose();
+                    }
+                    catch (Exception ex)
+                    {
+                        Debug.WriteLine($"====> Exception disposing characteristic{ex.Message}");
+                    }
                 }
+
                 _allCharacteristics.Remove(device.DeviceAddress);
 
                 _connectedPeriperals.Remove(device.DeviceAddress);
                 peripheral.Dispose();
+                _periperals.Remove(device.DeviceAddress);
 
                 _internalConnectedDevices.Remove(device);
 
@@ -370,10 +429,10 @@ namespace LagoVista.XPlat.iOS.Services
                     DeviceDisconnected?.Invoke(this, device);
                     ConnectedDevices.Remove(device);
                 });
-            
+
                 Debug.WriteLine("===> Peripheral Disconnecting - Finish");
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 Debug.WriteLine($"===> Peripheral Disconnecting - Fail - {ex.Message}");
             }
@@ -386,11 +445,11 @@ namespace LagoVista.XPlat.iOS.Services
                 await _deviceAccessLocker.WaitAsync();
                 Debug.WriteLine("=> Peripheral Disconnected - Start.");
                 var peripheral = sender as CBPeripheral;
-                var bleDevice = ConnectedDevices.FirstOrDefault(cd=>cd.DeviceAddress == peripheral.Identifier.ToString());
+                var bleDevice = ConnectedDevices.FirstOrDefault(cd => cd.DeviceAddress == peripheral.Identifier.ToString());
                 PrivateDisconnect(bleDevice);
                 Debug.WriteLine("=> Peripheral Disconnected - Success.");
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 Debug.WriteLine($"=> Peripheral Disconnected - Failed - {ex.Message}");
             }
@@ -416,13 +475,13 @@ namespace LagoVista.XPlat.iOS.Services
                 await _deviceAccessLocker.WaitAsync();
                 Debug.WriteLine("=> Subscribe - Start");
                 var deviceCharacteristic = _allCharacteristics[device.DeviceAddress][characteristic.ToString()];
-               
+
                 var peripheral = _periperals[device.DeviceAddress];
                 peripheral.SetNotifyValue(true, deviceCharacteristic);
                 Debug.WriteLine("=> Subscribe - Success");
                 return true;
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 Debug.WriteLine($"=> Subscribe - Failed - {ex.Message}");
                 PrivateDisconnect(device);
@@ -435,16 +494,47 @@ namespace LagoVista.XPlat.iOS.Services
             }
         }
 
-        private void Periperal_UpdatedCharacterteristicValue(object sender, CBCharacteristicEventArgs e)
+        private async void Periperal_UpdatedCharacterteristicValue(object sender, CBCharacteristicEventArgs e)
         {
-            _dispatcherService.Invoke(() =>
+            try
             {
-                this.CharacteristicChanged(this, new BLECharacteristicsValue()
+                await _deviceAccessLocker.WaitAsync();
+
+                Debug.WriteLine($"=> Characteristic Value Changed - Start");
+
+                var peripheral = sender as CBPeripheral;
+
+                Debug.WriteLine($"===> Characteristic Value Changed - Start peripheral UUID {peripheral.Identifier}");
+
+                var bleDevice = _internalConnectedDevices.FirstOrDefault(dvc => dvc.DeviceAddress == peripheral.Identifier.ToString());
+                if (bleDevice != null)
+                {
+                    bleDevice.LastSeen = DateTime.Now;
+                    Debug.WriteLine($"===> Characteristic Value Changed - BLE Device {bleDevice.DeviceName}");
+                }
+
+                var characteristicValue = new BLECharacteristicsValue()
                 {
                     Uid = e.Characteristic.UUID.ToString(),
                     Value = System.Text.ASCIIEncoding.ASCII.GetString(e.Characteristic.Value.ToArray())
-                }); 
-            });
+                };
+
+                Debug.WriteLine($"===> Characteristic Value Changed - New Value - {characteristicValue.Uid} - {characteristicValue.Value}");
+
+                _dispatcherService.Invoke(() =>
+                {
+                    this.CharacteristicChanged(bleDevice, characteristicValue);
+                });
+            }
+            catch(Exception ex)
+            {
+                Debug.WriteLine($"===> Characteristic Value Changed - Exception {ex.Message}");
+            }
+            finally
+            {
+                Debug.WriteLine("=> Characteristic Value Changed - Finish");
+                _deviceAccessLocker.Release();
+            }
         }
 
         public async Task<bool> UnsubscribeAsync(BLEDevice device, BLEService service, BLECharacteristic characteristic)
@@ -459,7 +549,7 @@ namespace LagoVista.XPlat.iOS.Services
                 Debug.WriteLine("=> Unsubscribe - Success");
                 return true;
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 PrivateDisconnect(device);
                 Debug.WriteLine($"=> Unsubscribe - Failed - {ex.Message}");
@@ -494,7 +584,7 @@ namespace LagoVista.XPlat.iOS.Services
                 Debug.WriteLine("=> Write Characteristic - Success.");
                 return true;
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 Debug.WriteLine($"=> Write Characteristic - Failed - {ex.Message}");
                 PrivateDisconnect(device);
