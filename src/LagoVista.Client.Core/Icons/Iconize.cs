@@ -4,7 +4,7 @@ using System.Linq;
 
 
 /*
-    Adpated From 
+    Adapted From 
     https://github.com/jsmarcus/Xamarin.Plugins
 
     Integrated here to limit dependencies 

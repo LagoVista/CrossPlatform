@@ -9,6 +9,7 @@ using LagoVista.Core.Models.Geo;
 using LagoVista.Core.Validation;
 using LagoVista.Core.ViewModels;
 using LagoVista.IoT.DeviceManagement.Core.Models;
+using LagoVista.IoT.DeviceManagement.Models;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -132,49 +133,102 @@ namespace SeaWolf.ViewModels
             await ViewModelNavigation.NavigateAsync(launchArgs);
         }
 
-        public override async Task InitAsync()
+        private async Task<InvokeResult> LoadFromServer(bool busyFlag)
         {
-            await base.InitAsync();
-            await PerformNetworkOperation(async () =>
+            var response = await DeviceManagementClient.GetDevicesForUserAsync(AppConfig.DeviceRepoId, this.AuthManager.User.Id);
+            if (!response.Successful)
             {
-                var response = await DeviceManagementClient.GetDevicesForUserAsync(AppConfig.DeviceRepoId, this.AuthManager.User.Id);
-                if(!response.Successful)
+                return response.ToInvokeResult();
+            }
+
+            UserDevices = new ObservableCollection<DeviceSummary>(response.Model);
+            await Storage.StoreKVP<ObservableCollection<DeviceSummary>>("USER_VESSELS", UserDevices);
+
+            if (UserDevices.Count > 0)
+            {
+                HasDevices = true;
+                NoDevices = !HasDevices;
+                DeviceId = await Storage.GetKVPAsync<string>(ComponentViewModel.DeviceId);
+
+                if (String.IsNullOrEmpty(DeviceId))
                 {
-                    return response.ToInvokeResult();
+                    DeviceId = UserDevices.First().Id;
+                    await Storage.StoreKVP<string>(ComponentViewModel.DeviceId, DeviceId);
                 }
 
-                UserDevices = new ObservableCollection<DeviceSummary>(response.Model);
+                return await LoadDevice(busyFlag);
+            }
+            else
+            {
+                HasDevices = false;
+                NoDevices = !HasDevices;
+                return InvokeResult.Success;
+            }
+        }
 
-                if (UserDevices.Count > 0)
+        private async Task<InvokeResult> LoadFromCacheAsync()
+        {
+            DeviceId= await Storage.GetKVPAsync<string>(ComponentViewModel.DeviceId);
+
+            if (!String.IsNullOrEmpty(DeviceId) && 
+                await Storage.HasKVPAsync("USER_VESSELS") && await Storage.HasKVPAsync($"VESSEL_{DeviceId}"))
+            {
+                UserDevices = await Storage.GetKVPAsync<ObservableCollection<DeviceSummary>>("USER_VESSELS");
+                CurrentDevice = await Storage.GetKVPAsync<Device>($"VESSEL_{DeviceId}");
+
+                var deviceIdx = UserDevices.IndexOf(UserDevices.FirstOrDefault(dev => dev.Id == CurrentDevice.Id));
+                IsNotLastVessel = deviceIdx < UserDevices.Count - 1;
+                IsNotFirstVessel = deviceIdx > 0;
+
+                if (CurrentDevice.GeoLocation != null)
                 {
-                    HasDevices = true;
-                    NoDevices = !HasDevices;
-                    DeviceId = await Storage.GetKVPAsync<string>(ComponentViewModel.DeviceId);
-
-                    if (String.IsNullOrEmpty(DeviceId))
-                    {
-                        DeviceId = UserDevices.First().Id;
-                    }
-
-                    return await LoadDevice();
+                    CurrentDeviceLocation = CurrentDevice.GeoLocation;
                 }
                 else
                 {
-                    HasDevices = false;
-                    NoDevices = !HasDevices;
-                    return InvokeResult.Success;
+                    /*    var lastKnownLocation = await Geolocation.GetLastKnownLocationAsync();
+                        if (lastKnownLocation != null)
+                        {
+                            CurrentVeseelLocation = new GeoLocation(lastKnownLocation.Latitude, lastKnownLocation.Longitude);
+                        }*/
                 }
-            });
+
+                Sensors = new ObservableCollection<Sensor>(CurrentDevice.SensorCollection);
+
+                GeoFences.Clear();
+                foreach (var geoFence in CurrentDevice.GeoFences)
+                {
+                    GeoFences.Add(geoFence);
+                }
+
+                await LoadFromServer(false);
+                return InvokeResult.Success;
+            }
+            else
+            {
+                return await PerformNetworkOperation(async () =>
+                 {
+                     return await LoadFromServer(false);
+                 });
+            }
         }
 
-        protected override Task DeviceLoadedAsync(Device device)
+        public override async Task InitAsync()
+        {
+            await base.InitAsync();
+            await LoadFromCacheAsync();
+        }
+
+        protected override async Task DeviceLoadedAsync(Device device)
         {
             var deviceIdx = UserDevices.IndexOf(UserDevices.FirstOrDefault(dev => dev.Id == CurrentDevice.Id));
+
+            await Storage.StoreKVP<Device>($"VESSEL_{device.Id}", device);
 
             IsNotLastVessel = deviceIdx < UserDevices.Count - 1;
             IsNotFirstVessel = deviceIdx > 0;
 
-            return base.DeviceLoadedAsync(device);
+            await base.DeviceLoadedAsync(device);
         }
 
         public override Task ReloadedAsync()

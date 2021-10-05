@@ -1,4 +1,5 @@
-﻿using LagoVista.IoT.DeviceManagement.Models;
+﻿using LagoVista.Core.Models;
+using LagoVista.IoT.DeviceManagement.Models;
 using System;
 using System.Globalization;
 using Xamarin.Forms;
@@ -36,7 +37,7 @@ namespace LagoVista.XPlat.Core.ValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            if(System.Convert.ToBoolean(value))
+            if (System.Convert.ToBoolean(value))
             {
                 return Xamarin.Forms.Color.Green;
             }
@@ -56,8 +57,20 @@ namespace LagoVista.XPlat.Core.ValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            var state = (SensorStates)value;
-            switch (state)
+
+            var eh = value as EntityHeader<SensorStates>;
+            var sensorState = SensorStates.Nominal;
+            if (eh != null)
+            {
+                sensorState = eh.Value;
+                return Xamarin.Forms.Color.FromRgb(0x55, 0xA9, 0xF2);
+            }
+            else
+            {
+                sensorState = (SensorStates)value;
+            }
+
+            switch (sensorState)
             {
                 case SensorStates.Error:
                     return Xamarin.Forms.Color.White;
@@ -69,8 +82,8 @@ namespace LagoVista.XPlat.Core.ValueConverter
                     return Xamarin.Forms.Color.FromRgb(0x21, 0x21, 0x21);
                 default:
                     return Xamarin.Forms.Color.FromRgb(0x21, 0x21, 0x21);
-            }
 
+            }
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
@@ -79,29 +92,39 @@ namespace LagoVista.XPlat.Core.ValueConverter
         }
     }
 
-    public class SensorStateBackgroundColorConverter : IValueConverter
+public class SensorStateBackgroundColorConverter : IValueConverter
+{
+    public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
     {
-        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        var eh = value as EntityHeader<SensorStates>;
+        var sensorState = SensorStates.Nominal;
+        if (eh != null)
         {
-            var state = (SensorStates)value;
-            switch (state)
-            {
-                case SensorStates.Error:
-                    return Xamarin.Forms.Color.FromRgb(0xE9, 0x5C, 0x5D);
-                case SensorStates.Warning:
-                    return Xamarin.Forms.Color.FromRgb(0xFF, 0xC8, 0x7F);
-                case SensorStates.Nominal:
-                    return Xamarin.Forms.Color.FromRgb(0x55, 0xA9, 0xF2);
-                case SensorStates.Offline:
-                    return Xamarin.Forms.Color.FromRgb(0x55, 0xA9, 0xF2);
-                default:
-                    return Xamarin.Forms.Color.FromRgb(0x55, 0xA9, 0xF2);
-            }
+            sensorState = eh.Value;
+            return Xamarin.Forms.Color.FromRgb(0x55, 0xA9, 0xF2);
         }
-
-        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        else
         {
-            throw new NotImplementedException();
+            sensorState = (SensorStates)value;
+        }
+        switch (sensorState)
+        {
+            case SensorStates.Error:
+                return Xamarin.Forms.Color.FromRgb(0xE9, 0x5C, 0x5D);
+            case SensorStates.Warning:
+                return Xamarin.Forms.Color.FromRgb(0xFF, 0xC8, 0x7F);
+            case SensorStates.Nominal:
+                return Xamarin.Forms.Color.FromRgb(0x55, 0xA9, 0xF2);
+            case SensorStates.Offline:
+                return Xamarin.Forms.Color.FromRgb(0x55, 0xA9, 0xF2);
+            default:
+                return Xamarin.Forms.Color.FromRgb(0x55, 0xA9, 0xF2);
         }
     }
+
+    public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+    {
+        throw new NotImplementedException();
+    }
+}
 }

@@ -118,10 +118,14 @@ namespace LagoVista.Core.UWP.Services
 
             if (AppSettings.ContainsKey(key))
             {
-                var json = AppSettings[key] as string;
-                if (!String.IsNullOrEmpty(json))
+                var entry = AppSettings[key] as string;
+                if(entry.StartsWith("file="))
                 {
-                    return JsonConvert.DeserializeObject<T>(json);
+                    return await GetAsync<T>($"{key}.json");
+                }
+                else if (!String.IsNullOrEmpty(entry))
+                {
+                    return JsonConvert.DeserializeObject<T>(entry);
                 }
             }
 
@@ -217,8 +221,17 @@ namespace LagoVista.Core.UWP.Services
             {
                 await LoadSettingsIfRequired();
 
-                AppSettings[key] = JsonConvert.SerializeObject(value);
+                var json = JsonConvert.SerializeObject(value, new JsonSerializerSettings { NullValueHandling = NullValueHandling.Ignore });
 
+                if (json.Length > 4096)
+                {
+                    await StoreAsync<T>(value, $"{key}.json");
+                    AppSettings[key] = $"file={key}";
+                }
+                else
+                {
+                    AppSettings[key] = json;
+                }
                 await SaveSettingsIfRequired();
             }
             catch (Exception ex)

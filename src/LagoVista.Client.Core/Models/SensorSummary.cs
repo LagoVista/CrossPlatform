@@ -7,9 +7,9 @@ using System.Text;
 
 namespace LagoVista.Client.Core.Models
 {
-    public class SensorSummary : ModelBase
+    public class SensorSummaryX : ModelBase
     {
-        public SensorSummary(Sensor sensor)
+        public SensorSummaryX(Sensor sensor)
         {
             State = sensor.State.Value;
             Display = $"{sensor.Value} {sensor.UnitsLabel}";

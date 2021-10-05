@@ -98,7 +98,7 @@ namespace LagoVista.Client.Core.ViewModels
             Logout();
         }
 
-        public async Task<InvokeResult> PerformNetworkOperation(Func<Task<InvokeResult>> action, bool suppressErrorPopup = false)
+        public async Task<InvokeResult> PerformNetworkOperation(Func<Task<InvokeResult>> action, bool suppressErrorPopup = false, bool busyFlag = true)
         {
             /*
             if (!IsNetworkConnected)
@@ -107,7 +107,7 @@ namespace LagoVista.Client.Core.ViewModels
                 return InvokeResult.FromErrors(ClientResources.Common_NoConnection.ToErrorMessage());
             }*/
 
-            IsBusy = true;
+            IsBusy = busyFlag;
 
             InvokeResult result;
             try

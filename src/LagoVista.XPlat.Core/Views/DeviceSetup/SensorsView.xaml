@@ -73,8 +73,8 @@
                                     <ColumnDefinition Width="*" />
                                     <ColumnDefinition Width="60" />
                                 </Grid.ColumnDefinitions>
-                                <Label Text="{Binding Name}" />
-                                <pge:Icon IconKey="fa-check-circle" TextColor="Green"/>
+                                <Label Text="{Binding Name}" FontSize="24" />
+                                <pge:Icon Grid.Column="1" FontSize="24" IconKey="fa-check-circle" TextColor="Green"/>
                             </Grid>
                         </ViewCell>
                     </DataTemplate>
