@@ -10,7 +10,16 @@
         <ListView ItemsSource="{Binding SensorTypes}" SelectedItem="{Binding SelectedSensor, Mode=TwoWay}" HasUnevenRows="True">
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    <TextCell  Text="{Binding Name}" />
+                    <ViewCell>
+                        <Grid Margin="5">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="32" />
+                            </Grid.ColumnDefinitions>
+                            <Label FontSize="24"  Text="{Binding Name}" TextColor="Black" />
+                            <pge:Icon FontSize="24"  IconKey="{Binding IconKey}" Grid.Column="1" TextColor="Green"/>
+                        </Grid>
+                    </ViewCell>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>

@@ -11,6 +11,7 @@ namespace LagoVista.Client.Core.Icons
         /// Gets the icons.
         /// </summary>
         /// <value>
+        /// https://ionic.io/ionicons/v4
         /// The icons.
         /// </value>
         public static IList<IIcon> Icons { get; } = new List<IIcon>();

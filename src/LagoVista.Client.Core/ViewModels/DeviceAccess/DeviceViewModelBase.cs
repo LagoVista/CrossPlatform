@@ -73,7 +73,7 @@ namespace LagoVista.Client.Core.ViewModels.DeviceAccess
                 {
                     return wsResult.ToInvokeResult();
                 }
-            });
+            }, busyFlag: false);
         }
 
         private async Task InitBLEAsync()
@@ -334,7 +334,7 @@ namespace LagoVista.Client.Core.ViewModels.DeviceAccess
             }
         }
 
-        protected async Task<InvokeResult> LoadDevice()
+        protected async Task<InvokeResult> LoadDevice(bool busyFlag = true)
         {
             return await PerformNetworkOperation(async () =>
             {
@@ -362,12 +362,7 @@ namespace LagoVista.Client.Core.ViewModels.DeviceAccess
                             }*/
                     }
 
-                    Sensors.Clear();
-
-                    foreach (var summary in CurrentDevice.SensorCollection)
-                    {
-                        Sensors.Add(new Models.SensorSummary(summary));
-                    }
+                    Sensors = new ObservableCollection<Sensor>(CurrentDevice.SensorCollection);
 
                     GeoFences.Clear();
                     foreach (var geoFence in CurrentDevice.GeoFences)
@@ -400,7 +395,7 @@ namespace LagoVista.Client.Core.ViewModels.DeviceAccess
                 }
 
                 return deviceResponse.ToInvokeResult();
-            });
+            }, busyFlag: busyFlag);
         }
 
         protected virtual Task DeviceLoadedAsync(Device device)
@@ -410,7 +405,12 @@ namespace LagoVista.Client.Core.ViewModels.DeviceAccess
 
         public ObservableCollection<GeoFence> GeoFences { get; } = new ObservableCollection<GeoFence>();
 
-        public ObservableCollection<Models.SensorSummary> Sensors { get; } = new ObservableCollection<Models.SensorSummary>();
+        private ObservableCollection<Sensor> _sensors;
+        public ObservableCollection<Sensor> Sensors
+        {
+            get => _sensors;
+            set => Set(ref _sensors, value);
+        }
 
         public GeoLocation CurrentDeviceLocation
         {
@@ -480,13 +480,7 @@ namespace LagoVista.Client.Core.ViewModels.DeviceAccess
                         CurrentDeviceLocation = device.GeoLocation;
                         CurrentDevice.SensorCollection = device.SensorCollection;
                         CurrentDevice.GeoLocation = device.GeoLocation;
-
-                        Sensors.Clear();
-
-                        foreach (var summary in CurrentDevice.SensorCollection)
-                        {
-                            Sensors.Add(new Models.SensorSummary(summary));
-                        }
+                        Sensors = new ObservableCollection<Sensor>(CurrentDevice.SensorCollection);
 
                         SetState(CurrentDevice);
                     });
@@ -502,7 +496,7 @@ namespace LagoVista.Client.Core.ViewModels.DeviceAccess
                 return await GetFromLocalCacheAsync<DeviceConfiguration>($"DCF{CurrentDevice.DeviceConfiguration.Id}");
             }
             else
-            { 
+            {
                 DeviceConfiguration deviceConfig = null;
                 await PerformNetworkOperation(async () =>
                 {
