@@ -3,11 +3,11 @@
     <TargetFramework>netstandard2.0</TargetFramework>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="LagoVista.Core" Version="3.0.1596.506" />
-    <PackageReference Include="LagoVista.IoT.Deployment.Models" Version="3.0.1596.506" />
-    <PackageReference Include="LagoVista.IoT.DeviceAdmin.Models" Version="3.0.1596.506" />
-    <PackageReference Include="LagoVista.IoT.DeviceManagement.Models" Version="3.0.1596.506" />
-    <PackageReference Include="LagoVista.IoT.Pipeline.Models" Version="3.0.1596.506" />    
+    <PackageReference Include="LagoVista.Core" Version="3.0.1603.1601" />
+    <PackageReference Include="LagoVista.IoT.Deployment.Models" Version="3.0.1603.1601" />
+    <PackageReference Include="LagoVista.IoT.DeviceAdmin.Models" Version="3.0.1603.1601" />
+    <PackageReference Include="LagoVista.IoT.DeviceManagement.Models" Version="3.0.1603.1601" />
+    <PackageReference Include="LagoVista.IoT.Pipeline.Models" Version="3.0.1603.1601" />    
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\LagoVista.Client.Core\LagoVista.Client.Core.csproj" />

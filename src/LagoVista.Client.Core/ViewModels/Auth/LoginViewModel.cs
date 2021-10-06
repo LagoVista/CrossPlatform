@@ -73,9 +73,9 @@ namespace LagoVista.Client.Core.ViewModels.Auth
             return InvokeResult.Success;
         }
 
-        public void Register()
+        public async void Register()
         {
-            switch(AppConfig.Environment)
+            /*switch(AppConfig.Environment)
             {
                 case Environments.Production:
                 case Environments.Beta: Services.Network.OpenURI(new System.Uri("https://www.nuviot.com/account/register")); break;
@@ -87,7 +87,9 @@ namespace LagoVista.Client.Core.ViewModels.Auth
 
                 case Environments.Staging:
                 case Environments.Testing: Services.Network.OpenURI(new System.Uri("https://test.nuviot.com/account/register")); break;
-            }
+            }*/
+
+            await ViewModelNavigation.NavigateAsync<RegisterUserViewModel>(this);
         }
 
         public  void ForgotPassword()

@@ -2,6 +2,7 @@
 using LagoVista.Core.Authentication.Models;
 using LagoVista.Core.Commanding;
 using LagoVista.Core.Interfaces;
+using LagoVista.Core.Models;
 using LagoVista.Core.PlatformSupport;
 using LagoVista.Core.Validation;
 using LagoVista.UserAdmin.Models.DTOs;
@@ -20,8 +21,14 @@ namespace LagoVista.Client.Core.ViewModels.Users
             {
                 AppId = AppConfig.AppName,
                 DeviceId = deviceInfo.DeviceUniqueId,
-                ClientType = "mobileapp"
+                ClientType = "mobileapp",
             };
+
+            if(!EntityHeader.IsNullOrEmpty(AppConfig.SystemOwnerOrg))
+            {
+                RegisterModel.OrgId = AppConfig.SystemOwnerOrg.Id;
+            }
+
             RegisterCommand = new RelayCommand(Register);
 
             CancelCommand = new RelayCommand(() => ViewModelNavigation.GoBackAsync());

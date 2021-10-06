@@ -57,7 +57,7 @@ namespace SeaWolf
                 RootUrl = "dev-api.nuviot.com",
             };
 
-            make sure it doesn't compile....add in a device repo id
+            Microsoft.AppCenter.Analytics.Analytics.TrackEvent("MultipleMediaPickerHelper__GetMediaPickerFile_Resized", properties);
 #elif ENV_LOCALDEV
             var serverInfo = new ServerInfo()
             {
