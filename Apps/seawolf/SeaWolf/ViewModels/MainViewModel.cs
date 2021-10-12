@@ -1,4 +1,5 @@
-﻿using LagoVista.Client.Core.Net;
+﻿using LagoVista.Client.Core.Exceptions;
+using LagoVista.Client.Core.Net;
 using LagoVista.Client.Core.Resources;
 using LagoVista.Client.Core.ViewModels;
 using LagoVista.Client.Core.ViewModels.DeviceAccess;
@@ -135,42 +136,51 @@ namespace SeaWolf.ViewModels
 
         private async Task<InvokeResult> LoadFromServer(bool busyFlag)
         {
-            var response = await DeviceManagementClient.GetDevicesForUserAsync(AppConfig.DeviceRepoId, this.AuthManager.User.Id);
-            if (!response.Successful)
+            try
             {
-                return response.ToInvokeResult();
-            }
-
-            UserDevices = new ObservableCollection<DeviceSummary>(response.Model);
-            await Storage.StoreKVP<ObservableCollection<DeviceSummary>>("USER_VESSELS", UserDevices);
-
-            if (UserDevices.Count > 0)
-            {
-                HasDevices = true;
-                NoDevices = !HasDevices;
-                DeviceId = await Storage.GetKVPAsync<string>(ComponentViewModel.DeviceId);
-
-                if (String.IsNullOrEmpty(DeviceId))
+                var response = await DeviceManagementClient.GetDevicesForUserAsync(AppConfig.DeviceRepoId, this.AuthManager.User.Id);
+                if (!response.Successful)
                 {
-                    DeviceId = UserDevices.First().Id;
-                    await Storage.StoreKVP<string>(ComponentViewModel.DeviceId, DeviceId);
+                    return response.ToInvokeResult();
                 }
 
-                return await LoadDevice(busyFlag);
+                UserDevices = new ObservableCollection<DeviceSummary>(response.Model);
+                await Storage.StoreKVP<ObservableCollection<DeviceSummary>>("USER_VESSELS", UserDevices);
+
+                if (UserDevices.Count > 0)
+                {
+                    HasDevices = true;
+                    NoDevices = !HasDevices;
+                    DeviceId = await Storage.GetKVPAsync<string>(ComponentViewModel.DeviceId);
+
+                    if (String.IsNullOrEmpty(DeviceId))
+                    {
+                        DeviceId = UserDevices.First().Id;
+                        await Storage.StoreKVP<string>(ComponentViewModel.DeviceId, DeviceId);
+                    }
+
+                    return await LoadDevice(busyFlag);
+                }
+                else
+                {
+                    HasDevices = false;
+                    NoDevices = !HasDevices;
+                    return InvokeResult.Success;
+                }
             }
-            else
+            catch (CouldNotRenewTokenException)
             {
-                HasDevices = false;
-                NoDevices = !HasDevices;
-                return InvokeResult.Success;
+                await Popups.ShowAsync("Sorry you have been logged out of the system.  Please log in again.");
+                Logout();
+                return InvokeResult.FromError(nameof(CouldNotRenewTokenException));
             }
         }
 
         private async Task<InvokeResult> LoadFromCacheAsync()
         {
-            DeviceId= await Storage.GetKVPAsync<string>(ComponentViewModel.DeviceId);
+            DeviceId = await Storage.GetKVPAsync<string>(ComponentViewModel.DeviceId);
 
-            if (!String.IsNullOrEmpty(DeviceId) && 
+            if (!String.IsNullOrEmpty(DeviceId) &&
                 await Storage.HasKVPAsync("USER_VESSELS") && await Storage.HasKVPAsync($"VESSEL_{DeviceId}"))
             {
                 UserDevices = await Storage.GetKVPAsync<ObservableCollection<DeviceSummary>>("USER_VESSELS");

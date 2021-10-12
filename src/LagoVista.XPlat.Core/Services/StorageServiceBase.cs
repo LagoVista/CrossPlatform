@@ -158,5 +158,10 @@ namespace LagoVista.XPlat.Core.Services
         {
             throw new NotImplementedException();
         }
+
+        public Task ClearAllAsync()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

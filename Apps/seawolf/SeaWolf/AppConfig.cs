@@ -16,12 +16,6 @@ namespace SeaWolf
                 case Device.UWP: PlatformType = PlatformTypes.WindowsUWP; break;
             }
 
-            SystemOwnerOrg = new EntityHeader()
-            {
-                Id = "B20031613DFB4AF89F4FE8EE25AF7FFE",
-                Text = "SeaWolf Marine"
-            };
-
             WebAddress = "https://www.NuvIoT.com";
         }
 
@@ -43,7 +37,7 @@ namespace SeaWolf
         public bool EmitTestingCode => true;
 #endif
 
-        public string AppId => "6819D571A0A84371BB236BCB4219D1D0";
+        public string AppId { get; set; }
         public string ClientType => "mobileapp";
 
         public VersionInfo Version { get; set; }
@@ -62,7 +56,7 @@ namespace SeaWolf
 
         public string APIToken => String.Empty;
 
-        public string InstanceId { get; set; } = "68AD559A50644D5F92087E429E57D947";
+        public string InstanceId { get; set; }
         public string InstanceAuthKey { get; set; }
         public string DeviceId { get; set; }
         public string DeviceRepoId { get; set; }

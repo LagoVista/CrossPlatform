@@ -1,7 +1,7 @@
 ﻿//#define ENV_LOCALDEV
 //#define ENV_LOCALDEV
-//#define ENV_DEV
-#define ENV_MASTER
+#define ENV_DEV
+//#define ENV_MASTER
 
 using System;
 using Xamarin.Forms;
@@ -33,7 +33,7 @@ namespace SeaWolf
             Device.SetFlags(new string[] { "Shapes_Experimental" });
             InitializeComponent();
 
-            App.Instance= this;
+            App.Instance = this;
 
             InitServices();
         }
@@ -57,7 +57,16 @@ namespace SeaWolf
                 RootUrl = "dev-api.nuviot.com",
             };
 
-            Microsoft.AppCenter.Analytics.Analytics.TrackEvent("MultipleMediaPickerHelper__GetMediaPickerFile_Resized", properties);
+            _appConfig.SystemOwnerOrg = new EntityHeader()
+            {
+                Id = "FD36FAE278C343649B28F29A51867720",
+                Text = "Seawolf Dev"
+            };
+
+            _appConfig.AppId = "BA98528EBC334DA1AFFAF8370ACB6035";
+            _appConfig.InstanceId = "3CFFB06D07F04542BFE3327727CF07DB";
+            _appConfig.DeviceRepoId = "61CF8C6E1688479DB252794D9ABC983A";
+
 #elif ENV_LOCALDEV
             var serverInfo = new ServerInfo()
             {
@@ -73,6 +82,14 @@ namespace SeaWolf
                 RootUrl = "api.nuviot.com",
             };
 
+            _appConfig.SystemOwnerOrg = new EntityHeader()
+            {
+                Id = "B20031613DFB4AF89F4FE8EE25AF7FFE",
+                Text = "SeaWolf Marine"
+            };
+
+            _appConfig.AppId = "6819D571A0A84371BB236BCB4219D1D0";
+            _appConfig.InstanceId = "68AD559A50644D5F92087E429E57D947";
             _appConfig.DeviceRepoId = "7D9871D47B7F4BDCB338FAE4C1CBF947";
 #endif
 
@@ -80,10 +97,10 @@ namespace SeaWolf
             ResourceSupport.UseCustomfonts = true;
 
             this.RegisterStyle(new AppStyle());
-            
 
-            var clientAppInfo = new ClientAppInfo();            
-            SLWIOC.RegisterSingleton<IClientAppInfo>(clientAppInfo);            
+
+            var clientAppInfo = new ClientAppInfo();
+            SLWIOC.RegisterSingleton<IClientAppInfo>(clientAppInfo);
             SLWIOC.RegisterSingleton<IAppConfig>(_appConfig);
 
             SLWIOC.Register<IDeviceManagementClient, DeviceManagementClient>();
@@ -94,7 +111,7 @@ namespace SeaWolf
             LagoVista.Client.Core.Startup.Init(serverInfo);
 
             navigation.Add<MainViewModel, Views.MainView>();
-            
+
             navigation.Add<SettingsViewModel, Views.SettingsView>();
 
             navigation.Add<GeoFencesViewModel, Views.GeoFencesView>();
@@ -106,9 +123,9 @@ namespace SeaWolf
             navigation.Add<ComponentViewModel, Views.ComponentView>();
             navigation.Add<ConfigurationViewModel, Views.ConfigurationView>();
             navigation.Add<LiveDataViewModel, Views.LiveDataView>();
-          
+
             navigation.Add<SplashViewModel, Views.SplashView>();
-           
+
             navigation.Start<SplashViewModel>();
 
             var dmClient = SLWIOC.Create<IDeviceManagementClient>();

@@ -1510,6 +1510,15 @@ namespace LagoVista.Client.Core.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Skip Step.
+        /// </summary>
+        public static string Verify_SkipStep {
+            get {
+                return ResourceManager.GetString("Verify_SkipStep", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Thank you, your phone number has been confirmed..
         /// </summary>
         public static string Verify_SMS_Confirmed {

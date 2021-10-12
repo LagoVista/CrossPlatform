@@ -609,4 +609,7 @@
   <data name="DeviceSerialPort_View" xml:space="preserve">
     <value>Device Serial Port Access</value>
   </data>
+  <data name="Verify_SkipStep" xml:space="preserve">
+    <value>Skip Step</value>
+  </data>
 </root>

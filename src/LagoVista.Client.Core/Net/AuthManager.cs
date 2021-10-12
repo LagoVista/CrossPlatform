@@ -66,7 +66,6 @@ namespace LagoVista.Client.Core.Net
                 RefreshTokenExpirationUTC = storedAuthmanager.RefreshTokenExpirationUTC;              
                 User = storedAuthmanager.User;
                 Roles = storedAuthmanager.Roles;
-
             }
         }
 
@@ -79,8 +78,7 @@ namespace LagoVista.Client.Core.Net
             RefreshTokenExpirationUTC = null;
             User = null;
             Roles = new List<EntityHeader>();
-
-            await PersistAsync();
+            await _storage.ClearAllAsync();
             await _vmNavigation.SetAsNewRootAsync<LoginViewModel>();
         }
 

@@ -83,8 +83,8 @@ namespace LagoVista.Core.UWP.Services
                 }
 
                 var storageFile = await folder.GetFileAsync(fileName);
-
                 return await storageFile.OpenStreamForReadAsync();
+               
             }
             catch (Exception)
             {
@@ -167,7 +167,7 @@ namespace LagoVista.Core.UWP.Services
 
             var storageItem = await folder.TryGetItemAsync(fileName);
             if (storageItem != null)
-                await storageItem.DeleteAsync();
+                await storageItem.DeleteAsync()
 
             var storageFile = await folder.CreateFileAsync(fileName);
 
@@ -290,6 +290,11 @@ namespace LagoVista.Core.UWP.Services
         public Task<string> WriteAllBytesAsync(string fileName, byte[] buffer)
         {
             throw new NotImplementedException();
+        }
+
+        public async Task ClearAllAsync()
+        {
+            await Windows.Storage.ApplicationData.Current.ClearAsync();
         }
     }
 }

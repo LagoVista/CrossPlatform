@@ -349,5 +349,10 @@ namespace LagoVista.UWP.UI
             await NavigateAsync(args);
             _rootFrame.BackStack.Clear();
         }
+
+        public Task GoBackAsync(int dropPageCount)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

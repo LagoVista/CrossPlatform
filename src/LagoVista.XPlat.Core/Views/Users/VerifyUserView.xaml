@@ -40,6 +40,10 @@
                     <pge:Button IsVisible="{Binding ShowPhoneConfirm}" Command="{Binding ConfirmEnteredSMSCommand}" 
                                 Text="{ext:ClientTranslate Verify_ConfirmCode}" HeightRequest="42" Margin="0,0,0,10" />
 
+                    <pge:Button IsVisible="{Binding ShowSkipStep}" Command="{Binding SkipStepCommand}" 
+                                Text="{ext:ClientTranslate Verify_SkipStep}" HeightRequest="42" Margin="0,0,0,10" />
+
+
                     <pge:HyperLinkLabel NavigateCommand="{Binding LogoutCommand}" Text="{ext:ClientTranslate Common_Logout}"  />
                 </StackLayout>
 

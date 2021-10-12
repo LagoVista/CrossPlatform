@@ -22,6 +22,7 @@ namespace LagoVista.Client.Core.ViewModels.Users
         {
             _clientAppInfo = clientAppInfo;
             SendEmailConfirmationCommand = new RelayCommand(SendEmailConfirmation);
+            SkipStepCommand = new RelayCommand(SkipStep);
             SendSMSConfirmationCommand = new RelayCommand(SendSMSConfirmation, ValidPhoneNumber);
             ConfirmEnteredSMSCommand = new RelayCommand(ConfirmSMSCode, () => !String.IsNullOrEmpty(SMSCode));
             LogoutCommand = new RelayCommand(Logout);
@@ -104,11 +105,43 @@ namespace LagoVista.Client.Core.ViewModels.Users
                 var refreshResult = await RefreshUserFromServerAsync();
                 if (!refreshResult.Successful) return refreshResult;
 
-                Logger.AddCustomEvent(LagoVista.Core.PlatformSupport.LogLevel.Error, "VerifyUserViewModel_ConfirmSMSCode", "SMS Confirmed", new KeyValuePair<string, string>("userid", AuthManager.User.Id));
+                Logger.AddCustomEvent(LagoVista.Core.PlatformSupport.LogLevel.Message, "VerifyUserViewModel_ConfirmSMSCode", "SMS Confirmed", new KeyValuePair<string, string>("userid", AuthManager.User.Id));
                 await Popups.ShowAsync(ClientResources.Verify_SMS_Confirmed);
 
                 ShowPhoneConfirm = false;
                 ShowEmailConfirm = true;
+
+                return refreshResult;
+            });
+
+            if (result.Successful)
+            {
+                await TransitionToNextView();
+            }
+        }
+
+        public async void SkipStep()
+        {
+            var result = await PerformNetworkOperation(async () =>
+            {
+                var vm = new VerfiyPhoneNumber
+                {
+                    PhoneNumber = PhoneNumber,
+                    SkipStep = true,
+                };
+
+                var confirmSMSResult = await RestClient.PostAsync("/api/verify/sms", vm, new CancellationTokenSource());
+                if (!confirmSMSResult.Successful) return confirmSMSResult;
+
+                var refreshResult = await RefreshUserFromServerAsync();
+                if (!refreshResult.Successful) return refreshResult;
+
+                Logger.AddCustomEvent(LagoVista.Core.PlatformSupport.LogLevel.Message, "VerifyUserViewModel_ConfirmSMSCode", "SMS Confirmed", new KeyValuePair<string, string>("userid", AuthManager.User.Id));
+                await Popups.ShowAsync(ClientResources.Verify_SMS_Confirmed);
+
+                ShowPhoneConfirm = false;
+                ShowEmailConfirm = true;
+                ShowSkipStep = false;
 
                 return refreshResult;
             });
@@ -187,6 +220,10 @@ namespace LagoVista.Client.Core.ViewModels.Users
             {
                 await Popups.ShowAsync(ClientResources.Verify_SMSSent);
             }
+            else
+            {
+                ShowSkipStep = true;
+            }
         }
 
         private string _phoneNumber;
@@ -209,6 +246,13 @@ namespace LagoVista.Client.Core.ViewModels.Users
                 Set(ref _smsCode, value);
                 ConfirmEnteredSMSCommand.RaiseCanExecuteChanged();
             }
+        }
+
+        private bool _showSkipStep;
+        public bool ShowSkipStep
+        {
+            get => _showSkipStep;
+            set { Set(ref _showSkipStep, value); }
         }
 
         private bool _confirmEmailStepVisible = false;
@@ -240,7 +284,7 @@ namespace LagoVista.Client.Core.ViewModels.Users
             }
         }
 
-
+        public RelayCommand SkipStepCommand { get; private set; }
         public RelayCommand SendEmailConfirmationCommand { get; private set; }
         public RelayCommand SendSMSConfirmationCommand { get; private set; }
         public RelayCommand ConfirmEnteredSMSCommand { get; private set; }
