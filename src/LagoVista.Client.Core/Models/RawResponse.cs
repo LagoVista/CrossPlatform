@@ -4,6 +4,7 @@ using LagoVista.Core.Validation;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 
 namespace LagoVista.Client.Core.Models
@@ -136,7 +137,7 @@ namespace LagoVista.Client.Core.Models
         {            
             if (!Success)
             {
-                var result = ListResponse<TModel>.Create(null);
+                var result = new ListResponse<TModel>();
                 result.Errors.Add(new LagoVista.Core.Validation.ErrorMessage(ErrorMessage));
                 return result;
             }

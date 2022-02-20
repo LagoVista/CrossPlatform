@@ -167,7 +167,7 @@ namespace LagoVista.Core.UWP.Services
 
             var storageItem = await folder.TryGetItemAsync(fileName);
             if (storageItem != null)
-                await storageItem.DeleteAsync()
+                await storageItem.DeleteAsync();
 
             var storageFile = await folder.CreateFileAsync(fileName);
 

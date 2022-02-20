@@ -28,6 +28,8 @@ namespace LagoVista.Client.Core
         Task<InvokeResult<TResponseModel>> PostAsync<TModel, TResponseModel>(String path, TModel model, CancellationTokenSource cancellationTokenSource = null) where TModel : class where TResponseModel : class;
 
         Task<InvokeResult<TResponseModel>> GetAsync<TResponseModel>(String path, CancellationTokenSource cancellationTokenSource = null) where TResponseModel : class;
-        Task<ListResponse<TResponseModel>> GetListResponseAsync<TResponseModel>(String path, ListRequest listRequest, CancellationTokenSource cancellationTokenSource = null) where TResponseModel : class;
+        Task<ListResponse<TResponseModel>> GetListResponseAsync<TResponseModel>(String path, ListRequest listRequest = null, CancellationTokenSource cancellationTokenSource = null) where TResponseModel : class, new();
+
+        Task<ListResponse<TResponseModel>> TryGetFromCache<TResponseModel>(string path, ListRequest listRequest = null) where TResponseModel : class, new();
     }
 }

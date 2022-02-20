@@ -970,6 +970,7 @@ namespace LagoVista.XPlat.Core
 
             if (!_hasAppeared)
             {
+                
                 if (ViewModel != null)
                 {
                     ViewModel.Logger.AddCustomEvent(LagoVista.Core.PlatformSupport.LogLevel.Message, ViewModel.GetType().Name, "Appeared");

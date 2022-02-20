@@ -1,0 +1,179 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{72EAB33F-C288-47B9-A7B1-56545AD42FD0}</ProjectGuid>
+    <ProjectTypeGuids>{EFBA0AD7-5A72-4C68-AF49-83D382785DCF};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <TemplateGuid>{9AA2D3C6-3393-45F1-8E7C-5A9901728795}</TemplateGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>SeaWolf.Droid</RootNamespace>
+    <AssemblyName>SeaWolf.Android</AssemblyName>
+    <AndroidApplication>True</AndroidApplication>
+    <AndroidResgenFile>Resources\Resource.designer.cs</AndroidResgenFile>
+    <AndroidResgenClass>Resource</AndroidResgenClass>
+    <AndroidManifest>Properties\AndroidManifest.xml</AndroidManifest>
+    <MonoAndroidResourcePrefix>Resources</MonoAndroidResourcePrefix>
+    <MonoAndroidAssetsPrefix>Assets</MonoAndroidAssetsPrefix>
+    <AndroidUseLatestPlatformSdk>false</AndroidUseLatestPlatformSdk>
+    <TargetFrameworkVersion>v11.0</TargetFrameworkVersion>
+    <AndroidEnableSGenConcurrent>true</AndroidEnableSGenConcurrent>
+    <AndroidUseAapt2>true</AndroidUseAapt2>
+    <AndroidHttpClientHandlerType>Xamarin.Android.Net.AndroidClientHandler</AndroidHttpClientHandlerType>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>portable</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug</OutputPath>
+    <DefineConstants>DEBUG;</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AndroidLinkMode>None</AndroidLinkMode>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>portable</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AndroidManagedSymbols>true</AndroidManagedSymbols>
+    <AndroidUseSharedRuntime>false</AndroidUseSharedRuntime>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Mono.Android" />
+    <Reference Include="Mono.Android.Export" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Numerics.Vectors" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="DLToolkit.Forms.Controls.FlowListView">
+      <Version>2.0.11</Version>
+    </PackageReference>
+    <PackageReference Include="LagoVista.AI.Models">
+      <Version>3.0.1604.519</Version>
+    </PackageReference>
+    <PackageReference Include="LagoVista.Core">
+      <Version>3.0.1604.519</Version>
+    </PackageReference>
+    <PackageReference Include="LagoVista.Core.Authentication">
+      <Version>3.0.1604.519</Version>
+    </PackageReference>
+    <PackageReference Include="LagoVista.Core.Networking">
+      <Version>3.0.1604.519</Version>
+    </PackageReference>
+    <PackageReference Include="LagoVista.IoT.Deployment.Models">
+      <Version>3.0.1604.519</Version>
+    </PackageReference>
+    <PackageReference Include="LagoVista.IoT.DeviceAdmin.Models">
+      <Version>3.0.1604.519</Version>
+    </PackageReference>
+    <PackageReference Include="LagoVista.IoT.DeviceManagement.Models">
+      <Version>3.0.1604.519</Version>
+    </PackageReference>
+    <PackageReference Include="LagoVista.IoT.DeviceMessaging.Models">
+      <Version>3.0.1604.519</Version>
+    </PackageReference>
+    <PackageReference Include="LagoVista.IoT.Logging">
+      <Version>3.0.1604.519</Version>
+    </PackageReference>
+    <PackageReference Include="LagoVista.IoT.Pipeline.Models">
+      <Version>3.0.1604.519</Version>
+    </PackageReference>
+    <PackageReference Include="LagoVista.MediaServices.Models">
+      <Version>3.0.1604.519</Version>
+    </PackageReference>
+    <PackageReference Include="LagoVista.UserAdmin.Models">
+      <Version>3.0.1604.519</Version>
+    </PackageReference>
+    <PackageReference Include="Xamarin.AndroidX.MediaRouter">
+      <Version>1.2.0</Version>
+    </PackageReference>
+    <PackageReference Include="Xamarin.AndroidX.Palette">
+      <Version>1.0.0.5</Version>
+    </PackageReference>
+    <PackageReference Include="Xamarin.Forms" Version="5.0.0.2083" />
+    <PackageReference Include="Xamarin.Essentials" Version="1.7.0" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="MainActivity.cs" />
+    <Compile Include="Resources\Resource.designer.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\font\iconizeentypoplus.ttf" />
+    <AndroidAsset Include="Assets\font\iconizefontawesome.ttf" />
+    <AndroidAsset Include="Assets\font\iconizeionicons.ttf" />
+    <AndroidAsset Include="Assets\font\iconizematerial.ttf" />
+    <AndroidAsset Include="Assets\font\iconizemeteocons.ttf" />
+    <AndroidAsset Include="Assets\font\iconizesimplelineicons.ttf" />
+    <AndroidAsset Include="Assets\font\iconizetypicons.ttf" />
+    <AndroidAsset Include="Assets\font\iconizeweathericons.ttf" />
+    <AndroidAsset Include="Assets\font\RobotoBlack.ttf" />
+    <AndroidAsset Include="Assets\font\RobotoBlackItalic.ttf" />
+    <AndroidAsset Include="Assets\font\RobotoBold.ttf" />
+    <AndroidAsset Include="Assets\font\RobotoBoldItalic.ttf" />
+    <AndroidAsset Include="Assets\font\RobotoCondensedBold.ttf" />
+    <AndroidAsset Include="Assets\font\RobotoCondensedBoldItalic.ttf" />
+    <AndroidAsset Include="Assets\font\RobotoCondensedItalic.ttf" />
+    <AndroidAsset Include="Assets\font\RobotoCondensedLight.ttf" />
+    <AndroidAsset Include="Assets\font\RobotoCondensedLightItalic.ttf" />
+    <AndroidAsset Include="Assets\font\RobotoCondensedRegular.ttf" />
+    <AndroidAsset Include="Assets\font\RobotoItalic.ttf" />
+    <AndroidAsset Include="Assets\font\RobotoLight.ttf" />
+    <AndroidAsset Include="Assets\font\RobotoLightItalic.ttf" />
+    <AndroidAsset Include="Assets\font\RobotoMedium.ttf" />
+    <AndroidAsset Include="Assets\font\RobotoMediumItalic.ttf" />
+    <AndroidAsset Include="Assets\font\RobotoRegular.ttf" />
+    <AndroidAsset Include="Assets\font\RobotoThin.ttf" />
+    <AndroidAsset Include="Assets\font\RobotoThinItalic.ttf" />
+    <None Include="Resources\AboutResources.txt" />
+    <None Include="Assets\AboutAssets.txt" />
+    <None Include="Properties\AndroidManifest.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\Tabbar.xml" />
+    <AndroidResource Include="Resources\layout\Toolbar.xml" />
+    <AndroidResource Include="Resources\values\styles.xml" />
+    <AndroidResource Include="Resources\values\colors.xml" />
+    <AndroidResource Include="Resources\mipmap-anydpi-v26\icon.xml" />
+    <AndroidResource Include="Resources\mipmap-anydpi-v26\icon_round.xml" />
+    <AndroidResource Include="Resources\mipmap-hdpi\icon.png" />
+    <AndroidResource Include="Resources\mipmap-hdpi\launcher_foreground.png" />
+    <AndroidResource Include="Resources\mipmap-mdpi\icon.png" />
+    <AndroidResource Include="Resources\mipmap-mdpi\launcher_foreground.png" />
+    <AndroidResource Include="Resources\mipmap-xhdpi\icon.png" />
+    <AndroidResource Include="Resources\mipmap-xhdpi\launcher_foreground.png" />
+    <AndroidResource Include="Resources\mipmap-xxhdpi\icon.png" />
+    <AndroidResource Include="Resources\mipmap-xxhdpi\launcher_foreground.png" />
+    <AndroidResource Include="Resources\mipmap-xxxhdpi\icon.png" />
+    <AndroidResource Include="Resources\mipmap-xxxhdpi\launcher_foreground.png" />
+    <AndroidResource Include="Resources\drawable\xamarin_logo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\src\LagoVista.Client.Core\LagoVista.Client.Core.csproj">
+      <Project>{C48ABA1C-9C0B-4C9C-80C9-6EEE8A010AC9}</Project>
+      <Name>LagoVista.Client.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\src\LagoVista.XPlat.Core\LagoVista.XPlat.Core.csproj">
+      <Project>{B46B2B34-6314-4EF7-A41F-80158102B92C}</Project>
+      <Name>LagoVista.XPlat.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\src\LagoVista.XPlat.Droid\LagoVista.XPlat.Droid.csproj">
+      <Project>{981e1800-122a-4204-8826-3b981b8dfea4}</Project>
+      <Name>LagoVista.XPlat.Droid</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BugLog\BugLog.csproj">
+      <Project>{bb63cd2e-e6bc-49dc-bb71-1807f782128a}</Project>
+      <Name>BugLog</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
+</Project>

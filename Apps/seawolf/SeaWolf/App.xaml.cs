@@ -26,6 +26,11 @@ namespace SeaWolf
     {
         AppConfig _appConfig;
 
+#if ENV_DEV
+        public static string AppCenterId_iOS = "5beabb46-53d2-4c25-9c1f-e21dff576eef";
+#elif ENV_MASTER
+        public static string AppCenterId_iOS = "6e44a482-46b8-443e-bf96-1ad2f196f318";
+#endif
         public static App Instance { get; private set; }
 
         public App()

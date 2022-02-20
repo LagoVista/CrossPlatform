@@ -380,8 +380,29 @@ namespace LagoVista.Client.Core.Net
             return response.ToInvokeResult<TResponseModel>();
         }
 
-        public async Task<ListResponse<TResponseModel>> GetListResponseAsync<TResponseModel>(string path, ListRequest listRequest, CancellationTokenSource cancellationTokenSource = null) where TResponseModel : class
+        public async Task<ListResponse<TResponseModel>> TryGetFromCache<TResponseModel>(string path, ListRequest listRequest = null)
+            where TResponseModel : class, new()
         {
+            var cachedResponse = await GetCachedRequestAsync(path);
+            if (cachedResponse != null)
+            {
+                return JsonConvert.DeserializeObject<ListResponse<TResponseModel>>(cachedResponse);
+            }
+
+            return ListResponse<TResponseModel>.FromError("Cache Miss");
+        }
+    
+        public async Task<ListResponse<TResponseModel>> GetListResponseAsync<TResponseModel>(string path, ListRequest listRequest = null, CancellationTokenSource cancellationTokenSource = null) 
+            where TResponseModel : class, new() 
+        {
+            if(listRequest == null)
+            {
+                listRequest = new ListRequest()
+                {
+                    PageSize = 9999
+                };
+            }
+
             if (!_networkService.IsInternetConnected)
             {
                 var cachedResponse = await GetCachedRequestAsync(path);
@@ -404,7 +425,10 @@ namespace LagoVista.Client.Core.Net
 
             }, cancellationTokenSource, listRequest);
 
-            await AddCachedResponseAsync(path, response);
+            if (response.Success)
+            {
+                await AddCachedResponseAsync(path, response);
+            }
 
             return response.ToListResponse<TResponseModel>();
 

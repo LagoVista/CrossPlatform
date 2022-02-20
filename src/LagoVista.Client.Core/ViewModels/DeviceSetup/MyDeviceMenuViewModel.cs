@@ -14,7 +14,7 @@ namespace LagoVista.Client.Core.ViewModels.DeviceSetup
             {
                 new MenuItem() { FontIconKey = "fa-gear", Name = "Details", Command = new RelayCommand(() => 
                             ViewModelNavigation.NavigateAsync<MyDeviceViewModel>(this, DeviceLaunchArgsParam)), 
-                            Help = "Add a new boar with SeaWolf Marine" },
+                            Help = "Add a new boar with BugLog Marine" },
                 
                 new MenuItem() { FontIconKey = "fa-gear", Name = "Sensors", Command = new RelayCommand(() => 
                             ViewModelNavigation.NavigateAsync<SensorsViewModel>(this, DeviceLaunchArgsParam)), 

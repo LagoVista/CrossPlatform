@@ -41,7 +41,6 @@ namespace LagoVista.Core.UWP
             SLWIOC.Register<IWebServer>(typeof(WebServer));
             SLWIOC.Register<ISecureStorage>(new SecureStorage());
             SLWIOC.Register<ISSDPServer>(new SSDPServer());
-            SLWIOC.RegisterSingleton<IGATTConnection>(new  GattConnection(dispatcherService));
 
             SLWIOC.Register<IAppServices>(typeof(AppServices));
 
