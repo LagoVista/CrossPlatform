@@ -3,7 +3,9 @@ using LagoVista.Client.Core.Resources;
 using LagoVista.Client.Core.ViewModels;
 using LagoVista.Client.Core.ViewModels.Other;
 using LagoVista.Core.Commanding;
+using LagoVista.Core.Interfaces;
 using LagoVista.Core.Models;
+using LagoVista.Core.PlatformSupport;
 using LagoVista.Core.Validation;
 using LagoVista.ProjectManagement.Models;
 using System.Collections.Generic;
@@ -36,6 +38,9 @@ namespace BugLog.ViewModels
 
             CloseStatusUpdateCommand = RelayCommand.Create(CloseStatusWindow);
             AddTaskCommand = RelayCommand.Create(AddTask);
+            RefreshTasksCommand = RelayCommand.Create(RefreshTasks);
+            OpenFullTaskCommand = RelayCommand<WorkTaskSummary>.Create(OpenFullTask);
+
         }
 
         void CloseStatusWindow()
@@ -48,6 +53,38 @@ namespace BugLog.ViewModels
 
         }
 
+        async void RefreshTasks()
+        {
+            await RefreshTasksInBackground();
+            FilterTasks();
+        }
+
+        void OpenFullTask(WorkTaskSummary summary)
+        {
+            var taskPath = $"/ngx/#pm/{summary.ProjectId}/task/{summary.Id}";
+
+            switch (AppConfig.Environment)
+            {
+                case Environments.Production:
+                case Environments.Beta:
+                    Services.Network.OpenURI(new System.Uri($"https://www.nuviot.com{taskPath}"));
+                    break;
+                case Environments.Local:
+                case Environments.LocalDevelopment:
+                    Services.Network.OpenURI(new System.Uri($"http://localhost:5000{taskPath}"));
+                    break;
+
+                case Environments.Development:
+                    Services.Network.OpenURI(new System.Uri($"https://dev.nuviot.com{taskPath}"));
+                    break;
+
+                case Environments.Staging:
+                case Environments.Testing:
+                    Services.Network.OpenURI(new System.Uri($"https://test.nuviot.com{taskPath}"));
+                    break;
+
+            }
+        }
 
         #region Filter/Options Lists
         List<StatusConfiguration> _statusConfigurations;
@@ -194,16 +231,39 @@ namespace BugLog.ViewModels
         }
         #endregion
 
+        #region View Load Methods
         public async Task<InvokeResult> TryLoadListsFromCacheAsync()
         {
-            var views = await this.RestClient.TryGetFromCache<KanbanView>("/api/pm/kanbanviews");
-            _statusConfigurations = (await this.RestClient.TryGetFromCache<StatusConfiguration>("/api/pm/statusconfigurations")).Model.ToList();
+            var scs = await this.RestClient.TryGetFromCache<StatusConfiguration>("/api/pm/statusconfigurations");
+            if (!scs.Successful)
+                return scs;
 
-            _workTaskTypes = (await this.RestClient.TryGetFromCache<WorkTaskType>("/api/pm/worktasktypes")).Model.ToList();
+            _statusConfigurations = scs.Model.ToList();
+
+            var wtts = await this.RestClient.TryGetFromCache<WorkTaskType>("/api/pm/worktasktypes");
+            if (!wtts.Successful)
+                return wtts;
+
+            _workTaskTypes = wtts.Model.ToList();
             WorkTaskTypesFilter = _workTaskTypes.Select(wtt => PickerItem.Create(wtt.Key, wtt.Name)).Distinct().ToList();
+
+            var views = await this.RestClient.TryGetFromCache<KanbanView>("/api/pm/kanbanviews");
+            if (!views.Successful)
+                return views;
+
             FilteredViews = views.Model.Select(kb => PickerItem.Create(kb.Id, kb.Name)).ToList();
-            AllProjects = (await this.RestClient.TryGetFromCache<ProjectSummary>("/api/projects")).Model.ToList();
-            AllUsers = (await this.RestClient.TryGetFromCache<UserInfoSummary>("/api/users/active")).Model.ToList();
+
+            var aps = await this.RestClient.TryGetFromCache<ProjectSummary>("/api/projects");
+            if (!aps.Successful)
+                return aps;
+
+            AllProjects = aps.Model.ToList();
+
+            var users = await this.RestClient.TryGetFromCache<UserInfoSummary>("/api/users/active");
+            if (!users.Successful)
+                return users;
+
+            AllUsers = users.Model.ToList();
 
             var lastFilter = await Storage.GetKVPAsync<string>("LAST_FILTER_ID", FilteredViews[0].Id);
             SelectedKanbanView = FilteredViews.Single(val => val.Id == lastFilter);
@@ -261,6 +321,7 @@ namespace BugLog.ViewModels
                 {
                     Status = "loading work tasks in background";
                     await Storage.StoreKVP("LAST_FILTER_ID", SelectedKanbanView.Id);
+                    
                     AllTasks = new ObservableCollection<WorkTaskSummary>(taskResposne.Model);
                     Projects = AllTasks.Where(tsk => !string.IsNullOrEmpty(tsk.ProjectId)).Select(tsk => PickerItem.Create(tsk.ProjectId, tsk.ProjectName)).ToList().Distinct().ToList();
                     Modules = AllTasks.Where(tsk => !string.IsNullOrEmpty(tsk.ModuleId)).Select(tsk => PickerItem.Create(tsk.ModuleId, tsk.ModuleName)).ToList().Distinct().ToList();
@@ -300,6 +361,7 @@ namespace BugLog.ViewModels
                 await RefreshTasksFromServerAsync();
             }
         }
+        #endregion
 
         public void FilterTasks()
         {
@@ -411,6 +473,8 @@ namespace BugLog.ViewModels
             }
         }
 
+        #endregion
+
         WorkTaskSummary _taskSummary;
         public WorkTaskSummary TaskSummary
         {
@@ -418,7 +482,39 @@ namespace BugLog.ViewModels
             set
             {
                 Set(ref _taskSummary, value);
+                if (_taskSummary != null)
+                {
+                    var config = _statusConfigurations.SingleOrDefault(sc => sc.Id == _taskSummary.StatusConfigurationId);
+                    if (config != null)
+                    {
+                        var currentOption = config.Options.SingleOrDefault(opt => opt.Key == _taskSummary.StatusId);
+                        if (currentOption != null)
+                        {
+                            var transitions = currentOption.ValidTransitions.ToList();
+                            var defaultOption = new StatusTransition { Name = "-transition to new status-", Id = "-1", Key = "-1" };
+                            transitions.Insert(0, defaultOption);
+                            AvailableStatusTransitions = transitions;
+                            SelectedTransition = defaultOption;
+                        }
+                    }
+                }
+            }
+        }
 
+        StatusTransition _selectedTransition;
+        public StatusTransition SelectedTransition
+        {
+            get => _selectedTransition;
+            set { Set(ref _selectedTransition, value); }
+        }
+
+        List<StatusTransition> _availableStatusTransitions;
+        public List<StatusTransition> AvailableStatusTransitions
+        {
+            get => _availableStatusTransitions;
+            set
+            {
+                Set(ref _availableStatusTransitions, value);
             }
         }
 
@@ -429,12 +525,11 @@ namespace BugLog.ViewModels
             set { Set(ref _status, value); }
         }
 
-        #endregion
-
         #region Commands
         public RelayCommand AddTaskCommand { get; private set; }
-
+        public RelayCommand<WorkTaskSummary> OpenFullTaskCommand { get; private set; }
         public RelayCommand CloseStatusUpdateCommand { get; private set; }
+        public RelayCommand RefreshTasksCommand { get; private set; }
         #endregion
 
         public override async Task InitAsync()

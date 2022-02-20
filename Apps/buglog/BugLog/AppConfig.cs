@@ -25,7 +25,7 @@ namespace BugLog
 
         public string WebAddress { get; set; } = "https://www.software-logistics.com";
 
-        public string AppName => "Software Logistics - Bug - Lgo";
+        public string AppName => "Software Logistics - Bug/Log";
 
         public string AppLogo => "BugLog.png";
 

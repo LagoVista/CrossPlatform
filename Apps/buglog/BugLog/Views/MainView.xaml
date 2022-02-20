@@ -27,63 +27,65 @@
                     <ColumnDefinition Width="200" />
                 </Grid.ColumnDefinitions>
 
+                <ctl:IconButton IconKey="fa-refresh" Command="{Binding RefreshTasksCommand }"  HorizontalOptions="End"/>
+
                 <Grid Grid.Row="1">
                     <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="90" />
+                        <ColumnDefinition Width="100" />
+                        <ColumnDefinition Width="100" />
                         <ColumnDefinition Width="120" />
                         <ColumnDefinition Width="120" />
-                        <ColumnDefinition Width="120" />
-                        <ColumnDefinition Width="120" />
-                        <ColumnDefinition Width="200" />
-                        <ColumnDefinition Width="120" />
+                        <ColumnDefinition Width="100" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="40" />
                     </Grid.ColumnDefinitions>
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="40" />
+                        <RowDefinition Height="32" />
                     </Grid.RowDefinitions>
                     <Label Text="Code" />
                     <Label Grid.Column="1" Text="Status" />
-                    <Label Grid.Column="2" Text="Project" />
-                    <Label Grid.Column="3" Text="Module" />
-                    <Label Grid.Column="4" Text="Type" />
-                    <Label Grid.Column="5" Text="Name" />
-                    <Label Grid.Column="6" Text="Due Date" />
+                    <Label Grid.Column="2" Text="External" />
+                    <Label Grid.Column="3" Text="Project" />
+                    <Label Grid.Column="4" Text="Module" />
+                    <Label Grid.Column="5" Text="Type" />
+                    <Label Grid.Column="6" Text="Name" />
                 </Grid>
 
                 <ListView Grid.Row="2" ItemsSource="{Binding FilteredTasks}" SelectedItem="{Binding TaskSummary, Mode=TwoWay}">
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <ViewCell>
-                                <Grid >
+                                <Grid VerticalOptions="Center" >
                                     <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="90" />
+                                        <ColumnDefinition Width="100" />
+                                        <ColumnDefinition Width="100" />
                                         <ColumnDefinition Width="120" />
                                         <ColumnDefinition Width="120" />
-                                        <ColumnDefinition Width="120" />
-                                        <ColumnDefinition Width="120" />
-                                        <ColumnDefinition Width="200" />
                                         <ColumnDefinition Width="120" />
                                         <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="40" />
                                     </Grid.ColumnDefinitions>
                                     <Grid.RowDefinitions>
                                         <RowDefinition Height="40" />
                                     </Grid.RowDefinitions>
                                     <Label Text="{Binding TaskCode}" />
-                                    <Label Grid.Column="1" Text="{Binding Status}" />
-                                    <Label Grid.Column="2" Text="{Binding ProjectName}" />
-                                    <Label Grid.Column="3" Text="{Binding ModuleName}" />
-                                    <Label Grid.Column="4" Text="{Binding TaskType}" />
-                                    <Label Grid.Column="5" Text="{Binding Name}" />
-                                    <Label Grid.Column="6" Text="{Binding DueDate}" />
+                                    <Label Grid.Column="1" Text="{Binding Status}" LineBreakMode="TailTruncation" />
+                                    <Label Grid.Column="2" Text="{Binding ExternalStatus}" LineBreakMode="TailTruncation" />
+                                    <Label Grid.Column="3" Text="{Binding ProjectName}" LineBreakMode="TailTruncation" />
+                                    <Label Grid.Column="4" Text="{Binding ModuleName}"  LineBreakMode="TailTruncation" />
+                                    <Label Grid.Column="5" Text="{Binding TaskType}"  LineBreakMode="TailTruncation"  />
+                                    <Label Grid.Column="6" Text="{Binding Name}"  LineBreakMode="TailTruncation"  />
                                     <StackLayout Grid.Column="7" Orientation="Horizontal" >
-                                        <ctl:IconButton IconKey="fa-pencil" Command="{Binding BindingContext.ChangeTaskStatusCommand, Source={x:Reference parentSource} }" CommandParameter="{Binding .}" />
-                                        <ctl:IconButton IconKey="fa-pencil" Command="{Binding BindingContext.AddTaskNoteCommand, Source={x:Reference parentSource} }" CommandParameter="{Binding .}" />
-                                        <ctl:IconButton IconKey="fa-pencil" Command="{Binding BindingContext.AddTaskTimeCommand, Source={x:Reference parentSource} }" CommandParameter="{Binding .}" />
-                                        <ctl:IconButton IconKey="fa-pencil" Command="{Binding BindingContext.EditTaskCommand, Source={x:Reference parentSource} }" CommandParameter="{Binding .}" />
+                                        <ctl:IconButton IconKey="fa-external-link" Command="{Binding BindingContext.OpenFullTaskCommand, Source={x:Reference parentSource} }" CommandParameter="{Binding .}" />
                                     </StackLayout>
                                 </Grid>
                             </ViewCell>
                         </DataTemplate>
                     </ListView.ItemTemplate>
                 </ListView>
-                <StackLayout Grid.Column="1" Grid.RowSpan="2">
+                <StackLayout Grid.Column="1" Grid.RowSpan="2" Margin="4">
                     <Label Text="View" />
                     <Picker ItemsSource="{Binding FilteredViews}" ItemDisplayBinding="{Binding Text}" SelectedItem="{Binding SelectedKanbanView}" />
                     <Label Text="Project" />
@@ -94,7 +96,7 @@
                     <Picker ItemsSource="{Binding WorkTaskTypesFilter}" ItemDisplayBinding="{Binding Text}" SelectedItem="{Binding SelectedWorKTypeFilter}" />
                     <Label Text="Status" />
                     <Picker ItemsSource="{Binding StatusFilter}" ItemDisplayBinding="{Binding Text}" SelectedItem="{Binding SelectedStatusFilter}" />
-                    <Label Text="TasK Lead" />
+                    <Label Text="Task Lead" />
                     <Picker ItemsSource="{Binding AssignedTaskLeads}" ItemDisplayBinding="{Binding Text}" SelectedItem="{Binding SelectedTaskLeadFilter}" />
                     <Label Text="Primary Contributor" />
                     <Picker ItemsSource="{Binding AssignedPrimaryContributor}" ItemDisplayBinding="{Binding Text}" SelectedItem="{Binding SelectedPrimaryContributorFilter}" />
@@ -105,6 +107,8 @@
                     <Label TextColor="Black"  Text="{Binding Status, FallbackValue=ready}" />
                 </Grid>
             </Grid>
+
+
             <AbsoluteLayout IsVisible="{Binding TaskSummary, Converter={StaticResource NotNullVisibilityConverter}}" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" >
                 <BoxView BackgroundColor="Black"  CornerRadius="8" AbsoluteLayout.LayoutBounds="0, 0, 1, 1" AbsoluteLayout.LayoutFlags="All" Opacity="0.2">
 
@@ -112,18 +116,20 @@
 
                 <Frame BorderColor="Silver" BackgroundColor="White"  CornerRadius="8" AbsoluteLayout.LayoutBounds="0.5, 0.5, -1, -1"
                        AbsoluteLayout.LayoutFlags="PositionProportional" WidthRequest="400" HeightRequest="400">
-                    <Grid  WidthRequest="380" HeightRequest="380">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="30"/>
-                            <RowDefinition Height="30"/>
-                            <RowDefinition Height="30"/>
-                        </Grid.RowDefinitions>
-                        <Label Text="{Binding TaskSummary.Name}" />
-                        <Button WidthRequest="120" Grid.Row="1" Command="{Binding CloseStatusUpdateCommand}" Text="Close"></Button>
+                    <Grid  WidthRequest="380" HeightRequest="480" BackgroundColor="Beige">
+                        <StackLayout>
+                            <Label Text="{Binding TaskSummary.Name}" />
+                            <Label Text="{Binding TaskSummary.Status}" />
+
+                            <Label Text="Status Change" />
+                            <Picker ItemsSource="{Binding AvailableStatusTransitions}" ItemDisplayBinding="{Binding Name}" SelectedItem="{Binding SelectedTransition, Mode=TwoWay}" />
+
+                            <Button WidthRequest="120" Grid.Row="1" Command="{Binding CloseStatusUpdateCommand}" Text="Close"></Button>
+                        </StackLayout>
                     </Grid>
                 </Frame>
-               
-                
+
+
             </AbsoluteLayout>
         </Grid>
 

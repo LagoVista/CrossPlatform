@@ -19,7 +19,7 @@
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
             
-            <pge:Image FileName="{Binding AppConfig.AppLogo}" UWPPath="Assets" Grid.Column="1" />
+            <pge:Image FileName="{Binding AppConfig.AppLogo}" UWPPath="Assets" Grid.Column="1" Margin="10" />
 
             <ScrollView Grid.Row="1" Grid.Column="1">
                 <StackLayout  >

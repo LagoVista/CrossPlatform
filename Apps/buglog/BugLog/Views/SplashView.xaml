@@ -21,7 +21,7 @@
                     <RowDefinition Height="auto" />
                 </Grid.RowDefinitions>
                 <pge:Image FileName="buglog.png" Grid.Row="2" UWPPath="Assets" WidthRequest="300" VerticalOptions="Center" />
-                <Label Text="NuvIoT - Bug - Log" FontSize="24" HorizontalOptions="Center" Grid.Row="3" VerticalOptions="Center"  />
+                <Label Text="Software Logistics - Bug/Log" FontSize="24" HorizontalOptions="Center" Grid.Row="3" VerticalOptions="Center"  />
                 <pge:Button Command="{Binding LoginCommand}" Text="{trs:Translate Common_GetStarted}" WidthRequest="200" HeightRequest="48" Margin="10" HorizontalOptions="Center"  Grid.Row="7" />
             </Grid>
         </Grid>

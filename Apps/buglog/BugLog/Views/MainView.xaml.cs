@@ -16,6 +16,7 @@ namespace BugLog.Views
         public MainView()
         {
             InitializeComponent();
+            
         }
     }
 }
