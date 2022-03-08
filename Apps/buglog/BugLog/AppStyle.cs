@@ -15,7 +15,7 @@ namespace BugLog
 
         private const string DefaultFont = "Helvetica";
 
-        public Color TitleBarBackground => _darkGrey2;
+        public Color TitleBarBackground => NamedColors.NuvIoTDark;
 
         public Color TitleBarForeground => NamedColors.NuvIoTWhite;
 
@@ -25,9 +25,8 @@ namespace BugLog
         public Color PageBackground => NamedColors.NuvIoTWhite;
 
         
-        public Color LabelText => _lightGray;
+        public Color LabelText => NamedColors.NuvIoTBlack;
 
-        
 
         public Color MenuBarBackground => NamedColors.NuvIoTMedium;
 

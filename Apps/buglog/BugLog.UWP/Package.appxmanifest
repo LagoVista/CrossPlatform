@@ -8,14 +8,14 @@
   IgnorableNamespaces="uap mp uap4">
 
   <Identity
-    Name="SoftwareLogisticsLLC.BugLog"
-    Publisher="CN=SoftwareLogistics"
-    Version="0.5.9.0" />
+    Name="SoftwareLogisticsLLC.SoftwareLogisticsBugLog"
+    Publisher="CN=610EF21F-3A3C-4783-B4BF-B7C267BC0CA0"
+    Version="3.0.22.0" />
 
-  <mp:PhoneIdentity PhoneProductId="1ea8fd65-1dde-4abf-8e49-32971ee96324" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
+  <mp:PhoneIdentity PhoneProductId="b12ca6ce-fb52-4e63-a146-4de688844607" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
 
   <Properties>
-    <DisplayName>SeaWolf Marine</DisplayName>
+    <DisplayName>Software Logistics Bug/Log</DisplayName>
     <PublisherDisplayName>Software Logistics LLC</PublisherDisplayName>
     <Logo>Assets\StoreLogo.png</Logo>
   </Properties>
@@ -31,12 +31,12 @@
   <Applications>
     <Application Id="App"
       Executable="$targetnametoken$.exe"
-      EntryPoint="BugLog.kUWP.App">
+      EntryPoint="BugLog.UWP.App">
       <uap:VisualElements
         DisplayName="Software Logistics Bug/Log"
         Square150x150Logo="Assets\Square150x150Logo.png"
         Square44x44Logo="Assets\Square44x44Logo.png"
-        Description="SeaWolf Marine Windows Application"
+        Description="Application Tracking and Management"
         BackgroundColor="transparent">
         <uap:DefaultTile Wide310x150Logo="Assets\Wide310x150Logo.png" Square310x310Logo="Assets\LargeTile.png" Square71x71Logo="Assets\SmallTile.png" ShortName="Bug-Log">
           <uap:ShowNameOnTiles>

@@ -1,7 +1,7 @@
-﻿//#define ENV_LOCALDEV
+﻿#define ENV_LOCALDEV
 //#define ENV_LOCALDEV
 //#define ENV_DEV
-#define ENV_MASTER
+//#define ENV_MASTER
 
 using System;
 using Xamarin.Forms;

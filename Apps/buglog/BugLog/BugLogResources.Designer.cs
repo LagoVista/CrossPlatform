@@ -61,7 +61,7 @@ namespace BugLog {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to BugLog - Marine.
+        ///   Looks up a localized string similar to Software Logistics Bug/Log.
         /// </summary>
         internal static string AppName {
             get {

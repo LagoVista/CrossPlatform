@@ -84,7 +84,7 @@ namespace LagoVista.Core.UWP.Services
 
                 var storageFile = await folder.GetFileAsync(fileName);
                 return await storageFile.OpenStreamForReadAsync();
-               
+
             }
             catch (Exception)
             {
@@ -119,7 +119,7 @@ namespace LagoVista.Core.UWP.Services
             if (AppSettings.ContainsKey(key))
             {
                 var entry = AppSettings[key] as string;
-                if(entry.StartsWith("file="))
+                if (entry.StartsWith("file="))
                 {
                     return await GetAsync<T>($"{key}.json");
                 }
@@ -189,7 +189,7 @@ namespace LagoVista.Core.UWP.Services
             {
                 var file = await outputFolder.GetFileAsync(fileName);
                 await file.DeleteAsync();
-                
+
             }
             catch (Exception)
             {
@@ -250,7 +250,7 @@ namespace LagoVista.Core.UWP.Services
         {
             throw new NotImplementedException();
         }
-        
+
 
         public Task<string> ReadAllTextAsync(string fileName)
         {
@@ -272,9 +272,9 @@ namespace LagoVista.Core.UWP.Services
         public async Task<string> WriteAllLinesAsync(string fileName, List<string> text)
         {
             var bldr = new StringBuilder();
-            foreach(var line in text)
+            foreach (var line in text)
             {
-                bldr.AppendLine(line);                    
+                bldr.AppendLine(line);
             }
 
             await WriteAllTextAsync(fileName, bldr.ToString());
@@ -294,7 +294,19 @@ namespace LagoVista.Core.UWP.Services
 
         public async Task ClearAllAsync()
         {
-            await Windows.Storage.ApplicationData.Current.ClearAsync();
+            try
+            {
+                var keys = Windows.Storage.ApplicationData.Current.RoamingSettings.Values;
+                foreach (var key in keys)
+                {
+                    Windows.Storage.ApplicationData.Current.RoamingSettings.Values.Remove(key);
+                }
+                await Windows.Storage.ApplicationData.Current.ClearAsync();
+            }
+            catch (Exception)
+            {
+                /* no-op, for some reason something else in UWP doesn't release hooks */
+            }
         }
     }
 }

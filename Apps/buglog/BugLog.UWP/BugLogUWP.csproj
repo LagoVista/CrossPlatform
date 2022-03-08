@@ -19,15 +19,17 @@
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{A5A43C5B-DE2A-4C0C-9213-0A381AF9435A};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <AppxPackageSigningEnabled>True</AppxPackageSigningEnabled>
-    <PackageCertificateThumbprint>D81D8D6CBAA9239E462508BCE74AB0EBB6F0BADD</PackageCertificateThumbprint>
-    <PackageCertificateKeyFile>BugLogUWP_TemporaryKey.pfx</PackageCertificateKeyFile>
     <GenerateAppInstallerFile>False</GenerateAppInstallerFile>
     <AppxPackageSigningTimestampDigestAlgorithm>SHA256</AppxPackageSigningTimestampDigestAlgorithm>
     <AppxAutoIncrementPackageRevision>True</AppxAutoIncrementPackageRevision>
-    <GenerateTestArtifacts>True</GenerateTestArtifacts>
+    <GenerateTestArtifacts>False</GenerateTestArtifacts>
     <AppxBundle>Always</AppxBundle>
     <AppxBundlePlatforms>x86|x64|arm</AppxBundlePlatforms>
     <HoursBetweenUpdateChecks>0</HoursBetweenUpdateChecks>
+    <AppxSymbolPackageEnabled>False</AppxSymbolPackageEnabled>
+    <PackageCertificateThumbprint>
+    </PackageCertificateThumbprint>
+    <PackageCertificateKeyFile>BugLogUWP_TemporaryKey.pfx</PackageCertificateKeyFile>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|ARM'">
     <DebugSymbols>true</DebugSymbols>
@@ -234,13 +236,13 @@
       <Version>2.0.11</Version>
     </PackageReference>
     <PackageReference Include="LagoVista.Core">
-      <Version>3.0.1739.1028</Version>
+      <Version>3.0.1742.451</Version>
     </PackageReference>
     <PackageReference Include="LagoVista.Core.Authentication">
-      <Version>3.0.1739.1028</Version>
+      <Version>3.0.1742.451</Version>
     </PackageReference>
     <PackageReference Include="LagoVista.Core.Networking">
-      <Version>3.0.1739.1028</Version>
+      <Version>3.0.1742.451</Version>
     </PackageReference>
     <PackageReference Include="LagoVista.IoT.Deployment.Models">
       <Version>3.0.1739.950</Version>

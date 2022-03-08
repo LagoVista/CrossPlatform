@@ -1,16 +1,21 @@
 ﻿using BugLog.Models;
+using LagoVista.Client.Core.Exceptions;
 using LagoVista.Client.Core.Resources;
 using LagoVista.Client.Core.ViewModels;
 using LagoVista.Client.Core.ViewModels.Other;
+using LagoVista.Core;
 using LagoVista.Core.Commanding;
 using LagoVista.Core.Interfaces;
 using LagoVista.Core.Models;
+using LagoVista.Core.Models.UIMetaData;
 using LagoVista.Core.PlatformSupport;
 using LagoVista.Core.Validation;
 using LagoVista.ProjectManagement.Models;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 
 namespace BugLog.ViewModels
@@ -35,28 +40,173 @@ namespace BugLog.ViewModels
                 }
             };
 
-
             CloseStatusUpdateCommand = RelayCommand.Create(CloseStatusWindow);
             AddTaskCommand = RelayCommand.Create(AddTask);
+            AddTimeCommand = RelayCommand<WorkTaskSummary>.Create(AddTime);
             RefreshTasksCommand = RelayCommand.Create(RefreshTasks);
             OpenFullTaskCommand = RelayCommand<WorkTaskSummary>.Create(OpenFullTask);
-
+            AddRelatedTaskCommand = RelayCommand<WorkTaskSummary>.Create(AddRelatedTask);
+            AddTimeCommand = RelayCommand<WorkTaskSummary>.Create(AddTime);
+            AddExpectedOutcomeCommand = RelayCommand.Create(AddExpectedOutcome);
+            SaveNewTaskCommand = RelayCommand.Create(SaveNewTask);
+            CancelNewTimeCommand = RelayCommand.Create(() => TimeEntryTask = null);
+            SaveNewTimeCommand = RelayCommand.Create(SaveNewTime);
+            CancelNewTaskCommand = RelayCommand.Create(() => NewWorkTask = null);
+            TimeEntryNextDateCommand = RelayCommand.Create(() => TimeEntryDate = TimeEntryDate.AddDays(1));
+            TimeEntryPrevDateCommand = RelayCommand.Create(() => TimeEntryDate = TimeEntryDate.AddDays(-1));
         }
 
-        void CloseStatusWindow()
+        async void CloseStatusWindow()
         {
-            TaskSummary = null;
+            var statusUpdate = new WorkTaskAssignmentStatusUpdate();
+            statusUpdate.Status = SelectedTransition.Key;
+            if (SelectedTransition.Key != "-1")
+            {
+                await PerformNetworkOperation(async () =>
+                {
+                    var result = await this.RestClient.PutAsync($"/api/pm/task/{TaskSummary.Id}/boardupdate", statusUpdate);
+                    if (result.Successful)
+                    {
+                        TaskSummary.Status = SelectedTransition.Name;
+                        TaskSummary.StatusId = SelectedTransition.Key;
+                        TaskSummary = null;
+                        this.FilterTasks();
+                    }
+                    return result;
+                });
+            }
+            else
+            {
+                this.TaskSummary = null;
+            }
+        }
+
+        void AddTime(WorkTaskSummary taskSummary)
+        {
+            TimeEntryTask = taskSummary;
+            TimeEntryHours = "1";
+            TimeEntryNotes = String.Empty;
+            TimeEntryDate = DateTime.Now.Date;
         }
 
         void AddTask()
         {
+            NewWorkTask = new NewTask();
+
+            if (TaskSummary != null)
+            {
+                NewWorkTask.Project = Projects.Single(prj => prj.Id == TaskSummary.ProjectId);
+                TaskSummary = null;
+            }
+        }
+
+        void AddExpectedOutcome()
+        {
+            NewWorkTask.ExpectedOutcomes.Add(new ExpectedOutcome()
+            {
+
+            });
+        }
+
+        void AddRelatedTask(WorkTaskSummary taskSummary)
+        {
+            var newTask = new NewTask();
+            newTask.Project = Projects.Single(prj => prj.Id == taskSummary.ProjectId);
+            newTask.Parent = EntityHeader.Create(taskSummary.Id, taskSummary.Name);
+            newTask.TaskType = WorkTaskTypesForNewTask.SingleOrDefault(tsk => tsk.Key == "defect");
+            NewWorkTask = newTask;
+        }
+
+        void SaveNewTime()
+        {
+            PerformNetworkOperation(async () =>
+            {
+                if (double.TryParse(TimeEntryHours, out double hours))
+                {
+                    var timeEntry = new TimeEntry()
+                    {
+                        Project = EntityHeader.Create(TimeEntryTask.ProjectId, TimeEntryTask.ProjectName),
+                        WorkTask = EntityHeader.Create(TimeEntryTask.Id, TimeEntryTask.Name),
+                        Date = TimeEntryDate.ToString(@"yyyy/MM/dd"),
+                        Hours = hours,
+                        Notes = TimeEntryNotes,
+                        UserId = AuthManager.User.Id
+                    };
+
+                    var result = await this.RestClient.PostAsync<TimeEntry, InvokeResult>("/api/time/entry", timeEntry);
+                    if (result.Successful)
+                    {
+                        TimeEntryTask = null;
+                    }
+                    else
+                    {
+                        await Popups.ShowAsync(result.Errors.First().Message);
+                    }
+                }
+                else
+                {
+                    await Popups.ShowAsync("Please enter a validate number of hours.");
+                }
+            });
+        }
+
+        async void SaveNewTask()
+        {
+            var errors = new StringBuilder();
+
+            if (NewWorkTask == null)
+            {
+                return;
+            }
+
+            if (EntityHeader.IsNullOrEmpty(NewWorkTask.Project))
+            {
+                errors.AppendLine("Project is required.");
+            }
+
+            if (EntityHeader.IsNullOrEmpty(NewWorkTask.TaskType))
+            {
+                errors.AppendLine("Task Type is required.");
+            }
+
+            if (String.IsNullOrEmpty(NewWorkTask.Name))
+            {
+                errors.AppendLine("Task Name is required.");
+            }
+
+            if (String.IsNullOrEmpty(NewWorkTask.Description))
+            {
+                errors.AppendLine("Description is required.");
+            }
+
+            if (errors.Length > 0)
+            {
+                await Popups.ShowAsync(errors.ToString());
+                return;
+            }
+
+            await PerformNetworkOperation(async () =>
+            {
+                var result = await this.RestClient.PostAsync<NewTask, WorkTaskSummary>($"/api/tasks/add", NewWorkTask);
+                if (result.Successful)
+                {
+                    var summary = result.Result;
+                    AllTasks.Add(summary);
+                    NewWorkTask = null;
+                    this.FilterTasks();
+                }
+                return result.ToInvokeResult();
+            });
 
         }
 
         async void RefreshTasks()
         {
-            await RefreshTasksInBackground();
-            FilterTasks();
+            await PerformNetworkOperation(async () =>
+            {
+                await RefreshTasksInBackground(true);
+                FilterTasks();
+            });
         }
 
         void OpenFullTask(WorkTaskSummary summary)
@@ -82,110 +232,106 @@ namespace BugLog.ViewModels
                 case Environments.Testing:
                     Services.Network.OpenURI(new System.Uri($"https://test.nuviot.com{taskPath}"));
                     break;
-
             }
+        }
+
+        private EntityHeader EntityHeaderAll()
+        {
+            return EntityHeader.Create("all", "All");
         }
 
         #region Filter/Options Lists
         List<StatusConfiguration> _statusConfigurations;
 
-        List<PickerItem> _assignedTaskLead;
-        public List<PickerItem> AssignedTaskLeads
+        List<EntityHeader> _assignedTaskLead;
+        public List<EntityHeader> AssignedTaskLeads
         {
             get => _assignedTaskLead;
 
             set
             {
-                value.Insert(0, PickerItem.All());
+                value.Insert(0, EntityHeaderAll());
                 Set(ref _assignedTaskLead, value);
-                SelectedTaskLeadFilter = value[0];
             }
         }
 
-        List<PickerItem> _assignedPrimaryContributorLead;
-        public List<PickerItem> AssignedPrimaryContributor
+        List<EntityHeader> _assignedPrimaryContributorLead;
+        public List<EntityHeader> AssignedPrimaryContributor
         {
             get => _assignedPrimaryContributorLead;
             set
             {
-                value.Insert(0, PickerItem.All());
+                value.Insert(0, EntityHeaderAll());
                 Set(ref _assignedPrimaryContributorLead, value);
-                SelectedPrimaryContributorFilter = value[0];
             }
         }
 
-        List<PickerItem> _assignedQaLead;
-        public List<PickerItem> AssignedQALeads
+        List<EntityHeader> _assignedQaLead;
+        public List<EntityHeader> AssignedQALeads
         {
             get => _assignedQaLead;
             set
             {
-                value.Insert(0, PickerItem.All());
+                value.Insert(0, EntityHeaderAll());
                 Set(ref _assignedQaLead, value);
-                SelectedQAResourceFilter = value[0];
             }
         }
 
-        List<PickerItem> _statusFilter;
-        public List<PickerItem> StatusFilter
+        List<EntityHeader> _statusFilter;
+        public List<EntityHeader> StatusFilter
         {
             get => _statusFilter;
             set
             {
-                value.Insert(0, PickerItem.All());
+                value.Insert(0, EntityHeaderAll());
                 Set(ref _statusFilter, value);
-                SelectedStatusFilter = value[0];
             }
         }
 
-        List<PickerItem> _filteredViews;
-        public List<PickerItem> FilteredViews
+        List<EntityHeader> _filteredViews;
+        public List<EntityHeader> FilteredViews
         {
             get => _filteredViews;
             set
             {
-                value.Insert(0, PickerItem.All());
+                value.Insert(0, EntityHeaderAll());
                 Set(ref _filteredViews, value);
             }
         }
 
-
-
         List<WorkTaskType> _workTaskTypes;
 
-        List<PickerItem> _proejcts;
-        public List<PickerItem> Projects
+        List<EntityHeader> _proejcts;
+        public List<EntityHeader> Projects
         {
             get => _proejcts;
             set
             {
-                value.Insert(0, PickerItem.All());
+                value.Insert(0, EntityHeaderAll());
                 Set(ref _proejcts, value);
-                SelectedProjectFilter = value[0];
             }
         }
 
-        List<PickerItem> _modules;
-        public List<PickerItem> Modules
+
+        List<EntityHeader> _modules;
+        public List<EntityHeader> Modules
         {
             get => _modules;
             set
             {
-                value.Insert(0, PickerItem.All());
+                value.Insert(0, EntityHeaderAll());
                 Set(ref _modules, value);
-                SelectedModuleFilter = value[0];
             }
         }
 
-        List<PickerItem> _workTaskTypesFilter;
-        public List<PickerItem> WorkTaskTypesFilter
+        List<EntityHeader> _workTaskTypesFilter;
+        public List<EntityHeader> WorkTaskTypesFilter
         {
             get => _workTaskTypesFilter;
             set
             {
-                value.Insert(0, PickerItem.All());
+                value.Insert(0, EntityHeaderAll());
                 Set(ref _workTaskTypesFilter, value);
-                SelectedWorKTypeFilter = value[0];
             }
         }
 
@@ -194,6 +340,28 @@ namespace BugLog.ViewModels
         {
             get => _projects;
             set { Set(ref _projects, value); }
+        }
+
+        private List<EntityHeader> _projectsForNewTask;
+        public List<EntityHeader> ProjectsForNewTask
+        {
+            get => _projectsForNewTask;
+            set { Set(ref _projectsForNewTask, value); }
+        }
+
+
+        private List<EntityHeader> _modulesForNewTask;
+        public List<EntityHeader> ModulesForNewTask
+        {
+            get => _modulesForNewTask;
+            set { Set(ref _modulesForNewTask, value); }
+        }
+
+        private List<EntityHeader> _workTaskTypesForNewTask;
+        public List<EntityHeader> WorkTaskTypesForNewTask
+        {
+            get => _workTaskTypesForNewTask;
+            set { Set(ref _workTaskTypesForNewTask, value); }
         }
 
 
@@ -245,19 +413,22 @@ namespace BugLog.ViewModels
                 return wtts;
 
             _workTaskTypes = wtts.Model.ToList();
-            WorkTaskTypesFilter = _workTaskTypes.Select(wtt => PickerItem.Create(wtt.Key, wtt.Name)).Distinct().ToList();
+            WorkTaskTypesFilter = _workTaskTypes.Select(wtt => EntityHeader.Create(wtt.Id, wtt.Key, wtt.Name)).Distinct().ToList();
+            WorkTaskTypesForNewTask = _workTaskTypes.Select(wtt => EntityHeader.Create(wtt.Id, wtt.Key, wtt.Name)).ToList();
 
             var views = await this.RestClient.TryGetFromCache<KanbanView>("/api/pm/kanbanviews");
             if (!views.Successful)
                 return views;
 
-            FilteredViews = views.Model.Select(kb => PickerItem.Create(kb.Id, kb.Name)).ToList();
+            FilteredViews = views.Model.Select(kb => EntityHeader.Create(kb.Id, kb.Key, kb.Name)).ToList();
 
             var aps = await this.RestClient.TryGetFromCache<ProjectSummary>("/api/projects");
             if (!aps.Successful)
                 return aps;
 
             AllProjects = aps.Model.ToList();
+            ProjectsForNewTask = AllProjects.Select(prj => EntityHeader.Create(prj.Id, prj.Key, prj.Name)).ToList();
+
 
             var users = await this.RestClient.TryGetFromCache<UserInfoSummary>("/api/users/active");
             if (!users.Successful)
@@ -280,11 +451,13 @@ namespace BugLog.ViewModels
             Status = "loading status configurations";
 
             _workTaskTypes = (await this.RestClient.GetListResponseAsync<WorkTaskType>("/api/pm/worktasktypes")).Model.ToList();
+            WorkTaskTypesForNewTask = _workTaskTypes.Select(wtt => EntityHeader.Create(wtt.Id, wtt.Name)).ToList();
             Status = "loading work task types";
 
-            WorkTaskTypesFilter = _workTaskTypes.Select(wtt => PickerItem.Create(wtt.Key, wtt.Name)).Distinct().ToList();
-            FilteredViews = views.Model.Select(kb => PickerItem.Create(kb.Id, kb.Name)).ToList();
+            WorkTaskTypesFilter = _workTaskTypes.Select(wtt => EntityHeader.Create(wtt.Id, wtt.Name)).Distinct().ToList();
+            FilteredViews = views.Model.Select(kb => EntityHeader.Create(kb.Id, kb.Name)).ToList();
             AllProjects = (await this.RestClient.GetListResponseAsync<ProjectSummary>("/api/projects")).Model.ToList();
+            ProjectsForNewTask = AllProjects.Select(prj => EntityHeader.Create(prj.Id, prj.Name)).ToList();
 
             Status = "loading all projects";
             AllUsers = (await this.RestClient.GetListResponseAsync<UserInfoSummary>("/api/users/active")).Model.ToList();
@@ -311,26 +484,81 @@ namespace BugLog.ViewModels
             });
         }
 
-        public async Task RefreshTasksInBackground()
+        private void PopualteFilterSelections(bool maintainFilters = false)
+        {
+            var prjFilter = SelectedProjectFilter;
+            var modFilter = SelectedModuleFilter;
+            var statusFilter = SelectedStatusFilter;
+            var wtf = SelectedWorKTypeFilter;
+            var lead = SelectedTaskLeadFilter;
+            var ctrb = SelectedPrimaryContributorFilter;
+            var qa = SelectedQAResourceFilter;
+
+            Projects = AllTasks.Where(tsk => !string.IsNullOrEmpty(tsk.ProjectId)).Select(prj => EntityHeader.Create(prj.ProjectId, prj.Key, prj.ProjectName)).ToList().Distinct().ToList();
+            Modules = AllTasks.Where(tsk => !string.IsNullOrEmpty(tsk.ModuleId)).Select(tsk => EntityHeader.Create(tsk.ModuleId, tsk.Key, tsk.ModuleName)).ToList().Distinct().ToList();
+            AssignedPrimaryContributor = AllTasks.Where(tsk => !string.IsNullOrEmpty(tsk.PrimaryContributorId)).Select(tsk => EntityHeader.Create(tsk.PrimaryContributorId, tsk.PrimaryContributor)).ToList().Distinct().ToList();
+            AssignedQALeads = AllTasks.Where(tsk => !string.IsNullOrEmpty(tsk.QaResourceId)).Select(tsk => EntityHeader.Create(tsk.QaResourceId, tsk.QaResource)).ToList().Distinct().ToList();
+            AssignedTaskLeads = AllTasks.Where(tsk => !string.IsNullOrEmpty(tsk.AssignedToUserId)).Select(tsk => EntityHeader.Create(tsk.AssignedToUserId, tsk.AssignedToUser)).ToList().Distinct().ToList();
+            StatusFilter = AllTasks.Where(tsk => !string.IsNullOrEmpty(tsk.PrimaryContributorId)).Select(tsk => EntityHeader.Create(tsk.StatusId, tsk.Status)).ToList().Distinct().ToList();
+
+            if (maintainFilters)
+            {
+                _selectedProjectFilter = prjFilter;
+                _selectedModuleFilter = modFilter;
+                _selectedStatusFilter = statusFilter;
+                _selectedWorkTypeFilter = wtf;
+
+                _selectedTaskLeadFilter = lead;
+                _selectedPrimaryContributorFilter = ctrb;
+                _selectedQAResourceFilter = qa;
+            }
+            else
+            {
+                _selectedProjectFilter = Projects[0];
+                _selectedModuleFilter = Modules[0];
+                _selectedStatusFilter = StatusFilter[0];
+                _selectedWorkTypeFilter = WorkTaskTypesFilter[0];
+
+                _selectedQAResourceFilter = AssignedQALeads[0];
+                _selectedTaskLeadFilter = AssignedTaskLeads[0];
+                _selectedPrimaryContributorFilter = AssignedPrimaryContributor[0];
+            }
+
+            RaisePropertyChanged(nameof(SelectedProjectFilter));
+            RaisePropertyChanged(nameof(SelectedModuleFilter));
+            RaisePropertyChanged(nameof(SelectedStatusFilter));
+            RaisePropertyChanged(nameof(SelectedWorKTypeFilter));
+
+            RaisePropertyChanged(nameof(SelectedTaskLeadFilter));
+            RaisePropertyChanged(nameof(SelectedQAResourceFilter));
+            RaisePropertyChanged(nameof(SelectedPrimaryContributorFilter));
+        }
+
+        public async Task RefreshTasksInBackground(bool maintainFilters = false)
         {
             if (SelectedKanbanView != null && SelectedKanbanView.Id != "all")
             {
-                var taskResposne = await this.RestClient.GetListResponseAsync<WorkTaskSummary>($"/api/pm/tasks/view/{SelectedKanbanView.Id}");
-
-                if (taskResposne.Successful)
+                try
                 {
-                    Status = "loading work tasks in background";
-                    await Storage.StoreKVP("LAST_FILTER_ID", SelectedKanbanView.Id);
-                    
-                    AllTasks = new ObservableCollection<WorkTaskSummary>(taskResposne.Model);
-                    Projects = AllTasks.Where(tsk => !string.IsNullOrEmpty(tsk.ProjectId)).Select(tsk => PickerItem.Create(tsk.ProjectId, tsk.ProjectName)).ToList().Distinct().ToList();
-                    Modules = AllTasks.Where(tsk => !string.IsNullOrEmpty(tsk.ModuleId)).Select(tsk => PickerItem.Create(tsk.ModuleId, tsk.ModuleName)).ToList().Distinct().ToList();
-                    AssignedPrimaryContributor = AllTasks.Where(tsk => !string.IsNullOrEmpty(tsk.PrimaryContributorId)).Select(tsk => PickerItem.Create(tsk.PrimaryContributorId, tsk.PrimaryContributor)).ToList().Distinct().ToList();
-                    AssignedQALeads = AllTasks.Where(tsk => !string.IsNullOrEmpty(tsk.QaResourceId)).Select(tsk => PickerItem.Create(tsk.QaResourceId, tsk.QaResource)).ToList().Distinct().ToList();
-                    AssignedTaskLeads = AllTasks.Where(tsk => !string.IsNullOrEmpty(tsk.AssignedToUserId)).Select(tsk => PickerItem.Create(tsk.AssignedToUserId, tsk.AssignedToUser)).ToList().Distinct().ToList();
-                    StatusFilter = AllTasks.Where(tsk => !string.IsNullOrEmpty(tsk.PrimaryContributorId)).Select(tsk => PickerItem.Create(tsk.StatusId, tsk.Status)).ToList().Distinct().ToList();
-                    FilteredTasks = AllTasks;
-                    Status = string.Empty;
+                    var taskResposne = await this.RestClient.GetListResponseAsync<WorkTaskSummary>($"/api/pm/tasks/view/{SelectedKanbanView.Id}");
+
+                    if (taskResposne.Successful)
+                    {
+                        Status = "loading work tasks in background";
+                        await Storage.StoreKVP("LAST_FILTER_ID", SelectedKanbanView.Id);
+
+
+                        AllTasks = new ObservableCollection<WorkTaskSummary>(taskResposne.Model);
+                        PopualteFilterSelections(maintainFilters);
+
+                        Status = string.Empty;
+                    }
+                }
+
+                catch (CouldNotRenewTokenException)
+                {
+                    IsBusy = false;
+                    await ForceLogoutAsync();
                 }
             }
             else
@@ -347,13 +575,7 @@ namespace BugLog.ViewModels
             {
                 await Storage.StoreKVP("LAST_FILTER_ID", SelectedKanbanView.Id);
                 AllTasks = new ObservableCollection<WorkTaskSummary>(taskResposne.Model);
-                Projects = AllTasks.Where(tsk => !string.IsNullOrEmpty(tsk.ProjectId)).Select(tsk => PickerItem.Create(tsk.ProjectId, tsk.ProjectName)).ToList().Distinct().ToList();
-                Modules = AllTasks.Where(tsk => !string.IsNullOrEmpty(tsk.ModuleId)).Select(tsk => PickerItem.Create(tsk.ModuleId, tsk.ModuleName)).ToList().Distinct().ToList();
-                AssignedPrimaryContributor = AllTasks.Where(tsk => !string.IsNullOrEmpty(tsk.PrimaryContributorId)).Select(tsk => PickerItem.Create(tsk.PrimaryContributorId, tsk.PrimaryContributor)).ToList().Distinct().ToList();
-                AssignedQALeads = AllTasks.Where(tsk => !string.IsNullOrEmpty(tsk.QaResourceId)).Select(tsk => PickerItem.Create(tsk.QaResourceId, tsk.QaResource)).ToList().Distinct().ToList();
-                AssignedTaskLeads = AllTasks.Where(tsk => !string.IsNullOrEmpty(tsk.AssignedToUserId)).Select(tsk => PickerItem.Create(tsk.AssignedToUserId, tsk.AssignedToUser)).ToList().Distinct().ToList();
-                StatusFilter = AllTasks.Where(tsk => !string.IsNullOrEmpty(tsk.PrimaryContributorId)).Select(tsk => PickerItem.Create(tsk.StatusId, tsk.Status)).ToList().Distinct().ToList();
-                FilteredTasks = AllTasks;
+                PopualteFilterSelections(false);
                 await RefreshTasksInBackground();
             }
             else
@@ -365,21 +587,26 @@ namespace BugLog.ViewModels
 
         public void FilterTasks()
         {
+            Console.WriteLine("performing filter on task.");
             if (AllTasks != null)
             {
-                FilteredTasks = new ObservableCollection<WorkTaskSummary>(AllTasks.Where(
+                var filteredTasks = new ObservableCollection<WorkTaskSummary>(AllTasks.Where(
                     tsk =>
-                    (SelectedProjectFilter != null && (tsk.ProjectId == SelectedProjectFilter.Id || SelectedProjectFilter.IsDefault)) &&
-                    (SelectedStatusFilter != null && (tsk.StatusId == SelectedStatusFilter.Id || SelectedStatusFilter.IsDefault)) &&
-                    (SelectedWorKTypeFilter != null && (tsk.TaskTypeId == SelectedWorKTypeFilter.Id || SelectedWorKTypeFilter.IsDefault)) &&
-                    (SelectedModuleFilter != null && (tsk.ModuleId == SelectedModuleFilter.Id || SelectedModuleFilter.IsDefault))
+                    (SelectedProjectFilter != null && (tsk.ProjectId == SelectedProjectFilter.Id || SelectedProjectFilter.Id == "all")) &&
+                    (SelectedStatusFilter != null && (tsk.StatusId == SelectedStatusFilter.Id || SelectedStatusFilter.Id == "all")) &&
+                    (SelectedWorKTypeFilter != null && (tsk.TaskTypeId == SelectedWorKTypeFilter.Id || SelectedWorKTypeFilter.Id == "all")) &&
+                    (SelectedModuleFilter != null && (tsk.ModuleId == SelectedModuleFilter.Id || SelectedModuleFilter.Id == "all")) &&
+                    (ShowOnlyMyWork == false || tsk.AssignedToUserId == AuthManager.User.Id || tsk.QaResourceId == AuthManager.User.Id || tsk.PrimaryContributorId == AuthManager.User.Id)
                     ));
+
+                if (FilteredTasks == null || FilteredTasks.GetHashCode() != filteredTasks.GetHashCode())
+                    FilteredTasks = filteredTasks;
             }
         }
 
         #region Selected Filter Values
-        PickerItem _selectedWorkTypeFilter;
-        public PickerItem SelectedWorKTypeFilter
+        EntityHeader _selectedWorkTypeFilter;
+        public EntityHeader SelectedWorKTypeFilter
         {
             get => _selectedWorkTypeFilter;
             set
@@ -389,9 +616,8 @@ namespace BugLog.ViewModels
             }
         }
 
-
-        PickerItem _selectedQAResourceFilter;
-        public PickerItem SelectedQAResourceFilter
+        EntityHeader _selectedQAResourceFilter;
+        public EntityHeader SelectedQAResourceFilter
         {
             get => _selectedQAResourceFilter;
             set
@@ -401,9 +627,8 @@ namespace BugLog.ViewModels
             }
         }
 
-
-        PickerItem _selectedModuleFilter;
-        public PickerItem SelectedModuleFilter
+        EntityHeader _selectedModuleFilter;
+        public EntityHeader SelectedModuleFilter
         {
             get => _selectedModuleFilter;
             set
@@ -413,8 +638,8 @@ namespace BugLog.ViewModels
             }
         }
 
-        PickerItem _selectedProjectFilter;
-        public PickerItem SelectedProjectFilter
+        EntityHeader _selectedProjectFilter;
+        public EntityHeader SelectedProjectFilter
         {
             get => _selectedProjectFilter;
             set
@@ -424,8 +649,8 @@ namespace BugLog.ViewModels
             }
         }
 
-        PickerItem _selectedTaskLeadFilter;
-        public PickerItem SelectedTaskLeadFilter
+        EntityHeader _selectedTaskLeadFilter;
+        public EntityHeader SelectedTaskLeadFilter
         {
             get => _selectedTaskLeadFilter;
             set
@@ -435,9 +660,8 @@ namespace BugLog.ViewModels
             }
         }
 
-
-        PickerItem _selectedPrimaryContributorFilter;
-        public PickerItem SelectedPrimaryContributorFilter
+        EntityHeader _selectedPrimaryContributorFilter;
+        public EntityHeader SelectedPrimaryContributorFilter
         {
             get => _selectedPrimaryContributorFilter;
             set
@@ -447,8 +671,8 @@ namespace BugLog.ViewModels
             }
         }
 
-        PickerItem _selectedStatusFilter;
-        public PickerItem SelectedStatusFilter
+        EntityHeader _selectedStatusFilter;
+        public EntityHeader SelectedStatusFilter
         {
             get => _selectedStatusFilter;
             set
@@ -458,8 +682,8 @@ namespace BugLog.ViewModels
             }
         }
 
-        PickerItem _kanbanView;
-        public PickerItem SelectedKanbanView
+        EntityHeader _kanbanView;
+        public EntityHeader SelectedKanbanView
         {
             get => _kanbanView;
             set
@@ -473,7 +697,56 @@ namespace BugLog.ViewModels
             }
         }
 
+        private bool _showOnlyMyWork;
+        public bool ShowOnlyMyWork
+        {
+            get => _showOnlyMyWork;
+            set
+            {
+                Set(ref _showOnlyMyWork, value);
+                FilterTasks();
+            }
+        }
+
+        string _timeEntryDateDisplay;
+        public string TimeEntryDateDisplay
+        {
+            get => _timeEntryDate.ToLongDateString();
+        }
+
+        WorkTaskSummary _timeEntryTask;
+        public WorkTaskSummary TimeEntryTask
+        {
+            get => _timeEntryTask;
+            set => Set(ref _timeEntryTask, value);
+        }
+
+        private DateTime _timeEntryDate;
+        public DateTime TimeEntryDate
+        {
+            get => _timeEntryDate;
+            set
+            {
+                Set(ref _timeEntryDate, value);
+                RaisePropertyChanged(nameof(TimeEntryDateDisplay));
+            }
+        }
+
+        private string _timeEntryHours;
+        public string TimeEntryHours
+        {
+            get => _timeEntryHours;
+            set => Set(ref _timeEntryHours, value);
+        }
+
+        private string _timeEntryNotes;
+        public string TimeEntryNotes
+        {
+            get => _timeEntryNotes;
+            set => Set(ref _timeEntryNotes, value);
+        }
         #endregion
+
 
         WorkTaskSummary _taskSummary;
         public WorkTaskSummary TaskSummary
@@ -497,8 +770,37 @@ namespace BugLog.ViewModels
                             SelectedTransition = defaultOption;
                         }
                     }
+
+                    if(!String.IsNullOrEmpty(_taskSummary.ExternalStatusConfigurationId))
+                    {
+                        var externalConfig = _statusConfigurations.SingleOrDefault(sc => sc.Id == _taskSummary.ExternalStatusConfigurationId);
+                        if (externalConfig != null)
+                        {
+                            var currentOption = externalConfig.Options.SingleOrDefault(opt => opt.Key == _taskSummary.StatusId);
+                            if (currentOption != null)
+                            {
+                                var transitions = currentOption.ValidTransitions.ToList();
+                                var defaultOption = new StatusTransition { Name = "-transition to new status-", Id = "-1", Key = "-1" };
+                                transitions.Insert(0, defaultOption);
+                                AvailableExternalStatusTransitions = transitions;
+                                SelectedTransition = defaultOption;
+                            }
+                        }
+                    }
+                    else
+                    {
+                        AvailableExternalStatusTransitions = null;
+                    }
                 }
             }
+        }
+
+
+        StatusTransition _selectedExternalTransition;
+        public StatusTransition SelectedExternalTransition
+        {
+            get => _selectedExternalTransition;
+            set { Set(ref _selectedExternalTransition, value); }
         }
 
         StatusTransition _selectedTransition;
@@ -518,6 +820,17 @@ namespace BugLog.ViewModels
             }
         }
 
+        List<StatusTransition> _availableExternalStatusTransitions;
+        public List<StatusTransition> AvailableExternalStatusTransitions
+        {
+            get => _availableStatusTransitions;
+            set
+            {
+                Set(ref _availableStatusTransitions, value);
+            }
+        }
+
+
         string _status = "ready";
         public string Status
         {
@@ -525,11 +838,32 @@ namespace BugLog.ViewModels
             set { Set(ref _status, value); }
         }
 
+        NewTask _newTask;
+        public NewTask NewWorkTask
+        {
+            get => _newTask;
+            set => Set(ref _newTask, value);
+        }
+
         #region Commands
         public RelayCommand AddTaskCommand { get; private set; }
         public RelayCommand<WorkTaskSummary> OpenFullTaskCommand { get; private set; }
         public RelayCommand CloseStatusUpdateCommand { get; private set; }
+        public RelayCommand SaveNewTaskCommand { get; private set; }
+        public RelayCommand CancelNewTaskCommand { get; private set; }
         public RelayCommand RefreshTasksCommand { get; private set; }
+
+        public RelayCommand SaveNewTimeCommand { get; private set; }
+        public RelayCommand CancelNewTimeCommand { get; private set; }
+
+        public RelayCommand TimeEntryPrevDateCommand { get; private set; }
+
+        public RelayCommand TimeEntryNextDateCommand { get; private set; }
+
+        public RelayCommand<WorkTaskSummary> AddRelatedTaskCommand { get; private set; }
+        public RelayCommand<WorkTaskSummary> AddTimeCommand { get; private set; }
+
+        public RelayCommand AddExpectedOutcomeCommand { get; }
         #endregion
 
         public override async Task InitAsync()

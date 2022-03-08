@@ -254,13 +254,13 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="LagoVista.Core">
-      <Version>3.0.1739.1028</Version>
+      <Version>3.0.1742.451</Version>
     </PackageReference>
     <PackageReference Include="LagoVista.Core.Authentication">
-      <Version>3.0.1739.1028</Version>
+      <Version>3.0.1742.451</Version>
     </PackageReference>
     <PackageReference Include="LagoVista.Core.Networking">
-      <Version>3.0.1739.1028</Version>
+      <Version>3.0.1742.451</Version>
     </PackageReference>
     <PackageReference Include="LagoVista.IoT.Logging">
       <Version>3.0.1734.512</Version>
