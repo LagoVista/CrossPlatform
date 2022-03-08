@@ -59,17 +59,44 @@ namespace BugLog.ViewModels
         async void CloseStatusWindow()
         {
             var statusUpdate = new WorkTaskAssignmentStatusUpdate();
-            statusUpdate.Status = SelectedTransition.Key;
+            if (!String.IsNullOrEmpty(StatusUpdateNotes))
+            {
+                statusUpdate.Notes = StatusUpdateNotes;
+            }
+
             if (SelectedTransition.Key != "-1")
+            {
+                statusUpdate.Status = SelectedTransition.Key;
+            }
+
+            if (SelectedExternalTransition.Key != "-1")
+            {
+                statusUpdate.ExternalStatus = SelectedExternalTransition.Key;
+            }
+
+            if (!String.IsNullOrEmpty(statusUpdate.Notes) ||
+               !string.IsNullOrEmpty(statusUpdate.Status) ||
+               !string.IsNullOrEmpty(statusUpdate.ExternalStatus))
             {
                 await PerformNetworkOperation(async () =>
                 {
                     var result = await this.RestClient.PutAsync($"/api/pm/task/{TaskSummary.Id}/boardupdate", statusUpdate);
                     if (result.Successful)
                     {
-                        TaskSummary.Status = SelectedTransition.Name;
-                        TaskSummary.StatusId = SelectedTransition.Key;
+                        if (SelectedTransition.Key != "-1")
+                        {
+                            TaskSummary.Status = SelectedTransition.Name;
+                            TaskSummary.StatusId = SelectedTransition.Key;
+                        }
+
+                        if (SelectedExternalTransition.Key != "-1")
+                        {
+                            TaskSummary.ExternalStatus = SelectedExternalTransition.Name;
+                            TaskSummary.ExternalStatusId = SelectedExternalTransition.Key;
+                        }
+
                         TaskSummary = null;
+                        StatusUpdateNotes = null;
                         this.FilterTasks();
                     }
                     return result;
@@ -193,6 +220,7 @@ namespace BugLog.ViewModels
                     var summary = result.Result;
                     AllTasks.Add(summary);
                     NewWorkTask = null;
+                    SelectedProjectForNewTask = null;
                     this.FilterTasks();
                 }
                 return result.ToInvokeResult();
@@ -364,6 +392,28 @@ namespace BugLog.ViewModels
             set { Set(ref _workTaskTypesForNewTask, value); }
         }
 
+        private EntityHeader _selectedProjectForNewTask;
+        public EntityHeader SelectedProjectForNewTask
+        {
+            get => _selectedProjectForNewTask;
+            set
+            {
+                Set(ref _selectedProjectForNewTask, value);
+                if (NewWorkTask != null)
+                {
+                    NewWorkTask.Project = value;
+                }
+
+                if (value != null)
+                {
+                    var project = AllProjects.FirstOrDefault(prj => prj.Id == value.Id);
+                    if (project != null)
+                    {
+                        ModulesForNewTask = project.Modules;
+                    }
+                }
+            }
+        }
 
         private List<UserInfoSummary> _allUsers;
         public List<UserInfoSummary> AllUsers
@@ -708,7 +758,6 @@ namespace BugLog.ViewModels
             }
         }
 
-        string _timeEntryDateDisplay;
         public string TimeEntryDateDisplay
         {
             get => _timeEntryDate.ToLongDateString();
@@ -747,7 +796,6 @@ namespace BugLog.ViewModels
         }
         #endregion
 
-
         WorkTaskSummary _taskSummary;
         public WorkTaskSummary TaskSummary
         {
@@ -771,19 +819,19 @@ namespace BugLog.ViewModels
                         }
                     }
 
-                    if(!String.IsNullOrEmpty(_taskSummary.ExternalStatusConfigurationId))
+                    if (!String.IsNullOrEmpty(_taskSummary.ExternalStatusConfigurationId))
                     {
                         var externalConfig = _statusConfigurations.SingleOrDefault(sc => sc.Id == _taskSummary.ExternalStatusConfigurationId);
                         if (externalConfig != null)
                         {
-                            var currentOption = externalConfig.Options.SingleOrDefault(opt => opt.Key == _taskSummary.StatusId);
+                            var currentOption = externalConfig.Options.SingleOrDefault(opt => opt.Key == _taskSummary.ExternalStatusId);
                             if (currentOption != null)
                             {
                                 var transitions = currentOption.ValidTransitions.ToList();
-                                var defaultOption = new StatusTransition { Name = "-transition to new status-", Id = "-1", Key = "-1" };
+                                var defaultOption = new StatusTransition { Name = "-transition to new external status-", Id = "-1", Key = "-1" };
                                 transitions.Insert(0, defaultOption);
                                 AvailableExternalStatusTransitions = transitions;
-                                SelectedTransition = defaultOption;
+                                SelectedExternalTransition = defaultOption;
                             }
                         }
                     }
@@ -801,6 +849,13 @@ namespace BugLog.ViewModels
         {
             get => _selectedExternalTransition;
             set { Set(ref _selectedExternalTransition, value); }
+        }
+
+        private string _statusUpdateNotes;
+        public string StatusUpdateNotes
+        {
+            get => _statusUpdateNotes;
+            set => Set(ref _statusUpdateNotes, value);
         }
 
         StatusTransition _selectedTransition;
@@ -823,10 +878,10 @@ namespace BugLog.ViewModels
         List<StatusTransition> _availableExternalStatusTransitions;
         public List<StatusTransition> AvailableExternalStatusTransitions
         {
-            get => _availableStatusTransitions;
+            get => _availableExternalStatusTransitions;
             set
             {
-                Set(ref _availableStatusTransitions, value);
+                Set(ref _availableExternalStatusTransitions, value);
             }
         }
 

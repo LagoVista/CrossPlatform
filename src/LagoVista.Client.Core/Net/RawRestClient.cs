@@ -434,5 +434,10 @@ namespace LagoVista.Client.Core.Net
 
         }
 
+        public Task ClearOfflineCacheAsync()
+        {
+            _offlineCache = null;
+            return Task.CompletedTask;
+        }
     }
 }

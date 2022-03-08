@@ -89,6 +89,7 @@ namespace LagoVista.Client.Core.ViewModels
         public async void Logout()
         {
             await AuthManager.LogoutAsync();
+            await RestClient.ClearOfflineCacheAsync();
             await ViewModelNavigation.SetAsNewRootAsync<Auth.LoginViewModel>();
         }
 

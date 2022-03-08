@@ -296,6 +296,20 @@ namespace LagoVista.Core.UWP.Services
         {
             try
             {
+                var files = await Windows.Storage.ApplicationData.Current.RoamingFolder.GetFilesAsync();
+                foreach(var file in files)
+                {
+                    try
+                    {
+                        await file.DeleteAsync(StorageDeleteOption.PermanentDelete);
+                        Debug.WriteLine($"Deleted File - {file.Name}");
+                    }
+                    catch(Exception ex)
+                    {
+                        Debug.WriteLine($"Could not delete file: {file.Name} - {ex.Message}");
+                    }
+                }
+
                 var keys = Windows.Storage.ApplicationData.Current.RoamingSettings.Values;
                 foreach (var key in keys)
                 {

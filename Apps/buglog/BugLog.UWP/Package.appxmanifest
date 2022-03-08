@@ -10,7 +10,7 @@
   <Identity
     Name="SoftwareLogisticsLLC.SoftwareLogisticsBugLog"
     Publisher="CN=610EF21F-3A3C-4783-B4BF-B7C267BC0CA0"
-    Version="3.0.22.0" />
+    Version="3.0.23.0" />
 
   <mp:PhoneIdentity PhoneProductId="b12ca6ce-fb52-4e63-a146-4de688844607" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
 

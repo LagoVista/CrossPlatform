@@ -31,5 +31,7 @@ namespace LagoVista.Client.Core
         Task<ListResponse<TResponseModel>> GetListResponseAsync<TResponseModel>(String path, ListRequest listRequest = null, CancellationTokenSource cancellationTokenSource = null) where TResponseModel : class, new();
 
         Task<ListResponse<TResponseModel>> TryGetFromCache<TResponseModel>(string path, ListRequest listRequest = null) where TResponseModel : class, new();
+
+        Task ClearOfflineCacheAsync();
     }
 }

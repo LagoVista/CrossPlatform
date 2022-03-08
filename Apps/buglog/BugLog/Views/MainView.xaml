@@ -123,7 +123,7 @@
                         </Grid.ColumnDefinitions>
                         <StackLayout Margin="10">
                             <pge:Label Text="Project" />
-                            <pge:Picker BackgroundColor="white" ItemsSource="{Binding ProjectsForNewTask}" ItemDisplayBinding="{Binding Text}" SelectedItem="{Binding NewWorkTask.Project, Mode=TwoWay}" />
+                            <pge:Picker BackgroundColor="white" ItemsSource="{Binding ProjectsForNewTask}" ItemDisplayBinding="{Binding Text}" SelectedItem="{Binding SelectedProjectForNewTask, Mode=TwoWay}" />
 
                             <pge:Label Text="Module" />
                             <pge:Picker BackgroundColor="white" ItemsSource="{Binding ModulesForNewTask}" ItemDisplayBinding="{Binding Text}" SelectedItem="{Binding NewWorkTask.Module, Mode=TwoWay}" />
@@ -223,7 +223,7 @@
                 </BoxView>
 
                 <Frame BorderColor="Silver" BackgroundColor="White"  CornerRadius="8" AbsoluteLayout.LayoutBounds="0.5, 0.5, -1, -1"
-                       AbsoluteLayout.LayoutFlags="PositionProportional" WidthRequest="400" HeightRequest="250">
+                       AbsoluteLayout.LayoutFlags="PositionProportional" WidthRequest="400" HeightRequest="350">
                     <Grid  WidthRequest="380" HeightRequest="280" BackgroundColor="Beige">
                         <StackLayout Margin="10">
                             <pge:Label Text="{Binding TaskSummary.Name}" FontSize="18" FontAttributes="Bold" />
@@ -231,11 +231,19 @@
                                 <pge:Label Text="Current Status: " FontSize="16" FontAttributes="Bold"  />
                                 <pge:Label Text="{Binding TaskSummary.Status}" FontSize="16" />
                             </StackLayout>
+                            <StackLayout Orientation="Horizontal" IsVisible="{Binding AvailableExternalStatusTransitions, Converter={StaticResource NotNullVisibilityConverter}}" >
+                                <pge:Label Text="Current External Status: " FontSize="16" FontAttributes="Bold"  />
+                                <pge:Label Text="{Binding TaskSummary.ExternalStatus}" FontSize="16" />
+                            </StackLayout>
                             <pge:Label Text="New Status" FontSize="16" />
                             <pge:Picker ItemsSource="{Binding AvailableStatusTransitions}" ItemDisplayBinding="{Binding Name}" SelectedItem="{Binding SelectedTransition, Mode=TwoWay}" />
 
-                            <pge:Label Text="New External" FontSize="16" />
-                            <pge:Picker ItemsSource="{Binding AvailableExternalStatusTransitions}" ItemDisplayBinding="{Binding Name}" SelectedItem="{Binding SelectedExternalTransition, Mode=TwoWay}" />
+                            <pge:Label IsVisible="{Binding AvailableExternalStatusTransitions, Converter={StaticResource NotNullVisibilityConverter}}" Text="New External" FontSize="16" />
+                            <pge:Picker IsVisible="{Binding AvailableExternalStatusTransitions, Converter={StaticResource NotNullVisibilityConverter}}" 
+                                        ItemsSource="{Binding AvailableExternalStatusTransitions}" ItemDisplayBinding="{Binding Name}" SelectedItem="{Binding SelectedExternalTransition, Mode=TwoWay}" />
+
+                            <pge:Label Text="Notes" FontSize="16" />
+                            <pge:TextArea HeightRequest="60" Text="{Binding StatusUpdateNotes, Mode=TwoWay}" />
 
                             <Button WidthRequest="120" Grid.Row="1" Command="{Binding CloseStatusUpdateCommand}" Text="Close"></Button>
                         </StackLayout>
