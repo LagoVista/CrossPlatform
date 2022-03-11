@@ -5,6 +5,7 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:trs="clr-namespace:BugLog;assembly=BugLog"
+             xmlns:blg="clr-namespace:BugLog.Controls"
              mc:Ignorable="d"
              LeftMenu="Menu" 
              RightMenu="Add"
@@ -28,27 +29,31 @@
                 <Grid Margin="10,10,10,0" Grid.Row="0">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="100" />
-                        <ColumnDefinition Width="*" />
-                        <ColumnDefinition Width="100" />
-                        <ColumnDefinition Width="100" />
-                        <ColumnDefinition Width="120" />
-                        <ColumnDefinition Width="120" />
-                        <ColumnDefinition Width="120" />
                         <ColumnDefinition Width="80" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="70" />
+                        <ColumnDefinition Width="70" />
+                        <ColumnDefinition Width="100" />
+                        <ColumnDefinition Width="100" />
+                        <ColumnDefinition Width="70" />
+                        <ColumnDefinition Width="70" />
+                        <ColumnDefinition Width="160" />
                     </Grid.ColumnDefinitions>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="auto" />
                         <RowDefinition Height="1" />
                     </Grid.RowDefinitions>
                     <pge:Label Text="Code" FontAttributes="Bold" HorizontalTextAlignment="Center"/>
-                    <pge:Label Grid.Column="1" Text="Name" FontAttributes="Bold" HorizontalTextAlignment="Center"  />
-                    <pge:Label Grid.Column="2" Text="Status" FontAttributes="Bold" HorizontalTextAlignment="Center" />
-                    <pge:Label Grid.Column="3" Text="External" FontAttributes="Bold" HorizontalTextAlignment="Center"  />
-                    <pge:Label Grid.Column="4" Text="Project" FontAttributes="Bold" HorizontalTextAlignment="Center"  />
-                    <pge:Label Grid.Column="5" Text="Module" FontAttributes="Bold" HorizontalTextAlignment="Center"  />
-                    <pge:Label Grid.Column="6" Text="Type" FontAttributes="Bold" HorizontalTextAlignment="Center"  />
-            
-                    <BoxView BackgroundColor="#93abd3" HeightRequest="1" Grid.Row="1" Grid.ColumnSpan="8"/>
+                    <pge:Label Grid.Column="1" Text="External" FontAttributes="Bold" HorizontalTextAlignment="Center"/>
+                    <pge:Label Grid.Column="2" Text="Name" FontAttributes="Bold" HorizontalTextAlignment="Center"  />
+                    <pge:Label Grid.Column="3" Text="Status" FontAttributes="Bold" HorizontalTextAlignment="Center" />
+                    <pge:Label Grid.Column="4" Text="External" FontAttributes="Bold" HorizontalTextAlignment="Center" />
+                    <pge:Label Grid.Column="5" Text="Project" FontAttributes="Bold" HorizontalTextAlignment="Center"  />
+                    <pge:Label Grid.Column="6" Text="Module" FontAttributes="Bold" HorizontalTextAlignment="Center"  />
+                    <pge:Label Grid.Column="7" Text="Type" FontAttributes="Bold" HorizontalTextAlignment="Center"  />
+                    <pge:Label Grid.Column="8" Text="Priority" FontAttributes="Bold" HorizontalTextAlignment="Center"  />
+
+                    <BoxView BackgroundColor="#93abd3" HeightRequest="1" Grid.Row="1" Grid.ColumnSpan="9"/>
                 </Grid>
 
                 <ListView Margin="10" Grid.Row="1" ItemsSource="{Binding FilteredTasks}" SelectedItem="{Binding TaskSummary, Mode=TwoWay}">
@@ -58,26 +63,39 @@
                                 <Grid VerticalOptions="Center" >
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="100" />
+                                        <ColumnDefinition Width="80" />
                                         <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="70" />
+                                        <ColumnDefinition Width="70" />
                                         <ColumnDefinition Width="100" />
                                         <ColumnDefinition Width="100" />
-                                        <ColumnDefinition Width="120" />
-                                        <ColumnDefinition Width="120" />
-                                        <ColumnDefinition Width="120" />
-                                        <ColumnDefinition Width="120" />
+                                        <ColumnDefinition Width="70" />
+                                        <ColumnDefinition Width="70" />
+                                        <ColumnDefinition Width="160" />
                                     </Grid.ColumnDefinitions>
 
-                                    <pge:Label Text="{Binding TaskCode}" VerticalTextAlignment="Center" />
-                                    <pge:Label Grid.Column="1" Text="{Binding Name}"  LineBreakMode="TailTruncation" VerticalTextAlignment="Center"  />
-                                    <pge:Label Grid.Column="2" Text="{Binding Status}" LineBreakMode="TailTruncation"  VerticalTextAlignment="Center" />
-                                    <pge:Label Grid.Column="3" Text="{Binding ExternalStatus}" LineBreakMode="TailTruncation" VerticalTextAlignment="Center" />
-                                    <pge:Label Grid.Column="4" Text="{Binding ProjectName}" LineBreakMode="TailTruncation" VerticalTextAlignment="Center" />
-                                    <pge:Label Grid.Column="5" Text="{Binding ModuleName}"  LineBreakMode="TailTruncation" VerticalTextAlignment="Center" />
-                                    <pge:Label Grid.Column="6" Text="{Binding TaskType}"  LineBreakMode="TailTruncation" VerticalTextAlignment="Center"  />
-                                    <StackLayout Grid.Column="7" Orientation="Horizontal" >
-                                        <pge:IconButton IconKey="ep-stopwatch" Command="{Binding BindingContext.AddTimeCommand, Source={x:Reference parentSource} }" CommandParameter="{Binding .}" />
-                                        <pge:IconButton IconKey="fa-bug" Command="{Binding BindingContext.AddRelatedTaskCommand, Source={x:Reference parentSource} }" CommandParameter="{Binding .}" />
-                                        <pge:IconButton IconKey="fa-external-link" Command="{Binding BindingContext.OpenFullTaskCommand, Source={x:Reference parentSource} }" CommandParameter="{Binding .}" />
+                                    <StackLayout Orientation="Horizontal" >
+                                        <pge:Label Text="{Binding TaskCode}" VerticalTextAlignment="Center" />
+                                        <pge:IconButton TextColor="#D48D17"  IconKey="fa-external-link" Command="{Binding BindingContext.OpenFullTaskCommand, Source={x:Reference parentSource} }" CommandParameter="{Binding .}" />
+                                    </StackLayout>
+                                    
+                                    <StackLayout Orientation="Horizontal" Grid.Column="1">
+                                        <pge:Label Text="{Binding ExternalTaskCode}" VerticalTextAlignment="Center" />
+                                        <pge:IconButton IconKey="fa-external-link" TextColor="#D48D17" Command="{Binding BindingContext.OpenFullExternalTaskCommand, Source={x:Reference parentSource} }" CommandParameter="{Binding .}" />
+                                    </StackLayout>
+
+
+                                    <pge:Label Grid.Column="2" Text="{Binding Name}"  LineBreakMode="TailTruncation" VerticalTextAlignment="Center"  />
+                                    <pge:Label Grid.Column="3" Text="{Binding Status}" LineBreakMode="TailTruncation"  VerticalTextAlignment="Center" />
+                                    <pge:Label Grid.Column="4" Text="{Binding ExternalStatus}" LineBreakMode="TailTruncation" VerticalTextAlignment="Center" />
+                                    <pge:Label Grid.Column="5" Text="{Binding ProjectName}" LineBreakMode="TailTruncation" VerticalTextAlignment="Center" />
+                                    <pge:Label Grid.Column="6" Text="{Binding ModuleName}"  LineBreakMode="TailTruncation" VerticalTextAlignment="Center" />
+                                    <pge:Label Grid.Column="7" Text="{Binding TaskType}"  LineBreakMode="TailTruncation" VerticalTextAlignment="Center"  />
+                                    <pge:Label Grid.Column="8" Text="{Binding Priority}"  LineBreakMode="TailTruncation" VerticalTextAlignment="Center"  />
+                                    <StackLayout Grid.Column="9" Orientation="Horizontal" >
+                                        <pge:IconButton TextColor="#D48D17" IconKey="fa-github" Command="{Binding BindingContext.ShowRepoViewCommand, Source={x:Reference parentSource} }" CommandParameter="{Binding .}" />
+                                        <pge:IconButton TextColor="#D48D17"  IconKey="ep-stopwatch" Command="{Binding BindingContext.AddTimeCommand, Source={x:Reference parentSource} }" CommandParameter="{Binding .}" />
+                                        <pge:IconButton TextColor="#D48D17"  IconKey="fa-bug" Command="{Binding BindingContext.AddRelatedTaskCommand, Source={x:Reference parentSource} }" CommandParameter="{Binding .}" />
                                     </StackLayout>
                                 </Grid>
                             </ViewCell>
@@ -87,6 +105,15 @@
 
                 <StackLayout Grid.Column="1" Grid.RowSpan="2" Margin="4">
                     <pge:IconButton IconKey="fa-refresh" Command="{Binding RefreshTasksCommand }"  HorizontalOptions="End"/>
+                    <pge:Label Text="Filter" />
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="auto" />
+                        </Grid.ColumnDefinitions>
+                        <pge:Entry Text="{Binding SearchContent, Mode=TwoWay}" />
+                        <pge:IconButton TextColor="#dc3545" IconKey="fa-trash" Command="{Binding ClearSearchCommand}" Grid.Column="1" />
+                    </Grid>
                     <pge:Label Text="View" />
                     <pge:Picker ItemsSource="{Binding FilteredViews}" ItemDisplayBinding="{Binding Text}" SelectedItem="{Binding SelectedKanbanView}" />
                     <pge:Label Text="Project" />
@@ -97,12 +124,15 @@
                     <Picker ItemsSource="{Binding WorkTaskTypesFilter}" ItemDisplayBinding="{Binding Text}" SelectedItem="{Binding SelectedWorKTypeFilter}" />
                     <pge:Label Text="Status" />
                     <Picker ItemsSource="{Binding StatusFilter}" ItemDisplayBinding="{Binding Text}" SelectedItem="{Binding SelectedStatusFilter}" />
-                    <pge:Label Text="Task Lead" />
+                    <pge:Label Text="Priority" />
+                    <Picker ItemsSource="{Binding PriorityFilter}" ItemDisplayBinding="{Binding Text}" SelectedItem="{Binding SelectedPriorityFilter}" />
+                    <!--<pge:Label Text="Task Lead" />
                     <Picker ItemsSource="{Binding AssignedTaskLeads}" ItemDisplayBinding="{Binding Text}" SelectedItem="{Binding SelectedTaskLeadFilter}" />
                     <pge:Label Text="Primary Contributor" />
                     <Picker ItemsSource="{Binding AssignedPrimaryContributor}" ItemDisplayBinding="{Binding Text}" SelectedItem="{Binding SelectedPrimaryContributorFilter}" />
                     <pge:Label Text="QA Lead" />
                     <Picker ItemsSource="{Binding AssignedQALeads}" ItemDisplayBinding="{Binding Text}" SelectedItem="{Binding SelectedQAResourceFilter}" />
+                    -->
                     <pge:Label Text="Only My Work"/>
                     <CheckBox IsChecked="{Binding ShowOnlyMyWork}" />
                 </StackLayout>
@@ -184,7 +214,7 @@
                 <BoxView BackgroundColor="Black"  CornerRadius="8" AbsoluteLayout.LayoutBounds="0, 0, 1, 1" AbsoluteLayout.LayoutFlags="All" Opacity="0.2"></BoxView>
 
                 <Frame BorderColor="Silver" BackgroundColor="White"  CornerRadius="8" AbsoluteLayout.LayoutBounds="0.5, 0.5, -1, -1"
-                       AbsoluteLayout.LayoutFlags="PositionProportional" WidthRequest="500" HeightRequest="320">
+                       AbsoluteLayout.LayoutFlags="PositionProportional" WidthRequest="500" HeightRequest="450">
                     <Grid  BackgroundColor="Beige">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="auto" />
@@ -223,7 +253,7 @@
                 </BoxView>
 
                 <Frame BorderColor="Silver" BackgroundColor="White"  CornerRadius="8" AbsoluteLayout.LayoutBounds="0.5, 0.5, -1, -1"
-                       AbsoluteLayout.LayoutFlags="PositionProportional" WidthRequest="400" HeightRequest="350">
+                       AbsoluteLayout.LayoutFlags="PositionProportional" WidthRequest="400" HeightRequest="450">
                     <Grid  WidthRequest="380" HeightRequest="280" BackgroundColor="Beige">
                         <StackLayout Margin="10">
                             <pge:Label Text="{Binding TaskSummary.Name}" FontSize="18" FontAttributes="Bold" />
@@ -249,6 +279,24 @@
                         </StackLayout>
                     </Grid>
                 </Frame>
+            </AbsoluteLayout>
+
+            <AbsoluteLayout IsVisible="{Binding RepoVM, Converter={StaticResource NotNullVisibilityConverter}}" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" >
+                <BoxView BackgroundColor="Black"  CornerRadius="8" AbsoluteLayout.LayoutBounds="0, 0, 1, 1" AbsoluteLayout.LayoutFlags="All" Opacity="0.2">
+                </BoxView>
+
+                <Frame BorderColor="Silver" BackgroundColor="White"  CornerRadius="8" AbsoluteLayout.LayoutBounds="0.5, 0.5, -1, -1"
+                       AbsoluteLayout.LayoutFlags="PositionProportional" WidthRequest="800" HeightRequest="600">
+                    <Grid BackgroundColor="Beige">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="550" />
+                            <RowDefinition Height="48" />
+                        </Grid.RowDefinitions>
+                        <blg:RepoSupport BindingContext="{Binding RepoVM}" />
+                        <Button Command="{Binding CloseReposCommand}" Text="Done" HorizontalOptions="End" Grid.Row="1" HeightRequest="48" WidthRequest="120" />
+                    </Grid>
+                </Frame>
+
             </AbsoluteLayout>
 
         </Grid>

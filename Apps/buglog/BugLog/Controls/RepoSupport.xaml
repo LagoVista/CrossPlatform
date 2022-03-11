@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:pge="clr-namespace:LagoVista.XPlat.Core;assembly=LagoVista.XPlat.Core"
+             x:Class="BugLog.Controls.RepoSupport">
+    <ContentView.Content>
+        <Grid >
+            <Grid.RowDefinitions>
+                <RowDefinition Height="32" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="200" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <StackLayout Grid.RowSpan="2" >
+                <pge:IconButton IconKey="fa-plus" Command="{Binding NewRepoCommand}" WidthRequest="32" HeightRequest="32" />
+
+                <ListView ItemsSource="{Binding Repos}" SelectedItem="{Binding Repo, Mode=TwoWay}" HeightRequest="200" >
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell Height="32">
+                                <Label Text="{Binding Name}"  />
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+                <StackLayout IsVisible="{Binding Repo, Converter={StaticResource NotNullVisibilityConverter}}" >
+                    <pge:Label Text="Repo Name" />
+                    <pge:Entry Text="{Binding Repo.Name}" />
+
+                    <pge:Label Text="Path" />
+                    <pge:Entry Text="{Binding Repo.Folder}" />
+                    <Button  Text="Save" Command="{Binding SaveRepoCommand}" />
+                    <Button  Text="Cancel" Command="{Binding CancelRepoCommand}" />
+                </StackLayout>
+            </StackLayout>
+
+            <StackLayout Orientation="Horizontal" Grid.Column="1" >
+                <Button Command="{Binding GitCommand}" CommandParameter="status" Text="GIT Status" />
+            </StackLayout>
+            <ListView ItemsSource="{Binding ConsoleLogOutput}" BackgroundColor="Blue" Grid.Row="1" Grid.Column="1">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                                <Label Text="{Binding Output}" FontFamily="Consolas" TextColor="Yellow" />
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </Grid>
+    </ContentView.Content>
+</ContentView>

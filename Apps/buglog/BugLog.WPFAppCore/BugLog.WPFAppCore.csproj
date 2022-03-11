@@ -1,13 +1,19 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
+
   <PropertyGroup>
+    <OutputType>WinExe</OutputType>
     <TargetFramework>netcoreapp3.0</TargetFramework>
     <UseWPF>true</UseWPF>
   </PropertyGroup>
+
   <ItemGroup>
     <PackageReference Include="LagoVista.Core" Version="3.0.1742.451" />
-    <PackageReference Include="System.IO.Ports" Version="5.0.1" />
+    <PackageReference Include="LagoVista.Core.Authentication" Version="3.0.1742.451" />
+    <PackageReference Include="Xamarin.Forms.Platform.WPF" Version="5.0.0.2337" />
   </ItemGroup>
+
   <ItemGroup>
-    <ProjectReference Include="..\LagoVista.Client.Core\LagoVista.Client.Core.csproj" />
+    <ProjectReference Include="..\BugLog\BugLog.csproj" />
   </ItemGroup>
+
 </Project>

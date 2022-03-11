@@ -1,4 +1,5 @@
-﻿using BugLog.Models;
+﻿using BugLog.Managers;
+using BugLog.Models;
 using LagoVista.Client.Core.Exceptions;
 using LagoVista.Client.Core.Resources;
 using LagoVista.Client.Core.ViewModels;
@@ -48,12 +49,20 @@ namespace BugLog.ViewModels
             AddRelatedTaskCommand = RelayCommand<WorkTaskSummary>.Create(AddRelatedTask);
             AddTimeCommand = RelayCommand<WorkTaskSummary>.Create(AddTime);
             AddExpectedOutcomeCommand = RelayCommand.Create(AddExpectedOutcome);
+            OpenFullExternalTaskCommand = RelayCommand<WorkTaskSummary>.Create(OpenExternalFullTask);
             SaveNewTaskCommand = RelayCommand.Create(SaveNewTask);
             CancelNewTimeCommand = RelayCommand.Create(() => TimeEntryTask = null);
             SaveNewTimeCommand = RelayCommand.Create(SaveNewTime);
             CancelNewTaskCommand = RelayCommand.Create(() => NewWorkTask = null);
             TimeEntryNextDateCommand = RelayCommand.Create(() => TimeEntryDate = TimeEntryDate.AddDays(1));
             TimeEntryPrevDateCommand = RelayCommand.Create(() => TimeEntryDate = TimeEntryDate.AddDays(-1));
+            ClearSearchCommand = RelayCommand.Create(() => SearchContent = String.Empty);
+            ShowRepoViewCommand = RelayCommand<WorkTaskSummary>.Create(async (wts) =>
+            {
+                RepoVM = new RepoSupportViewModel(wts, new RepoManager(Storage), DispatcherServices);
+                await RepoVM.InitAsync();
+            });
+            CloseReposCommand = RelayCommand.Create(() => RepoVM = null);
         }
 
         async void CloseStatusWindow()
@@ -237,6 +246,13 @@ namespace BugLog.ViewModels
             });
         }
 
+        void OpenExternalFullTask(WorkTaskSummary summary)
+        {
+            if (!String.IsNullOrEmpty(summary.ExternalTaskLink))
+            {
+                Services.Network.OpenURI(new System.Uri(summary.ExternalTaskLink));
+            }
+        }
         void OpenFullTask(WorkTaskSummary summary)
         {
             var taskPath = $"/ngx/#pm/{summary.ProjectId}/task/{summary.Id}";
@@ -315,6 +331,18 @@ namespace BugLog.ViewModels
                 Set(ref _statusFilter, value);
             }
         }
+
+        List<EntityHeader> _priorityFilter;
+        public List<EntityHeader> PriorityFilter
+        {
+            get => _priorityFilter;
+            set
+            {
+                value.Insert(0, EntityHeaderAll());
+                Set(ref _priorityFilter, value);
+            }
+        }
+
 
         List<EntityHeader> _filteredViews;
         public List<EntityHeader> FilteredViews
@@ -543,13 +571,15 @@ namespace BugLog.ViewModels
             var lead = SelectedTaskLeadFilter;
             var ctrb = SelectedPrimaryContributorFilter;
             var qa = SelectedQAResourceFilter;
+            var pf = SelectedPriorityFilter;
 
             Projects = AllTasks.Where(tsk => !string.IsNullOrEmpty(tsk.ProjectId)).Select(prj => EntityHeader.Create(prj.ProjectId, prj.Key, prj.ProjectName)).ToList().Distinct().ToList();
             Modules = AllTasks.Where(tsk => !string.IsNullOrEmpty(tsk.ModuleId)).Select(tsk => EntityHeader.Create(tsk.ModuleId, tsk.Key, tsk.ModuleName)).ToList().Distinct().ToList();
             AssignedPrimaryContributor = AllTasks.Where(tsk => !string.IsNullOrEmpty(tsk.PrimaryContributorId)).Select(tsk => EntityHeader.Create(tsk.PrimaryContributorId, tsk.PrimaryContributor)).ToList().Distinct().ToList();
             AssignedQALeads = AllTasks.Where(tsk => !string.IsNullOrEmpty(tsk.QaResourceId)).Select(tsk => EntityHeader.Create(tsk.QaResourceId, tsk.QaResource)).ToList().Distinct().ToList();
             AssignedTaskLeads = AllTasks.Where(tsk => !string.IsNullOrEmpty(tsk.AssignedToUserId)).Select(tsk => EntityHeader.Create(tsk.AssignedToUserId, tsk.AssignedToUser)).ToList().Distinct().ToList();
-            StatusFilter = AllTasks.Where(tsk => !string.IsNullOrEmpty(tsk.PrimaryContributorId)).Select(tsk => EntityHeader.Create(tsk.StatusId, tsk.Status)).ToList().Distinct().ToList();
+            StatusFilter = AllTasks.Select(tsk => EntityHeader.Create(tsk.StatusId, tsk.Status)).ToList().Distinct().ToList();
+            PriorityFilter = AllTasks.Select(tsk => EntityHeader.Create(tsk.Priority, tsk.Priority)).ToList().Distinct().ToList();
 
             if (maintainFilters)
             {
@@ -561,6 +591,7 @@ namespace BugLog.ViewModels
                 _selectedTaskLeadFilter = lead;
                 _selectedPrimaryContributorFilter = ctrb;
                 _selectedQAResourceFilter = qa;
+                _selectedPriorityFilter = pf;
             }
             else
             {
@@ -572,12 +603,14 @@ namespace BugLog.ViewModels
                 _selectedQAResourceFilter = AssignedQALeads[0];
                 _selectedTaskLeadFilter = AssignedTaskLeads[0];
                 _selectedPrimaryContributorFilter = AssignedPrimaryContributor[0];
+                _selectedPriorityFilter = PriorityFilter[0];
             }
 
             RaisePropertyChanged(nameof(SelectedProjectFilter));
             RaisePropertyChanged(nameof(SelectedModuleFilter));
             RaisePropertyChanged(nameof(SelectedStatusFilter));
             RaisePropertyChanged(nameof(SelectedWorKTypeFilter));
+            RaisePropertyChanged(nameof(SelectedPriorityFilter));
 
             RaisePropertyChanged(nameof(SelectedTaskLeadFilter));
             RaisePropertyChanged(nameof(SelectedQAResourceFilter));
@@ -644,8 +677,14 @@ namespace BugLog.ViewModels
                     tsk =>
                     (SelectedProjectFilter != null && (tsk.ProjectId == SelectedProjectFilter.Id || SelectedProjectFilter.Id == "all")) &&
                     (SelectedStatusFilter != null && (tsk.StatusId == SelectedStatusFilter.Id || SelectedStatusFilter.Id == "all")) &&
+                    (SelectedPriorityFilter != null && (tsk.Priority == SelectedPriorityFilter.Id || SelectedPriorityFilter.Id == "all")) &&
                     (SelectedWorKTypeFilter != null && (tsk.TaskTypeId == SelectedWorKTypeFilter.Id || SelectedWorKTypeFilter.Id == "all")) &&
                     (SelectedModuleFilter != null && (tsk.ModuleId == SelectedModuleFilter.Id || SelectedModuleFilter.Id == "all")) &&
+                    (String.IsNullOrEmpty(SearchContent) ||
+                       (tsk.ExternalTaskCode != null && tsk.ExternalTaskCode.Contains(SearchContent)) ||
+                       (tsk.TaskCode != null && tsk.TaskCode.Contains(SearchContent)) ||
+                       (tsk.Name != null && tsk.Name.Contains(SearchContent))
+                     ) &&
                     (ShowOnlyMyWork == false || tsk.AssignedToUserId == AuthManager.User.Id || tsk.QaResourceId == AuthManager.User.Id || tsk.PrimaryContributorId == AuthManager.User.Id)
                     ));
 
@@ -698,6 +737,18 @@ namespace BugLog.ViewModels
                 FilterTasks();
             }
         }
+
+        EntityHeader _selectedPriorityFilter;
+        public EntityHeader SelectedPriorityFilter
+        {
+            get => _selectedPriorityFilter;
+            set
+            {
+                Set(ref _selectedPriorityFilter, value);
+                FilterTasks();
+            }
+        }
+
 
         EntityHeader _selectedTaskLeadFilter;
         public EntityHeader SelectedTaskLeadFilter
@@ -843,6 +894,12 @@ namespace BugLog.ViewModels
             }
         }
 
+        RepoSupportViewModel _repoVM = null;
+        public RepoSupportViewModel RepoVM
+        {
+            get => _repoVM;
+            set => Set(ref _repoVM, value);
+        }
 
         StatusTransition _selectedExternalTransition;
         public StatusTransition SelectedExternalTransition
@@ -900,9 +957,25 @@ namespace BugLog.ViewModels
             set => Set(ref _newTask, value);
         }
 
+        private string _searchContent;
+        public string SearchContent
+        {
+            get => _searchContent;
+            set
+            {
+                _searchContent = value;
+                RaisePropertyChanged();
+                Task.Run(() =>
+                {
+                    FilterTasks();
+                });
+            }
+        }
+
         #region Commands
         public RelayCommand AddTaskCommand { get; private set; }
         public RelayCommand<WorkTaskSummary> OpenFullTaskCommand { get; private set; }
+        public RelayCommand<WorkTaskSummary> OpenFullExternalTaskCommand { get; private set; }
         public RelayCommand CloseStatusUpdateCommand { get; private set; }
         public RelayCommand SaveNewTaskCommand { get; private set; }
         public RelayCommand CancelNewTaskCommand { get; private set; }
@@ -919,6 +992,12 @@ namespace BugLog.ViewModels
         public RelayCommand<WorkTaskSummary> AddTimeCommand { get; private set; }
 
         public RelayCommand AddExpectedOutcomeCommand { get; }
+
+        public RelayCommand CloseReposCommand { get; }
+
+        public RelayCommand ClearSearchCommand { get; }
+
+        public RelayCommand<WorkTaskSummary> ShowRepoViewCommand { get; }
         #endregion
 
         public override async Task InitAsync()

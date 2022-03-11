@@ -30,7 +30,6 @@ namespace BugLog.UWP
             this.InitializeComponent();
             this.Suspending += OnSuspending;
 
-
             UnhandledException += (sender, e) =>
             {
                 Debug.WriteLine("EXCPETION");
@@ -79,6 +78,7 @@ namespace BugLog.UWP
                 DeviceInfo.Register();
 
                 SLWIOC.Register<IWebSocket, WebSocket>();
+                SLWIOC.Register<IProcessRunner, ProcessRunner>();
                 LagoVista.Core.UWP.Startup.Init(this, rootFrame.Dispatcher, MOBILE_CENTER_KEY);
 
 
