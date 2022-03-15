@@ -551,7 +551,15 @@ namespace BugLog.ViewModels
 
         public async void LoadCommonSettingsInBackground()
         {
-            await TryLoadListsFromCacheAsync();
+            try
+            {
+                await LoadCommonSettingsAsync();
+            }
+            catch(Exception)
+            {
+                /* nop */
+            }
+
         }
 
         public async Task RefreshTasksFromServerAsync()
