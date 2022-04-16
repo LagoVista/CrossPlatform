@@ -91,7 +91,6 @@
     <Compile Include="Services\UsbSerialOTG\Extensions\UsbSerialPortInfo.cs" />
     <Compile Include="Services\UsbSerialOTG\Util\HexDump.cs" />
     <Compile Include="Services\WebSocket.cs" />
-    <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />

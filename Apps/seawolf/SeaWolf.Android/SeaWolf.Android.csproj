@@ -109,9 +109,56 @@
     <PackageReference Include="Xamarin.Essentials" Version="1.7.2" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IconFonts\EntypoPlusModule.cs" />
+    <Compile Include="IconFonts\FontAwesomeModule.cs" />
+    <Compile Include="IconFonts\IconFontSupport.cs" />
+    <Compile Include="IconFonts\IoniconsModule.cs" />
+    <Compile Include="IconFonts\MaterialModule.cs" />
+    <Compile Include="IconFonts\MeteoconsModule.cs" />
+    <Compile Include="IconFonts\SimpleLineIconsModule.cs" />
+    <Compile Include="IconFonts\TypiconsModule.cs" />
+    <Compile Include="IconFonts\WeatherIconsModule.cs" />
+    <Compile Include="Loggers\AppCenterLogger.cs" />
     <Compile Include="MainActivity.cs" />
     <Compile Include="Resources\Resource.designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\AppService.cs" />
+    <Compile Include="Services\BluetoothSerial.cs" />
+    <Compile Include="Services\ClipBoard.cs" />
+    <Compile Include="Services\DispatcherServices.cs" />
+    <Compile Include="Services\GATTConnection.cs" />
+    <Compile Include="Services\NetworkService.cs" />
+    <Compile Include="Services\ProcessWriter.cs" />
+    <Compile Include="Services\SecureStorage.cs" />
+    <Compile Include="Services\SerialPort.cs" />
+    <Compile Include="Services\StorageService.cs" />
+    <Compile Include="Services\TCPClient.cs" />
+    <Compile Include="Services\UDPClient.cs" />
+    <Compile Include="Services\UsbSerialOTG\driver\CdcAcmSerialDriver.cs" />
+    <Compile Include="Services\UsbSerialOTG\driver\Ch34xSerialDriver.cs" />
+    <Compile Include="Services\UsbSerialOTG\driver\CommonUsbSerialPort.cs" />
+    <Compile Include="Services\UsbSerialOTG\driver\Cp21xxSerialDriver.cs" />
+    <Compile Include="Services\UsbSerialOTG\driver\FtdiSerialDriver.cs" />
+    <Compile Include="Services\UsbSerialOTG\driver\Parity.cs" />
+    <Compile Include="Services\UsbSerialOTG\driver\ProbeTable.cs" />
+    <Compile Include="Services\UsbSerialOTG\driver\ProlificSerialDriver.cs" />
+    <Compile Include="Services\UsbSerialOTG\driver\STM32SerialDriver.cs" />
+    <Compile Include="Services\UsbSerialOTG\driver\UsbId.cs" />
+    <Compile Include="Services\UsbSerialOTG\driver\UsbSerialDriver.cs" />
+    <Compile Include="Services\UsbSerialOTG\driver\UsbSerialPort.cs" />
+    <Compile Include="Services\UsbSerialOTG\driver\UsbSerialProber.cs" />
+    <Compile Include="Services\UsbSerialOTG\driver\UsbSerialRuntimeException.cs" />
+    <Compile Include="Services\UsbSerialOTG\driver\UsbSupport.cs" />
+    <Compile Include="Services\UsbSerialOTG\Extensions\AsyncExtensions.cs" />
+    <Compile Include="Services\UsbSerialOTG\Extensions\BufferExtensions.cs" />
+    <Compile Include="Services\UsbSerialOTG\Extensions\EventHandlerExtensions.cs" />
+    <Compile Include="Services\UsbSerialOTG\Extensions\SerialDataReceivedArgs.cs" />
+    <Compile Include="Services\UsbSerialOTG\Extensions\SerialInputOutputManager.cs" />
+    <Compile Include="Services\UsbSerialOTG\Extensions\UsbManagerExtensions.cs" />
+    <Compile Include="Services\UsbSerialOTG\Extensions\UsbSerialPortInfo.cs" />
+    <Compile Include="Services\UsbSerialOTG\Util\HexDump.cs" />
+    <Compile Include="Services\WebSocket.cs" />
+    <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
     <AndroidAsset Include="Assets\font\iconizeentypoplus.ttf" />
@@ -171,10 +218,6 @@
     <ProjectReference Include="..\..\..\src\LagoVista.XPlat.Core\LagoVista.XPlat.Core.csproj">
       <Project>{B46B2B34-6314-4EF7-A41F-80158102B92C}</Project>
       <Name>LagoVista.XPlat.Core</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\..\src\LagoVista.XPlat.Droid\LagoVista.XPlat.Droid.csproj">
-      <Project>{981e1800-122a-4204-8826-3b981b8dfea4}</Project>
-      <Name>LagoVista.XPlat.Droid</Name>
     </ProjectReference>
     <ProjectReference Include="..\SeaWolf\SeaWolf.csproj">
       <Project>{D89BCBD4-1DD4-4798-87BA-1073448B8A10}</Project>
