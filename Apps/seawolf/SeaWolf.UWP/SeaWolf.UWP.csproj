@@ -234,40 +234,40 @@
       <Version>2.0.11</Version>
     </PackageReference>
     <PackageReference Include="LagoVista.Core">
-      <Version>3.0.1604.519</Version>
+      <Version>3.0.1795.1556</Version>
     </PackageReference>
     <PackageReference Include="LagoVista.Core.Authentication">
-      <Version>3.0.1604.519</Version>
+      <Version>3.0.1795.1556</Version>
     </PackageReference>
     <PackageReference Include="LagoVista.Core.Networking">
-      <Version>3.0.1604.519</Version>
+      <Version>3.0.1795.1556</Version>
     </PackageReference>
     <PackageReference Include="LagoVista.IoT.Deployment.Models">
-      <Version>3.0.1604.519</Version>
+      <Version>3.0.1795.1429</Version>
     </PackageReference>
     <PackageReference Include="LagoVista.IoT.DeviceManagement.Models">
-      <Version>3.0.1604.519</Version>
+      <Version>3.0.1795.1429</Version>
     </PackageReference>
     <PackageReference Include="LagoVista.IoT.DeviceMessaging.Models">
-      <Version>3.0.1604.519</Version>
+      <Version>3.0.1795.1429</Version>
     </PackageReference>
     <PackageReference Include="LagoVista.IoT.Logging">
-      <Version>3.0.1604.519</Version>
+      <Version>3.0.1795.1429</Version>
     </PackageReference>
     <PackageReference Include="LagoVista.IoT.Pipeline.Models">
-      <Version>3.0.1604.519</Version>
+      <Version>3.0.1795.1429</Version>
     </PackageReference>
     <PackageReference Include="LagoVista.MediaServices.Models">
-      <Version>3.0.1604.519</Version>
+      <Version>3.0.1795.1429</Version>
     </PackageReference>
     <PackageReference Include="LagoVista.UserAdmin.Models">
-      <Version>3.0.1604.519</Version>
+      <Version>3.0.1795.1429</Version>
     </PackageReference>
-    <PackageReference Include="Xamarin.Forms" Version="5.0.0.2083" />
-    <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform" Version="6.2.12" />
-    <PackageReference Include="Xamarin.Essentials" Version="1.7.0" />
+    <PackageReference Include="Xamarin.Forms" Version="5.0.0.2401" />
+    <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform" Version="6.2.13" />
+    <PackageReference Include="Xamarin.Essentials" Version="1.7.2" />
     <PackageReference Include="Xamarin.Forms.Maps">
-      <Version>5.0.0.2083</Version>
+      <Version>5.0.0.2401</Version>
     </PackageReference>
   </ItemGroup>
   <ItemGroup>

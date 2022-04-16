@@ -105,7 +105,6 @@ namespace LagoVista.Client.Core.ViewModels
 
                         break;
                     case FormField.FieldType_NameSpace:
-                    case FormField.FieldType_MultilineText:
                     case FormField.FieldType_Text:
                     case FormField.FieldType_Key:
                         prop.SetValue(model, formItem.Value);

@@ -8,20 +8,20 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="DLToolkit.Forms.Controls.FlowListView" Version="2.0.11" />
-    <PackageReference Include="LagoVista.Core.Authentication" Version="3.0.1742.451" />
-    <PackageReference Include="LagoVista.Core.Networking" Version="3.0.1742.451" />
-    <PackageReference Include="LagoVista.IoT.Logging" Version="3.0.1734.512" />
-    <PackageReference Include="LagoVista.UserAdmin.Models" Version="3.0.1734.512" />
+    <PackageReference Include="LagoVista.Core.Authentication" Version="3.0.1795.1556" />
+    <PackageReference Include="LagoVista.Core.Networking" Version="3.0.1795.1556" />
+    <PackageReference Include="LagoVista.IoT.Logging" Version="3.0.1795.1429" />
+    <PackageReference Include="LagoVista.UserAdmin.Models" Version="3.0.1795.1429" />
     <PackageReference Include="Microsoft.AppCenter" Version="4.5.0" />
-    <PackageReference Include="LagoVista.IoT.DeviceMessaging.Models" Version="3.0.1734.512" />
+    <PackageReference Include="LagoVista.IoT.DeviceMessaging.Models" Version="3.0.1795.1429" />
     <PackageReference Include="Microsoft.AppCenter.Analytics" Version="4.5.0" />
     <PackageReference Include="Microsoft.AppCenter.Crashes" Version="4.5.0" />
     <PackageReference Include="Microsoft.AppCenter.Distribute" Version="4.5.0" />
-    <PackageReference Include="Microsoft.NETCore.Platforms" Version="6.0.1" />
+    <PackageReference Include="Microsoft.NETCore.Platforms" Version="6.0.3" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
-    <PackageReference Include="Xamarin.Forms" Version="5.0.0.2337" />
-    <PackageReference Include="Xamarin.Forms.Maps" Version="5.0.0.2337" />
-    <PackageReference Include="LagoVista.Core" Version="3.0.1742.451" />
+    <PackageReference Include="Xamarin.Forms" Version="5.0.0.2401" />
+    <PackageReference Include="Xamarin.Forms.Maps" Version="5.0.0.2401" />
+    <PackageReference Include="LagoVista.Core" Version="3.0.1795.1556" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\LagoVista.Client.Core\LagoVista.Client.Core.csproj" />
