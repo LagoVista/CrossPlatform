@@ -1,4 +1,4 @@
-﻿using LagoVista.Client.Core.Interfaces;
+﻿using LagoVista.Client.Core;
 using LagoVista.Core.Interfaces;
 using LagoVista.Core.IOC;
 using LagoVista.Core.PlatformSupport;
@@ -10,7 +10,7 @@ namespace LagoVista.Xplat.WPF
     public class Startup
     {
         public static void Init(IAppConfig appConfig)
-        {
+        {            
             SLWIOC.RegisterSingleton<IStorageService>(new StorageService());
             SLWIOC.RegisterSingleton<INetworkService>(new NetworkService());
             SLWIOC.RegisterSingleton<ILogger>(new DebugLogger());

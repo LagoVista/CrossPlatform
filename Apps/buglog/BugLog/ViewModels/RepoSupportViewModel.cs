@@ -1,12 +1,13 @@
 ﻿using BugLog.Managers;
 using BugLog.Models;
+using LagoVista.Client.Core;
+using LagoVista.Client.Core.Models;
 using LagoVista.Client.Core.ViewModels;
 using LagoVista.Core;
 using LagoVista.Core.Commanding;
 using LagoVista.Core.IOC;
 using LagoVista.ProjectManagement.Models;
 using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Threading.Tasks;
 
@@ -16,20 +17,21 @@ namespace BugLog.ViewModels
     {
         WorkTaskSummary _wts;
         RepoManager _repoManager;
-        private readonly ConsoleWriter _consoleWriter;
+        private readonly LagoVista.Client.Core.IConsoleWriter _consoleWriter;
         IProcessRunner _processRunner;
 
         public RepoSupportViewModel(WorkTaskSummary wts, RepoManager repoManager, IDispatcherServices dispatcher)
         {
             _wts = wts ?? throw new ArgumentNullException(nameof(wts));
             _repoManager = repoManager ?? throw new ArgumentNullException(nameof(repoManager));
-            _consoleWriter = new ConsoleWriter(ConsoleLogOutput, dispatcher);
+            _consoleWriter = new ConsoleWriter();
+            _consoleWriter.Init(ConsoleLogOutput, dispatcher);
 
             NewRepoCommand = RelayCommand.Create(NewRepo);
             SaveRepoCommand = RelayCommand.Create(SaveRepo);
             CancelRepoCommand = RelayCommand.Create(CancelRepo);
             GitCommand = RelayCommand<string>.Create((cmd) => RunGitCommand(cmd));
-            _processRunner = SLWIOC.Create<IProcessRunner>();
+            _processRunner = SLWIOC.Get<IProcessRunner>();
             _processRunner.Init(_consoleWriter);
         }
 

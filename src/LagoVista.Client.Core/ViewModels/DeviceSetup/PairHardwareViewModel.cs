@@ -2,6 +2,7 @@
 using LagoVista.Client.Core.ViewModels.DeviceAccess;
 using LagoVista.Core.Validation;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
 using System.Threading.Tasks;
 
 namespace LagoVista.Client.Core.ViewModels.DeviceSetup
@@ -24,6 +25,7 @@ namespace LagoVista.Client.Core.ViewModels.DeviceSetup
 
         private async void GattConnection_DeviceConnected(object sender, BLEDevice device)
         {
+            Debug.WriteLine("Device has connected!");
             base.OnBLEDevice_Connected(device);
             var service = NuvIoTGATTProfile.GetNuvIoTGATT().Services.Find(srvc => srvc.Id == NuvIoTGATTProfile.SVC_UUID_NUVIOT);
             var characteristics = service.Characteristics.Find(chr => chr.Id == NuvIoTGATTProfile.CHAR_UUID_SYS_CONFIG);
@@ -75,6 +77,8 @@ namespace LagoVista.Client.Core.ViewModels.DeviceSetup
             get { return _selectedDevice; }
             set
             {
+                Debug.WriteLine("Device was selected");
+
                 Set(ref _selectedDevice, value);
                 if (value != null)
                 {

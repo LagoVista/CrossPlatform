@@ -243,25 +243,28 @@ namespace LagoVista.XPlat.Droid.Services
         public void HandleDeviceDisconnected(BluetoothGatt device)
         {
             BluetoothGattService service = device.GetService(NUVIOT_SRVC_UUID);
-            BluetoothGattCharacteristic characteristics = service.GetCharacteristic(STATE_CHARACTERISTICS_UUID);
-            device.SetCharacteristicNotification(characteristics, false);
-
-            _dispatcherService.Invoke(() =>
+            if (service != null)
             {
-                var existingDevice = _discoveredDevices.Where(dev => dev.DeviceAddress == device.Device.Address).FirstOrDefault();
-                existingDevice.Connected = false;
-                _bleDevices.Remove(device);
+                BluetoothGattCharacteristic characteristics = service.GetCharacteristic(STATE_CHARACTERISTICS_UUID);
+                device.SetCharacteristicNotification(characteristics, false);
 
-                lock (ConnectedDevices)
+                _dispatcherService.Invoke(() =>
                 {
-                    if (ConnectedDevices.Contains(existingDevice))
-                    {
-                        ConnectedDevices.Remove(existingDevice);
-                    }
-                }
+                    var existingDevice = _discoveredDevices.Where(dev => dev.DeviceAddress == device.Device.Address).FirstOrDefault();
+                    existingDevice.Connected = false;
+                    _bleDevices.Remove(device);
 
-                DeviceDisconnected?.Invoke(this, existingDevice);
-            });
+                    lock (ConnectedDevices)
+                    {
+                        if (ConnectedDevices.Contains(existingDevice))
+                        {
+                            ConnectedDevices.Remove(existingDevice);
+                        }
+                    }
+
+                    DeviceDisconnected?.Invoke(this, existingDevice);
+                });
+            }
         }
 
         public void HandleDeviceDiscovered(BluetoothDevice androidBLEdevice)

@@ -112,10 +112,10 @@
       <Version>3.0.1795.1429</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.AppCenter">
-      <Version>4.5.0</Version>
+      <Version>4.5.1</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.AppCenter.Analytics">
-      <Version>4.5.0</Version>
+      <Version>4.5.1</Version>
     </PackageReference>
     <PackageReference Include="Xamarin.AndroidX.Core">
       <Version>1.7.0.2</Version>
@@ -123,10 +123,10 @@
     <PackageReference Include="Xamarin.AndroidX.MediaRouter" Version="1.2.6.1" />
     <PackageReference Include="Xamarin.AndroidX.Palette" Version="1.0.0.13" />
     <PackageReference Include="Microsoft.AppCenter.Crashes">
-      <Version>4.5.0</Version>
+      <Version>4.5.1</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.AppCenter.Distribute">
-      <Version>4.5.0</Version>
+      <Version>4.5.1</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.NETCore.Platforms">
       <Version>6.0.3</Version>

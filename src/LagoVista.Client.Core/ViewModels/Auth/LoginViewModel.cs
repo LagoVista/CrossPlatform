@@ -28,14 +28,19 @@ namespace LagoVista.Client.Core.ViewModels.Auth
             _deviceInfo = deviceInfo;
         }
 
+        public LoginViewModel(IAuthClient authClient, IClientAppInfo clientAppInfo) : this(authClient, clientAppInfo, null)
+        {
+
+        }
+
         public async Task<InvokeResult> PerformLoginAsync()
         {
             var loginInfo = new AuthRequest()
             {
-                AuthType =AppConfig.AuthType,
+                AuthType = AppConfig.AuthType,
                 DeviceRepoId = AppConfig.DeviceRepoId,
                 AppId = AppConfig.AppId,
-                DeviceId = _deviceInfo.DeviceUniqueId,
+                DeviceId = _deviceInfo?.DeviceUniqueId,
                 AppInstanceId = AuthManager.AppInstanceId,
                 ClientType = AppConfig.ClientType,
                 Email = EmailAddress,
@@ -53,15 +58,15 @@ namespace LagoVista.Client.Core.ViewModels.Auth
             var loginResult = await _authClient.LoginAsync(loginInfo);
             if (!loginResult.Successful) return loginResult.ToInvokeResult();
 
-            var authResult = loginResult.Result;            
+            var authResult = loginResult.Result;
             AuthManager.AccessToken = authResult.AccessToken;
             AuthManager.AccessTokenExpirationUTC = authResult.AccessTokenExpiresUTC;
             AuthManager.RefreshToken = authResult.RefreshToken;
             AuthManager.AppInstanceId = authResult.AppInstanceId;
             AuthManager.RefreshTokenExpirationUTC = authResult.RefreshTokenExpiresUTC;
             AuthManager.IsAuthenticated = true;
-            
-            if (LaunchArgs.Parameters.ContainsKey("inviteid"))
+
+            if (LaunchArgs != null && LaunchArgs.Parameters.ContainsKey("inviteid"))
             {
                 var acceptInviteResult = await RestClient.GetAsync<InvokeResult>($"/api/org/inviteuser/accept/{LaunchArgs.Parameters["inviteId"]}");
                 if (!acceptInviteResult.Successful) return acceptInviteResult.ToInvokeResult();
@@ -69,6 +74,8 @@ namespace LagoVista.Client.Core.ViewModels.Auth
 
             var refreshUserResult = await RefreshUserFromServerAsync();
             if (!refreshUserResult.Successful) return refreshUserResult;
+
+            await AuthManager.PersistAsync();
 
             return InvokeResult.Success;
         }
@@ -92,7 +99,7 @@ namespace LagoVista.Client.Core.ViewModels.Auth
             await ViewModelNavigation.NavigateAsync<RegisterUserViewModel>(this);
         }
 
-        public  void ForgotPassword()
+        public void ForgotPassword()
         {
             switch (AppConfig.Environment)
             {
@@ -112,10 +119,10 @@ namespace LagoVista.Client.Core.ViewModels.Auth
         public async void LoginAsync()
         {
             var loginResult = await PerformNetworkOperation(PerformLoginAsync);
-            if(loginResult.Successful)
+            if (loginResult.Successful)
             {
                 if (AuthManager.User.EmailConfirmed && AuthManager.User.PhoneNumberConfirmed &&
-                    !EntityHeader.IsNullOrEmpty(AuthManager.User.CurrentOrganization)) 
+                    !EntityHeader.IsNullOrEmpty(AuthManager.User.CurrentOrganization))
                 {
                     await ViewModelNavigation.SetAsNewRootAsync(_clientAppInfo.MainViewModel);
 

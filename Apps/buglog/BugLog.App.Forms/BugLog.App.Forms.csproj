@@ -1,0 +1,109 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+    <ItemGroup>
+    <PackageReference Include="DLToolkit.Forms.Controls.FlowListView" Version="2.0.11" />
+    <PackageReference Include="LagoVista.Core.Authentication" Version="3.0.1742.451" />
+    <PackageReference Include="LagoVista.Core.Networking" Version="3.0.1742.451" />
+    <PackageReference Include="LagoVista.IoT.Deployment.Models" Version="3.0.1739.950" />
+    <PackageReference Include="LagoVista.IoT.DeviceMessaging.Models" Version="3.0.1734.512" />
+    <PackageReference Include="LagoVista.IoT.Logging" Version="3.0.1734.512" />
+    <PackageReference Include="LagoVista.IoT.Pipeline.Models" Version="3.0.1734.512" />
+    <PackageReference Include="LagoVista.ProjectManagement.Models" Version="3.0.1756.801" />
+    <PackageReference Include="Xamarin.Forms" Version="5.0.0.2337" />  
+    <PackageReference Include="Xamarin.Essentials" Version="1.5.3.2" />
+
+    <PackageReference Include="Xamarin.Essentials" Version="1.7.1" />
+    <PackageReference Include="Microsoft.AppCenter" Version="4.5.0" />
+    <PackageReference Include="Microsoft.AppCenter.Analytics" Version="4.5.0" />
+    <PackageReference Include="Microsoft.AppCenter.Crashes" Version="4.5.0" />
+    <PackageReference Include="Microsoft.AppCenter.Distribute" Version="4.5.0" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+    <PackageReference Include="LagoVista.Core" Version="3.0.1742.451" />
+    <PackageReference Include="LagoVista.MediaServices.Models" Version="3.0.1734.512" />
+    <PackageReference Include="LagoVista.IoT.DeviceAdmin.Models" Version="3.0.1734.512" />
+    <PackageReference Include="LagoVista.IoT.DeviceManagement.Models" Version="3.0.1734.512" />
+    <PackageReference Include="LagoVista.UserAdmin.Models" Version="3.0.1734.512" />
+    <PackageReference Include="DLToolkit.Forms.Controls.FlowListView" Version="2.0.11" />
+  </ItemGroup>  <ItemGroup>
+    <PackageReference Include="DLToolkit.Forms.Controls.FlowListView" Version="2.0.11" />
+    <PackageReference Include="LagoVista.Core.Authentication" Version="3.0.1742.451" />
+    <PackageReference Include="LagoVista.Core.Networking" Version="3.0.1742.451" />
+    <PackageReference Include="LagoVista.IoT.Deployment.Models" Version="3.0.1739.950" />
+    <PackageReference Include="LagoVista.IoT.DeviceMessaging.Models" Version="3.0.1734.512" />
+    <PackageReference Include="LagoVista.IoT.Logging" Version="3.0.1734.512" />
+    <PackageReference Include="LagoVista.IoT.Pipeline.Models" Version="3.0.1734.512" />
+    <PackageReference Include="LagoVista.ProjectManagement.Models" Version="3.0.1756.801" />
+    <PackageReference Include="Xamarin.Forms" Version="5.0.0.2337" />
+  
+  
+  <ItemGroup>
+    <None Remove="App.xaml" />
+    <None Remove="Controls\RepoSupport.xaml" />
+    <None Remove="Views\MainView.xaml" />
+    <None Remove="Views\SettingsView.xaml" />
+    <None Remove="Views\SplashView.xaml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="App.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\RepoSupport.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\MainView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\SettingsView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\SplashView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="App.xaml.cs">
+      <SubType>Code</SubType>
+      <DependentUpon>%(Filename)</DependentUpon>
+    </Compile>
+    <Compile Update="BugLogResources.Designer.cs">
+      <DependentUpon>BugLogResources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
+    <Compile Update="Controls\RepoSupport.xaml.cs">
+      <SubType>Code</SubType>
+      <DependentUpon>%(Filename)</DependentUpon>
+    </Compile>
+    <Compile Update="Views\MainView.xaml.cs">
+      <SubType>Code</SubType>
+      <DependentUpon>%(Filename)</DependentUpon>
+    </Compile>
+    <Compile Update="Views\SettingsView.xaml.cs">
+      <SubType>Code</SubType>
+      <DependentUpon>%(Filename)</DependentUpon>
+    </Compile>
+    <Compile Update="Views\SplashView.xaml.cs">
+      <SubType>Code</SubType>
+      <DependentUpon>%(Filename)</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="BugLogResources.resx">
+      <LastGenOutput>BugLogResources.Designer.cs</LastGenOutput>
+      <Generator>ResXFileCodeGenerator</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+
+</Project>

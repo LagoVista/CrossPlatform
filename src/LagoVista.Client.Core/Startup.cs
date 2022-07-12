@@ -5,6 +5,7 @@ using LagoVista.Core.Authentication.Interfaces;
 using LagoVista.Core.Interfaces;
 using LagoVista.Core.IOC;
 using LagoVista.Core.Networking.Interfaces;
+using LagoVista.Core.PlatformSupport;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Resources;
@@ -18,9 +19,9 @@ namespace LagoVista.Client.Core
         public static void Init(ServerInfo serverInfo)
         {
             SLWIOC.RegisterSingleton<ServerInfo>(serverInfo);
-            SLWIOC.RegisterSingleton<IAuthClient>(new AuthClient());
+            SLWIOC.RegisterSingleton<IAuthClient>(new AuthClient(SLWIOC.Get<ILogger>()));
             SLWIOC.RegisterSingleton<ITokenManager, TokenManager>();
-            SLWIOC.RegisterSingleton<IAuthManager, AuthManager>();
+            SLWIOC.RegisterSingleton<IAuthManager, AuthManager>();            
 
             var client = new HttpClient
             {

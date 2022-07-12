@@ -145,10 +145,6 @@
       <Project>{d37db80b-93ea-42e3-a05c-a15d35c271d7}</Project>
       <Name>LagoVista.Client.Core</Name>
     </ProjectReference>
-    <ProjectReference Include="..\LagoVista.XPlat.Core\LagoVista.XPlat.Core.csproj">
-      <Project>{d5dd4ca3-3b5c-4a0e-aa82-4cebb9a7160d}</Project>
-      <Name>LagoVista.XPlat.Core</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="CustomRenderers\" />

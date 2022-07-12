@@ -40,7 +40,7 @@ namespace LagoVista.Core.WPF.PlatformSupport
 
         public void OpenURI(Uri uri)
         {
-            throw new NotImplementedException();
+            System.Diagnostics.Process.Start(uri.ToString());
         }
 
         public Task RefreshAysnc()

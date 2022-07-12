@@ -1,9 +1,11 @@
-﻿<Application x:Class="BugLog.WPF.App"
+﻿<Application x:Class="BugLog.Wpf.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:local="clr-namespace:BugLog.WPF"
+             xmlns:cvt="clr-namespace:BugLog.Wpf.Converters"
+             xmlns:local="clr-namespace:BugLog.Wpf"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-         
+        <cvt:VisibilityConverter x:Key="VisibilityConverter" />
+        <cvt:InverseVisibilityConverter x:Key="InverseVisibilityConverter" />
     </Application.Resources>
 </Application>

@@ -14,7 +14,7 @@ namespace LagoVista.XPlat.WPF.Services
         {
             var deviceInfo = new DeviceInfo();
 
-            deviceInfo.DeviceType = "Windows - UWP";
+            deviceInfo.DeviceType = "Windows - WPF";
 
             deviceInfo.DeviceUniqueId = uniqueId;
 

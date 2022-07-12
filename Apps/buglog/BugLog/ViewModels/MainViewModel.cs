@@ -1,14 +1,16 @@
 ﻿using BugLog.Managers;
 using BugLog.Models;
+using LagoVista.Client.Core;
 using LagoVista.Client.Core.Exceptions;
 using LagoVista.Client.Core.Resources;
 using LagoVista.Client.Core.ViewModels;
+using LagoVista.Client.Core.ViewModels.Auth;
 using LagoVista.Client.Core.ViewModels.Other;
-using LagoVista.Core;
+using LagoVista.Core.Authentication.Interfaces;
 using LagoVista.Core.Commanding;
 using LagoVista.Core.Interfaces;
+using LagoVista.Core.IOC;
 using LagoVista.Core.Models;
-using LagoVista.Core.Models.UIMetaData;
 using LagoVista.Core.PlatformSupport;
 using LagoVista.Core.Validation;
 using LagoVista.ProjectManagement.Models;
@@ -23,6 +25,8 @@ namespace BugLog.ViewModels
 {
     public class MainViewModel : AppViewModelBase
     {
+        LoginViewModel _loginVM;
+
         public MainViewModel()
         {
             MenuItems = new List<MenuItem>()
@@ -53,16 +57,24 @@ namespace BugLog.ViewModels
             SaveNewTaskCommand = RelayCommand.Create(SaveNewTask);
             CancelNewTimeCommand = RelayCommand.Create(() => TimeEntryTask = null);
             SaveNewTimeCommand = RelayCommand.Create(SaveNewTime);
+            
             CancelNewTaskCommand = RelayCommand.Create(() => NewWorkTask = null);
             TimeEntryNextDateCommand = RelayCommand.Create(() => TimeEntryDate = TimeEntryDate.AddDays(1));
             TimeEntryPrevDateCommand = RelayCommand.Create(() => TimeEntryDate = TimeEntryDate.AddDays(-1));
             ClearSearchCommand = RelayCommand.Create(() => SearchContent = String.Empty);
+
+            LoginCommand = RelayCommand.Create(PerformLogin);
+            CloseErrorContentCommand = RelayCommand.Create(() => { ErrorContent = null; ErrorList.Clear(); } );
+
             ShowRepoViewCommand = RelayCommand<WorkTaskSummary>.Create(async (wts) =>
             {
                 RepoVM = new RepoSupportViewModel(wts, new RepoManager(Storage), DispatcherServices);
                 await RepoVM.InitAsync();
             });
+
             CloseReposCommand = RelayCommand.Create(() => RepoVM = null);
+
+            _loginVM = new LoginViewModel(SLWIOC.Get<IAuthClient>(), SLWIOC.Get<IClientAppInfo>(), SLWIOC.Get<IDeviceInfo>());
         }
 
         async void CloseStatusWindow()
@@ -135,6 +147,8 @@ namespace BugLog.ViewModels
                 TaskSummary = null;
             }
         }
+
+        
 
         void AddExpectedOutcome()
         {
@@ -950,7 +964,6 @@ namespace BugLog.ViewModels
             }
         }
 
-
         string _status = "ready";
         public string Status
         {
@@ -980,6 +993,42 @@ namespace BugLog.ViewModels
             }
         }
 
+        private string _errorContent;
+        public string ErrorContent
+        {
+            get => _errorContent;
+            set => Set(ref _errorContent, value);
+        }
+
+        private bool _isAuthenticated;
+
+        public bool IsAuthenticated
+        {
+            get => _isAuthenticated;
+            set => Set(ref _isAuthenticated, value);
+        } 
+
+        public LoginViewModel LoginVM
+        {
+            get => _loginVM;
+        }
+
+        public async void PerformLogin()
+        {
+            var result = await PerformNetworkOperation(async () =>
+            {
+                var loginResult = await LoginVM.PerformLoginAsync();
+                if (loginResult.Successful)
+                {
+                    IsAuthenticated = true;
+                }
+                else
+                {
+                    ErrorContent = loginResult.Errors.First().Message   ;
+                }
+            });
+        }
+
         #region Commands
         public RelayCommand AddTaskCommand { get; private set; }
         public RelayCommand<WorkTaskSummary> OpenFullTaskCommand { get; private set; }
@@ -1005,17 +1054,31 @@ namespace BugLog.ViewModels
 
         public RelayCommand ClearSearchCommand { get; }
 
+        public RelayCommand LoginCommand { get; }
+
+        public RelayCommand CloseErrorContentCommand { get; }
+
         public RelayCommand<WorkTaskSummary> ShowRepoViewCommand { get; }
         #endregion
 
         public override async Task InitAsync()
         {
-            if ((await TryLoadListsFromCacheAsync()).Successful)
+            await AuthManager.LoadAsync();
+
+            if (AuthManager.IsAuthenticated)
             {
-                LoadCommonSettingsInBackground();
+                IsAuthenticated = true;
+                if ((await TryLoadListsFromCacheAsync()).Successful)
+                {
+                    LoadCommonSettingsInBackground();
+                }
+                else
+                    await PerformNetworkOperation(LoadCommonSettingsAsync);
             }
             else
-                await PerformNetworkOperation(LoadCommonSettingsAsync);
+            {
+                IsAuthenticated = false;
+            }
         }
     }
 }

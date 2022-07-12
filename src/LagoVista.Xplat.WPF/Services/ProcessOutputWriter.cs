@@ -1,4 +1,5 @@
-﻿using LagoVista.Client.Core.Models;
+﻿using LagoVista.Client.Core;
+using LagoVista.Client.Core.Models;
 using System;
 using System.Collections.ObjectModel;
 using System.Windows.Threading;

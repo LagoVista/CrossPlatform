@@ -1,18 +1,23 @@
-﻿using LagoVista.Core;
+﻿using LagoVista.Client.Core;
+using LagoVista.Client.Core.Models;
+using LagoVista.Core;
 using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Text;
 
 namespace BugLog.Managers
 {
-    public class ConsoleWriter 
+    public class ConsoleWriter : LagoVista.Client.Core.IConsoleWriter
     {
         private readonly ObservableCollection<ConsoleOutput> _buffer = new ObservableCollection<ConsoleOutput>();
-        private readonly ObservableCollection<ConsoleOutput> _output;
-        private readonly IDispatcherServices _dispatcher;
+        private ObservableCollection<ConsoleOutput> _output;
+        private IDispatcherServices _dispatcher;
 
-        public ConsoleWriter(ObservableCollection<ConsoleOutput> output, IDispatcherServices dispatcher)
+        public ConsoleWriter()
+        {
+            
+        }
+
+        public void Init(ObservableCollection<ConsoleOutput> output, IDispatcherServices dispatcher)
         {
             _output = output;
             _dispatcher = dispatcher;
@@ -70,23 +75,9 @@ namespace BugLog.Managers
             {
                 lock (_output)
                 {
-                        _output.Clear();               
+                    _output.Clear();
                 }
             });
         }
-    }
-
-    public enum LogType
-    {
-        Message,
-        Warning,
-        Error,
-        Success,
-    }
-
-    public class ConsoleOutput
-    {
-        public string Output { get; set; }
-        public LogType LogType { get; set; }
     }
 }

@@ -185,34 +185,51 @@ namespace SeaWolf.ViewModels
             {
                 UserDevices = await Storage.GetKVPAsync<ObservableCollection<DeviceSummary>>("USER_VESSELS");
                 CurrentDevice = await Storage.GetKVPAsync<Device>($"VESSEL_{DeviceId}");
-
-                var deviceIdx = UserDevices.IndexOf(UserDevices.FirstOrDefault(dev => dev.Id == CurrentDevice.Id));
-                IsNotLastVessel = deviceIdx < UserDevices.Count - 1;
-                IsNotFirstVessel = deviceIdx > 0;
-
-                if (CurrentDevice.GeoLocation != null)
+                if (CurrentDevice == null)
                 {
-                    CurrentDeviceLocation = CurrentDevice.GeoLocation;
+                    var loadResult = await LoadDevice(true);
+                    if (!loadResult.Successful)
+                        return loadResult;
+                }
+
+                var obj = UserDevices.FirstOrDefault(dev => dev.Id == CurrentDevice.Id);
+                if (obj != null)
+                {
+                    var deviceIdx = UserDevices.IndexOf(obj);
+                    IsNotLastVessel = deviceIdx < UserDevices.Count - 1;
+                    IsNotFirstVessel = deviceIdx > 0;
+
+                    if (CurrentDevice.GeoLocation != null)
+                    {
+                        CurrentDeviceLocation = CurrentDevice.GeoLocation;
+                    }
+                    else
+                    {
+                        /*    var lastKnownLocation = await Geolocation.GetLastKnownLocationAsync();
+                            if (lastKnownLocation != null)
+                            {
+                                CurrentVeseelLocation = new GeoLocation(lastKnownLocation.Latitude, lastKnownLocation.Longitude);
+                            }*/
+                    }
+
+                    Sensors = new ObservableCollection<Sensor>(CurrentDevice.SensorCollection);
+
+                    GeoFences.Clear();
+                    foreach (var geoFence in CurrentDevice.GeoFences)
+                    {
+                        GeoFences.Add(geoFence);
+                    }
+
+                    await LoadFromServer(false);
+                    return InvokeResult.Success;
                 }
                 else
                 {
-                    /*    var lastKnownLocation = await Geolocation.GetLastKnownLocationAsync();
-                        if (lastKnownLocation != null)
-                        {
-                            CurrentVeseelLocation = new GeoLocation(lastKnownLocation.Latitude, lastKnownLocation.Longitude);
-                        }*/
+                    return await PerformNetworkOperation(async () =>
+                    {
+                        return await LoadFromServer(false);
+                    });
                 }
-
-                Sensors = new ObservableCollection<Sensor>(CurrentDevice.SensorCollection);
-
-                GeoFences.Clear();
-                foreach (var geoFence in CurrentDevice.GeoFences)
-                {
-                    GeoFences.Add(geoFence);
-                }
-
-                await LoadFromServer(false);
-                return InvokeResult.Success;
             }
             else
             {

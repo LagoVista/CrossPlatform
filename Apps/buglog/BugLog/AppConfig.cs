@@ -1,7 +1,6 @@
 ﻿using LagoVista.Core.Interfaces;
 using LagoVista.Core.Models;
 using System;
-using Xamarin.Forms;
 
 namespace BugLog
 {
@@ -9,12 +8,7 @@ namespace BugLog
     {
         public AppConfig()
         {
-            switch (Device.RuntimePlatform)
-            {
-                case Device.Android: PlatformType = PlatformTypes.Android; break;
-                case Device.iOS: PlatformType = PlatformTypes.iPhone; break;
-                case Device.UWP: PlatformType = PlatformTypes.WindowsUWP; break;
-            }
+            PlatformType = PlatformTypes.WindowsUWP;
 
             WebAddress = "https://www.NuvIoT.com";
         }

@@ -11,12 +11,13 @@ using LagoVista.Core.Authentication.Models;
 using LagoVista.Core.IOC;
 using Newtonsoft.Json.Serialization;
 using LagoVista.Core.Validation;
+using LagoVista.Core.PlatformSupport;
 
 namespace LagoVista.Client.Core.Auth
 {
     public class AuthClient : IAuthClient
     {
-        public AuthClient()
+        public AuthClient(ILogger logger)
         {
             
         }

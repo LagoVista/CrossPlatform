@@ -46,7 +46,7 @@
     
     mimetype: application/x-microsoft.net.object.binary.base64
     value   : The object must be serialized with 
-            : System.Serialization.Formatters.Binary.BinaryFormatter
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
             : and then encoded with base64 encoding.
     
     mimetype: application/x-microsoft.net.object.soap.base64
@@ -60,6 +60,7 @@
             : and then encoded with base64 encoding.
     -->
   <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
     <xsd:element name="root" msdata:IsDataSet="true">
       <xsd:complexType>
         <xsd:choice maxOccurs="unbounded">
@@ -68,9 +69,10 @@
               <xsd:sequence>
                 <xsd:element name="value" type="xsd:string" minOccurs="0" />
               </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" />
+              <xsd:attribute name="name" use="required" type="xsd:string" />
               <xsd:attribute name="type" type="xsd:string" />
               <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="assembly">
@@ -85,9 +87,10 @@
                 <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
                 <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
               </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" msdata:Ordinal="1" />
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
               <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
               <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="resheader">
@@ -109,9 +112,99 @@
     <value>2.0</value>
   </resheader>
   <resheader name="reader">
-    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <resheader name="writer">
-    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="AppName" xml:space="preserve">
+    <value>Software Logistics Bug/Log</value>
+  </data>
+  <data name="Common_Exit" xml:space="preserve">
+    <value>Exit</value>
+  </data>
+  <data name="Common_GetStarted" xml:space="preserve">
+    <value>Get Started</value>
+  </data>
+  <data name="Common_SelectCommand" xml:space="preserve">
+    <value>-select command-</value>
+  </data>
+  <data name="ComponentView_Configuration" xml:space="preserve">
+    <value>Configuration</value>
+  </data>
+  <data name="MainView_NoRegisteredDevices" xml:space="preserve">
+    <value>No Registered BugLog Monitoring Devices</value>
+  </data>
+  <data name="PairDevice_Title" xml:space="preserve">
+    <value>Find Your Device</value>
+  </data>
+  <data name="Provision_BT_Address" xml:space="preserve">
+    <value>Bluetooth Address</value>
+  </data>
+  <data name="Provision_CellEnabled" xml:space="preserve">
+    <value>Cellular Enabled</value>
+  </data>
+  <data name="Provision_Commission" xml:space="preserve">
+    <value>Commission</value>
+  </data>
+  <data name="Provision_DeviceId" xml:space="preserve">
+    <value>Device Id</value>
+  </data>
+  <data name="Provision_DeviceType" xml:space="preserve">
+    <value>Device Type</value>
+  </data>
+  <data name="Provision_Firmware_SKU" xml:space="preserve">
+    <value>Firmware SKU</value>
+  </data>
+  <data name="Provision_Firmware_Version" xml:space="preserve">
+    <value>Firmware Version</value>
+  </data>
+  <data name="Provision_GPSEnabled" xml:space="preserve">
+    <value>GPS Enabled</value>
+  </data>
+  <data name="Provision_GPSUpdateRate" xml:space="preserve">
+    <value>GPS Update Rate (seconds)</value>
+  </data>
+  <data name="Provision_Hardware_Version" xml:space="preserve">
+    <value>Hardware Version</value>
+  </data>
+  <data name="Provision_PingUpdateRate" xml:space="preserve">
+    <value>Ping Update Rate (seconds)</value>
+  </data>
+  <data name="Provision_Reboot" xml:space="preserve">
+    <value>Reboot</value>
+  </data>
+  <data name="Provision_ResetProfile" xml:space="preserve">
+    <value>Reset Profile</value>
+  </data>
+  <data name="Provision_Server_Anonymous" xml:space="preserve">
+    <value>Server Anonymous Login</value>
+  </data>
+  <data name="Provision_Server_Host" xml:space="preserve">
+    <value>Server Host Name</value>
+  </data>
+  <data name="Provision_Server_Password" xml:space="preserve">
+    <value>Server Password</value>
+  </data>
+  <data name="Provision_Server_UserId" xml:space="preserve">
+    <value>Server User Id</value>
+  </data>
+  <data name="Provision_SrvrUpdateRate" xml:space="preserve">
+    <value>Server Update Rate (seconds)</value>
+  </data>
+  <data name="Provision_VerboseLogging" xml:space="preserve">
+    <value>Verbose Logging</value>
+  </data>
+  <data name="Provision_WiFiEnabled" xml:space="preserve">
+    <value>WiFi Enabled</value>
+  </data>
+  <data name="Provision_WiFi_Pwd" xml:space="preserve">
+    <value>WiFi Password</value>
+  </data>
+  <data name="Provision_WiFi_SSID" xml:space="preserve">
+    <value>WiFi SSID</value>
+  </data>
+  <data name="Provision_WriteProfile" xml:space="preserve">
+    <value>Write Profile</value>
+  </data>
 </root>
