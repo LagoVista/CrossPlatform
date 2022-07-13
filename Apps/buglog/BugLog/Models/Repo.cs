@@ -18,6 +18,20 @@ namespace BugLog.Models
             set => Set(ref _name, value);
         }
 
+        public string _devBranch;
+        public string DevBranch
+        {
+            get => _devBranch;
+            set => Set(ref _devBranch, value);
+        }
+
+        public string _testBranch;
+        public string TestBranch
+        {
+            get => _testBranch;
+            set => Set(ref _testBranch, value);
+        }
+
         private string _folder;
         public string Folder
         {

@@ -14,8 +14,9 @@
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="200" />
+            <ColumnDefinition Width="100" />
             <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="130" />
         </Grid.ColumnDefinitions>
 
         <Grid Grid.RowSpan="2" >
@@ -28,7 +29,7 @@
                 <fa5:SvgAwesome Icon="Solid_Plus" Width="24" Height="24" />
             </Button>
 
-            <ListView Grid.Row="1" ItemsSource="{Binding Repos}" SelectedItem="{Binding Repo, Mode=TwoWay}"  >
+            <ListView Grid.Row="1" ItemsSource="{Binding Repos}" SelectedItem="{Binding EditRepo, Mode=TwoWay}"  >
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <Grid>
@@ -39,9 +40,6 @@
             </ListView>
         </Grid>
 
-        <StackPanel Orientation="Horizontal" Grid.Column="1" >
-            <Button Command="{Binding GitCommand}" CommandParameter="status"  >GIT Status</Button>
-        </StackPanel>
         <ListView ItemsSource="{Binding ConsoleLogOutput}" Background="Blue" Grid.Row="1" Grid.Column="1">
             <ListView.ItemTemplate>
                 <DataTemplate>
@@ -55,25 +53,42 @@
             </ListView.ItemTemplate>
         </ListView>
 
+        <StackPanel Grid.Column="2" Grid.Row="1">
+            <TextBlock Text="{Binding Task.TaskCode}" />
+            <Button Command="{Binding GitCommand}" CommandParameter="status" Style="{StaticResource CommandButton}" >GIT Status</Button>
+            <Button Command="{Binding GitCommand}" CommandParameter="branch" Style="{StaticResource CommandButton}" >Branch</Button>
+            <Button Command="{Binding GitCommand}" CommandParameter="create" Style="{StaticResource CommandButton}" >Create</Button>
+            <Button Command="{Binding GitCommand}" CommandParameter="rebasedev" Style="{StaticResource CommandButton}" >Rebase</Button>
+            <Button Command="{Binding GitCommand}" CommandParameter="squash" Style="{StaticResource CommandButton}" >Squash</Button>
+            <Button Command="{Binding GitCommand}" CommandParameter="commit" Style="{StaticResource CommandButton}" >Commit</Button>
+            <TextBox Text="{Binding CommitMessage}" TextWrapping="Wrap" Height="80" />
+        </StackPanel>
 
-        <Grid Width="320" Height="200" Grid.ColumnSpan="2" Grid.RowSpan="2" Visibility="{Binding Repo, Converter={StaticResource VisibilityConverter}}" >
+
+        <Grid Width="320" Height="300" Grid.ColumnSpan="3" Grid.RowSpan="2" Visibility="{Binding EditRepo, Converter={StaticResource VisibilityConverter}}" >
             <Rectangle Style="{StaticResource Popup}" />
             <Border Style="{StaticResource PopupTitleBorder}" VerticalAlignment="Top"/>
 
             <Grid Style="{StaticResource PopupContent}">
                 <StackPanel >
                     <TextBlock Text="Repo Name" />
-                    <TextBox Text="{Binding Repo.Name}" />
+                    <TextBox Text="{Binding EditRepo.Name}" />
 
                     <TextBlock Text="Path" />
-                    <TextBox Text="{Binding Repo.Folder}" />
-                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                        <Button   Command="{Binding SaveRepoCommand}" >Save</Button>
-                    </StackPanel>
+                    <TextBox Text="{Binding EditRepo.Folder}" />
+
+
+                    <TextBlock Text="Dev Branch" />
+                    <TextBox Text="{Binding EditRepo.DevBranch}" />
+
+                    <TextBlock Text="Test Branch" />
+                    <TextBox Text="{Binding EditRepo.TestBranch}" />
+
+                    <Button  Command="{Binding SaveRepoCommand}" Style="{StaticResource CommandButton}" >Save</Button>
                 </StackPanel>
             </Grid>
 
-            <TextBlock Text="Repository" Foreground="White" Margin="5,5,0,0" Width="150" Height="20" />
+            <TextBlock Text="Repository" Style="{StaticResource PopupTItle}" />
             <Button Command="{Binding CancelRepoCommand}" Style="{StaticResource PopupCloseButton}" />
 
         </Grid>

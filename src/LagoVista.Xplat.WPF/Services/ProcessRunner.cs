@@ -1,5 +1,6 @@
 ﻿using LagoVista.Client.Core;
 using System.Diagnostics;
+using System.Text;
 using System.Threading.Tasks;
 
 namespace LagoVista.XPlat.WPF.NetStd.Core.Services
@@ -16,8 +17,10 @@ namespace LagoVista.XPlat.WPF.NetStd.Core.Services
             _consoleWriter = consoleWriter;
         }
 
-        public async Task RunProcess(string path, string cmd, string args, string actionType, bool clearConsole = true, bool checkRemote = true)
+        public async Task<string> RunProcess(string path, string cmd, string args, string actionType, bool clearConsole = true, bool checkRemote = true)
         {
+            var bldr = new StringBuilder();
+
             await Task.Run(() =>
             {
                 var proc = new Process
@@ -44,6 +47,7 @@ namespace LagoVista.XPlat.WPF.NetStd.Core.Services
                 {
                     var line = proc.StandardOutput.ReadLine().Trim();
                     _consoleWriter.AddMessage(LogType.Message, line);
+                    bldr.AppendLine(line);
                 }
 
                 while (!proc.StandardError.EndOfStream)
@@ -65,6 +69,9 @@ namespace LagoVista.XPlat.WPF.NetStd.Core.Services
                 _consoleWriter.AddMessage(LogType.Message, "");
                 _consoleWriter.Flush();
             });
+
+
+            return bldr.ToString();
         }
     }
 }
