@@ -18,12 +18,17 @@
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
 
-        <StackPanel Grid.RowSpan="2" >
-            <Button  Command="{Binding NewRepoCommand}">
-                <fa5:SvgAwesome Icon="Solid_Plus" Width="32" Height="32" />
+        <Grid Grid.RowSpan="2" >
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <Button Width="32"  Height="32" BorderBrush="Transparent" Background="Transparent" Command="{Binding NewRepoCommand}">
+                <fa5:SvgAwesome Icon="Solid_Plus" Width="24" Height="24" />
             </Button>
 
-            <ListView ItemsSource="{Binding Repos}" SelectedItem="{Binding Repo, Mode=TwoWay}"  >
+            <ListView Grid.Row="1" ItemsSource="{Binding Repos}" SelectedItem="{Binding Repo, Mode=TwoWay}"  >
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <Grid>
@@ -32,18 +37,7 @@
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
-            <StackPanel Visibility="{Binding Repo, Converter={StaticResource VisibilityConverter}}" >
-                <TextBlock Text="Repo Name" />
-                <TextBox Text="{Binding Repo.Name}" />
-
-                <TextBlock Text="Path" />
-                <TextBox Text="{Binding Repo.Folder}" />
-                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                    <Button   Command="{Binding SaveRepoCommand}" >Save</Button>
-                    <Button  Command="{Binding CancelRepoCommand}" >Cancel</Button>
-                </StackPanel>
-            </StackPanel>
-        </StackPanel>
+        </Grid>
 
         <StackPanel Orientation="Horizontal" Grid.Column="1" >
             <Button Command="{Binding GitCommand}" CommandParameter="status"  >GIT Status</Button>
@@ -60,5 +54,28 @@
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
+
+
+        <Grid Width="320" Height="200" Grid.ColumnSpan="2" Grid.RowSpan="2" Visibility="{Binding Repo, Converter={StaticResource VisibilityConverter}}" >
+            <Rectangle Style="{StaticResource Popup}" />
+            
+            <Grid Style="{StaticResource PopupContent}">
+                <StackPanel >
+                    <TextBlock Text="Repo Name" />
+                    <TextBox Text="{Binding Repo.Name}" />
+
+                    <TextBlock Text="Path" />
+                    <TextBox Text="{Binding Repo.Folder}" />
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                        <Button   Command="{Binding SaveRepoCommand}" >Save</Button>
+                    </StackPanel>
+                </StackPanel>
+            </Grid>
+
+            <Border Style="{StaticResource PopupTitleBorder}" VerticalAlignment="Top"/>
+            <TextBlock Text="Repository" Foreground="White" Margin="5,5,0,0" />
+            <Button Command="{Binding CancelRepoCommand}" Style="{StaticResource PopupCloseButton}" />
+
+        </Grid>
     </Grid>
 </UserControl>
