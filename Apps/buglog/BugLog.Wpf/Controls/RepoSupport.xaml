@@ -58,7 +58,8 @@
 
         <Grid Width="320" Height="200" Grid.ColumnSpan="2" Grid.RowSpan="2" Visibility="{Binding Repo, Converter={StaticResource VisibilityConverter}}" >
             <Rectangle Style="{StaticResource Popup}" />
-            
+            <Border Style="{StaticResource PopupTitleBorder}" VerticalAlignment="Top"/>
+
             <Grid Style="{StaticResource PopupContent}">
                 <StackPanel >
                     <TextBlock Text="Repo Name" />
@@ -72,8 +73,7 @@
                 </StackPanel>
             </Grid>
 
-            <Border Style="{StaticResource PopupTitleBorder}" VerticalAlignment="Top"/>
-            <TextBlock Text="Repository" Foreground="White" Margin="5,5,0,0" />
+            <TextBlock Text="Repository" Foreground="White" Margin="5,5,0,0" Width="150" Height="20" />
             <Button Command="{Binding CancelRepoCommand}" Style="{StaticResource PopupCloseButton}" />
 
         </Grid>
