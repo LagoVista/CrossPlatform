@@ -45,7 +45,8 @@ namespace BugLog.ViewModels
                 }
             };
 
-            CloseStatusUpdateCommand = RelayCommand.Create(CloseStatusWindow);
+            CancelStatusUpdateCommand = RelayCommand.Create(() => TaskSummary = null);
+            UpdateStatusUpdateCommand = RelayCommand.Create(UpdateStatus);
             AddTaskCommand = RelayCommand.Create(AddTask);
             AddTimeCommand = RelayCommand<WorkTaskSummary>.Create(AddTime);
             RefreshTasksCommand = RelayCommand.Create(RefreshTasks);
@@ -54,6 +55,7 @@ namespace BugLog.ViewModels
             AddExpectedOutcomeCommand = RelayCommand.Create(AddExpectedOutcome);
             OpenFullExternalTaskCommand = RelayCommand<WorkTaskSummary>.Create(OpenExternalFullTask);
             SaveNewTaskCommand = RelayCommand.Create(SaveNewTask);
+            SaveNewTimeCommand = RelayCommand.Create(SaveNewTime);
             CancelNewTimeCommand = RelayCommand.Create(() => TimeEntryTask = null);
             
             CancelNewTaskCommand = RelayCommand.Create(() => NewWorkTask = null);
@@ -75,7 +77,7 @@ namespace BugLog.ViewModels
             _loginVM = new LoginViewModel(SLWIOC.Get<IAuthClient>(), SLWIOC.Get<IClientAppInfo>(), SLWIOC.Get<IDeviceInfo>());
         }
 
-        async void CloseStatusWindow()
+        async void UpdateStatus()
         {
             var statusUpdate = new WorkTaskAssignmentStatusUpdate();
             if (!String.IsNullOrEmpty(StatusUpdateNotes))
@@ -518,6 +520,7 @@ namespace BugLog.ViewModels
 
             AllProjects = aps.Model.ToList();
             ProjectsForNewTask = AllProjects.Select(prj => EntityHeader.Create(prj.Id, prj.Key, prj.Name)).ToList();
+            Projects = ProjectsForNewTask;
 
             var users = await this.RestClient.TryGetFromCache<UserInfoSummary>("/api/users/active");
             if (!users.Successful)
@@ -525,8 +528,8 @@ namespace BugLog.ViewModels
 
             AllUsers = users.Model.ToList();
 
-            var lastFilter = await Storage.GetKVPAsync<string>("LAST_FILTER_ID", FilteredViews[0].Id);
-            SelectedKanbanView = FilteredViews.Single(val => val.Id == lastFilter);
+            var lastFilter = await Storage.GetKVPAsync<string>("LAST_PROJECT_FILTER_ID", Projects[0].Id);
+            SelectedProjectFilter= _proejcts.Single(val => val.Id == lastFilter);
 
             return InvokeResult.Success;
         }
@@ -554,8 +557,8 @@ namespace BugLog.ViewModels
             AllUsers = (await this.RestClient.GetListResponseAsync<UserInfoSummary>("/api/users/active")).Model.ToList();
             Status = "loading all users";
 
-            var lastFilter = await Storage.GetKVPAsync<string>("LAST_FILTER_ID", FilteredViews[0].Id);
-            SelectedKanbanView = FilteredViews.Single(val => val.Id == lastFilter);
+            var lastFilter = await Storage.GetKVPAsync<string>("LAST_PROJECT_FILTER_ID", Projects[0].Id);
+            SelectedProjectFilter = _proejcts.Single(val => val.Id == lastFilter);
 
             Status = string.Empty;
 
@@ -672,18 +675,22 @@ namespace BugLog.ViewModels
 
         public async void TryRefreshTasksFromCache()
         {
-            var taskResposne = await this.RestClient.TryGetFromCache<WorkTaskSummary>($"/api/pm/tasks/view/{SelectedKanbanView.Id}");
+            if (!EntityHeader.IsNullOrEmpty(SelectedProjectFilter))
+            {
+                var taskResposne = await this.RestClient.TryGetFromCache<WorkTaskSummary>($"/api/pm/tasks/project/{SelectedProjectFilter.Id}/sprint/current");
 
-            if (taskResposne.Successful)
-            {
-                await Storage.StoreKVP("LAST_FILTER_ID", SelectedKanbanView.Id);
-                AllTasks = new ObservableCollection<WorkTaskSummary>(taskResposne.Model);
-                PopualteFilterSelections(false);
-                await RefreshTasksInBackground();
-            }
-            else
-            {
-                await RefreshTasksFromServerAsync();
+                if (taskResposne.Successful)
+                {
+                    await Storage.StoreKVP("LAST_PROJECT_FILTER_ID", SelectedProjectFilter.Id);
+                    AllTasks = new ObservableCollection<WorkTaskSummary>(taskResposne.Model);
+                    PopualteFilterSelections(false);
+                    FilterTasks();
+                    await RefreshTasksInBackground();                    
+                }
+                else
+                {
+                    await RefreshTasksFromServerAsync();
+                }
             }
         }
         #endregion
@@ -747,6 +754,12 @@ namespace BugLog.ViewModels
             }
         }
 
+        private async Task SetProjectIdFilter(String id)
+        {
+            await Storage.StoreKVP("LAST_PROJECT_FILTER_ID", id);
+            await RefreshTasksInBackground();
+        }
+
         EntityHeader _selectedProjectFilter;
         public EntityHeader SelectedProjectFilter
         {
@@ -754,7 +767,8 @@ namespace BugLog.ViewModels
             set
             {
                 Set(ref _selectedProjectFilter, value);
-                RefreshTasksInBackground();                
+                if(value.Id.ToLower() != "all")
+                    SetProjectIdFilter(value.Id);
             }
         }
 
@@ -1031,7 +1045,7 @@ namespace BugLog.ViewModels
         public RelayCommand AddTaskCommand { get; private set; }
         public RelayCommand<WorkTaskSummary> OpenFullTaskCommand { get; private set; }
         public RelayCommand<WorkTaskSummary> OpenFullExternalTaskCommand { get; private set; }
-        public RelayCommand CloseStatusUpdateCommand { get; private set; }
+        public RelayCommand UpdateStatusUpdateCommand { get; private set; }
         public RelayCommand SaveNewTaskCommand { get; private set; }
         public RelayCommand CancelNewTaskCommand { get; private set; }
         public RelayCommand RefreshTasksCommand { get; private set; }
@@ -1045,6 +1059,7 @@ namespace BugLog.ViewModels
 
         public RelayCommand<WorkTaskSummary> AddRelatedTaskCommand { get; private set; }
         public RelayCommand<WorkTaskSummary> AddTimeCommand { get; private set; }
+        public RelayCommand CancelStatusUpdateCommand { get; }
 
         public RelayCommand AddExpectedOutcomeCommand { get; }
 
@@ -1067,7 +1082,8 @@ namespace BugLog.ViewModels
             {
                 IsAuthenticated = true;
                 if ((await TryLoadListsFromCacheAsync()).Successful)
-                {
+                {                    
+                    TryRefreshTasksFromCache();
                     LoadCommonSettingsInBackground();
                 }
                 else

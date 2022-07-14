@@ -9,11 +9,12 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
 
-    <Grid >
+    <Grid  >
         <Grid.RowDefinitions>
             <RowDefinition Height="32" />
             <RowDefinition Height="*" />
-            <RowDefinition Height="64" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="120" />
@@ -28,12 +29,12 @@
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
 
-            <uctl:IconButton IconName="Solid_Plus" Width="24" Height="24" Command="{Binding NewRepoCommand}" HorizontalAlignment="Right" />
-
             <StackPanel >
                 <TextBlock Text="Current Repo:" FontWeight="Bold" />
                 <TextBlock Text="{Binding CurrentRepo.Name}" />
             </StackPanel>
+            
+            <uctl:IconButton IconName="Solid_Plus" Width="24" Height="24" Command="{Binding NewRepoCommand}" HorizontalAlignment="Right" />
             <ListView Grid.Row="1" ItemsSource="{Binding Repos}" SelectedItem="{Binding EditRepo, Mode=TwoWay}"  >
                 <ListView.ItemTemplate>
                     <DataTemplate>
@@ -58,14 +59,14 @@
             </ListView.ItemTemplate>
         </ListView>
 
-        <ListView ItemsSource="{Binding StepOutput}" Background="Blue" Grid.Row="1" Grid.Column="2" Margin="2,0,0,0">
+        <ListView ItemsSource="{Binding StepOutput}" Background="Blue" Grid.Row="1" Grid.Column="2" Margin="2,0,0,0" >
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <Grid>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*" />
                         </Grid.ColumnDefinitions>
-                        <TextBlock Text="{Binding .}" Foreground="Yellow" />
+                        <TextBlock Text="{Binding .}" Foreground="Yellow" TextWrapping="Wrap" Width="200" />
                     </Grid>
                 </DataTemplate>
             </ListView.ItemTemplate>
@@ -76,40 +77,50 @@
             <TextBlock Text="Branch Ready" FontSize="24" />
         </StackPanel>
 
-        <TextBlock TextWrapping="Wrap" Text="There does not appear to be a branch in the current repo for this ticket.  Make sure you have the correct repository selected have no outstanding changes and press Create Branch to continue." 
-                    Grid.Column="1" Grid.ColumnSpan="2" Visibility="{Binding IsCurrentBranchConfigured, Converter={StaticResource  InverseVisibilityConverter}}" />
-
-        <StackPanel Grid.Column="3" Grid.Row="1">
+        <Button Grid.Row="2" Grid.Column="3"  Command="{Binding GitCommand}" CommandParameter="commit" Style="{StaticResource CommandButton}" >Commit</Button>
+        <TextBox Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" Text="{Binding CommitMessage}" TextWrapping="Wrap" Height="80"/>
+        
+        <StackPanel Grid.Column="3" Grid.Row="1" >
             <TextBlock Text="Branch Name:" FontWeight="Bold" Margin="10,0,0,0" />
             <TextBlock Text="{Binding TaskBranchName}" Margin="10,0,0,10" />
             <Button Command="{Binding GitCommand}"  Visibility="{Binding IsCurrentBranchConfigured, Converter={StaticResource  InverseVisibilityConverter}}"
                     CommandParameter="create" Style="{StaticResource CommandButton}" >Create</Button>
 
 
-            <Button Command="{Binding GitCommand}" CommandParameter="squash" Style="{StaticResource CommandButton}"
-                    Visibility="{Binding IsCurrentBranchConfigured, Converter={StaticResource VisibilityConverter}}">Squash</Button>
+            <Button Command="{Binding GitCommand}" CommandParameter="squash" Style="{StaticResource CommandButton}" HorizontalContentAlignment="Left"
+                    Visibility="{Binding IsCurrentBranchConfigured, Converter={StaticResource VisibilityConverter}}">1) Squash</Button>
 
-            <Button Command="{Binding GitCommand}" CommandParameter="rebasedev" Style="{StaticResource CommandButton}" 
-                    Visibility="{Binding IsCurrentBranchConfigured, Converter={StaticResource VisibilityConverter}}">Rebase from Dev</Button>
+            <Button Command="{Binding GitCommand}" CommandParameter="rebasedev" Style="{StaticResource CommandButton}"  HorizontalContentAlignment="Left"
+                    Visibility="{Binding IsCurrentBranchConfigured, Converter={StaticResource VisibilityConverter}}">2) Rebase from Dev</Button>
 
+            <!--<Button Command="{Binding GitCommand}" CommandParameter="rebasetest" Style="{StaticResource CommandButton}" 
+                    Visibility="{Binding IsCurrentBranchConfigured, Converter={StaticResource VisibilityConverter}}">Rebase from Test</Button>-->
+            <Button Command="{Binding GitCommand}" CommandParameter="createonserver" Style="{StaticResource CommandButton}" HorizontalContentAlignment="Left"
+                    Visibility="{Binding IsCurrentBranchConfigured, Converter={StaticResource VisibilityConverter}}">3a) Add to Origin</Button>
 
-            <Button Command="{Binding GitCommand}" CommandParameter="rebasetest" Style="{StaticResource CommandButton}" 
-                    Visibility="{Binding IsCurrentBranchConfigured, Converter={StaticResource VisibilityConverter}}">Rebase from Test</Button>
+            <Button Command="{Binding GitCommand}" CommandParameter="push --force" Style="{StaticResource CommandButton}" HorizontalContentAlignment="Left"
+                    Visibility="{Binding IsCurrentBranchConfigured, Converter={StaticResource VisibilityConverter}}">3b) Force Push</Button>
 
+            <Button Command="{Binding CreatePRCommand}" Style="{StaticResource CommandButton}" HorizontalContentAlignment="Left"
+                    Visibility="{Binding IsCurrentBranchConfigured, Converter={StaticResource VisibilityConverter}}">4) Create PR</Button>
+
+            
+            
             <Button Margin="0,20,0,0"  Command="{Binding GitCommand}" CommandParameter="branch" Style="{StaticResource CommandButton}" >Show Branches</Button>
             <Button Command="{Binding GitCommand}" CommandParameter="status" Style="{StaticResource CommandButton}" >GIT Status</Button>
         </StackPanel>
 
-        <Button Grid.Row="2" Grid.Column="3"  Command="{Binding GitCommand}" CommandParameter="commit" Style="{StaticResource CommandButton}" >Commit</Button>
-        <TextBox Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" Text="{Binding CommitMessage}" TextWrapping="Wrap" Height="80"/>
+        <TextBlock TextWrapping="Wrap" Text="There does not appear to be a branch in the current repo for this ticket.  Make sure you have the correct repository selected have no outstanding changes and press Create Branch to continue." 
+                    Grid.Column="1" Grid.ColumnSpan="2" Visibility="{Binding IsCurrentBranchConfigured, Converter={StaticResource  InverseVisibilityConverter}}" />
 
+        <Rectangle Grid.ColumnSpan="4" Grid.RowSpan="3" Visibility="{Binding EditRepo, Converter={StaticResource VisibilityConverter}}"  Opacity="0.2" Fill="Black"></Rectangle>
 
-        <Grid Width="320" Height="300" Grid.ColumnSpan="3" Grid.RowSpan="2" Visibility="{Binding EditRepo, Converter={StaticResource VisibilityConverter}}" >
+        <Grid Width="320" Height="300" Grid.ColumnSpan="3" Grid.RowSpan="3" Visibility="{Binding EditRepo, Converter={StaticResource VisibilityConverter}}" >
             <Rectangle Style="{StaticResource Popup}" />
             <Border Style="{StaticResource PopupTitleBorder}" VerticalAlignment="Top"/>
 
             <Grid Style="{StaticResource PopupContent}">
-                <StackPanel >
+                <StackPanel  >
                     <TextBlock Text="Repo Name" />
                     <TextBox Text="{Binding EditRepo.Name}" />
 
@@ -129,7 +140,9 @@
 
             <TextBlock Text="Repository" Style="{StaticResource PopupTItle}" />
             <uctl:IconButton Command="{Binding CancelRepoCommand}" Style="{StaticResource PopupCloseButton}" />
-
         </Grid>
+
+        <TextBox Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="2" Text="{Binding GitCommandText, Mode=TwoWay}" />
+        <uctl:IconButton IconName="Solid_Play" Command="{Binding RunGitCommandCommand}" Grid.Row="3" Grid.Column="3" HorizontalAlignment="Left" Height="30" />
     </Grid>
 </UserControl>

@@ -40,7 +40,7 @@
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="200" />
             </Grid.ColumnDefinitions>
-            <ListView ItemsSource="{Binding FilteredTasks}" ScrollViewer.HorizontalScrollBarVisibility="Disabled" HorizontalContentAlignment="Stretch">
+            <ListView ItemsSource="{Binding FilteredTasks}" ScrollViewer.HorizontalScrollBarVisibility="Disabled" HorizontalContentAlignment="Stretch" SelectedItem="{Binding TaskSummary, Mode=TwoWay}">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <Grid>
@@ -66,7 +66,9 @@
                             </Button>
 
                             <TextBlock Text="{Binding ExternalTaskCode}" Grid.Column="2" />
-                            <fa5:SvgAwesome Grid.Column="3" Icon="Solid_Link" Foreground="#D48d17"  VerticalAlignment="Center" HorizontalAlignment="Center"  Width="16" Height="16"/>
+                            <Button Grid.Column="3" BorderBrush="Transparent" Background="Transparent" Command="{Binding Path=DataContext.OpenFullExternalTaskCommand, ElementName=parentSource}" CommandParameter="{Binding .}">
+                                <fa5:SvgAwesome Grid.Column="1" Icon="Solid_Link" Foreground="#D48d17"   VerticalAlignment="Center" HorizontalAlignment="Center"  Width="16" Height="16" />
+                            </Button>
 
                             <TextBlock Text="{Binding Name}" Grid.Column="4"  TextTrimming="CharacterEllipsis"/>
                             <TextBlock Text="{Binding Status}" Grid.Column="5" />
@@ -92,6 +94,8 @@
                 <ComboBox ItemsSource="{Binding StatusFilter}" SelectedItem="{Binding SelectedStatusFilter}"  />
                 <TextBlock>Task Type</TextBlock>
                 <ComboBox ItemsSource="{Binding WorkTaskTypesFilter}" SelectedItem="{Binding SelectedWorKTypeFilter}"  />
+                <TextBlock>Show Only My Work</TextBlock>
+                <CheckBox IsChecked="{Binding ShowOnlyMyWork}" />
             </StackPanel>
         </Grid>
 
@@ -105,7 +109,8 @@
             <Button Command="{Binding CloseErrorContentCommand}" Grid.Row="1" HorizontalAlignment="Right" Width="120" Height="32" >Close</Button>
         </Grid>
 
-        <Grid Visibility="{Binding TimeEntryTask, Converter={StaticResource VisibilityConverter}}" Width="400" Height="280" >
+        <Rectangle Visibility="{Binding TimeEntryTask, Converter={StaticResource VisibilityConverter}}"  Opacity="0.2" Fill="Black"></Rectangle>
+        <Grid Visibility="{Binding TimeEntryTask, Converter={StaticResource VisibilityConverter}}" Width="400" Height="285" >
             <Rectangle Style="{StaticResource Popup}" />
 
             <Grid Style="{StaticResource PopupContent}">
@@ -126,7 +131,7 @@
                     <TextBox  Text="{Binding TimeEntryHours, Mode=TwoWay}"  HorizontalContentAlignment="Right"   />
 
                     <TextBlock Text="Notes" />
-                    <TextBox Text="{Binding TimeEntryNotes, Mode=TwoWay}" />
+                    <TextBox Text="{Binding TimeEntryNotes, Mode=TwoWay}" AcceptsReturn="True" Height="80" />
 
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
                         <Button Width="120" Grid.Row="1" Command="{Binding SaveNewTimeCommand}" Style="{StaticResource CommandButton}" >Save</Button>
@@ -139,10 +144,38 @@
             <uctl:IconButton Style="{StaticResource PopupCloseButton}" Command="{Binding CancelNewTimeCommand}" />
         </Grid>
 
+        <Rectangle Visibility="{Binding TaskSummary, Converter={StaticResource VisibilityConverter}}"  Opacity="0.2" Fill="Black"></Rectangle>
+        <Grid Visibility="{Binding TaskSummary, Converter={StaticResource VisibilityConverter}}" Width="400" Height="290" >
+            <Rectangle Style="{StaticResource Popup}" />
+
+            <Grid Style="{StaticResource PopupContent}">
+                <StackPanel >
+                    <TextBlock Text="{Binding TaskSummary.Name}" FontSize="16" FontWeight="Bold" />
+
+                    <TextBlock>Status</TextBlock>
+                    <ComboBox ItemsSource="{Binding AvailableStatusTransitions}" SelectedItem="{Binding SelectedTransition}" DisplayMemberPath="Name"  />
+
+                    <TextBlock>External Status</TextBlock>
+                    <ComboBox ItemsSource="{Binding AvailableExternalStatusTransitions}" SelectedItem="{Binding SelectedExternalTransition}" DisplayMemberPath="Name"  />
+
+                    <TextBlock Text="Notes" />
+                    <TextBox Text="{Binding TimeEntryNotes, Mode=TwoWay}" AcceptsReturn="True" Height="80" />
+
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                        <Button Width="120" Grid.Row="1" Command="{Binding UpdateStatusUpdateCommand}" Style="{StaticResource CommandButton}" >Save</Button>
+                    </StackPanel>
+                </StackPanel>
+            </Grid>
+
+            <Border Style="{StaticResource PopupTitleBorder}" />
+            <TextBlock Text="Work Task" Style="{StaticResource PopupTItle}" />
+            <uctl:IconButton Style="{StaticResource PopupCloseButton}" Command="{Binding CancelStatusUpdateCommand}" />
+        </Grid>
+
 
         <Rectangle Visibility="{Binding RepoVM, Converter={StaticResource VisibilityConverter}}"  Opacity="0.2" Fill="Black"></Rectangle>
 
-        <Grid Visibility="{Binding RepoVM, Converter={StaticResource VisibilityConverter}}" Width="800" Height="400" >
+        <Grid Visibility="{Binding RepoVM, Converter={StaticResource VisibilityConverter}}" Width="800" Height="500" >
             <Rectangle Style="{StaticResource Popup}" />
 
             <Grid Style="{StaticResource PopupContent}">
@@ -151,8 +184,7 @@
 
             <Border Style="{StaticResource PopupTitleBorder}" />
 
-            <TextBlock Text="GIT Branch Management" Foreground="White" Margin="5,5,0,0" Width="150" />
-
+            <TextBlock Text="GIT Branch Management" Style="{StaticResource PopupTItle}" />
             <uctl:IconButton Command="{Binding CloseReposCommand}" Style="{StaticResource PopupCloseButton}" />
         </Grid>
 

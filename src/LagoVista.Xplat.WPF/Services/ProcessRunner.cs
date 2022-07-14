@@ -1,4 +1,5 @@
 ﻿using LagoVista.Client.Core;
+using System;
 using System.Diagnostics;
 using System.Text;
 using System.Threading.Tasks;
@@ -23,51 +24,58 @@ namespace LagoVista.XPlat.WPF.NetStd.Core.Services
 
             await Task.Run(() =>
             {
-                var proc = new Process
+                try
                 {
-                    StartInfo = new ProcessStartInfo
+                    var proc = new Process
                     {
-                        FileName = cmd,
-                        Arguments = args,
-                        UseShellExecute = false,
-                        WorkingDirectory = path,
-                        RedirectStandardOutput = true,
-                        RedirectStandardError = true,
-                        CreateNoWindow = true,
+                        StartInfo = new ProcessStartInfo
+                        {
+                            FileName = cmd,
+                            Arguments = args,
+                            UseShellExecute = false,
+                            WorkingDirectory = path,
+                            RedirectStandardOutput = true,
+                            RedirectStandardError = true,
+                            CreateNoWindow = true,
+                        }
+                    };
+
+                    _consoleWriter.Clear();
+                    _consoleWriter.AddMessage(LogType.Message, $"cd {path}");
+                    _consoleWriter.AddMessage(LogType.Message, $"{proc.StartInfo.FileName} {proc.StartInfo.Arguments}");
+
+                    proc.Start();
+
+                    while (!proc.StandardOutput.EndOfStream)
+                    {
+                        var line = proc.StandardOutput.ReadLine().Trim();
+                        _consoleWriter.AddMessage(LogType.Message, line);
+                        bldr.AppendLine(line);
                     }
-                };
 
-                _consoleWriter.Clear();
-                _consoleWriter.AddMessage(LogType.Message, $"cd {path}");
-                _consoleWriter.AddMessage(LogType.Message, $"{proc.StartInfo.FileName} {proc.StartInfo.Arguments}");
+                    while (!proc.StandardError.EndOfStream)
+                    {
+                        var line = proc.StandardError.ReadLine().Trim();
+                        _consoleWriter.AddMessage(LogType.Error, line);
+                    }
 
-                proc.Start();
+                    if (proc.ExitCode == 0)
+                    {
+                        _consoleWriter.AddMessage(LogType.Success, $"Success {actionType}");
+                    }
+                    else
+                    {
+                        _consoleWriter.AddMessage(LogType.Error, $"Error {actionType}!");
+                    }
 
-                while (!proc.StandardOutput.EndOfStream)
-                {
-                    var line = proc.StandardOutput.ReadLine().Trim();
-                    _consoleWriter.AddMessage(LogType.Message, line);
-                    bldr.AppendLine(line);
+                    _consoleWriter.AddMessage(LogType.Message, "------------------------------");
+                    _consoleWriter.AddMessage(LogType.Message, "");
+                    _consoleWriter.Flush();
                 }
-
-                while (!proc.StandardError.EndOfStream)
+                catch(Exception ex)
                 {
-                    var line = proc.StandardError.ReadLine().Trim();
-                    _consoleWriter.AddMessage(LogType.Error, line);
+                    _consoleWriter.AddMessage(LogType.Error, ex.Message);
                 }
-
-                if (proc.ExitCode == 0)
-                {
-                    _consoleWriter.AddMessage(LogType.Success, $"Success {actionType}");
-                }
-                else
-                {
-                    _consoleWriter.AddMessage(LogType.Error, $"Error {actionType}!");
-                }
-
-                _consoleWriter.AddMessage(LogType.Message, "------------------------------");
-                _consoleWriter.AddMessage(LogType.Message, "");
-                _consoleWriter.Flush();
             });
 
 
