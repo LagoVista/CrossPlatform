@@ -521,7 +521,6 @@ namespace BugLog.ViewModels
             AllProjects = aps.Model.ToList();
             ProjectsForNewTask = AllProjects.Select(prj => EntityHeader.Create(prj.Id, prj.Key, prj.Name)).ToList();
 
-
             var users = await this.RestClient.TryGetFromCache<UserInfoSummary>("/api/users/active");
             if (!users.Successful)
                 return users;
@@ -549,6 +548,8 @@ namespace BugLog.ViewModels
             WorkTaskTypesFilter = _workTaskTypes.Select(wtt => EntityHeader.Create(wtt.Id, wtt.Name)).Distinct().ToList();
             FilteredViews = views.Model.Select(kb => EntityHeader.Create(kb.Id, kb.Name)).ToList();
             AllProjects = (await this.RestClient.GetListResponseAsync<ProjectSummary>("/api/projects")).Model.ToList();
+
+            Projects = AllProjects.Where(prj => !string.IsNullOrEmpty(prj.Id)).Select(prj => EntityHeader.Create(prj.Id, prj.Key, prj.Name)).ToList().Distinct().ToList();
             ProjectsForNewTask = AllProjects.Select(prj => EntityHeader.Create(prj.Id, prj.Name)).ToList();
 
             Status = "loading all projects";
@@ -595,7 +596,6 @@ namespace BugLog.ViewModels
             var qa = SelectedQAResourceFilter;
             var pf = SelectedPriorityFilter;
 
-            Projects = AllTasks.Where(tsk => !string.IsNullOrEmpty(tsk.ProjectId)).Select(prj => EntityHeader.Create(prj.ProjectId, prj.Key, prj.ProjectName)).ToList().Distinct().ToList();
             Modules = AllTasks.Where(tsk => !string.IsNullOrEmpty(tsk.ModuleId)).Select(tsk => EntityHeader.Create(tsk.ModuleId, tsk.Key, tsk.ModuleName)).ToList().Distinct().ToList();
             AssignedPrimaryContributor = AllTasks.Where(tsk => !string.IsNullOrEmpty(tsk.PrimaryContributorId)).Select(tsk => EntityHeader.Create(tsk.PrimaryContributorId, tsk.PrimaryContributor)).ToList().Distinct().ToList();
             AssignedQALeads = AllTasks.Where(tsk => !string.IsNullOrEmpty(tsk.QaResourceId)).Select(tsk => EntityHeader.Create(tsk.QaResourceId, tsk.QaResource)).ToList().Distinct().ToList();
@@ -617,7 +617,6 @@ namespace BugLog.ViewModels
             }
             else
             {
-                _selectedProjectFilter = Projects[0];
                 _selectedModuleFilter = Modules[0];
                 _selectedStatusFilter = StatusFilter[0];
                 _selectedWorkTypeFilter = WorkTaskTypesFilter[0];
@@ -641,20 +640,21 @@ namespace BugLog.ViewModels
 
         public async Task RefreshTasksInBackground(bool maintainFilters = false)
         {
-            if (SelectedKanbanView != null && SelectedKanbanView.Id != "all")
+            if (SelectedProjectFilter != null && SelectedProjectFilter.Id != "all")
             {
                 try
                 {
-                    var taskResposne = await this.RestClient.GetListResponseAsync<WorkTaskSummary>($"/api/pm/tasks/view/{SelectedKanbanView.Id}");
+                    var taskResposne = await this.RestClient.GetListResponseAsync<WorkTaskSummary>($"/api/pm/tasks/project/{SelectedProjectFilter.Id}/sprint/current");
 
                     if (taskResposne.Successful)
                     {
                         Status = "loading work tasks in background";
-                        await Storage.StoreKVP("LAST_FILTER_ID", SelectedKanbanView.Id);
 
+                        await Storage.StoreKVP("SELECTED_PROJECT_ID", SelectedProjectFilter.Id);
 
                         AllTasks = new ObservableCollection<WorkTaskSummary>(taskResposne.Model);
                         PopualteFilterSelections(maintainFilters);
+                        FilterTasks();
 
                         Status = string.Empty;
                     }
@@ -756,7 +756,7 @@ namespace BugLog.ViewModels
             set
             {
                 Set(ref _selectedProjectFilter, value);
-                FilterTasks();
+                RefreshTasksInBackground();                
             }
         }
 
