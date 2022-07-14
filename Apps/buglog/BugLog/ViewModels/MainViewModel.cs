@@ -51,12 +51,10 @@ namespace BugLog.ViewModels
             RefreshTasksCommand = RelayCommand.Create(RefreshTasks);
             OpenFullTaskCommand = RelayCommand<WorkTaskSummary>.Create(OpenFullTask);
             AddRelatedTaskCommand = RelayCommand<WorkTaskSummary>.Create(AddRelatedTask);
-            AddTimeCommand = RelayCommand<WorkTaskSummary>.Create(AddTime);
             AddExpectedOutcomeCommand = RelayCommand.Create(AddExpectedOutcome);
             OpenFullExternalTaskCommand = RelayCommand<WorkTaskSummary>.Create(OpenExternalFullTask);
             SaveNewTaskCommand = RelayCommand.Create(SaveNewTask);
             CancelNewTimeCommand = RelayCommand.Create(() => TimeEntryTask = null);
-            SaveNewTimeCommand = RelayCommand.Create(SaveNewTime);
             
             CancelNewTaskCommand = RelayCommand.Create(() => NewWorkTask = null);
             TimeEntryNextDateCommand = RelayCommand.Create(() => TimeEntryDate = TimeEntryDate.AddDays(1));

@@ -15,7 +15,7 @@ namespace BugLog.Wpf
             InitializeComponent();
             _viewModel = new MainViewModel();
             DataContext = _viewModel;
-            this.Loaded += MainWindow_Loaded;
+            this.Loaded += MainWindow_Loaded;   
             
         }
 
