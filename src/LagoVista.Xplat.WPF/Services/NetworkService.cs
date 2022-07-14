@@ -3,6 +3,7 @@ using System;
 using System.Threading.Tasks;
 using System.Collections.ObjectModel;
 using LagoVista.Core.Models;
+using System.Diagnostics;
 
 namespace LagoVista.Core.WPF.PlatformSupport
 {
@@ -40,7 +41,11 @@ namespace LagoVista.Core.WPF.PlatformSupport
 
         public void OpenURI(Uri uri)
         {
-            System.Diagnostics.Process.Start(uri.ToString());
+            System.Diagnostics.Process.Start(new ProcessStartInfo
+            {
+                FileName = uri.ToString(),
+                UseShellExecute = true
+            }); 
         }
 
         public Task RefreshAysnc()

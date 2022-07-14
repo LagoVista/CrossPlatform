@@ -23,6 +23,7 @@ namespace BugLog.ViewModels
         private readonly LagoVista.Client.Core.IConsoleWriter _consoleWriter;
         IProcessRunner _processRunner;
 
+
         public RepoSupportViewModel(WorkTaskSummary wts, RepoManager repoManager, IDispatcherServices dispatcher)
         {
             _wts = wts ?? throw new ArgumentNullException(nameof(wts));
@@ -40,116 +41,210 @@ namespace BugLog.ViewModels
 
         public string TaskBranchName
         {
-            get => $"sl/{Task.TaskCode.ToLower().Replace("-", "_")}";
+            get => $"sl/{Task.TaskCode.ToLower()}";
         }
 
         async void RunGitCommand(string cmd)
         {
+            StepOutput.Clear();
+
             if (CurrentRepo != null)
             {
-                switch(cmd)
+                switch (cmd)
                 {
                     case "create":
-                        cmd = $"checkout -b {TaskBranchName}";
-                        await _processRunner.RunProcess(CurrentRepo.Folder, "git.exe", cmd, String.Empty);
+                        if (!await IsCurrentBranchClean())
+                        {
+                            await Popups.ShowAsync("Current branch has uncommitted changes, please commit or stash your changes.");
+                            StepOutput.Add("Current branch has uncommitted changes, please commit or stash your changes.");
+                        }
+                        else
+                        {
+                            StepOutput.Add("Checking Out Dev Branch");
+                            cmd = $"checkout {CurrentRepo.DevBranch}";
+                            await _processRunner.RunProcess(CurrentRepo.Folder, "git.exe", cmd, String.Empty);
+                            await System.Threading.Tasks.Task.Delay(500);
+                            StepOutput[StepOutput.Count - 1] += " - OK";
+
+                            StepOutput.Add("Pulling Dev Branch");
+                            cmd = $"pull";
+                            await _processRunner.RunProcess(CurrentRepo.Folder, "git.exe", cmd, String.Empty);
+                            await System.Threading.Tasks.Task.Delay(500);
+                            StepOutput[StepOutput.Count - 1] += " - OK";
+
+                            StepOutput.Add($"Creating New Branch - {TaskBranchName}");
+                            cmd = $"checkout -b {TaskBranchName}";
+                            await _processRunner.RunProcess(CurrentRepo.Folder, "git.exe", cmd, String.Empty);
+                            await System.Threading.Tasks.Task.Delay(500);
+                            StepOutput[StepOutput.Count - 1] += " - OK";
+
+                            IsCurrentBranchConfigured = true;
+
+                        }
                         break;
 
                     case "rebasetest":
-                        cmd = $"checkout {CurrentRepo.TestBranch}";
-                        await _processRunner.RunProcess(CurrentRepo.Folder, "git.exe", cmd, String.Empty);
+                        if (!await IsCurrentBranchClean())
+                        {
+                            await Popups.ShowAsync("Current branch has uncommitted changes, please commit or stash your changes.");
+                            StepOutput.Add("Current branch has uncommitted changes, please commit or stash your changes.");
+                        }
+                        else
+                        {
+                            cmd = $"checkout {CurrentRepo.TestBranch}";
+                            await _processRunner.RunProcess(CurrentRepo.Folder, "git.exe", cmd, String.Empty);
+                            await System.Threading.Tasks.Task.Delay(500);
 
-                        cmd = $"pull";
-                        await _processRunner.RunProcess(CurrentRepo.Folder, "git.exe", cmd, String.Empty);
-                        break;
+                            cmd = $"pull";
+                            await _processRunner.RunProcess(CurrentRepo.Folder, "git.exe", cmd, String.Empty);
+                            await System.Threading.Tasks.Task.Delay(500);
 
-                    case "commit":
-                        cmd = $"add .";
-                        await _processRunner.RunProcess(CurrentRepo.Folder, "git.exe", cmd, String.Empty);
+                            cmd = $"checkout {TaskBranchName}";
+                            await _processRunner.RunProcess(CurrentRepo.Folder, "git.exe", cmd, String.Empty);
+                            await System.Threading.Tasks.Task.Delay(500);
 
-                        cmd = $"commit -m \"{CommitMessage}";
-                        await _processRunner.RunProcess(CurrentRepo.Folder, "git.exe", cmd, String.Empty);
-                        break;
-
-                    case "squash":
-                        cmd = $"merge-base {CurrentRepo.DevBranch} {TaskBranchName}";
-                        var response = await _processRunner.RunProcess(CurrentRepo.Folder, "git.exe", cmd, String.Empty);
-                        await System.Threading.Tasks.Task.Delay(500);
-
-                        cmd = $"reset --soft  {response.Trim()}";
-                        await _processRunner.RunProcess(CurrentRepo.Folder, "git.exe", cmd, String.Empty);
-                        await System.Threading.Tasks.Task.Delay(500);
-
-                        cmd = $"add .";
-                        await _processRunner.RunProcess(CurrentRepo.Folder, "git.exe", cmd, String.Empty);
-                        await System.Threading.Tasks.Task.Delay(500);
-
-                        cmd = $"commit -m  \"{Task.Name.ToLower()}\r\n#{Task.ExternalTaskCode}";
-                        await _processRunner.RunProcess(CurrentRepo.Folder, "git.exe", cmd, String.Empty);
+                            cmd = $"rebase {CurrentRepo.TestBranch}";
+                            await _processRunner.RunProcess(CurrentRepo.Folder, "git.exe", cmd, String.Empty);
+                            await System.Threading.Tasks.Task.Delay(500);
+                        }
                         break;
 
                     case "rebasedev":
-                        cmd = $"checkout {CurrentRepo.DevBranch}";
-                        await _processRunner.RunProcess(CurrentRepo.Folder, "git.exe", cmd, String.Empty);
+                        if (!await IsCurrentBranchClean())
+                        {
+                            await Popups.ShowAsync("Current branch has uncommitted changes, please commit or stash your changes.");
+                            StepOutput.Add("Current branch has uncommitted changes, please commit or stash your changes.");
+                        }
+                        else
+                        {
+                            cmd = $"checkout {CurrentRepo.DevBranch}";
+                            await _processRunner.RunProcess(CurrentRepo.Folder, "git.exe", cmd, String.Empty);
+                            await System.Threading.Tasks.Task.Delay(500);
 
-                        cmd = $"pull";
-                        await _processRunner.RunProcess(CurrentRepo.Folder, "git.exe", cmd, String.Empty);
+                            cmd = $"pull";
+                            await _processRunner.RunProcess(CurrentRepo.Folder, "git.exe", cmd, String.Empty);
+                            await System.Threading.Tasks.Task.Delay(500);
+
+                            cmd = $"checkout {TaskBranchName}";
+                            await _processRunner.RunProcess(CurrentRepo.Folder, "git.exe", cmd, String.Empty);
+                            await System.Threading.Tasks.Task.Delay(500);
+
+                            cmd = $"rebase {CurrentRepo.DevBranch}";
+                            await _processRunner.RunProcess(CurrentRepo.Folder, "git.exe", cmd, String.Empty);
+                            await System.Threading.Tasks.Task.Delay(500);
+                        }
                         break;
-                        
 
-                    case "branch":
-                        response = await _processRunner.RunProcess(CurrentRepo.Folder, "git.exe", cmd, String.Empty);
-                        var onCurrentBranch = false;
-                        var currentBranchClean = false;
-                        var hasBranchButNotCurrent = false;
+                    case "commit":
+                        if (!await IsCurrentBranchClean())
+                        {
+                            StepOutput.Add("It does not appear as if you have any uncomitted changes.");
+                        }
+                        else
+                        {
+                            cmd = $"add .";
+                            await _processRunner.RunProcess(CurrentRepo.Folder, "git.exe", cmd, String.Empty);
+                            await System.Threading.Tasks.Task.Delay(500);
 
-                        var currentRegEx = new Regex(@"\*\s(?'current'[a-z\/_0-9]+)");
-                        var currentMatch = currentRegEx.Match(response);
-                        if (currentMatch.Success)
-                        {
-                            var currentBranchName = currentMatch.Groups["current"].Value;
-                            if (currentBranchName == TaskBranchName)
-                            {
-                                Debug.WriteLine("On current branch.");
-                                onCurrentBranch = true;
-                            }
+                            cmd = $"commit -m \"{CommitMessage}";
+                            await _processRunner.RunProcess(CurrentRepo.Folder, "git.exe", cmd, String.Empty);
+                            await System.Threading.Tasks.Task.Delay(500);
                         }
-                                                
-                        if(!onCurrentBranch)
-                        {
-                            var lines = response.Split('\n');
-                            foreach (var line in lines)
-                            {
-                                if(line.Trim() == TaskBranchName)
-                                {
-                                    hasBranchButNotCurrent = true;
-                                }
-                            }                         
-                        }
+                        break;
 
-                        if(!onCurrentBranch && hasBranchButNotCurrent)
+                    case "squash":
+                        if (!await IsCurrentBranchClean())
                         {
-                            response = await _processRunner.RunProcess(CurrentRepo.Folder, "git.exe", "status", String.Empty);
-                            Debug.WriteLine(response);
-                            if(response.Contains("working tree clean"))
-                            {
-                                currentBranchClean = true;
-                            }
+                            StepOutput.Add("It does not appear as if you have any uncomitted changes.");
                         }
-                        
-                        if(!onCurrentBranch && currentBranchClean && hasBranchButNotCurrent)
+                        else
                         {
-                            await _processRunner.RunProcess(CurrentRepo.Folder, "git.exe", $"checkout {TaskBranchName}", String.Empty);
-                        }
+                            StepOutput.Add($"Identify initial branch");
+                            cmd = $"merge-base {CurrentRepo.DevBranch} {TaskBranchName}";
+                            var response = await _processRunner.RunProcess(CurrentRepo.Folder, "git.exe", cmd, String.Empty);
+                            await System.Threading.Tasks.Task.Delay(500);
+                            StepOutput[StepOutput.Count - 1] += " - OK";
 
+                            StepOutput.Add($"Soft resetting current branch");
+                            cmd = $"reset --soft  {response.Trim()}";
+                            await _processRunner.RunProcess(CurrentRepo.Folder, "git.exe", cmd, String.Empty);
+                            await System.Threading.Tasks.Task.Delay(500);
+                            StepOutput[StepOutput.Count - 1] += " - OK";
+
+                            StepOutput.Add($"Adding changes");
+                            cmd = $"add .";
+                            await _processRunner.RunProcess(CurrentRepo.Folder, "git.exe", cmd, String.Empty);
+                            await System.Threading.Tasks.Task.Delay(500);
+                            StepOutput[StepOutput.Count - 1] += " - OK";
+
+                            StepOutput.Add($"Committing changes");
+                            cmd = $"commit -m  \"{Task.Name.ToLower()}\r\n#{Task.ExternalTaskCode}";
+                            await _processRunner.RunProcess(CurrentRepo.Folder, "git.exe", cmd, String.Empty);
+                            StepOutput[StepOutput.Count - 1] += " - OK";
+                        }
                         break;
 
                     default:
-                        response = await _processRunner.RunProcess(CurrentRepo.Folder, "git.exe", cmd, String.Empty);
-                        Debug.WriteLine(response);
+                        {
+                            var response = await _processRunner.RunProcess(CurrentRepo.Folder, "git.exe", cmd, String.Empty);
+                            Debug.WriteLine(response);
+                        }
                         break;
                 }
+            }
+        }
 
-                
+        public async Task<bool> IsCurrentBranchClean()
+        {
+            var response = await _processRunner.RunProcess(CurrentRepo.Folder, "git.exe", "status", String.Empty);
+            Debug.WriteLine(response);
+            return (response.Contains("working tree clean"));
+        }
+
+        public async Task CheckForCurrentBranch()
+        {
+            var response = await _processRunner.RunProcess(CurrentRepo.Folder, "git.exe", "branch", String.Empty);
+            var onCurrentBranch = false;
+            var currentBranchClean = false;
+            var hasBranchButNotCurrent = false;
+
+            var currentRegEx = new Regex(@"\*\s(?'current'[a-z\/_\-0-9]+)");
+            var currentMatch = currentRegEx.Match(response);
+            if (currentMatch.Success)
+            {
+                var currentBranchName = currentMatch.Groups["current"].Value;
+                if (currentBranchName == TaskBranchName)
+                {
+                    Debug.WriteLine("On current branch.");
+                    IsCurrentBranchConfigured = true;
+                    return;
+                }
+            }
+
+            if (!onCurrentBranch)
+            {
+                var lines = response.Split('\n');
+                foreach (var line in lines)
+                {
+                    if (line.Trim() == TaskBranchName)
+                    {
+                        hasBranchButNotCurrent = true;
+                    }
+                }
+            }
+
+            if (!onCurrentBranch && hasBranchButNotCurrent)
+            {
+                currentBranchClean = await IsCurrentBranchClean();
+            }
+
+            if (!onCurrentBranch && currentBranchClean && hasBranchButNotCurrent)
+            {
+                await _processRunner.RunProcess(CurrentRepo.Folder, "git.exe", $"checkout {TaskBranchName}", String.Empty);
+            }
+            else if (!onCurrentBranch)
+            {
+                await Popups.ShowAsync($"Branch for {Task.TaskCode} not found\r\nPlease make sure you have selected the correct repository, and try again.\r\nOr if you need to create your branch, make sure you are on the correct repository, have no uncommitted changes and Create a branch.");
             }
         }
 
@@ -165,6 +260,7 @@ namespace BugLog.ViewModels
         {
             Repos = new ObservableCollection<Repo>(await _repoManager.GetReposForProjectAsync(_wts.ProjectId));
             CurrentRepo = Repos.FirstOrDefault();
+            await CheckForCurrentBranch();
         }
 
         public async void SaveRepo()
@@ -201,6 +297,13 @@ namespace BugLog.ViewModels
             set => Set(ref _commitMessage, value);
         }
 
+        private bool _isCurrentBranchConfigured;
+        public bool IsCurrentBranchConfigured
+        {
+            get => _isCurrentBranchConfigured;
+            set => Set(ref _isCurrentBranchConfigured, value);
+        }
+
         public WorkTaskSummary Task { get => _wts; }
 
         public RelayCommand NewRepoCommand { get; }
@@ -209,5 +312,7 @@ namespace BugLog.ViewModels
         public RelayCommand<string> GitCommand { get; }
 
         public ObservableCollection<ConsoleOutput> ConsoleLogOutput { get; } = new ObservableCollection<ConsoleOutput>();
+
+        public ObservableCollection<string> StepOutput { get; } = new ObservableCollection<string>();
     }
 }

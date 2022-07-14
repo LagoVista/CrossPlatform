@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:fa5="http://schemas.fontawesome.com/icons/"
         xmlns:ctl="clr-namespace:BugLog.Wpf.Controls"
+        xmlns:uctl="clr-namespace:LagoVista.XPlat.WPF;assembly=LagoVista.XPlat.WPF.NetStd.Core"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BugLog.Wpf"
         mc:Ignorable="d"
@@ -111,16 +112,16 @@
 
             <Grid Style="{StaticResource PopupContent}">
                 <StackPanel >
-                    <TextBlock Text="{Binding TimeEntryTask.Name}" FontSize="18" FontWeight="Bold" />
+                    <TextBlock Text="{Binding TimeEntryTask.Name}" FontSize="16" FontWeight="Bold" />
                     <Grid  >
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="auto" />
                             <ColumnDefinition Width="*" />
                             <ColumnDefinition Width="auto" />
                         </Grid.ColumnDefinitions>
-                        <!--<pge:IconButton HeightRequest="32" FontSize="14" IconKey="fa-arrow-left" Grid.Column="0" Command="{Binding TimeEntryPrevDateCommand }"  />
-                        <pge:Label HeightRequest="32" VerticalTextAlignment="Center"  HorizontalTextAlignment="Center" FontSize="14"  Text="{Binding TimeEntryDateDisplay}" Grid.Column="1" />
-                        <pge:IconButton HeightRequest="32" FontSize="14"  IconKey="fa-arrow-right" Grid.Column="2" Command="{Binding TimeEntryNextDateCommand }" />-->
+                        <uctl:IconButton IconName="Solid_ArrowCircleLeft" Foreground="#D48d17" Width="16" Height="16" Command="{Binding TimeEntryPrevDateCommand}" />
+                        <TextBlock Text="{Binding TimeEntryDateDisplay}" Grid.Column="1" HorizontalAlignment="Center" />
+                        <uctl:IconButton Grid.Column="2" IconName="Solid_ArrowCircleRight" Foreground="#D48d17" Width="16" Height="16" Command="{Binding TimeEntryNextDateCommand}"/>
                     </Grid>
 
                     <TextBlock Text="Hours" />
@@ -130,18 +131,20 @@
                     <TextBox Text="{Binding TimeEntryNotes, Mode=TwoWay}" />
 
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                        <Button Width="120" Grid.Row="1" Command="{Binding SaveNewTimeCommand}" >Save</Button>
+                        <Button Width="120" Grid.Row="1" Command="{Binding SaveNewTimeCommand}" Style="{StaticResource CommandButton}" >Save</Button>
                     </StackPanel>
                 </StackPanel>
             </Grid>
 
             <Border Style="{StaticResource PopupTitleBorder}" />
-            <TextBlock Text="Time Entry" Foreground="White" Margin="5,5,0,0" Width="150" />
-            <Button Command="{Binding CancelNewTimeCommand}" Style="{StaticResource PopupCloseButton}" />
+            <TextBlock Text="Time Entry" Style="{StaticResource PopupTItle}" />
+            <uctl:IconButton Style="{StaticResource PopupCloseButton}" Command="{Binding CancelNewTimeCommand}" />
         </Grid>
-        
 
-        <Grid Visibility="{Binding RepoVM, Converter={StaticResource VisibilityConverter}}" Width="800" Height="600" >
+
+        <Rectangle Visibility="{Binding RepoVM, Converter={StaticResource VisibilityConverter}}"  Opacity="0.2" Fill="Black"></Rectangle>
+
+        <Grid Visibility="{Binding RepoVM, Converter={StaticResource VisibilityConverter}}" Width="800" Height="400" >
             <Rectangle Style="{StaticResource Popup}" />
 
             <Grid Style="{StaticResource PopupContent}">
@@ -152,7 +155,7 @@
 
             <TextBlock Text="GIT Branch Management" Foreground="White" Margin="5,5,0,0" Width="150" />
 
-            <Button Command="{Binding CloseReposCommand}" Style="{StaticResource PopupCloseButton}" />
+            <uctl:IconButton Command="{Binding CloseReposCommand}" Style="{StaticResource PopupCloseButton}" />
         </Grid>
 
         <Rectangle Visibility="{Binding IsBusy, Converter={StaticResource VisibilityConverter}}"  Opacity="0.2" Fill="Black"></Rectangle>
