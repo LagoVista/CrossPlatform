@@ -88,6 +88,7 @@
                 </ListView.ItemTemplate>
             </ListView>
             <StackPanel Grid.Column="1">
+                <Button Command="{Binding LogoutCommand}">Logout</Button>
                 <TextBlock>Project</TextBlock>
                 <ComboBox ItemsSource="{Binding Projects}" SelectedItem="{Binding SelectedProjectFilter}"  />
                 <TextBlock>Status</TextBlock>

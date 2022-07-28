@@ -80,7 +80,8 @@ namespace LagoVista.XPlat.WPF.NetStd.Core.Services
 
         public Task SetAsNewRootAsync<TViewModel>(params KeyValuePair<string, object>[] args) where TViewModel : ViewModelBase
         {
-            throw new NotImplementedException();
+            //throw new NotImplementedException();
+            return Task.CompletedTask;
         }
 
         public Task SetAsNewRootAsync(Type viewModelType, params KeyValuePair<string, object>[] args)

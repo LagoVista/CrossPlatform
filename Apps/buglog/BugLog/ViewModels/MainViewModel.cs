@@ -64,6 +64,7 @@ namespace BugLog.ViewModels
             ClearSearchCommand = RelayCommand.Create(() => SearchContent = String.Empty);
 
             LoginCommand = RelayCommand.Create(PerformLogin);
+            LogoutCommand = RelayCommand.Create(PerformLogout);
             CloseErrorContentCommand = RelayCommand.Create(() => { ErrorContent = null; ErrorList.Clear(); } );
 
             ShowRepoViewCommand = RelayCommand<WorkTaskSummary>.Create(async (wts) =>
@@ -1041,6 +1042,12 @@ namespace BugLog.ViewModels
             });
         }
 
+        public async void PerformLogout()
+        {
+            IsAuthenticated=false;
+            await AuthManager.LogoutAsync();
+        }
+
         #region Commands
         public RelayCommand AddTaskCommand { get; private set; }
         public RelayCommand<WorkTaskSummary> OpenFullTaskCommand { get; private set; }
@@ -1068,6 +1075,9 @@ namespace BugLog.ViewModels
         public RelayCommand ClearSearchCommand { get; }
 
         public RelayCommand LoginCommand { get; }
+
+        public RelayCommand LogoutCommand { get; }
+
 
         public RelayCommand CloseErrorContentCommand { get; }
 
