@@ -20,7 +20,7 @@ namespace BugLog.ViewModels
     public class RepoSupportViewModel : AppViewModelBase
     {
         WorkTaskSummary _wts;
-        RepoManager _repoManager;
+        RepoManager _repoRepoManager;
         private readonly LagoVista.Client.Core.IConsoleWriter _consoleWriter;
         IProcessRunner _processRunner;
 
@@ -28,7 +28,7 @@ namespace BugLog.ViewModels
         public RepoSupportViewModel(WorkTaskSummary wts, RepoManager repoManager, IDispatcherServices dispatcher)
         {
             _wts = wts ?? throw new ArgumentNullException(nameof(wts));
-            _repoManager = repoManager ?? throw new ArgumentNullException(nameof(repoManager));
+            _repoRepoManager = repoManager ?? throw new ArgumentNullException(nameof(repoManager));
             _consoleWriter = new ConsoleWriter();
             _consoleWriter.Init(ConsoleLogOutput, dispatcher);
 
@@ -299,15 +299,27 @@ namespace BugLog.ViewModels
 
         public async override Task InitAsync()
         {
-            Repos = new ObservableCollection<Repo>(await _repoManager.GetReposForProjectAsync(_wts.ProjectId));
+            Repos = new ObservableCollection<Repo>(await _repoRepoManager.GetReposForProjectAsync(_wts.ProjectId));
             CurrentRepo = Repos.FirstOrDefault();
             await CheckForCurrentBranch();
         }
 
         public async void SaveRepo()
         {
-            await _repoManager.UpdateRepoAsync(EditRepo);
-            EditRepo = null;
+            var isNew = String.IsNullOrEmpty(EditRepo.Id);
+
+            await _repoRepoManager.UpdateRepoAsync(EditRepo);
+            CurrentRepo = EditRepo;
+            await CheckForCurrentBranch();
+
+            if (isNew)
+            {
+                Repos.Add(EditRepo);
+            }
+
+            EditRepo = null;            
+            
+
         }
 
         ObservableCollection<Repo> _repos;

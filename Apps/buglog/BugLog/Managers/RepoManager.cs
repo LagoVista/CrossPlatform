@@ -31,6 +31,7 @@ namespace BugLog.Managers
         {
             if (_repos == null)
                 _repos = await _storageService.GetAsync<List<Repo>>("repos.json");
+
             if (_repos == null)
                 _repos = new List<Repo>();
 
