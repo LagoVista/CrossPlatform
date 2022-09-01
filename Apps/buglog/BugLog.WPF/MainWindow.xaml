@@ -58,6 +58,7 @@
                                 <ColumnDefinition Width="30" />
                                 <ColumnDefinition Width="30" />
                                 <ColumnDefinition Width="30" />
+                                <ColumnDefinition Width="30" />
                             </Grid.ColumnDefinitions>
 
                             <TextBlock Text="{Binding TaskCode}" />
@@ -80,7 +81,10 @@
                             <Button Grid.Column="8" BorderBrush="Transparent" Background="Transparent" Command="{Binding Path=DataContext.AddTimeCommand, ElementName=parentSource}" CommandParameter="{Binding .}">
                                 <fa5:SvgAwesome  Icon="Regular_Clock" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="#D48d17"   Width="16" Height="16"/>
                             </Button>
-                            <Button Grid.Column="9" BorderBrush="Transparent" Background="Transparent" Command="{Binding Path=DataContext.AddRelatedTaskCommand, ElementName=parentSource}" CommandParameter="{Binding .}">
+                            <Button Grid.Column="9" BorderBrush="Transparent" Background="Transparent" Command="{Binding Path=DataContext.AddHelpRequestCommand, ElementName=parentSource}" CommandParameter="{Binding .}">
+                                <fa5:SvgAwesome  Icon="Solid_LifeRing" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="#D48d17"   Width="16" Height="16"/>
+                            </Button>                            
+                            <Button Grid.Column="10" BorderBrush="Transparent" Background="Transparent" Command="{Binding Path=DataContext.AddRelatedTaskCommand, ElementName=parentSource}" CommandParameter="{Binding .}">
                                 <fa5:SvgAwesome Icon="Solid_Bug" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="#D48d17"      Width="16" Height="16" />
                             </Button>
                         </Grid>
@@ -97,7 +101,9 @@
                 <ComboBox ItemsSource="{Binding StatusFilter}" SelectedItem="{Binding SelectedStatusFilter}"  />
                 <TextBlock>Task Type</TextBlock>
                 <ComboBox ItemsSource="{Binding WorkTaskTypesFilter}" SelectedItem="{Binding SelectedWorKTypeFilter}"  />
-                <TextBlock>Show Only My Work</TextBlock>
+                <TextBlock>Show All My Associated Work</TextBlock>
+                <CheckBox IsChecked="{Binding ShowAssociatedWork}" />
+                <TextBlock>Show My Work as Primary Contributor</TextBlock>
                 <CheckBox IsChecked="{Binding ShowOnlyMyWork}" />
             </StackPanel>
         </Grid>
@@ -177,6 +183,8 @@
 
 
         <Rectangle Visibility="{Binding RepoVM, Converter={StaticResource VisibilityConverter}}"  Opacity="0.2" Fill="Black"></Rectangle>
+
+        <ctl:HelpRequest Visibility="{Binding HelpRequest, Converter={StaticResource VisibilityConverter}}"  />
 
         <Grid Visibility="{Binding RepoVM, Converter={StaticResource VisibilityConverter}}" Width="800" Height="500" >
             <Rectangle Style="{StaticResource Popup}" />

@@ -2,6 +2,7 @@
 using BugLog.Models;
 using LagoVista.Client.Core;
 using LagoVista.Client.Core.Exceptions;
+using LagoVista.Client.Core.Models;
 using LagoVista.Client.Core.Resources;
 using LagoVista.Client.Core.ViewModels;
 using LagoVista.Client.Core.ViewModels.Auth;
@@ -47,6 +48,7 @@ namespace BugLog.ViewModels
 
             CancelStatusUpdateCommand = RelayCommand.Create(() => TaskSummary = null);
             UpdateStatusUpdateCommand = RelayCommand.Create(UpdateStatus);
+            AddHelpRequestCommand = RelayCommand<WorkTaskSummary>.Create(AddHelpRequest);
             AddTaskCommand = RelayCommand.Create(AddTask);
             AddTimeCommand = RelayCommand<WorkTaskSummary>.Create(AddTime);
             RefreshTasksCommand = RelayCommand.Create(RefreshTasks);
@@ -76,6 +78,18 @@ namespace BugLog.ViewModels
             CloseReposCommand = RelayCommand.Create(() => RepoVM = null);
 
             _loginVM = new LoginViewModel(SLWIOC.Get<IAuthClient>(), SLWIOC.Get<IClientAppInfo>(), SLWIOC.Get<IDeviceInfo>());
+        }
+
+        async void SendHelpRequest(String taskid)
+        {
+            if(HelpRequest == null)
+            {
+                throw new ArgumentNullException(nameof(HelpRequest));
+            }
+
+            var result = await this.RestClient.PutAsync($"/api/pm/task/{taskid}/helprequest", HelpRequest);
+
+            HelpRequest = null;
         }
 
         async void UpdateStatus()
@@ -149,7 +163,11 @@ namespace BugLog.ViewModels
             }
         }
 
-        
+
+        void AddHelpRequest(WorkTaskSummary task)
+        {
+            HelpRequest = new HelpRequest(task.Id);
+        }
 
         void AddExpectedOutcome()
         {
@@ -713,7 +731,9 @@ namespace BugLog.ViewModels
                        (tsk.TaskCode != null && tsk.TaskCode.Contains(SearchContent)) ||
                        (tsk.Name != null && tsk.Name.Contains(SearchContent))
                      ) &&
-                    (ShowOnlyMyWork == false || tsk.AssignedToUserId == AuthManager.User.Id || tsk.QaResourceId == AuthManager.User.Id || tsk.PrimaryContributorId == AuthManager.User.Id)
+                    (ShowAssociatedWork == false || tsk.AssignedToUserId == AuthManager.User.Id || tsk.QaResourceId == AuthManager.User.Id || tsk.PrimaryContributorId == AuthManager.User.Id)
+                     &&
+                    (ShowOnlyMyWork == false || tsk.PrimaryContributorId == AuthManager.User.Id)
                     ));
 
                 if (FilteredTasks == null || FilteredTasks.GetHashCode() != filteredTasks.GetHashCode())
@@ -840,6 +860,17 @@ namespace BugLog.ViewModels
             set
             {
                 Set(ref _showOnlyMyWork, value);
+                FilterTasks();
+            }
+        }
+
+        private bool _showAssociatedWork;
+        public bool ShowAssociatedWork
+        {
+            get => _showAssociatedWork;
+            set
+            {
+                Set(ref _showAssociatedWork, value);
                 FilterTasks();
             }
         }
@@ -991,6 +1022,13 @@ namespace BugLog.ViewModels
             set => Set(ref _newTask, value);
         }
 
+        HelpRequest _helpRequest;
+        public HelpRequest HelpRequest
+        {
+            get => _helpRequest;
+            set => Set(ref _helpRequest, value);
+        }
+
         private string _searchContent;
         public string SearchContent
         {
@@ -1051,8 +1089,10 @@ namespace BugLog.ViewModels
         #region Commands
         public RelayCommand AddTaskCommand { get; private set; }
         public RelayCommand<WorkTaskSummary> OpenFullTaskCommand { get; private set; }
+        //public RelayCommand<WorkTaskSummary> OpenFullTaskCommand { get; private set; }
         public RelayCommand<WorkTaskSummary> OpenFullExternalTaskCommand { get; private set; }
         public RelayCommand UpdateStatusUpdateCommand { get; private set; }
+        public RelayCommand<WorkTaskSummary> AddHelpRequestCommand { get; private set; }
         public RelayCommand SaveNewTaskCommand { get; private set; }
         public RelayCommand CancelNewTaskCommand { get; private set; }
         public RelayCommand RefreshTasksCommand { get; private set; }
