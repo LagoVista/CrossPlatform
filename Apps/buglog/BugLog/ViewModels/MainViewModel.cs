@@ -19,6 +19,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -59,7 +60,7 @@ namespace BugLog.ViewModels
             SaveNewTaskCommand = RelayCommand.Create(SaveNewTask);
             SaveNewTimeCommand = RelayCommand.Create(SaveNewTime);
             CancelNewTimeCommand = RelayCommand.Create(() => TimeEntryTask = null);
-            
+
             CancelNewTaskCommand = RelayCommand.Create(() => NewWorkTask = null);
             TimeEntryNextDateCommand = RelayCommand.Create(() => TimeEntryDate = TimeEntryDate.AddDays(1));
             TimeEntryPrevDateCommand = RelayCommand.Create(() => TimeEntryDate = TimeEntryDate.AddDays(-1));
@@ -67,7 +68,10 @@ namespace BugLog.ViewModels
 
             LoginCommand = RelayCommand.Create(PerformLogin);
             LogoutCommand = RelayCommand.Create(PerformLogout);
-            CloseErrorContentCommand = RelayCommand.Create(() => { ErrorContent = null; ErrorList.Clear(); } );
+            CloseErrorContentCommand = RelayCommand.Create(() => { ErrorContent = null; ErrorList.Clear(); });
+
+            SaveHelpRequestCommand = RelayCommand.Create(SaveHelpRequestTask);
+            CloseHelpRequestCommand = RelayCommand.Create(() => HelpRequest = null);
 
             ShowRepoViewCommand = RelayCommand<WorkTaskSummary>.Create(async (wts) =>
             {
@@ -82,12 +86,15 @@ namespace BugLog.ViewModels
 
         async void SendHelpRequest(String taskid)
         {
-            if(HelpRequest == null)
+            if (HelpRequest == null)
             {
                 throw new ArgumentNullException(nameof(HelpRequest));
             }
 
-            var result = await this.RestClient.PutAsync($"/api/pm/task/{taskid}/helprequest", HelpRequest);
+            await PerformNetworkOperation(async () =>
+            {
+                return await this.RestClient.PostAsync($"/api/pm/task/{taskid}/helprequest", HelpRequest);
+            });
 
             HelpRequest = null;
         }
@@ -163,10 +170,12 @@ namespace BugLog.ViewModels
             }
         }
 
+        private string helpRequestTaskId;
 
         void AddHelpRequest(WorkTaskSummary task)
         {
-            HelpRequest = new HelpRequest(task.Id);
+            helpRequestTaskId = task.Id;
+            HelpRequest = new HelpRequest();
         }
 
         void AddExpectedOutcome()
@@ -269,6 +278,13 @@ namespace BugLog.ViewModels
             });
 
         }
+
+        void SaveHelpRequestTask()
+        {
+            SendHelpRequest(helpRequestTaskId);
+        }
+
+
 
         async void RefreshTasks()
         {
@@ -548,7 +564,7 @@ namespace BugLog.ViewModels
             AllUsers = users.Model.ToList();
 
             var lastFilter = await Storage.GetKVPAsync<string>("LAST_PROJECT_FILTER_ID", Projects[0].Id);
-            SelectedProjectFilter= _proejcts.Single(val => val.Id == lastFilter);
+            SelectedProjectFilter = _proejcts.Single(val => val.Id == lastFilter);
 
             return InvokeResult.Success;
         }
@@ -590,7 +606,7 @@ namespace BugLog.ViewModels
             {
                 await LoadCommonSettingsAsync();
             }
-            catch(Exception)
+            catch (Exception)
             {
                 /* nop */
             }
@@ -704,7 +720,7 @@ namespace BugLog.ViewModels
                     AllTasks = new ObservableCollection<WorkTaskSummary>(taskResposne.Model);
                     PopualteFilterSelections(false);
                     FilterTasks();
-                    await RefreshTasksInBackground();                    
+                    await RefreshTasksInBackground();
                 }
                 else
                 {
@@ -788,7 +804,7 @@ namespace BugLog.ViewModels
             set
             {
                 Set(ref _selectedProjectFilter, value);
-                if(value.Id.ToLower() != "all")
+                if (value.Id.ToLower() != "all")
                     SetProjectIdFilter(value.Id);
             }
         }
@@ -1057,7 +1073,7 @@ namespace BugLog.ViewModels
         {
             get => _isAuthenticated;
             set => Set(ref _isAuthenticated, value);
-        } 
+        }
 
         public LoginViewModel LoginVM
         {
@@ -1075,14 +1091,14 @@ namespace BugLog.ViewModels
                 }
                 else
                 {
-                    ErrorContent = loginResult.Errors.First().Message   ;
+                    ErrorContent = loginResult.Errors.First().Message;
                 }
             });
         }
 
         public async void PerformLogout()
         {
-            IsAuthenticated=false;
+            IsAuthenticated = false;
             await AuthManager.LogoutAsync();
         }
 
@@ -1118,10 +1134,14 @@ namespace BugLog.ViewModels
 
         public RelayCommand LogoutCommand { get; }
 
-
         public RelayCommand CloseErrorContentCommand { get; }
 
         public RelayCommand<WorkTaskSummary> ShowRepoViewCommand { get; }
+
+        public RelayCommand SaveHelpRequestCommand {get;}
+
+        public RelayCommand CloseHelpRequestCommand { get; }
+
         #endregion
 
         public override async Task InitAsync()

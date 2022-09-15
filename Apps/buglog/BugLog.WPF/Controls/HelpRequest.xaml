@@ -4,9 +4,36 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:BugLog.Wpf.Controls"
+             xmlns:uctl="clr-namespace:LagoVista.XPlat.WPF;assembly=LagoVista.XPlat.WPF.NetStd.Core"
              mc:Ignorable="d" 
              d:DesignHeight="480" d:DesignWidth="640">
     <Grid Width="640" Height="480" Background="White">
-        <TextBlock Text="WILL ASK FOR INFORMATION ABOUT HELP REQUESTS" FontSize="16" />
+        <Rectangle Grid.ColumnSpan="4" Grid.RowSpan="3" Visibility="{Binding EditRepo, Converter={StaticResource VisibilityConverter}}"  Opacity="0.2" Fill="Black"></Rectangle>
+        <Grid Grid.ColumnSpan="3" Grid.RowSpan="3" >
+            <Rectangle Style="{StaticResource Popup}" />
+            <Border Style="{StaticResource PopupTitleBorder}" VerticalAlignment="Top"/>
+
+            <Grid Style="{StaticResource PopupContent}">
+                <StackPanel>
+                    <TextBlock Text="Name" />
+                    <TextBox Text="{Binding HelpRequest.Name}" />
+
+                    <TextBlock Text="Problem Description" />
+                    <TextBox Text="{Binding HelpRequest.ProblemDescription}" />
+
+                    <TextBlock Text="What Have You Tried" />
+                    <TextBox Text="{Binding HelpRequest.WhatHaveYouTried}" />
+
+                    <TextBlock Text="Who Can Help?" />
+                    <TextBox Text="{Binding WhoCanHelp}" />
+
+                    <Button  Command="{Binding SaveHelpRequestCommand}" Style="{StaticResource CommandButton}" >Save</Button>
+                </StackPanel>
+            </Grid>
+
+            <TextBlock Text="Repository" Style="{StaticResource PopupTItle}" />
+            <uctl:IconButton Command="{Binding CloseHelpRequestCommand}" Style="{StaticResource PopupCloseButton}" />
+        </Grid>
+
     </Grid>
 </UserControl>
