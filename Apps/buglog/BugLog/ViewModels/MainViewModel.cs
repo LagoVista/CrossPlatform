@@ -90,6 +90,20 @@ namespace BugLog.ViewModels
             {
                 throw new ArgumentNullException(nameof(HelpRequest));
             }
+            
+            if (null == SelectedWhoCanHelp)
+            {
+                await Popups.ShowAsync("Please select who can help you");
+                return;
+            }
+
+            if (String.IsNullOrEmpty(HelpRequest.Name))
+            {
+                await Popups.ShowAsync("Please select who can help you");
+                return;
+            }
+
+            HelpRequest.WhoCanHelp = EntityHeader.Create(SelectedWhoCanHelp.Id, SelectedWhoCanHelp.Name);
 
             await PerformNetworkOperation(async () =>
             {
@@ -1004,6 +1018,13 @@ namespace BugLog.ViewModels
             set { Set(ref _selectedTransition, value); }
         }
 
+        UserInfoSummary _selectedWhoCanHelp;
+        public UserInfoSummary SelectedWhoCanHelp
+        {
+            get => _selectedWhoCanHelp;
+            set { Set(ref _selectedWhoCanHelp, value); }
+        }
+
         List<StatusTransition> _availableStatusTransitions;
         public List<StatusTransition> AvailableStatusTransitions
         {
@@ -1023,7 +1044,7 @@ namespace BugLog.ViewModels
                 Set(ref _availableExternalStatusTransitions, value);
             }
         }
-
+  
         string _status = "ready";
         public string Status
         {

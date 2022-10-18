@@ -11,26 +11,35 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Controls\**" />
+    <Compile Remove="Extensions\**" />
+    <Compile Remove="Interfaces\**" />
     <Compile Remove="Services\**" />
+    <EmbeddedResource Remove="Controls\**" />
+    <EmbeddedResource Remove="Extensions\**" />
+    <EmbeddedResource Remove="Interfaces\**" />
     <EmbeddedResource Remove="Services\**" />
+    <None Remove="Controls\**" />
+    <None Remove="Extensions\**" />
+    <None Remove="Interfaces\**" />
     <None Remove="Services\**" />
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="LagoVista.Core.Authentication" Version="3.0.1795.1556" />
-    <PackageReference Include="LagoVista.Core.Networking" Version="3.0.1795.1556" />
-    <PackageReference Include="LagoVista.IoT.Deployment.Models" Version="3.0.1795.1429" />
-    <PackageReference Include="LagoVista.IoT.DeviceMessaging.Models" Version="3.0.1795.1429" />
-    <PackageReference Include="LagoVista.IoT.Logging" Version="3.0.1795.1429" />
-    <PackageReference Include="LagoVista.IoT.Pipeline.Models" Version="3.0.1795.1429" />
-    <PackageReference Include="LagoVista.ProjectManagement.Models" Version="3.0.1940.1458" />
+    <PackageReference Include="LagoVista.Core.Authentication" Version="3.0.1975.1031" />
+    <PackageReference Include="LagoVista.Core.Networking" Version="3.0.1975.1031" />
+    <PackageReference Include="LagoVista.IoT.Deployment.Models" Version="3.0.1975.1031" />
+    <PackageReference Include="LagoVista.IoT.DeviceMessaging.Models" Version="3.0.1975.1031" />
+    <PackageReference Include="LagoVista.IoT.Logging" Version="3.0.1975.1031" />
+    <PackageReference Include="LagoVista.IoT.Pipeline.Models" Version="3.0.1975.1031" />
+    <PackageReference Include="LagoVista.ProjectManagement.Models" Version="3.0.1975.1031" />
 
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
-    <PackageReference Include="LagoVista.Core" Version="3.0.1795.1556" />
-    <PackageReference Include="LagoVista.MediaServices.Models" Version="3.0.1795.1429" />
-    <PackageReference Include="LagoVista.IoT.DeviceAdmin.Models" Version="3.0.1795.1429" />
-    <PackageReference Include="LagoVista.IoT.DeviceManagement.Models" Version="3.0.1795.1429" />
-    <PackageReference Include="LagoVista.UserAdmin.Models" Version="3.0.1795.1429" />
+    <PackageReference Include="LagoVista.Core" Version="3.0.1975.1031" />
+    <PackageReference Include="LagoVista.MediaServices.Models" Version="3.0.1975.1031" />
+    <PackageReference Include="LagoVista.IoT.DeviceAdmin.Models" Version="3.0.1975.1031" />
+    <PackageReference Include="LagoVista.IoT.DeviceManagement.Models" Version="3.0.1975.1031" />
+    <PackageReference Include="LagoVista.UserAdmin.Models" Version="3.0.1975.1031" />
   </ItemGroup>
 
   <ItemGroup>
@@ -50,11 +59,5 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>BugLogResources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Extensions\" />
-    <Folder Include="Interfaces\" />
-    <Folder Include="Controls\" />
   </ItemGroup>
 </Project>

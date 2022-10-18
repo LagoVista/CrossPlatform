@@ -24,8 +24,11 @@
                     <TextBlock Text="What Have You Tried" />
                     <TextBox Text="{Binding HelpRequest.WhatHaveYouTried}" />
 
-                    <TextBlock Text="Who Can Help?" />
-                    <TextBox Text="{Binding WhoCanHelp}" />
+                    <!--<TextBlock Text="Who Can Help?" />
+                    <TextBox Text="{Binding WhoCanHelp}" />-->
+                    <TextBlock>Who Can Help?</TextBlock>
+                    <ComboBox ItemsSource="{Binding AllUsers}" SelectedItem="{Binding SelectedWhoCanHelp, Mode=TwoWay}" DisplayMemberPath="Name" />
+
 
                     <Button  Command="{Binding SaveHelpRequestCommand}" Style="{StaticResource CommandButton}" >Save</Button>
                 </StackPanel>

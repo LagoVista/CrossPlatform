@@ -60,5 +60,7 @@ namespace BugLog
         public string DefaultDeviceLabel => "Boat";
 
         public string DefaultDeviceLabelPlural => "Boats";
+
+        public string AnalyticsKey { get; set; }
     }
 }
