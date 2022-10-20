@@ -30,7 +30,7 @@
                 <TextBlock>Email</TextBlock>
                 <TextBox Text="{Binding  Path=LoginVM.EmailAddress, Mode=TwoWay}" />
                 <TextBlock>Password</TextBlock>
-                <TextBox Text="{Binding Path=LoginVM.Password, Mode=TwoWay}" />
+                <TextBox Text="{Binding Path=LoginVM.Password, Mode=TwoWay}"  />
                 <Button Command="{Binding LoginCommand}" Content="Login" />
             </StackPanel>
         </Grid>

@@ -53,6 +53,12 @@ namespace LagoVista.Client.Core.Net
 
         public async Task<InvokeResult> RenewRefreshToken()
         {
+            if (_authManager.User == null)
+            {
+                return InvokeResult.FromError("Could not renew login token.");
+            }
+
+
             var authRequest = new AuthRequest();
             authRequest.AppId = _appConfig.AppId;
             authRequest.ClientType = "mobileapp";

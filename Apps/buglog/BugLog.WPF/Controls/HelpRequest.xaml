@@ -6,8 +6,8 @@
              xmlns:local="clr-namespace:BugLog.Wpf.Controls"
              xmlns:uctl="clr-namespace:LagoVista.XPlat.WPF;assembly=LagoVista.XPlat.WPF.NetStd.Core"
              mc:Ignorable="d" 
-             d:DesignHeight="480" d:DesignWidth="640">
-    <Grid Width="640" Height="480" Background="White">
+             d:DesignHeight="640" d:DesignWidth="640">
+    <Grid Width="640" Height="640" Background="White">
         <Rectangle Grid.ColumnSpan="4" Grid.RowSpan="3" Visibility="{Binding EditRepo, Converter={StaticResource VisibilityConverter}}"  Opacity="0.2" Fill="Black"></Rectangle>
         <Grid Grid.ColumnSpan="3" Grid.RowSpan="3" >
             <Rectangle Style="{StaticResource Popup}" />
@@ -18,11 +18,17 @@
                     <TextBlock Text="Name" />
                     <TextBox Text="{Binding HelpRequest.Name}" />
 
+                    <TextBlock>What do you need help with?</TextBlock>
+                    <ComboBox ItemsSource="{Binding HelpRequestTypes}" SelectedItem="{Binding SelectedHelpRequestType, Mode=TwoWay}" DisplayMemberPath="Label" />
+
+                    <TextBlock>Priority</TextBlock>
+                    <ComboBox ItemsSource="{Binding HelpRequestPriorities}" SelectedItem="{Binding SelectedHelpRequestPriority, Mode=TwoWay}" DisplayMemberPath="Label" />
+
                     <TextBlock Text="Problem Description" />
-                    <TextBox Text="{Binding HelpRequest.ProblemDescription}" />
+                    <TextBox Text="{Binding HelpRequest.ProblemDescription}" Height="80" AcceptsReturn="true" />
 
                     <TextBlock Text="What Have You Tried" />
-                    <TextBox Text="{Binding HelpRequest.WhatHaveYouTried}" />
+                    <TextBox Text="{Binding HelpRequest.WhatHaveYouTried}" Height="80" AcceptsReturn="true" />
 
                     <!--<TextBlock Text="Who Can Help?" />
                     <TextBox Text="{Binding WhoCanHelp}" />-->

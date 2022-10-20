@@ -7,11 +7,13 @@ using LagoVista.Client.Core.Resources;
 using LagoVista.Client.Core.ViewModels;
 using LagoVista.Client.Core.ViewModels.Auth;
 using LagoVista.Client.Core.ViewModels.Other;
+using LagoVista.Core.Attributes;
 using LagoVista.Core.Authentication.Interfaces;
 using LagoVista.Core.Commanding;
 using LagoVista.Core.Interfaces;
 using LagoVista.Core.IOC;
 using LagoVista.Core.Models;
+using LagoVista.Core.Models.UIMetaData;
 using LagoVista.Core.PlatformSupport;
 using LagoVista.Core.Validation;
 using LagoVista.ProjectManagement.Models;
@@ -19,6 +21,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
@@ -81,7 +84,37 @@ namespace BugLog.ViewModels
 
             CloseReposCommand = RelayCommand.Create(() => RepoVM = null);
 
+            HelpRequestTypes = GetEnumDescriptions<HelpRequestTypes>();
+            HelpRequestPriorities = GetEnumDescriptions<HelpRequestPriority>();
+
+            SelectedHelpRequestType = HelpRequestTypes.FirstOrDefault(hrt => hrt.Name == LagoVista.ProjectManagement.Models.HelpRequestTypes.Debugging.ToString());
+            SelectedHelpRequestPriority = HelpRequestPriorities.FirstOrDefault(hrt => hrt.Name == LagoVista.ProjectManagement.Models.HelpRequestPriority.Mediam.ToString());
+
             _loginVM = new LoginViewModel(SLWIOC.Get<IAuthClient>(), SLWIOC.Get<IClientAppInfo>(), SLWIOC.Get<IDeviceInfo>());
+        }
+
+        public List<EnumDescription> HelpRequestTypes { get; }
+        public List<EnumDescription> HelpRequestPriorities { get; }
+
+        private List<EnumDescription> GetEnumDescriptions<T>() 
+        {
+            var options = new List<EnumDescription>();
+            var values = Enum.GetValues(typeof(T));
+            for (var idx = 0; idx < values.GetLength(0); ++idx)
+            {
+                var value = values.GetValue(idx).ToString();
+
+                var enumMember = typeof(T).GetTypeInfo().DeclaredMembers.Where(mbr => mbr.Name == value.ToString()).FirstOrDefault();
+                var enumAttr = enumMember.GetCustomAttribute<EnumLabelAttribute>();
+
+                if (enumAttr.IsActive)
+                {
+                    options.Add(EnumDescription.Create(enumAttr, value, idx));
+                }
+            }
+
+            return options;
+
         }
 
         async void SendHelpRequest(String taskid)
@@ -100,6 +133,28 @@ namespace BugLog.ViewModels
             if (String.IsNullOrEmpty(HelpRequest.Name))
             {
                 await Popups.ShowAsync("Please select who can help you");
+                return;
+            }
+
+            if(SelectedHelpRequestType != null)
+            {
+                var requestType = (HelpRequestTypes)Enum.Parse(typeof(HelpRequestTypes), SelectedHelpRequestType.Name);
+                HelpRequest.RequestType = EntityHeader<HelpRequestTypes>.Create(requestType);
+            }
+            else
+            {
+                await Popups.ShowAsync("Please select a help request type");
+                return;
+            }
+
+            if (SelectedHelpRequestPriority != null)
+            {
+                var priority = (HelpRequestPriority)Enum.Parse(typeof(HelpRequestPriority), SelectedHelpRequestPriority.Name);
+                HelpRequest.RequestPriority = EntityHeader<HelpRequestPriority>.Create(priority);
+            }
+            else
+            {
+                await Popups.ShowAsync("Please select a help request priority");
                 return;
             }
 
@@ -1024,6 +1079,21 @@ namespace BugLog.ViewModels
             get => _selectedWhoCanHelp;
             set { Set(ref _selectedWhoCanHelp, value); }
         }
+
+        EnumDescription _helpRequestType;
+        public EnumDescription SelectedHelpRequestType
+        {
+            get => _helpRequestType;
+            set { Set(ref _helpRequestType, value); }
+        }
+
+        EnumDescription _helpRequestPriority;
+        public EnumDescription SelectedHelpRequestPriority
+        {
+            get => _helpRequestPriority;
+            set { Set(ref _helpRequestPriority, value); }
+        }
+
 
         List<StatusTransition> _availableStatusTransitions;
         public List<StatusTransition> AvailableStatusTransitions
