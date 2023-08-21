@@ -1,21 +1,17 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
-
+<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <ProduceReferenceAssembly>true</ProduceReferenceAssembly>
   </PropertyGroup>
-
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <DebugType>portable</DebugType>
     <DebugSymbols>true</DebugSymbols>
   </PropertyGroup>
-
   <ItemGroup>
     <Compile Remove="Services\**" />
     <EmbeddedResource Remove="Services\**" />
     <None Remove="Services\**" />
   </ItemGroup>
-
   <ItemGroup>
     <PackageReference Include="DLToolkit.Forms.Controls.FlowListView" Version="2.0.11" />
     <PackageReference Include="LagoVista.Core.Authentication" Version="3.0.1795.1556" />
@@ -24,9 +20,8 @@
     <PackageReference Include="LagoVista.IoT.DeviceMessaging.Models" Version="3.0.1795.1429" />
     <PackageReference Include="LagoVista.IoT.Logging" Version="3.0.1795.1429" />
     <PackageReference Include="LagoVista.IoT.Pipeline.Models" Version="3.0.1795.1429" />
-    <PackageReference Include="Xamarin.Forms" Version="5.0.0.2401" />  
+    <PackageReference Include="Xamarin.Forms" Version="5.0.0.2401" />
     <PackageReference Include="Xamarin.Essentials" Version="1.5.3.2" />
-
     <PackageReference Include="Xamarin.Essentials" Version="1.7.2" />
     <PackageReference Include="Microsoft.AppCenter" Version="4.5.1" />
     <PackageReference Include="Microsoft.AppCenter.Analytics" Version="4.5.1" />
@@ -41,13 +36,11 @@
     <PackageReference Include="Xamarin.Forms.Maps" Version="5.0.0.2401" />
     <PackageReference Include="DLToolkit.Forms.Controls.FlowListView" Version="2.0.11" />
   </ItemGroup>
-
   <ItemGroup>
     <ProjectReference Include="..\..\..\src\LagoVista.Client.Core\LagoVista.Client.Core.csproj" />
     <ProjectReference Include="..\..\..\src\LagoVista.Client.Devices\LagoVista.Client.Devices.csproj" />
     <ProjectReference Include="..\..\..\src\LagoVista.XPlat.Core\LagoVista.XPlat.Core.csproj" />
   </ItemGroup>
-
   <ItemGroup>
     <Compile Update="Controls\SensorHUD.xaml.cs">
       <DependentUpon>SensorHUD.xaml</DependentUpon>
@@ -58,7 +51,6 @@
       <DependentUpon>SeawolfResources.resx</DependentUpon>
     </Compile>
   </ItemGroup>
-
   <ItemGroup>
     <EmbeddedResource Update="Controls\SiteContent.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>

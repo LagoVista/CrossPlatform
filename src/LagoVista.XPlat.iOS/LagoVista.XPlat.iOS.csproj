@@ -167,10 +167,6 @@
       <Project>{C48ABA1C-9C0B-4C9C-80C9-6EEE8A010AC9}</Project>
       <Name>LagoVista.Client.Core</Name>
     </ProjectReference>
-    <ProjectReference Include="..\LagoVista.XPlat.Core\LagoVista.XPlat.Core.csproj">
-      <Project>{B46B2B34-6314-4EF7-A41F-80158102B92C}</Project>
-      <Name>LagoVista.XPlat.Core</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="LagoVista.Core">

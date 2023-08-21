@@ -1,24 +1,19 @@
-﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
-
+<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <UseWPF>true</UseWPF>
     <ApplicationIcon>buglog.ico</ApplicationIcon>
   </PropertyGroup>
-
   <ItemGroup>
     <Content Include="buglog.ico" />
   </ItemGroup>
-
   <ItemGroup>
     <PackageReference Include="FontAwesome5" Version="2.1.11" />
   </ItemGroup>
-
   <ItemGroup>
     <ProjectReference Include="..\..\..\src\LagoVista.Client.Core\LagoVista.Client.Core.csproj" />
     <ProjectReference Include="..\..\..\src\LagoVista.Xplat.WPF\LagoVista.XPlat.WPF.NetStd.Core.csproj" />
     <ProjectReference Include="..\BugLog\BugLog.csproj" />
   </ItemGroup>
-
 </Project>

@@ -2,18 +2,34 @@
 <package>
   <metadata>
     <id>LagoVista.Client.Core</id>
-    <version>1.2.1410-alpha1504</version>
+    <version>3.0.2287.1703</version>
     <authors>Software Logistics, LLC</authors>
     <owners>Software Logistics, LLC</owners>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <projectUrl>http://github.com/LagoVista</projectUrl>
     <iconUrl>http://bytemaster.blob.core.windows.net/icons/LagoVistaIcon.png</iconUrl>
     <description>Core Mobile Client Functionality for the LagoVista Devices, IoT and Home Automation Frameworks</description>
-    <releaseNotes>Pre-release Software</releaseNotes>
-    <copyright>Copyright 2017</copyright>
+    <copyright>Copyright 2023</copyright>
+    <releaseNotes>Build Date: 8/21/2023 7:00:42 PM UTC</releaseNotes>
+    <repository url="https://github.com/LagoVista/CrossPlatform" type="git" branch="master">
+    </repository>
+    <dependencies>
+      <group targetFramework="netstandard2.1">
+        <dependency id="LagoVista.Core" version="3.0.2287.946" />
+        <dependency id="LagoVista.Core.Authentication" version="3.0.2287.946" />
+        <dependency id="LagoVista.Core.Networking" version="3.0.2287.946" />
+        <dependency id="LagoVista.IoT.Logging" version="3.0.2287.946" />
+        <dependency id="LagoVista.UserAdmin.Models" version="3.0.2287.946" />
+        <dependency id="LagoVista.MediaServices.Models" version="3.0.2287.946" />
+        <dependency id="LagoVista.IoT.DeviceAdmin.Models" version="3.0.2287.946" />
+        <dependency id="LagoVista.IoT.Deployment.Models" version="3.0.2287.946" />
+        <dependency id="LagoVista.IoT.DeviceManagement.Models" version="3.0.2287.946" />
+        <dependency id="LagoVista.IoT.Pipeline.Models" version="3.0.2287.946" />
+      </group>
+    </dependencies>
     <tags>HomeAutomation IoT LagoVista</tags>
   </metadata>
   <files>
-    <file src="bin\release\netstandard2.0\*.dll" target="lib\netstandard2.0" />
+    <file src="bin\release\netstandard2.1\*.dll" target="lib\netstandard2.1" />
   </files>
 </package>
