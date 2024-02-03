@@ -1,5 +1,6 @@
 ﻿using LagoVista.Client.Core;
 using LagoVista.Client.Core.Interfaces;
+using LagoVista.Core.Interfaces;
 using LagoVista.Core.Models;
 using LagoVista.Core.Models.UIMetaData;
 using LagoVista.Core.Validation;
@@ -21,9 +22,11 @@ namespace LagoVista.Client.Devices
     {
 
         private readonly IRestClient _restClient;
-        public DeviceManagementClient(IRestClient restClient, LagoVista.Core.PlatformSupport.IStorageService storageService)
+        private readonly IAppConfig _appConfig;
+        public DeviceManagementClient(IRestClient restClient, IAppConfig appConfig, LagoVista.Core.PlatformSupport.IStorageService storageService)
         {
             _restClient = restClient;
+            _appConfig = appConfig;
         }
 
         public Task<ListResponse<DeviceTypeSummary>> GetDeviceTypesAsync(ListRequest listRequest = null)

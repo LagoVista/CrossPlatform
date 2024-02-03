@@ -14,6 +14,7 @@ namespace LagoVista.XPlat.WPF.Services
             foreach(var arg in  args)
             {
                 Debug.WriteLine($"\t{arg.Key} - {arg.Value}");
+                Console.WriteLine($"\t{arg.Key} - {arg.Value}");
             }
         }
 
@@ -21,6 +22,7 @@ namespace LagoVista.XPlat.WPF.Services
         public void AddCustomEvent(LogLevel level, string tag, string customEvent, params KeyValuePair<string, string>[] args)
         {
             Debug.WriteLine($"{level} - {tag} {customEvent}");
+            Console.WriteLine($"{level} - {tag} {customEvent}");
             WriteTags(args);
         }
 
@@ -28,6 +30,12 @@ namespace LagoVista.XPlat.WPF.Services
         {
             Debug.WriteLine($"{tag} {ex.Message}");
             Debug.WriteLine(ex.StackTrace);
+
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine($"{tag} {ex.Message}");
+            Console.WriteLine($"{ex.StackTrace}");
+            Console.ResetColor();
+
             WriteTags(args);
         }
 

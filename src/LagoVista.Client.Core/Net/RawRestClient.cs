@@ -115,15 +115,17 @@ namespace LagoVista.Client.Core.Net
                 switch (_appConfig.AuthType)
                 {
                     case AuthTypes.ClientApp:
-                        _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("APIToken", $"{_appConfig.AppId}:{_appConfig.APIToken}");
-
+                        _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("APIKey", $"{_appConfig.AppId}:{_appConfig.APIToken}");
+                        _logger.AddCustomEvent(LogLevel.Message, "RawRestClient_PerformCall", $"ClientApp Auth: {_appConfig.AppId} - {_appConfig.APIToken.Substring(0,5)}XXXXXXXX");
                         break;
                     default:
                         if (_authManager.IsAuthenticated)
                         {
                             _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", _authManager.AccessToken);
+                            _logger.AddCustomEvent(LogLevel.Message, "RawRestClient_PerformCall", $"{_appConfig.AuthType} Access Token: {_authManager.AccessToken.Substring(0,5)}XXXXXXXXX");
                         }
-
+                        else
+                            _logger.AddCustomEvent(LogLevel.Message, "RawRestClient_PerformCall", $"{_appConfig.AuthType} Not Authenticated");
                         break;
                 }
 
@@ -144,16 +146,16 @@ namespace LagoVista.Client.Core.Net
                     var start = DateTime.Now;
                     var response = await call();
                     var delta = DateTime.Now - start;
-                    _logger.AddCustomEvent(LogLevel.Message, "RawResetClient_PerformCall", "Begin call");
+                    _logger.AddCustomEvent(LogLevel.Message, "RawRestClient_PerformCall", "Begin call");
 
                     if (response.IsSuccessStatusCode)
                     {
-                        _logger.AddCustomEvent(LogLevel.Message, "RawResetClient_PerformCall", "Call Success");
+                        _logger.AddCustomEvent(LogLevel.Message, "RawRestClient_PerformCall", "Call Success");
                         rawResponse = RawResponse.FromSuccess(await response.Content.ReadAsStringAsync());
                     }
                     else if (response.StatusCode == System.Net.HttpStatusCode.Unauthorized)
                     {
-                        _logger.AddCustomEvent(LogLevel.Message, "RawResetClient_PerformCall", "Call Unauthorized");
+                        _logger.AddCustomEvent(LogLevel.Message, "RawRestClient_PerformCall", "Call Unauthorized");
                         _logger.AddCustomEvent(LogLevel.Error, "RawRestClient_PerformCall", "401 From Server");
                         retry = ((await RenewRefreshToken()).Successful);
                         if (!retry)
@@ -166,7 +168,7 @@ namespace LagoVista.Client.Core.Net
 
                         await Task.Delay(attempts * 100);
                         retry = attempts++ < 5;
-                        _logger.AddCustomEvent(LogLevel.Message, "RawResetClient_PerformCall", $"Bad Gateway {attempts} will retry {retry}");
+                        _logger.AddCustomEvent(LogLevel.Message, "RawRestClient_PerformCall", $"Bad Gateway {attempts} will retry {retry}");
                     }
                     else
                     {
@@ -178,8 +180,8 @@ namespace LagoVista.Client.Core.Net
                 }
                 catch (Exceptions.CouldNotRenewTokenException ex)
                 {
-                    _logger.AddCustomEvent(LogLevel.Message, "RawResetClient_PerformCall", $"Could Not Renew from Refreh Token {attempts} will not retry");
-                    _logger.AddException("RawResetClient_PerformCall", ex, ex.Message.ToKVP("type"));
+                    _logger.AddCustomEvent(LogLevel.Message, "RawRestClient_PerformCall", $"Could Not Renew from Refreh Token {attempts} will not retry");
+                    _logger.AddException("RawRestClient_PerformCall", ex, ex.Message.ToKVP("type"));
                     _callSemaphore.Release();
                     throw;
                 }
