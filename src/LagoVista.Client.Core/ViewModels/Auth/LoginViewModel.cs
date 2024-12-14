@@ -1,12 +1,12 @@
 ﻿using LagoVista.Client.Core.ViewModels.Orgs;
 using LagoVista.Client.Core.ViewModels.Users;
-using LagoVista.Core.Authentication.Interfaces;
 using LagoVista.Core.Authentication.Models;
 using LagoVista.Core.Commanding;
 using LagoVista.Core.Interfaces;
 using LagoVista.Core.Models;
 using LagoVista.Core.PlatformSupport;
 using LagoVista.Core.Validation;
+using LagoVista.UserAdmin.Interfaces;
 using System.Threading.Tasks;
 
 namespace LagoVista.Client.Core.ViewModels.Auth

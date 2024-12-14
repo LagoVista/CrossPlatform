@@ -115,21 +115,6 @@
     <EmbeddedResource Include="Properties\LagoVista.XPlat.UWP.rd.xml" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="LagoVista.Core">
-      <Version>3.0.1604.519</Version>
-    </PackageReference>
-    <PackageReference Include="LagoVista.Core.Authentication">
-      <Version>3.0.1604.519</Version>
-    </PackageReference>
-    <PackageReference Include="LagoVista.Core.Networking">
-      <Version>3.0.1604.519</Version>
-    </PackageReference>
-    <PackageReference Include="LagoVista.IoT.Logging">
-      <Version>3.0.1604.519</Version>
-    </PackageReference>
-    <PackageReference Include="LagoVista.UserAdmin.Models">
-      <Version>3.0.1604.519</Version>
-    </PackageReference>
     <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform">
       <Version>6.2.12</Version>
     </PackageReference>

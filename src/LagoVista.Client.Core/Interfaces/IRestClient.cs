@@ -16,6 +16,9 @@ namespace LagoVista.Client.Core
          */
     public interface IRestClient
     {
+        event EventHandler BeginCall;
+        event EventHandler EndCall;
+
         Task<InvokeResult> RenewRefreshToken();
         Task<RawResponse> GetAsync(String path, CancellationTokenSource tokenSource = null);
         Task<RawResponse> PostAsync(String path, String payload, CancellationTokenSource tokenSource = null);

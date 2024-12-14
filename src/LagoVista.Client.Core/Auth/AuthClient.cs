@@ -3,14 +3,14 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
-using LagoVista.Core.Authentication.Interfaces;
 using System.Net.Http;
 using Newtonsoft.Json;
-using LagoVista.Core.Networking.Models;
 using LagoVista.Core.Authentication.Models;
 using LagoVista.Core.IOC;
 using Newtonsoft.Json.Serialization;
 using LagoVista.Core.Validation;
+using LagoVista.UserAdmin.Models.Auth;
+using LagoVista.UserAdmin.Interfaces;
 
 namespace LagoVista.Client.Core.Auth
 {

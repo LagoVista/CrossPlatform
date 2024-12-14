@@ -9,7 +9,6 @@ using LagoVista.Client.Core.Models;
 using System.Net.Http.Headers;
 using System.Text;
 using LagoVista.Core.Validation;
-using LagoVista.Core.Authentication.Interfaces;
 using LagoVista.Core.Authentication.Models;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
@@ -17,6 +16,7 @@ using LagoVista.Client.Core.Resources;
 using LagoVista.Core.Models.UIMetaData;
 using System.Collections.Generic;
 using LagoVista.Core.Models;
+using LagoVista.UserAdmin.Interfaces;
 
 namespace LagoVista.Client.Core.Net
 {
@@ -36,6 +36,10 @@ namespace LagoVista.Client.Core.Net
         readonly IStorageService _storageService;
         readonly INetworkService _networkService;
         readonly SemaphoreSlim _callSemaphore;
+
+        public event EventHandler BeginCall;
+        public event EventHandler EndCall;
+
 
         public RawRestClient(HttpClient httpClient, INetworkService networkService, IDeviceInfo deviceInfo, IStorageService storageService,
                     IAppConfig appConfig, IAuthClient authClient, IAuthManager authManager, ILogger logger)
@@ -82,7 +86,7 @@ namespace LagoVista.Client.Core.Net
             }
             else
             {
-                _logger.AddCustomEvent(LogLevel.Error, "RawRestClient_RenewRefreshTokenAsync", "Could Not Renew Access Token", response.ErrorsToKVPArray());
+                _logger.AddCustomEvent(LogLevel.Error, "    RawRestClient_RenewRefreshTokenAsync", "Could Not Renew Access Token", response.ErrorsToKVPArray());
                 var result = new InvokeResult();
                 result.Concat(response);
                 throw new Exceptions.CouldNotRenewTokenException();
@@ -91,6 +95,8 @@ namespace LagoVista.Client.Core.Net
 
         private async Task<RawResponse> PerformCall(Func<Task<HttpResponseMessage>> call, CancellationTokenSource cancellationTokenSource = null, ListRequest listRequest = null)
         {
+            BeginCall?.Invoke(this, null);
+
             if (!_networkService.IsInternetConnected)
             {
                 return RawResponse.FromNotConnected();
@@ -175,6 +181,7 @@ namespace LagoVista.Client.Core.Net
                     _logger.AddCustomEvent(LogLevel.Message, "RawResetClient_PerformCall", $"Could Not Renew from Refreh Token {attempts} will not retry");
                     _logger.AddException("RawResetClient_PerformCall", ex, ex.Message.ToKVP("type"));
                     _callSemaphore.Release();
+                    BeginCall?.Invoke(this, null);
                     throw;
                 }
                 catch (TaskCanceledException tce)
@@ -191,10 +198,12 @@ namespace LagoVista.Client.Core.Net
 
             _callSemaphore.Release();
 
+            EndCall?.Invoke(this, null);
             return rawResponse;
         }
 
         private Dictionary<string, string> _offlineCache = default;
+
 
         private async Task<String> GetCachedRequestAsync(string path)
         {

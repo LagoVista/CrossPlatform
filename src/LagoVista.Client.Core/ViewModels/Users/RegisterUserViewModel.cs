@@ -1,10 +1,9 @@
 ﻿using LagoVista.Client.Core.Resources;
-using LagoVista.Core.Authentication.Models;
 using LagoVista.Core.Commanding;
-using LagoVista.Core.Interfaces;
 using LagoVista.Core.Models;
 using LagoVista.Core.PlatformSupport;
 using LagoVista.Core.Validation;
+using LagoVista.UserAdmin.Models.Auth;
 using LagoVista.UserAdmin.Models.DTOs;
 using System;
 using System.Collections.Generic;

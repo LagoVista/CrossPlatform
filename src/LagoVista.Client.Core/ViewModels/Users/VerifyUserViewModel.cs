@@ -8,9 +8,7 @@ using LagoVista.Client.Core.Resources;
 using System.Collections.Generic;
 using LagoVista.Client.Core.ViewModels.Orgs;
 using System.Threading.Tasks;
-using LagoVista.Core.Authentication.Interfaces;
 using LagoVista.Client.Core.Net;
-using LagoVista.Core.Interfaces;
 
 namespace LagoVista.Client.Core.ViewModels.Users
 {

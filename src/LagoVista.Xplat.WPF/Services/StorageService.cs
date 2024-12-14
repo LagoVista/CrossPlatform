@@ -240,5 +240,10 @@ namespace LagoVista.Core.WPF.PlatformSupport
             System.IO.File.WriteAllBytes(fileName, buffer);
             return Task.FromResult(fileName);
         }
+
+        public Task ClearAllAsync()
+        {
+            throw new NotImplementedException();
+        }
     }
 }
