@@ -89,7 +89,7 @@ namespace LagoVista.Client.Core.Net
                 _logger.AddCustomEvent(LogLevel.Error, "    RawRestClient_RenewRefreshTokenAsync", "Could Not Renew Access Token", response.ErrorsToKVPArray());
                 var result = new InvokeResult();
                 result.Concat(response);
-                throw new Exceptions.CouldNotRenewTokenException();
+                return InvokeResult.FromError("Could not renew from refresh token.");
             }
         }
 
@@ -389,8 +389,13 @@ namespace LagoVista.Client.Core.Net
             return response.ToInvokeResult<TResponseModel>();
         }
 
-        public async Task<ListResponse<TResponseModel>> GetListResponseAsync<TResponseModel>(string path, ListRequest listRequest, CancellationTokenSource cancellationTokenSource = null) where TResponseModel : class
+        public async Task<ListResponse<TResponseModel>> GetListResponseAsync<TResponseModel>(string path, ListRequest listRequest = null, CancellationTokenSource cancellationTokenSource = null) where TResponseModel : class
         {
+            if(listRequest == null)
+            {
+                listRequest = ListRequest.Create(100);
+            }
+
             if (!_networkService.IsInternetConnected)
             {
                 var cachedResponse = await GetCachedRequestAsync(path);
