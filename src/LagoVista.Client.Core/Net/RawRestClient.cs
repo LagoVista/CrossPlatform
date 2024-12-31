@@ -17,6 +17,7 @@ using LagoVista.Core.Models.UIMetaData;
 using System.Collections.Generic;
 using LagoVista.Core.Models;
 using LagoVista.UserAdmin.Interfaces;
+using System.Diagnostics;
 
 namespace LagoVista.Client.Core.Net
 {
@@ -141,14 +142,12 @@ namespace LagoVista.Client.Core.Net
                 try
                 {
 
-                    var start = DateTime.Now;
-                    var response = await call();
-                    var delta = DateTime.Now - start;
+                    var sw = Stopwatch.StartNew();
                     _logger.AddCustomEvent(LogLevel.Message, "RawResetClient_PerformCall", "Begin call");
-
+                    var response = await call();
                     if (response.IsSuccessStatusCode)
                     {
-                        _logger.AddCustomEvent(LogLevel.Message, "RawResetClient_PerformCall", "Call Success");
+                        _logger.AddCustomEvent(LogLevel.Message, "RawResetClient_PerformCall", $"Call Success {sw.Elapsed.TotalMilliseconds}");
                         rawResponse = RawResponse.FromSuccess(await response.Content.ReadAsStringAsync());
                     }
                     else if (response.StatusCode == System.Net.HttpStatusCode.Unauthorized)
