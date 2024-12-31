@@ -24,7 +24,7 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="LagoVista.Core" Version="3.0.2741.1024" />
+    <PackageReference Include="LagoVista.Core" Version="3.0.2784.1245" />
     <PackageReference Include="LagoVista.Core.Authentication" Version="3.0.2741.1024" />
     <PackageReference Include="LagoVista.Core.Networking" Version="3.0.2741.1024" />
     <PackageReference Include="LagoVista.IoT.Logging" Version="3.0.2741.1024" />
