@@ -392,7 +392,7 @@ namespace LagoVista.Client.Core.Net
         {
             if(listRequest == null)
             {
-                listRequest = ListRequest.Create(100);
+                listRequest = ListRequest.Create(1, 100);
             }
 
             if (!_networkService.IsInternetConnected)
