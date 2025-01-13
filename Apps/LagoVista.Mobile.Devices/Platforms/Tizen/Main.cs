@@ -1,8 +1,8 @@
-using System;
 using Microsoft.Maui;
 using Microsoft.Maui.Hosting;
+using System;
 
-namespace LagoVista.XPlat.Maui
+namespace LagoVista.Mobile.Devices
 {
     internal class Program : MauiApplication
     {

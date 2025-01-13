@@ -1,7 +1,7 @@
 ﻿using Android.App;
 using Android.Runtime;
 
-namespace LagoVista.XPlat.Maui
+namespace LagoVista.Mobile.Devices
 {
     [Application]
     public class MainApplication : MauiApplication

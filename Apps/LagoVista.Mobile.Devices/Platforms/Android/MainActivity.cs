@@ -2,7 +2,7 @@
 using Android.Content.PM;
 using Android.OS;
 
-namespace LagoVista.XPlat.Maui
+namespace LagoVista.Mobile.Devices
 {
     [Activity(Theme = "@style/Maui.SplashTheme", MainLauncher = true, LaunchMode = LaunchMode.SingleTop, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation | ConfigChanges.UiMode | ConfigChanges.ScreenLayout | ConfigChanges.SmallestScreenSize | ConfigChanges.Density)]
     public class MainActivity : MauiAppCompatActivity

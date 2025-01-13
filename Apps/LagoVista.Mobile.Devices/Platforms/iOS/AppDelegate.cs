@@ -1,6 +1,6 @@
 ﻿using Foundation;
 
-namespace LagoVista.XPlat.Maui
+namespace LagoVista.Mobile.Devices
 {
     [Register("AppDelegate")]
     public class AppDelegate : MauiUIApplicationDelegate

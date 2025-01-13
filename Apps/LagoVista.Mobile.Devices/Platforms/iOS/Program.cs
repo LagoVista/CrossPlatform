@@ -1,7 +1,7 @@
 ﻿using ObjCRuntime;
 using UIKit;
 
-namespace LagoVista.XPlat.Maui
+namespace LagoVista.Mobile.Devices
 {
     public class Program
     {
