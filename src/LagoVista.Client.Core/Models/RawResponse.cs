@@ -124,7 +124,8 @@ namespace LagoVista.Client.Core.Models
             Console.WriteLine(Content);
             Debug.WriteLine(Content);
 
-            return JsonConvert.DeserializeObject<TModel>(Content, new Newtonsoft.Json.JsonSerializerSettings() { ContractResolver = new CamelCasePropertyNamesContractResolver(), });
+            var response = JsonConvert.DeserializeObject<TModel>(Content, new Newtonsoft.Json.JsonSerializerSettings() { ContractResolver = new CamelCasePropertyNamesContractResolver(), });
+            return response;
         }
 
         public DetailResponse<TModel> ToDetailResponse<TModel>() where TModel : new()
@@ -136,7 +137,7 @@ namespace LagoVista.Client.Core.Models
         {            
             if (!Success)
             {
-                var result = ListResponse<TModel>.Create(null);
+                var result = new ListResponse<TModel>();
                 result.Errors.Add(new LagoVista.Core.Validation.ErrorMessage(ErrorMessage));
                 return result;
             }
