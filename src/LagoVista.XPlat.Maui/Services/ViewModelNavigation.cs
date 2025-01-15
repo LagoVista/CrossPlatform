@@ -1,11 +1,6 @@
 ﻿using LagoVista.Core.IOC;
 using LagoVista.Core.ViewModels;
 using LagoVista.XPlat.Maui.Pages;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace LagoVista.XPlat.Maui.Services
 {
@@ -79,40 +74,121 @@ namespace LagoVista.XPlat.Maui.Services
             throw new NotImplementedException();
         }
 
-        public Task NavigateAsync(ViewModelLaunchArgs args)
+        public async Task NavigateAsync(ViewModelLaunchArgs args)
         {
-            throw new NotImplementedException();
+            var viewModel = SLWIOC.CreateForType(args.ViewModelType) as ViewModelBase;
+            if (viewModel != null)
+            {
+                viewModel.LaunchArgs = args;
+            }
+
+            var viewType = _viewModelLookup[args.ViewModelType];
+            var pageInstance = SLWIOC.CreateForType(viewType);
+            var page = pageInstance as PageBase;
+            page.BindingContext = viewModel;
+            await _host.PushAsync(page);
         }
 
-        public Task NavigateAsync(ViewModelBase parentViewModel, Type viewModelType, params KeyValuePair<string, object>[] args)
+        public async Task NavigateAsync(ViewModelBase parentViewModel, Type viewModelType, params KeyValuePair<string, object>[] args)
         {
-            throw new NotImplementedException();
+            var viewType = _viewModelLookup[viewModelType];
+            var viewModel = SLWIOC.CreateForType(viewModelType) as ViewModelBase;
+            if (viewModel != null)
+            {
+                viewModel.LaunchArgs = new ViewModelLaunchArgs()
+                {
+                    Parent = parentViewModel,
+                    LaunchType = LaunchTypes.Other
+                };
+
+                foreach (var arg in args)
+                {
+                    viewModel.LaunchArgs.Parameters.Add(arg.Key, arg.Value);
+                }
+            }
+
+            var pageInstance = SLWIOC.CreateForType(viewType);
+            var page = pageInstance as PageBase;
+            page.BindingContext = viewModel;
+            await _host.PushAsync(page);
         }
 
-        public Task NavigateAsync<TViewModel>(ViewModelBase parentViewModel, params KeyValuePair<string, object>[] args) where TViewModel : ViewModelBase
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task SetAsNewRootAsync<TViewModel>(params KeyValuePair<string, object>[] args) where TViewModel : ViewModelBase
+        public async Task NavigateAsync<TViewModel>(ViewModelBase parentViewModel, params KeyValuePair<string, object>[] args) where TViewModel : ViewModelBase
         {
             var viewModelType = typeof(TViewModel);
             var viewType = _viewModelLookup[viewModelType];
-            var vmInstance = SLWIOC.CreateForType(viewModelType);
+            var viewModel = SLWIOC.CreateForType(viewModelType) as ViewModelBase;
+            if (viewModel != null)
+            {
+                viewModel.LaunchArgs = new ViewModelLaunchArgs()
+                {
+                    Parent = parentViewModel,
+                    LaunchType = LaunchTypes.Other
+                };
+
+                foreach (var arg in args)
+                {
+                    viewModel.LaunchArgs.Parameters.Add(arg.Key, arg.Value);
+                }
+            }
+
             var pageInstance = SLWIOC.CreateForType(viewType);
             var page = pageInstance as PageBase;
-            page.BindingContext = vmInstance;
-            return _host.PushAsync(page);
+            page.BindingContext = viewModel;
+            await _host.PushAsync(page);
         }
 
-        public Task SetAsNewRootAsync(Type viewModelType, params KeyValuePair<string, object>[] args)
+        public async Task SetAsNewRootAsync<TViewModel>(params KeyValuePair<string, object>[] args) where TViewModel : ViewModelBase
+        {
+            var viewModelType = typeof(TViewModel);
+            var viewType = _viewModelLookup[viewModelType];
+            var viewModel = SLWIOC.CreateForType(viewModelType) as ViewModelBase;
+            if (viewModel != null)
+            {
+                viewModel.LaunchArgs = new ViewModelLaunchArgs()
+                {
+                    IsNewRoot = true,
+                    LaunchType = LaunchTypes.Other
+                };
+
+                foreach (var arg in args)
+                {
+                    viewModel.LaunchArgs.Parameters.Add(arg.Key, arg.Value);
+                }
+            }
+
+            var pageInstance = SLWIOC.CreateForType(viewType);
+            var page = pageInstance as PageBase;
+            page.BindingContext = viewModel;
+            var navPage = new NavigationPage(page);
+            Application.Current.MainPage = navPage;
+            _host = navPage.Navigation;
+        }
+
+        public async Task SetAsNewRootAsync(Type viewModelType, params KeyValuePair<string, object>[] args)
         {
             var viewType = _viewModelLookup[viewModelType];
             var pageInstance = SLWIOC.CreateForType(viewType);
-            var vmInstance = SLWIOC.CreateForType(viewModelType);
+            var viewModel = SLWIOC.CreateForType(viewModelType) as ViewModelBase;
+            if(viewModel != null)
+            {
+                viewModel.LaunchArgs = new ViewModelLaunchArgs()
+                {
+                    IsNewRoot = true,
+                    LaunchType = LaunchTypes.Other
+                };
+
+                foreach (var arg in args)
+                {
+                    viewModel.LaunchArgs.Parameters.Add(arg.Key, arg.Value);
+                }
+            }
+
             var page = pageInstance as PageBase;
-            page.BindingContext = vmInstance;
-            return _host.PushAsync(page);
+            page.BindingContext = viewModel;
+            var navPage = new NavigationPage(page);
+            Application.Current.MainPage = navPage;
+            _host = navPage.Navigation;
         }
     }
 }

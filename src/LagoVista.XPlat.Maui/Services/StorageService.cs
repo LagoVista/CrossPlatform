@@ -1,92 +1,241 @@
 ﻿using LagoVista.Core.PlatformSupport;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Newtonsoft.Json;
+using System.Diagnostics;
 
 namespace LagoVista.XPlat.Maui.Services
 {
     internal class StorageService : IStorageService
     {
+        Dictionary<String, Object> _kvpStorage;
+
         public Task ClearAllAsync()
         {
             throw new NotImplementedException();
         }
 
-        public Task ClearKVP(string key)
+        private async Task PersistDictionary()
         {
-            throw new NotImplementedException();
+            await StoreAsync(_kvpStorage, "KVPSTORAGE.DAT");
         }
 
-        public Task<Stream> Get(Uri rui)
+        private async Task<Dictionary<string, object>> GetDictionary()
         {
-            throw new NotImplementedException();
+            if (_kvpStorage != null)
+                return _kvpStorage;
+
+            _kvpStorage = await GetAsync<Dictionary<string, object>>("KVPSTORAGE.DAT");
+            if (_kvpStorage == null)
+                _kvpStorage = new Dictionary<string, object>();
+
+            return _kvpStorage;
         }
+
+        public async Task ClearKVP(string key)
+        {
+            (await GetDictionary()).Clear();
+            await PersistDictionary();
+        }
+
+        public Task<Stream> Get(Uri uri)
+        {
+            var client = new HttpClient();
+            return client.GetStreamAsync(uri);
+        }
+
+        private String GetAppDataDirectory(Locations location = Locations.Default)
+        {
+            var name = Process.GetCurrentProcess().ProcessName;
+
+            var dir = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
+
+            if (location == Locations.Temp)
+                dir = System.IO.Path.GetTempPath();
+            else if (location == Locations.Local)
+                dir = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
+
+            dir = Path.Combine(dir, name);
+            if (!Directory.Exists(dir))
+                Directory.CreateDirectory(dir);
+
+            return dir;
+        }
+        private String GetAppRelativeFileNameIfNecessary(String fileName, Locations location = Locations.Default)
+        {
+            if (!fileName.Contains("\\"))
+            {
+                return Path.Combine(GetAppDataDirectory(), fileName);
+            }
+            else
+            {
+                return fileName;
+            }
+        }
+
 
         public Task<Stream> Get(string fileName, Locations location = Locations.Default, string folder = "")
         {
-            throw new NotImplementedException();
+            if (!String.IsNullOrEmpty(folder))
+            {
+                fileName = Path.Combine(folder, fileName);
+                if (!System.IO.Directory.Exists(folder))
+                {
+                    System.IO.Directory.CreateDirectory(folder);
+                }
+            }
+            else
+            {
+                fileName = GetAppRelativeFileNameIfNecessary(fileName, location);
+            }
+
+            if (System.IO.File.Exists(fileName))
+            {
+                var file = System.IO.File.OpenRead(fileName);
+                return Task.FromResult(file as Stream);
+            }
+            else
+            {
+                return Task.FromResult(default(Stream));
+            }
         }
 
         public Task<TObject> GetAsync<TObject>(string fileName) where TObject : class
         {
-            throw new NotImplementedException();
+            fileName = GetAppRelativeFileNameIfNecessary(fileName);
+            if (System.IO.File.Exists(fileName))
+            {
+                var json = System.IO.File.ReadAllText(fileName);
+                var instance = JsonConvert.DeserializeObject<TObject>(json);
+
+                return Task.FromResult(instance);
+            }
+            else
+            {
+                return Task.FromResult(default(TObject));
+            }
         }
 
-        public Task<T> GetKVPAsync<T>(string key, T defaultValue = null) where T : class
+        public async Task<T> GetKVPAsync<T>(string key, T defaultValue = null) where T : class
         {
-            throw new NotImplementedException();
+            var dictionary = await GetDictionary();
+            if (dictionary.ContainsKey(key))
+            {
+                return dictionary[key] as T;
+            }
+            else
+            {
+                return defaultValue;
+            }
         }
 
-        public Task<bool> HasKVPAsync(string key)
+        public async Task<bool> HasKVPAsync(string key)
         {
-            throw new NotImplementedException();
+            var dictionary = await GetDictionary();
+            return (dictionary.ContainsKey(key));
         }
 
         public Task<byte[]> ReadAllBytesAsync(string fileName)
         {
-            throw new NotImplementedException();
+            fileName = GetAppRelativeFileNameIfNecessary(fileName);
+            if (System.IO.File.Exists(fileName))
+            {
+                return Task.FromResult(System.IO.File.ReadAllBytes(fileName));
+            }
+            else
+            {
+                return Task.FromResult(default(byte[]));
+            }
         }
 
         public Task<List<string>> ReadAllLinesAsync(string fileName)
         {
-            throw new NotImplementedException();
+            fileName = GetAppRelativeFileNameIfNecessary(fileName);
+            var allLines = System.IO.File.ReadAllLines(fileName);
+            if (allLines != null)
+            {
+                return Task.FromResult(allLines.ToList());
+            }
+            else
+            {
+                return Task.FromResult(default(List<string>));
+            }
         }
 
         public Task<string> ReadAllTextAsync(string fileName)
         {
-            throw new NotImplementedException();
+            fileName = GetAppRelativeFileNameIfNecessary(fileName);
+            return Task.FromResult(System.IO.File.ReadAllText(fileName));
         }
 
         public Task<string> StoreAsync(Stream stream, string fileName, Locations location = Locations.Default, string folder = "")
         {
-            throw new NotImplementedException();
+            if (!String.IsNullOrEmpty(folder))
+            {
+                fileName = Path.Combine(folder, fileName);
+                if (!System.IO.Directory.Exists(folder))
+                {
+                    System.IO.Directory.CreateDirectory(folder);
+                }
+            }
+            else
+            {
+                fileName = GetAppRelativeFileNameIfNecessary(fileName, location);
+            }
+
+            if (System.IO.File.Exists(fileName))
+                System.IO.File.Delete(fileName);
+
+            using (var file = System.IO.File.Create(fileName))
+            {
+                stream.Seek(0, SeekOrigin.Begin);
+                stream.CopyTo(file);
+            }
+
+            return Task.FromResult(fileName);
         }
 
         public Task<string> StoreAsync<TObject>(TObject instance, string fileName) where TObject : class
         {
-            throw new NotImplementedException();
+            fileName = GetAppRelativeFileNameIfNecessary(fileName);
+
+            var json = JsonConvert.SerializeObject(instance);
+            System.IO.File.WriteAllText(fileName, json);
+
+            return Task.FromResult(fileName);
         }
 
-        public Task StoreKVP<T>(string key, T value) where T : class
+        public async Task StoreKVP<T>(string key, T value) where T : class
         {
-            throw new NotImplementedException();
+            var dictionary = await GetDictionary();
+            if (dictionary.ContainsKey(key))
+            {
+                dictionary.Remove(key);
+            }
+
+            dictionary.Add(key, value);
+
+            await PersistDictionary();
         }
 
         public Task<string> WriteAllBytesAsync(string fileName, byte[] buffer)
         {
-            throw new NotImplementedException();
+            fileName = GetAppRelativeFileNameIfNecessary(fileName);
+            System.IO.File.WriteAllBytes(fileName, buffer);
+            return Task.FromResult(fileName);
         }
 
         public Task<string> WriteAllLinesAsync(string fileName, List<string> text)
         {
-            throw new NotImplementedException();
+            fileName = GetAppRelativeFileNameIfNecessary(fileName);
+            System.IO.File.WriteAllLines(fileName, text);
+            return Task.FromResult(fileName);
+
         }
 
         public Task<string> WriteAllTextAsync(string fileName, string text)
         {
-            throw new NotImplementedException();
+            fileName = GetAppRelativeFileNameIfNecessary(fileName);
+            System.IO.File.WriteAllText(fileName, text);
+            return Task.FromResult(fileName);
         }
     }
 }

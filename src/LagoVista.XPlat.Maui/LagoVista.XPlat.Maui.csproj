@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
 		<TargetFrameworks>net9.0-android;net9.0-ios;net9.0-maccatalyst</TargetFrameworks>
@@ -27,7 +27,13 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <MauiXaml Update="Form\FormView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="Pages\AboutPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Pages\ListViewer.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Pages\LoginPage.xaml">
@@ -39,7 +45,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Folder Include="NewFolder\" />
+	  <Folder Include="Form\Fields\" />
 	</ItemGroup>
 
 </Project>

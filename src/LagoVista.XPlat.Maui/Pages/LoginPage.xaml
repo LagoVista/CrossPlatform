@@ -7,7 +7,7 @@
              xmlns:lgv="clr-namespace:LagoVista.XPlat.Maui.Pages"
              Title="Login Page">
     <VerticalStackLayout>
-        <Label Text="Wmail" VerticalOptions="Center"  HorizontalOptions="Center" />
+        <Label Text="Email" VerticalOptions="Center"  HorizontalOptions="Center" />
         <Editor Placeholder="Username" Text="{Binding EmailAddress}"></Editor>
         <Label Text="Password" VerticalOptions="Center" HorizontalOptions="Center" />
         <Editor Placeholder="Username" Text="{Binding Password}"></Editor>

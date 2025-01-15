@@ -11,6 +11,7 @@ namespace LagoVista.XPlat.Maui
        public static void Init()
         {
             SLWIOC.RegisterSingleton<ILogger, DebugLogger>();
+            SLWIOC.RegisterSingleton<IPopupServices, PopupService>();
             SLWIOC.RegisterSingleton<IStorageService, StorageService>();
             SLWIOC.RegisterSingleton<INetworkService, NetworkService>();
         }

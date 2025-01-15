@@ -9,9 +9,14 @@ namespace LagoVista.XPlat.Maui.Services
 {
     public class PopupService : IPopupServices
     {
-        public Task<bool> ConfirmAsync(string title, string prompt)
+        public PopupService()
         {
-            throw new NotImplementedException();
+
+        }
+
+        public async Task<bool> ConfirmAsync(string title, string prompt)
+        {
+            return (await Application.Current.MainPage.DisplayActionSheet(title, prompt, null, "Yes", "No")) == "Yes";
         }
 
         public Task<double?> PromptForDoubleAsync(string label, double? defaultvalue = null, string help = "", bool isRequired = false)
@@ -31,12 +36,12 @@ namespace LagoVista.XPlat.Maui.Services
 
         public Task ShowAsync(string title, string message)
         {
-            throw new NotImplementedException();
+            return Application.Current.MainPage.DisplayAlert(title, message, "OK");
         }
 
         public Task ShowAsync(string message)
         {
-            throw new NotImplementedException();
+            return Application.Current.MainPage.DisplayAlert("Alert", message, "OK");
         }
 
         public Task<string> ShowOpenFileAsync(string fileMask = "")

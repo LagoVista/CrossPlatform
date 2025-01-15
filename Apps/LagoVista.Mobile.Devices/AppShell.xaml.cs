@@ -11,7 +11,6 @@ namespace LagoVista.Mobile.Devices
             var vmNav = nav as ViewModelNavigation;
             vmNav.SetHost(this.Navigation);
             InitializeComponent();
-            vmNav.SetAsNewRootAsync<SplashViewModel>();
         }
     }
 }

@@ -5,8 +5,7 @@
              x:Class="LagoVista.XPlat.Maui.Pages.SplashPage"
              Title="SplashPage">
     <VerticalStackLayout>
-        <Label 
-            Text="Welcome to .NET MAUI!"
+        <Label Text="Welcome to Software Logistics!"
             VerticalOptions="Center" 
             HorizontalOptions="Center" />
         <Button Command="{Binding LoginCommand}" Text="Login"></Button>
