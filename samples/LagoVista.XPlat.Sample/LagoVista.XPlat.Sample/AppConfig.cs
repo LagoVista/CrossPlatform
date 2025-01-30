@@ -60,6 +60,12 @@ namespace LagoVista.XPlat.Sample
             public EntityHeader SystemOwnerOrg { get; set; }
 
             public IEnumerable<AppSpecificSensorTypes> AppSpecificSensorTypes { get; } = new List<AppSpecificSensorTypes>();
+
+            public string DefaultDeviceLabel => throw new System.NotImplementedException();
+
+            public string DefaultDeviceLabelPlural => throw new System.NotImplementedException();
+
+            public string AnalyticsKey { get => throw new System.NotImplementedException(); set => throw new System.NotImplementedException(); }
         }
 
     }

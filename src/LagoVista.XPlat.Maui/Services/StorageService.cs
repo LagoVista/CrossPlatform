@@ -1,19 +1,46 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using LagoVista.Core.PlatformSupport;
+﻿using LagoVista.Core.PlatformSupport;
 using Newtonsoft.Json;
-using System.Net.Http;
 using System.Diagnostics;
 
-namespace LagoVista.Core.WPF.PlatformSupport
+namespace LagoVista.XPlat.Maui.Services
 {
-    public class StorageService : LagoVista.Core.PlatformSupport.IStorageService
+    internal class StorageService : IStorageService
     {
         Dictionary<String, Object> _kvpStorage;
+
+        public Task ClearAllAsync()
+        {
+            throw new NotImplementedException();
+        }
+
+        private async Task PersistDictionary()
+        {
+            await StoreAsync(_kvpStorage, "KVPSTORAGE.DAT");
+        }
+
+        private async Task<Dictionary<string, object>> GetDictionary()
+        {
+            if (_kvpStorage != null)
+                return _kvpStorage;
+
+            _kvpStorage = await GetAsync<Dictionary<string, object>>("KVPSTORAGE.DAT");
+            if (_kvpStorage == null)
+                _kvpStorage = new Dictionary<string, object>();
+
+            return _kvpStorage;
+        }
+
+        public async Task ClearKVP(string key)
+        {
+            (await GetDictionary()).Clear();
+            await PersistDictionary();
+        }
+
+        public Task<Stream> Get(Uri uri)
+        {
+            var client = new HttpClient();
+            return client.GetStreamAsync(uri);
+        }
 
         private String GetAppDataDirectory(Locations location = Locations.Default)
         {
@@ -32,7 +59,6 @@ namespace LagoVista.Core.WPF.PlatformSupport
 
             return dir;
         }
-
         private String GetAppRelativeFileNameIfNecessary(String fileName, Locations location = Locations.Default)
         {
             if (!fileName.Contains("\\"))
@@ -45,34 +71,6 @@ namespace LagoVista.Core.WPF.PlatformSupport
             }
         }
 
-        private async Task<Dictionary<string, object>> GetDictionary()
-        {
-            if (_kvpStorage != null)
-                return _kvpStorage;
-
-            _kvpStorage = await GetAsync<Dictionary<string, object>>("KVPSTORAGE.DAT");
-            if (_kvpStorage == null)
-                _kvpStorage = new Dictionary<string, object>();
-
-            return _kvpStorage;
-        }
-
-        private async Task PersistDictionary()
-        {
-            await StoreAsync(_kvpStorage, "KVPSTORAGE.DAT");
-        }
-
-        public async Task ClearKVP(string key)
-        {
-            (await GetDictionary()).Clear();
-            await PersistDictionary();
-        }
-
-        public Task<Stream> Get(Uri uri)
-        {
-            var client = new HttpClient();
-            return client.GetStreamAsync(uri);
-        }
 
         public Task<Stream> Get(string fileName, Locations location = Locations.Default, string folder = "")
         {
@@ -135,6 +133,39 @@ namespace LagoVista.Core.WPF.PlatformSupport
             return (dictionary.ContainsKey(key));
         }
 
+        public Task<byte[]> ReadAllBytesAsync(string fileName)
+        {
+            fileName = GetAppRelativeFileNameIfNecessary(fileName);
+            if (System.IO.File.Exists(fileName))
+            {
+                return Task.FromResult(System.IO.File.ReadAllBytes(fileName));
+            }
+            else
+            {
+                return Task.FromResult(default(byte[]));
+            }
+        }
+
+        public Task<List<string>> ReadAllLinesAsync(string fileName)
+        {
+            fileName = GetAppRelativeFileNameIfNecessary(fileName);
+            var allLines = System.IO.File.ReadAllLines(fileName);
+            if (allLines != null)
+            {
+                return Task.FromResult(allLines.ToList());
+            }
+            else
+            {
+                return Task.FromResult(default(List<string>));
+            }
+        }
+
+        public Task<string> ReadAllTextAsync(string fileName)
+        {
+            fileName = GetAppRelativeFileNameIfNecessary(fileName);
+            return Task.FromResult(System.IO.File.ReadAllText(fileName));
+        }
+
         public Task<string> StoreAsync(Stream stream, string fileName, Locations location = Locations.Default, string folder = "")
         {
             if (!String.IsNullOrEmpty(folder))
@@ -185,53 +216,6 @@ namespace LagoVista.Core.WPF.PlatformSupport
             await PersistDictionary();
         }
 
-        public Task<string> ReadAllTextAsync(string fileName)
-        {
-            fileName = GetAppRelativeFileNameIfNecessary(fileName);
-            return Task.FromResult(System.IO.File.ReadAllText(fileName));
-        }
-
-        public Task<string> WriteAllTextAsync(string fileName, string text)
-        {
-            fileName = GetAppRelativeFileNameIfNecessary(fileName);
-            System.IO.File.WriteAllText(fileName, text);
-            return Task.FromResult(fileName);
-        }
-
-        public Task<List<string>> ReadAllLinesAsync(string fileName)
-        {
-            fileName = GetAppRelativeFileNameIfNecessary(fileName);
-            var allLines = System.IO.File.ReadAllLines(fileName);
-            if (allLines != null)
-            {
-                return Task.FromResult(allLines.ToList());
-            }
-            else
-            {
-                return Task.FromResult(default(List<string>));
-            }
-        }
-
-        public Task<string> WriteAllLinesAsync(string fileName, List<string> text)
-        {
-            fileName = GetAppRelativeFileNameIfNecessary(fileName);
-            System.IO.File.WriteAllLines(fileName, text);
-            return Task.FromResult(fileName);
-        }
-
-        public Task<byte[]> ReadAllBytesAsync(string fileName)
-        {
-            fileName = GetAppRelativeFileNameIfNecessary(fileName);
-            if (System.IO.File.Exists(fileName))
-            {
-                return Task.FromResult(System.IO.File.ReadAllBytes(fileName));
-            }
-            else
-            {
-                return Task.FromResult(default(byte[]));
-            }
-        }
-
         public Task<string> WriteAllBytesAsync(string fileName, byte[] buffer)
         {
             fileName = GetAppRelativeFileNameIfNecessary(fileName);
@@ -239,9 +223,19 @@ namespace LagoVista.Core.WPF.PlatformSupport
             return Task.FromResult(fileName);
         }
 
-        public Task ClearAllAsync()
+        public Task<string> WriteAllLinesAsync(string fileName, List<string> text)
         {
-            throw new NotImplementedException();
+            fileName = GetAppRelativeFileNameIfNecessary(fileName);
+            System.IO.File.WriteAllLines(fileName, text);
+            return Task.FromResult(fileName);
+
+        }
+
+        public Task<string> WriteAllTextAsync(string fileName, string text)
+        {
+            fileName = GetAppRelativeFileNameIfNecessary(fileName);
+            System.IO.File.WriteAllText(fileName, text);
+            return Task.FromResult(fileName);
         }
     }
 }
