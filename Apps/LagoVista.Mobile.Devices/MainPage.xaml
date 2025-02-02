@@ -10,7 +10,7 @@
         <Label Text="Home Page - Get Started!"
             VerticalOptions="Center" 
             HorizontalOptions="Center" />
-        <Button Command="{Binding ShowAboutCommand}" Text="About"></Button>
+        <Button Command="{Binding ShowDeviceRepositoryCommand}" Text="Device Repository"></Button>
     
     </VerticalStackLayout>
 </lgv:PageBase>

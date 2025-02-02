@@ -18,10 +18,10 @@ namespace LagoVista.Mobile.Devices.ViewModels
         public MainViewModel()
         {
             ShowInstancesCommand = new RelayCommand(() => ShowView<MyDevicesViewModel>());
-            ShowAboutCommand = new RelayCommand(() => ShowView<ListResponseViewModel<DeviceRepositorySummary>>());
+            ShowDeviceRepositoryCommand = new RelayCommand(() => ShowView<ListResponseViewModel<DeviceRepositorySummary>>());
         }
 
         public RelayCommand ShowInstancesCommand { get; }
-        public RelayCommand ShowAboutCommand { get; }
+        public RelayCommand ShowDeviceRepositoryCommand { get; }
     }
 }
