@@ -94,9 +94,10 @@ namespace LagoVista.Client.Core.Net
             }
         }
 
-        private async Task<RawResponse> PerformCall(Func<Task<HttpResponseMessage>> call, CancellationTokenSource cancellationTokenSource = null, ListRequest listRequest = null)
+        private async Task<RawResponse> PerformCall(Func<Task<HttpResponseMessage>> call, CancellationTokenSource cancellationTokenSource = null, ListRequest listRequest = null, bool waitCusor = true)
         {
-            BeginCall?.Invoke(this, null);
+            if(waitCusor)
+                BeginCall?.Invoke(this, null);
 
             if (!_networkService.IsInternetConnected)
             {
@@ -197,7 +198,9 @@ namespace LagoVista.Client.Core.Net
 
             _callSemaphore.Release();
 
-            EndCall?.Invoke(this, null);
+            if (waitCusor)
+                EndCall?.Invoke(this, null);
+           
             return rawResponse;
         }
 
@@ -244,7 +247,7 @@ namespace LagoVista.Client.Core.Net
             }
         }
 
-        public async Task<RawResponse> GetAsync(string path, CancellationTokenSource cancellationTokenSource = null)
+        public async Task<RawResponse> GetAsync(string path, CancellationTokenSource cancellationTokenSource = null, bool waitCursor = true)
         {
             if (!_networkService.IsInternetConnected)
             {
@@ -265,7 +268,7 @@ namespace LagoVista.Client.Core.Net
                 var result = await _httpClient.GetAsync(path, cancellationTokenSource.Token);
                 _logger.EndTimedEvent(timedEvent);
                 return result;
-            }, cancellationTokenSource);
+            }, cancellationTokenSource, waitCusor:waitCursor);
 
             if (response.Success)
             {
@@ -274,7 +277,7 @@ namespace LagoVista.Client.Core.Net
             return response;
         }
 
-        public Task<RawResponse> PostAsync(string path, string payload, CancellationTokenSource cancellationTokenSource = null)
+        public Task<RawResponse> PostAsync(string path, string payload, CancellationTokenSource cancellationTokenSource = null, bool waitCursor = true)
         {
             if (cancellationTokenSource == null) cancellationTokenSource = new CancellationTokenSource(TimeSpan.FromSeconds(60));
 
@@ -287,10 +290,10 @@ namespace LagoVista.Client.Core.Net
                 var result = await _httpClient.PostAsync(path, content, cancellationTokenSource.Token);
                 _logger.EndTimedEvent(timedEvent);
                 return result;
-            }, cancellationTokenSource);
+            }, cancellationTokenSource, waitCusor:waitCursor);
         }
 
-        public Task<RawResponse> PutAsync(string path, string payload, CancellationTokenSource cancellationTokenSource = null)
+        public Task<RawResponse> PutAsync(string path, string payload, CancellationTokenSource cancellationTokenSource = null, bool waitCursor = true)
         {
             _logger.AddCustomEvent(LogLevel.Message, "RawRestClient_GetAsync", "Begin PUT", path.ToKVP("path"), payload.ToKVP("content"));
 
@@ -303,10 +306,10 @@ namespace LagoVista.Client.Core.Net
                 var result = await _httpClient.PutAsync(path, content, cancellationTokenSource.Token);
                 _logger.EndTimedEvent(timedEvent);
                 return result;
-            }, cancellationTokenSource);
+            }, cancellationTokenSource, waitCusor: waitCursor);
         }
 
-        public Task<RawResponse> DeleteAsync(string path, CancellationTokenSource cancellationTokenSource = null)
+        public Task<RawResponse> DeleteAsync(string path, CancellationTokenSource cancellationTokenSource = null, bool waitCursor = true)
         {
             _logger.AddCustomEvent(LogLevel.Message, "RawRestClient_GetAsync", "Begin Delete", path.ToKVP("path"));
 
@@ -318,10 +321,10 @@ namespace LagoVista.Client.Core.Net
                 var result = await _httpClient.DeleteAsync(path, cancellationTokenSource.Token);
                 _logger.EndTimedEvent(timedEvent);
                 return result;
-            }, cancellationTokenSource);
+            }, cancellationTokenSource, waitCusor:waitCursor);
         }
 
-        public async Task<InvokeResult> PostAsync<TModel>(string path, TModel model, CancellationTokenSource cancellationTokenSource = null) where TModel : class
+        public async Task<InvokeResult> PostAsync<TModel>(string path, TModel model, CancellationTokenSource cancellationTokenSource = null, bool waitCursor = true) where TModel : class
         {
             if (cancellationTokenSource == null) cancellationTokenSource = new CancellationTokenSource(TimeSpan.FromSeconds(60));
 
@@ -330,12 +333,12 @@ namespace LagoVista.Client.Core.Net
             _logger.AddCustomEvent(LogLevel.Message, "RawRestClient_PostAsync", "Begin Post", path.ToKVP("path"), json.ToKVP("content"));
 
             var timedEvent = _logger.StartTimedEvent("RawRestClient_DeleteAsync", path);
-            var response = await PostAsync(path, json, cancellationTokenSource);
+            var response = await PostAsync(path, json, cancellationTokenSource, waitCursor: waitCursor);
             _logger.EndTimedEvent(timedEvent);
             return response.ToInvokeResult();
         }
 
-        public async Task<InvokeResult> PutAsync<TModel>(string path, TModel model, CancellationTokenSource cancellationTokenSource = null) where TModel : class
+        public async Task<InvokeResult> PutAsync<TModel>(string path, TModel model, CancellationTokenSource cancellationTokenSource = null, bool waitCursor = true) where TModel : class
         {
             if (cancellationTokenSource == null) cancellationTokenSource = new CancellationTokenSource(TimeSpan.FromSeconds(60));
 
@@ -343,19 +346,19 @@ namespace LagoVista.Client.Core.Net
 
             var timedEvent = _logger.StartTimedEvent("RawRestClient_DeleteAsync", path);
             _logger.AddCustomEvent(LogLevel.Message, "RawRestClient_PutAsync", "Begin PUT", path.ToKVP("path"), json.ToKVP("content"));
-            var response = await PutAsync(path, json, cancellationTokenSource);
+            var response = await PutAsync(path, json, cancellationTokenSource, waitCursor);
             _logger.EndTimedEvent(timedEvent);
             return response.ToInvokeResult();
         }
 
-        public async Task<InvokeResult<TResponseModel>> PostAsync<TModel, TResponseModel>(string path, TModel model, CancellationTokenSource cancellationTokenSource = null) where TModel : class where TResponseModel : class
+        public async Task<InvokeResult<TResponseModel>> PostAsync<TModel, TResponseModel>(string path, TModel model, CancellationTokenSource cancellationTokenSource = null, bool waitCursor = true) where TModel : class where TResponseModel : class
         {
             if (cancellationTokenSource == null) cancellationTokenSource = new CancellationTokenSource(TimeSpan.FromSeconds(60));
 
             var json = JsonConvert.SerializeObject(model, new Newtonsoft.Json.JsonSerializerSettings() { ContractResolver = new CamelCasePropertyNamesContractResolver(), });
             _logger.AddCustomEvent(LogLevel.Message, "RawRestClient_PostAsync", "Begin POST", path.ToKVP("path"), json.ToKVP("content"));
 
-            var response = await PostAsync(path, json, cancellationTokenSource);
+            var response = await PostAsync(path, json, cancellationTokenSource, waitCursor);
             if (response.Success)
             {
                 return JsonConvert.DeserializeObject<InvokeResult<TResponseModel>>(response.Content);
@@ -366,7 +369,7 @@ namespace LagoVista.Client.Core.Net
             }
         }
 
-        public async Task<InvokeResult<TResponseModel>> GetAsync<TResponseModel>(string path, CancellationTokenSource cancellationTokenSource = null) where TResponseModel : class
+        public async Task<InvokeResult<TResponseModel>> GetAsync<TResponseModel>(string path, CancellationTokenSource cancellationTokenSource = null, bool waitCursor = true) where TResponseModel : class
         {
             if (!_networkService.IsInternetConnected)
             {
@@ -381,14 +384,14 @@ namespace LagoVista.Client.Core.Net
 
             if (cancellationTokenSource == null) cancellationTokenSource = new CancellationTokenSource(TimeSpan.FromSeconds(60));
 
-            var response = await GetAsync(path, cancellationTokenSource);
+            var response = await GetAsync(path, cancellationTokenSource, waitCursor);
 
             await AddCachedResponseAsync(path, response);
 
             return response.ToInvokeResult<TResponseModel>();
         }
 
-        public async Task<ListResponse<TResponseModel>> GetListResponseAsync<TResponseModel>(string path, ListRequest listRequest = null, CancellationTokenSource cancellationTokenSource = null) where TResponseModel : class
+        public async Task<ListResponse<TResponseModel>> GetListResponseAsync<TResponseModel>(string path, ListRequest listRequest = null, CancellationTokenSource cancellationTokenSource = null, bool waitCursor = true) where TResponseModel : class
         {
             if(listRequest == null)
             {
@@ -415,7 +418,7 @@ namespace LagoVista.Client.Core.Net
                 _logger.EndTimedEvent(timedEvent);
                 return httpResponse;
 
-            }, cancellationTokenSource, listRequest);
+            }, cancellationTokenSource, listRequest, waitCursor);
 
             await AddCachedResponseAsync(path, response);
 
