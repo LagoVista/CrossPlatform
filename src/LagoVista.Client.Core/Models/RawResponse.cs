@@ -121,9 +121,6 @@ namespace LagoVista.Client.Core.Models
                 throw new InvalidOperationException("Attempt to deserilaized empty content.");
             }
 
-            Console.WriteLine(Content);
-            Debug.WriteLine(Content);
-
             var response = JsonConvert.DeserializeObject<TModel>(Content, new Newtonsoft.Json.JsonSerializerSettings() { ContractResolver = new CamelCasePropertyNamesContractResolver(), });
             return response;
         }

@@ -41,6 +41,7 @@ namespace LagoVista.Client.Core.Net
         public event EventHandler BeginCall;
         public event EventHandler EndCall;
 
+        public bool VerboseLogging { get; set; } = false;
 
         public RawRestClient(HttpClient httpClient, INetworkService networkService, IDeviceInfo deviceInfo, IStorageService storageService,
                     IAppConfig appConfig, IAuthClient authClient, IAuthManager authManager, ILogger logger)
@@ -81,7 +82,7 @@ namespace LagoVista.Client.Core.Net
                 _authManager.RefreshToken = response.Result.RefreshToken;
                 _authManager.AppInstanceId = response.Result.AppInstanceId;
                 _authManager.RefreshTokenExpirationUTC = response.Result.RefreshTokenExpiresUTC;
-                _logger.AddCustomEvent(LogLevel.Message, "RawRestClient_RenewRefreshTokenAsync", "Access Token Renewed with Refresh Token");
+                if(VerboseLogging) _logger.AddCustomEvent(LogLevel.Message, "RawRestClient_RenewRefreshTokenAsync", "Access Token Renewed with Refresh Token");
                 await _authManager.PersistAsync();
                 return InvokeResult.Success;
             }
@@ -142,13 +143,12 @@ namespace LagoVista.Client.Core.Net
                 retry = false;
                 try
                 {
-
                     var sw = Stopwatch.StartNew();
-                    _logger.AddCustomEvent(LogLevel.Message, "RawResetClient_PerformCall", "Begin call");
+                    if (VerboseLogging) _logger.AddCustomEvent(LogLevel.Message, "RawResetClient_PerformCall", "Begin call");
                     var response = await call();
                     if (response.IsSuccessStatusCode)
                     {
-                        _logger.AddCustomEvent(LogLevel.Message, "RawResetClient_PerformCall", $"Call Success {sw.Elapsed.TotalMilliseconds}");
+                        if (VerboseLogging) _logger.AddCustomEvent(LogLevel.Message, "RawResetClient_PerformCall", $"Call Success {sw.Elapsed.TotalMilliseconds}");
                         rawResponse = RawResponse.FromSuccess(await response.Content.ReadAsStringAsync());
                     }
                     else if (response.StatusCode == System.Net.HttpStatusCode.Unauthorized)
@@ -260,7 +260,7 @@ namespace LagoVista.Client.Core.Net
 
             if (cancellationTokenSource == null) cancellationTokenSource = new CancellationTokenSource(TimeSpan.FromSeconds(60));
 
-            _logger.AddCustomEvent(LogLevel.Message, "RawRestClient_GetAsync", "Begin GET", path.ToKVP("path"));
+            if(VerboseLogging) _logger.AddCustomEvent(LogLevel.Message, "RawRestClient_GetAsync", "Begin GET", path.ToKVP("path"));
 
             var response = await PerformCall(async () =>
             {
@@ -281,7 +281,7 @@ namespace LagoVista.Client.Core.Net
         {
             if (cancellationTokenSource == null) cancellationTokenSource = new CancellationTokenSource(TimeSpan.FromSeconds(60));
 
-            _logger.AddCustomEvent(LogLevel.Message, "RawRestClient_GetAsync", "Begin POST", path.ToKVP("path"), payload.ToKVP("content"));
+            if (VerboseLogging) _logger.AddCustomEvent(LogLevel.Message, "RawRestClient_GetAsync", "Begin POST", path.ToKVP("path"), payload.ToKVP("content"));
 
             return PerformCall(async () =>
             {
