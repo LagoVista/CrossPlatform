@@ -33,7 +33,9 @@ namespace LagoVista.Client.Core.Forms.Fields
 
         protected override InvokeResult SetValue(object obj)
         {
-            throw new NotImplementedException();
+            SelectedId = obj?.ToString();
+
+            return InvokeResult.Success;
         }
     }
 }

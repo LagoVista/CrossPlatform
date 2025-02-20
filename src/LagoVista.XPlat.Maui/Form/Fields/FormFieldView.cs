@@ -25,10 +25,14 @@ namespace LagoVista.XPlat.Maui.Form.Fields
         private void FormFieldView_BindingContextChanged(object? sender, EventArgs e)
         {
             var field = BindingContext as FieldBase;
+            if (field == null)
+                return;
+
             var fieldType = Enum.Parse<FieldTypes>(field.FormField.FieldType);
 
             var view = new TextFieldView();
             view.BindingContext = field;
+            Content = view;
 
             switch (fieldType)
             {

@@ -4,10 +4,13 @@ using LagoVista.Core.Attributes;
 using LagoVista.Core.Models;
 using LagoVista.Core.Models.UIMetaData;
 using LagoVista.Core.Validation;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using NLog.Filters;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -122,11 +125,26 @@ namespace LagoVista.Client.Core.Forms
         {
             var url = LaunchArgs.Parameters["formurl"].ToString();
 
-            var response = await RestClient.GetAsync<DetailResponse<TEntity>>(url);
-            if (response.Successful)
+            var response = await RestClient.GetAsync(url);
+            if (response.Success)
             {
                 Fields = new ObservableCollection<FieldBase>();
-                Form = response.Result;
+                Form = JsonConvert.DeserializeObject<DetailResponse<TEntity>>(response.Content);
+                var content = JsonConvert.DeserializeObject(response.Content);
+                var contenType = content.GetType();
+
+                var jt = JToken.Parse(response.Content);
+
+                var json = JsonConvert.SerializeObject(jt["model"]);
+
+                var assynName = Form.AssemblyName;
+                var modelName = Form.FullClassName;
+
+                var type = Type.GetType(assynName);
+
+                var rawModel = JsonConvert.DeserializeObject(json, type);
+
+
                 var fields = new ObservableCollection<FormField>();
                 foreach (var field in Form.FormFields)
                 {
@@ -134,19 +152,20 @@ namespace LagoVista.Client.Core.Forms
                     Fields.Add(CreateField(Form.View[field]));
                 }
 
+                //JsonConvert.DeserializeObject()
+
                 FormFields = fields;
-                Model = Form.Model;
-                ModelToView();
+                ModelToView(rawModel);
             }
         }
 
         public TEntity Model { get; set; }
 
-        public InvokeResult ModelToView()
+        public InvokeResult ModelToView(Object rawModel)
         {
             foreach (var field in Fields)
             {
-                field.ModelToView(Model);
+                field.ModelToView(rawModel);
             }
 
             return InvokeResult.Success;

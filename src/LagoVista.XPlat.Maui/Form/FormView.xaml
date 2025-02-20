@@ -10,11 +10,13 @@
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
     <Label FontSize="24" Text="{Binding Form.ModelTitle}"></Label>
-    <ListView Grid.Row="1" ItemsSource="{Binding Fields}">
+    <ListView Grid.Row="1" ItemsSource="{Binding Fields}" >
         <ListView.ItemTemplate>
             <DataTemplate>
                 <ViewCell>
-                     <ctl:FormFieldView Field="{Binding .}"></ctl:FormFieldView>
+                    <StackLayout >
+                        <ctl:FormFieldView Field="{Binding .}"></ctl:FormFieldView>
+                    </StackLayout>
                 </ViewCell>
             </DataTemplate>
         </ListView.ItemTemplate>

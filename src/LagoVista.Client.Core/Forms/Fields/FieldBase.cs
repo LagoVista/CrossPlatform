@@ -49,7 +49,7 @@ namespace LagoVista.Client.Core.Forms.Fields
             FormField = formField;
         }
 
-        public InvokeResult ModelToView(EntityBase model)
+        public InvokeResult ModelToView(Object model)
         {
             var modelType = model.GetType();
 
@@ -70,6 +70,11 @@ namespace LagoVista.Client.Core.Forms.Fields
             property.SetValue(model, value);
 
             return InvokeResult.Success;
+        }
+
+        public string Label
+        {
+            get => FormField.Label;
         }
 
         protected abstract InvokeResult SetValue(Object obj);

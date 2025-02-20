@@ -122,6 +122,7 @@ namespace LagoVista.Client.Core.Models
             }
 
             var response = JsonConvert.DeserializeObject<TModel>(Content, new Newtonsoft.Json.JsonSerializerSettings() { ContractResolver = new CamelCasePropertyNamesContractResolver(), });
+            
             return response;
         }
 
