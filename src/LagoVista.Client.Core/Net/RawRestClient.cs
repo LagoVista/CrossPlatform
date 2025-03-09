@@ -18,6 +18,8 @@ using System.Collections.Generic;
 using LagoVista.Core.Models;
 using LagoVista.UserAdmin.Interfaces;
 using System.Diagnostics;
+using System.IO;
+using System.Linq;
 
 namespace LagoVista.Client.Core.Net
 {
@@ -149,7 +151,7 @@ namespace LagoVista.Client.Core.Net
                     if (response.IsSuccessStatusCode)
                     {
                         if (VerboseLogging) _logger.AddCustomEvent(LogLevel.Message, "RawResetClient_PerformCall", $"Call Success {sw.Elapsed.TotalMilliseconds}");
-                        rawResponse = RawResponse.FromSuccess(await response.Content.ReadAsStringAsync());
+                        rawResponse = RawResponse.FromSuccess(await response.Content.ReadAsByteArrayAsync());
                     }
                     else if (response.StatusCode == System.Net.HttpStatusCode.Unauthorized)
                     {
@@ -281,7 +283,7 @@ namespace LagoVista.Client.Core.Net
         {
             if (cancellationTokenSource == null) cancellationTokenSource = new CancellationTokenSource(TimeSpan.FromSeconds(60));
 
-            if (VerboseLogging) _logger.AddCustomEvent(LogLevel.Message, "RawRestClient_GetAsync", "Begin POST", path.ToKVP("path"), payload.ToKVP("content"));
+            if (VerboseLogging) _logger.AddCustomEvent(LogLevel.Message, "RawRestClient_PostAsync", "Begin POST", path.ToKVP("path"), payload.ToKVP("content"));
 
             return PerformCall(async () =>
             {
@@ -295,7 +297,7 @@ namespace LagoVista.Client.Core.Net
 
         public Task<RawResponse> PutAsync(string path, string payload, CancellationTokenSource cancellationTokenSource = null, bool waitCursor = true)
         {
-            _logger.AddCustomEvent(LogLevel.Message, "RawRestClient_GetAsync", "Begin PUT", path.ToKVP("path"), payload.ToKVP("content"));
+            _logger.AddCustomEvent(LogLevel.Message, "RawRestClient_PutAsync", "Begin PUT", path.ToKVP("path"), payload.ToKVP("content"));
 
             if (cancellationTokenSource == null) cancellationTokenSource = new CancellationTokenSource(TimeSpan.FromSeconds(60));
 
@@ -304,6 +306,35 @@ namespace LagoVista.Client.Core.Net
                 var timedEvent = _logger.StartTimedEvent("RawRestClient_Put", path);
                 var content = new StringContent(payload, Encoding.UTF8, "application/json");
                 var result = await _httpClient.PutAsync(path, content, cancellationTokenSource.Token);
+                _logger.EndTimedEvent(timedEvent);
+                return result;
+            }, cancellationTokenSource, waitCusor: waitCursor);
+        }
+
+        public async Task<RawResponse> DownloadFileAsync(String path, CancellationTokenSource cancellationTokenSource = null, bool waitCursor = true)
+        {
+            _logger.AddCustomEvent(LogLevel.Message, "RawRestClient_DownloadFileAsync", "Begin Download File)", path.ToKVP("path"));
+            if (cancellationTokenSource == null) cancellationTokenSource = new CancellationTokenSource(TimeSpan.FromSeconds(60));
+            return await PerformCall(async () =>
+            {
+                return await _httpClient.GetAsync(path, cancellationTokenSource.Token);
+            });
+           }
+
+        public Task<RawResponse> PostFormFileAsync(string path, byte[] buffer, string fileName,  CancellationTokenSource cancellationTokenSource = null, bool waitCursor = true)
+        {
+            _logger.AddCustomEvent(LogLevel.Message, "RawRestClient_PostFormFileAsync", "Begin POST (Form File)", path.ToKVP("path"));
+            if (cancellationTokenSource == null) cancellationTokenSource = new CancellationTokenSource(TimeSpan.FromSeconds(60));
+            return PerformCall(async () =>
+            {                
+                var timedEvent = _logger.StartTimedEvent("RawRestClient_Put", path);
+                var byteArrayContent = new ByteArrayContent(buffer);
+                var form = new MultipartFormDataContent();
+                byteArrayContent.Headers.ContentType = MediaTypeHeaderValue.Parse("multipart/form-data");
+                form.Add(byteArrayContent, "File", fileName);
+                form.Add(new StringContent("Name"), fileName);
+
+                var result = await _httpClient.PostAsync(path, form, cancellationTokenSource.Token);
                 _logger.EndTimedEvent(timedEvent);
                 return result;
             }, cancellationTokenSource, waitCusor: waitCursor);

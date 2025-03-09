@@ -26,6 +26,8 @@ namespace LagoVista.Client.Core.Models
 
         public FaultTypes FaultType { get; protected set; }
         public String Content { get; protected set; }
+        public byte[] BinaryContent { get; protected set; }
+
         public bool Success { get; protected set; }
         public int HttpResponseCode { get; protected set; }
         public bool WasCancelled { get; protected set; }
@@ -38,6 +40,19 @@ namespace LagoVista.Client.Core.Models
             return new RawResponse()
             {
                 Success = true,
+                Content = content,
+                FaultType = FaultTypes.None
+            };
+        }
+
+        public static RawResponse FromSuccess(byte[] buffer)
+        {
+            var content = System.Text.ASCIIEncoding.ASCII.GetString(buffer);
+
+            return new RawResponse()
+            {
+                Success = true,
+                BinaryContent = buffer,
                 Content = content,
                 FaultType = FaultTypes.None
             };

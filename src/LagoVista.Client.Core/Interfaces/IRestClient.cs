@@ -2,6 +2,7 @@
 using LagoVista.Core.Models.UIMetaData;
 using LagoVista.Core.Validation;
 using System;
+using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -21,8 +22,14 @@ namespace LagoVista.Client.Core
 
         Task<InvokeResult> RenewRefreshToken();
         Task<RawResponse> GetAsync(String path, CancellationTokenSource tokenSource = null, bool waitCursor = true);
+
+        Task<RawResponse> DownloadFileAsync(String path, CancellationTokenSource tokenSource = null, bool waitCursor = true);
+
         Task<RawResponse> PostAsync(String path, String payload, CancellationTokenSource tokenSource = null, bool waitCursor = true);
         Task<RawResponse> PutAsync(String path, String payload, CancellationTokenSource tokenSource = null, bool waitCursor = true);
+
+        Task<RawResponse> PostFormFileAsync(string path, byte[] buffer, string fileName, CancellationTokenSource tokenSource = null, bool waitCursor = true);
+
         Task<RawResponse> DeleteAsync(String path, CancellationTokenSource tokenSource = null, bool waitCursor = true);
 
         Task<InvokeResult> PostAsync<TModel>(String path, TModel model, CancellationTokenSource cancellationTokenSource = null, bool waitCursor = true) where TModel : class;
