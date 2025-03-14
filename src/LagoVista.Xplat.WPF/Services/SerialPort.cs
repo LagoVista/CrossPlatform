@@ -76,7 +76,7 @@ namespace LagoVista.Core.WPF.PlatformSupport
                         _serialPort = null;
                     }
                 }
-                catch(Exception ex)
+                catch(Exception)
                 {
                     /* NOP */
                     _serialPort = null;

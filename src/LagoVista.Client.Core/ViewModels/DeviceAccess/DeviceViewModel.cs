@@ -57,6 +57,13 @@ namespace LagoVista.Client.Core.ViewModels.DeviceAccess
             };
         }
 
+        public string BluetoothDeviceId
+        {
+            get => _btDeviceId;
+            set => Set(ref _btDeviceId, value);
+        }
+
+
         private async void BtSerial_DeviceDiscovered(object sender, BTDevice e)
         {
             try

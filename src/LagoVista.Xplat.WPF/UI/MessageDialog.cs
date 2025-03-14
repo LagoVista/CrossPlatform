@@ -6,7 +6,7 @@ namespace LagoVista.Core.WPF.UI
 {
     internal class MessageDialog : Window
     {
-        TextBox _textInput;
+        //TextBox _textInput;
         TextBlock _help;
 
         public bool isRequired { get; set; }

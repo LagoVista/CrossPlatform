@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace LagoVista.Client.Core.Net
 {
-    public class DefaultNetworkService : INetworkService
+    /*public class DefaultNetworkService : INetworkService
     {
         public bool IsInternetConnected => true;
 
@@ -35,5 +35,5 @@ namespace LagoVista.Client.Core.Net
         {
             return Task.FromResult(true);
         }
-    }
+    }*/
 }

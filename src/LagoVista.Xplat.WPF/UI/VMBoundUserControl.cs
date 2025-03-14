@@ -17,6 +17,21 @@ namespace LagoVista.XPlat
         public VMBoundUserControl()
         {
             this.Loaded += VMBoundUserControl_Loaded;
+            if (!DesignerProperties.GetIsInDesignMode(this))
+            {
+                if (SLWIOC.TryResolve(typeof(VMType), out object value))
+                {
+                    ViewModel = value as VMType;
+                    DataContext = ViewModel;
+                }
+                else
+                {
+                    var vm = SLWIOC.Create<VMType>();
+                    ViewModel = vm as VMType;
+                    DataContext = ViewModel;
+                }
+            }
+
         }
 
         private async void VMBoundUserControl_Loaded(object sender, System.Windows.RoutedEventArgs e)
@@ -24,22 +39,7 @@ namespace LagoVista.XPlat
             if (_initialized)
                 return;
 
-            if (!DesignerProperties.GetIsInDesignMode(this))
-            {
-                if (SLWIOC.TryResolve(typeof(VMType), out object value))
-                {
-                    ViewModel = value as VMType;
-                    await ViewModel.InitAsync();
-                    DataContext = ViewModel;
-                }
-                else
-                {
-                    var vm = SLWIOC.Create<VMType>();
-                    ViewModel = vm as VMType;
-                    await ViewModel.InitAsync();
-                    DataContext = ViewModel;
-                }
-            }
+            await ViewModel.InitAsync();
 
             _initialized = true;
         }

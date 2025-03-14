@@ -65,7 +65,7 @@ namespace LagoVista.Client.Core.Net
             }
         }
 
-        public async Task LogoutAsync()
+        public Task LogoutAsync()
         {
             AccessToken = null;
             AccessTokenExpirationUTC = null;
@@ -74,6 +74,8 @@ namespace LagoVista.Client.Core.Net
             RefreshTokenExpirationUTC = null;
             User = null;
             Roles = new List<EntityHeader>();
+
+            return Task.CompletedTask;
         }
 
         public Task PersistAsync()
