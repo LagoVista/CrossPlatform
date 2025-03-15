@@ -39,7 +39,10 @@ namespace LagoVista.XPlat
             if (_initialized)
                 return;
 
-            await ViewModel.InitAsync();
+            if (!DesignerProperties.GetIsInDesignMode(this))
+            {
+                await ViewModel.InitAsync();
+            }
 
             _initialized = true;
         }
