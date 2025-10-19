@@ -241,7 +241,7 @@ namespace LagoVista.Core.WPF.PlatformSupport
 
         public Task ClearAllAsync()
         {
-            throw new NotImplementedException();
+            return Task.CompletedTask;
         }
     }
 }
